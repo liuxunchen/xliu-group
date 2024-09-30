@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>激光诊断实验室</title>
+    <link>https://liuxunchen.github.io/xliu-group/</link>
+    <description>Recent content on 激光诊断实验室</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="https://liuxunchen.github.io/xliu-group/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://liuxunchen.github.io/xliu-group/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://liuxunchen.github.io/xliu-group/</guid>
+      <description>欢迎访问刘训臣的科研网页！我的实验室在 山东科技大学 机械电子工程学院，聚焦先进制造与诊断装备。</description>
+    </item>
+  </channel>
+</rss>
