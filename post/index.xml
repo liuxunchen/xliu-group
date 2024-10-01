@@ -1,40 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>激光诊断实验室</title>
+    <title>刘训臣的非正式科研笔记 on 激光诊断实验室</title>
     <link>https://liuxunchen.github.io/xliu-group/post/</link>
-    <description>Recent content on 激光诊断实验室</description>
+    <description>Recent content in 刘训臣的非正式科研笔记 on 激光诊断实验室</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 01 Oct 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://liuxunchen.github.io/xliu-group/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>interview</title>
+      <title>新网站上线了</title>
       <link>https://liuxunchen.github.io/xliu-group/post/20240331/</link>
-      <pubDate>Sun, 31 Mar 2024 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
       <guid>https://liuxunchen.github.io/xliu-group/post/20240331/</guid>
-      <description>test</description>
-    </item>
-    <item>
-      <title>实事求是，向应用科学的研究进军</title>
-      <link>https://liuxunchen.github.io/xliu-group/20230910-nsfc/</link>
-      <pubDate>Sun, 01 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>https://liuxunchen.github.io/xliu-group/20230910-nsfc/</guid>
-      <description>今天看到基金委本科生项目的新闻： https://www.nsfc.gov.cn/publish/portal0/tab434/info90219.htm 不出意外，骂声一片。懒得装了，吃相难看 下一步，高中时候就可以进实验室搞SCI嘛，怎么能不资助。硕士基金，博</description>
-    </item>
-    <item>
-      <title>An Example Post</title>
-      <link>https://liuxunchen.github.io/xliu-group/post/test/</link>
-      <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
-      <guid>https://liuxunchen.github.io/xliu-group/post/test/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Research in the Liu lab</title>
-      <link>https://liuxunchen.github.io/xliu-group/post/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://liuxunchen.github.io/xliu-group/post/</guid>
-      <description>Here at the advanced manufacotring and diagnostic equipment lab, we develop advanced laser diagnostic tools and study their application in reactive flow, for example plasma enhanced chemical vapor deposition and propulsion sector, for example high repetition rate laser based non-intrusive imaging technique to study the dynamics in aero engine test rig and shock tube.</description>
+      <description>今天是国庆节，有时间上线了课题组的网站。&#xA;中国的科研工作者真不容易。好像在外国的也不容易。我国只不过是现在本科生都有国自然了。前几天看到一篇OL上的文章就是美国高中生发的，为了卷大学入学嘛，可以理解。那小孩的爹也挺厉害。所以高中时候就可以进实验室搞SCI嘛，基金委怎么能不资助。硕士基金，博士基金都卷起来。</description>
     </item>
   </channel>
 </rss>

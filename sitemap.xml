@@ -2,10 +2,39 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://liuxunchen.github.io/xliu-group/categories/</loc>
+    <loc>https://liuxunchen.github.io/xliu-group/</loc>
+    <lastmod>2024-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/people/</loc>
+    <lastmod>2024-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/people/xunchen/</loc>
+    <lastmod>2024-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/post/</loc>
+    <lastmod>2024-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/post/20240331/</loc>
+    <lastmod>2024-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/research/</loc>
+    <lastmod>2024-03-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/research/method/</loc>
+    <lastmod>2024-03-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/archives/</loc>
+    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/about/</loc>
+    <lastmod>2019-02-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/paper/</loc>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/series/</loc>
   </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/tags/</loc>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/</loc>
+    <loc>https://liuxunchen.github.io/xliu-group/research/tdlas/</loc>
   </url>
 </urlset>
