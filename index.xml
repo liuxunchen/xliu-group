@@ -6,14 +6,21 @@
     <description>Recent content on 激光诊断实验室</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 01 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 15 Oct 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://liuxunchen.github.io/xliu-group/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>介绍好书：John Daily 统计热力学</title>
+      <link>https://liuxunchen.github.io/xliu-group/post/daily-book/</link>
+      <pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://liuxunchen.github.io/xliu-group/post/daily-book/</guid>
+      <description>封面 最近读到一本好书，剑桥大学出版社2018年出版的 John Daily 《Statistical Thermodynamics an Engineering approach》。 最早知道 Daily 还是读到他在PECS上关于LIF 的综述，算是比较早期这方面的综述了。当时他还是在伯克利大学，后来去了科罗拉多大学主持了燃烧研究中心做机械系主任。 这本书是John 在伯克利大学和科罗拉多大学教研究生《高等热力学》的教材。&#xA;面向热流体方向（机械工程、航空工程、动力工程）的热力学气体动力学课程，早期有 Sonntag &amp;amp; Van Wylen: Fundamentals of Statistical Thermodynamics ; 斯坦福大学的 Vincenti &amp;amp; Kruger: Introduction to Physical Gas Dynamics。 作者的这本教材可以看作是前面书的简化版，包含了最主要的内容。 之前给本科上的物理化学和准备的热工基础课程想包含的内容，这本书都有：量子力学、分子能级、配风函数、热力学量、JANAF表、Boltzmann方程等等，基本该涉及的知识点都有。</description>
+    </item>
     <item>
       <title>Xunchen Liu</title>
       <link>https://liuxunchen.github.io/xliu-group/people/xunchen/</link>
       <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
       <guid>https://liuxunchen.github.io/xliu-group/people/xunchen/</guid>
-      <description>Hi, I am Xunchen Liu.&#xA;I was born in 1983 and went to Qingdao No.2 middle school from 1996 to 2002.</description>
+      <description>Xunchen Hi, I am Xunchen Liu.&#xA;I was born in 1983 and went to Qingdao No.2 middle school from 1996 to 2002.</description>
     </item>
     <item>
       <title>新网站上线了</title>
