@@ -4,10 +4,17 @@
     <title>刘训臣的非正式科研笔记 on 激光诊断实验室</title>
     <link>https://liuxunchen.github.io/xliu-group/post/</link>
     <description>Recent content in 刘训臣的非正式科研笔记 on 激光诊断实验室</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 08 Nov 2024 21:22:03 +0800</lastBuildDate>
     <atom:link href="https://liuxunchen.github.io/xliu-group/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TDLAS的问题</title>
+      <link>https://liuxunchen.github.io/xliu-group/post/20241108/</link>
+      <pubDate>Fri, 08 Nov 2024 21:22:03 +0800</pubDate>
+      <guid>https://liuxunchen.github.io/xliu-group/post/20241108/</guid>
+      <description>最见看到之前课题组近年燃烧年会发的会议论文，没有接受口头报告，只有一个海报。 论文题目 是用我发展的4um QCL测CO2的方法在腔体里面测固体颗粒燃烧的信号。 看了一下实验记录，是2020年夏天做的实验。本来是说2019年底，两个人同一年评职称，让我让一下，给我搞一篇文章。结果成了拿我搞的啥设备去给他做实验。到最后发表了论文，连我的名字都没有。 但也非常欣慰，毕竟发表了，了却了一桩心事。顾明明博士本来不做 TDLAS，去交大做博后才接触，青年基金也是做的中红外TDLAS 数据处理的方法。把 line mixing 模型用来处理 4.2um 的CO2带头部分的谱线，还是挺成功。但即使是这个新的模型，根本问题还是参数多，需要调。应用起来就不够直接。 实验装置图 这个实验不是很成功。根本问题还是由于 TDLAS 是线积分测量，无法区分腔体内部路径上不同位置的信息。 测到的温度，其实是路径平均的温度，虽然4.2um那高温信号占主要的，但也要考虑这么长路径上腔体里面其他位置扩散出去的CO2的干扰。 其实还不如不加腔体，那样的话在大气环境中还扩散的快一点。&#xA;这就叫路径依赖。</description>
+    </item>
     <item>
       <title>介绍好书：John Daily 统计热力学</title>
       <link>https://liuxunchen.github.io/xliu-group/post/daily-book/</link>
