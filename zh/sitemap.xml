@@ -37,6 +37,11 @@
                 href="https://liuxunchen.github.io/xliu-group/post/"
                 />
   </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/post/ch2o/</loc>
+    <lastmod>2024-10-15T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/post/daily-book/</loc>
     <lastmod>2024-10-15T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -64,10 +69,6 @@
   </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/people/</loc>
     <lastmod>2017-03-02T12:00:00-05:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/paper/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -100,6 +101,10 @@
                 />
   </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/method/tdlas/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/paper/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
