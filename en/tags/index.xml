@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on mainpage</title>
-    <link>https://example.org/en/tags/</link>
+    <link>https://liuxunchen.github.io/xliu-group/en/tags/</link>
     <description>Recent content in Tags on mainpage</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <lastBuildDate>Wed, 12 Apr 2017 11:14:48 -0400</lastBuildDate>
-    <atom:link href="https://example.org/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://liuxunchen.github.io/xliu-group/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Scene</title>
-      <link>https://example.org/en/tags/scene/</link>
+      <link>https://liuxunchen.github.io/xliu-group/en/tags/scene/</link>
       <pubDate>Wed, 12 Apr 2017 11:14:48 -0400</pubDate>
-      <guid>https://example.org/en/tags/scene/</guid>
+      <guid>https://liuxunchen.github.io/xliu-group/en/tags/scene/</guid>
       <description></description>
     </item>
   </channel>
