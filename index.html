@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-zh">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -44,13 +44,13 @@
   <meta property="og:site_name" content="主页">
   <meta property="og:title" content="激光诊断实验室">
   <meta property="og:description" content="山东科技大学 机械电子工程学院">
-  <meta property="og:locale" content="zh_zh">
+  <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="激光诊断实验室">
   <meta itemprop="description" content="山东科技大学 机械电子工程学院">
-  <meta itemprop="datePublished" content="2024-11-08T21:22:03+08:00">
-  <meta itemprop="dateModified" content="2024-11-08T21:22:03+08:00">
+  <meta itemprop="datePublished" content="2025-02-20T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-02-20T00:00:00+00:00">
   <meta itemprop="wordCount" content="1">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="激光诊断实验室">
@@ -91,31 +91,31 @@
         <ul class="pl0 mr3">
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white no-underline white-90" href="/xliu-group/method/" title="Methods 页">
+            <a class="hover-white no-underline white-90" href="/xliu-group/method/" title="">
               Methods
             </a>
           </li>
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white no-underline white-90" href="/xliu-group/people/" title="People 页">
+            <a class="hover-white no-underline white-90" href="/xliu-group/people/" title="">
               People
             </a>
           </li>
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white no-underline white-90" href="/xliu-group/paper/" title="发表论文 页">
+            <a class="hover-white no-underline white-90" href="/xliu-group/paper/" title="">
               发表论文
             </a>
           </li>
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white no-underline white-90" href="/xliu-group/post/" title="科研笔记 页">
+            <a class="hover-white no-underline white-90" href="/xliu-group/post/" title="">
               科研笔记
             </a>
           </li>
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white no-underline white-90" href="/xliu-group/contact/" title="联系方式 页">
+            <a class="hover-white no-underline white-90" href="/xliu-group/contact/" title="">
               联系方式
             </a>
           </li>
@@ -170,6 +170,93 @@
       
           
         <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+          <a href="/xliu-group/post/20250220/" class="db grow">
+            <img src="https://liuxunchen.github.io/xliu-group/images/sdust.jpg" class="img" alt="image from lvpyio">
+          </a>
+        </div>
+      
+      <div class="blah w-100 w-60-ns pl3-ns">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/xliu-group/post/20250220/" class="color-inherit dim link">
+            lvpyio
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <p>今天尝试了 LaVision 公司的 python package，太坑了，又发现 DeepSeek 太香了。</p>
+<p>lvpyio 的网址：
+<a href="https://www.lavision.de/en/downloads/software/python_add_ons.php">https://www.lavision.de/en/downloads/software/python_add_ons.php</a></p>
+<p>之前都是把 DaVis 计算得到的速度场或者标量场结果存成文本文件，例如 B00001.txt 再用python读。下面是我写的读标量场和矢量场的函数，其中load_piv 中 size 参数非0时，会将数据 binning 降低数据数量，提高对比度。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#%% read DaVis txt file</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_piv</span>(filename, size):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    extract PIV data
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    filename: txt file name
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    size: average size
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    lavision <span style="color:#f92672">=</span> open(filename)
+</span></span><span style="display:flex;"><span>    step, xnum, ynum <span style="color:#f92672">=</span> lavision<span style="color:#f92672">.</span>readline()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">6</span>]
+</span></span><span style="display:flex;"><span>    lavision<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>    step <span style="color:#f92672">=</span> int(step)
+</span></span><span style="display:flex;"><span>    xnum <span style="color:#f92672">=</span> int(xnum)
+</span></span><span style="display:flex;"><span>    ynum <span style="color:#f92672">=</span> int(ynum)
+</span></span><span style="display:flex;"><span>    size <span style="color:#f92672">=</span> int(size)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    oned <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(filename, decimal<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#39;</span>, skiprows<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">0</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
+</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">1</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
+</span></span><span style="display:flex;"><span>    U <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">2</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
+</span></span><span style="display:flex;"><span>    V <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">3</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> size <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        X <span style="color:#f92672">=</span> X[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        Y <span style="color:#f92672">=</span> Y[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        U <span style="color:#f92672">=</span> U[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        V <span style="color:#f92672">=</span> V[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)                                                                           
+</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> Y<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+</span></span><span style="display:flex;"><span>    U <span style="color:#f92672">=</span> U<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+</span></span><span style="display:flex;"><span>    V <span style="color:#f92672">=</span> V<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> step, xnum, ynum, X, Y, U, V   
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_plif</span>():
+</span></span><span style="display:flex;"><span>    plif <span style="color:#f92672">=</span> open(filename)
+</span></span><span style="display:flex;"><span>    firstline <span style="color:#f92672">=</span> plif<span style="color:#f92672">.</span>readline()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)
+</span></span><span style="display:flex;"><span>    x_num,y_num <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>    delta_x,x0 <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">6</span>:<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>    delta_y,y0 <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">10</span>:<span style="color:#ae81ff">12</span>]
+</span></span><span style="display:flex;"><span>    plif<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>    x_num <span style="color:#f92672">=</span> int(x_num)
+</span></span><span style="display:flex;"><span>    y_num <span style="color:#f92672">=</span> int(y_num)
+</span></span><span style="display:flex;"><span>    x0 <span style="color:#f92672">=</span> float(x0)
+</span></span><span style="display:flex;"><span>    y0 <span style="color:#f92672">=</span> float(y0)
+</span></span><span style="display:flex;"><span>    delta_x <span style="color:#f92672">=</span> float(delta_x)
+</span></span><span style="display:flex;"><span>    delta_y <span style="color:#f92672">=</span> float(delta_y)
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(x0, x0<span style="color:#f92672">+</span>(x_num)<span style="color:#f92672">*</span>delta_x, delta_x)
+</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(y0, y0<span style="color:#f92672">+</span>(y_num)<span style="color:#f92672">*</span>delta_y, delta_y)   
+</span></span><span style="display:flex;"><span>    plif_txt <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(filename, decimal<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#39;</span>, skiprows<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span>    plif <span style="color:#f92672">=</span> plif_txt<span style="color:#f92672">.</span>values
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> x_num,y_num,X,Y,plif
+</span></span></code></pre></div><p>貌似用官方的软件包可以读更多的文件格式吧。于是就开始安装了。
+首先发现不知道为什么 spyder 启动出问题了，numpy 版本不对，需要重装 numpy，就好了。</p>
+        </div>
+        
+          <p class="f6 lh-copy mv0">By Xunchen Liu</p><a href="/xliu-group/post/20250220/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+          
+        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
           <a href="/xliu-group/post/20241108/" class="db grow">
             <img src="https://liuxunchen.github.io/xliu-group/images/sdust.jpg" class="img" alt="image from TDLAS的问题">
           </a>
@@ -210,7 +297,7 @@ TDLAS方法在大气研究中有成功的应用，比如用吸收池抽气进去
 这样就可以得到比较高的空间分辨率。但成本的确也高。</p>
         </div>
         
-          <p class="f6 lh-copy mv0">By 刘训臣</p><a href="/xliu-group/post/20241108/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+          <p class="f6 lh-copy mv0">By 刘训臣</p><a href="/xliu-group/post/20241108/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
       </div>
     </div>
   </div>
@@ -264,58 +351,7 @@ Clouthier综述中提到数据来自 Ramsay 和 Till 未发表的工作，后人
 <p>[1] KOSTKA S, ROY S, LAKUSTA P J, 等. Comparison of line-peak and line-scanning excitation in two-color laser-induced-fluorescence thermometry of OH[J/OL]. Applied Optics, 2009, 48(32): 6332. DOI:10.1364/AO.48.006332.</p>
         </div>
         
-          <p class="f6 lh-copy mv0">By Xunchen Liu</p><a href="/xliu-group/post/ch2o/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-          
-        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-          <a href="/xliu-group/post/daily-book/" class="db grow">
-            <img src="https://liuxunchen.github.io/xliu-group/images/sdust.jpg" class="img" alt="image from 介绍好书：John Daily 统计热力学">
-          </a>
-        </div>
-      
-      <div class="blah w-100 w-60-ns pl3-ns">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/xliu-group/post/daily-book/" class="color-inherit dim link">
-            介绍好书：John Daily 统计热力学
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p><figure><img src="/xliu-group/post/daily-book/daily-book-cover.jpg"><figcaption>
-      <h4>封面</h4>
-    </figcaption>
-</figure>
-
-最近读到一本好书，剑桥大学出版社2018年出版的 John Daily 《Statistical Thermodynamics an Engineering approach》。
-最早知道 Daily 还是读到他在PECS上关于LIF 的综述，算是比较早期这方面的综述了。当时他还是在伯克利大学，后来去了科罗拉多大学主持了燃烧研究中心做机械系主任。
-这本书是John 在伯克利大学和科罗拉多大学教研究生《高等热力学》的教材。</p>
-<p>面向热流体方向（机械工程、航空工程、动力工程）的热力学气体动力学课程，早期有 Sonntag &amp;  Van Wylen:  Fundamentals of Statistical Thermodynamics ; 斯坦福大学的 Vincenti &amp; Kruger: Introduction to Physical Gas Dynamics。
-作者的这本教材可以看作是前面书的简化版，包含了最主要的内容。
-之前给本科上的物理化学和准备的热工基础课程想包含的内容，这本书都有：量子力学、分子能级、配风函数、热力学量、JANAF表、Boltzmann方程等等，基本该涉及的知识点都有。</p>
-<p>作为研究生教材，这本书更多的可以作为一个地图和指引，告诉研究生哪些内容需要去看的提要。面向本科生教学的话，可以先简单介绍一些基础知识。这本书还有对应的Coursera 课程，有视频和PPT，一开始就介绍了一些基本知识。
-<a href="https://www.coursera.org/learn/macroscopic-microscopic-thermodynamics">https://www.coursera.org/learn/macroscopic-microscopic-thermodynamics</a></p>
-<p>这本书最大的优点是采用了公理化的热力学体系，即 Herbert B. Callen 在 《Thermodynamics and an Introduction to Thermostatistics》 中提出的四大公设的体系。
-一门学科在历史上发展的顺序和学科体系查成熟后的体系肯定是不同的。
-最终在课程中的呈现，肯定和历史发展的顺序不同。
-比如现代量子力学的教学，如果学时多，尚可以慢慢来从两朵乌云开始讲，但很多时候已经不再是按照历史顺序来讲了，而是按照现代的体系来讲。</p>
-<p>在AI时代，本科生要学的东西越来越多。现在教学的课时越来越少了，传统课程的教学要跟上时代，就是要体现新的思路，顺应时代的发展。
-可以预见，未来的热流体课程中，热力学和统计力学也不应该分开慢慢讲了，也不应该第一定律、第二定律出发那样讲了。
-未来的热力学教学，应该按照这样简洁明了的公理化体系来讲，节省时间。
-时代的进步发展总是这样，留给一成不变旧内容的时间总是越来越少。</p>
-        </div>
-        
-          <p class="f6 lh-copy mv0">By 刘训臣</p><a href="/xliu-group/post/daily-book/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+          <p class="f6 lh-copy mv0">By Xunchen Liu</p><a href="/xliu-group/post/ch2o/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
       </div>
     </div>
   </div>
@@ -327,8 +363,14 @@ Clouthier综述中提到数据来自 Ramsay 和 Till 未发表的工作，后人
 
       
         <section class="w-100">
-          <h1 class="f3">更多</h1>
+          <h1 class="f3"></h1>
           
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/xliu-group/post/daily-book/" class="link black dim">
+                介绍好书：John Daily 统计热力学
+              </a>
+            </h2>
           
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/xliu-group/post/hello-world/" class="link black dim">
