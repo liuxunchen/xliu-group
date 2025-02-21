@@ -111,7 +111,7 @@ lvpyio 的网址： https://www.lavision.de/en/downloads/software/python_add_ons
 #%% read DaVis txt file def load_piv(filename, size): &#34;&#34;&#34; extract PIV data filename: txt file name size: average size &#34;&#34;&#34; lavision = open(filename) step, xnum, ynum = lavision.readline().split(&#39; &#39;)[3:6] lavision.close() step = int(step) xnum = int(xnum) ynum = int(ynum) size = int(size) oned = pd.read_csv(filename, decimal=&#39;,&#39;, sep=&#39;\t&#39;, skiprows=1, header=None) X = np.reshape(oned.values[:, 0], (xnum, ynum), &#39;C&#39;).astype(&#39;float64&#39;) Y = np.reshape(oned.values[:, 1], (xnum, ynum), &#39;C&#39;).astype(&#39;float64&#39;) U = np.reshape(oned.values[:, 2], (xnum, ynum), &#39;C&#39;).astype(&#39;float64&#39;) V = np.reshape(oned.values[:, 3], (xnum, ynum), &#39;C&#39;).astype(&#39;float64&#39;) if size != 1: X = X[:int(xnum // size) * size, :int(ynum // size) * size].reshape(int(xnum // size), size, int(ynum // size),size).mean(axis=(1, 3)) Y = Y[:int(xnum // size) * size, :int(ynum // size) * size].reshape(int(xnum // size), size, int(ynum // size),size).mean(axis=(1, 3)) U = U[:int(xnum // size) * size, :int(ynum // size) * size].reshape(int(xnum // size), size, int(ynum // size),size).mean(axis=(1, 3)) V = V[:int(xnum // size) * size, :int(ynum // size) * size].reshape(int(xnum // size), size, int(ynum // size),size).mean(axis=(1, 3)) X = X.astype(&#39;float32&#39;) Y = Y.astype(&#39;float32&#39;) U = U.astype(&#39;float32&#39;) V = V.astype(&#39;float32&#39;) return step, xnum, ynum, X, Y, U, V def load_plif(): plif = open(filename) firstline = plif.readline().split(&#39; &#39;) x_num,y_num = firstline[3:5] delta_x,x0 = firstline[6:8] delta_y,y0 = firstline[10:12] plif.close() x_num = int(x_num) y_num = int(y_num) x0 = float(x0) y0 = float(y0) delta_x = float(delta_x) delta_y = float(delta_y) X = np.arange(x0, x0&#43;(x_num)*delta_x, delta_x) Y = np.arange(y0, y0&#43;(y_num)*delta_y, delta_y) plif_txt = pd.read_csv(filename, decimal=&#39;,&#39;, sep=&#39;\t&#39;, skiprows=1, header=None) plif = plif_txt.values return x_num,y_num,X,Y,plif 貌似用官方的软件包可以读更多的文件格式吧。于是就开始安装了。 首先发现不知道为什么 spyder 启动出问题了，numpy 版本不对，需要重装 numpy，就好了。">
   <meta itemprop="datePublished" content="2025-02-20T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-02-20T00:00:00+00:00">
-  <meta itemprop="wordCount" content="313">
+  <meta itemprop="wordCount" content="338">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="lvpyio">
   <meta name="twitter:description" content="今天尝试了 LaVision 公司的 python package，太坑了，又发现 DeepSeek 太香了。
@@ -287,7 +287,7 @@ lvpyio 的网址： https://www.lavision.de/en/downloads/software/python_add_ons
 
 /usr/local/lib64/python3.13/site-packages/lvpyio/io/LaVision.Logging.so: undefined symbol: _ZdlPvm, version Qt_5
 </code></pre><p>在DeepSeek 中输入，马上告诉我是 .so 动态链接库找不到特定版本的 Qt 问题。
-解决方案也有。</p>
+更给力的是解决的方法也有，如下，用string 命令看一下</p>
 <pre tabindex="0"><code>xliu@localhost:/usr/local/lib64/python3.13/site-packages/lvpyio/io$ strings LaVision.Logging.so | grep Qt
 /home/tfsbuild/lvdeps/Qt-5.14.0-gcc_64/5.14.0/gcc_64/include/QtCore/qstring.h
 /home/tfsbuild/lvdeps/Qt-5.14.0-gcc_64/5.14.0/gcc_64/include/QtCore/qarraydata.h
@@ -306,10 +306,19 @@ Qt_5
 只需要安装5.14.0版本即可</p>
 <pre tabindex="0"><code>pip install PyQt5==5.14.0
 </code></pre><p>然后在spyder中就可以运行lvpyio 了。</p>
-<p>大模型人工智能带来了又一波信息化革命，科研工作者如何面对？
-对我来说，用来搜索网页并解决计算机问题真的可以了。
-所有能网页上搜到的问题，应该都可以靠大模型了。
-人工智能应该帮助学习理论问题，但深入的知识和动手的实验问题应该还是不行，这也就是科研工作者还能起到关键作用的地方吧。</p>
+<pre tabindex="0"><code>from lvpyio import read_set
+import lvpyio as lv
+
+path = pathlib.Path(&#39;2021-time2-twinnozzle-coldflow/6-4-2d_C001H001S0002&#39;)
+set = lv.read_set(path)
+buffer = s[100]
+img = buffer.as_masked_array().data
+mask = buffer.as_masked_array().mask
+</code></pre><p>大模型带来了又一波信息化革命，人工智能已来，科研工作者如何面对？
+我个人感觉，普通的计算机问题、搜索网页等普通任务真的都可以解决了。所有能网页上搜到的问题，应该都可以靠大模型了。
+人工智能也应该帮助学习理论问题，这学期上课，就准备启发学生们自学的时候用用。
+但深入细微的知识和真知卓见、动手的实验问题，人工智能应该还是不行。
+简单来说，探索未知，这也就是科研工作者还能起到关键作用的地方吧。</p>
 <ul class="pa0">
   
 </ul>
