@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>People on mainpage</title>
+    <link>https://liuxunchen.github.io/xliu-group/en/people/</link>
+    <description>Recent content in People on mainpage</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Tue, 01 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://liuxunchen.github.io/xliu-group/en/people/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Xunchen Liu</title>
+      <link>https://liuxunchen.github.io/xliu-group/en/people/xunchen/</link>
+      <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://liuxunchen.github.io/xliu-group/en/people/xunchen/</guid>
+      <description>&lt;figure&gt;&lt;img src=&#34;https://liuxunchen.github.io/xliu-group/en/people/xunchen/picture.jpg&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;h4&gt;Xunchen&lt;/h4&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;Hi, I am Xunchen Liu.&lt;/p&gt;&#xA;&lt;p&gt;I was born in 1983 and went to Qingdao No.2 middle school from 1996 to 2002. I graduated with a bachelor degree in physical chemistry from Shandong University in 2007. Then I went to University of Alberta in Edmonton, Canada as a graduate student to study molecular spectroscopy with Prof. Yunjie Xu in the Department of Chemistry and later in the Department of Chemical and Materials Engineering of the same university as a postdoc fellow with Prof. Thomas Thundat. I worked as a lecture in the School of Mechanical Engineering from 2015 to 2022 and wend back to hometown Shandong University of Science and Technology in 2023 as Professor and PhD supervisor in the College of Mechanical and Electrical Engineering.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
