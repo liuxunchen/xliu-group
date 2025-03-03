@@ -49,8 +49,8 @@
 
   <meta itemprop="name" content="激光诊断实验室">
   <meta itemprop="description" content="山东科技大学 机械电子工程学院">
-  <meta itemprop="datePublished" content="2025-02-28T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-02-28T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2025-03-03T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-03-03T00:00:00+00:00">
   <meta itemprop="wordCount" content="1">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="激光诊断实验室">
@@ -170,78 +170,28 @@
       
           
         <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-          <a href="/xliu-group/post/20250220/" class="db grow">
-            <img src="https://liuxunchen.github.io/xliu-group/images/sdust.jpg" class="img" alt="image from lvpyio">
+          <a href="/xliu-group/%E4%BA%BA%E5%91%98/wangchen/" class="db grow">
+            <img src="https://liuxunchen.github.io/xliu-group/images/sdust.jpg" class="img" alt="image from 王晨">
           </a>
         </div>
       
       <div class="blah w-100 w-60-ns pl3-ns">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/xliu-group/post/20250220/" class="color-inherit dim link">
-            lvpyio
+          <a href="/xliu-group/%E4%BA%BA%E5%91%98/wangchen/" class="color-inherit dim link">
+            王晨
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>今天尝试了 LaVision 公司的 python package，太坑了，又发现 DeepSeek 太香了。</p>
-<p>lvpyio 的网址：
-<a href="https://www.lavision.de/en/downloads/software/python_add_ons.php">https://www.lavision.de/en/downloads/software/python_add_ons.php</a></p>
-<p>之前都是把 DaVis 计算得到的速度场或者标量场结果存成文本文件，例如 B00001.txt 再用python读。下面是我写的读标量场和矢量场的函数，其中load_piv 中 size 参数非0时，会将数据 binning 降低数据数量，提高对比度。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#%% read DaVis txt file</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_piv</span>(filename, size):
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    extract PIV data
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    filename: txt file name
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    size: average size
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>    lavision <span style="color:#f92672">=</span> open(filename)
-</span></span><span style="display:flex;"><span>    step, xnum, ynum <span style="color:#f92672">=</span> lavision<span style="color:#f92672">.</span>readline()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">6</span>]
-</span></span><span style="display:flex;"><span>    lavision<span style="color:#f92672">.</span>close()
-</span></span><span style="display:flex;"><span>    step <span style="color:#f92672">=</span> int(step)
-</span></span><span style="display:flex;"><span>    xnum <span style="color:#f92672">=</span> int(xnum)
-</span></span><span style="display:flex;"><span>    ynum <span style="color:#f92672">=</span> int(ynum)
-</span></span><span style="display:flex;"><span>    size <span style="color:#f92672">=</span> int(size)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    oned <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(filename, decimal<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#39;</span>, skiprows<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
-</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">0</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
-</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">1</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
-</span></span><span style="display:flex;"><span>    U <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">2</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
-</span></span><span style="display:flex;"><span>    V <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">3</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> size <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>:
-</span></span><span style="display:flex;"><span>        X <span style="color:#f92672">=</span> X[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
-</span></span><span style="display:flex;"><span>        Y <span style="color:#f92672">=</span> Y[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
-</span></span><span style="display:flex;"><span>        U <span style="color:#f92672">=</span> U[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
-</span></span><span style="display:flex;"><span>        V <span style="color:#f92672">=</span> V[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
-</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)                                                                           
-</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> Y<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
-</span></span><span style="display:flex;"><span>    U <span style="color:#f92672">=</span> U<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
-</span></span><span style="display:flex;"><span>    V <span style="color:#f92672">=</span> V<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> step, xnum, ynum, X, Y, U, V   
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_plif</span>():
-</span></span><span style="display:flex;"><span>    plif <span style="color:#f92672">=</span> open(filename)
-</span></span><span style="display:flex;"><span>    firstline <span style="color:#f92672">=</span> plif<span style="color:#f92672">.</span>readline()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)
-</span></span><span style="display:flex;"><span>    x_num,y_num <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">5</span>]
-</span></span><span style="display:flex;"><span>    delta_x,x0 <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">6</span>:<span style="color:#ae81ff">8</span>]
-</span></span><span style="display:flex;"><span>    delta_y,y0 <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">10</span>:<span style="color:#ae81ff">12</span>]
-</span></span><span style="display:flex;"><span>    plif<span style="color:#f92672">.</span>close()
-</span></span><span style="display:flex;"><span>    x_num <span style="color:#f92672">=</span> int(x_num)
-</span></span><span style="display:flex;"><span>    y_num <span style="color:#f92672">=</span> int(y_num)
-</span></span><span style="display:flex;"><span>    x0 <span style="color:#f92672">=</span> float(x0)
-</span></span><span style="display:flex;"><span>    y0 <span style="color:#f92672">=</span> float(y0)
-</span></span><span style="display:flex;"><span>    delta_x <span style="color:#f92672">=</span> float(delta_x)
-</span></span><span style="display:flex;"><span>    delta_y <span style="color:#f92672">=</span> float(delta_y)
-</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(x0, x0<span style="color:#f92672">+</span>(x_num)<span style="color:#f92672">*</span>delta_x, delta_x)
-</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(y0, y0<span style="color:#f92672">+</span>(y_num)<span style="color:#f92672">*</span>delta_y, delta_y)   
-</span></span><span style="display:flex;"><span>    plif_txt <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(filename, decimal<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#39;</span>, skiprows<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
-</span></span><span style="display:flex;"><span>    plif <span style="color:#f92672">=</span> plif_txt<span style="color:#f92672">.</span>values
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> x_num,y_num,X,Y,plif
-</span></span></code></pre></div><p>貌似用官方的软件包可以读更多的文件格式吧。于是就开始安装了。
-首先发现不知道为什么 spyder 启动出问题了，numpy 版本不对，需要重装 numpy，就好了。</p>
+          <p>王晨，男，汉族， 2002 年11月出生，来自山东临沂。本科毕业于潍坊科技学院，专业是机械设计制造及其自动化。于2024年来到山东科技大学攻读硕士学位，主要研究的方向是发展双色PIV测量方法，研究面向燃烧不稳定性现象的横向射流火焰双喷嘴混合问题。
+<figure><img src="/xliu-group/%E4%BA%BA%E5%91%98/wangchen/Picture1.png">
+</figure>
+
+<figure><img src="/xliu-group/%E4%BA%BA%E5%91%98/wangchen/Picture2.png">
+</figure>
+</p>
         </div>
         
-          <p class="f6 lh-copy mv0">By Xunchen Liu</p><a href="/xliu-group/post/20250220/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+          <p class="f6 lh-copy mv0">By wangchen</p><a href="/xliu-group/%E4%BA%BA%E5%91%98/wangchen/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
       </div>
     </div>
   </div>
@@ -257,49 +207,28 @@
       
           
         <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-          <a href="/xliu-group/post/20241108/" class="db grow">
-            <img src="https://liuxunchen.github.io/xliu-group/images/sdust.jpg" class="img" alt="image from TDLAS的问题">
+          <a href="/xliu-group/%E4%BA%BA%E5%91%98/wangshuo/" class="db grow">
+            <img src="https://liuxunchen.github.io/xliu-group/images/sdust.jpg" class="img" alt="image from 王硕">
           </a>
         </div>
       
       <div class="blah w-100 w-60-ns pl3-ns">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/xliu-group/post/20241108/" class="color-inherit dim link">
-            TDLAS的问题
+          <a href="/xliu-group/%E4%BA%BA%E5%91%98/wangshuo/" class="color-inherit dim link">
+            王硕
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>最见看到之前课题组近年燃烧年会发的会议论文，没有接受口头报告，只有一个海报。
-<figure><img src="/xliu-group/post/20241108/title.png"><figcaption>
-      <h4>论文题目</h4>
-    </figcaption>
+          <p>王硕，男，汉族，2001年6月生，山东莱阳人。本科就读于潍坊学院机械与自动化学院，专业是车辆工程。山东科技大学机械电子工程学院2024级硕士研究生，研究方向是燃气轮机分级燃烧出口截面收缩对横向射流火焰特性的影响。
+<figure><img src="/xliu-group/%E4%BA%BA%E5%91%98/wangshuo/Picture1.png">
 </figure>
 
-是用我发展的4um QCL测CO2的方法在腔体里面测固体颗粒燃烧的信号。
-看了一下实验记录，是2020年夏天做的实验。
-固体推进剂这个方向，本来也不是我该做的，合作只是奉命服务。</p>
-<p>但也非常欣慰，毕竟发表了，了却了一桩心事。顾明明博士本来不做 TDLAS，去交大做博后才接触，青年基金也是做的中红外TDLAS 数据处理的方法。把 line mixing 模型用来处理 4.2um 的CO2带头部分的谱线，还是挺成功。但即使是这个新的模型，根本问题还是参数多，需要调。应用起来就不够直接。</p>
-<figure><img src="/xliu-group/post/20241108/setup.png"><figcaption>
-      <h4>实验装置图</h4>
-    </figcaption>
+<figure><img src="/xliu-group/%E4%BA%BA%E5%91%98/wangshuo/Picture2.png">
 </figure>
-
-<p>这个实验不是很成功。根本问题还是由于 TDLAS 是线积分测量，无法区分腔体内部路径上不同位置的信息。
-测到的温度，其实是路径平均的温度，虽然4.2um那高温信号占主要的，但也要考虑这么长路径上腔体里面其他位置扩散出去的CO2的干扰。
-其实还不如不加腔体，那样的话在大气环境中还扩散的快一点。</p>
-<p>这就叫路径依赖。</p>
-<p>想起来之前还做过一个失败的实验。用5um NO2 吸收逢的QCL激光测在真空腔体里面的 不同NH3含量的Mckenna 火焰。这个是之前用石英喷嘴取样加紫外光电离质谱做过的体系。用取样测量方法的话，周围环境中的燃烧产物、扩散出去的物质是不用管的。但是用吸收光谱的方法就不行了。低压环境倒是有利于TDLAS测量，NO2 两个分裂的吸收峰很清楚，但是测到的温度又很低，后来发现是因为腔体里面有扩散出去的产物的吸收。
-这就很难办了。也可以吹扫，但再加上这些过程复杂的方法，都很不可靠。</p>
-<p>核心问题，还是如何在TDLAS线积分信号的基础上得到空间分辨率。考虑过用饱和吸收，或者用FLDI频谱特征去提取。但似乎都不很靠谱。
-TDLAS方法在大气研究中有成功的应用，比如用吸收池抽气进去低压测量各种污染物的浓度，再比如卫星测大气柱的辐射或者吸收光谱。
-这是因为空间尺度不同的问题。大气研究中，空间尺度大，TDLAS测量的就是一个点的数据。而燃烧诊断中，研究的火焰尺寸不会很大，TDLAS 测量的一条路径上，需要考虑分布不均匀的问题。
-最好还是用综横多路再反演的方法得到空间分辨率。
-这样空间分辨率就不会很高，若要提高空间分辨率，似乎很难。最近有用高速红外相机做探测器来测TDLAS光谱的，把一个激光束扩束后，在红外相机上成像测量扫描波长后图像强度。
-如果红外相机帧频不够高，还可以在采集端用光纤束分光，也可以提高空间分辨率，多个pd探测器，多路数据采集。
-这样就可以得到比较高的空间分辨率。但成本的确也高。</p>
+</p>
         </div>
         
-          <p class="f6 lh-copy mv0">By Xunchen Liu</p><a href="/xliu-group/post/20241108/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+          <p class="f6 lh-copy mv0">By wangshuo</p><a href="/xliu-group/%E4%BA%BA%E5%91%98/wangshuo/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
       </div>
     </div>
   </div>
@@ -315,45 +244,28 @@ TDLAS方法在大气研究中有成功的应用，比如用吸收池抽气进去
       
           
         <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-          <a href="/xliu-group/post/ch2o/" class="db grow">
-            <img src="https://liuxunchen.github.io/xliu-group/images/sdust.jpg" class="img" alt="image from 甲醛的光谱">
+          <a href="/xliu-group/%E4%BA%BA%E5%91%98/gaoyinbin/" class="db grow">
+            <img src="https://liuxunchen.github.io/xliu-group/images/sdust.jpg" class="img" alt="image from 高寅斌">
           </a>
         </div>
       
       <div class="blah w-100 w-60-ns pl3-ns">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/xliu-group/post/ch2o/" class="color-inherit dim link">
-            甲醛的光谱
+          <a href="/xliu-group/%E4%BA%BA%E5%91%98/gaoyinbin/" class="color-inherit dim link">
+            高寅斌
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>甲醛只有C、O两个重原子，加上两个氢原子，在基态，这四个原子核是平面的。由于原子数多，甲醛的光谱就比较复杂，不像双原子那样，只需要考虑一个转动常数B，而要考虑A B C 三个转动常数。</p>
-<p>在燃烧诊断中，平面激光诱导荧光（planner LIF）是常用的对火焰成像的方法，常用的三种双原子自由基是 OH、NO、CH，例如经典的羟基双色PLIF测温方法就是在283nm波段测 Q1(14)和Q1(5)跃迁对应的LIF信号的强度比值的来计算OH在这两个态的布局数比值来测温[1]。</p>
-<p>当然，定量计算用的数据，都是在经典的LIFbase 软件中包含了的这三个分子的激发态跃迁速率数据，用软件可以用来定量预测计算LIF光谱和算温度。这些基础的工作都是Crosley等大神在1980-1990年代做的[2,3]，那个时候算是原子分子物理的黄金时代吧。</p>
-<p>燃烧流体中为何要对这些自由基成像，而不是测稳定的N2和O2这些分子呢？原因是这些稳定分子的HOMO－LUMO能级差比较大，电子跃迁都在真空紫外波段，要在地球大气层中实际应用，就没办法了。所以一般用红外吸收光谱的方法来测H2O CO2 这些稳定分子，毕竟体积分数大多了。</p>
-<p>NdYAG激光的三倍频在355nm，可以直接测到甲醛分子的荧光信号，所以研究甲醛的LIF光谱，也很有实际应用的意义。</p>
-<p>甲醛分子的光谱研究的比较多了，是最早被研究的多原子分子。1983年 Dennis Clouthier 和 Ramsay 在Annual Review of Physical Chemistry 上的综述[4]，分子的基态和激发态的光谱参数基本都有了，可以用来对甲醛分子在355nm 处激发态的吸收光谱做仿真。</p>
-<figure><img src="/xliu-group/post/ch2o/absorption.png"><figcaption>
-      <h4>absorption</h4>
-    </figcaption>
+          <p>高寅斌，出生于 2002 年，来自宁夏石嘴山市。 本科毕业于山东科技大学且留校攻读硕士，专业是能源与动力工程。 硕士阶段，研究方向为 TDLAS技术研究超声速流体状态方程。期待在未来的工作或学习中，能够将自己所学运用到实际项目中，为能源与动力工程领域贡献自己的力量。也希望能与各位志同道合的伙伴共同进步，一起探索这个充满无限可能的领域。
+<figure><img src="/xliu-group/%E4%BA%BA%E5%91%98/gaoyinbin/Picture1.png">
 </figure>
 
-<p>这个吸收带对应的是355nm这里的4^1_0 弯曲振动模式。有趣的是，这个吸收带的高分辨率光谱的工作还没发表过。
-Clouthier综述中提到数据来自 Ramsay 和 Till 未发表的工作，后人似乎一直也就这么用了。再往前，范德堡大学的Innes，我们Alberta大学的Birss 都提到最早是UCL的 Parkin 的博士论文中提到过这个band。南方科大的杨东老师去上海交大交流时候，当时杨老师还在UCL，问他去复印的Parkin的博士论文。感谢杨老师帮忙找到的论文！但看了半天好像也没具体到这个band，似乎是因为太弱了吧。可能也是因为和别的振动模式有耦合干扰。</p>
-<p>把杨老师复印的Parkin 的博士论文作为附件上传在这里吧，的确不好找。</p>
-<p><a href="/xliu-group/post/ch2o/1962-Parkin.pdf">Download file</a></p>
-<p>Anyway，就用Couthier 论文中的参数来仿真这个吸收带，似乎也还不错。找到了哈佛大学2005年的一篇文章，里面有转动能级分辨的吸收光谱，和仿真对比，效果还不错。
-整体上对应的很好的，但要用的355nm就是在28183cm-1这里，正好有微扰，吸收峰对不上。</p>
-<figure><img src="/xliu-group/post/ch2o/simulation.png"><figcaption>
-      <h4>absorption-simulation</h4>
-    </figcaption>
+<figure><img src="/xliu-group/%E4%BA%BA%E5%91%98/gaoyinbin/Picture2.png">
 </figure>
-
-<p>Reference</p>
-<p>[1] KOSTKA S, ROY S, LAKUSTA P J, 等. Comparison of line-peak and line-scanning excitation in two-color laser-induced-fluorescence thermometry of OH[J/OL]. Applied Optics, 2009, 48(32): 6332. DOI:10.1364/AO.48.006332.</p>
+</p>
         </div>
         
-          <p class="f6 lh-copy mv0">By Xunchen Liu</p><a href="/xliu-group/post/ch2o/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+          <p class="f6 lh-copy mv0">By gaoyinbin</p><a href="/xliu-group/%E4%BA%BA%E5%91%98/gaoyinbin/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
       </div>
     </div>
   </div>
@@ -369,14 +281,20 @@ Clouthier综述中提到数据来自 Ramsay 和 Till 未发表的工作，后人
           
           
             <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/xliu-group/post/daily-book/" class="link black dim">
-                介绍好书：John Daily 统计热力学
+              <a href="/xliu-group/%E4%BA%BA%E5%91%98/huihao/" class="link black dim">
+                惠昊
               </a>
             </h2>
           
             <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/xliu-group/post/hello-world/" class="link black dim">
-                新网站上线了
+              <a href="/xliu-group/%E4%BA%BA%E5%91%98/qingshanyu/" class="link black dim">
+                卿山宇
+              </a>
+            </h2>
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/xliu-group/%E4%BA%BA%E5%91%98/xunchen/" class="link black dim">
+                刘训臣
               </a>
             </h2>
           

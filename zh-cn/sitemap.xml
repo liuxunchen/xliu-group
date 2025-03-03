@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://liuxunchen.github.io/xliu-group/</loc>
-    <lastmod>2025-02-28T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -16,6 +16,26 @@
                 hreflang="zh-CN"
                 href="https://liuxunchen.github.io/xliu-group/"
                 />
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/%E4%BA%BA%E5%91%98/wangchen/</loc>
+    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/%E4%BA%BA%E5%91%98/wangshuo/</loc>
+    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/%E4%BA%BA%E5%91%98/gaoyinbin/</loc>
+    <lastmod>2025-02-28T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/%E4%BA%BA%E5%91%98/huihao/</loc>
+    <lastmod>2025-02-28T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/%E4%BA%BA%E5%91%98/qingshanyu/</loc>
     <lastmod>2025-02-28T00:00:00+00:00</lastmod>
