@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Courses on 主页</title>
+    <link>https://liuxunchen.github.io/xliu-group/course/</link>
+    <description>Recent content in Courses on 主页</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 10 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://liuxunchen.github.io/xliu-group/course/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>热工基础1</title>
+      <link>https://liuxunchen.github.io/xliu-group/course/lec1/</link>
+      <pubDate>Mon, 10 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://liuxunchen.github.io/xliu-group/course/lec1/</guid>
+      <description>&lt;p&gt;热工基础课程的前两周上完了，讲了前4章。基本把热力学的内容讲完了。&#xA;在极少的课时下，如何讲完？&#xA;热力学作为很成熟的知识，的确也应该更加精炼，大学里面的课程，总的趋势就是成熟的知识逐渐减少课时。学生总要学习新知识。未来可能中学里面就要学很多现在大学的知识吧。&lt;/p&gt;&#xA;&lt;p&gt;我想我做了比较好的尝试。思路是从统计力学2个基本假设开始讲，引出配分函数和熵的概念、不同的系综；进而可以联系到热力学的4个基本假设，然后建立热力学函数。&#xA;这门课不讲化学平衡和相平衡。&#xA;主要还是内能和焓的概念。&#xA;然后是理想气体，从熵的公式引出绝热等过程的熵变和热功变化。&lt;/p&gt;&#xA;&lt;p&gt;从几个基本假设出发的思路还是很清晰的。避免了从现象出发的很多绕弯子。也是前面推荐Daily书的初衷。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://liuxunchen.github.io/xliu-group/course/lec1/lec1.pdf&#34;&gt;Lecture-1&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
