@@ -2,13 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://liuxunchen.github.io/xliu-group/%E4%BA%BA%E5%91%98/congfeiyu/</loc>
-    <lastmod>2025-03-10T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/</loc>
-    <lastmod>2025-03-10T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-12T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -21,6 +16,16 @@
                 hreflang="zh-CN"
                 href="https://liuxunchen.github.io/xliu-group/"
                 />
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/%E4%BA%BA%E5%91%98/muguozhen/</loc>
+    <lastmod>2025-03-12T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/%E4%BA%BA%E5%91%98/congfeiyu/</loc>
+    <lastmod>2025-03-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/post/</loc>
     <lastmod>2025-03-10T00:00:00+00:00</lastmod>
