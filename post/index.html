@@ -49,8 +49,8 @@
 
   <meta itemprop="name" content="科研笔记">
   <meta itemprop="description" content="刘训臣的非正式科研笔记。">
-  <meta itemprop="datePublished" content="2025-03-10T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-03-10T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2025-03-22T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-03-22T00:00:00+00:00">
   <meta itemprop="wordCount" content="1">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="科研笔记">
@@ -132,6 +132,54 @@
             <div class="mb3 pa4 blue overflow-hidden">
     
       <div class="f6">
+        March 22, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/post/method/" class="link black dim">
+        激光诊断方法
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>激光燃烧诊断技术通过测量激光与燃烧场中分子的吸收、发射、散射相互作用,得到原位定量的火焰温度、组分浓度和流场密度、速度等信息，具有极高的时空分辨率、灵敏度与选择性,是最主要的非接触燃烧实验方法。常见方法包括瑞利散射、米散射、拉曼散射、荧光散射、吸收效应和多普勒效应等过程，这几种测试方法各有优缺点、互为补充,总的发展趋势是从线平均测量到场分辨测量，从低频稳态测量到高频动态测量。激光燃烧诊断的核心设备是激光光源。可以说是“一代激光器,一代测试方法”。</p>
+<p>光谱诊断方法的优点是对火焰无干扰，成像方法可以提供较高的时间和空间分辨率，通过图像能够准确地区分不同组分，并精确地测量温度、不同组分的浓度。
+下面是常用的几种激光诊断方法的示意图。</p>
+<figure><img src="/xliu-group/post/method/method.png"><figcaption>
+      <h4>常见的激光诊断方法 [Wolfrum](https://pubs.rsc.org/en/content/articlelanding/2002/fd/b107878j).</h4>
+    </figcaption>
+</figure>
+
+<p>应用光谱研究火焰的历史可以追溯到1860年Kirchhoff和Bunsen针对火焰中金属的光谱测量和1857年Swan对蜡烛火焰的测量。</p>
+<figure><img src="/xliu-group/post/method/tree.png" width="auto"><figcaption>
+      <h4>学术家谱</h4>
+    </figcaption>
+</figure>
+
+<p>博士导师研究分子光谱，发现导师的前面的导师可以追溯到剑桥大学的Sugdun，是做了很多工业实际应用研究。再之前的 Norrish 就是做的用光谱方法研究闪光灯热解。
+现在算是重新回到了应用研究上来。</p>
+<p>燃烧诊断主要是光测和光谱知识在燃烧中的应用。宏上要观理解为何要做实验和发展燃烧诊断方法，为何需要诊断方法解决什么问题。
+参考driezler 上课ppt中的说法，燃烧诊断的任务包含如下几个：</p>
+<ol>
+<li>燃烧理论，这方面比较成熟了；</li>
+<li>仿真对照，精细测量，验证CFD；</li>
+<li>燃烧器中的火焰结构和运动（主要是成像），研究燃烧现象，火焰结构和运动，湍流燃烧机理，包含标准火焰的研究；</li>
+<li>发展技术和方法，发展实际应用的传感器（tdlas 主要问题是空间分辨率问题，对于燃烧器的尺寸来说，TDLAS测量的空间分辨率太粗，可以做传感器，但研究其他问题不够用）</li>
+</ol>
+<p>燃烧诊断研究基本问题是测量温度，组分，压力，速度；进一步需要和燃烧学结合，目标和主线是研究火焰和燃烧室，燃烧诊断的目标是解决燃烧研究的问题。因此很多时候，是要把特定的实验方法用在特定的燃烧研究里面。
+诊断研究现在阶段需求，理论研究比较成熟，要以工业应用需求为主，还是从燃烧室的现象和要解决的问题出发。</p>
+<p>一个光谱诊断方法的简介文件。
+<a href="/xliu-group/post/method/%E5%85%89%E8%B0%B1%E8%AF%8A%E6%96%AD.pdf">光谱诊断方法简介</a></p>
+<p>如何做仿真？湍流燃烧还是很难算的，Fluent 可以大概算算。用 Cantera 和 Chemkin 算一般的反应动力学计算，比如火焰温度。</p>
+    </div>
+  <a href="/xliu-group/post/method/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
         March 10, 2025
       </div>
     
@@ -152,7 +200,7 @@
 <p>第三周开始讲喷管流动，这部分主要是可压缩的空气动力学。参考书主要是《Thermodynamics-An engineering approach》和清华大学吴望一的《流体力学》。
 不得不说，老外的书详细，适合自学和教学；但是吴的书，精妙之处更多，很多数学推导更简洁更优美。多看几本书总有好处，空气动力学经典的Anderson 以后再看吧。</p>
 <p>第四周开始讲传热。首先是从随即行走模型导出了扩散方程。按照这个思路比较好，从基本原理出发，比较直观地就可以得到傅里叶公式。</p>
-<p><a href="/xliu-group/post/lec1/lec1.pdf">Lecture-1</a></p>
+<p><a href="./lec1.pdf">Lecture-1</a></p>
     </div>
   <a href="/xliu-group/post/lec1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
   </div>
@@ -428,39 +476,6 @@ Clouthier综述中提到数据来自 Ramsay 和 Till 未发表的工作，后人
 同行们多来关注我们吧！</p>
     </div>
   <a href="/xliu-group/post/hello-world/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        March 31, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/post/method/" class="link black dim">
-        常见的激光诊断方法
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>光谱诊断方法对火焰无干扰，可以提供较高的时间和空间分辨率，能够准确地区分不同组分，并精确地测量不同组分的浓度。
-应用光谱研究火焰的历史可以追溯到1860年Kirchhoff和Bunsen针对火焰中金属的光谱测量和1857年Swan对蜡烛火焰的测量。</p>
-<figure><img src="/xliu-group/post/method/method.png"><figcaption>
-      <h4>常见的激光诊断方法</h4>
-    </figcaption>
-</figure>
-
-<p>列出了常见的几种光谱诊断方法的原理。分子与电磁波相互作用主要通过分子的电偶极矩与光的电场发生吸收、发射、散射等相互作用。分子的电偶极矩包含永久偶极和诱导偶极两部分。分子的永久偶极产生对电磁波的吸收，进而产生激光诱导荧光等发射光谱。分子的一阶诱导偶极导致拉曼散射，三阶诱导偶极与激光电场发生四波混频过程，散射光的相位是相干的，因此被称为相干光谱法。
-与燃烧反应动力学研究相关的光谱诊断方法一般采用定量准确的吸收光谱与激光诱导荧光方法，应用在比较简单的反应条件下，测量小分子组分的浓度，验证燃烧反应动力学模型。但多原子组分的光谱非常复杂，指认仍有困难，尤其是在高温和高压的环境下，激光光谱的应用还有待进一步的发展。
-自发的发热发光是燃烧的一大显著特征。火焰中处于高能态的高温分子会自发跃迁到相对较低的能态而发光，而发光的波长对应着高能态和低能态的能级差。火焰的化学发光光谱中主要的发光组分有OH、CH、C2、CO2等。在火焰中颗粒比较多的情况下，特别是碳烟成分较高情况下，火焰的发光可以近似看作连续的黑体辐射发光。通过测量火焰自发光可以定性了解火焰中的主要组分，但该方法不具有空间分辨，且难以定量测量。
-吸收光谱主要用于测量组分浓度和火焰温度，包括红外波段的振动转动吸收光谱和紫外可见波段的电子吸收光谱，由于前者的线宽远小于后者[5]，选择性更高，因此在燃烧诊断中红外吸收光谱更为常用。由于分子结构和质量的不同，分子的振动转动跃迁有极高的选择性，因此也被称为分子指纹峰，可以精确测量这些小分子的转动-振动能级，避免背景中其他组分的交叉干扰。例如，HITRAN数据库收录了H2O、CO2等稳定小分子的各种同位素的吸收频率、谱线指认和跃迁强度等信息[6]。红外吸收光谱一般应用可调谐半导体激光吸收光谱（Tunable Diode Laser Absorption Spectroscopy, TDLAS）方法，通过调制连续发光的半导体激光波长，直接测量燃烧体系在不同波长的吸收光谱。分子的红外吸收光谱受到浓度、温度、压力以及速度的综合影响：分子谱线的相对强度由温度决定；谱线的线形主要由压力和温度决定；谱线位置也受压力与速度的影响。因此一般采用双波长比值的方法测量燃烧体系的温度[7]。波长为0.95-1.5 μm的近红外半导体激光多用于测量分子的振动倍频吸收[8]。在波长从3 μm至10 μm的中红外波段，几乎所有分子都有很强的基本振动模式，吸收强度是近红外吸收的数十倍，因此中红外TDLAS光谱具有极高的灵敏度，已被广泛应用于测量CO2、CO和H2O等燃烧产物。一般来说，活泼的燃烧中间产物浓度较低，普通的TDLAS方法不足以测量中间产物的红外吸收信号需应用各种增长光程的技术提高检测的灵敏度。吸收光谱研究中常用的提高灵敏度的方法有长程池、波长调制、光腔衰荡光谱（Cavity Ring-Down Spectroscopy，CRDS）和光腔增强吸收谱（Cavity Enhanced Absorption Spectroscopy，CEAS）等[[9]，10; 11]，合理地应用这些方法，可以检测到OH[12]、CH[13]、HO2[14]等活泼中间产物。吸收光谱的缺点是空间分辨率低，测量从激光器到检测器之间所经过光路的积分信号，是一种光程平均的测量方法，难以满足高空间分辨的燃烧诊断需求。对于这种情况需要用多束光路交叉测量，采用层析扫描的算法对火焰的浓度场和温度场进行重构[15; 16]。
-激光诱导的发光光谱中，激光诱导荧光光谱（LIF）在燃烧反应动力学中有广泛应用。LIF已用于CH、OH、HCHO、CH2等小分子和自由基的检测[17]。在燃烧诊断研究中，平面激光诱导荧光（Planar Laser Induced Fluorescence, PLIF）方法可以测量燃烧过程中的燃料分布与混合、温度场等二维信息[18; 19] 20。利用两种不同波长激发的NO、OH等小分子的PLIF信号强度比值也可以用于测量火焰温度[20]。但由于激光诱导荧光信号受到分子密度、激光强度、吸收截面、吸收距离、发光量子效率、荧光测量的接收角、探测器效率以及信号猝灭等各种因素影响，PLIF方法难以准确测量组分浓度，往往需要用吸收光谱来标定组分浓度，或者用一种已知组分的浓度去标定另一种组分的浓度。高压下，分子间的非弹性碰撞降低了有效荧光量子产率，使得LIF信号强度大幅降低，不利于信号的解读。
-激光与分子的散射相互作用主要包括弹性的瑞利散射（Rayleigh Scattering）和非弹性的拉曼散射（Raman Scattering）。瑞利散射不改变光的波长，在燃烧诊断中主要用于组分浓度[21; 22; 23]和速度测量[24]。自发拉曼散射过程中，当分子与强激光相互作用时，振动基态和激发态的分子会分别产生斯托克斯（Stokes）和反斯托克斯（Anti-Stokes）波长的拉曼散射峰，可以通过拉曼位移从而得到散射光谱。拉曼散射光谱测量分子的振动转动能级结构，因此可以用于燃烧主要组分测量，如N2、O2、CO2、H2O、H2、CH4、C2H2、CH2O、C2H4、C2H6的浓度测量[25; 26; 27; 28]。拉曼光谱的测量需要将激光聚焦以获得较强的激光强度，因此有较高的空间分辨率，避免了吸收光谱测量视线平均的问题；但信号较吸收光谱低3-4个数量级，难以测量低浓度的反应中间产物。通过选择合适的泵浦光（Pump）、斯托克斯光（Stokes）以及探测光（probe）波长，可以产生非线性的相干反斯托克斯拉曼光谱（CARS）。由于CARS信号与组分浓度的三次方成正比，只有高浓度的主要组分才有比较强的信号，在燃烧诊断中CARS主要通过测量N2分子的振动和转动光谱测量温度。通过CARS测量的主要组分还包括O2、CO、CO2、H2、H2O等[29; 30]。燃烧诊断中应用的三阶非线性光谱还有简并四波混频光谱（Degenerate Four-Wave Mixing Spectrum, DFWM）[30]、偏振光谱（Polarization Spectroscopy, PS）[31]和激光诱导热光栅光谱（Laser Induced Thermal Grating Spectroscopy, LITGS）[XX]。各种方法按照光路设计的不同，各有其特点。例如DFWM和PS方法有较高的灵敏度，并可得到二维的相干成像；LITGS在高压环境下具有独特的优势，可以用于温度测量。但由于过程复杂，非线性相干散射光谱难以准确的对燃烧过程中的各种分子进行定量测量。
-总的来说，单独一种光谱法均有其局限性。在实际问题中，通常根据需求将几种光谱法结合使用32。在燃烧组分测量方面，一些高浓度的稳定组分，如CO、CO2、H2O、CH4、C2H4等，主要通过红外吸收光谱的方法测量，而一些较高浓度的自由基，如OH等，主要通过LIF方法进行测量。在使用LIF方法测量其他低浓度中间产物时，由于定量测量需要的吸收截面难以直接测量，通常通过其他波段的光谱法估算得到，因此一般需要结合CRDS等定量方法对LIF数据进行标定。在实际燃烧器的测量方面，通常结合Raman、CARS、LIF、LII等测量方法，得到火焰中主要组分、温度、火焰结构、碳烟颗粒物和气溶胶颗粒物的平均信息[32]；在湍流燃烧研究方面，一般采用Raman、Rayleigh、PLIF准确测量温度和主要组分的浓度分布，得到混合物分数、标量耗散率等火焰结构的关键信息[33]。</p>
-    </div>
-  <a href="/xliu-group/post/method/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
   </div>
 
         </div>
