@@ -141,7 +141,7 @@
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>激光燃烧诊断技术通过测量激光与燃烧场中分子的吸收、发射、散射相互作用,得到原位定量的火焰温度、组分浓度和流场密度、速度等信息，具有极高的时空分辨率、灵敏度与选择性,是最主要的非接触燃烧实验方法。常见方法包括瑞利散射、米散射、拉曼散射、荧光散射、吸收效应和多普勒效应等过程，这几种测试方法各有优缺点、互为补充,总的发展趋势是从线平均测量到场分辨测量，从低频稳态测量到高频动态测量。激光燃烧诊断的核心设备是激光光源。可以说是“一代激光器,一代测试方法”。</p>
+      <p>激光燃烧诊断技术通过测量激光与燃烧场中分子的吸收、发射、散射相互作用，得到原位定量的火焰温度、组分浓度和流场密度、速度等信息，具有极高的时空分辨率、灵敏度与选择性， 是最主要的非接触燃烧实验方法。常见方法包括瑞利散射、米散射、拉曼散射、荧光散射、吸收效应和多普勒效应等过程，这几种测试方法各有优缺点、互为补充，总的发展趋势是从线平均测量到场分辨测量，从低频稳态测量到高频动态测量。激光燃烧诊断的核心设备是激光光源。可以说是“一代激光器,一代测试方法”。</p>
 <p>光谱诊断方法的优点是对火焰无干扰，成像方法可以提供较高的时间和空间分辨率，通过图像能够准确地区分不同组分，并精确地测量温度、不同组分的浓度。
 下面是常用的几种激光诊断方法的示意图。</p>
 <figure><img src="/xliu-group/post/method/method.png"><figcaption>
@@ -174,6 +174,66 @@
 几何光学仿真用 zemax，但感觉一般也不需要。</p>
     </div>
   <a href="/xliu-group/post/method/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        March 22, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/post/ch2o/" class="link black dim">
+        甲醛的光谱和PLIF测温
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>在燃烧诊断中，平面激光诱导荧光（planner LIF）是常用的对火焰成像的方法，常用的三种双原子自由基是 OH、NO、CH，例如经典的羟基双色PLIF测温方法就是在283nm波段测 Q1(14)和Q1(5)跃迁对应的LIF信号的强度比值的来计算OH在这两个态的布局数比值来测温<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。</p>
+<p>当然，定量计算用的数据，都是在经典的LIFbase 软件中包含了的这三个分子的激发态跃迁速率数据，用软件可以用来定量预测计算LIF光谱和算温度。这些基础的工作都是Crosley等大神在1980-1990年代做的<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>，那个时候算是原子分子物理的黄金时代吧。甚至更早，二战之后那段时间，是分子光谱发展的黄金年代，把战时大量做的雷达里面的微波源拿出来就可以测微波光谱，不同的分子，不同的波段，一个一个测过去。</p>
+<p>燃烧流体中为何要对这些自由基成像，而不是测稳定的N2和O2这些分子呢？原因是这些稳定分子的HOMO－LUMO能级差比较大，电子跃迁都在真空紫外波段，要在地球大气层中实际应用，就没办法了。所以一般用红外吸收光谱的方法来测水、二氧化碳这些有偶极的稳定分子，毕竟体积分数大多了。</p>
+<p>NdYAG激光的三倍频在355nm，可以直接测到甲醛分子的荧光信号，所以研究甲醛的LIF光谱，也很有实际应用的意义。</p>
+<hr>
+<p>甲醛分子的光谱研究的比较多了，是最早被研究的多原子分子。
+甲醛只有C、O两个重原子，加上两个氢原子，在基态，这四个原子核是平面的。由于原子数多，甲醛的光谱就比较复杂，不像双原子那样，只需要考虑一个转动常数B，而要考虑A B C 三个转动常数。1983年 Dennis Clouthier 和 Ramsay 在Annual Review of Physical Chemistry 上的综述<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>，分子的基态和激发态的光谱参数基本都有了，可以用来对甲醛分子在355nm 处激发态的吸收光谱做仿真。</p>
+<figure><img src="/xliu-group/post/ch2o/absorption.png"><figcaption>
+      <h4>absorption</h4>
+    </figcaption>
+</figure>
+
+<p>355nm 这个吸收带对应的是355nm这里的4^1_0 弯曲振动模式。有趣的是，这个吸收带的高分辨率光谱的工作还没发表过。
+Clouthier综述中提到数据来自 Ramsay 和 Till 未发表的工作，后人似乎一直也就这么用了。再往前，范德堡大学的Innes，我们Alberta大学的Birss 都提到最早是UCL的 Parkin 的博士论文中提到过这个band。南方科大的杨东老师去上海交大交流时候，当时杨老师还在UCL，问他去复印的Parkin的博士论文。感谢杨老师帮忙找到的论文！但看了半天好像也没具体到这个band，似乎是因为太弱了吧。可能也是因为和别的振动模式有耦合干扰。</p>
+<p>把杨老师复印的Parkin 的博士论文作为附件上传在这里吧，的确不好找。</p>
+<p><a href="/xliu-group/post/ch2o/1962-Parkin.pdf">Download file</a></p>
+<p>Anyway，就用Couthier 论文中的参数来仿真这个吸收带，似乎也还不错。找到了哈佛大学2005年的一篇文章，里面有转动能级分辨的吸收光谱，和仿真对比，效果还不错<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>。
+整体上对应的很好的，但要用的355nm就是在28183cm-1这里，正好有微扰，吸收峰对不上。
+所以仿真的光谱和实验测到的光谱不能完全一致，但是可以定量的对应上是没问题的。</p>
+<figure><img src="/xliu-group/post/ch2o/simulation.png"><figcaption>
+      <h4>absorption-simulation</h4>
+    </figcaption>
+</figure>
+
+<p>实验中制备高温的甲醛还是比较难的。甲醛在高温时候会聚合反应。需要一边加热一边进料。
+好在，只测温的话对浓度的控制要求不高。我们直接在coflow 扩散火焰里面测火焰燃烧中产生的甲醛。
+层流火焰很稳定，我们可以一个点一个点扫描激光波长，拍PLIF信号，得到每个点上的LIF光谱。结合层流火焰里面每个点的温度，就知道了不同温度下的甲醛LIF光谱。
+这里，特别要感谢金汉峰博士，帮忙找人做的仿真计算，算了3个不同的火焰。未来可以都测测，实验和仿真对照一下。</p>
+<hr>
+<p>甲醛双色PLIF测量，借鉴了用OPO的单激光单相机的串脉冲激光双色PLIF方法，也是很新的方法。
+很好用，发出一对不同波长的激光对，不用管时间和空间上的波动了。
+用355nm 三倍频直接测，激光能量大，很方便。
+这个方法很有发展前途，266nm 四倍频可以测到OH、NO，未来应该可以取代染料激光、OPO这些复杂的步骤，在实验台测量上很有用。
+最近在工程热物理学报发表了一篇论文，详细讲了这个方法。</p>
+<p><a href="/xliu-group/post/ch2o/paper.pdf">2024 - 单激光单相机双色PLIF测量火焰温度场</a></p>
+<p><strong>Reference</strong></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>KOSTKA S, ROY S, LAKUSTA P J, 等. Comparison of line-peak and line-scanning excitation in two-color laser-induced-fluorescence thermometry of OH[J/OL]. Applied Optics, 2009, 48(32): 6332. DOI:10.1364/AO.48.006332.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+    </div>
+  <a href="/xliu-group/post/ch2o/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
   </div>
 
         </div>
@@ -370,49 +430,6 @@ TDLAS方法在大气研究中有成功的应用，比如用吸收池抽气进去
 这样就可以得到比较高的空间分辨率。但成本的确也高。</p>
     </div>
   <a href="/xliu-group/post/20241108/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        October 15, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/post/ch2o/" class="link black dim">
-        甲醛的光谱
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>甲醛只有C、O两个重原子，加上两个氢原子，在基态，这四个原子核是平面的。由于原子数多，甲醛的光谱就比较复杂，不像双原子那样，只需要考虑一个转动常数B，而要考虑A B C 三个转动常数。</p>
-<p>在燃烧诊断中，平面激光诱导荧光（planner LIF）是常用的对火焰成像的方法，常用的三种双原子自由基是 OH、NO、CH，例如经典的羟基双色PLIF测温方法就是在283nm波段测 Q1(14)和Q1(5)跃迁对应的LIF信号的强度比值的来计算OH在这两个态的布局数比值来测温[1]。</p>
-<p>当然，定量计算用的数据，都是在经典的LIFbase 软件中包含了的这三个分子的激发态跃迁速率数据，用软件可以用来定量预测计算LIF光谱和算温度。这些基础的工作都是Crosley等大神在1980-1990年代做的[2,3]，那个时候算是原子分子物理的黄金时代吧。</p>
-<p>燃烧流体中为何要对这些自由基成像，而不是测稳定的N2和O2这些分子呢？原因是这些稳定分子的HOMO－LUMO能级差比较大，电子跃迁都在真空紫外波段，要在地球大气层中实际应用，就没办法了。所以一般用红外吸收光谱的方法来测H2O CO2 这些稳定分子，毕竟体积分数大多了。</p>
-<p>NdYAG激光的三倍频在355nm，可以直接测到甲醛分子的荧光信号，所以研究甲醛的LIF光谱，也很有实际应用的意义。</p>
-<p>甲醛分子的光谱研究的比较多了，是最早被研究的多原子分子。1983年 Dennis Clouthier 和 Ramsay 在Annual Review of Physical Chemistry 上的综述[4]，分子的基态和激发态的光谱参数基本都有了，可以用来对甲醛分子在355nm 处激发态的吸收光谱做仿真。</p>
-<figure><img src="/xliu-group/post/ch2o/absorption.png"><figcaption>
-      <h4>absorption</h4>
-    </figcaption>
-</figure>
-
-<p>这个吸收带对应的是355nm这里的4^1_0 弯曲振动模式。有趣的是，这个吸收带的高分辨率光谱的工作还没发表过。
-Clouthier综述中提到数据来自 Ramsay 和 Till 未发表的工作，后人似乎一直也就这么用了。再往前，范德堡大学的Innes，我们Alberta大学的Birss 都提到最早是UCL的 Parkin 的博士论文中提到过这个band。南方科大的杨东老师去上海交大交流时候，当时杨老师还在UCL，问他去复印的Parkin的博士论文。感谢杨老师帮忙找到的论文！但看了半天好像也没具体到这个band，似乎是因为太弱了吧。可能也是因为和别的振动模式有耦合干扰。</p>
-<p>把杨老师复印的Parkin 的博士论文作为附件上传在这里吧，的确不好找。</p>
-<p><a href="/xliu-group/post/ch2o/1962-Parkin.pdf">Download file</a></p>
-<p>Anyway，就用Couthier 论文中的参数来仿真这个吸收带，似乎也还不错。找到了哈佛大学2005年的一篇文章，里面有转动能级分辨的吸收光谱，和仿真对比，效果还不错。
-整体上对应的很好的，但要用的355nm就是在28183cm-1这里，正好有微扰，吸收峰对不上。</p>
-<figure><img src="/xliu-group/post/ch2o/simulation.png"><figcaption>
-      <h4>absorption-simulation</h4>
-    </figcaption>
-</figure>
-
-<p>Reference</p>
-<p>[1] KOSTKA S, ROY S, LAKUSTA P J, 等. Comparison of line-peak and line-scanning excitation in two-color laser-induced-fluorescence thermometry of OH[J/OL]. Applied Optics, 2009, 48(32): 6332. DOI:10.1364/AO.48.006332.</p>
-    </div>
-  <a href="/xliu-group/post/ch2o/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
   </div>
 
         </div>
