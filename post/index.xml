@@ -6,8 +6,15 @@
     <description>Recent content in 科研笔记 on 主页</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 23 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 22 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://liuxunchen.github.io/xliu-group/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Laval Nozzle experiment</title>
+      <link>https://liuxunchen.github.io/xliu-group/post/nozzle/</link>
+      <pubDate>Tue, 22 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://liuxunchen.github.io/xliu-group/post/nozzle/</guid>
+      <description>&lt;p&gt;大家好！最近这段时间，我全身心投入到一项纹影实验中。过程跌宕起伏，充满挑战，但也收获颇丰。今天就想和大家分享这段难忘的实验历程。&lt;/p&gt;&#xA;&lt;p&gt;3月20日，我迎来了首次实验。本怀着满满的期待，却遭遇了“当头一棒”。反复调试纹影设备后，始终无法捕捉到任何气流特征图像。无奈之下，我立刻与老师沟通，经过一番深入分析，初步怀疑是喷嘴出口与纹影视场距离过远，导致气体结构无法完整呈现。本计划通过抬高喷嘴来解决问题，可检查时发现伺服电机尚未接电，只能将希望寄托于次日。&lt;/p&gt;&#xA;&lt;p&gt;3月21日，伺服电机完成接电，我第一时间抬高喷嘴，可结果依旧不尽人意，纹影画面中仍然看不到气流结构。仔细观察后发现，即便电机升至最高位置，喷嘴出口面与视场之间仍存在较大高度差。面对这一难题，我只能继续思考新的解决方案。&lt;/p&gt;&#xA;&lt;p&gt;3月22日下午，我决定对试验台进行全面调整，将电机层整体抬高，希望借此让喷嘴出口完全进入视场。经过一下午的忙碌，终于完成了调整，视场中也顺利出现了喷嘴出口面。随后，我开启空压机接入高压气，然而，还是没能观测到气体特征。不过，在开阀瞬间，视场中闪过一道黑影，由于缺乏足够线索，暂时无法确定其成因。老师针对这一情况，提出了两种可能：一是视场范围过小，难以清晰捕捉气流全貌；二是气体流量不足，尚未形成明显的激波结构。受限于现有条件，实验不得不暂时中断。&lt;/p&gt;&#xA;&lt;p&gt;为了解决视场问题，3月23日，我定制了孔径更小的喷嘴，期望以此确保气流边界能够完整呈现在视场中。当天下午，我还安装了流量计进行流量测定，结果显示实际流量远超100L/Min的量程，这意味着流量并非实验失败的原因，问题大概率出在视场方面。由于新喷嘴需要一定制作时间，实验只能继续推迟。&lt;/p&gt;&#xA;&lt;p&gt;3月24日，因等待新喷嘴制作，实验没有实质性进展。&lt;/p&gt;&#xA;&lt;p&gt;3月25日中午，我拿到了1mm和2mm孔径的新喷嘴。下午安装完毕后，我开始核查流量，却又遇到了新问题：实际测定流量与计算流量存在较大偏差，除1mm喷嘴外，其余喷嘴均无法正常测量流量，只能先搁置这一问题。当晚，我使用1mm喷嘴再次进行实验，终于成功拍摄到了第一张气体结构的纹影照片！&lt;/p&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;https://liuxunchen.github.io/xliu-group/post/nozzle/Picture1.png&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;h4&gt;第一张气体结构的纹影照片！&lt;/h4&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;那一刻，内心的喜悦与成就感难以言表。 有了前一天的经验，3月26日，我换上2mm孔径的喷嘴继续实验。这次获得的气体结构图像更加清晰，与理论预期基本吻合，实验终于步入正轨。\&lt;/p&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;https://liuxunchen.github.io/xliu-group/post/nozzle/Picture2.png&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;h4&gt;更加清晰的激波图片&lt;/h4&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;3月27日，我更换了视场更大的新相机，对1mm喷嘴射流重新进行纹影拍摄，又取得了新的实验成果。&lt;/p&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;https://liuxunchen.github.io/xliu-group/post/nozzle/Picture3.png&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;h4&gt;更大视场的图片，可以看到6个马赫环&lt;/h4&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;到了3月28日，纹影实验暂时告一段落。接下来，我计划对试验台进行调整，搭建与纹影系统垂直的TDLAS光路，进一步深入研究。目前，流量测定值与计算值偏差较大的问题仍未解决，我也在不断思考优化方案。此外，后续实验还打算加装腔体，开展空气和二氧化碳混合喷射实验。我会继续记录实验进展，到时候再和大家分享新的发现与挑战！&lt;/p&gt;</description>
+    </item>
     <item>
       <title>甲醛的光谱和PLIF测温</title>
       <link>https://liuxunchen.github.io/xliu-group/post/ch2o/</link>
