@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Papers on 主页</title>
+    <link>http://localhost:1313/xliu-group/paper/</link>
+    <description>Recent content in Papers on 主页</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <atom:link href="http://localhost:1313/xliu-group/paper/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>发表论文</title>
+      <link>http://localhost:1313/xliu-group/paper/paper/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/xliu-group/paper/paper/</guid>
+      <description>&lt;p&gt;通讯作者论文&lt;/p&gt;&#xA;&lt;ol start=&#34;49&#34;&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;刘训臣*, 王雅瑶, 王震, 王绍杰. 单激光单相机双色PLIF测量火焰温度场[J]. 工程热物理学报, 2024, 45(12): 3936–3943.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Zhen Wang, Yayao Wang, Xunchen Liu*. “Lift-off region temperature field and planar flow field of a twin-nozzle reacting jet in hot crossflow”. Proceedings of the Combustion Institute, 2023, 39(1): 1269-1278. DOI:10.1016/j.proci.2022.08.123.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Bin Zhang, Haoyang Liu, Xunchen Liu*. Hong Liu. 2023. “Prediction Method of Swirling Flame Lean Blowout Based on Flame Image Morphological Features”. Applied Sciences 13, 3173.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;王雅瑶, 王震, 刘训臣, 齐飞. 喷嘴对自点火氛围下横向射流火焰燃烧特征的影响[J]. 燃烧科学与技术, 2023, 29(2): 187-192.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
