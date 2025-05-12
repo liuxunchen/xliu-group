@@ -9,7 +9,7 @@
     <lastBuildDate>Mon, 12 May 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://liuxunchen.github.io/xliu-group/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>使用 LabVIEW 实现流量计瞬时流量的读取和储存</title>
+      <title>使用 LabVIEW 实现AFG-C9000系列气体质量流量计瞬时流量的读取和储存</title>
       <link>https://liuxunchen.github.io/xliu-group/post/labview_flowmeter/</link>
       <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
       <guid>https://liuxunchen.github.io/xliu-group/post/labview_flowmeter/</guid>
