@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>使用 LabVIEW 实现流量计瞬时流量的读取和储存 | 主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="流量计瞬时流量的读取和储存
+以AFG-C9000系列气体质量流量计为例
+原计划采用4-20mA模拟量采集方式，通过计算机端进行流量数据的读取。然而，该方法所使用的自带软件仅能直接读取并显示电流值的波形图，且存储的数据同样为电流值（如下图），需在实验完成后通过特定公式进行换算，以转换为实际的流量值。
+
+由于4-20mA信号无法直接实现流量的实时查看，为确保瞬时流量的精准读取与可靠存储，拟采用LabVIEW开发基于RS-485通讯协议的程序。通过该程序，利用RS-485通讯实时读取瞬时流量数据，并按照预设格式进行本地存储，以保证数据的完整性、准确性。
+首先，优先检索Excel表格是否存在。使用条件判断结构，若指定路径下不存在目标文件，则根据预设的文件命名规则和表头结构，在对应路径下自动创建新的Excel文件，保证文件真实存在，以实现数据的存储。为便于后续数据检索与管理，文件名将以当前时间的年月日格式命名，确保文件名唯一且易于识别。
+
+
+依据流量计的通讯协议，通过发送十六位功能码实现瞬时流量的精准读取。为确保数据采集的稳定性和可控性，程序中增加延时，可以设置灵活的读数间隔时间。例如，设置间隔时间为1000毫秒时，每隔一秒读取一次流量数据；设置间隔时间为100毫秒时，每秒读取十次流量数据，以满足不同应用场景下的数据采集频率需求。
+
+在运行程序并成功发送功能码后，流量计将返回一组数据（如下图），在返回的数据中，返回的第7-10位，为返回流量数值。
+
+以图中数据为例，返回的十六进制数值00E5通过转换计算（14×16&#43;5）得到十进制流量值为229。该数值存在放大倍数，为10，故实际流量为22.9L/min。
+为便于实时监测与分析，将计算所得的流量数据以数值形式显示于前面板，同时绘制动态波形图表，以直观展现流量的具体数值及其变化趋势。
+
+前面板的设计效果如图所示。为确保操作的直观性和功能的可靠性，界面布局经过优化，以清晰呈现流量数据、波形图表及其他关键信息。
+
+最后将采集的流量数据及其对应的时间同步存储至程序初始化时创建的Excel文件中。
+
+程序运行结果如下图，经观察比对，计算机端的读数与流量计读数相吻合，验证了数据采集与处理的准确性和可靠性。
+
+欢迎大家讨论，指正。">
+    <meta name="generator" content="Hugo 0.144.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="王硕">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
+
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://liuxunchen.github.io/xliu-group/post/labview_flowmeter/">
+    
+
+    <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/post/labview_flowmeter/">
+  <meta property="og:site_name" content="主页">
+  <meta property="og:title" content="使用 LabVIEW 实现流量计瞬时流量的读取和储存">
+  <meta property="og:description" content="流量计瞬时流量的读取和储存 以AFG-C9000系列气体质量流量计为例
+原计划采用4-20mA模拟量采集方式，通过计算机端进行流量数据的读取。然而，该方法所使用的自带软件仅能直接读取并显示电流值的波形图，且存储的数据同样为电流值（如下图），需在实验完成后通过特定公式进行换算，以转换为实际的流量值。
+由于4-20mA信号无法直接实现流量的实时查看，为确保瞬时流量的精准读取与可靠存储，拟采用LabVIEW开发基于RS-485通讯协议的程序。通过该程序，利用RS-485通讯实时读取瞬时流量数据，并按照预设格式进行本地存储，以保证数据的完整性、准确性。
+首先，优先检索Excel表格是否存在。使用条件判断结构，若指定路径下不存在目标文件，则根据预设的文件命名规则和表头结构，在对应路径下自动创建新的Excel文件，保证文件真实存在，以实现数据的存储。为便于后续数据检索与管理，文件名将以当前时间的年月日格式命名，确保文件名唯一且易于识别。
+依据流量计的通讯协议，通过发送十六位功能码实现瞬时流量的精准读取。为确保数据采集的稳定性和可控性，程序中增加延时，可以设置灵活的读数间隔时间。例如，设置间隔时间为1000毫秒时，每隔一秒读取一次流量数据；设置间隔时间为100毫秒时，每秒读取十次流量数据，以满足不同应用场景下的数据采集频率需求。
+在运行程序并成功发送功能码后，流量计将返回一组数据（如下图），在返回的数据中，返回的第7-10位，为返回流量数值。
+以图中数据为例，返回的十六进制数值00E5通过转换计算（14×16&#43;5）得到十进制流量值为229。该数值存在放大倍数，为10，故实际流量为22.9L/min。
+为便于实时监测与分析，将计算所得的流量数据以数值形式显示于前面板，同时绘制动态波形图表，以直观展现流量的具体数值及其变化趋势。
+前面板的设计效果如图所示。为确保操作的直观性和功能的可靠性，界面布局经过优化，以清晰呈现流量数据、波形图表及其他关键信息。
+最后将采集的流量数据及其对应的时间同步存储至程序初始化时创建的Excel文件中。
+程序运行结果如下图，经观察比对，计算机端的读数与流量计读数相吻合，验证了数据采集与处理的准确性和可靠性。
+欢迎大家讨论，指正。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-05-12T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-05-12T00:00:00+00:00">
+
+  <meta itemprop="name" content="使用 LabVIEW 实现流量计瞬时流量的读取和储存">
+  <meta itemprop="description" content="流量计瞬时流量的读取和储存 以AFG-C9000系列气体质量流量计为例
+原计划采用4-20mA模拟量采集方式，通过计算机端进行流量数据的读取。然而，该方法所使用的自带软件仅能直接读取并显示电流值的波形图，且存储的数据同样为电流值（如下图），需在实验完成后通过特定公式进行换算，以转换为实际的流量值。
+由于4-20mA信号无法直接实现流量的实时查看，为确保瞬时流量的精准读取与可靠存储，拟采用LabVIEW开发基于RS-485通讯协议的程序。通过该程序，利用RS-485通讯实时读取瞬时流量数据，并按照预设格式进行本地存储，以保证数据的完整性、准确性。
+首先，优先检索Excel表格是否存在。使用条件判断结构，若指定路径下不存在目标文件，则根据预设的文件命名规则和表头结构，在对应路径下自动创建新的Excel文件，保证文件真实存在，以实现数据的存储。为便于后续数据检索与管理，文件名将以当前时间的年月日格式命名，确保文件名唯一且易于识别。
+依据流量计的通讯协议，通过发送十六位功能码实现瞬时流量的精准读取。为确保数据采集的稳定性和可控性，程序中增加延时，可以设置灵活的读数间隔时间。例如，设置间隔时间为1000毫秒时，每隔一秒读取一次流量数据；设置间隔时间为100毫秒时，每秒读取十次流量数据，以满足不同应用场景下的数据采集频率需求。
+在运行程序并成功发送功能码后，流量计将返回一组数据（如下图），在返回的数据中，返回的第7-10位，为返回流量数值。
+以图中数据为例，返回的十六进制数值00E5通过转换计算（14×16&#43;5）得到十进制流量值为229。该数值存在放大倍数，为10，故实际流量为22.9L/min。
+为便于实时监测与分析，将计算所得的流量数据以数值形式显示于前面板，同时绘制动态波形图表，以直观展现流量的具体数值及其变化趋势。
+前面板的设计效果如图所示。为确保操作的直观性和功能的可靠性，界面布局经过优化，以清晰呈现流量数据、波形图表及其他关键信息。
+最后将采集的流量数据及其对应的时间同步存储至程序初始化时创建的Excel文件中。
+程序运行结果如下图，经观察比对，计算机端的读数与流量计读数相吻合，验证了数据采集与处理的准确性和可靠性。
+欢迎大家讨论，指正。">
+  <meta itemprop="datePublished" content="2025-05-12T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-05-12T00:00:00+00:00">
+  <meta itemprop="wordCount" content="13">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="使用 LabVIEW 实现流量计瞬时流量的读取和储存">
+  <meta name="twitter:description" content="流量计瞬时流量的读取和储存 以AFG-C9000系列气体质量流量计为例
+原计划采用4-20mA模拟量采集方式，通过计算机端进行流量数据的读取。然而，该方法所使用的自带软件仅能直接读取并显示电流值的波形图，且存储的数据同样为电流值（如下图），需在实验完成后通过特定公式进行换算，以转换为实际的流量值。
+由于4-20mA信号无法直接实现流量的实时查看，为确保瞬时流量的精准读取与可靠存储，拟采用LabVIEW开发基于RS-485通讯协议的程序。通过该程序，利用RS-485通讯实时读取瞬时流量数据，并按照预设格式进行本地存储，以保证数据的完整性、准确性。
+首先，优先检索Excel表格是否存在。使用条件判断结构，若指定路径下不存在目标文件，则根据预设的文件命名规则和表头结构，在对应路径下自动创建新的Excel文件，保证文件真实存在，以实现数据的存储。为便于后续数据检索与管理，文件名将以当前时间的年月日格式命名，确保文件名唯一且易于识别。
+依据流量计的通讯协议，通过发送十六位功能码实现瞬时流量的精准读取。为确保数据采集的稳定性和可控性，程序中增加延时，可以设置灵活的读数间隔时间。例如，设置间隔时间为1000毫秒时，每隔一秒读取一次流量数据；设置间隔时间为100毫秒时，每秒读取十次流量数据，以满足不同应用场景下的数据采集频率需求。
+在运行程序并成功发送功能码后，流量计将返回一组数据（如下图），在返回的数据中，返回的第7-10位，为返回流量数值。
+以图中数据为例，返回的十六进制数值00E5通过转换计算（14×16&#43;5）得到十进制流量值为229。该数值存在放大倍数，为10，故实际流量为22.9L/min。
+为便于实时监测与分析，将计算所得的流量数据以数值形式显示于前面板，同时绘制动态波形图表，以直观展现流量的具体数值及其变化趋势。
+前面板的设计效果如图所示。为确保操作的直观性和功能的可靠性，界面布局经过优化，以清晰呈现流量数据、波形图表及其他关键信息。
+最后将采集的流量数据及其对应的时间同步存储至程序初始化时创建的Excel文件中。
+程序运行结果如下图，经观察比对，计算机端的读数与流量计读数相吻合，验证了数据采集与处理的准确性和可靠性。
+欢迎大家讨论，指正。">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('https://liuxunchen.github.io/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/xliu-group/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/xliu-group/news/" title="">
+              News
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/xliu-group/paper/" title="">
+              发表论文
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/xliu-group/%E4%BA%BA%E5%91%98/" title="">
+              实验室人员
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/xliu-group/post/" title="">
+              科研笔记
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">使用 LabVIEW 实现流量计瞬时流量的读取和储存</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        科研笔记
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=https%3A%2F%2Fliuxunchen.github.io%2Fxliu-group%2Fpost%2Flabview_flowmeter%2F&amp;subject=%E4%BD%BF%E7%94%A8&#43;LabVIEW&#43;%E5%AE%9E%E7%8E%B0%E6%B5%81%E9%87%8F%E8%AE%A1%E7%9E%AC%E6%97%B6%E6%B5%81%E9%87%8F%E7%9A%84%E8%AF%BB%E5%8F%96%E5%92%8C%E5%82%A8%E5%AD%98"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">使用 LabVIEW 实现流量计瞬时流量的读取和储存</h1>
+      
+      <p class="tracked"><strong>王硕</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-05-12T00:00:00Z">May 12, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><h1 id="流量计瞬时流量的读取和储存">流量计瞬时流量的读取和储存</h1>
+<p>以AFG-C9000系列气体质量流量计为例</p>
+<p>原计划采用4-20mA模拟量采集方式，通过计算机端进行流量数据的读取。然而，该方法所使用的自带软件仅能直接读取并显示电流值的波形图，且存储的数据同样为电流值（如下图），需在实验完成后通过特定公式进行换算，以转换为实际的流量值。</p>
+<p><img src="/xliu-group/post/labview_flowmeter/%E4%B8%8A%E4%BC%A01.png" alt=""></p>
+<p>由于4-20mA信号无法直接实现流量的实时查看，为确保瞬时流量的精准读取与可靠存储，拟采用LabVIEW开发基于RS-485通讯协议的程序。通过该程序，利用RS-485通讯实时读取瞬时流量数据，并按照预设格式进行本地存储，以保证数据的完整性、准确性。</p>
+<p>首先，优先检索Excel表格是否存在。使用条件判断结构，若指定路径下不存在目标文件，则根据预设的文件命名规则和表头结构，在对应路径下自动创建新的Excel文件，保证文件真实存在，以实现数据的存储。为便于后续数据检索与管理，文件名将以当前时间的年月日格式命名，确保文件名唯一且易于识别。</p>
+<p><img src="/xliu-group/post/labview_flowmeter/%E4%B8%8A%E4%BC%A02.png" alt=""></p>
+<p><img src="/xliu-group/post/labview_flowmeter/%E4%B8%8A%E4%BC%A03.png" alt=""></p>
+<p>依据流量计的通讯协议，通过发送十六位功能码实现瞬时流量的精准读取。为确保数据采集的稳定性和可控性，程序中增加延时，可以设置灵活的读数间隔时间。例如，设置间隔时间为1000毫秒时，每隔一秒读取一次流量数据；设置间隔时间为100毫秒时，每秒读取十次流量数据，以满足不同应用场景下的数据采集频率需求。</p>
+<p><img src="/xliu-group/post/labview_flowmeter/%E4%B8%8A%E4%BC%A04.png" alt=""></p>
+<p>在运行程序并成功发送功能码后，流量计将返回一组数据（如下图），在返回的数据中，返回的第7-10位，为返回流量数值。</p>
+<p><img src="/xliu-group/post/labview_flowmeter/%E4%B8%8A%E4%BC%A05.png" alt=""></p>
+<p>以图中数据为例，返回的十六进制数值00E5通过转换计算（14×16+5）得到十进制流量值为229。该数值存在放大倍数，为10，故实际流量为22.9L/min。</p>
+<p>为便于实时监测与分析，将计算所得的流量数据以数值形式显示于前面板，同时绘制动态波形图表，以直观展现流量的具体数值及其变化趋势。</p>
+<p><img src="/xliu-group/post/labview_flowmeter/%E4%B8%8A%E4%BC%A06.png" alt=""></p>
+<p>前面板的设计效果如图所示。为确保操作的直观性和功能的可靠性，界面布局经过优化，以清晰呈现流量数据、波形图表及其他关键信息。</p>
+<p><img src="/xliu-group/post/labview_flowmeter/%E4%B8%8A%E4%BC%A07.png" alt=""></p>
+<p>最后将采集的流量数据及其对应的时间同步存储至程序初始化时创建的Excel文件中。</p>
+<p><img src="/xliu-group/post/labview_flowmeter/%E4%B8%8A%E4%BC%A08.png" alt=""></p>
+<p>程序运行结果如下图，经观察比对，计算机端的读数与流量计读数相吻合，验证了数据采集与处理的准确性和可靠性。</p>
+<p><img src="/xliu-group/post/labview_flowmeter/%E4%B8%8A%E4%BC%A09.png" alt=""></p>
+<p>欢迎大家讨论，指正。</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://liuxunchen.github.io/xliu-group/" >
+    &copy;  主页 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
