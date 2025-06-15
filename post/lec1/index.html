@@ -1,6 +1,233 @@
-<head>
-  
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>热工基础 | 主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="热工基础课程的前两周上完了，讲了前4章。基本把热力学的内容讲完了。
+在极少的课时下，如何讲完？
+热力学作为很成熟的知识，的确也应该更加精炼，大学里面的课程，总的趋势就是成熟的知识逐渐减少课时。学生总要学习新知识。未来可能中学里面就要学很多现在大学的知识吧。
+我想我做了比较好的尝试。思路是从统计力学2个基本假设开始讲，引出配分函数和熵的概念、不同的系综；进而可以联系到热力学的4个基本假设，然后建立热力学函数。
+这门课不讲化学平衡和相平衡。
+主要还是内能和焓的概念。
+然后是理想气体，从熵的公式引出绝热等过程的熵变和热功变化。
+从几个基本假设出发的思路还是很清晰的。避免了从现象出发的很多绕弯子。也是前面推荐Daily书的初衷。
+第三周开始讲喷管流动，这部分主要是可压缩的空气动力学。参考书主要是《Thermodynamics-An engineering approach》和清华大学吴望一的《流体力学》。
+不得不说，老外的书详细，适合自学和教学；但是吴的书，精妙之处更多，很多数学推导更简洁更优美。多看几本书总有好处，空气动力学经典的Anderson 以后再看吧。
+第四周开始讲传热。首先是从随即行走模型导出了扩散方程。按照这个思路比较好，从基本原理出发，比较直观地就可以得到傅里叶公式。
+传热的其他部分没有很多重要的内容了，毕竟现在都是用有限元直接算就可以了。
+Lecture-1">
+    <meta name="generator" content="Hugo 0.144.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="Xunchen Liu">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
+
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://liuxunchen.github.io/xliu-group/post/lec1/">
+    
+
+    <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/post/lec1/">
+  <meta property="og:site_name" content="主页">
+  <meta property="og:title" content="热工基础">
+  <meta property="og:description" content="热工基础课程的前两周上完了，讲了前4章。基本把热力学的内容讲完了。 在极少的课时下，如何讲完？ 热力学作为很成熟的知识，的确也应该更加精炼，大学里面的课程，总的趋势就是成熟的知识逐渐减少课时。学生总要学习新知识。未来可能中学里面就要学很多现在大学的知识吧。
+我想我做了比较好的尝试。思路是从统计力学2个基本假设开始讲，引出配分函数和熵的概念、不同的系综；进而可以联系到热力学的4个基本假设，然后建立热力学函数。 这门课不讲化学平衡和相平衡。 主要还是内能和焓的概念。 然后是理想气体，从熵的公式引出绝热等过程的熵变和热功变化。
+从几个基本假设出发的思路还是很清晰的。避免了从现象出发的很多绕弯子。也是前面推荐Daily书的初衷。
+第三周开始讲喷管流动，这部分主要是可压缩的空气动力学。参考书主要是《Thermodynamics-An engineering approach》和清华大学吴望一的《流体力学》。 不得不说，老外的书详细，适合自学和教学；但是吴的书，精妙之处更多，很多数学推导更简洁更优美。多看几本书总有好处，空气动力学经典的Anderson 以后再看吧。
+第四周开始讲传热。首先是从随即行走模型导出了扩散方程。按照这个思路比较好，从基本原理出发，比较直观地就可以得到傅里叶公式。 传热的其他部分没有很多重要的内容了，毕竟现在都是用有限元直接算就可以了。
+Lecture-1">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-03-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-03-10T00:00:00+00:00">
+
+  <meta itemprop="name" content="热工基础">
+  <meta itemprop="description" content="热工基础课程的前两周上完了，讲了前4章。基本把热力学的内容讲完了。 在极少的课时下，如何讲完？ 热力学作为很成熟的知识，的确也应该更加精炼，大学里面的课程，总的趋势就是成熟的知识逐渐减少课时。学生总要学习新知识。未来可能中学里面就要学很多现在大学的知识吧。
+我想我做了比较好的尝试。思路是从统计力学2个基本假设开始讲，引出配分函数和熵的概念、不同的系综；进而可以联系到热力学的4个基本假设，然后建立热力学函数。 这门课不讲化学平衡和相平衡。 主要还是内能和焓的概念。 然后是理想气体，从熵的公式引出绝热等过程的熵变和热功变化。
+从几个基本假设出发的思路还是很清晰的。避免了从现象出发的很多绕弯子。也是前面推荐Daily书的初衷。
+第三周开始讲喷管流动，这部分主要是可压缩的空气动力学。参考书主要是《Thermodynamics-An engineering approach》和清华大学吴望一的《流体力学》。 不得不说，老外的书详细，适合自学和教学；但是吴的书，精妙之处更多，很多数学推导更简洁更优美。多看几本书总有好处，空气动力学经典的Anderson 以后再看吧。
+第四周开始讲传热。首先是从随即行走模型导出了扩散方程。按照这个思路比较好，从基本原理出发，比较直观地就可以得到傅里叶公式。 传热的其他部分没有很多重要的内容了，毕竟现在都是用有限元直接算就可以了。
+Lecture-1">
+  <meta itemprop="datePublished" content="2025-03-10T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-03-10T00:00:00+00:00">
+  <meta itemprop="wordCount" content="16">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="热工基础">
+  <meta name="twitter:description" content="热工基础课程的前两周上完了，讲了前4章。基本把热力学的内容讲完了。 在极少的课时下，如何讲完？ 热力学作为很成熟的知识，的确也应该更加精炼，大学里面的课程，总的趋势就是成熟的知识逐渐减少课时。学生总要学习新知识。未来可能中学里面就要学很多现在大学的知识吧。
+我想我做了比较好的尝试。思路是从统计力学2个基本假设开始讲，引出配分函数和熵的概念、不同的系综；进而可以联系到热力学的4个基本假设，然后建立热力学函数。 这门课不讲化学平衡和相平衡。 主要还是内能和焓的概念。 然后是理想气体，从熵的公式引出绝热等过程的熵变和热功变化。
+从几个基本假设出发的思路还是很清晰的。避免了从现象出发的很多绕弯子。也是前面推荐Daily书的初衷。
+第三周开始讲喷管流动，这部分主要是可压缩的空气动力学。参考书主要是《Thermodynamics-An engineering approach》和清华大学吴望一的《流体力学》。 不得不说，老外的书详细，适合自学和教学；但是吴的书，精妙之处更多，很多数学推导更简洁更优美。多看几本书总有好处，空气动力学经典的Anderson 以后再看吧。
+第四周开始讲传热。首先是从随即行走模型导出了扩散方程。按照这个思路比较好，从基本原理出发，比较直观地就可以得到傅里叶公式。 传热的其他部分没有很多重要的内容了，毕竟现在都是用有限元直接算就可以了。
+Lecture-1">
+
+      
+    
+	
+	
+	  
     
 
   
-</head>
+  
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('https://liuxunchen.github.io/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/xliu-group/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/xliu-group/news/" title="">
+              News
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/xliu-group/paper/" title="">
+              发表论文
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/xliu-group/%E4%BA%BA%E5%91%98/" title="">
+              实验室人员
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/xliu-group/post/" title="">
+              科研笔记
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">热工基础</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        科研笔记
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=https%3A%2F%2Fliuxunchen.github.io%2Fxliu-group%2Fpost%2Flec1%2F&amp;subject=%E7%83%AD%E5%B7%A5%E5%9F%BA%E7%A1%80"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">热工基础</h1>
+      
+      <p class="tracked"><strong>Xunchen Liu</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-03-10T00:00:00Z">March 10, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>热工基础课程的前两周上完了，讲了前4章。基本把热力学的内容讲完了。
+在极少的课时下，如何讲完？
+热力学作为很成熟的知识，的确也应该更加精炼，大学里面的课程，总的趋势就是成熟的知识逐渐减少课时。学生总要学习新知识。未来可能中学里面就要学很多现在大学的知识吧。</p>
+<p>我想我做了比较好的尝试。思路是从统计力学2个基本假设开始讲，引出配分函数和熵的概念、不同的系综；进而可以联系到热力学的4个基本假设，然后建立热力学函数。
+这门课不讲化学平衡和相平衡。
+主要还是内能和焓的概念。
+然后是理想气体，从熵的公式引出绝热等过程的熵变和热功变化。</p>
+<p>从几个基本假设出发的思路还是很清晰的。避免了从现象出发的很多绕弯子。也是前面推荐Daily书的初衷。</p>
+<p>第三周开始讲喷管流动，这部分主要是可压缩的空气动力学。参考书主要是《Thermodynamics-An engineering approach》和清华大学吴望一的《流体力学》。
+不得不说，老外的书详细，适合自学和教学；但是吴的书，精妙之处更多，很多数学推导更简洁更优美。多看几本书总有好处，空气动力学经典的Anderson 以后再看吧。</p>
+<p>第四周开始讲传热。首先是从随即行走模型导出了扩散方程。按照这个思路比较好，从基本原理出发，比较直观地就可以得到傅里叶公式。
+传热的其他部分没有很多重要的内容了，毕竟现在都是用有限元直接算就可以了。</p>
+<p><a href="/xliu-group/post/lec1/lec1.pdf">Lecture-1</a></p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://liuxunchen.github.io/xliu-group/" >
+    &copy;  主页 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

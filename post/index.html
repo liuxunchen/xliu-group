@@ -1,6 +1,808 @@
-<head>
-  
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>科研笔记 | 主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="山东科技大学 机械电子工程学院 激光诊断实验室">
+    <meta name="generator" content="Hugo 0.144.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="Xunchen Liu">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
+
+
+
+
+    
+
+    
+      
+
+    
+
+    
+    
+      <link href="/xliu-group/post/index.xml" rel="alternate" type="application/rss+xml" title="主页" />
+      <link href="/xliu-group/post/index.xml" rel="feed" type="application/rss+xml" title="主页" />
+      
+    
+
+    
+      <link rel="canonical" href="https://liuxunchen.github.io/xliu-group/post/">
+    
+
+    <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/post/">
+  <meta property="og:site_name" content="主页">
+  <meta property="og:title" content="科研笔记">
+  <meta property="og:description" content="山东科技大学 机械电子工程学院 激光诊断实验室">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="科研笔记">
+  <meta itemprop="description" content="山东科技大学 机械电子工程学院 激光诊断实验室">
+  <meta itemprop="datePublished" content="2025-06-15T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-06-15T00:00:00+00:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="科研笔记">
+  <meta name="twitter:description" content="山东科技大学 机械电子工程学院 激光诊断实验室">
+
+      
+    
+	
+	
+	  
     
 
   
-</head>
+  
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+
+  
+  
+  <header class="cover bg-top" style="background-image: url('https://liuxunchen.github.io/xliu-group/images/sdust.jpg');">
+    
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/xliu-group/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/xliu-group/news/" title="">
+              News
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/xliu-group/paper/" title="">
+              发表论文
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/xliu-group/%E4%BA%BA%E5%91%98/" title="">
+              实验室人员
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/xliu-group/post/" title="">
+              科研笔记
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv4 pv6-l ph3 ph4-ns">
+        <h1 class="f2 f-subheadline-l fw2 white-90 mb0 lh-title">
+          科研笔记
+        </h1>
+        
+      </div>
+    </div>
+  </header>
+
+
+    <main class="pb7" role="main">
+      
+
+  <article class="pa3 pa4-ns nested-copy-line-height">
+    <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy blue">
+      
+    </section>
+    <aside class="flex-ns flex-wrap justify-around mt5">
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        June 15, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/post/dianyuan/" class="link black dim">
+        利用Hantek万用表对小电源输出电压结果的测试
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>在电子设备的使用中，电源输出电压的稳定性至关重要。今天，我将通过实际测量和数据分析，使用最小二乘法拟合它的输出电压值，结合得到的方差来评判它的输出电压效果。 ( a^2 ) $$ a^2$$</p>
+<h2 id="测试方法">测试方法</h2>
+<p>首先，介绍一下测试方法。我使用万用表作为测量工具，将电源输出电压从 0V 开始，以 0.1V 为步长逐步调节，直至达到 5V。我这里用到的是 Hantek 的 HDM3065 系列的万用表来测量小电源的输出电压，我们将万用表连接到测电压端，红黑表笔分别接到小电源的正负极，用来测量小电源的输出电压。连接到其他的地方以后也可以测试电流、电阻等。我们将红色线接到电源正极，黑色线连接到电源负极。</p>
+<p>该万用表有专用的 IO 控制软件，将万用表连接到电脑以后，我们可以通过电脑的 IO 软件发送指令，万用表便会执行相应的操作。为了保证数据的可靠性，针对小电源的每个电压值，我都进行了五十次测量，并将测量的数据都记录下来。</p>
+<p><img src="/xliu-group/post/dianyuan/image1.png" alt="测量连接示意图">{width=&ldquo;5.7652777777777775in&rdquo; height=&ldquo;2.4194444444444443in&rdquo;}</p>
+<h2 id="数据处理">数据处理</h2>
+<p>数据记录下来之后，我们需要用到 Python 来处理这些数据，运用最小二乘法对数据进行处理。最小二乘法的核心思想是通过最小化误差的平方和寻找数据的最佳函数匹配。在这里，我们假设电源输出电压与设定电压之间存在线性关系，通过最小二乘法拟合出一条直线，来描述这种关系。经过计算，可以得到拟合直线的方程。</p>
+<p>通过计算方差来评估电源输出电压的稳定性。方差是用来衡量一组数据离散程度的统计量，方差越小，说明数据越集中，电源输出电压越稳定。分别计算每个设定电压点下十个测量数值的方差，发现大部分电压点的方差都较小，说明该电源在不同输出电压下的稳定性表现良好。</p>
+<h2 id="测试结果">测试结果</h2>
+<p>测试结果如下图所示：</p>
+<p><img src="/xliu-group/post/dianyuan/image2.png" alt="最小二乘法拟合图">{width=&ldquo;2.5722222222222224in&rdquo; height=&ldquo;1.7152777777777777in&rdquo;}<br>
+<img src="/xliu-group/post/dianyuan/image3.png" alt="残差图">{width=&ldquo;2.7270833333333333in&rdquo; height=&ldquo;1.6368055555555556in&rdquo;}</p>
+<p>我们可以看到该小电源的线性效果还是很好的，方差也很小，说明电压输出比较稳定。右图为残差图，残差图上的点代表对应设定电压下，输出电压实际值与拟合模型预测值的差值，可以看出这些点的值都比较小，残差绝对值大多在 0.006V 以内，数值很小，表明实际值和拟合预测值偏差不大，模型对该电源电压数据的拟合精度较高。这张残差图显示模型拟合效果不错，误差随机且整体很小，能较好描述设定电压和输出电压的关系。</p>
+<p>另外，我还对每个电压值下测量的电压输出值查看其分布规律，根据测试结果生成的数据大致都有如下图的趋势。这里由于数据过多，我就不列出来了，拿出几个图来看一下分布规律即可：</p>
+<p><img src="/xliu-group/post/dianyuan/image4.png" alt="0.9V 电压分布">{width=&ldquo;2.8125in&rdquo; height=&ldquo;1.6881944444444446in&rdquo;}<br>
+<img src="/xliu-group/post/dianyuan/image5.png" alt="1.1V 电压分布">{width=&ldquo;2.897222222222222in&rdquo; height=&ldquo;1.738888888888889in&rdquo;}</p>
+<p><img src="/xliu-group/post/dianyuan/image6.png" alt="2.9V 电压分布">{width=&ldquo;2.8430555555555554in&rdquo; height=&ldquo;1.70625in&rdquo;}<br>
+<img src="/xliu-group/post/dianyuan/image7.png" alt="4.3V 电压分布">{width=&ldquo;2.8520833333333333in&rdquo; height=&ldquo;1.7118055555555556in&rdquo;}</p>
+<p>图中每个蓝色柱子代表“输出电压落在某一小区间内的测量次数密度”，且直方图与曲线贴合度较高，故可以看出，电压的波动符合正态分布规律。</p>
+<h2 id="结论">结论</h2>
+<p>通过最小二乘法得到了输出电压的估算值，我们大致了解到了该小电源输出电压的大致水平；结合方差的计算结果，我们对其稳定性也有了清晰的认知。从本次测量结果来看，该小电源的输出电压效果整体表现良好，在每个电压值下都能提供接近于小电源显示电压值的输出电压；但会存在一定的波动，所以在对于电压稳定性较高要求的条件下不适用。在今后的电子项目的实验中，掌握这种评估电源输出电压效果的方法，有助于我们更好地选择合适的电源，保证项目的顺利进行。</p>
+    </div>
+  <a href="/xliu-group/post/dianyuan/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        June 15, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/post/guanglu/" class="link black dim">
+        使用镜片搭建光路发出片光拍摄粒子
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="设备准备">设备准备</h2>
+<p>实验所需的镜片如下所示：</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">型号</th>
+          <th style="text-align: left">名称</th>
+          <th style="text-align: left">型号</th>
+          <th style="text-align: left">名称</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">D2       5.4*3mm（中心厚）</td>
+          <td style="text-align: left">石英平凹柱面镜  F30mm</td>
+          <td style="text-align: left">D25.4mm</td>
+          <td style="text-align: left">石英平凸透镜</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">F=-25mm</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">50（母线方向）<em>100</em>2mm（边厚）F500mm</td>
+          <td style="text-align: left">石英平凸柱面镜</td>
+          <td style="text-align: left">D25.4mm</td>
+          <td style="text-align: left">石英平凸透镜</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">F35mm</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">100（母线方向）<em>50</em>2mm（边厚）F1000mm</td>
+          <td style="text-align: left">石英平凸柱面镜</td>
+          <td style="text-align: left">D25.4mm</td>
+          <td style="text-align: left">石英平凸透镜</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">F40mm</td>
+          <td style="text-align: left"></td>
+      </tr>
+  </tbody>
+</table>
+<p>由于定制的平凸柱面镜尺寸较大，需定制镜架，其示意图如下图所示：</p>
+<p><img src="/xliu-group/post/guanglu/image1.png" alt="镜架示意图1">
+<img src="/xliu-group/post/guanglu/image2.png" alt="镜架示意图2"></p>
+<p>对其进行组装后，实物图如下图所示：</p>
+<p><img src="/xliu-group/post/guanglu/image3.png" alt="组装实物图"></p>
+<p>小的笼板与大的镜架之间需要用一个转接板来连接，转接板的尺寸与形状如下图所示：</p>
+<p><img src="/xliu-group/post/guanglu/image4.png" alt="转接板示意图">{width=&ldquo;5.761805555555555in&rdquo; height=&ldquo;4.747222222222222in&rdquo;}</p>
+<h2 id="实验原理">实验原理</h2>
+<p><img src="/xliu-group/post/guanglu/image5.png" alt="光路结构图">{width=&ldquo;5.763194444444444in&rdquo; height=&ldquo;1.2166666666666666in&rdquo;}</p>
+<p>如图所示即为光路的结构：</p>
+<ol>
+<li>为紫外LED光源，利用该光源发出扩散状的紫外光。</li>
+<li>3分别为焦距为40mm和焦距为35mm的平凸透镜，且都为平面朝向光源，利用两个平凸透镜聚焦原扩散的光。</li>
+<li>为焦距30mm的平凸透镜，并且放置的方式为平面背向光源，利用该透镜将原本聚焦的光线进行发散，使其发出的光束为一接近平行的光束。</li>
+<li>为转接板，用于连接小的笼板与大的镜架。</li>
+<li>为平凹柱面镜，将平行光束向两个方向发散，形成一束椭圆形的光束。</li>
+<li>8均为平凸柱面镜，平凸柱面镜在母线方向具有曲率，因此可以在母线方向将平行光束聚焦成为一条线，因此7、8两平凸柱面镜分别在两个母线方向上将光束聚焦，形成一束片光。</li>
+</ol>
+<p>在8的后面接近比色皿的地方放置一个光学狭缝，来控制通过的光，形成片光。</p>
+<p>最终形成的片光大约为一束长度大约10cm，宽度大约2mm的片光。</p>
+<h2 id="实验过程">实验过程</h2>
+<p>由于光路搭建的前期，定制的镜架还没有制作好，因此先利用平行光束对比色皿里的粒子进行照射，并利用相机对其进行拍摄，但由于前期光束会将整个比色皿都照亮，而且前期对于BAM蓝粉量的把控没有做好，因此导致第一次拍摄的效果不尽人意，第一次拍摄的效果如图下图所示：</p>
+<p><img src="/xliu-group/post/guanglu/image6.png" alt="第一次拍摄效果">{width=&ldquo;4.088888888888889in&rdquo; height=&ldquo;3.5881944444444445in&rdquo;}</p>
+<p>可以看到蓝色荧光粒子过于繁杂，整个被紫外光照亮的区域都会被拍到，因此效果并不理想。</p>
+<p>待定制镜架到了以后，将其搭建成如原理图所示的光路，使其形成片光，用片光照射比色皿，只让片光区域的粒子发亮，并且减少BAM蓝粉的用量，拍摄的结果如下图所示：</p>
+<p><img src="/xliu-group/post/guanglu/image7.png" alt="第二次拍摄效果1">{width=&ldquo;2.7604166666666665in&rdquo; height=&ldquo;2.2090277777777776in&rdquo;}
+<img src="/xliu-group/post/guanglu/image8.png" alt="第二次拍摄效果2">{width=&ldquo;2.765972222222222in&rdquo; height=&ldquo;2.213888888888889in&rdquo;}</p>
+<p>可以看得出来，粒子数量明显减少，不像第一次拍摄时那么混乱，不过此次相机调试没有进行好，导致图像偏暗，后续还需对相机继续进行调试。</p>
+<p>该光路并不完善，由于其间隔的距离较长，利用6mm光杆固定不稳定，需要在利用丝杆来固定。另外想要避免其他光源的干涉，并为了保证镜片的干净，需要在光路的外围添加一层铝发黑的铝板，用来隔绝其他光源，并可以使镜片在其他环境下依旧保持干净。</p>
+    </div>
+  <a href="/xliu-group/post/guanglu/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        May 12, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/post/labview_flowmeter/" class="link black dim">
+        使用 LabVIEW 实现AFG-C9000系列气体质量流量计瞬时流量的读取和储存
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="流量计瞬时流量的读取和储存">流量计瞬时流量的读取和储存</h1>
+<p>以AFG-C9000系列气体质量流量计为例, LabView VI code: <a href="/xliu-group/post/labview_flowmeter/485%E8%AF%BB%E6%95%B0.vi">485读数</a></p>
+<p>原计划采用4-20mA模拟量采集方式，通过计算机端进行流量数据的读取。然而，该方法所使用的自带软件仅能直接读取并显示电流值的波形图，且存储的数据同样为电流值（如下图），需在实验完成后通过特定公式进行换算，以转换为实际的流量值。</p>
+<p><img src="/xliu-group/post/labview_flowmeter/%E4%B8%8A%E4%BC%A01.png" alt=""></p>
+<p>由于4-20mA信号无法直接实现流量的实时查看，为确保瞬时流量的精准读取与可靠存储，拟采用LabVIEW开发基于RS-485通讯协议的程序。通过该程序，利用RS-485通讯实时读取瞬时流量数据，并按照预设格式进行本地存储，以保证数据的完整性、准确性。</p>
+<p>首先，优先检索Excel表格是否存在。使用条件判断结构，若指定路径下不存在目标文件，则根据预设的文件命名规则和表头结构，在对应路径下自动创建新的Excel文件，保证文件真实存在，以实现数据的存储。为便于后续数据检索与管理，文件名将以当前时间的年月日格式命名，确保文件名唯一且易于识别。</p>
+<p><img src="/xliu-group/post/labview_flowmeter/%E4%B8%8A%E4%BC%A02.png" alt=""></p>
+<p><img src="/xliu-group/post/labview_flowmeter/%E4%B8%8A%E4%BC%A03.png" alt=""></p>
+<p>依据流量计的通讯协议，通过发送十六位功能码实现瞬时流量的精准读取。为确保数据采集的稳定性和可控性，程序中增加延时，可以设置灵活的读数间隔时间。例如，设置间隔时间为1000毫秒时，每隔一秒读取一次流量数据；设置间隔时间为100毫秒时，每秒读取十次流量数据，以满足不同应用场景下的数据采集频率需求。</p>
+<p><img src="/xliu-group/post/labview_flowmeter/%E4%B8%8A%E4%BC%A04.png" alt=""></p>
+<p>在运行程序并成功发送功能码后，流量计将返回一组数据（如下图），在返回的数据中，返回的第7-10位，为返回流量数值。</p>
+<p><img src="/xliu-group/post/labview_flowmeter/%E4%B8%8A%E4%BC%A05.png" alt=""></p>
+<p>以图中数据为例，返回的十六进制数值00E5通过转换计算（14×16+5）得到十进制流量值为229。该数值存在放大倍数，为10，故实际流量为22.9L/min。</p>
+<p>为便于实时监测与分析，将计算所得的流量数据以数值形式显示于前面板，同时绘制动态波形图表，以直观展现流量的具体数值及其变化趋势。</p>
+<p><img src="/xliu-group/post/labview_flowmeter/%E4%B8%8A%E4%BC%A06.png" alt=""></p>
+<p>前面板的设计效果如图所示。为确保操作的直观性和功能的可靠性，界面布局经过优化，以清晰呈现流量数据、波形图表及其他关键信息。</p>
+<p><img src="/xliu-group/post/labview_flowmeter/%E4%B8%8A%E4%BC%A07.png" alt=""></p>
+<p>最后将采集的流量数据及其对应的时间同步存储至程序初始化时创建的Excel文件中。</p>
+<p><img src="/xliu-group/post/labview_flowmeter/%E4%B8%8A%E4%BC%A08.png" alt=""></p>
+<p>程序运行结果如下图，经观察比对，计算机端的读数与流量计读数相吻合，验证了数据采集与处理的准确性和可靠性。</p>
+<p><img src="/xliu-group/post/labview_flowmeter/%E4%B8%8A%E4%BC%A09.png" alt=""></p>
+<p>欢迎大家讨论，指正。</p>
+    </div>
+  <a href="/xliu-group/post/labview_flowmeter/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        May 9, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/post/labview_control/" class="link black dim">
+        使用 LabVIEW 实现对CC-M3H040-NN14伺服电机的控制
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="使用-labview-实现对伺服电机的控制">使用 LabVIEW 实现对伺服电机的控制</h1>
+<p>本次要控制的伺服驱动器的型号是：<code>CC-D3P040A2-A</code>；伺服电机是：<code>CC-M3H040-NN14</code>。</p>
+<p><img src="/xliu-group/post/labview_control/image1.jpeg" alt="伺服电机图片"></p>
+<p><a href="/xliu-group/post/labview_control/read.vi">labview control to read motor position</a></p>
+<p><a href="/xliu-group/post/labview_control/Flame_step_motor.vi">labview control to read/move</a></p>
+<h2 id="1-控制器地址设置">1. 控制器地址设置</h2>
+<p><img src="media/image2.png" alt="地址设置图示"><br>
+在需要使用多个控制器的情况下，需要设置好控制器的地址，用以在发送控制码的情况下区分不同的控制器。控制器的地址位发生改变相应的代码上的地址位也要改变，那么代码最后的校验码也要重新进行计算。</p>
+<p>例如 <code>01</code> 即为地址位；最后两位为校验码。</p>
+<h2 id="2-使能控制与通讯模式设置">2. 使能控制与通讯模式设置</h2>
+<p>在单独使用 LabVIEW 控制不开启上位机软件的情况下，要在发送距离、速度、启动和启动复位代码前发送使能开的代码，或者其他用于控制通讯模式的代码。例如本次所控制的驱动，不仅要使能开，且要额外增加两个代码，让其控制模式从 I/O 变为通讯模式：</p>
+<p><img src="/xliu-group/post/labview_control/image3.png" alt="通讯模式设置代码"><br>
+写入两个代码让其都变为通讯模式（使用 485 控制是通讯模式）。</p>
+<h2 id="3-电子齿轮比设置">3. 电子齿轮比设置</h2>
+<p><img src="/xliu-group/post/labview_control/image5.png" alt="电子齿轮比参数设置"><br>
+要开始设置电机的移动量，在此之前要知道电机的电子齿轮比为多少。例如在这个电机的默认齿轮比下，我发送 1000 个脉冲它只能旋转 0.1 圈，因此想要让其在一次动作下旋转一圈，就要发送 10000 个脉冲或者改变它的齿轮比。</p>
+<p>上图即为需要改变的参数的图片，例如我输入是 1000 个脉冲，但我想让其旋转 1/5 圈，但是在现在齿轮比下只能旋转 1/10 圈；现在齿轮比分母为 2500，则我要将其改变为 1250。</p>
+<h2 id="4-转速设置">4. 转速设置</h2>
+<p>设置好转速。</p>
+<h2 id="5-启动与复位设置">5. 启动与复位设置</h2>
+<p>在设置启动，需要多次连续启动的情况下，同时也要设置启动复位，确保连续启动的顺利。</p>
+<h2 id="6-多段代码写入延时">6. 多段代码写入延时</h2>
+<p><img src="/xliu-group/post/labview_control/image6.png" alt="延时设置图示"><br>
+另一个问题是在 LabVIEW 写入时写入多段代码时，使用多个写入 VISA 中间要加入延时的程序（试过顺序结构写入但是感觉还是会崩溃），确保写入的代码不会混乱。</p>
+<h2 id="7-多电机控制方式">7. 多电机控制方式</h2>
+<p>要控制多个电机时可以有多种方式进行选择，首先最简单的你想要实时读取两个电机的参数可以使用轮询的方式，将两个电机的 485 通讯线的 AB 口分别接到一起（这种方式在别的控制方式选择下依然是较好的方式，因为可以不用反复选择不同的 COM 口，且在设置好不同的地址位的情况下，并不会相互影响），选择一个条件结构，将其的条件设置好，分别发送两个对应不同电机的问询码，控制器读到与自己相对应的码时会反馈，这样两个控制器便会轮流反馈其的位置。</p>
+    </div>
+  <a href="/xliu-group/post/labview_control/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        April 22, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/post/nozzle/" class="link black dim">
+        Laval Nozzle experiment
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>大家好！最近这段时间，我全身心投入到一项纹影实验中。过程跌宕起伏，充满挑战，但也收获颇丰。今天就想和大家分享这段难忘的实验历程。</p>
+<p>3月20日，我迎来了首次实验。本怀着满满的期待，却遭遇了“当头一棒”。反复调试纹影设备后，始终无法捕捉到任何气流特征图像。无奈之下，我立刻与老师沟通，经过一番深入分析，初步怀疑是喷嘴出口与纹影视场距离过远，导致气体结构无法完整呈现。本计划通过抬高喷嘴来解决问题，可检查时发现伺服电机尚未接电，只能将希望寄托于次日。</p>
+<p>3月21日，伺服电机完成接电，我第一时间抬高喷嘴，可结果依旧不尽人意，纹影画面中仍然看不到气流结构。仔细观察后发现，即便电机升至最高位置，喷嘴出口面与视场之间仍存在较大高度差。面对这一难题，我只能继续思考新的解决方案。</p>
+<p>3月22日下午，我决定对试验台进行全面调整，将电机层整体抬高，希望借此让喷嘴出口完全进入视场。经过一下午的忙碌，终于完成了调整，视场中也顺利出现了喷嘴出口面。随后，我开启空压机接入高压气，然而，还是没能观测到气体特征。不过，在开阀瞬间，视场中闪过一道黑影，由于缺乏足够线索，暂时无法确定其成因。老师针对这一情况，提出了两种可能：一是视场范围过小，难以清晰捕捉气流全貌；二是气体流量不足，尚未形成明显的激波结构。受限于现有条件，实验不得不暂时中断。</p>
+<p>为了解决视场问题，3月23日，我定制了孔径更小的喷嘴，期望以此确保气流边界能够完整呈现在视场中。当天下午，我还安装了流量计进行流量测定，结果显示实际流量远超100L/Min的量程，这意味着流量并非实验失败的原因，问题大概率出在视场方面。由于新喷嘴需要一定制作时间，实验只能继续推迟。</p>
+<p>3月24日，因等待新喷嘴制作，实验没有实质性进展。</p>
+<p>3月25日中午，我拿到了1mm和2mm孔径的新喷嘴。下午安装完毕后，我开始核查流量，却又遇到了新问题：实际测定流量与计算流量存在较大偏差，除1mm喷嘴外，其余喷嘴均无法正常测量流量，只能先搁置这一问题。当晚，我使用1mm喷嘴再次进行实验，终于成功拍摄到了第一张气体结构的纹影照片！</p>
+<figure><img src="/xliu-group/post/nozzle/Picture1.png"><figcaption>
+      <h4>第一张气体结构的纹影照片！</h4>
+    </figcaption>
+</figure>
+
+<p>那一刻，内心的喜悦与成就感难以言表。 有了前一天的经验，3月26日，我换上2mm孔径的喷嘴继续实验。这次获得的气体结构图像更加清晰，与理论预期基本吻合，实验终于步入正轨。\</p>
+<figure><img src="/xliu-group/post/nozzle/Picture2.png"><figcaption>
+      <h4>更加清晰的激波图片</h4>
+    </figcaption>
+</figure>
+
+<p>3月27日，我更换了视场更大的新相机，对1mm喷嘴射流重新进行纹影拍摄，又取得了新的实验成果。</p>
+<figure><img src="/xliu-group/post/nozzle/Picture3.png"><figcaption>
+      <h4>更大视场的图片，可以看到6个马赫环</h4>
+    </figcaption>
+</figure>
+
+<p>到了3月28日，纹影实验暂时告一段落。接下来，我计划对试验台进行调整，搭建与纹影系统垂直的TDLAS光路，进一步深入研究。目前，流量测定值与计算值偏差较大的问题仍未解决，我也在不断思考优化方案。此外，后续实验还打算加装腔体，开展空气和二氧化碳混合喷射实验。我会继续记录实验进展，到时候再和大家分享新的发现与挑战！</p>
+    </div>
+  <a href="/xliu-group/post/nozzle/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        March 23, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/post/ch2o/" class="link black dim">
+        甲醛的光谱和PLIF测温
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>在燃烧诊断中，平面激光诱导荧光（planner LIF）是常用的对火焰成像的方法，常用的三种双原子自由基是 OH、NO、CH，例如经典的羟基双色PLIF测温方法就是在283nm波段测 Q1(14)和Q1(5)跃迁对应的LIF信号的强度比值的来计算OH在这两个态的布局数比值来测温[1]。</p>
+<p>当然，定量计算用的数据，都是在经典的LIFbase 软件中包含了的这三个分子的激发态跃迁速率数据，用软件可以用来定量预测计算LIF光谱和算温度。这些基础的工作都是Crosley等大神在1980-1990年代做的[2][3]，那个时候算是原子分子物理的黄金时代吧。甚至更早，二战之后那段时间，是分子光谱发展的黄金年代，把战时大量做的雷达里面的微波源拿出来就可以测微波光谱，不同的分子，不同的波段，一个一个测过去。</p>
+<p>燃烧流体中为何要对这些自由基成像，而不是测稳定的N2和O2这些分子呢？原因是这些稳定分子的HOMO－LUMO能级差比较大，电子跃迁都在真空紫外波段，要在地球大气层中实际应用，就没办法了。所以一般用红外吸收光谱的方法来测水、二氧化碳这些有偶极的稳定分子，毕竟体积分数大多了。</p>
+<p>NdYAG激光的三倍频在355nm，可以直接测到甲醛分子的荧光信号，所以研究甲醛的LIF光谱，也很有实际应用的意义。</p>
+<hr>
+<p>甲醛分子的光谱研究的比较多了，是最早被研究的多原子分子。
+甲醛只有C、O两个重原子，加上两个氢原子，在基态，这四个原子核是平面的。由于原子数多，甲醛的光谱就比较复杂，不像双原子那样，只需要考虑一个转动常数B，而要考虑A B C 三个转动常数。1983年 Dennis Clouthier 和 Ramsay 在Annual Review of Physical Chemistry 上的综述[4]，分子的基态和激发态的光谱参数基本都有了，可以用来对甲醛分子在355nm 处激发态的吸收光谱做仿真。</p>
+<figure><img src="/xliu-group/post/ch2o/absorption.png"><figcaption>
+      <h4>absorption</h4>
+    </figcaption>
+</figure>
+
+<p>355nm 这个吸收带对应的是355nm这里的4^1_0 弯曲振动模式。有趣的是，这个吸收带的高分辨率光谱的工作还没发表过。
+Clouthier综述中提到数据来自 Ramsay 和 Till 未发表的工作，后人似乎一直也就这么用了。再往前，范德堡大学的Innes，我们Alberta大学的Birss 都提到最早是UCL的 Parkin 的博士论文中提到过这个band。南方科大的杨东老师去上海交大交流时候，当时杨老师还在UCL，问他去复印的Parkin的博士论文。感谢杨老师帮忙找到的论文！但看了半天好像也没具体到这个band，似乎是因为太弱了吧。可能也是因为和别的振动模式有耦合干扰。</p>
+<p>把杨老师复印的Parkin 的博士论文作为附件上传在这里吧，的确不好找。</p>
+<p><a href="/xliu-group/post/ch2o/1962-Parkin.pdf">Download file</a></p>
+<p>Anyway，就用Couthier 论文中的参数来仿真这个吸收带，似乎也还不错。找到了哈佛大学2005年的一篇文章[5]，里面有转动能级分辨的吸收光谱，和仿真对比，效果还不错。
+整体上对应的很好的，但要用的355nm就是在28183cm-1这里，正好有微扰，吸收峰对不上。
+所以仿真的光谱和实验测到的光谱不能完全一致，但是可以定量的对应上是没问题的。</p>
+<figure><img src="/xliu-group/post/ch2o/simulation.png"><figcaption>
+      <h4>absorption-simulation</h4>
+    </figcaption>
+</figure>
+
+<p>实验中制备高温的甲醛还是比较难的。甲醛在高温时候会聚合反应。需要一边加热一边进料。
+好在，只测温的话对浓度的控制要求不高。我们直接在coflow 扩散火焰里面测火焰燃烧中产生的甲醛。
+层流火焰很稳定，我们可以一个点一个点扫描激光波长，拍PLIF信号，得到每个点上的LIF光谱。结合层流火焰里面每个点的温度，就知道了不同温度下的甲醛LIF光谱。
+这里，特别要感谢金汉峰博士，帮忙找人做的仿真计算，算了3个不同的火焰。未来可以都测测，实验和仿真对照一下。</p>
+<hr>
+<p>甲醛双色PLIF测量，借鉴了用OPO的单激光单相机的串脉冲激光双色PLIF方法，也是很新的方法。
+很好用，发出一对不同波长的激光对，不用管时间和空间上的波动了。
+用355nm 三倍频直接测，激光能量大，很方便。
+这个方法很有发展前途，266nm 四倍频可以测到OH、NO，未来应该可以取代染料激光、OPO这些复杂的步骤，在实验台测量上很有用。
+最近在工程热物理学报发表了一篇论文，详细讲了这个方法。</p>
+<p><a href="/xliu-group/post/ch2o/paper.pdf">2024 - 单激光单相机双色PLIF测量火焰温度场</a></p>
+<p>[1]: KOSTKA S, ROY S, LAKUSTA P J, 等. Comparison of line-peak and line-scanning excitation in two-color laser-induced-fluorescence thermometry of OH[J/OL]. Applied Optics, 2009, 48(32): 6332. DOI:10.1364/AO.48.006332.</p>
+    </div>
+  <a href="/xliu-group/post/ch2o/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        March 22, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/post/method/" class="link black dim">
+        激光诊断方法
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>激光燃烧诊断技术通过测量激光与燃烧场中分子的吸收、发射、散射相互作用，得到原位定量的火焰温度、组分浓度和流场密度、速度等信息，具有极高的时空分辨率、灵敏度与选择性， 是最主要的非接触燃烧实验方法。常见方法包括瑞利散射、米散射、拉曼散射、荧光散射、吸收效应和多普勒效应等过程，这几种测试方法各有优缺点、互为补充，总的发展趋势是从线平均测量到场分辨测量，从低频稳态测量到高频动态测量。激光燃烧诊断的核心设备是激光光源。可以说是“一代激光器,一代测试方法”。</p>
+<p>光谱诊断方法的优点是对火焰无干扰，成像方法可以提供较高的时间和空间分辨率，通过图像能够准确地区分不同组分，并精确地测量温度、不同组分的浓度。
+下面是常用的几种激光诊断方法的示意图。</p>
+<figure><img src="/xliu-group/post/method/method.png"><figcaption>
+      <h4>常见的激光诊断方法 [Wolfrum](https://pubs.rsc.org/en/content/articlelanding/2002/fd/b107878j).</h4>
+    </figcaption>
+</figure>
+
+<p>应用光谱研究火焰的历史可以追溯到1860年Kirchhoff和Bunsen针对火焰中金属的光谱测量和1857年Swan对蜡烛火焰的测量。</p>
+<figure><img src="/xliu-group/post/method/tree.png" width="auto"><figcaption>
+      <h4>学术家谱</h4>
+    </figcaption>
+</figure>
+
+<p>博士导师研究分子光谱，发现导师的前面的导师可以追溯到剑桥大学的Sugdun，是做了很多工业实际应用研究。再之前的 Norrish 就是做的用光谱方法研究闪光灯热解。
+现在算是重新回到了应用研究上来。</p>
+<p>燃烧诊断主要是光测和光谱知识在燃烧中的应用。宏上要观理解为何要做实验和发展燃烧诊断方法，为何需要诊断方法解决什么问题。
+参考driezler 上课ppt中的说法，燃烧诊断的任务包含如下几个：</p>
+<ol>
+<li>燃烧理论，这方面比较成熟了；</li>
+<li>仿真对照，精细测量，验证CFD；</li>
+<li>燃烧器中的火焰结构和运动（主要是成像），研究燃烧现象，火焰结构和运动，湍流燃烧机理，包含标准火焰的研究；</li>
+<li>发展技术和方法，发展实际应用的传感器（tdlas 主要问题是空间分辨率问题，对于燃烧器的尺寸来说，TDLAS测量的空间分辨率太粗，可以做传感器，但研究其他问题不够用）</li>
+</ol>
+<p>燃烧诊断研究基本问题是测量温度，组分，压力，速度；进一步需要和燃烧学结合，目标和主线是研究火焰和燃烧室，燃烧诊断的目标是解决燃烧研究的问题。因此很多时候，是要把特定的实验方法用在特定的燃烧研究里面。
+诊断研究现在阶段需求，理论研究比较成熟，要以工业应用需求为主，还是从燃烧室的现象和要解决的问题出发。</p>
+<p>一个光谱诊断方法的简介文件。
+<a href="/xliu-group/post/method/%E5%85%89%E8%B0%B1%E8%AF%8A%E6%96%AD.pdf">光谱诊断方法简介</a></p>
+<p>如何做燃烧的仿真？湍流燃烧还是很难算的，Fluent 可以大概算算。用 Cantera 和 Chemkin 算一般的反应动力学计算，比如火焰温度。
+分子光谱仿真？就很小众了，图形化的有 pgophor，最全的应该是 SPFIT/SPCAT 。LIFbase是专门的几个双原子分子的LIF光谱数据库仿真。
+几何光学仿真用 zemax，但感觉一般也不需要。</p>
+    </div>
+  <a href="/xliu-group/post/method/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        March 10, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/post/lec1/" class="link black dim">
+        热工基础
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>热工基础课程的前两周上完了，讲了前4章。基本把热力学的内容讲完了。
+在极少的课时下，如何讲完？
+热力学作为很成熟的知识，的确也应该更加精炼，大学里面的课程，总的趋势就是成熟的知识逐渐减少课时。学生总要学习新知识。未来可能中学里面就要学很多现在大学的知识吧。</p>
+<p>我想我做了比较好的尝试。思路是从统计力学2个基本假设开始讲，引出配分函数和熵的概念、不同的系综；进而可以联系到热力学的4个基本假设，然后建立热力学函数。
+这门课不讲化学平衡和相平衡。
+主要还是内能和焓的概念。
+然后是理想气体，从熵的公式引出绝热等过程的熵变和热功变化。</p>
+<p>从几个基本假设出发的思路还是很清晰的。避免了从现象出发的很多绕弯子。也是前面推荐Daily书的初衷。</p>
+<p>第三周开始讲喷管流动，这部分主要是可压缩的空气动力学。参考书主要是《Thermodynamics-An engineering approach》和清华大学吴望一的《流体力学》。
+不得不说，老外的书详细，适合自学和教学；但是吴的书，精妙之处更多，很多数学推导更简洁更优美。多看几本书总有好处，空气动力学经典的Anderson 以后再看吧。</p>
+<p>第四周开始讲传热。首先是从随即行走模型导出了扩散方程。按照这个思路比较好，从基本原理出发，比较直观地就可以得到傅里叶公式。
+传热的其他部分没有很多重要的内容了，毕竟现在都是用有限元直接算就可以了。</p>
+<p><a href="/xliu-group/post/lec1/lec1.pdf">Lecture-1</a></p>
+    </div>
+  <a href="/xliu-group/post/lec1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        March 4, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/post/tdlas/" class="link black dim">
+        TDLAS
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>之前写过的一个TDLAS技术的简介，好像被放在某本书里面了。但当时版本可能有笔误，故在此放一下最新的版本。</p>
+<p><a href="/xliu-group/post/tdlas/tdlas.pdf">TDLAS</a></p>
+<p>吸收光谱研究的是光与物质作用过程中最基本的吸收过程，是最基本的燃烧诊断方法。吸收光谱有易于操作、选择性强、定量准确、灵敏度高的优点。</p>
+<p>在燃烧诊断中，通过测量透射光强被火焰吸收而减弱的定量信息，可以获得燃烧体系中分子浓度、温度、压力和速度的信息。</p>
+<p>现代的激光吸收光谱用的是高亮度、窄线宽的红外可调半导体激光光源，通过扫描激光的波长，光电探测器直接测量不同波长激光在通过燃烧体系后的光强损失，从得到所扫描的激光波长范围内的火焰吸收光谱。</p>
+<p>吸收光谱所测量的光谱有位置、强度、和线宽三个基本信息，可以定量地研究反应流中分子浓度、温度、压力和流速等各种信息。谱线的位置由所测量分子的能级结构决定，与燃烧体系的温度压力等热力学状态与流场结构无关。因此可以通过测量燃烧体系的吸收谱准确地区分所测量的不同分子，具有极高的选择性(selectivity)。
+需要学一点分子光谱学。</p>
+<p>在高压燃烧环境中，分子碰撞导致的能级降低和多普勒效应还会引起的微小的吸收峰位置的移动。</p>
+<p>在谱线强度测量方面结合高频调制、光腔共振等方法，吸收光谱可以测量ppt量级的分子浓度，具有很高的灵敏度(sensitivity)。研究吸收光谱所测量的谱线吸收强度只需考虑体系状态从低能级到高能级的光子吸收这一简单过程，可以忽略上能级过程，实验和理论计算均可较准确的定量研究。因此吸收光谱的最大特点为定量准确(absolute)。</p>
+<p>文章前面介绍了一些Einstein A B 系数的介绍。
+可以参考HITRAN 官方的介绍文献：</p>
+<p>Šimečková M, Jacquemart D, Rothman L S, Gamache R R, Goldman A. Einstein A-coefficients and statistical weights for molecular absorption transitions in the HITRAN database[J]. Journal of Quantitative Spectroscopy and Radiative Transfer, 2006, 98(1): 130–155.</p>
+<figure><img src="/xliu-group/post/tdlas/beer.png"><figcaption>
+      <h4>absorption model</h4>
+    </figcaption>
+</figure>
+
+<p>一个比较重要的结论是
+通过联系宏观上的观测量光强 I 和微观的分子跃迁常数 B 与分子数密度 N，得到Beer-Lambert 定律：</p>
+<p>d \tau(v) = k(v) N dl</p>
+<p>这里\tau(v)是频率v处的光学厚度（optical depth）；k(v)是吸收系数（absorption coefficient）,单位是[1/(molecule cm-3 cm)]；
+定义\mu = k(v) N 为衰减系数（attenuation coefficient）,单位是 [1/cm]；
+k(v) 在波数（wavenumber）轴上的积分得到线强 S，单位是[cm-1/ molecule· cm-3· cm]，进行单位约化后，也可以被写为[1/cm-1]</p>
+    </div>
+  <a href="/xliu-group/post/tdlas/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        February 20, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/post/20250220/" class="link black dim">
+        lvpyio
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>今天尝试了 LaVision 公司的 python package，太坑了，又发现 DeepSeek 太香了。</p>
+<p>lvpyio 的网址：
+<a href="https://www.lavision.de/en/downloads/software/python_add_ons.php">https://www.lavision.de/en/downloads/software/python_add_ons.php</a></p>
+<p>之前都是把 DaVis 计算得到的速度场或者标量场结果存成文本文件，例如 B00001.txt 再用python读。下面是我写的读标量场和矢量场的函数，其中load_piv 中 size 参数非0时，会将数据 binning 降低数据数量，提高对比度。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#%% read DaVis txt file</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_piv</span>(filename, size):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    extract PIV data
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    filename: txt file name
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    size: average size
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    lavision <span style="color:#f92672">=</span> open(filename)
+</span></span><span style="display:flex;"><span>    step, xnum, ynum <span style="color:#f92672">=</span> lavision<span style="color:#f92672">.</span>readline()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">6</span>]
+</span></span><span style="display:flex;"><span>    lavision<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>    step <span style="color:#f92672">=</span> int(step)
+</span></span><span style="display:flex;"><span>    xnum <span style="color:#f92672">=</span> int(xnum)
+</span></span><span style="display:flex;"><span>    ynum <span style="color:#f92672">=</span> int(ynum)
+</span></span><span style="display:flex;"><span>    size <span style="color:#f92672">=</span> int(size)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    oned <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(filename, decimal<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#39;</span>, skiprows<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">0</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
+</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">1</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
+</span></span><span style="display:flex;"><span>    U <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">2</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
+</span></span><span style="display:flex;"><span>    V <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">3</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> size <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        X <span style="color:#f92672">=</span> X[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        Y <span style="color:#f92672">=</span> Y[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        U <span style="color:#f92672">=</span> U[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        V <span style="color:#f92672">=</span> V[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)                                                                           
+</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> Y<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+</span></span><span style="display:flex;"><span>    U <span style="color:#f92672">=</span> U<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+</span></span><span style="display:flex;"><span>    V <span style="color:#f92672">=</span> V<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> step, xnum, ynum, X, Y, U, V   
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_plif</span>():
+</span></span><span style="display:flex;"><span>    plif <span style="color:#f92672">=</span> open(filename)
+</span></span><span style="display:flex;"><span>    firstline <span style="color:#f92672">=</span> plif<span style="color:#f92672">.</span>readline()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)
+</span></span><span style="display:flex;"><span>    x_num,y_num <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>    delta_x,x0 <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">6</span>:<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>    delta_y,y0 <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">10</span>:<span style="color:#ae81ff">12</span>]
+</span></span><span style="display:flex;"><span>    plif<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>    x_num <span style="color:#f92672">=</span> int(x_num)
+</span></span><span style="display:flex;"><span>    y_num <span style="color:#f92672">=</span> int(y_num)
+</span></span><span style="display:flex;"><span>    x0 <span style="color:#f92672">=</span> float(x0)
+</span></span><span style="display:flex;"><span>    y0 <span style="color:#f92672">=</span> float(y0)
+</span></span><span style="display:flex;"><span>    delta_x <span style="color:#f92672">=</span> float(delta_x)
+</span></span><span style="display:flex;"><span>    delta_y <span style="color:#f92672">=</span> float(delta_y)
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(x0, x0<span style="color:#f92672">+</span>(x_num)<span style="color:#f92672">*</span>delta_x, delta_x)
+</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(y0, y0<span style="color:#f92672">+</span>(y_num)<span style="color:#f92672">*</span>delta_y, delta_y)   
+</span></span><span style="display:flex;"><span>    plif_txt <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(filename, decimal<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#39;</span>, skiprows<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span>    plif <span style="color:#f92672">=</span> plif_txt<span style="color:#f92672">.</span>values
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> x_num,y_num,X,Y,plif
+</span></span></code></pre></div><p>貌似用官方的软件包可以读更多的文件格式吧。于是就开始安装了。
+首先发现不知道为什么 spyder 启动出问题了，numpy 版本不对，需要重装 numpy，就好了。</p>
+    </div>
+  <a href="/xliu-group/post/20250220/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        November 8, 2024
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/post/20241108/" class="link black dim">
+        TDLAS的问题
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>最见看到之前课题组近年燃烧年会发的会议论文，没有接受口头报告，只有一个海报。
+<figure><img src="/xliu-group/post/20241108/title.png"><figcaption>
+      <h4>论文题目</h4>
+    </figcaption>
+</figure>
+
+是用我发展的4um QCL测CO2的方法在腔体里面测固体颗粒燃烧的信号。
+看了一下实验记录，是2020年夏天做的实验。
+固体推进剂这个方向，本来也不是我该做的，合作只是奉命服务。</p>
+<!--
+本来是说2019年底，两个人同一年评职称，让我让一下，给我搞一篇文章。
+结果成了拿我搞的啥设备去给他做实验。
+到最后发表了论文，连我的名字都没有。
+-->
+<p>但也非常欣慰，毕竟发表了，了却了一桩心事。顾明明博士本来不做 TDLAS，去交大做博后才接触，青年基金也是做的中红外TDLAS 数据处理的方法。把 line mixing 模型用来处理 4.2um 的CO2带头部分的谱线，还是挺成功。但即使是这个新的模型，根本问题还是参数多，需要调。应用起来就不够直接。</p>
+<figure><img src="/xliu-group/post/20241108/setup.png"><figcaption>
+      <h4>实验装置图</h4>
+    </figcaption>
+</figure>
+
+<p>这个实验不是很成功。根本问题还是由于 TDLAS 是线积分测量，无法区分腔体内部路径上不同位置的信息。
+测到的温度，其实是路径平均的温度，虽然4.2um那高温信号占主要的，但也要考虑这么长路径上腔体里面其他位置扩散出去的CO2的干扰。
+其实还不如不加腔体，那样的话在大气环境中还扩散的快一点。</p>
+<p>这就叫路径依赖。</p>
+<p>想起来之前还做过一个失败的实验。用5um NO2 吸收逢的QCL激光测在真空腔体里面的 不同NH3含量的Mckenna 火焰。这个是之前用石英喷嘴取样加紫外光电离质谱做过的体系。用取样测量方法的话，周围环境中的燃烧产物、扩散出去的物质是不用管的。但是用吸收光谱的方法就不行了。低压环境倒是有利于TDLAS测量，NO2 两个分裂的吸收峰很清楚，但是测到的温度又很低，后来发现是因为腔体里面有扩散出去的产物的吸收。
+这就很难办了。也可以吹扫，但再加上这些过程复杂的方法，都很不可靠。</p>
+<p>核心问题，还是如何在TDLAS线积分信号的基础上得到空间分辨率。考虑过用饱和吸收，或者用FLDI频谱特征去提取。但似乎都不很靠谱。
+TDLAS方法在大气研究中有成功的应用，比如用吸收池抽气进去低压测量各种污染物的浓度，再比如卫星测大气柱的辐射或者吸收光谱。
+这是因为空间尺度不同的问题。大气研究中，空间尺度大，TDLAS测量的就是一个点的数据。而燃烧诊断中，研究的火焰尺寸不会很大，TDLAS 测量的一条路径上，需要考虑分布不均匀的问题。
+最好还是用综横多路再反演的方法得到空间分辨率。
+这样空间分辨率就不会很高，若要提高空间分辨率，似乎很难。最近有用高速红外相机做探测器来测TDLAS光谱的，把一个激光束扩束后，在红外相机上成像测量扫描波长后图像强度。
+如果红外相机帧频不够高，还可以在采集端用光纤束分光，也可以提高空间分辨率，多个pd探测器，多路数据采集。
+这样就可以得到比较高的空间分辨率。但成本的确也高。</p>
+    </div>
+  <a href="/xliu-group/post/20241108/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        October 15, 2024
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/post/daily-book/" class="link black dim">
+        介绍好书：John Daily 统计热力学
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><figure><img src="/xliu-group/post/daily-book/daily-book-cover.jpg"><figcaption>
+      <h4>封面</h4>
+    </figcaption>
+</figure>
+
+最近读到一本好书，剑桥大学出版社2018年出版的 John Daily 《Statistical Thermodynamics an Engineering approach》。
+最早知道 Daily 还是读到他在PECS上关于LIF 的综述，算是比较早期这方面的综述了。当时他还是在伯克利大学，后来去了科罗拉多大学主持了燃烧研究中心做机械系主任。
+这本书是John 在伯克利大学和科罗拉多大学教研究生《高等热力学》的教材。</p>
+<p>面向热流体方向（机械工程、航空工程、动力工程）的热力学气体动力学课程，早期有 Sonntag &amp;  Van Wylen:  Fundamentals of Statistical Thermodynamics ; 斯坦福大学的 Vincenti &amp; Kruger: Introduction to Physical Gas Dynamics。
+作者的这本教材可以看作是前面书的简化版，包含了最主要的内容。
+之前给本科上的物理化学和准备的热工基础课程想包含的内容，这本书都有：量子力学、分子能级、配风函数、热力学量、JANAF表、Boltzmann方程等等，基本该涉及的知识点都有。</p>
+<p>作为研究生教材，这本书更多的可以作为一个地图和指引，告诉研究生哪些内容需要去看的提要。面向本科生教学的话，可以先简单介绍一些基础知识。这本书还有对应的Coursera 课程，有视频和PPT，一开始就介绍了一些基本知识。
+<a href="https://www.coursera.org/learn/macroscopic-microscopic-thermodynamics">https://www.coursera.org/learn/macroscopic-microscopic-thermodynamics</a></p>
+<p>这本书最大的优点是采用了公理化的热力学体系，即 Herbert B. Callen 在 《Thermodynamics and an Introduction to Thermostatistics》 中提出的四大公设的体系。
+一门学科在历史上发展的顺序和学科体系查成熟后的体系肯定是不同的。
+最终在课程中的呈现，肯定和历史发展的顺序不同。
+比如现代量子力学的教学，如果学时多，尚可以慢慢来从两朵乌云开始讲，但很多时候已经不再是按照历史顺序来讲了，而是按照现代的体系来讲。</p>
+<p>在AI时代，本科生要学的东西越来越多。现在教学的课时越来越少了，传统课程的教学要跟上时代，就是要体现新的思路，顺应时代的发展。
+可以预见，未来的热流体课程中，热力学和统计力学也不应该分开慢慢讲了，也不应该第一定律、第二定律出发那样讲了。
+未来的热力学教学，应该按照这样简洁明了的公理化体系来讲，节省时间。
+时代的进步发展总是这样，留给一成不变旧内容的时间总是越来越少。</p>
+    </div>
+  <a href="/xliu-group/post/daily-book/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        October 1, 2024
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/post/hello-world/" class="link black dim">
+        新网站上线了
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>今天是国庆节，才有有时间投个稿，又上线了课题组的网站。</p>
+<p>中国的科研工作者真不容易。放假了才有自己的时间。
+不过外国的科研人员也不容易。我国只不过是现在本科生都有国自然了；前几天看到一篇OL上的文章就是美国高中生发的。为了卷大学入学嘛，可以理解。那小孩的爹也挺厉害。</p>
+<p>以后我们的高中生就可以进实验室搞SCI嘛，欢迎本科生来我实验室做点研究，最好能发点SCI论文。只不过是刚到山科大来，没给本科生上课，接触学生还不多。
+研究生就不用说了，硕士基金，博士博士后基金都卷起来。
+同行们多来关注我们吧！</p>
+    </div>
+  <a href="/xliu-group/post/hello-world/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+  </div>
+
+        </div>
+      
+    </aside>
+    
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://liuxunchen.github.io/xliu-group/" >
+    &copy;  主页 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

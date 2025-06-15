@@ -1,6 +1,352 @@
-<head>
-  
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>lvpyio | 主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="今天尝试了 LaVision 公司的 python package，太坑了，又发现 DeepSeek 太香了。
+lvpyio 的网址：
+https://www.lavision.de/en/downloads/software/python_add_ons.php
+之前都是把 DaVis 计算得到的速度场或者标量场结果存成文本文件，例如 B00001.txt 再用python读。下面是我写的读标量场和矢量场的函数，其中load_piv 中 size 参数非0时，会将数据 binning 降低数据数量，提高对比度。
+#%% read DaVis txt file
+
+def load_piv(filename, size):
+    &#34;&#34;&#34;
+    extract PIV data
+    filename: txt file name
+    size: average size
+    &#34;&#34;&#34;
+    lavision = open(filename)
+    step, xnum, ynum = lavision.readline().split(&#39; &#39;)[3:6]
+    lavision.close()
+    step = int(step)
+    xnum = int(xnum)
+    ynum = int(ynum)
+    size = int(size)
+
+    oned = pd.read_csv(filename, decimal=&#39;,&#39;, sep=&#39;\t&#39;, skiprows=1, header=None)
+    X = np.reshape(oned.values[:, 0], (xnum, ynum), &#39;C&#39;).astype(&#39;float64&#39;)
+    Y = np.reshape(oned.values[:, 1], (xnum, ynum), &#39;C&#39;).astype(&#39;float64&#39;)
+    U = np.reshape(oned.values[:, 2], (xnum, ynum), &#39;C&#39;).astype(&#39;float64&#39;)
+    V = np.reshape(oned.values[:, 3], (xnum, ynum), &#39;C&#39;).astype(&#39;float64&#39;)
+    
+    if size != 1:
+        X = X[:int(xnum // size) * size, :int(ynum // size) * size].reshape(int(xnum // size), size, int(ynum // size),size).mean(axis=(1, 3))
+        Y = Y[:int(xnum // size) * size, :int(ynum // size) * size].reshape(int(xnum // size), size, int(ynum // size),size).mean(axis=(1, 3))
+        U = U[:int(xnum // size) * size, :int(ynum // size) * size].reshape(int(xnum // size), size, int(ynum // size),size).mean(axis=(1, 3))
+        V = V[:int(xnum // size) * size, :int(ynum // size) * size].reshape(int(xnum // size), size, int(ynum // size),size).mean(axis=(1, 3))
+    X = X.astype(&#39;float32&#39;)                                                                           
+    Y = Y.astype(&#39;float32&#39;)
+    U = U.astype(&#39;float32&#39;)
+    V = V.astype(&#39;float32&#39;)
+    return step, xnum, ynum, X, Y, U, V   
+
+def load_plif():
+    plif = open(filename)
+    firstline = plif.readline().split(&#39; &#39;)
+    x_num,y_num = firstline[3:5]
+    delta_x,x0 = firstline[6:8]
+    delta_y,y0 = firstline[10:12]
+    plif.close()
+    x_num = int(x_num)
+    y_num = int(y_num)
+    x0 = float(x0)
+    y0 = float(y0)
+    delta_x = float(delta_x)
+    delta_y = float(delta_y)
+    X = np.arange(x0, x0&#43;(x_num)*delta_x, delta_x)
+    Y = np.arange(y0, y0&#43;(y_num)*delta_y, delta_y)   
+    plif_txt = pd.read_csv(filename, decimal=&#39;,&#39;, sep=&#39;\t&#39;, skiprows=1, header=None)
+    plif = plif_txt.values
+    return x_num,y_num,X,Y,plif
+貌似用官方的软件包可以读更多的文件格式吧。于是就开始安装了。
+首先发现不知道为什么 spyder 启动出问题了，numpy 版本不对，需要重装 numpy，就好了。">
+    <meta name="generator" content="Hugo 0.144.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="Xunchen Liu">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
+
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://liuxunchen.github.io/xliu-group/post/20250220/">
+    
+
+    <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/post/20250220/">
+  <meta property="og:site_name" content="主页">
+  <meta property="og:title" content="lvpyio">
+  <meta property="og:description" content="今天尝试了 LaVision 公司的 python package，太坑了，又发现 DeepSeek 太香了。
+lvpyio 的网址： https://www.lavision.de/en/downloads/software/python_add_ons.php
+之前都是把 DaVis 计算得到的速度场或者标量场结果存成文本文件，例如 B00001.txt 再用python读。下面是我写的读标量场和矢量场的函数，其中load_piv 中 size 参数非0时，会将数据 binning 降低数据数量，提高对比度。
+#%% read DaVis txt file def load_piv(filename, size): &#34;&#34;&#34; extract PIV data filename: txt file name size: average size &#34;&#34;&#34; lavision = open(filename) step, xnum, ynum = lavision.readline().split(&#39; &#39;)[3:6] lavision.close() step = int(step) xnum = int(xnum) ynum = int(ynum) size = int(size) oned = pd.read_csv(filename, decimal=&#39;,&#39;, sep=&#39;\t&#39;, skiprows=1, header=None) X = np.reshape(oned.values[:, 0], (xnum, ynum), &#39;C&#39;).astype(&#39;float64&#39;) Y = np.reshape(oned.values[:, 1], (xnum, ynum), &#39;C&#39;).astype(&#39;float64&#39;) U = np.reshape(oned.values[:, 2], (xnum, ynum), &#39;C&#39;).astype(&#39;float64&#39;) V = np.reshape(oned.values[:, 3], (xnum, ynum), &#39;C&#39;).astype(&#39;float64&#39;) if size != 1: X = X[:int(xnum // size) * size, :int(ynum // size) * size].reshape(int(xnum // size), size, int(ynum // size),size).mean(axis=(1, 3)) Y = Y[:int(xnum // size) * size, :int(ynum // size) * size].reshape(int(xnum // size), size, int(ynum // size),size).mean(axis=(1, 3)) U = U[:int(xnum // size) * size, :int(ynum // size) * size].reshape(int(xnum // size), size, int(ynum // size),size).mean(axis=(1, 3)) V = V[:int(xnum // size) * size, :int(ynum // size) * size].reshape(int(xnum // size), size, int(ynum // size),size).mean(axis=(1, 3)) X = X.astype(&#39;float32&#39;) Y = Y.astype(&#39;float32&#39;) U = U.astype(&#39;float32&#39;) V = V.astype(&#39;float32&#39;) return step, xnum, ynum, X, Y, U, V def load_plif(): plif = open(filename) firstline = plif.readline().split(&#39; &#39;) x_num,y_num = firstline[3:5] delta_x,x0 = firstline[6:8] delta_y,y0 = firstline[10:12] plif.close() x_num = int(x_num) y_num = int(y_num) x0 = float(x0) y0 = float(y0) delta_x = float(delta_x) delta_y = float(delta_y) X = np.arange(x0, x0&#43;(x_num)*delta_x, delta_x) Y = np.arange(y0, y0&#43;(y_num)*delta_y, delta_y) plif_txt = pd.read_csv(filename, decimal=&#39;,&#39;, sep=&#39;\t&#39;, skiprows=1, header=None) plif = plif_txt.values return x_num,y_num,X,Y,plif 貌似用官方的软件包可以读更多的文件格式吧。于是就开始安装了。 首先发现不知道为什么 spyder 启动出问题了，numpy 版本不对，需要重装 numpy，就好了。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-02-20T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-20T00:00:00+00:00">
+
+  <meta itemprop="name" content="lvpyio">
+  <meta itemprop="description" content="今天尝试了 LaVision 公司的 python package，太坑了，又发现 DeepSeek 太香了。
+lvpyio 的网址： https://www.lavision.de/en/downloads/software/python_add_ons.php
+之前都是把 DaVis 计算得到的速度场或者标量场结果存成文本文件，例如 B00001.txt 再用python读。下面是我写的读标量场和矢量场的函数，其中load_piv 中 size 参数非0时，会将数据 binning 降低数据数量，提高对比度。
+#%% read DaVis txt file def load_piv(filename, size): &#34;&#34;&#34; extract PIV data filename: txt file name size: average size &#34;&#34;&#34; lavision = open(filename) step, xnum, ynum = lavision.readline().split(&#39; &#39;)[3:6] lavision.close() step = int(step) xnum = int(xnum) ynum = int(ynum) size = int(size) oned = pd.read_csv(filename, decimal=&#39;,&#39;, sep=&#39;\t&#39;, skiprows=1, header=None) X = np.reshape(oned.values[:, 0], (xnum, ynum), &#39;C&#39;).astype(&#39;float64&#39;) Y = np.reshape(oned.values[:, 1], (xnum, ynum), &#39;C&#39;).astype(&#39;float64&#39;) U = np.reshape(oned.values[:, 2], (xnum, ynum), &#39;C&#39;).astype(&#39;float64&#39;) V = np.reshape(oned.values[:, 3], (xnum, ynum), &#39;C&#39;).astype(&#39;float64&#39;) if size != 1: X = X[:int(xnum // size) * size, :int(ynum // size) * size].reshape(int(xnum // size), size, int(ynum // size),size).mean(axis=(1, 3)) Y = Y[:int(xnum // size) * size, :int(ynum // size) * size].reshape(int(xnum // size), size, int(ynum // size),size).mean(axis=(1, 3)) U = U[:int(xnum // size) * size, :int(ynum // size) * size].reshape(int(xnum // size), size, int(ynum // size),size).mean(axis=(1, 3)) V = V[:int(xnum // size) * size, :int(ynum // size) * size].reshape(int(xnum // size), size, int(ynum // size),size).mean(axis=(1, 3)) X = X.astype(&#39;float32&#39;) Y = Y.astype(&#39;float32&#39;) U = U.astype(&#39;float32&#39;) V = V.astype(&#39;float32&#39;) return step, xnum, ynum, X, Y, U, V def load_plif(): plif = open(filename) firstline = plif.readline().split(&#39; &#39;) x_num,y_num = firstline[3:5] delta_x,x0 = firstline[6:8] delta_y,y0 = firstline[10:12] plif.close() x_num = int(x_num) y_num = int(y_num) x0 = float(x0) y0 = float(y0) delta_x = float(delta_x) delta_y = float(delta_y) X = np.arange(x0, x0&#43;(x_num)*delta_x, delta_x) Y = np.arange(y0, y0&#43;(y_num)*delta_y, delta_y) plif_txt = pd.read_csv(filename, decimal=&#39;,&#39;, sep=&#39;\t&#39;, skiprows=1, header=None) plif = plif_txt.values return x_num,y_num,X,Y,plif 貌似用官方的软件包可以读更多的文件格式吧。于是就开始安装了。 首先发现不知道为什么 spyder 启动出问题了，numpy 版本不对，需要重装 numpy，就好了。">
+  <meta itemprop="datePublished" content="2025-02-20T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-02-20T00:00:00+00:00">
+  <meta itemprop="wordCount" content="338">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="lvpyio">
+  <meta name="twitter:description" content="今天尝试了 LaVision 公司的 python package，太坑了，又发现 DeepSeek 太香了。
+lvpyio 的网址： https://www.lavision.de/en/downloads/software/python_add_ons.php
+之前都是把 DaVis 计算得到的速度场或者标量场结果存成文本文件，例如 B00001.txt 再用python读。下面是我写的读标量场和矢量场的函数，其中load_piv 中 size 参数非0时，会将数据 binning 降低数据数量，提高对比度。
+#%% read DaVis txt file def load_piv(filename, size): &#34;&#34;&#34; extract PIV data filename: txt file name size: average size &#34;&#34;&#34; lavision = open(filename) step, xnum, ynum = lavision.readline().split(&#39; &#39;)[3:6] lavision.close() step = int(step) xnum = int(xnum) ynum = int(ynum) size = int(size) oned = pd.read_csv(filename, decimal=&#39;,&#39;, sep=&#39;\t&#39;, skiprows=1, header=None) X = np.reshape(oned.values[:, 0], (xnum, ynum), &#39;C&#39;).astype(&#39;float64&#39;) Y = np.reshape(oned.values[:, 1], (xnum, ynum), &#39;C&#39;).astype(&#39;float64&#39;) U = np.reshape(oned.values[:, 2], (xnum, ynum), &#39;C&#39;).astype(&#39;float64&#39;) V = np.reshape(oned.values[:, 3], (xnum, ynum), &#39;C&#39;).astype(&#39;float64&#39;) if size != 1: X = X[:int(xnum // size) * size, :int(ynum // size) * size].reshape(int(xnum // size), size, int(ynum // size),size).mean(axis=(1, 3)) Y = Y[:int(xnum // size) * size, :int(ynum // size) * size].reshape(int(xnum // size), size, int(ynum // size),size).mean(axis=(1, 3)) U = U[:int(xnum // size) * size, :int(ynum // size) * size].reshape(int(xnum // size), size, int(ynum // size),size).mean(axis=(1, 3)) V = V[:int(xnum // size) * size, :int(ynum // size) * size].reshape(int(xnum // size), size, int(ynum // size),size).mean(axis=(1, 3)) X = X.astype(&#39;float32&#39;) Y = Y.astype(&#39;float32&#39;) U = U.astype(&#39;float32&#39;) V = V.astype(&#39;float32&#39;) return step, xnum, ynum, X, Y, U, V def load_plif(): plif = open(filename) firstline = plif.readline().split(&#39; &#39;) x_num,y_num = firstline[3:5] delta_x,x0 = firstline[6:8] delta_y,y0 = firstline[10:12] plif.close() x_num = int(x_num) y_num = int(y_num) x0 = float(x0) y0 = float(y0) delta_x = float(delta_x) delta_y = float(delta_y) X = np.arange(x0, x0&#43;(x_num)*delta_x, delta_x) Y = np.arange(y0, y0&#43;(y_num)*delta_y, delta_y) plif_txt = pd.read_csv(filename, decimal=&#39;,&#39;, sep=&#39;\t&#39;, skiprows=1, header=None) plif = plif_txt.values return x_num,y_num,X,Y,plif 貌似用官方的软件包可以读更多的文件格式吧。于是就开始安装了。 首先发现不知道为什么 spyder 启动出问题了，numpy 版本不对，需要重装 numpy，就好了。">
+
+      
+    
+	
+	
+	  
     
 
   
-</head>
+  
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('https://liuxunchen.github.io/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/xliu-group/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/xliu-group/news/" title="">
+              News
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/xliu-group/paper/" title="">
+              发表论文
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/xliu-group/%E4%BA%BA%E5%91%98/" title="">
+              实验室人员
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/xliu-group/post/" title="">
+              科研笔记
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">lvpyio</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        科研笔记
+      </aside><div id="sharing" class="mt3 ananke-socials"><a href="mailto:?&amp;body=https%3A%2F%2Fliuxunchen.github.io%2Fxliu-group%2Fpost%2F20250220%2F&amp;subject=lvpyio"
+        class="ananke-social-link email no-underline"
+        title="Share on Email" aria-label="Share on Email"
+        target="_blank" rel="nofollow noopener noreferrer">
+        <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
+                
+              </span></a></div>
+<h1 class="f1 athelas mt3 mb1">lvpyio</h1>
+      
+      <p class="tracked"><strong>Xunchen Liu</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-02-20T00:00:00Z">February 20, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>今天尝试了 LaVision 公司的 python package，太坑了，又发现 DeepSeek 太香了。</p>
+<p>lvpyio 的网址：
+<a href="https://www.lavision.de/en/downloads/software/python_add_ons.php">https://www.lavision.de/en/downloads/software/python_add_ons.php</a></p>
+<p>之前都是把 DaVis 计算得到的速度场或者标量场结果存成文本文件，例如 B00001.txt 再用python读。下面是我写的读标量场和矢量场的函数，其中load_piv 中 size 参数非0时，会将数据 binning 降低数据数量，提高对比度。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#%% read DaVis txt file</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_piv</span>(filename, size):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    extract PIV data
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    filename: txt file name
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    size: average size
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    lavision <span style="color:#f92672">=</span> open(filename)
+</span></span><span style="display:flex;"><span>    step, xnum, ynum <span style="color:#f92672">=</span> lavision<span style="color:#f92672">.</span>readline()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">6</span>]
+</span></span><span style="display:flex;"><span>    lavision<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>    step <span style="color:#f92672">=</span> int(step)
+</span></span><span style="display:flex;"><span>    xnum <span style="color:#f92672">=</span> int(xnum)
+</span></span><span style="display:flex;"><span>    ynum <span style="color:#f92672">=</span> int(ynum)
+</span></span><span style="display:flex;"><span>    size <span style="color:#f92672">=</span> int(size)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    oned <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(filename, decimal<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#39;</span>, skiprows<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">0</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
+</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">1</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
+</span></span><span style="display:flex;"><span>    U <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">2</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
+</span></span><span style="display:flex;"><span>    V <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">3</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> size <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        X <span style="color:#f92672">=</span> X[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        Y <span style="color:#f92672">=</span> Y[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        U <span style="color:#f92672">=</span> U[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        V <span style="color:#f92672">=</span> V[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)                                                                           
+</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> Y<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+</span></span><span style="display:flex;"><span>    U <span style="color:#f92672">=</span> U<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+</span></span><span style="display:flex;"><span>    V <span style="color:#f92672">=</span> V<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> step, xnum, ynum, X, Y, U, V   
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_plif</span>():
+</span></span><span style="display:flex;"><span>    plif <span style="color:#f92672">=</span> open(filename)
+</span></span><span style="display:flex;"><span>    firstline <span style="color:#f92672">=</span> plif<span style="color:#f92672">.</span>readline()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)
+</span></span><span style="display:flex;"><span>    x_num,y_num <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>    delta_x,x0 <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">6</span>:<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>    delta_y,y0 <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">10</span>:<span style="color:#ae81ff">12</span>]
+</span></span><span style="display:flex;"><span>    plif<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>    x_num <span style="color:#f92672">=</span> int(x_num)
+</span></span><span style="display:flex;"><span>    y_num <span style="color:#f92672">=</span> int(y_num)
+</span></span><span style="display:flex;"><span>    x0 <span style="color:#f92672">=</span> float(x0)
+</span></span><span style="display:flex;"><span>    y0 <span style="color:#f92672">=</span> float(y0)
+</span></span><span style="display:flex;"><span>    delta_x <span style="color:#f92672">=</span> float(delta_x)
+</span></span><span style="display:flex;"><span>    delta_y <span style="color:#f92672">=</span> float(delta_y)
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(x0, x0<span style="color:#f92672">+</span>(x_num)<span style="color:#f92672">*</span>delta_x, delta_x)
+</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(y0, y0<span style="color:#f92672">+</span>(y_num)<span style="color:#f92672">*</span>delta_y, delta_y)   
+</span></span><span style="display:flex;"><span>    plif_txt <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(filename, decimal<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#39;</span>, skiprows<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span>    plif <span style="color:#f92672">=</span> plif_txt<span style="color:#f92672">.</span>values
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> x_num,y_num,X,Y,plif
+</span></span></code></pre></div><p>貌似用官方的软件包可以读更多的文件格式吧。于是就开始安装了。
+首先发现不知道为什么 spyder 启动出问题了，numpy 版本不对，需要重装 numpy，就好了。</p>
+<p>然后会出现这个错误：</p>
+<pre tabindex="0"><code>from lvpyio import read_set
+
+/usr/local/lib64/python3.13/site-packages/lvpyio/io/LaVision.Logging.so: undefined symbol: _ZdlPvm, version Qt_5
+</code></pre><p>在DeepSeek 中输入，马上告诉我是 .so 动态链接库找不到特定版本的 Qt 问题。
+更给力的是解决的方法也有，如下，用string 命令看一下</p>
+<pre tabindex="0"><code>xliu@localhost:/usr/local/lib64/python3.13/site-packages/lvpyio/io$ strings LaVision.Logging.so | grep Qt
+/home/tfsbuild/lvdeps/Qt-5.14.0-gcc_64/5.14.0/gcc_64/include/QtCore/qstring.h
+/home/tfsbuild/lvdeps/Qt-5.14.0-gcc_64/5.14.0/gcc_64/include/QtCore/qarraydata.h
+_ZN7QString15toLatin1_helperERKS_@@Qt_5
+_ZdlPvm@@Qt_5
+_ZN10QArrayData11shared_nullE@@Qt_5
+_Z9qt_assertPKcS0_i@@Qt_5
+_ZN10QArrayData10deallocateEPS_mm@@Qt_5
+_ZN7QString16fromAscii_helperEPKci@@Qt_5
+qt_version_tag@@Qt_5.14
+_ZN9QListData11shared_nullE@@Qt_5
+libQt5Core.so.5
+Qt_5.14
+Qt_5
+</code></pre><p>很明显，这一版本是用的 Qt-5.14.0，现在新版的Qt5 是 5.15了，不匹配了。
+只需要安装5.14.0版本即可</p>
+<pre tabindex="0"><code>pip install PyQt5==5.14.0
+</code></pre><p>然后在spyder中就可以运行lvpyio 了。</p>
+<pre tabindex="0"><code>from lvpyio import read_set
+import lvpyio as lv
+
+path = pathlib.Path(&#39;2021-time2-twinnozzle-coldflow/6-4-2d_C001H001S0002&#39;)
+set = lv.read_set(path)
+buffer = s[100]
+img = buffer.as_masked_array().data
+mask = buffer.as_masked_array().mask
+</code></pre><p>大模型带来了又一波信息化革命，人工智能已来，科研工作者如何面对？
+我个人感觉，普通的计算机问题、搜索网页等普通任务真的都可以解决了。所有能网页上搜到的问题，应该都可以靠大模型了。
+人工智能也应该帮助学习理论问题，这学期上课，就准备启发学生们自学的时候用用。
+但深入细微的知识和真知卓见、动手的实验问题，人工智能应该还是不行。
+简单来说，探索未知，这也就是科研工作者还能起到关键作用的地方吧。</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://liuxunchen.github.io/xliu-group/" >
+    &copy;  主页 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
