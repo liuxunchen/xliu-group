@@ -24,6 +24,40 @@
 
     
 
+  
+    <script>
+  
+  if (!window.MathJax) {
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      startup: {
+        ready: () => {
+          MathJax.startup.defaultReady();
+          console.log("MathJax is fully initialized");
+        }
+      }
+    };
+    
+    
+    const script = document.createElement('script');
+ script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+
+
+    script.async = true;
+    script.id = 'MathJax-script';
+    document.head.appendChild(script);
+  }
+</script>
+  
+
     
       
 
@@ -59,11 +93,9 @@
     
 	
 	
-	  
-    
 
-  
-  
+
+
   </head><body class="ma0 avenir bg-near-white production">
 
     
@@ -150,7 +182,7 @@
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>在电子设备的使用中，电源输出电压的稳定性至关重要。今天，我将通过实际测量和数据分析，使用最小二乘法拟合它的输出电压值，结合得到的方差来评判它的输出电压效果。 ( a^2 ) $$ a^2$$</p>
+      <p>在电子设备的使用中，电源输出电压的稳定性至关重要。今天，我将通过实际测量和数据分析，使用最小二乘法拟合它的输出电压值，结合得到的方差来评判它的输出电压效果。</p>
 <h2 id="测试方法">测试方法</h2>
 <p>首先，介绍一下测试方法。我使用万用表作为测量工具，将电源输出电压从 0V 开始，以 0.1V 为步长逐步调节，直至达到 5V。我这里用到的是 Hantek 的 HDM3065 系列的万用表来测量小电源的输出电压，我们将万用表连接到测电压端，红黑表笔分别接到小电源的正负极，用来测量小电源的输出电压。连接到其他的地方以后也可以测试电流、电阻等。我们将红色线接到电源正极，黑色线连接到电源负极。</p>
 <p>该万用表有专用的 IO 控制软件，将万用表连接到电脑以后，我们可以通过电脑的 IO 软件发送指令，万用表便会执行相应的操作。为了保证数据的可靠性，针对小电源的每个电压值，我都进行了五十次测量，并将测量的数据都记录下来。</p>
@@ -160,13 +192,13 @@
 <p>通过计算方差来评估电源输出电压的稳定性。方差是用来衡量一组数据离散程度的统计量，方差越小，说明数据越集中，电源输出电压越稳定。分别计算每个设定电压点下十个测量数值的方差，发现大部分电压点的方差都较小，说明该电源在不同输出电压下的稳定性表现良好。</p>
 <h2 id="测试结果">测试结果</h2>
 <p>测试结果如下图所示：</p>
-<p><img src="/xliu-group/post/dianyuan/image2.png" alt="最小二乘法拟合图">{width=&ldquo;2.5722222222222224in&rdquo; height=&ldquo;1.7152777777777777in&rdquo;}<br>
+<p><img src="/xliu-group/post/dianyuan/image2.png" alt="最小二乘法拟合图">{width=&ldquo;2.5722222222222224in&rdquo; height=&ldquo;1.7152777777777777in&rdquo;}<br />
 <img src="/xliu-group/post/dianyuan/image3.png" alt="残差图">{width=&ldquo;2.7270833333333333in&rdquo; height=&ldquo;1.6368055555555556in&rdquo;}</p>
 <p>我们可以看到该小电源的线性效果还是很好的，方差也很小，说明电压输出比较稳定。右图为残差图，残差图上的点代表对应设定电压下，输出电压实际值与拟合模型预测值的差值，可以看出这些点的值都比较小，残差绝对值大多在 0.006V 以内，数值很小，表明实际值和拟合预测值偏差不大，模型对该电源电压数据的拟合精度较高。这张残差图显示模型拟合效果不错，误差随机且整体很小，能较好描述设定电压和输出电压的关系。</p>
 <p>另外，我还对每个电压值下测量的电压输出值查看其分布规律，根据测试结果生成的数据大致都有如下图的趋势。这里由于数据过多，我就不列出来了，拿出几个图来看一下分布规律即可：</p>
-<p><img src="/xliu-group/post/dianyuan/image4.png" alt="0.9V 电压分布">{width=&ldquo;2.8125in&rdquo; height=&ldquo;1.6881944444444446in&rdquo;}<br>
+<p><img src="/xliu-group/post/dianyuan/image4.png" alt="0.9V 电压分布">{width=&ldquo;2.8125in&rdquo; height=&ldquo;1.6881944444444446in&rdquo;}<br />
 <img src="/xliu-group/post/dianyuan/image5.png" alt="1.1V 电压分布">{width=&ldquo;2.897222222222222in&rdquo; height=&ldquo;1.738888888888889in&rdquo;}</p>
-<p><img src="/xliu-group/post/dianyuan/image6.png" alt="2.9V 电压分布">{width=&ldquo;2.8430555555555554in&rdquo; height=&ldquo;1.70625in&rdquo;}<br>
+<p><img src="/xliu-group/post/dianyuan/image6.png" alt="2.9V 电压分布">{width=&ldquo;2.8430555555555554in&rdquo; height=&ldquo;1.70625in&rdquo;}<br />
 <img src="/xliu-group/post/dianyuan/image7.png" alt="4.3V 电压分布">{width=&ldquo;2.8520833333333333in&rdquo; height=&ldquo;1.7118055555555556in&rdquo;}</p>
 <p>图中每个蓝色柱子代表“输出电压落在某一小区间内的测量次数密度”，且直方图与曲线贴合度较高，故可以看出，电压的波动符合正态分布规律。</p>
 <h2 id="结论">结论</h2>
@@ -347,15 +379,15 @@
 <p><a href="/xliu-group/post/labview_control/read.vi">labview control to read motor position</a></p>
 <p><a href="/xliu-group/post/labview_control/Flame_step_motor.vi">labview control to read/move</a></p>
 <h2 id="1-控制器地址设置">1. 控制器地址设置</h2>
-<p><img src="media/image2.png" alt="地址设置图示"><br>
+<p><img src="media/image2.png" alt="地址设置图示"><br />
 在需要使用多个控制器的情况下，需要设置好控制器的地址，用以在发送控制码的情况下区分不同的控制器。控制器的地址位发生改变相应的代码上的地址位也要改变，那么代码最后的校验码也要重新进行计算。</p>
 <p>例如 <code>01</code> 即为地址位；最后两位为校验码。</p>
 <h2 id="2-使能控制与通讯模式设置">2. 使能控制与通讯模式设置</h2>
 <p>在单独使用 LabVIEW 控制不开启上位机软件的情况下，要在发送距离、速度、启动和启动复位代码前发送使能开的代码，或者其他用于控制通讯模式的代码。例如本次所控制的驱动，不仅要使能开，且要额外增加两个代码，让其控制模式从 I/O 变为通讯模式：</p>
-<p><img src="/xliu-group/post/labview_control/image3.png" alt="通讯模式设置代码"><br>
+<p><img src="/xliu-group/post/labview_control/image3.png" alt="通讯模式设置代码"><br />
 写入两个代码让其都变为通讯模式（使用 485 控制是通讯模式）。</p>
 <h2 id="3-电子齿轮比设置">3. 电子齿轮比设置</h2>
-<p><img src="/xliu-group/post/labview_control/image5.png" alt="电子齿轮比参数设置"><br>
+<p><img src="/xliu-group/post/labview_control/image5.png" alt="电子齿轮比参数设置"><br />
 要开始设置电机的移动量，在此之前要知道电机的电子齿轮比为多少。例如在这个电机的默认齿轮比下，我发送 1000 个脉冲它只能旋转 0.1 圈，因此想要让其在一次动作下旋转一圈，就要发送 10000 个脉冲或者改变它的齿轮比。</p>
 <p>上图即为需要改变的参数的图片，例如我输入是 1000 个脉冲，但我想让其旋转 1/5 圈，但是在现在齿轮比下只能旋转 1/10 圈；现在齿轮比分母为 2500，则我要将其改变为 1250。</p>
 <h2 id="4-转速设置">4. 转速设置</h2>
@@ -363,10 +395,8 @@
 <h2 id="5-启动与复位设置">5. 启动与复位设置</h2>
 <p>在设置启动，需要多次连续启动的情况下，同时也要设置启动复位，确保连续启动的顺利。</p>
 <h2 id="6-多段代码写入延时">6. 多段代码写入延时</h2>
-<p><img src="/xliu-group/post/labview_control/image6.png" alt="延时设置图示"><br>
+<p><img src="/xliu-group/post/labview_control/image6.png" alt="延时设置图示"><br />
 另一个问题是在 LabVIEW 写入时写入多段代码时，使用多个写入 VISA 中间要加入延时的程序（试过顺序结构写入但是感觉还是会崩溃），确保写入的代码不会混乱。</p>
-<h2 id="7-多电机控制方式">7. 多电机控制方式</h2>
-<p>要控制多个电机时可以有多种方式进行选择，首先最简单的你想要实时读取两个电机的参数可以使用轮询的方式，将两个电机的 485 通讯线的 AB 口分别接到一起（这种方式在别的控制方式选择下依然是较好的方式，因为可以不用反复选择不同的 COM 口，且在设置好不同的地址位的情况下，并不会相互影响），选择一个条件结构，将其的条件设置好，分别发送两个对应不同电机的问询码，控制器读到与自己相对应的码时会反馈，这样两个控制器便会轮流反馈其的位置。</p>
     </div>
   <a href="/xliu-group/post/labview_control/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
   </div>
@@ -434,7 +464,7 @@
 <p>当然，定量计算用的数据，都是在经典的LIFbase 软件中包含了的这三个分子的激发态跃迁速率数据，用软件可以用来定量预测计算LIF光谱和算温度。这些基础的工作都是Crosley等大神在1980-1990年代做的[2][3]，那个时候算是原子分子物理的黄金时代吧。甚至更早，二战之后那段时间，是分子光谱发展的黄金年代，把战时大量做的雷达里面的微波源拿出来就可以测微波光谱，不同的分子，不同的波段，一个一个测过去。</p>
 <p>燃烧流体中为何要对这些自由基成像，而不是测稳定的N2和O2这些分子呢？原因是这些稳定分子的HOMO－LUMO能级差比较大，电子跃迁都在真空紫外波段，要在地球大气层中实际应用，就没办法了。所以一般用红外吸收光谱的方法来测水、二氧化碳这些有偶极的稳定分子，毕竟体积分数大多了。</p>
 <p>NdYAG激光的三倍频在355nm，可以直接测到甲醛分子的荧光信号，所以研究甲醛的LIF光谱，也很有实际应用的意义。</p>
-<hr>
+<hr />
 <p>甲醛分子的光谱研究的比较多了，是最早被研究的多原子分子。
 甲醛只有C、O两个重原子，加上两个氢原子，在基态，这四个原子核是平面的。由于原子数多，甲醛的光谱就比较复杂，不像双原子那样，只需要考虑一个转动常数B，而要考虑A B C 三个转动常数。1983年 Dennis Clouthier 和 Ramsay 在Annual Review of Physical Chemistry 上的综述[4]，分子的基态和激发态的光谱参数基本都有了，可以用来对甲醛分子在355nm 处激发态的吸收光谱做仿真。</p>
 <figure><img src="/xliu-group/post/ch2o/absorption.png"><figcaption>
@@ -458,7 +488,7 @@ Clouthier综述中提到数据来自 Ramsay 和 Till 未发表的工作，后人
 好在，只测温的话对浓度的控制要求不高。我们直接在coflow 扩散火焰里面测火焰燃烧中产生的甲醛。
 层流火焰很稳定，我们可以一个点一个点扫描激光波长，拍PLIF信号，得到每个点上的LIF光谱。结合层流火焰里面每个点的温度，就知道了不同温度下的甲醛LIF光谱。
 这里，特别要感谢金汉峰博士，帮忙找人做的仿真计算，算了3个不同的火焰。未来可以都测测，实验和仿真对照一下。</p>
-<hr>
+<hr />
 <p>甲醛双色PLIF测量，借鉴了用OPO的单激光单相机的串脉冲激光双色PLIF方法，也是很新的方法。
 很好用，发出一对不同波长的激光对，不用管时间和空间上的波动了。
 用355nm 三倍频直接测，激光能量大，很方便。

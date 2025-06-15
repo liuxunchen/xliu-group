@@ -6,7 +6,7 @@
     
     <title>利用Hantek万用表对小电源输出电压结果的测试 | 主页</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="在电子设备的使用中，电源输出电压的稳定性至关重要。今天，我将通过实际测量和数据分析，使用最小二乘法拟合它的输出电压值，结合得到的方差来评判它的输出电压效果。 ( a^2 ) $$ a^2$$
+    <meta name="description" content="在电子设备的使用中，电源输出电压的稳定性至关重要。今天，我将通过实际测量和数据分析，使用最小二乘法拟合它的输出电压值，结合得到的方差来评判它的输出电压效果。
 测试方法
 首先，介绍一下测试方法。我使用万用表作为测量工具，将电源输出电压从 0V 开始，以 0.1V 为步长逐步调节，直至达到 5V。我这里用到的是 Hantek 的 HDM3065 系列的万用表来测量小电源的输出电压，我们将万用表连接到测电压端，红黑表笔分别接到小电源的正负极，用来测量小电源的输出电压。连接到其他的地方以后也可以测试电流、电阻等。我们将红色线接到电源正极，黑色线连接到电源负极。
 该万用表有专用的 IO 控制软件，将万用表连接到电脑以后，我们可以通过电脑的 IO 软件发送指令，万用表便会执行相应的操作。为了保证数据的可靠性，针对小电源的每个电压值，我都进行了五十次测量，并将测量的数据都记录下来。
@@ -44,6 +44,40 @@
 
     
 
+  
+    <script>
+  
+  if (!window.MathJax) {
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      startup: {
+        ready: () => {
+          MathJax.startup.defaultReady();
+          console.log("MathJax is fully initialized");
+        }
+      }
+    };
+    
+    
+    const script = document.createElement('script');
+ script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+
+
+    script.async = true;
+    script.id = 'MathJax-script';
+    document.head.appendChild(script);
+  }
+</script>
+  
+
     
       
 
@@ -58,7 +92,7 @@
     <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/post/dianyuan/">
   <meta property="og:site_name" content="主页">
   <meta property="og:title" content="利用Hantek万用表对小电源输出电压结果的测试">
-  <meta property="og:description" content="在电子设备的使用中，电源输出电压的稳定性至关重要。今天，我将通过实际测量和数据分析，使用最小二乘法拟合它的输出电压值，结合得到的方差来评判它的输出电压效果。 ( a^2 ) $$ a^2$$
+  <meta property="og:description" content="在电子设备的使用中，电源输出电压的稳定性至关重要。今天，我将通过实际测量和数据分析，使用最小二乘法拟合它的输出电压值，结合得到的方差来评判它的输出电压效果。
 测试方法 首先，介绍一下测试方法。我使用万用表作为测量工具，将电源输出电压从 0V 开始，以 0.1V 为步长逐步调节，直至达到 5V。我这里用到的是 Hantek 的 HDM3065 系列的万用表来测量小电源的输出电压，我们将万用表连接到测电压端，红黑表笔分别接到小电源的正负极，用来测量小电源的输出电压。连接到其他的地方以后也可以测试电流、电阻等。我们将红色线接到电源正极，黑色线连接到电源负极。
 该万用表有专用的 IO 控制软件，将万用表连接到电脑以后，我们可以通过电脑的 IO 软件发送指令，万用表便会执行相应的操作。为了保证数据的可靠性，针对小电源的每个电压值，我都进行了五十次测量，并将测量的数据都记录下来。
 {width=“5.7652777777777775in” height=“2.4194444444444443in”}
@@ -82,7 +116,7 @@
     <meta property="article:modified_time" content="2025-06-15T00:00:00+00:00">
 
   <meta itemprop="name" content="利用Hantek万用表对小电源输出电压结果的测试">
-  <meta itemprop="description" content="在电子设备的使用中，电源输出电压的稳定性至关重要。今天，我将通过实际测量和数据分析，使用最小二乘法拟合它的输出电压值，结合得到的方差来评判它的输出电压效果。 ( a^2 ) $$ a^2$$
+  <meta itemprop="description" content="在电子设备的使用中，电源输出电压的稳定性至关重要。今天，我将通过实际测量和数据分析，使用最小二乘法拟合它的输出电压值，结合得到的方差来评判它的输出电压效果。
 测试方法 首先，介绍一下测试方法。我使用万用表作为测量工具，将电源输出电压从 0V 开始，以 0.1V 为步长逐步调节，直至达到 5V。我这里用到的是 Hantek 的 HDM3065 系列的万用表来测量小电源的输出电压，我们将万用表连接到测电压端，红黑表笔分别接到小电源的正负极，用来测量小电源的输出电压。连接到其他的地方以后也可以测试电流、电阻等。我们将红色线接到电源正极，黑色线连接到电源负极。
 该万用表有专用的 IO 控制软件，将万用表连接到电脑以后，我们可以通过电脑的 IO 软件发送指令，万用表便会执行相应的操作。为了保证数据的可靠性，针对小电源的每个电压值，我都进行了五十次测量，并将测量的数据都记录下来。
 {width=“5.7652777777777775in” height=“2.4194444444444443in”}
@@ -101,10 +135,10 @@
 结论 通过最小二乘法得到了输出电压的估算值，我们大致了解到了该小电源输出电压的大致水平；结合方差的计算结果，我们对其稳定性也有了清晰的认知。从本次测量结果来看，该小电源的输出电压效果整体表现良好，在每个电压值下都能提供接近于小电源显示电压值的输出电压；但会存在一定的波动，所以在对于电压稳定性较高要求的条件下不适用。在今后的电子项目的实验中，掌握这种评估电源输出电压效果的方法，有助于我们更好地选择合适的电源，保证项目的顺利进行。">
   <meta itemprop="datePublished" content="2025-06-15T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-06-15T00:00:00+00:00">
-  <meta itemprop="wordCount" content="50">
+  <meta itemprop="wordCount" content="45">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="利用Hantek万用表对小电源输出电压结果的测试">
-  <meta name="twitter:description" content="在电子设备的使用中，电源输出电压的稳定性至关重要。今天，我将通过实际测量和数据分析，使用最小二乘法拟合它的输出电压值，结合得到的方差来评判它的输出电压效果。 ( a^2 ) $$ a^2$$
+  <meta name="twitter:description" content="在电子设备的使用中，电源输出电压的稳定性至关重要。今天，我将通过实际测量和数据分析，使用最小二乘法拟合它的输出电压值，结合得到的方差来评判它的输出电压效果。
 测试方法 首先，介绍一下测试方法。我使用万用表作为测量工具，将电源输出电压从 0V 开始，以 0.1V 为步长逐步调节，直至达到 5V。我这里用到的是 Hantek 的 HDM3065 系列的万用表来测量小电源的输出电压，我们将万用表连接到测电压端，红黑表笔分别接到小电源的正负极，用来测量小电源的输出电压。连接到其他的地方以后也可以测试电流、电阻等。我们将红色线接到电源正极，黑色线连接到电源负极。
 该万用表有专用的 IO 控制软件，将万用表连接到电脑以后，我们可以通过电脑的 IO 软件发送指令，万用表便会执行相应的操作。为了保证数据的可靠性，针对小电源的每个电压值，我都进行了五十次测量，并将测量的数据都记录下来。
 {width=“5.7652777777777775in” height=“2.4194444444444443in”}
@@ -126,11 +160,9 @@
     
 	
 	
-	  
-    
 
-  
-  
+
+
   </head><body class="ma0 avenir bg-near-white production">
 
     
@@ -228,7 +260,7 @@
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>在电子设备的使用中，电源输出电压的稳定性至关重要。今天，我将通过实际测量和数据分析，使用最小二乘法拟合它的输出电压值，结合得到的方差来评判它的输出电压效果。 ( a^2 ) $$ a^2$$</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>在电子设备的使用中，电源输出电压的稳定性至关重要。今天，我将通过实际测量和数据分析，使用最小二乘法拟合它的输出电压值，结合得到的方差来评判它的输出电压效果。</p>
 <h2 id="测试方法">测试方法</h2>
 <p>首先，介绍一下测试方法。我使用万用表作为测量工具，将电源输出电压从 0V 开始，以 0.1V 为步长逐步调节，直至达到 5V。我这里用到的是 Hantek 的 HDM3065 系列的万用表来测量小电源的输出电压，我们将万用表连接到测电压端，红黑表笔分别接到小电源的正负极，用来测量小电源的输出电压。连接到其他的地方以后也可以测试电流、电阻等。我们将红色线接到电源正极，黑色线连接到电源负极。</p>
 <p>该万用表有专用的 IO 控制软件，将万用表连接到电脑以后，我们可以通过电脑的 IO 软件发送指令，万用表便会执行相应的操作。为了保证数据的可靠性，针对小电源的每个电压值，我都进行了五十次测量，并将测量的数据都记录下来。</p>
@@ -238,13 +270,13 @@
 <p>通过计算方差来评估电源输出电压的稳定性。方差是用来衡量一组数据离散程度的统计量，方差越小，说明数据越集中，电源输出电压越稳定。分别计算每个设定电压点下十个测量数值的方差，发现大部分电压点的方差都较小，说明该电源在不同输出电压下的稳定性表现良好。</p>
 <h2 id="测试结果">测试结果</h2>
 <p>测试结果如下图所示：</p>
-<p><img src="/xliu-group/post/dianyuan/image2.png" alt="最小二乘法拟合图">{width=&ldquo;2.5722222222222224in&rdquo; height=&ldquo;1.7152777777777777in&rdquo;}<br>
+<p><img src="/xliu-group/post/dianyuan/image2.png" alt="最小二乘法拟合图">{width=&ldquo;2.5722222222222224in&rdquo; height=&ldquo;1.7152777777777777in&rdquo;}<br />
 <img src="/xliu-group/post/dianyuan/image3.png" alt="残差图">{width=&ldquo;2.7270833333333333in&rdquo; height=&ldquo;1.6368055555555556in&rdquo;}</p>
 <p>我们可以看到该小电源的线性效果还是很好的，方差也很小，说明电压输出比较稳定。右图为残差图，残差图上的点代表对应设定电压下，输出电压实际值与拟合模型预测值的差值，可以看出这些点的值都比较小，残差绝对值大多在 0.006V 以内，数值很小，表明实际值和拟合预测值偏差不大，模型对该电源电压数据的拟合精度较高。这张残差图显示模型拟合效果不错，误差随机且整体很小，能较好描述设定电压和输出电压的关系。</p>
 <p>另外，我还对每个电压值下测量的电压输出值查看其分布规律，根据测试结果生成的数据大致都有如下图的趋势。这里由于数据过多，我就不列出来了，拿出几个图来看一下分布规律即可：</p>
-<p><img src="/xliu-group/post/dianyuan/image4.png" alt="0.9V 电压分布">{width=&ldquo;2.8125in&rdquo; height=&ldquo;1.6881944444444446in&rdquo;}<br>
+<p><img src="/xliu-group/post/dianyuan/image4.png" alt="0.9V 电压分布">{width=&ldquo;2.8125in&rdquo; height=&ldquo;1.6881944444444446in&rdquo;}<br />
 <img src="/xliu-group/post/dianyuan/image5.png" alt="1.1V 电压分布">{width=&ldquo;2.897222222222222in&rdquo; height=&ldquo;1.738888888888889in&rdquo;}</p>
-<p><img src="/xliu-group/post/dianyuan/image6.png" alt="2.9V 电压分布">{width=&ldquo;2.8430555555555554in&rdquo; height=&ldquo;1.70625in&rdquo;}<br>
+<p><img src="/xliu-group/post/dianyuan/image6.png" alt="2.9V 电压分布">{width=&ldquo;2.8430555555555554in&rdquo; height=&ldquo;1.70625in&rdquo;}<br />
 <img src="/xliu-group/post/dianyuan/image7.png" alt="4.3V 电压分布">{width=&ldquo;2.8520833333333333in&rdquo; height=&ldquo;1.7118055555555556in&rdquo;}</p>
 <p>图中每个蓝色柱子代表“输出电压落在某一小区间内的测量次数密度”，且直方图与曲线贴合度较高，故可以看出，电压的波动符合正态分布规律。</p>
 <h2 id="结论">结论</h2>

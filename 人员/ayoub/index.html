@@ -28,6 +28,40 @@ Ayoub Attou, male, born in 2000 in Tangier, Morocco, graduated from Abdelmalek E
 
     
 
+  
+    <script>
+  
+  if (!window.MathJax) {
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      startup: {
+        ready: () => {
+          MathJax.startup.defaultReady();
+          console.log("MathJax is fully initialized");
+        }
+      }
+    };
+    
+    
+    const script = document.createElement('script');
+ script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+
+
+    script.async = true;
+    script.id = 'MathJax-script';
+    document.head.appendChild(script);
+  }
+</script>
+  
+
     
       
 
@@ -65,11 +99,9 @@ Ayoub Attou, male, born in 2000 in Tangier, Morocco, graduated from Abdelmalek E
     
 	
 	
-	  
-    
 
-  
-  
+
+
   </head><body class="ma0 avenir bg-near-white production">
 
     

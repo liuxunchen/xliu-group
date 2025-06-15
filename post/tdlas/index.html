@@ -46,6 +46,40 @@ k(v) 在波数（wavenumber）轴上的积分得到线强 S，单位是[cm-1/ mo
 
     
 
+  
+    <script>
+  
+  if (!window.MathJax) {
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      startup: {
+        ready: () => {
+          MathJax.startup.defaultReady();
+          console.log("MathJax is fully initialized");
+        }
+      }
+    };
+    
+    
+    const script = document.createElement('script');
+ script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+
+
+    script.async = true;
+    script.id = 'MathJax-script';
+    document.head.appendChild(script);
+  }
+</script>
+  
+
     
       
 
@@ -116,11 +150,9 @@ d \tau(v) = k(v) N dl
     
 	
 	
-	  
-    
 
-  
-  
+
+
   </head><body class="ma0 avenir bg-near-white production">
 
     
