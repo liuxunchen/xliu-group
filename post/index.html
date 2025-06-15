@@ -49,8 +49,8 @@
 
   <meta itemprop="name" content="科研笔记">
   <meta itemprop="description" content="山东科技大学 机械电子工程学院 激光诊断实验室">
-  <meta itemprop="datePublished" content="2025-05-12T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-05-12T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2025-06-15T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-06-15T00:00:00+00:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="科研笔记">
   <meta name="twitter:description" content="山东科技大学 机械电子工程学院 激光诊断实验室">
@@ -130,6 +130,156 @@
       
     </section>
     <aside class="flex-ns flex-wrap justify-around mt5">
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        June 15, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/post/dianyuan/" class="link black dim">
+        利用Hantek万用表对小电源输出电压结果的测试
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>在电子设备的使用中，电源输出电压的稳定性至关重要。今天，我将通过实际测量和数据分析，使用最小二乘法拟合它的输出电压值，结合得到的方差来评判它的输出电压效果。</p>
+<h2 id="测试方法">测试方法</h2>
+<p>首先，介绍一下测试方法。我使用万用表作为测量工具，将电源输出电压从 0V 开始，以 0.1V 为步长逐步调节，直至达到 5V。我这里用到的是 Hantek 的 HDM3065 系列的万用表来测量小电源的输出电压，我们将万用表连接到测电压端，红黑表笔分别接到小电源的正负极，用来测量小电源的输出电压。连接到其他的地方以后也可以测试电流、电阻等。我们将红色线接到电源正极，黑色线连接到电源负极。</p>
+<p>该万用表有专用的 IO 控制软件，将万用表连接到电脑以后，我们可以通过电脑的 IO 软件发送指令，万用表便会执行相应的操作。为了保证数据的可靠性，针对小电源的每个电压值，我都进行了五十次测量，并将测量的数据都记录下来。</p>
+<p><img src="/xliu-group/post/dianyuan/image1.png" alt="测量连接示意图">{width=&ldquo;5.7652777777777775in&rdquo; height=&ldquo;2.4194444444444443in&rdquo;}</p>
+<h2 id="数据处理">数据处理</h2>
+<p>数据记录下来之后，我们需要用到 Python 来处理这些数据，运用最小二乘法对数据进行处理。最小二乘法的核心思想是通过最小化误差的平方和寻找数据的最佳函数匹配。在这里，我们假设电源输出电压与设定电压之间存在线性关系，通过最小二乘法拟合出一条直线，来描述这种关系。经过计算，可以得到拟合直线的方程。</p>
+<p>通过计算方差来评估电源输出电压的稳定性。方差是用来衡量一组数据离散程度的统计量，方差越小，说明数据越集中，电源输出电压越稳定。分别计算每个设定电压点下十个测量数值的方差，发现大部分电压点的方差都较小，说明该电源在不同输出电压下的稳定性表现良好。</p>
+<h2 id="测试结果">测试结果</h2>
+<p>测试结果如下图所示：</p>
+<p><img src="/xliu-group/post/dianyuan/image2.png" alt="最小二乘法拟合图">{width=&ldquo;2.5722222222222224in&rdquo; height=&ldquo;1.7152777777777777in&rdquo;}<br>
+<img src="/xliu-group/post/dianyuan/image3.png" alt="残差图">{width=&ldquo;2.7270833333333333in&rdquo; height=&ldquo;1.6368055555555556in&rdquo;}</p>
+<p>我们可以看到该小电源的线性效果还是很好的，方差也很小，说明电压输出比较稳定。右图为残差图，残差图上的点代表对应设定电压下，输出电压实际值与拟合模型预测值的差值，可以看出这些点的值都比较小，残差绝对值大多在 0.006V 以内，数值很小，表明实际值和拟合预测值偏差不大，模型对该电源电压数据的拟合精度较高。这张残差图显示模型拟合效果不错，误差随机且整体很小，能较好描述设定电压和输出电压的关系。</p>
+<p>另外，我还对每个电压值下测量的电压输出值查看其分布规律，根据测试结果生成的数据大致都有如下图的趋势。这里由于数据过多，我就不列出来了，拿出几个图来看一下分布规律即可：</p>
+<p><img src="/xliu-group/post/dianyuan/image4.png" alt="0.9V 电压分布">{width=&ldquo;2.8125in&rdquo; height=&ldquo;1.6881944444444446in&rdquo;}<br>
+<img src="/xliu-group/post/dianyuan/image5.png" alt="1.1V 电压分布">{width=&ldquo;2.897222222222222in&rdquo; height=&ldquo;1.738888888888889in&rdquo;}</p>
+<p><img src="/xliu-group/post/dianyuan/image6.png" alt="2.9V 电压分布">{width=&ldquo;2.8430555555555554in&rdquo; height=&ldquo;1.70625in&rdquo;}<br>
+<img src="/xliu-group/post/dianyuan/image7.png" alt="4.3V 电压分布">{width=&ldquo;2.8520833333333333in&rdquo; height=&ldquo;1.7118055555555556in&rdquo;}</p>
+<p>图中每个蓝色柱子代表“输出电压落在某一小区间内的测量次数密度”，且直方图与曲线贴合度较高，故可以看出，电压的波动符合正态分布规律。</p>
+<h2 id="结论">结论</h2>
+<p>通过最小二乘法得到了输出电压的估算值，我们大致了解到了该小电源输出电压的大致水平；结合方差的计算结果，我们对其稳定性也有了清晰的认知。从本次测量结果来看，该小电源的输出电压效果整体表现良好，在每个电压值下都能提供接近于小电源显示电压值的输出电压；但会存在一定的波动，所以在对于电压稳定性较高要求的条件下不适用。在今后的电子项目的实验中，掌握这种评估电源输出电压效果的方法，有助于我们更好地选择合适的电源，保证项目的顺利进行。</p>
+    </div>
+  <a href="/xliu-group/post/dianyuan/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        June 15, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/post/guanglu/" class="link black dim">
+        使用镜片搭建光路发出片光拍摄粒子
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="设备准备">设备准备</h2>
+<p>实验所需的镜片如下所示：</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">型号</th>
+          <th style="text-align: left">名称</th>
+          <th style="text-align: left">型号</th>
+          <th style="text-align: left">名称</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">D2       5.4*3mm（中心厚）</td>
+          <td style="text-align: left">石英平凹柱面镜  F30mm</td>
+          <td style="text-align: left">D25.4mm</td>
+          <td style="text-align: left">石英平凸透镜</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">F=-25mm</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">50（母线方向）<em>100</em>2mm（边厚）F500mm</td>
+          <td style="text-align: left">石英平凸柱面镜</td>
+          <td style="text-align: left">D25.4mm</td>
+          <td style="text-align: left">石英平凸透镜</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">F35mm</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">100（母线方向）<em>50</em>2mm（边厚）F1000mm</td>
+          <td style="text-align: left">石英平凸柱面镜</td>
+          <td style="text-align: left">D25.4mm</td>
+          <td style="text-align: left">石英平凸透镜</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">F40mm</td>
+          <td style="text-align: left"></td>
+      </tr>
+  </tbody>
+</table>
+<p>由于定制的平凸柱面镜尺寸较大，需定制镜架，其示意图如下图所示：</p>
+<p><img src="/xliu-group/post/guanglu/image1.png" alt="镜架示意图1">
+<img src="/xliu-group/post/guanglu/image2.png" alt="镜架示意图2"></p>
+<p>对其进行组装后，实物图如下图所示：</p>
+<p><img src="/xliu-group/post/guanglu/image3.png" alt="组装实物图"></p>
+<p>小的笼板与大的镜架之间需要用一个转接板来连接，转接板的尺寸与形状如下图所示：</p>
+<p><img src="/xliu-group/post/guanglu/image4.png" alt="转接板示意图">{width=&ldquo;5.761805555555555in&rdquo; height=&ldquo;4.747222222222222in&rdquo;}</p>
+<h2 id="实验原理">实验原理</h2>
+<p><img src="/xliu-group/post/guanglu/image5.png" alt="光路结构图">{width=&ldquo;5.763194444444444in&rdquo; height=&ldquo;1.2166666666666666in&rdquo;}</p>
+<p>如图所示即为光路的结构：</p>
+<ol>
+<li>为紫外LED光源，利用该光源发出扩散状的紫外光。</li>
+<li>3分别为焦距为40mm和焦距为35mm的平凸透镜，且都为平面朝向光源，利用两个平凸透镜聚焦原扩散的光。</li>
+<li>为焦距30mm的平凸透镜，并且放置的方式为平面背向光源，利用该透镜将原本聚焦的光线进行发散，使其发出的光束为一接近平行的光束。</li>
+<li>为转接板，用于连接小的笼板与大的镜架。</li>
+<li>为平凹柱面镜，将平行光束向两个方向发散，形成一束椭圆形的光束。</li>
+<li>8均为平凸柱面镜，平凸柱面镜在母线方向具有曲率，因此可以在母线方向将平行光束聚焦成为一条线，因此7、8两平凸柱面镜分别在两个母线方向上将光束聚焦，形成一束片光。</li>
+</ol>
+<p>在8的后面接近比色皿的地方放置一个光学狭缝，来控制通过的光，形成片光。</p>
+<p>最终形成的片光大约为一束长度大约10cm，宽度大约2mm的片光。</p>
+<h2 id="实验过程">实验过程</h2>
+<p>由于光路搭建的前期，定制的镜架还没有制作好，因此先利用平行光束对比色皿里的粒子进行照射，并利用相机对其进行拍摄，但由于前期光束会将整个比色皿都照亮，而且前期对于BAM蓝粉量的把控没有做好，因此导致第一次拍摄的效果不尽人意，第一次拍摄的效果如图下图所示：</p>
+<p><img src="/xliu-group/post/guanglu/image6.png" alt="第一次拍摄效果">{width=&ldquo;4.088888888888889in&rdquo; height=&ldquo;3.5881944444444445in&rdquo;}</p>
+<p>可以看到蓝色荧光粒子过于繁杂，整个被紫外光照亮的区域都会被拍到，因此效果并不理想。</p>
+<p>待定制镜架到了以后，将其搭建成如原理图所示的光路，使其形成片光，用片光照射比色皿，只让片光区域的粒子发亮，并且减少BAM蓝粉的用量，拍摄的结果如下图所示：</p>
+<p><img src="/xliu-group/post/guanglu/image7.png" alt="第二次拍摄效果1">{width=&ldquo;2.7604166666666665in&rdquo; height=&ldquo;2.2090277777777776in&rdquo;}
+<img src="/xliu-group/post/guanglu/image8.png" alt="第二次拍摄效果2">{width=&ldquo;2.765972222222222in&rdquo; height=&ldquo;2.213888888888889in&rdquo;}</p>
+<p>可以看得出来，粒子数量明显减少，不像第一次拍摄时那么混乱，不过此次相机调试没有进行好，导致图像偏暗，后续还需对相机继续进行调试。</p>
+<p>该光路并不完善，由于其间隔的距离较长，利用6mm光杆固定不稳定，需要在利用丝杆来固定。另外想要避免其他光源的干涉，并为了保证镜片的干净，需要在光路的外围添加一层铝发黑的铝板，用来隔绝其他光源，并可以使镜片在其他环境下依旧保持干净。</p>
+    </div>
+  <a href="/xliu-group/post/guanglu/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+  </div>
+
+        </div>
       
         <div class="relative w-100 w-30-l mb4 bg-white">
             <div class="mb3 pa4 blue overflow-hidden">
