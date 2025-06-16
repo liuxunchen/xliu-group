@@ -83,8 +83,8 @@
 
   <meta itemprop="name" content="科研笔记">
   <meta itemprop="description" content="山东科技大学 机械电子工程学院 激光诊断实验室">
-  <meta itemprop="datePublished" content="2025-06-15T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-06-15T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2025-06-16T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-06-16T00:00:00+00:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="科研笔记">
   <meta name="twitter:description" content="山东科技大学 机械电子工程学院 激光诊断实验室">
@@ -168,6 +168,86 @@
       
     </section>
     <aside class="flex-ns flex-wrap justify-around mt5">
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        June 16, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/post/math/" class="link black dim">
+        在hugo网页中实现latex显示
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>有一次多亏了DeepSeek的帮忙，最近搞定了如何在我们这个网站中显示latex 公式的问题。</p>
+<p>用 hugo 编译 markdown 文件的方式产生网页，主要参考官方的这个说明文件：
+<a href="https://gohugo.io/content-management/mathematics/">Mathematics_in_Markdown</a> 。
+但一直不能正常显示。
+最近用DeepSeek 找了几个方法试验，终于不经意间解决了问题。</p>
+<p>需要3个步骤：</p>
+<ul>
+<li>修改设置文件 /config.toml</li>
+</ul>
+<pre tabindex="0"><code>[markup.goldmark.renderer]
+unsafe = true  # 允许原始HTML
+xHTML = true
+
+[markup]
+[markup.goldmark]
+  [markup.goldmark.parser]
+    attribute = true
+    autoHeadingID = true
+[params]
+math = true
+</code></pre><ul>
+<li>配置模板 /layouts/_default/baseof.html ，需要包含下面内容</li>
+</ul>
+<pre tabindex="0"><code>  {{ if .Param &#34;math&#34; }}
+  {{ partial &#34;math.html&#34; . }}
+{{ end }}
+</code></pre><ul>
+<li>添加 mathjax /layouts/partials/math.html 。注意，这里和官方说明文件不一样，主要是DeepSeek 给出建议改这个文件，发现如果延迟初始化Mathjax的执行就好了。发现是需要保证Mathjax 正确的初始化。</li>
+</ul>
+<pre tabindex="0"><code>&lt;script&gt;
+// 添加初始化检查
+if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]],
+      displayMath: [[&#39;$$&#39;, &#39;$$&#39;], [&#39;\\[&#39;, &#39;\\]&#39;]],
+      processEscapes: true
+    },
+    svg: {
+      fontCache: &#39;global&#39;
+    },
+    startup: {
+      ready: () =&gt; {
+        MathJax.startup.defaultReady();
+        console.log(&#34;MathJax is fully initialized&#34;);
+      }
+    }
+  };
+  
+  // 创建并加载 MathJax 脚本
+  const script = document.createElement(&#39;script&#39;);
+script.src = &#39;https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js&#39;;
+//script.src = &#39;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js&#39;;
+// 或
+// script.src = &#39;https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-svg.js&#39;;
+  script.async = true;
+  script.id = &#39;MathJax-script&#39;;
+  document.head.appendChild(script);
+}
+&lt;/script&gt;
+</code></pre>
+    </div>
+  <a href="/xliu-group/post/math/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1"></a>
+  </div>
+
+        </div>
       
         <div class="relative w-100 w-30-l mb4 bg-white">
             <div class="mb3 pa4 blue overflow-hidden">

@@ -6,8 +6,15 @@
     <description>Recent content in 激光诊断实验室 on 主页</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 15 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 16 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://liuxunchen.github.io/xliu-group/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在hugo网页中实现latex显示</title>
+      <link>https://liuxunchen.github.io/xliu-group/post/math/</link>
+      <pubDate>Mon, 16 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://liuxunchen.github.io/xliu-group/post/math/</guid>
+      <description>&lt;p&gt;有一次多亏了DeepSeek的帮忙，最近搞定了如何在我们这个网站中显示latex 公式的问题。&lt;/p&gt;&#xA;&lt;p&gt;用 hugo 编译 markdown 文件的方式产生网页，主要参考官方的这个说明文件：&#xA;&lt;a href=&#34;https://gohugo.io/content-management/mathematics/&#34;&gt;Mathematics_in_Markdown&lt;/a&gt; 。&#xA;但一直不能正常显示。&#xA;最近用DeepSeek 找了几个方法试验，终于不经意间解决了问题。&lt;/p&gt;&#xA;&lt;p&gt;需要3个步骤：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;修改设置文件 /config.toml&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[markup.goldmark.renderer]&#xA;unsafe = true  # 允许原始HTML&#xA;xHTML = true&#xA;&#xA;[markup]&#xA;[markup.goldmark]&#xA;  [markup.goldmark.parser]&#xA;    attribute = true&#xA;    autoHeadingID = true&#xA;[params]&#xA;math = true&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;&#xA;&lt;li&gt;配置模板 /layouts/_default/baseof.html ，需要包含下面内容&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  {{ if .Param &amp;#34;math&amp;#34; }}&#xA;  {{ partial &amp;#34;math.html&amp;#34; . }}&#xA;{{ end }}&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;&#xA;&lt;li&gt;添加 mathjax /layouts/partials/math.html 。注意，这里和官方说明文件不一样，主要是DeepSeek 给出建议改这个文件，发现如果延迟初始化Mathjax的执行就好了。发现是需要保证Mathjax 正确的初始化。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;lt;script&amp;gt;&#xA;// 添加初始化检查&#xA;if (!window.MathJax) {&#xA;  window.MathJax = {&#xA;    tex: {&#xA;      inlineMath: [[&amp;#39;$&amp;#39;, &amp;#39;$&amp;#39;], [&amp;#39;\\(&amp;#39;, &amp;#39;\\)&amp;#39;]],&#xA;      displayMath: [[&amp;#39;$$&amp;#39;, &amp;#39;$$&amp;#39;], [&amp;#39;\\[&amp;#39;, &amp;#39;\\]&amp;#39;]],&#xA;      processEscapes: true&#xA;    },&#xA;    svg: {&#xA;      fontCache: &amp;#39;global&amp;#39;&#xA;    },&#xA;    startup: {&#xA;      ready: () =&amp;gt; {&#xA;        MathJax.startup.defaultReady();&#xA;        console.log(&amp;#34;MathJax is fully initialized&amp;#34;);&#xA;      }&#xA;    }&#xA;  };&#xA;  &#xA;  // 创建并加载 MathJax 脚本&#xA;  const script = document.createElement(&amp;#39;script&amp;#39;);&#xA;script.src = &amp;#39;https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js&amp;#39;;&#xA;//script.src = &amp;#39;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js&amp;#39;;&#xA;// 或&#xA;// script.src = &amp;#39;https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-svg.js&amp;#39;;&#xA;  script.async = true;&#xA;  script.id = &amp;#39;MathJax-script&amp;#39;;&#xA;  document.head.appendChild(script);&#xA;}&#xA;&amp;lt;/script&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
     <item>
       <title>利用Hantek万用表对小电源输出电压结果的测试</title>
       <link>https://liuxunchen.github.io/xliu-group/post/dianyuan/</link>
