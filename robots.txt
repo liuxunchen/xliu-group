@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://liuxunchen.github.io/sitemap.xml
