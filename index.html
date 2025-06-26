@@ -60,8 +60,8 @@ liuxunchen@sdust.edu.cn
 15800365152
 青岛市黄岛区前湾港路579号 山东科技大学 机械电子工程学院
 矿山机械实验室 213/223">
-  <meta itemprop="datePublished" content="2025-06-22T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-06-22T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2025-06-23T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-06-23T00:00:00+00:00">
   <meta itemprop="wordCount" content="14">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="山东科技大学 机械电子工程学院 燃烧诊断实验室">
@@ -90,8 +90,9 @@ if (typeof MathJax === "undefined") {
     
     
     const script = document.createElement('script');
-    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
-    script.async = true;
+
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js';
+script.async = true;
     script.crossOrigin = 'anonymous';
     document.head.appendChild(script);
     
@@ -189,6 +190,95 @@ if (typeof MathJax === "undefined") {
 
       <section class="w-100 mw8">
         
+        
+          <div class="w-100 mb4 relative">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+          
+        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+          <a href="/xliu-group/post/crossflow/" class="db grow">
+            <img src="https://liuxunchen.github.io/xliu-group/images/sdust.jpg" class="img" alt="image from 横向射流轨迹的拟合">
+          </a>
+        </div>
+      
+      <div class="blah w-100 w-60-ns pl3-ns">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/xliu-group/post/crossflow/" class="color-inherit dim link">
+            横向射流轨迹的拟合
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <p>横向射流（crossflow）是很常见的一种流体混合结构，当一股小尺寸的射流垂直进入大尺寸的横流时，垂直的射流就会逐渐转到横向过来，形成横向射流。
+在这个过程中形成的涡系主要包括剪切涡、马蹄涡、尾迹涡和对旋涡，其中剪切涡和对旋涡的生成发展、传播和最终破碎是横向射流混合增强的主要因素。通过控制射流和主流的动量比，可以控制轨迹，改变穿透深度和形成的火焰长度。</p>
+<p>远场的横向射流的轨迹一般可以用幂函数表示[1,2]。如图1，横向射流轨迹的可以由速度比$r$和射流直径$d$进行无量纲化。</p>
+$$
+ \left(\frac{y}{rd}\right) = A \left(\frac{x}{rd}\right)^{B}
+$$<p>典型的轨迹方程中，$B\approx \frac{1}{3}$。</p>
+<p>以我们实验测量的横向射流的轨迹为例。</p>
+<figure><img src="/xliu-group/post/crossflow/1.png"><figcaption>
+      <h4>图1 实验原始图片、拟合轨迹、和以轨迹为坐标转化后的图像</h4>
+    </figcaption>
+</figure>
+
+<hr>
+<p>拟合得到轨迹方程包含如下几步：</p>
+<ol>
+<li>在每个高度，也就是$y$坐标上，找到浓度或速度的最大值对应的$x$值。这里找到的最大点坐标还比较粗糙，最好再和相邻的几个点通过抛物线拟合的方法，得到更精确的坐标。
+如图2 ，得到的最大点基本描绘出了轨迹，但还需要修剪一下数据。</li>
+</ol>
+<figure><img src="/xliu-group/post/crossflow/2.png"><figcaption>
+      <h4>图2 找最大点</h4>
+    </figcaption>
+</figure>
+
+<ol start="2">
+<li>去掉头尾部分。去掉轨迹后面几个点比较好理解，因为到轨迹最后信噪比很低了；去除开头几个点是为什么呢？
+以实验测量的双喷嘴横向射流为例子，图3中给出了初步找到的中心线和修正后的中心线。</li>
+</ol>
+<figure><img src="/xliu-group/post/crossflow/3.png"><figcaption>
+      <h4>图3 修正后的中心线</h4>
+    </figcaption>
+</figure>
+
+<ol start="3">
+<li>下一步就是拟合了。首先要把找到的轨迹起始点归零。然后求log10 ，得到拟合直线，此时会发现需要去掉开头的非常接近零的几个点，也就是近场不符合幂函数规律的点，便于拟合。
+从图4中可以看出，拟合的直线需要确定两个拟合变量，一个是拟合长度范围，一个是拟合起始位置。
+不一定拟合长度越长越好，需要确定恰当的范围。
+我们将这两个变量都在一定范围内变化，看得到的结果情况。</li>
+</ol>
+<figure><img src="/xliu-group/post/crossflow/4.png"><figcaption>
+       <h4>图4 变量拟合</h4>
+     </figcaption>
+ </figure>
+
+<p>图4中，1)为待拟合的直线，2)横坐标为拟合位置、纵坐标为拟合长度，当拟合长度大时，拟合位置变化的就小。3)为2)图的梯度，可以看到有趣的梯度变化的图案，说明了拟合参数的影响。
+可见当拟合长度和位置恰当时，得到的参数有一个稳定的区域，数值基本不变。表现为梯度接近零，可以用这个指标来确定恰当的拟合长度和位置。</p>
+<p>在这个例子中，得到直线的方程为:</p>
+$$
+\ln(y) = 0.30\times \ln(x) + 1.36
+$$<p>
+而 $r = 7$, $d = 10mm$，得到</p>
+$$
+ \left(\frac{y}{rd}\right) = 0.2 \left(\frac{x}{rd}\right)^{0.3}
+$$<h1 id="参考文献">参考文献</h1>
+<ol>
+<li>BROADWELL J E, BREIDENTHAL R E. Structure and mixing of a transverse jet in incompressible flow[J]. Journal of Fluid Mechanics, 1984, 148: 405-412.</li>
+<li>HASSELBRINK E F, MUNGAL M G. Transverse jets and jet flames. Part 1. Scaling laws for strong transverse jets[J]. Journal of Fluid Mechanics, 2001, 443: 1-25.</li>
+<li>SMITH S H, MUNGAL M G. Mixing, structure and scaling of the jet in crossflow[J]. Journal of Fluid Mechanics, 1998, 357: 83-122.</li>
+<li>SU L K, MUNGAL M G. Simultaneous measurements of scalar and velocity field evolution in turbulent crossflowing jets[J]. Journal of Fluid Mechanics, 2004, 513: 1-45.</li>
+</ol>
+        </div>
+        
+          <p class="f6 lh-copy mv0">By 刘训臣</p><a href="/xliu-group/post/crossflow/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
         
           <div class="w-100 mb4 relative">
             
@@ -336,80 +426,18 @@ if (typeof MathJax === "undefined") {
 
           </div>
         
-          <div class="w-100 mb4 relative">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
-    <div class="flex-column flex-row-ns flex">
-      
-          
-        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-          <a href="/xliu-group/post/nozzle2/" class="db grow">
-            <img src="https://liuxunchen.github.io/xliu-group/images/sdust.jpg" class="img" alt="image from 腔体流量测定实验失败复盘">
-          </a>
-        </div>
-      
-      <div class="blah w-100 w-60-ns pl3-ns">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/xliu-group/post/nozzle2/" class="color-inherit dim link">
-            腔体流量测定实验失败复盘
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>近期开展的几组腔体标量测定实验均以无合理结果告终。按推论，超声速射流的二氧化碳应发生相变，然数次实验混合多种浓度，始终未观测到相变现象，直至拆下设备，才发现隐蔽却致命问题——<strong>底座焊缝漏气</strong>，该被忽视细节成贯穿实验的“数据杀手” 。</p>
-<h2 id="一实验过程与数据异常记录">一、实验过程与数据异常记录</h2>
-<h3 id="一首次实验">（一）首次实验</h3>
-<p>核心目标：测定腔体在不同浓度二氧化碳下的标量数据。实验初始参数为压力 0.103896MPa、温度 26.1℃。测试数据如下：</p>
-<ul>
-<li>纯空气测试：发现垫圈处存在 3.3L/min 漏气，修正后记录流动态流量 125L/min、压力 0.502MPa；</li>
-<li>混合气体测试：CO₂浓度 10%和 50%工况下，压力稳定在 0.641MPa，但温度数据剧烈波动，由 26.1 摄氏度到 24.9 摄氏度不等，现猜测可能是底部剧烈漏气导致腔内温度变化；</li>
-<li>最终结论：因数据离散度过高，判定实验存在异常。</li>
-</ul>
-<figure><img src="/xliu-group/post/nozzle2/Picture4.png"><figcaption>
-      <h4>第一组实验数据记录！</h4>
-    </figcaption>
-</figure>
-
-<h3 id="二二次实验">（二）二次实验</h3>
-<p>改进方向：更换合适垫圈并优化气路控制，杜绝不合理漏气，初始压力 0.103421MPa、温度 27.2℃。实验现象依旧反常：</p>
-<ul>
-<li>纯空气阶段：流量 120L/min 数据正常，但进入混合气体测试后失控；</li>
-<li>10% CO₂混合：空气/CO₂流量比理论 9:1，实测达 11.6:1，压力波动超±0.02MPa；</li>
-<li>70% CO₂混合：温度压力仅记录平均值，数据失去代表性。</li>
-</ul>
-<figure><img src="/xliu-group/post/nozzle2/Picture5.png"><figcaption>
-      <h4>第二组实验数据记录！</h4>
-    </figcaption>
-</figure>
-
-<h2 id="二隐藏缺陷的发现过程">二、隐藏缺陷的发现过程</h2>
-<p>因需更换实验，将腔体从底座拆下，拆卸全部管路前心血来潮再次实验，发现孔口气流微弱，排查气路后，确定<strong>底座焊缝存在严重漏气</strong>，基本大部分流量和压力都在此损失。</p>
-<p>原因追溯：</p>
-<ul>
-<li>结构设计盲区：焊缝位于底座隐蔽处，常规检查难以发现；</li>
-<li>实验惯性思维：首次实验将漏气归因于垫圈问题，未对腔体整体密封性做系统性排查；</li>
-<li>缺乏预实验检测：未在实验前单独对腔体做气密性测试，导致隐患持续影响数据质量。</li>
-</ul>
-<h2 id="三系统性改进方案">三、系统性改进方案</h2>
-<p>更换新的腔体，同时修改高度尺，此前实验存在喷嘴高度过低问题，致使纹影系统需拆除底座才能拍摄出口平面，此次一并修正。</p>
-<h2 id="四经验总结">四、经验总结</h2>
-<p>这次失败深刻揭示**“隐蔽位置 = 安全盲区”的认知误区**。实验设计中，不能仅关注直观可见部件，更要对设备结构做系统性检查，避免同类问题再发生。科研路上，每个失败数据都是珍贵的“排雷记录”，正是这些教训推动实验设计不断迭代升级。</p>
-        </div>
-        
-          <p class="f6 lh-copy mv0">By 高寅斌</p><a href="/xliu-group/post/nozzle2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
         <section class="w-100">
           <h1 class="f3">More</h1>
           
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/xliu-group/post/nozzle2/" class="link black dim">
+                腔体流量测定实验失败复盘
+              </a>
+            </h2>
           
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/xliu-group/post/chin_mistake/" class="link black dim">
@@ -426,12 +454,6 @@ if (typeof MathJax === "undefined") {
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/xliu-group/post/math/" class="link black dim">
                 在hugo网页中实现latex显示
-              </a>
-            </h2>
-          
-            <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/xliu-group/post/labview_flowmeter/" class="link black dim">
-                使用 LabVIEW 实现AFG-C9000系列气体质量流量计瞬时流量的读取和储存
               </a>
             </h2>
           

@@ -108,8 +108,9 @@ if (typeof MathJax === "undefined") {
     
     
     const script = document.createElement('script');
-    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
-    script.async = true;
+
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js';
+script.async = true;
     script.crossOrigin = 'anonymous';
     document.head.appendChild(script);
     
