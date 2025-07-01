@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>TDLAS的问题 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="最见看到之前课题组近年燃烧年会发的会议论文，没有接受口头报告，只有一个海报。
+
+      论文题目
+    
+
+
+是用我发展的4um QCL测CO2的方法在腔体里面测固体颗粒燃烧的信号。
+看了一下实验记录，是2020年夏天做的实验。
+固体推进剂这个方向，本来也不是我该做的，合作只是奉命服务。
+
+但也非常欣慰，毕竟发表了，了却了一桩心事。顾明明博士本来不做 TDLAS，去交大做博后才接触，青年基金也是做的中红外TDLAS 数据处理的方法。把 line mixing 模型用来处理 4.2um 的CO2带头部分的谱线，还是挺成功。但即使是这个新的模型，根本问题还是参数多，需要调。应用起来就不够直接。
+
+      实验装置图
+    
+
+
+这个实验不是很成功。根本问题还是由于 TDLAS 是线积分测量，无法区分腔体内部路径上不同位置的信息。
+测到的温度，其实是路径平均的温度，虽然4.2um那高温信号占主要的，但也要考虑这么长路径上腔体里面其他位置扩散出去的CO2的干扰。
+其实还不如不加腔体，那样的话在大气环境中还扩散的快一点。
+这就叫路径依赖。
+想起来之前还做过一个失败的实验。用5um NO2 吸收逢的QCL激光测在真空腔体里面的 不同NH3含量的Mckenna 火焰。这个是之前用石英喷嘴取样加紫外光电离质谱做过的体系。用取样测量方法的话，周围环境中的燃烧产物、扩散出去的物质是不用管的。但是用吸收光谱的方法就不行了。低压环境倒是有利于TDLAS测量，NO2 两个分裂的吸收峰很清楚，但是测到的温度又很低，后来发现是因为腔体里面有扩散出去的产物的吸收。
+这就很难办了。也可以吹扫，但再加上这些过程复杂的方法，都很不可靠。
+核心问题，还是如何在TDLAS线积分信号的基础上得到空间分辨率。考虑过用饱和吸收，或者用FLDI频谱特征去提取。但似乎都不很靠谱。
+TDLAS方法在大气研究中有成功的应用，比如用吸收池抽气进去低压测量各种污染物的浓度，再比如卫星测大气柱的辐射或者吸收光谱。
+这是因为空间尺度不同的问题。大气研究中，空间尺度大，TDLAS测量的就是一个点的数据。而燃烧诊断中，研究的火焰尺寸不会很大，TDLAS 测量的一条路径上，需要考虑分布不均匀的问题。
+最好还是用综横多路再反演的方法得到空间分辨率。
+这样空间分辨率就不会很高，若要提高空间分辨率，似乎很难。最近有用高速红外相机做探测器来测TDLAS光谱的，把一个激光束扩束后，在红外相机上成像测量扫描波长后图像强度。
+如果红外相机帧频不够高，还可以在采集端用光纤束分光，也可以提高空间分辨率，多个pd探测器，多路数据采集。
+这样就可以得到比较高的空间分辨率。但成本的确也高。">
+    <meta name="generator" content="Hugo 0.144.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="刘训臣">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://liuxunchen.github.io/xliu-group/zh/post/20241108/">
+    
+
+    <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/20241108/">
+  <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+  <meta property="og:title" content="TDLAS的问题">
+  <meta property="og:description" content="最见看到之前课题组近年燃烧年会发的会议论文，没有接受口头报告，只有一个海报。 论文题目 是用我发展的4um QCL测CO2的方法在腔体里面测固体颗粒燃烧的信号。 看了一下实验记录，是2020年夏天做的实验。 固体推进剂这个方向，本来也不是我该做的，合作只是奉命服务。
+但也非常欣慰，毕竟发表了，了却了一桩心事。顾明明博士本来不做 TDLAS，去交大做博后才接触，青年基金也是做的中红外TDLAS 数据处理的方法。把 line mixing 模型用来处理 4.2um 的CO2带头部分的谱线，还是挺成功。但即使是这个新的模型，根本问题还是参数多，需要调。应用起来就不够直接。
+实验装置图 这个实验不是很成功。根本问题还是由于 TDLAS 是线积分测量，无法区分腔体内部路径上不同位置的信息。 测到的温度，其实是路径平均的温度，虽然4.2um那高温信号占主要的，但也要考虑这么长路径上腔体里面其他位置扩散出去的CO2的干扰。 其实还不如不加腔体，那样的话在大气环境中还扩散的快一点。
+这就叫路径依赖。
+想起来之前还做过一个失败的实验。用5um NO2 吸收逢的QCL激光测在真空腔体里面的 不同NH3含量的Mckenna 火焰。这个是之前用石英喷嘴取样加紫外光电离质谱做过的体系。用取样测量方法的话，周围环境中的燃烧产物、扩散出去的物质是不用管的。但是用吸收光谱的方法就不行了。低压环境倒是有利于TDLAS测量，NO2 两个分裂的吸收峰很清楚，但是测到的温度又很低，后来发现是因为腔体里面有扩散出去的产物的吸收。 这就很难办了。也可以吹扫，但再加上这些过程复杂的方法，都很不可靠。
+核心问题，还是如何在TDLAS线积分信号的基础上得到空间分辨率。考虑过用饱和吸收，或者用FLDI频谱特征去提取。但似乎都不很靠谱。 TDLAS方法在大气研究中有成功的应用，比如用吸收池抽气进去低压测量各种污染物的浓度，再比如卫星测大气柱的辐射或者吸收光谱。 这是因为空间尺度不同的问题。大气研究中，空间尺度大，TDLAS测量的就是一个点的数据。而燃烧诊断中，研究的火焰尺寸不会很大，TDLAS 测量的一条路径上，需要考虑分布不均匀的问题。 最好还是用综横多路再反演的方法得到空间分辨率。 这样空间分辨率就不会很高，若要提高空间分辨率，似乎很难。最近有用高速红外相机做探测器来测TDLAS光谱的，把一个激光束扩束后，在红外相机上成像测量扫描波长后图像强度。 如果红外相机帧频不够高，还可以在采集端用光纤束分光，也可以提高空间分辨率，多个pd探测器，多路数据采集。 这样就可以得到比较高的空间分辨率。但成本的确也高。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-11-08T21:22:03+08:00">
+    <meta property="article:modified_time" content="2024-11-08T21:22:03+08:00">
+
+  <meta itemprop="name" content="TDLAS的问题">
+  <meta itemprop="description" content="最见看到之前课题组近年燃烧年会发的会议论文，没有接受口头报告，只有一个海报。 论文题目 是用我发展的4um QCL测CO2的方法在腔体里面测固体颗粒燃烧的信号。 看了一下实验记录，是2020年夏天做的实验。 固体推进剂这个方向，本来也不是我该做的，合作只是奉命服务。
+但也非常欣慰，毕竟发表了，了却了一桩心事。顾明明博士本来不做 TDLAS，去交大做博后才接触，青年基金也是做的中红外TDLAS 数据处理的方法。把 line mixing 模型用来处理 4.2um 的CO2带头部分的谱线，还是挺成功。但即使是这个新的模型，根本问题还是参数多，需要调。应用起来就不够直接。
+实验装置图 这个实验不是很成功。根本问题还是由于 TDLAS 是线积分测量，无法区分腔体内部路径上不同位置的信息。 测到的温度，其实是路径平均的温度，虽然4.2um那高温信号占主要的，但也要考虑这么长路径上腔体里面其他位置扩散出去的CO2的干扰。 其实还不如不加腔体，那样的话在大气环境中还扩散的快一点。
+这就叫路径依赖。
+想起来之前还做过一个失败的实验。用5um NO2 吸收逢的QCL激光测在真空腔体里面的 不同NH3含量的Mckenna 火焰。这个是之前用石英喷嘴取样加紫外光电离质谱做过的体系。用取样测量方法的话，周围环境中的燃烧产物、扩散出去的物质是不用管的。但是用吸收光谱的方法就不行了。低压环境倒是有利于TDLAS测量，NO2 两个分裂的吸收峰很清楚，但是测到的温度又很低，后来发现是因为腔体里面有扩散出去的产物的吸收。 这就很难办了。也可以吹扫，但再加上这些过程复杂的方法，都很不可靠。
+核心问题，还是如何在TDLAS线积分信号的基础上得到空间分辨率。考虑过用饱和吸收，或者用FLDI频谱特征去提取。但似乎都不很靠谱。 TDLAS方法在大气研究中有成功的应用，比如用吸收池抽气进去低压测量各种污染物的浓度，再比如卫星测大气柱的辐射或者吸收光谱。 这是因为空间尺度不同的问题。大气研究中，空间尺度大，TDLAS测量的就是一个点的数据。而燃烧诊断中，研究的火焰尺寸不会很大，TDLAS 测量的一条路径上，需要考虑分布不均匀的问题。 最好还是用综横多路再反演的方法得到空间分辨率。 这样空间分辨率就不会很高，若要提高空间分辨率，似乎很难。最近有用高速红外相机做探测器来测TDLAS光谱的，把一个激光束扩束后，在红外相机上成像测量扫描波长后图像强度。 如果红外相机帧频不够高，还可以在采集端用光纤束分光，也可以提高空间分辨率，多个pd探测器，多路数据采集。 这样就可以得到比较高的空间分辨率。但成本的确也高。">
+  <meta itemprop="datePublished" content="2024-11-08T21:22:03+08:00">
+  <meta itemprop="dateModified" content="2024-11-08T21:22:03+08:00">
+  <meta itemprop="wordCount" content="36">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="TDLAS的问题">
+  <meta name="twitter:description" content="最见看到之前课题组近年燃烧年会发的会议论文，没有接受口头报告，只有一个海报。 论文题目 是用我发展的4um QCL测CO2的方法在腔体里面测固体颗粒燃烧的信号。 看了一下实验记录，是2020年夏天做的实验。 固体推进剂这个方向，本来也不是我该做的，合作只是奉命服务。
+但也非常欣慰，毕竟发表了，了却了一桩心事。顾明明博士本来不做 TDLAS，去交大做博后才接触，青年基金也是做的中红外TDLAS 数据处理的方法。把 line mixing 模型用来处理 4.2um 的CO2带头部分的谱线，还是挺成功。但即使是这个新的模型，根本问题还是参数多，需要调。应用起来就不够直接。
+实验装置图 这个实验不是很成功。根本问题还是由于 TDLAS 是线积分测量，无法区分腔体内部路径上不同位置的信息。 测到的温度，其实是路径平均的温度，虽然4.2um那高温信号占主要的，但也要考虑这么长路径上腔体里面其他位置扩散出去的CO2的干扰。 其实还不如不加腔体，那样的话在大气环境中还扩散的快一点。
+这就叫路径依赖。
+想起来之前还做过一个失败的实验。用5um NO2 吸收逢的QCL激光测在真空腔体里面的 不同NH3含量的Mckenna 火焰。这个是之前用石英喷嘴取样加紫外光电离质谱做过的体系。用取样测量方法的话，周围环境中的燃烧产物、扩散出去的物质是不用管的。但是用吸收光谱的方法就不行了。低压环境倒是有利于TDLAS测量，NO2 两个分裂的吸收峰很清楚，但是测到的温度又很低，后来发现是因为腔体里面有扩散出去的产物的吸收。 这就很难办了。也可以吹扫，但再加上这些过程复杂的方法，都很不可靠。
+核心问题，还是如何在TDLAS线积分信号的基础上得到空间分辨率。考虑过用饱和吸收，或者用FLDI频谱特征去提取。但似乎都不很靠谱。 TDLAS方法在大气研究中有成功的应用，比如用吸收池抽气进去低压测量各种污染物的浓度，再比如卫星测大气柱的辐射或者吸收光谱。 这是因为空间尺度不同的问题。大气研究中，空间尺度大，TDLAS测量的就是一个点的数据。而燃烧诊断中，研究的火焰尺寸不会很大，TDLAS 测量的一条路径上，需要考虑分布不均匀的问题。 最好还是用综横多路再反演的方法得到空间分辨率。 这样空间分辨率就不会很高，若要提高空间分辨率，似乎很难。最近有用高速红外相机做探测器来测TDLAS光谱的，把一个激光束扩束后，在红外相机上成像测量扫描波长后图像强度。 如果红外相机帧频不够高，还可以在采集端用光纤束分光，也可以提高空间分辨率，多个pd探测器，多路数据采集。 这样就可以得到比较高的空间分辨率。但成本的确也高。">
+
+      
+    
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('https://liuxunchen.github.io/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        刘训臣燃烧诊断实验室主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/our-alumni/" title="Alumni 页">
+              Alumni
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/contact/" title="Contact 页">
+              Contact
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/news/" title="News 页">
+              News
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/paper/" title="Paper 页">
+              Paper
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">TDLAS的问题</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Post
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">TDLAS的问题</h1>
+      
+      <p class="tracked"><strong>刘训臣</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2024-11-08T21:22:03+08:00">十一月 8, 2024</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>最见看到之前课题组近年燃烧年会发的会议论文，没有接受口头报告，只有一个海报。
+<figure><img src="/xliu-group/zh/post/20241108/title.png"><figcaption>
+      <h4>论文题目</h4>
+    </figcaption>
+</figure>
+
+是用我发展的4um QCL测CO2的方法在腔体里面测固体颗粒燃烧的信号。
+看了一下实验记录，是2020年夏天做的实验。
+固体推进剂这个方向，本来也不是我该做的，合作只是奉命服务。</p>
+<!--
+本来是说2019年底，两个人同一年评职称，让我让一下，给我搞一篇文章。
+结果成了拿我搞的啥设备去给他做实验。
+到最后发表了论文，连我的名字都没有。
+-->
+<p>但也非常欣慰，毕竟发表了，了却了一桩心事。顾明明博士本来不做 TDLAS，去交大做博后才接触，青年基金也是做的中红外TDLAS 数据处理的方法。把 line mixing 模型用来处理 4.2um 的CO2带头部分的谱线，还是挺成功。但即使是这个新的模型，根本问题还是参数多，需要调。应用起来就不够直接。</p>
+<figure><img src="/xliu-group/zh/post/20241108/setup.png"><figcaption>
+      <h4>实验装置图</h4>
+    </figcaption>
+</figure>
+
+<p>这个实验不是很成功。根本问题还是由于 TDLAS 是线积分测量，无法区分腔体内部路径上不同位置的信息。
+测到的温度，其实是路径平均的温度，虽然4.2um那高温信号占主要的，但也要考虑这么长路径上腔体里面其他位置扩散出去的CO2的干扰。
+其实还不如不加腔体，那样的话在大气环境中还扩散的快一点。</p>
+<p>这就叫路径依赖。</p>
+<p>想起来之前还做过一个失败的实验。用5um NO2 吸收逢的QCL激光测在真空腔体里面的 不同NH3含量的Mckenna 火焰。这个是之前用石英喷嘴取样加紫外光电离质谱做过的体系。用取样测量方法的话，周围环境中的燃烧产物、扩散出去的物质是不用管的。但是用吸收光谱的方法就不行了。低压环境倒是有利于TDLAS测量，NO2 两个分裂的吸收峰很清楚，但是测到的温度又很低，后来发现是因为腔体里面有扩散出去的产物的吸收。
+这就很难办了。也可以吹扫，但再加上这些过程复杂的方法，都很不可靠。</p>
+<p>核心问题，还是如何在TDLAS线积分信号的基础上得到空间分辨率。考虑过用饱和吸收，或者用FLDI频谱特征去提取。但似乎都不很靠谱。
+TDLAS方法在大气研究中有成功的应用，比如用吸收池抽气进去低压测量各种污染物的浓度，再比如卫星测大气柱的辐射或者吸收光谱。
+这是因为空间尺度不同的问题。大气研究中，空间尺度大，TDLAS测量的就是一个点的数据。而燃烧诊断中，研究的火焰尺寸不会很大，TDLAS 测量的一条路径上，需要考虑分布不均匀的问题。
+最好还是用综横多路再反演的方法得到空间分辨率。
+这样空间分辨率就不会很高，若要提高空间分辨率，似乎很难。最近有用高速红外相机做探测器来测TDLAS光谱的，把一个激光束扩束后，在红外相机上成像测量扫描波长后图像强度。
+如果红外相机帧频不够高，还可以在采集端用光纤束分光，也可以提高空间分辨率，多个pd探测器，多路数据采集。
+这样就可以得到比较高的空间分辨率。但成本的确也高。</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://liuxunchen.github.io/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

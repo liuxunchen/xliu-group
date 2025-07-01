@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>使用 LabVIEW 实现对CC-M3H040-NN14伺服电机的控制 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="使用 LabVIEW 实现对伺服电机的控制
+本次要控制的伺服驱动器的型号是：CC-D3P040A2-A；伺服电机是：CC-M3H040-NN14。
+
+labview control to read motor position
+labview control to read/move
+1. 控制器地址设置
+
+在需要使用多个控制器的情况下，需要设置好控制器的地址，用以在发送控制码的情况下区分不同的控制器。控制器的地址位发生改变相应的代码上的地址位也要改变，那么代码最后的校验码也要重新进行计算。
+例如 01 即为地址位；最后两位为校验码。
+2. 使能控制与通讯模式设置
+在单独使用 LabVIEW 控制不开启上位机软件的情况下，要在发送距离、速度、启动和启动复位代码前发送使能开的代码，或者其他用于控制通讯模式的代码。例如本次所控制的驱动，不仅要使能开，且要额外增加两个代码，让其控制模式从 I/O 变为通讯模式：
+
+写入两个代码让其都变为通讯模式（使用 485 控制是通讯模式）。
+3. 电子齿轮比设置
+
+要开始设置电机的移动量，在此之前要知道电机的电子齿轮比为多少。例如在这个电机的默认齿轮比下，我发送 1000 个脉冲它只能旋转 0.1 圈，因此想要让其在一次动作下旋转一圈，就要发送 10000 个脉冲或者改变它的齿轮比。
+上图即为需要改变的参数的图片，例如我输入是 1000 个脉冲，但我想让其旋转 1/5 圈，但是在现在齿轮比下只能旋转 1/10 圈；现在齿轮比分母为 2500，则我要将其改变为 1250。
+4. 转速设置
+设置好转速。
+5. 启动与复位设置
+在设置启动，需要多次连续启动的情况下，同时也要设置启动复位，确保连续启动的顺利。
+6. 多段代码写入延时
+
+另一个问题是在 LabVIEW 写入时写入多段代码时，使用多个写入 VISA 中间要加入延时的程序（试过顺序结构写入但是感觉还是会崩溃），确保写入的代码不会混乱。
+7. 多电机控制方式
+要控制多个电机时可以有多种方式进行选择，首先最简单的你想要实时读取两个电机的参数可以使用轮询的方式，将两个电机的 485 通讯线的 AB 口分别接到一起（这种方式在别的控制方式选择下依然是较好的方式，因为可以不用反复选择不同的 COM 口，且在设置好不同的地址位的情况下，并不会相互影响），选择一个条件结构，将其的条件设置好，分别发送两个对应不同电机的问询码，控制器读到与自己相对应的码时会反馈，这样两个控制器便会轮流反馈其的位置。">
+    <meta name="generator" content="Hugo 0.144.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="惠昊">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://liuxunchen.github.io/xliu-group/zh/post/labview_control/">
+    
+
+    <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/labview_control/">
+  <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+  <meta property="og:title" content="使用 LabVIEW 实现对CC-M3H040-NN14伺服电机的控制">
+  <meta property="og:description" content="使用 LabVIEW 实现对伺服电机的控制 本次要控制的伺服驱动器的型号是：CC-D3P040A2-A；伺服电机是：CC-M3H040-NN14。
+labview control to read motor position
+labview control to read/move
+1. 控制器地址设置 在需要使用多个控制器的情况下，需要设置好控制器的地址，用以在发送控制码的情况下区分不同的控制器。控制器的地址位发生改变相应的代码上的地址位也要改变，那么代码最后的校验码也要重新进行计算。
+例如 01 即为地址位；最后两位为校验码。
+2. 使能控制与通讯模式设置 在单独使用 LabVIEW 控制不开启上位机软件的情况下，要在发送距离、速度、启动和启动复位代码前发送使能开的代码，或者其他用于控制通讯模式的代码。例如本次所控制的驱动，不仅要使能开，且要额外增加两个代码，让其控制模式从 I/O 变为通讯模式：
+写入两个代码让其都变为通讯模式（使用 485 控制是通讯模式）。
+3. 电子齿轮比设置 要开始设置电机的移动量，在此之前要知道电机的电子齿轮比为多少。例如在这个电机的默认齿轮比下，我发送 1000 个脉冲它只能旋转 0.1 圈，因此想要让其在一次动作下旋转一圈，就要发送 10000 个脉冲或者改变它的齿轮比。
+上图即为需要改变的参数的图片，例如我输入是 1000 个脉冲，但我想让其旋转 1/5 圈，但是在现在齿轮比下只能旋转 1/10 圈；现在齿轮比分母为 2500，则我要将其改变为 1250。
+4. 转速设置 设置好转速。
+5. 启动与复位设置 在设置启动，需要多次连续启动的情况下，同时也要设置启动复位，确保连续启动的顺利。
+6. 多段代码写入延时 另一个问题是在 LabVIEW 写入时写入多段代码时，使用多个写入 VISA 中间要加入延时的程序（试过顺序结构写入但是感觉还是会崩溃），确保写入的代码不会混乱。
+7. 多电机控制方式 要控制多个电机时可以有多种方式进行选择，首先最简单的你想要实时读取两个电机的参数可以使用轮询的方式，将两个电机的 485 通讯线的 AB 口分别接到一起（这种方式在别的控制方式选择下依然是较好的方式，因为可以不用反复选择不同的 COM 口，且在设置好不同的地址位的情况下，并不会相互影响），选择一个条件结构，将其的条件设置好，分别发送两个对应不同电机的问询码，控制器读到与自己相对应的码时会反馈，这样两个控制器便会轮流反馈其的位置。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-05-09T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-05-09T00:00:00+00:00">
+
+  <meta itemprop="name" content="使用 LabVIEW 实现对CC-M3H040-NN14伺服电机的控制">
+  <meta itemprop="description" content="使用 LabVIEW 实现对伺服电机的控制 本次要控制的伺服驱动器的型号是：CC-D3P040A2-A；伺服电机是：CC-M3H040-NN14。
+labview control to read motor position
+labview control to read/move
+1. 控制器地址设置 在需要使用多个控制器的情况下，需要设置好控制器的地址，用以在发送控制码的情况下区分不同的控制器。控制器的地址位发生改变相应的代码上的地址位也要改变，那么代码最后的校验码也要重新进行计算。
+例如 01 即为地址位；最后两位为校验码。
+2. 使能控制与通讯模式设置 在单独使用 LabVIEW 控制不开启上位机软件的情况下，要在发送距离、速度、启动和启动复位代码前发送使能开的代码，或者其他用于控制通讯模式的代码。例如本次所控制的驱动，不仅要使能开，且要额外增加两个代码，让其控制模式从 I/O 变为通讯模式：
+写入两个代码让其都变为通讯模式（使用 485 控制是通讯模式）。
+3. 电子齿轮比设置 要开始设置电机的移动量，在此之前要知道电机的电子齿轮比为多少。例如在这个电机的默认齿轮比下，我发送 1000 个脉冲它只能旋转 0.1 圈，因此想要让其在一次动作下旋转一圈，就要发送 10000 个脉冲或者改变它的齿轮比。
+上图即为需要改变的参数的图片，例如我输入是 1000 个脉冲，但我想让其旋转 1/5 圈，但是在现在齿轮比下只能旋转 1/10 圈；现在齿轮比分母为 2500，则我要将其改变为 1250。
+4. 转速设置 设置好转速。
+5. 启动与复位设置 在设置启动，需要多次连续启动的情况下，同时也要设置启动复位，确保连续启动的顺利。
+6. 多段代码写入延时 另一个问题是在 LabVIEW 写入时写入多段代码时，使用多个写入 VISA 中间要加入延时的程序（试过顺序结构写入但是感觉还是会崩溃），确保写入的代码不会混乱。
+7. 多电机控制方式 要控制多个电机时可以有多种方式进行选择，首先最简单的你想要实时读取两个电机的参数可以使用轮询的方式，将两个电机的 485 通讯线的 AB 口分别接到一起（这种方式在别的控制方式选择下依然是较好的方式，因为可以不用反复选择不同的 COM 口，且在设置好不同的地址位的情况下，并不会相互影响），选择一个条件结构，将其的条件设置好，分别发送两个对应不同电机的问询码，控制器读到与自己相对应的码时会反馈，这样两个控制器便会轮流反馈其的位置。">
+  <meta itemprop="datePublished" content="2025-05-09T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-05-09T00:00:00+00:00">
+  <meta itemprop="wordCount" content="92">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="使用 LabVIEW 实现对CC-M3H040-NN14伺服电机的控制">
+  <meta name="twitter:description" content="使用 LabVIEW 实现对伺服电机的控制 本次要控制的伺服驱动器的型号是：CC-D3P040A2-A；伺服电机是：CC-M3H040-NN14。
+labview control to read motor position
+labview control to read/move
+1. 控制器地址设置 在需要使用多个控制器的情况下，需要设置好控制器的地址，用以在发送控制码的情况下区分不同的控制器。控制器的地址位发生改变相应的代码上的地址位也要改变，那么代码最后的校验码也要重新进行计算。
+例如 01 即为地址位；最后两位为校验码。
+2. 使能控制与通讯模式设置 在单独使用 LabVIEW 控制不开启上位机软件的情况下，要在发送距离、速度、启动和启动复位代码前发送使能开的代码，或者其他用于控制通讯模式的代码。例如本次所控制的驱动，不仅要使能开，且要额外增加两个代码，让其控制模式从 I/O 变为通讯模式：
+写入两个代码让其都变为通讯模式（使用 485 控制是通讯模式）。
+3. 电子齿轮比设置 要开始设置电机的移动量，在此之前要知道电机的电子齿轮比为多少。例如在这个电机的默认齿轮比下，我发送 1000 个脉冲它只能旋转 0.1 圈，因此想要让其在一次动作下旋转一圈，就要发送 10000 个脉冲或者改变它的齿轮比。
+上图即为需要改变的参数的图片，例如我输入是 1000 个脉冲，但我想让其旋转 1/5 圈，但是在现在齿轮比下只能旋转 1/10 圈；现在齿轮比分母为 2500，则我要将其改变为 1250。
+4. 转速设置 设置好转速。
+5. 启动与复位设置 在设置启动，需要多次连续启动的情况下，同时也要设置启动复位，确保连续启动的顺利。
+6. 多段代码写入延时 另一个问题是在 LabVIEW 写入时写入多段代码时，使用多个写入 VISA 中间要加入延时的程序（试过顺序结构写入但是感觉还是会崩溃），确保写入的代码不会混乱。
+7. 多电机控制方式 要控制多个电机时可以有多种方式进行选择，首先最简单的你想要实时读取两个电机的参数可以使用轮询的方式，将两个电机的 485 通讯线的 AB 口分别接到一起（这种方式在别的控制方式选择下依然是较好的方式，因为可以不用反复选择不同的 COM 口，且在设置好不同的地址位的情况下，并不会相互影响），选择一个条件结构，将其的条件设置好，分别发送两个对应不同电机的问询码，控制器读到与自己相对应的码时会反馈，这样两个控制器便会轮流反馈其的位置。">
+
+      
+    
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('https://liuxunchen.github.io/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        刘训臣燃烧诊断实验室主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/our-alumni/" title="Alumni 页">
+              Alumni
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/contact/" title="Contact 页">
+              Contact
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/news/" title="News 页">
+              News
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/paper/" title="Paper 页">
+              Paper
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">使用 LabVIEW 实现对CC-M3H040-NN14伺服电机的控制</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Post
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">使用 LabVIEW 实现对CC-M3H040-NN14伺服电机的控制</h1>
+      
+      <p class="tracked"><strong>惠昊</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-05-09T00:00:00Z">五月 9, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><h1 id="使用-labview-实现对伺服电机的控制">使用 LabVIEW 实现对伺服电机的控制</h1>
+<p>本次要控制的伺服驱动器的型号是：<code>CC-D3P040A2-A</code>；伺服电机是：<code>CC-M3H040-NN14</code>。</p>
+<p><img src="/xliu-group/zh/post/labview_control/image1.jpeg" alt="伺服电机图片"></p>
+<p><a href="/xliu-group/zh/post/labview_control/read.vi">labview control to read motor position</a></p>
+<p><a href="/xliu-group/zh/post/labview_control/Flame_step_motor.vi">labview control to read/move</a></p>
+<h2 id="1-控制器地址设置">1. 控制器地址设置</h2>
+<p><img src="media/image2.png" alt="地址设置图示"><br>
+在需要使用多个控制器的情况下，需要设置好控制器的地址，用以在发送控制码的情况下区分不同的控制器。控制器的地址位发生改变相应的代码上的地址位也要改变，那么代码最后的校验码也要重新进行计算。</p>
+<p>例如 <code>01</code> 即为地址位；最后两位为校验码。</p>
+<h2 id="2-使能控制与通讯模式设置">2. 使能控制与通讯模式设置</h2>
+<p>在单独使用 LabVIEW 控制不开启上位机软件的情况下，要在发送距离、速度、启动和启动复位代码前发送使能开的代码，或者其他用于控制通讯模式的代码。例如本次所控制的驱动，不仅要使能开，且要额外增加两个代码，让其控制模式从 I/O 变为通讯模式：</p>
+<p><img src="/xliu-group/zh/post/labview_control/image3.png" alt="通讯模式设置代码"><br>
+写入两个代码让其都变为通讯模式（使用 485 控制是通讯模式）。</p>
+<h2 id="3-电子齿轮比设置">3. 电子齿轮比设置</h2>
+<p><img src="/xliu-group/zh/post/labview_control/image5.png" alt="电子齿轮比参数设置"><br>
+要开始设置电机的移动量，在此之前要知道电机的电子齿轮比为多少。例如在这个电机的默认齿轮比下，我发送 1000 个脉冲它只能旋转 0.1 圈，因此想要让其在一次动作下旋转一圈，就要发送 10000 个脉冲或者改变它的齿轮比。</p>
+<p>上图即为需要改变的参数的图片，例如我输入是 1000 个脉冲，但我想让其旋转 1/5 圈，但是在现在齿轮比下只能旋转 1/10 圈；现在齿轮比分母为 2500，则我要将其改变为 1250。</p>
+<h2 id="4-转速设置">4. 转速设置</h2>
+<p>设置好转速。</p>
+<h2 id="5-启动与复位设置">5. 启动与复位设置</h2>
+<p>在设置启动，需要多次连续启动的情况下，同时也要设置启动复位，确保连续启动的顺利。</p>
+<h2 id="6-多段代码写入延时">6. 多段代码写入延时</h2>
+<p><img src="/xliu-group/zh/post/labview_control/image6.png" alt="延时设置图示"><br>
+另一个问题是在 LabVIEW 写入时写入多段代码时，使用多个写入 VISA 中间要加入延时的程序（试过顺序结构写入但是感觉还是会崩溃），确保写入的代码不会混乱。</p>
+<h2 id="7-多电机控制方式">7. 多电机控制方式</h2>
+<p>要控制多个电机时可以有多种方式进行选择，首先最简单的你想要实时读取两个电机的参数可以使用轮询的方式，将两个电机的 485 通讯线的 AB 口分别接到一起（这种方式在别的控制方式选择下依然是较好的方式，因为可以不用反复选择不同的 COM 口，且在设置好不同的地址位的情况下，并不会相互影响），选择一个条件结构，将其的条件设置好，分别发送两个对应不同电机的问询码，控制器读到与自己相对应的码时会反馈，这样两个控制器便会轮流反馈其的位置。</p>
+<p><img src="/xliu-group/zh/post/labview_control/image7.png" alt="多电机轮询控制图示"><br>
+这是可以选择不同的电机进行问询，如果将选择是非的布尔控件换为一个可以实时发送是非的结构则可实现上述的轮询。例如选择 while 结构由于其会自动计数生成 0,1,2&hellip;则可以将生成的数与 2 相除取余与 0 比较来判断是非。</p>
+<h2 id="8-visa-读取设置">8. VISA 读取设置</h2>
+<p><img src="/xliu-group/zh/post/labview_control/image8.png" alt="VISA 读取设置"><br>
+在读取 VISA 使用过程中要选择所要读取的代码的位数，在你不知道想要几位代码或者你不知道它要反馈的代码有几位的情况下，最简单的方式就是让反馈的代码全都读到。</p>
+<h2 id="9-反馈代码处理">9. 反馈代码处理</h2>
+<p>对于反馈代码的处理就如 1 中所显示，反馈的代码中只有一段是包含我们想要的信息的因此需要将其截取出来然后在进行处理，本电机从第四位开始截取一共截取四位:</p>
+<p><img src="/xliu-group/zh/post/labview_control/image9.png" alt="代码截取处理图示"><br>
+然后可以进行强制转化，将其转化为 10 进制数字显示。</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://liuxunchen.github.io/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
