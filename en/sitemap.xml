@@ -16,20 +16,6 @@
                 href="https://liuxunchen.github.io/xliu-group/categories/"
                 />
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/contact/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://liuxunchen.github.io/xliu-group/zh/contact/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://liuxunchen.github.io/xliu-group/contact/"
-                />
-  </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/news/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
