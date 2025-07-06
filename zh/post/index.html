@@ -353,28 +353,33 @@ $$<h1 id="参考文献">参考文献</h1>
 </figure>
 
 <figure><img src="/xliu-group/zh/post/dianyuan/image3.png"><figcaption>
-      <h4>残差图</h4>
+      <h4>拟合值相对于拟合直线理论值残差图</h4>
+    </figcaption>
+</figure>
+
+<figure><img src="/xliu-group/zh/post/dianyuan/image4.png"><figcaption>
+      <h4>拟合值相对于设定值的残差图</h4>
     </figcaption>
 </figure>
 </p>
-<p>我们可以看到该小电源的线性效果还是很好的，方差也很小，说明电压输出比较稳定。右图为残差图，残差图上的点代表对应设定电压下，输出电压实际值与拟合模型预测值的差值，可以看出这些点的值都比较小，残差绝对值大多在 0.006V 以内，数值很小，表明实际值和拟合预测值偏差不大，模型对该电源电压数据的拟合精度较高。这张残差图显示模型拟合效果不错，误差随机且整体很小，能较好描述设定电压和输出电压的关系。</p>
+<p>我们可以看到该小电源的线性效果还是很好的，方差也很小，说明电压输出比较稳定。从残差图中我们可以看出，残差图上的点代表对应设定电压下，输出电压实际值与拟合模型预测值的差值，可以看出这些点的值都比较小，残差绝对值大多在 0.006V 以内，数值很小，表明实际值和拟合预测值偏差不大，模型对该电源电压数据的拟合精度较高。这张残差图显示模型拟合效果不错，误差随机且整体很小，能较好描述设定电压和输出电压的关系。并且我们可以在图中看出，拟合值相对于设定值的插值都在-0.01内，数据很小，也没有某些值与设定值差距较大，说明该小电源的输出效果还是很不错的。</p>
 <p>另外，我还对每个电压值下测量的电压输出值查看其分布规律，根据测试结果生成的数据大致都有如下图的趋势。这里由于数据过多，我就不列出来了，拿出几个图来看一下分布规律即可：</p>
-<p><figure><img src="/xliu-group/zh/post/dianyuan/image4.png"><figcaption>
+<p><figure><img src="/xliu-group/zh/post/dianyuan/image5.png"><figcaption>
       <h4>0.9V电压分布</h4>
     </figcaption>
 </figure>
 
-<figure><img src="/xliu-group/zh/post/dianyuan/image5.png"><figcaption>
+<figure><img src="/xliu-group/zh/post/dianyuan/image6.png"><figcaption>
       <h4>1.1V电压分布</h4>
     </figcaption>
 </figure>
 </p>
-<p><figure><img src="/xliu-group/zh/post/dianyuan/image6.png"><figcaption>
+<p><figure><img src="/xliu-group/zh/post/dianyuan/image7.png"><figcaption>
       <h4>2.9V电压分布</h4>
     </figcaption>
 </figure>
 
-<figure><img src="/xliu-group/zh/post/dianyuan/image7.png"><figcaption>
+<figure><img src="/xliu-group/zh/post/dianyuan/image8.png"><figcaption>
       <h4>4.3V电压分布</h4>
     </figcaption>
 </figure>
@@ -454,11 +459,11 @@ $$<h1 id="参考文献">参考文献</h1>
     
     <h1 class="f3 near-black">
       <a href="/xliu-group/zh/post/guanglu/" class="link black dim">
-        使用镜片组搭建片光光路拍摄粒子
+        使用镜片搭建光路发出片光拍摄粒子
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="设备准备">设备准备</h1>
+      <h2 id="设备准备">设备准备</h2>
 <p>实验所需的镜片如下所示：</p>
 <table>
   <thead>
@@ -513,7 +518,7 @@ $$<h1 id="参考文献">参考文献</h1>
     </figcaption>
 </figure>
 
-<h1 id="实验原理">实验原理</h1>
+<h2 id="实验原理">实验原理</h2>
 <figure><img src="/xliu-group/zh/post/guanglu/image5.png"><figcaption>
       <h4>光路结构图</h4>
     </figcaption>
@@ -528,7 +533,7 @@ $$<h1 id="参考文献">参考文献</h1>
 图中7和8均为平凸柱面镜，平凸柱面镜在母线方向具有曲率，因此可以在母线方向将平行光束聚焦成为一条线，因此7、8两平凸柱面镜分别在两个母线方向上将光束聚焦，形成一束片光。</p>
 <p>在8的后面接近比色皿的地方放置一个光学狭缝，来控制通过的光，形成片光。</p>
 <p>最终形成的片光大约为一束长度大约10cm，宽度大约2mm的片光。</p>
-<h1 id="实验过程">实验过程</h1>
+<h2 id="实验过程">实验过程</h2>
 <p>由于光路搭建的前期，定制的镜架还没有制作好，因此先利用平行光束对比色皿里的粒子进行照射，并利用相机对其进行拍摄，但由于前期光束会将整个比色皿都照亮，而且前期对于BAM蓝粉量的把控没有做好，因此导致第一次拍摄的效果不尽人意，第一次拍摄的效果如图下图所示：</p>
 <figure><img src="/xliu-group/zh/post/guanglu/image6.png"><figcaption>
       <h4>第一次拍摄效果</h4>
@@ -814,13 +819,10 @@ script.src = &#39;https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js&#39
         <a href="/xliu-group/zh/post/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
       </li>
       <li class="page-item">
-        <a href="/xliu-group/zh/post/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
-      </li>
-      <li class="page-item">
         <a href="/xliu-group/zh/post/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/xliu-group/zh/post/page/3/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/xliu-group/zh/post/page/2/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
   </article>
