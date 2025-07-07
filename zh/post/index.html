@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="Post">
   <meta itemprop="description" content="科研笔记和一些想法">
-  <meta itemprop="datePublished" content="2025-06-30T16:14:01+08:00">
-  <meta itemprop="dateModified" content="2025-06-30T16:14:01+08:00">
+  <meta itemprop="datePublished" content="2025-07-07T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-07-07T00:00:00+00:00">
   <meta itemprop="wordCount" content="1">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Post">
@@ -166,6 +166,45 @@ script.async = true;
 
     </section>
     <aside class="flex-ns mt5 flex-wrap justify-around">
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        七月 7, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/%E8%BF%9E%E4%BA%91%E6%B8%AF%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AE%9E%E9%AA%8C/" class="link black dim">
+        平面火焰炉子实验
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="实验概述">实验概述</h2>
+<p>本次实验主要测试新设计的炉体水冷结构方案的可行性。实验结果表明，水冷系统能有效保护炉体，承受燃烧温度。</p>
+<h2 id="水冷结构测试">水冷结构测试</h2>
+<ul>
+<li><strong>实验结果</strong>：
+<ul>
+<li>冷却水温上升不明显，最高温度低于40℃。</li>
+<li>停止燃烧后炉面温度较低，验证了水冷结构的有效性。</li>
+</ul>
+</li>
+</ul>
+<h2 id="流量记录">流量记录</h2>
+<p>实验中的流量数据记录如下：
+<img src="/xliu-group/zh/post/%E8%BF%9E%E4%BA%91%E6%B8%AF%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AE%9E%E9%AA%8C/image2.jpeg" alt=""></p>
+<h2 id="问题发现与改进">问题发现与改进</h2>
+<h3 id="问题描述">问题描述</h3>
+<p>气体从气管进入炉体时，因缺乏扩压室结构，导致出气不均匀。以下是氢气流量为50和200时的火焰照片：<br>
+<img src="/xliu-group/zh/post/%E8%BF%9E%E4%BA%91%E6%B8%AF%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AE%9E%E9%AA%8C/image3.png" alt=""></p>
+<h3 id="改进方案">改进方案</h3>
+<p>增加扩压室结构，通过挡板和孔板使气体均匀分布</p>
+    </div>
+  <a href="/xliu-group/zh/post/%E8%BF%9E%E4%BA%91%E6%B8%AF%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AE%9E%E9%AA%8C/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
       
         <div class="w-100 w-30-l mb4 relative bg-white">
             <div class="mb3 pa4 blue overflow-hidden">
@@ -754,51 +793,6 @@ script.src = &#39;https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js&#39
 <p>欢迎大家讨论，指正。</p>
     </div>
   <a href="/xliu-group/zh/post/labview_flowmeter/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        五月 9, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/labview_control/" class="link black dim">
-        使用 LabVIEW 实现对CC-M3H040-NN14伺服电机的控制
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="使用-labview-实现对伺服电机的控制">使用 LabVIEW 实现对伺服电机的控制</h1>
-<p>本次要控制的伺服驱动器的型号是：<code>CC-D3P040A2-A</code>；伺服电机是：<code>CC-M3H040-NN14</code>。</p>
-<p><img src="/xliu-group/zh/post/labview_control/image1.jpeg" alt="伺服电机图片"></p>
-<p><a href="/xliu-group/zh/post/labview_control/read.vi">labview control to read motor position</a></p>
-<p><a href="/xliu-group/zh/post/labview_control/Flame_step_motor.vi">labview control to read/move</a></p>
-<h2 id="1-控制器地址设置">1. 控制器地址设置</h2>
-<p><img src="media/image2.png" alt="地址设置图示"><br>
-在需要使用多个控制器的情况下，需要设置好控制器的地址，用以在发送控制码的情况下区分不同的控制器。控制器的地址位发生改变相应的代码上的地址位也要改变，那么代码最后的校验码也要重新进行计算。</p>
-<p>例如 <code>01</code> 即为地址位；最后两位为校验码。</p>
-<h2 id="2-使能控制与通讯模式设置">2. 使能控制与通讯模式设置</h2>
-<p>在单独使用 LabVIEW 控制不开启上位机软件的情况下，要在发送距离、速度、启动和启动复位代码前发送使能开的代码，或者其他用于控制通讯模式的代码。例如本次所控制的驱动，不仅要使能开，且要额外增加两个代码，让其控制模式从 I/O 变为通讯模式：</p>
-<p><img src="/xliu-group/zh/post/labview_control/image3.png" alt="通讯模式设置代码"><br>
-写入两个代码让其都变为通讯模式（使用 485 控制是通讯模式）。</p>
-<h2 id="3-电子齿轮比设置">3. 电子齿轮比设置</h2>
-<p><img src="/xliu-group/zh/post/labview_control/image5.png" alt="电子齿轮比参数设置"><br>
-要开始设置电机的移动量，在此之前要知道电机的电子齿轮比为多少。例如在这个电机的默认齿轮比下，我发送 1000 个脉冲它只能旋转 0.1 圈，因此想要让其在一次动作下旋转一圈，就要发送 10000 个脉冲或者改变它的齿轮比。</p>
-<p>上图即为需要改变的参数的图片，例如我输入是 1000 个脉冲，但我想让其旋转 1/5 圈，但是在现在齿轮比下只能旋转 1/10 圈；现在齿轮比分母为 2500，则我要将其改变为 1250。</p>
-<h2 id="4-转速设置">4. 转速设置</h2>
-<p>设置好转速。</p>
-<h2 id="5-启动与复位设置">5. 启动与复位设置</h2>
-<p>在设置启动，需要多次连续启动的情况下，同时也要设置启动复位，确保连续启动的顺利。</p>
-<h2 id="6-多段代码写入延时">6. 多段代码写入延时</h2>
-<p><img src="/xliu-group/zh/post/labview_control/image6.png" alt="延时设置图示"><br>
-另一个问题是在 LabVIEW 写入时写入多段代码时，使用多个写入 VISA 中间要加入延时的程序（试过顺序结构写入但是感觉还是会崩溃），确保写入的代码不会混乱。</p>
-<h2 id="7-多电机控制方式">7. 多电机控制方式</h2>
-<p>要控制多个电机时可以有多种方式进行选择，首先最简单的你想要实时读取两个电机的参数可以使用轮询的方式，将两个电机的 485 通讯线的 AB 口分别接到一起（这种方式在别的控制方式选择下依然是较好的方式，因为可以不用反复选择不同的 COM 口，且在设置好不同的地址位的情况下，并不会相互影响），选择一个条件结构，将其的条件设置好，分别发送两个对应不同电机的问询码，控制器读到与自己相对应的码时会反馈，这样两个控制器便会轮流反馈其的位置。</p>
-    </div>
-  <a href="/xliu-group/zh/post/labview_control/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
   </div>
 
         </div>

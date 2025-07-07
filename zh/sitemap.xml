@@ -3,17 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/post/</loc>
-    <lastmod>2025-06-30T16:14:01+08:00</lastmod>
+    <lastmod>2025-07-07T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/laser_car/</loc>
-    <lastmod>2025-06-30T16:14:01+08:00</lastmod>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/%E8%BF%9E%E4%BA%91%E6%B8%AF%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AE%9E%E9%AA%8C/</loc>
+    <lastmod>2025-07-07T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/</loc>
-    <lastmod>2025-06-30T16:14:01+08:00</lastmod>
+    <lastmod>2025-07-07T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -26,6 +26,11 @@
                 hreflang="zh"
                 href="https://liuxunchen.github.io/xliu-group/zh/"
                 />
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/laser_car/</loc>
+    <lastmod>2025-06-30T16:14:01+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/post/dikong/</loc>
     <lastmod>2025-06-29T00:00:00+00:00</lastmod>
