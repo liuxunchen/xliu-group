@@ -4,31 +4,34 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>TDLAS | 刘训臣燃烧诊断实验室主页</title>
+    <title>TDLAS 中的一些定量关系 | 刘训臣燃烧诊断实验室主页</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="之前写过的一个TDLAS技术的简介，好像被放在某本书里面了。但当时版本可能有笔误，故在此放一下最新的版本。
-TDLAS
-吸收光谱研究的是光与物质作用过程中最基本的吸收过程，是最基本的燃烧诊断方法。吸收光谱有易于操作、选择性强、定量准确、灵敏度高的优点。
-在燃烧诊断中，通过测量透射光强被火焰吸收而减弱的定量信息，可以获得燃烧体系中分子浓度、温度、压力和速度的信息。
-现代的激光吸收光谱用的是高亮度、窄线宽的红外可调半导体激光光源，通过扫描激光的波长，光电探测器直接测量不同波长激光在通过燃烧体系后的光强损失，从得到所扫描的激光波长范围内的火焰吸收光谱。
-吸收光谱所测量的光谱有位置、强度、和线宽三个基本信息，可以定量地研究反应流中分子浓度、温度、压力和流速等各种信息。谱线的位置由所测量分子的能级结构决定，与燃烧体系的温度压力等热力学状态与流场结构无关。因此可以通过测量燃烧体系的吸收谱准确地区分所测量的不同分子，具有极高的选择性(selectivity)。
-需要学一点分子光谱学。
-在高压燃烧环境中，分子碰撞导致的能级降低和多普勒效应还会引起的微小的吸收峰位置的移动。
-在谱线强度测量方面结合高频调制、光腔共振等方法，吸收光谱可以测量ppt量级的分子浓度，具有很高的灵敏度(sensitivity)。研究吸收光谱所测量的谱线吸收强度只需考虑体系状态从低能级到高能级的光子吸收这一简单过程，可以忽略上能级过程，实验和理论计算均可较准确的定量研究。因此吸收光谱的最大特点为定量准确(absolute)。
-文章前面介绍了一些Einstein A B 系数的介绍。
-可以参考HITRAN 官方的介绍文献：
-Šimečková M, Jacquemart D, Rothman L S, Gamache R R, Goldman A. Einstein A-coefficients and statistical weights for molecular absorption transitions in the HITRAN database[J]. Journal of Quantitative Spectroscopy and Radiative Transfer, 2006, 98(1): 130–155.
-
-      absorption model
-    
-
-
-一个比较重要的结论是
-通过联系宏观上的观测量光强 I 和微观的分子跃迁常数 B 与分子数密度 N，得到Beer-Lambert 定律：
-d \tau(v) = k(v) N dl
-这里\tau(v)是频率v处的光学厚度（optical depth）；k(v)是吸收系数（absorption coefficient）,单位是[1/(molecule cm-3 cm)]；
-定义\mu = k(v) N 为衰减系数（attenuation coefficient）,单位是 [1/cm]；
-k(v) 在波数（wavenumber）轴上的积分得到线强 S，单位是[cm-1/ molecule· cm-3· cm]，进行单位约化后，也可以被写为[1/cm-1]">
+    <meta name="description" content="吸收光谱简介
+简介
+在燃烧诊断中，吸收光谱的测量方法从光源上分非激光和激光两大类。
+传统的非激光的吸收光谱测量，最早从 Hertzberg 那时侯开始，多采用宽频的非相干光源如闪光灯和红外热幅射光源，结合光栅、滤片或者干涉仪进行分光，通过测量不同波长电磁波的透射光强被火焰吸收减弱得到吸收光谱定量信息，就可以获得燃烧体系中分子浓度、温度、压力和速度的信息，能得到很多对火焰结构的测量结果和深刻理解。
+比如Gaydon的书《Flames，Their Structure, Radiation, and Temperature》
+激光在 20 世纪下半叶的发明和应用，极大地促进了吸收光谱的发展。激光吸收光谱用高亮度、窄线宽的可调激光光源，当扫描激光波长时，光电探测器测量不同波长激光在通过燃烧体系后的光强损失，从得到所扫描的激光波长范围内的高分辨率的激光吸收光谱。
+现代的激光吸收光谱多指采用近红外和中红外半导体激光光源，通过调制方法扫描激光的波长，光电探测器直接测量不同波长激光在通过燃烧体系后的光强损失，从得到所扫描的激光波长范围内的可调谐半导体吸收光谱（Tunable Diode Laser Absorption Spectroscopy, TDLAS)。
+吸收光谱研究的是光与物质作用过程中最基本的吸收过程，是最基本的燃烧诊断方法，有易于操作、选择性强、定量准确、灵敏度高的优点。
+吸收光谱所测量的光谱有位置、强度、和线宽三个基本信息，可以定量地研究反应流中分子浓度、温度、压力和流速等各种信息。
+谱线的位置由所测量分子的能级结构决定，与燃烧体系的温度压力等热力学状态与流场结构无关。（在高压燃烧环境中，分子碰撞导致的能级降低和多普勒效应还会引起的微小的吸收峰位置的移动。）
+因此可以通过测量燃烧体系的吸收谱准确地区分所测量的不同分子，具有极高的选择性(selectivity)。
+在谱线强度测量方面，结合光腔共振等方法增加吸收路径的长度，吸收光谱可以测量ppt量级的分子浓度，具有很高的灵敏度(sensitivity)。
+研究吸收光谱所测量的谱线吸收强度只需考虑体系状态从低能级到高能级的光子吸收这一简单过程，可以忽略上能级过程，实验和理论计算均可较准确的定量研究。因此吸收光谱的最大特点为定量准确(absolute)。
+本文主要介绍吸收光谱中常用的一些定量关系。包括 Einstein A B 系数的介绍和HITRAN 数据库的使用。
+可以参考Peter Bernath 的课本《Spectra of Atoms and Molecules》和这篇 HITRAN 官方的介绍文献[1]。
+Einstein&rsquo;s A and B constant
+这里从量子力学能级的角度对光子吸收过程稍做描述。
+分子对光子的吸收模型是上下两个能级之间的跃迁，因此将分子看作包含$|\phi_0\rangle|\phi_1\rangle$两个态的两能级系统(two-level system)，将光用经典的电磁波理论看作一个正弦波描述的波动电场。由于吸收光谱中所用激光的瞬时电场强度远远小于分子内原子和电子之间的作用强度，可以将激光的作用做含时微扰处理。当电磁波达到共振频率时，有较大的跃迁速率。（电磁波的频率以 [$\mathrm{Hz}$]为单位。）可以得到下能级到上能级的吸收(absorption)与上能级到下能级的受激辐射(stimulated emission)的跃迁速率$B$ [$\mathrm{s^{-1}  /(J \cdot m^{-3}\cdot Hz^{-1}}$][2]：
+$$
+\begin{aligned}
+\frac{d N_1}{d t} &= -\frac{d N_0}{d t} = B_{1\leftarrow0} \cdot \rho(\nu) \cdot N_0 \\
+-\frac{d N_1}{d t} &= \frac{d N_0}{d t} = B_{1\rightarrow0} \cdot \rho(\nu) \cdot N_1 \\
+B  &= \frac{2 \pi^2}{3\epsilon_0h^2} |\vec{p}|^2 
+\end{aligned}
+$$其中，
+$\rho_\nu$ 为普朗克定理中光场辐射强度，单位[ $\mathrm{J \cdot m^{-3} \cdot Hz^{-1}}$]。">
     <meta name="generator" content="Hugo 0.144.2">
     
     
@@ -60,58 +63,37 @@ k(v) 在波数（wavenumber）轴上的积分得到线强 S，单位是[cm-1/ mo
 
     <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/tdlas/">
   <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
-  <meta property="og:title" content="TDLAS">
-  <meta property="og:description" content="之前写过的一个TDLAS技术的简介，好像被放在某本书里面了。但当时版本可能有笔误，故在此放一下最新的版本。
-TDLAS
-吸收光谱研究的是光与物质作用过程中最基本的吸收过程，是最基本的燃烧诊断方法。吸收光谱有易于操作、选择性强、定量准确、灵敏度高的优点。
-在燃烧诊断中，通过测量透射光强被火焰吸收而减弱的定量信息，可以获得燃烧体系中分子浓度、温度、压力和速度的信息。
-现代的激光吸收光谱用的是高亮度、窄线宽的红外可调半导体激光光源，通过扫描激光的波长，光电探测器直接测量不同波长激光在通过燃烧体系后的光强损失，从得到所扫描的激光波长范围内的火焰吸收光谱。
-吸收光谱所测量的光谱有位置、强度、和线宽三个基本信息，可以定量地研究反应流中分子浓度、温度、压力和流速等各种信息。谱线的位置由所测量分子的能级结构决定，与燃烧体系的温度压力等热力学状态与流场结构无关。因此可以通过测量燃烧体系的吸收谱准确地区分所测量的不同分子，具有极高的选择性(selectivity)。 需要学一点分子光谱学。
-在高压燃烧环境中，分子碰撞导致的能级降低和多普勒效应还会引起的微小的吸收峰位置的移动。
-在谱线强度测量方面结合高频调制、光腔共振等方法，吸收光谱可以测量ppt量级的分子浓度，具有很高的灵敏度(sensitivity)。研究吸收光谱所测量的谱线吸收强度只需考虑体系状态从低能级到高能级的光子吸收这一简单过程，可以忽略上能级过程，实验和理论计算均可较准确的定量研究。因此吸收光谱的最大特点为定量准确(absolute)。
-文章前面介绍了一些Einstein A B 系数的介绍。 可以参考HITRAN 官方的介绍文献：
-Šimečková M, Jacquemart D, Rothman L S, Gamache R R, Goldman A. Einstein A-coefficients and statistical weights for molecular absorption transitions in the HITRAN database[J]. Journal of Quantitative Spectroscopy and Radiative Transfer, 2006, 98(1): 130–155.
-absorption model 一个比较重要的结论是 通过联系宏观上的观测量光强 I 和微观的分子跃迁常数 B 与分子数密度 N，得到Beer-Lambert 定律：
-d \tau(v) = k(v) N dl
-这里\tau(v)是频率v处的光学厚度（optical depth）；k(v)是吸收系数（absorption coefficient）,单位是[1/(molecule cm-3 cm)]； 定义\mu = k(v) N 为衰减系数（attenuation coefficient）,单位是 [1/cm]； k(v) 在波数（wavenumber）轴上的积分得到线强 S，单位是[cm-1/ molecule· cm-3· cm]，进行单位约化后，也可以被写为[1/cm-1]">
+  <meta property="og:title" content="TDLAS 中的一些定量关系">
+  <meta property="og:description" content="吸收光谱简介 简介 在燃烧诊断中，吸收光谱的测量方法从光源上分非激光和激光两大类。 传统的非激光的吸收光谱测量，最早从 Hertzberg 那时侯开始，多采用宽频的非相干光源如闪光灯和红外热幅射光源，结合光栅、滤片或者干涉仪进行分光，通过测量不同波长电磁波的透射光强被火焰吸收减弱得到吸收光谱定量信息，就可以获得燃烧体系中分子浓度、温度、压力和速度的信息，能得到很多对火焰结构的测量结果和深刻理解。 比如Gaydon的书《Flames，Their Structure, Radiation, and Temperature》
+激光在 20 世纪下半叶的发明和应用，极大地促进了吸收光谱的发展。激光吸收光谱用高亮度、窄线宽的可调激光光源，当扫描激光波长时，光电探测器测量不同波长激光在通过燃烧体系后的光强损失，从得到所扫描的激光波长范围内的高分辨率的激光吸收光谱。 现代的激光吸收光谱多指采用近红外和中红外半导体激光光源，通过调制方法扫描激光的波长，光电探测器直接测量不同波长激光在通过燃烧体系后的光强损失，从得到所扫描的激光波长范围内的可调谐半导体吸收光谱（Tunable Diode Laser Absorption Spectroscopy, TDLAS)。
+吸收光谱研究的是光与物质作用过程中最基本的吸收过程，是最基本的燃烧诊断方法，有易于操作、选择性强、定量准确、灵敏度高的优点。 吸收光谱所测量的光谱有位置、强度、和线宽三个基本信息，可以定量地研究反应流中分子浓度、温度、压力和流速等各种信息。 谱线的位置由所测量分子的能级结构决定，与燃烧体系的温度压力等热力学状态与流场结构无关。（在高压燃烧环境中，分子碰撞导致的能级降低和多普勒效应还会引起的微小的吸收峰位置的移动。） 因此可以通过测量燃烧体系的吸收谱准确地区分所测量的不同分子，具有极高的选择性(selectivity)。 在谱线强度测量方面，结合光腔共振等方法增加吸收路径的长度，吸收光谱可以测量ppt量级的分子浓度，具有很高的灵敏度(sensitivity)。 研究吸收光谱所测量的谱线吸收强度只需考虑体系状态从低能级到高能级的光子吸收这一简单过程，可以忽略上能级过程，实验和理论计算均可较准确的定量研究。因此吸收光谱的最大特点为定量准确(absolute)。
+本文主要介绍吸收光谱中常用的一些定量关系。包括 Einstein A B 系数的介绍和HITRAN 数据库的使用。 可以参考Peter Bernath 的课本《Spectra of Atoms and Molecules》和这篇 HITRAN 官方的介绍文献[1]。
+Einstein’s A and B constant 这里从量子力学能级的角度对光子吸收过程稍做描述。 分子对光子的吸收模型是上下两个能级之间的跃迁，因此将分子看作包含$|\phi_0\rangle|\phi_1\rangle$两个态的两能级系统(two-level system)，将光用经典的电磁波理论看作一个正弦波描述的波动电场。由于吸收光谱中所用激光的瞬时电场强度远远小于分子内原子和电子之间的作用强度，可以将激光的作用做含时微扰处理。当电磁波达到共振频率时，有较大的跃迁速率。（电磁波的频率以 [$\mathrm{Hz}$]为单位。）可以得到下能级到上能级的吸收(absorption)与上能级到下能级的受激辐射(stimulated emission)的跃迁速率$B$ [$\mathrm{s^{-1} /(J \cdot m^{-3}\cdot Hz^{-1}}$][2]：
+$$ \begin{aligned} \frac{d N_1}{d t} &amp;= -\frac{d N_0}{d t} = B_{1\leftarrow0} \cdot \rho(\nu) \cdot N_0 \\ -\frac{d N_1}{d t} &amp;= \frac{d N_0}{d t} = B_{1\rightarrow0} \cdot \rho(\nu) \cdot N_1 \\ B &amp;= \frac{2 \pi^2}{3\epsilon_0h^2} |\vec{p}|^2 \end{aligned} $$其中， $\rho_\nu$ 为普朗克定理中光场辐射强度，单位[ $\mathrm{J \cdot m^{-3} \cdot Hz^{-1}}$]。">
   <meta property="og:locale" content="zh">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2025-03-04T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-03-04T00:00:00+00:00">
+    <meta property="article:published_time" content="2025-10-03T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-10-03T00:00:00+00:00">
 
-  <meta itemprop="name" content="TDLAS">
-  <meta itemprop="description" content="之前写过的一个TDLAS技术的简介，好像被放在某本书里面了。但当时版本可能有笔误，故在此放一下最新的版本。
-TDLAS
-吸收光谱研究的是光与物质作用过程中最基本的吸收过程，是最基本的燃烧诊断方法。吸收光谱有易于操作、选择性强、定量准确、灵敏度高的优点。
-在燃烧诊断中，通过测量透射光强被火焰吸收而减弱的定量信息，可以获得燃烧体系中分子浓度、温度、压力和速度的信息。
-现代的激光吸收光谱用的是高亮度、窄线宽的红外可调半导体激光光源，通过扫描激光的波长，光电探测器直接测量不同波长激光在通过燃烧体系后的光强损失，从得到所扫描的激光波长范围内的火焰吸收光谱。
-吸收光谱所测量的光谱有位置、强度、和线宽三个基本信息，可以定量地研究反应流中分子浓度、温度、压力和流速等各种信息。谱线的位置由所测量分子的能级结构决定，与燃烧体系的温度压力等热力学状态与流场结构无关。因此可以通过测量燃烧体系的吸收谱准确地区分所测量的不同分子，具有极高的选择性(selectivity)。 需要学一点分子光谱学。
-在高压燃烧环境中，分子碰撞导致的能级降低和多普勒效应还会引起的微小的吸收峰位置的移动。
-在谱线强度测量方面结合高频调制、光腔共振等方法，吸收光谱可以测量ppt量级的分子浓度，具有很高的灵敏度(sensitivity)。研究吸收光谱所测量的谱线吸收强度只需考虑体系状态从低能级到高能级的光子吸收这一简单过程，可以忽略上能级过程，实验和理论计算均可较准确的定量研究。因此吸收光谱的最大特点为定量准确(absolute)。
-文章前面介绍了一些Einstein A B 系数的介绍。 可以参考HITRAN 官方的介绍文献：
-Šimečková M, Jacquemart D, Rothman L S, Gamache R R, Goldman A. Einstein A-coefficients and statistical weights for molecular absorption transitions in the HITRAN database[J]. Journal of Quantitative Spectroscopy and Radiative Transfer, 2006, 98(1): 130–155.
-absorption model 一个比较重要的结论是 通过联系宏观上的观测量光强 I 和微观的分子跃迁常数 B 与分子数密度 N，得到Beer-Lambert 定律：
-d \tau(v) = k(v) N dl
-这里\tau(v)是频率v处的光学厚度（optical depth）；k(v)是吸收系数（absorption coefficient）,单位是[1/(molecule cm-3 cm)]； 定义\mu = k(v) N 为衰减系数（attenuation coefficient）,单位是 [1/cm]； k(v) 在波数（wavenumber）轴上的积分得到线强 S，单位是[cm-1/ molecule· cm-3· cm]，进行单位约化后，也可以被写为[1/cm-1]">
-  <meta itemprop="datePublished" content="2025-03-04T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-03-04T00:00:00+00:00">
-  <meta itemprop="wordCount" content="84">
+  <meta itemprop="name" content="TDLAS 中的一些定量关系">
+  <meta itemprop="description" content="吸收光谱简介 简介 在燃烧诊断中，吸收光谱的测量方法从光源上分非激光和激光两大类。 传统的非激光的吸收光谱测量，最早从 Hertzberg 那时侯开始，多采用宽频的非相干光源如闪光灯和红外热幅射光源，结合光栅、滤片或者干涉仪进行分光，通过测量不同波长电磁波的透射光强被火焰吸收减弱得到吸收光谱定量信息，就可以获得燃烧体系中分子浓度、温度、压力和速度的信息，能得到很多对火焰结构的测量结果和深刻理解。 比如Gaydon的书《Flames，Their Structure, Radiation, and Temperature》
+激光在 20 世纪下半叶的发明和应用，极大地促进了吸收光谱的发展。激光吸收光谱用高亮度、窄线宽的可调激光光源，当扫描激光波长时，光电探测器测量不同波长激光在通过燃烧体系后的光强损失，从得到所扫描的激光波长范围内的高分辨率的激光吸收光谱。 现代的激光吸收光谱多指采用近红外和中红外半导体激光光源，通过调制方法扫描激光的波长，光电探测器直接测量不同波长激光在通过燃烧体系后的光强损失，从得到所扫描的激光波长范围内的可调谐半导体吸收光谱（Tunable Diode Laser Absorption Spectroscopy, TDLAS)。
+吸收光谱研究的是光与物质作用过程中最基本的吸收过程，是最基本的燃烧诊断方法，有易于操作、选择性强、定量准确、灵敏度高的优点。 吸收光谱所测量的光谱有位置、强度、和线宽三个基本信息，可以定量地研究反应流中分子浓度、温度、压力和流速等各种信息。 谱线的位置由所测量分子的能级结构决定，与燃烧体系的温度压力等热力学状态与流场结构无关。（在高压燃烧环境中，分子碰撞导致的能级降低和多普勒效应还会引起的微小的吸收峰位置的移动。） 因此可以通过测量燃烧体系的吸收谱准确地区分所测量的不同分子，具有极高的选择性(selectivity)。 在谱线强度测量方面，结合光腔共振等方法增加吸收路径的长度，吸收光谱可以测量ppt量级的分子浓度，具有很高的灵敏度(sensitivity)。 研究吸收光谱所测量的谱线吸收强度只需考虑体系状态从低能级到高能级的光子吸收这一简单过程，可以忽略上能级过程，实验和理论计算均可较准确的定量研究。因此吸收光谱的最大特点为定量准确(absolute)。
+本文主要介绍吸收光谱中常用的一些定量关系。包括 Einstein A B 系数的介绍和HITRAN 数据库的使用。 可以参考Peter Bernath 的课本《Spectra of Atoms and Molecules》和这篇 HITRAN 官方的介绍文献[1]。
+Einstein’s A and B constant 这里从量子力学能级的角度对光子吸收过程稍做描述。 分子对光子的吸收模型是上下两个能级之间的跃迁，因此将分子看作包含$|\phi_0\rangle|\phi_1\rangle$两个态的两能级系统(two-level system)，将光用经典的电磁波理论看作一个正弦波描述的波动电场。由于吸收光谱中所用激光的瞬时电场强度远远小于分子内原子和电子之间的作用强度，可以将激光的作用做含时微扰处理。当电磁波达到共振频率时，有较大的跃迁速率。（电磁波的频率以 [$\mathrm{Hz}$]为单位。）可以得到下能级到上能级的吸收(absorption)与上能级到下能级的受激辐射(stimulated emission)的跃迁速率$B$ [$\mathrm{s^{-1} /(J \cdot m^{-3}\cdot Hz^{-1}}$][2]：
+$$ \begin{aligned} \frac{d N_1}{d t} &amp;= -\frac{d N_0}{d t} = B_{1\leftarrow0} \cdot \rho(\nu) \cdot N_0 \\ -\frac{d N_1}{d t} &amp;= \frac{d N_0}{d t} = B_{1\rightarrow0} \cdot \rho(\nu) \cdot N_1 \\ B &amp;= \frac{2 \pi^2}{3\epsilon_0h^2} |\vec{p}|^2 \end{aligned} $$其中， $\rho_\nu$ 为普朗克定理中光场辐射强度，单位[ $\mathrm{J \cdot m^{-3} \cdot Hz^{-1}}$]。">
+  <meta itemprop="datePublished" content="2025-10-03T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-10-03T00:00:00+00:00">
+  <meta itemprop="wordCount" content="497">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="TDLAS">
-  <meta name="twitter:description" content="之前写过的一个TDLAS技术的简介，好像被放在某本书里面了。但当时版本可能有笔误，故在此放一下最新的版本。
-TDLAS
-吸收光谱研究的是光与物质作用过程中最基本的吸收过程，是最基本的燃烧诊断方法。吸收光谱有易于操作、选择性强、定量准确、灵敏度高的优点。
-在燃烧诊断中，通过测量透射光强被火焰吸收而减弱的定量信息，可以获得燃烧体系中分子浓度、温度、压力和速度的信息。
-现代的激光吸收光谱用的是高亮度、窄线宽的红外可调半导体激光光源，通过扫描激光的波长，光电探测器直接测量不同波长激光在通过燃烧体系后的光强损失，从得到所扫描的激光波长范围内的火焰吸收光谱。
-吸收光谱所测量的光谱有位置、强度、和线宽三个基本信息，可以定量地研究反应流中分子浓度、温度、压力和流速等各种信息。谱线的位置由所测量分子的能级结构决定，与燃烧体系的温度压力等热力学状态与流场结构无关。因此可以通过测量燃烧体系的吸收谱准确地区分所测量的不同分子，具有极高的选择性(selectivity)。 需要学一点分子光谱学。
-在高压燃烧环境中，分子碰撞导致的能级降低和多普勒效应还会引起的微小的吸收峰位置的移动。
-在谱线强度测量方面结合高频调制、光腔共振等方法，吸收光谱可以测量ppt量级的分子浓度，具有很高的灵敏度(sensitivity)。研究吸收光谱所测量的谱线吸收强度只需考虑体系状态从低能级到高能级的光子吸收这一简单过程，可以忽略上能级过程，实验和理论计算均可较准确的定量研究。因此吸收光谱的最大特点为定量准确(absolute)。
-文章前面介绍了一些Einstein A B 系数的介绍。 可以参考HITRAN 官方的介绍文献：
-Šimečková M, Jacquemart D, Rothman L S, Gamache R R, Goldman A. Einstein A-coefficients and statistical weights for molecular absorption transitions in the HITRAN database[J]. Journal of Quantitative Spectroscopy and Radiative Transfer, 2006, 98(1): 130–155.
-absorption model 一个比较重要的结论是 通过联系宏观上的观测量光强 I 和微观的分子跃迁常数 B 与分子数密度 N，得到Beer-Lambert 定律：
-d \tau(v) = k(v) N dl
-这里\tau(v)是频率v处的光学厚度（optical depth）；k(v)是吸收系数（absorption coefficient）,单位是[1/(molecule cm-3 cm)]； 定义\mu = k(v) N 为衰减系数（attenuation coefficient）,单位是 [1/cm]； k(v) 在波数（wavenumber）轴上的积分得到线强 S，单位是[cm-1/ molecule· cm-3· cm]，进行单位约化后，也可以被写为[1/cm-1]">
+  <meta name="twitter:title" content="TDLAS 中的一些定量关系">
+  <meta name="twitter:description" content="吸收光谱简介 简介 在燃烧诊断中，吸收光谱的测量方法从光源上分非激光和激光两大类。 传统的非激光的吸收光谱测量，最早从 Hertzberg 那时侯开始，多采用宽频的非相干光源如闪光灯和红外热幅射光源，结合光栅、滤片或者干涉仪进行分光，通过测量不同波长电磁波的透射光强被火焰吸收减弱得到吸收光谱定量信息，就可以获得燃烧体系中分子浓度、温度、压力和速度的信息，能得到很多对火焰结构的测量结果和深刻理解。 比如Gaydon的书《Flames，Their Structure, Radiation, and Temperature》
+激光在 20 世纪下半叶的发明和应用，极大地促进了吸收光谱的发展。激光吸收光谱用高亮度、窄线宽的可调激光光源，当扫描激光波长时，光电探测器测量不同波长激光在通过燃烧体系后的光强损失，从得到所扫描的激光波长范围内的高分辨率的激光吸收光谱。 现代的激光吸收光谱多指采用近红外和中红外半导体激光光源，通过调制方法扫描激光的波长，光电探测器直接测量不同波长激光在通过燃烧体系后的光强损失，从得到所扫描的激光波长范围内的可调谐半导体吸收光谱（Tunable Diode Laser Absorption Spectroscopy, TDLAS)。
+吸收光谱研究的是光与物质作用过程中最基本的吸收过程，是最基本的燃烧诊断方法，有易于操作、选择性强、定量准确、灵敏度高的优点。 吸收光谱所测量的光谱有位置、强度、和线宽三个基本信息，可以定量地研究反应流中分子浓度、温度、压力和流速等各种信息。 谱线的位置由所测量分子的能级结构决定，与燃烧体系的温度压力等热力学状态与流场结构无关。（在高压燃烧环境中，分子碰撞导致的能级降低和多普勒效应还会引起的微小的吸收峰位置的移动。） 因此可以通过测量燃烧体系的吸收谱准确地区分所测量的不同分子，具有极高的选择性(selectivity)。 在谱线强度测量方面，结合光腔共振等方法增加吸收路径的长度，吸收光谱可以测量ppt量级的分子浓度，具有很高的灵敏度(sensitivity)。 研究吸收光谱所测量的谱线吸收强度只需考虑体系状态从低能级到高能级的光子吸收这一简单过程，可以忽略上能级过程，实验和理论计算均可较准确的定量研究。因此吸收光谱的最大特点为定量准确(absolute)。
+本文主要介绍吸收光谱中常用的一些定量关系。包括 Einstein A B 系数的介绍和HITRAN 数据库的使用。 可以参考Peter Bernath 的课本《Spectra of Atoms and Molecules》和这篇 HITRAN 官方的介绍文献[1]。
+Einstein’s A and B constant 这里从量子力学能级的角度对光子吸收过程稍做描述。 分子对光子的吸收模型是上下两个能级之间的跃迁，因此将分子看作包含$|\phi_0\rangle|\phi_1\rangle$两个态的两能级系统(two-level system)，将光用经典的电磁波理论看作一个正弦波描述的波动电场。由于吸收光谱中所用激光的瞬时电场强度远远小于分子内原子和电子之间的作用强度，可以将激光的作用做含时微扰处理。当电磁波达到共振频率时，有较大的跃迁速率。（电磁波的频率以 [$\mathrm{Hz}$]为单位。）可以得到下能级到上能级的吸收(absorption)与上能级到下能级的受激辐射(stimulated emission)的跃迁速率$B$ [$\mathrm{s^{-1} /(J \cdot m^{-3}\cdot Hz^{-1}}$][2]：
+$$ \begin{aligned} \frac{d N_1}{d t} &amp;= -\frac{d N_0}{d t} = B_{1\leftarrow0} \cdot \rho(\nu) \cdot N_0 \\ -\frac{d N_1}{d t} &amp;= \frac{d N_0}{d t} = B_{1\rightarrow0} \cdot \rho(\nu) \cdot N_1 \\ B &amp;= \frac{2 \pi^2}{3\epsilon_0h^2} |\vec{p}|^2 \end{aligned} $$其中， $\rho_\nu$ 为普朗克定理中光场辐射强度，单位[ $\mathrm{J \cdot m^{-3} \cdot Hz^{-1}}$]。">
 
       
     
@@ -207,7 +189,7 @@ script.async = true;
 
       <div class="tc-l pv6 ph3 ph4-ns">
         
-          <div class="f2 f1-l fw2 white-90 mb0 lh-title">TDLAS</div>
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">TDLAS 中的一些定量关系</div>
           
         
       </div>
@@ -226,42 +208,143 @@ script.async = true;
           
         Post
       </aside><div id="sharing" class="mt3 ananke-socials"></div>
-<h1 class="f1 athelas mt3 mb1">TDLAS</h1>
+<h1 class="f1 athelas mt3 mb1">TDLAS 中的一些定量关系</h1>
       
       <p class="tracked"><strong>刘训臣</strong>
       </p>
       
       
       
-      <time class="f6 mv4 dib tracked" datetime="2025-03-04T00:00:00Z">三月 4, 2025</time>
+      <time class="f6 mv4 dib tracked" datetime="2025-10-03T00:00:00Z">十月 3, 2025</time>
       
 
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>之前写过的一个TDLAS技术的简介，好像被放在某本书里面了。但当时版本可能有笔误，故在此放一下最新的版本。</p>
-<p><a href="/xliu-group/zh/post/tdlas/tdlas.pdf">TDLAS</a></p>
-<p>吸收光谱研究的是光与物质作用过程中最基本的吸收过程，是最基本的燃烧诊断方法。吸收光谱有易于操作、选择性强、定量准确、灵敏度高的优点。</p>
-<p>在燃烧诊断中，通过测量透射光强被火焰吸收而减弱的定量信息，可以获得燃烧体系中分子浓度、温度、压力和速度的信息。</p>
-<p>现代的激光吸收光谱用的是高亮度、窄线宽的红外可调半导体激光光源，通过扫描激光的波长，光电探测器直接测量不同波长激光在通过燃烧体系后的光强损失，从得到所扫描的激光波长范围内的火焰吸收光谱。</p>
-<p>吸收光谱所测量的光谱有位置、强度、和线宽三个基本信息，可以定量地研究反应流中分子浓度、温度、压力和流速等各种信息。谱线的位置由所测量分子的能级结构决定，与燃烧体系的温度压力等热力学状态与流场结构无关。因此可以通过测量燃烧体系的吸收谱准确地区分所测量的不同分子，具有极高的选择性(selectivity)。
-需要学一点分子光谱学。</p>
-<p>在高压燃烧环境中，分子碰撞导致的能级降低和多普勒效应还会引起的微小的吸收峰位置的移动。</p>
-<p>在谱线强度测量方面结合高频调制、光腔共振等方法，吸收光谱可以测量ppt量级的分子浓度，具有很高的灵敏度(sensitivity)。研究吸收光谱所测量的谱线吸收强度只需考虑体系状态从低能级到高能级的光子吸收这一简单过程，可以忽略上能级过程，实验和理论计算均可较准确的定量研究。因此吸收光谱的最大特点为定量准确(absolute)。</p>
-<p>文章前面介绍了一些Einstein A B 系数的介绍。
-可以参考HITRAN 官方的介绍文献：</p>
-<p>Šimečková M, Jacquemart D, Rothman L S, Gamache R R, Goldman A. Einstein A-coefficients and statistical weights for molecular absorption transitions in the HITRAN database[J]. Journal of Quantitative Spectroscopy and Radiative Transfer, 2006, 98(1): 130–155.</p>
-<figure><img src="/xliu-group/zh/post/tdlas/beer.png"><figcaption>
-      <h4>absorption model</h4>
-    </figcaption>
-</figure>
-
-<p>一个比较重要的结论是
-通过联系宏观上的观测量光强 I 和微观的分子跃迁常数 B 与分子数密度 N，得到Beer-Lambert 定律：</p>
-<p>d \tau(v) = k(v) N dl</p>
-<p>这里\tau(v)是频率v处的光学厚度（optical depth）；k(v)是吸收系数（absorption coefficient）,单位是[1/(molecule cm-3 cm)]；
-定义\mu = k(v) N 为衰减系数（attenuation coefficient）,单位是 [1/cm]；
-k(v) 在波数（wavenumber）轴上的积分得到线强 S，单位是[cm-1/ molecule· cm-3· cm]，进行单位约化后，也可以被写为[1/cm-1]</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><h1 id="吸收光谱简介">吸收光谱简介</h1>
+<h2 id="简介">简介</h2>
+<p>在燃烧诊断中，吸收光谱的测量方法从光源上分非激光和激光两大类。
+传统的非激光的吸收光谱测量，最早从 Hertzberg 那时侯开始，多采用宽频的非相干光源如闪光灯和红外热幅射光源，结合光栅、滤片或者干涉仪进行分光，通过测量不同波长电磁波的透射光强被火焰吸收减弱得到吸收光谱定量信息，就可以获得燃烧体系中分子浓度、温度、压力和速度的信息，能得到很多对火焰结构的测量结果和深刻理解。
+比如Gaydon的书《Flames，Their Structure, Radiation, and Temperature》</p>
+<p>激光在 20 世纪下半叶的发明和应用，极大地促进了吸收光谱的发展。激光吸收光谱用高亮度、窄线宽的可调激光光源，当扫描激光波长时，光电探测器测量不同波长激光在通过燃烧体系后的光强损失，从得到所扫描的激光波长范围内的高分辨率的激光吸收光谱。
+现代的激光吸收光谱多指采用近红外和中红外半导体激光光源，通过调制方法扫描激光的波长，光电探测器直接测量不同波长激光在通过燃烧体系后的光强损失，从得到所扫描的激光波长范围内的可调谐半导体吸收光谱（Tunable Diode Laser Absorption Spectroscopy, TDLAS)。</p>
+<p>吸收光谱研究的是光与物质作用过程中最基本的吸收过程，是最基本的燃烧诊断方法，有易于操作、选择性强、定量准确、灵敏度高的优点。
+吸收光谱所测量的光谱有位置、强度、和线宽三个基本信息，可以定量地研究反应流中分子浓度、温度、压力和流速等各种信息。
+谱线的位置由所测量分子的能级结构决定，与燃烧体系的温度压力等热力学状态与流场结构无关。（在高压燃烧环境中，分子碰撞导致的能级降低和多普勒效应还会引起的微小的吸收峰位置的移动。）
+因此可以通过测量燃烧体系的吸收谱准确地区分所测量的不同分子，具有极高的选择性(selectivity)。
+在谱线强度测量方面，结合光腔共振等方法增加吸收路径的长度，吸收光谱可以测量ppt量级的分子浓度，具有很高的灵敏度(sensitivity)。
+研究吸收光谱所测量的谱线吸收强度只需考虑体系状态从低能级到高能级的光子吸收这一简单过程，可以忽略上能级过程，实验和理论计算均可较准确的定量研究。因此吸收光谱的最大特点为定量准确(absolute)。</p>
+<p>本文主要介绍吸收光谱中常用的一些定量关系。包括 Einstein A B 系数的介绍和HITRAN 数据库的使用。
+可以参考Peter Bernath 的课本《Spectra of Atoms and Molecules》和这篇 HITRAN 官方的介绍文献[1]。</p>
+<h2 id="einsteins-a-and-b-constant">Einstein&rsquo;s A and B constant</h2>
+<p>这里从量子力学能级的角度对光子吸收过程稍做描述。
+分子对光子的吸收模型是上下两个能级之间的跃迁，因此将分子看作包含$|\phi_0\rangle|\phi_1\rangle$两个态的两能级系统(two-level system)，将光用经典的电磁波理论看作一个正弦波描述的波动电场。由于吸收光谱中所用激光的瞬时电场强度远远小于分子内原子和电子之间的作用强度，可以将激光的作用做含时微扰处理。当电磁波达到共振频率时，有较大的跃迁速率。（电磁波的频率以 [$\mathrm{Hz}$]为单位。）可以得到下能级到上能级的吸收(absorption)与上能级到下能级的受激辐射(stimulated emission)的跃迁速率$B$ [$\mathrm{s^{-1}  /(J \cdot m^{-3}\cdot Hz^{-1}}$][2]：</p>
+$$
+\begin{aligned}
+\frac{d N_1}{d t} &= -\frac{d N_0}{d t} = B_{1\leftarrow0} \cdot \rho(\nu) \cdot N_0 \\
+-\frac{d N_1}{d t} &= \frac{d N_0}{d t} = B_{1\rightarrow0} \cdot \rho(\nu) \cdot N_1 \\
+B  &= \frac{2 \pi^2}{3\epsilon_0h^2} |\vec{p}|^2 
+\end{aligned}
+$$<p>其中，
+$\rho_\nu$ 为普朗克定理中光场辐射强度，单位[ $\mathrm{J \cdot m^{-3} \cdot Hz^{-1}}$]。</p>
+$$
+u_\nu(\nu, T) = \frac{8\pi h \nu^3}{c^3} \frac{1}{e^{\frac{h\nu}{k_\mathrm{B} T}} - 1}
+$$<p>$h = 6.62607015\times 10^{-34},\mathrm{J\cdot s}$为普朗克常数；$c = 299792458,\mathrm{m/s}$ 为光速。</p>
+<p>当采用单频$\nu$激光时，$ F$ 为光子通量[$\mathrm{m^{-2} \cdot s^{-1}\cdot Hz^{-1}}$]；
+激光能量(辐射照度)为$ I=h \nu F$ [$\mathrm{W \cdot m^{-2}\cdot Hz^{-1}}$]；
+激光的辐射能量密度为
+$\rho = I/c$ [$\mathrm{J \cdot m^{-3} \cdot Hz^{-1}}$]。</p>
+<p>$\vec{p} =  q \langle\phi_0|\vec{r}|\phi_1\rangle $为两能级间的电子跃迁偶极矩。
+光与分子的作用还包括电四极矩和磁偶极矩作用，基本原理是相同的，与常数$ B$ 有类似的定量关系。</p>
+<p>分子的自发辐射(spontaneous emission)的速率常数 $A [\mathrm{s^{-1}}]$是分子本身固有的性质，与激光强度、跃迁种类无关，单位固定，是广泛适用的吸收强度参数。</p>
+$$
+-\frac{d N_1}{d t} = \frac{d N_0}{d t} = A \cdot N_1 
+$$<p>达到热平衡时，上下态的粒子数量不变，且有波尔兹曼关系，可以得到上下态的粒子数比同时满足：</p>
+$$
+\begin{aligned}
+B_{1\leftarrow0} \cdot \rho_\nu \cdot N_0 - B_{1\rightarrow0} \cdot \rho_\nu \cdot N_1  - A \cdot N_1 &= 0 \\
+\frac{N_1}{N_0} &= \frac{B_{1\leftarrow0}\cdot \rho_\nu  }{A +B_{1\rightarrow0} \cdot \rho_\nu} \\
+\frac{N_1}{N_0} &= e^{-\frac{h\nu}{k_BT}}
+\end{aligned}
+$$<p>得到了$\rho_\nu$与$A B$的关系：</p>
+$$
+\rho(\nu) = \frac{A}{B_{1\leftarrow0}e^{\frac{h\nu}{k_BT}}-B_{1\rightarrow0}}
+$$<p>比较这个式子和普朗克定律，发现必然有$B_{1\rightarrow0} = B_{1\leftarrow0}$</p>
+$$
+\frac{A}{B} = \frac{8\pi h \nu^3}{c^3}
+$$<p>可见分子自发辐射的寿命可以由其吸收系数计算。当分子跃迁频率较低时，比如核磁与微波光谱范围，激发态寿命由受激发光决定；而在燃烧诊断
+关心的红外与紫外波段，分子跃迁频率高，激发态寿命由自发辐射(T1)和分子间碰撞(T2)决定，无需考虑分子与激光的相干作用。</p>
+<h2 id="beer-law">Beer Law</h2>
+<p>下面推导激光与大量分子相互作用时的吸收定律。
+如图1所示，激光与单位长度分子体系发生吸收与受激辐射两类相互作用，都影响激光光强。</p>
+<p><img src="/xliu-group/zh/post/tdlas/beer.png" alt="光在单位距离上的吸收示意图"></p>
+<p>激光能量的吸收来源于光子通量的改变，从而与当地光强有关：
+同时，分子的吸收跃迁在各种作用下呈现各种展宽线形(profile)，定义归一化的线形函数 $g_v$ 。</p>
+$$
+\begin{aligned}
+dF_v \cdot A &= \frac{d N_1}{d t} = -B (N_0-N_1) \rho_\nu g_\nu \\
+\frac{d F_v}{F_v} &= -B(N_0-N_1)\frac{h\nu_0}{c A }  g_v  \\
+d I_v &= h \nu  dF_v =  -B \frac{(N_0-N_1)}{dV} \rho_\nu g_\nu dl =  -B(n_0-n_1) \frac{I_v}{c}  h\nu  g_v  dl\\
+\frac{d I_v}{I_v} &= -B(n_0-n_1)\frac{h\nu_0}{c}  g_v  dl 
+\end{aligned}
+$$<p>定义上面式子中</p>
+$$
+\begin{aligned}
+\frac{d F_v}{F_v} &= -\frac{\sigma_v}{A} (N_0-N_1) \\
+\frac{d I_v}{I_v} &= -k_v   dl
+\end{aligned}
+$$<p>这里
+$\sigma_v = B\frac{h\nu_0}{c}  g_v [\mathrm{m^2}]$ 为吸收截面；$k_v = B\frac{h\nu_0}{c}  (n_0-n_1)g_v =\sigma_v (n_0-n_1)[\mathrm{m^{-1}}]$ 为吸收系数。
+积分得到：</p>
+$$
+\frac{ I^v}{I^v_0} = e^{ -\int k_v \cdot   dl} = e^{ -\int \sigma_v (n_0-n_1) \cdot  d l} 
+$$<p>这里得到的是光子通量和激光强度的减弱与吸收长度的微分关系，将宏观的光强$ I$ 和微观的分子跃迁常数 $B$ 与分子数密度$ N$联系起来。</p>
+<p>定义无量纲的数值：</p>
+$$
+\int k_v \cdot  d l = - \ln{ \frac{ I^v}{I^v_0} } = \tau
+$$<p>为吸光厚度（optical path）。Beer-Lambert 定律：</p>
+$$
+\ln{ \frac{ I^v}{I^v_0} } = - \tau = - \int \alpha_v \cdot c\cdot dl
+$$<p>当$ c \approx n_0/N$取不同浓度单位时，对应有不同的吸收系数$\alpha$。
+当以数密度$[\mathrm{cm^{-3}}]$为单位时，吸收系数单位为$[\mathrm{cm^2}]$。</p>
+<h2 id="定量关系">定量关系</h2>
+<p>在红外与紫外波段，电磁波频率一般用波数$\bar{\nu}$表示，为每厘米$[\mathrm{cm^{-1}}]$ 中波长的个数。
+波数与频率的关系为$\bar{\nu} = \nu / 100/ c$
+波数也是方便使用的光子能量的单位，$1,\mathrm{cm^{-1}} = 29.9792458,\mathrm{GHz}$。下面所讨论电磁波的频率单位统一由波数表示，单位为$[\mathrm{cm^{-1}}]$。</p>
+<p>考虑吸收谱线的展宽线形为$g_v$，在波数轴上的单位为$[\mathrm{1/cm^{-1}}]$。
+因此定义谱线的光谱轴上积分的吸收强度$ S$，与吸收系数$\alpha_v$的关系为：</p>
+$$
+S = \int \alpha_{\bar{\nu}-\bar{\nu_0}} d(\bar{\nu}-\bar{\nu_0})
+$$<p>单位为$[\mathrm{cm^2 \cdot cm^{-1}}]$。</p>
+<p>由吸收系数和浓度的关系与配分函数，可以得到爱因斯坦系数和积分线强的关系：</p>
+$$
+\begin{aligned}
+\alpha_v &= B(n_0/N-n_1/N)\frac{h\nu_0}{c}  g_v \\
+&= B(g_0\frac{e^{-\frac{c_2E_0}{T}}}{Q(T)}-g_1\frac{e^{-\frac{c_2E_1}{T}}}{Q(T)})\frac{h\nu_0}{c}  g_v \\
+S &=  B(g_0e^{-\frac{c_2E_0}{T}}-g_1e^{-\frac{c_2E_1}{T}})\frac{h\nu_0}{c Q(T)}  \\
+&=  \frac{A}{8\pi Q(T) c \nu_0^2/c^2}(g_0e^{-\frac{c_2E_0}{T}}-g_1e^{-\frac{c_2E_1}{T}})
+\end{aligned}
+$$<p>其中下能级简并度为 $g_0$，上能级简并度为 $g_1$，$c_2 = h c/ k_B$ 为第二辐射常数。</p>
+<h2 id="温度">温度</h2>
+<p>同一个谱线不同温度的线强变化：</p>
+$$
+\frac{S(T_1)}{S(T_2)} = \frac{Q(T_2)}{Q(T_1)}\frac{(g_0e^{-\frac{c_2E_0}{T_1}}-g_1e^{-\frac{c_2E_1}{T_1}})}{(g_0e^{-\frac{c_2E_0}{T_2}}-g_1e^{-\frac{c_2E_1}{T_2}})}
+$$<p>在常见的采用双线测温时：</p>
+$$
+\frac{S_1(T)}{S_2(T)}= \ln \frac{A_1Q_2(T)\nu_2^2}{A_2Q_1(T)\nu_1^2}\frac{(g^1_0e^{-\frac{c_2E^1_0}{T}}-g^1_1e^{-\frac{c_2E^1_1}{T}})}{(g^2_0e^{-\frac{c_2E^2_0}{T}}-g^2_1e^{-\frac{c_2E^2_1}{T}})}
+$$<p>忽略上态的布居数，可以得到一个温度的解析式：</p>
+$$
+\ln{\frac{S_1(T)}{S_2(T)}} \approx \ln{ \frac{g^1_0A_1Q_2(T)\nu_2^2}{g^2_0A_2Q_1(T)\nu_1^2}} - \frac{c_2(E^1_0-E^2_0)}{T} 
+$$<p>通过数据库中参考温度$T_0$的线强$S(T_0)$即可得到包含爱因斯坦系数的项，并通过双线线强的比值计算温度：</p>
+$$
+\begin{aligned}
+\ln{\frac{S_1(T_0)}{S_2(T_0)}}&\approx \ln{ \frac{g^1_0A_1Q_2(T_0)\nu_2^2}{g^2_0A_2Q_1(T_0)\nu_1^2}} - \frac{c_2(E^1_0-E^2_0)}{T_0} \\
+\ln{\frac{S_1(T)}{S_2(T)}}+ \frac{c_2(E^1_0-E^2_0)}{T}   &\approx \ln{\frac{S_1(T_0)}{S_2(T_0)}}+ \frac{c_2(E^1_0-E^2_0)}{T_0}  \\
+T &\approx \frac{c_2(E^1_0-E^2_0)}{ \ln{\frac{S_1(T_0)}{S_2(T_0)}}+ \frac{c_2(E^1_0-E^2_0)}{T_0} - \ln{\frac{S_1(T)}{S_2(T)}}}
+\end{aligned}
+$$<h2 id="参考文献">参考文献</h2>
+<p>[1] Simeckova, M., et al. &ldquo;Einstein A-coefficients and statistical weights for molecular absorption transitions in the HITRAN database.&rdquo; Journal of Quantitative Spectroscopy and Radiative Transfer 98.1 (2006): 130-155.</p>
+<p>[2] Hertzberg, G. Molecular spectra and molecular structure.</p>
 <ul class="pa0">
   
 </ul>

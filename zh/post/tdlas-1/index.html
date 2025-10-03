@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>TDLAS | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="TDLAS（Tunable Diode Laser Absorption Spectroscopy），可调谐二极管激光吸收光谱技术）是一种基于气体分子对特定波长激光的吸收特性，实现对气体成分、浓度等参数进行高精度检测的光谱分析技术。它凭借高灵敏度、高选择性、快速响应等优势，在环境监测、工业过程控制、医疗诊断、安全检测等众多领域得到了广泛应用。
+技术核心原理
+TDLAS 技术的核心原理基于比尔 - 朗伯定律（Beer-Lambert Law） 和气体分子的特征吸收光谱：
+1．特征吸收：不同气体分子的能级结构独特，只能吸收特定波长（频率）的激光，形成特征吸收峰。例如，水对1.3-1.5μm 和 1.8-2.0μm附近的激光有强烈吸收。
+2．比尔 - 朗伯定律：当激光穿过待测气体时，部分能量被气体分子吸收，吸收强度与气体浓度、光程长度成正比。根据比尔 - 朗伯定律，光强衰减可表示为：It(t)=I0(t)exp[−α(ν)]其中，I0(t)为未被气体吸收的激光强度；It(t)为吸收后的光强；α(ν)为气体的吸收系数。
+3．可调谐激光：使用可调谐二极管激光器（如分布反馈式激光器 DFB），其输出波长可通过温度或电流精确调节，能精准扫描气体分子的特征吸收峰，避免其他气体或背景干扰。
+应用场景
+TDLAS 技术的核心优势有：非接触测量、抗干扰性、微型化潜力等，使其渗透到非常多的领域：
+1．大气污染物检测
+实时监测大气中的有害气体，如氮氧化物（NOₓ）、硫氧化物（SO₂）、挥发性有机物（VOCs）、一氧化碳（CO）等，为空气质量管控和污染溯源提供数据支持。
+例如，在工业排放口安装 TDLAS 系统，可连续监测废气中污染物浓度，确保排放符合环保标准。
+2．易燃易爆气体泄漏检测
+在煤矿、石油、燃气管道等场景，实时监测甲烷（CH₄）、丙烷（C₃H₈）等易燃易爆气体的泄漏，及时触发报警，预防爆炸事故。
+相比传统传感器，TDLAS 的非接触式测量可适应高温、高压等恶劣环境，且响应速度达毫秒级。
+3．航空器燃油箱安全监测
+如参考文档所述，TDLAS 技术被用于测量飞机燃油箱中的氧气浓度，评估机载惰性气体生成系统（OBIGGS）的效率，降低燃油箱爆炸风险。其无校准方法可适应高空恶劣环境，无需现场校准即可稳定工作。
+4．能源生产与存储监测
+在氢能产业中，检测氢气（H₂）纯度及杂质（如 CO、CH₄），保障燃料电池和氢储存系统的安全运行；在燃煤电厂，监测烟气中的 NOₓ和 SO₂，优化脱硫脱硝工艺，减少污染物排放。
+实验中的具体应用
+在具体的实验中，本次使用TDLAS主要用在测量氢燃气炉的火焰温度测量中，选用1398nm的红外激光（可以看why choose this line pair，对于波长的选择），主要是基于高温火焰中的产物水蒸气的吸收光谱特性与温度的关联性实现的。
+将激光器产生的红外激光穿过待测火焰被探测器接收后，通过分析激光在特定波长下的吸收强度变化，推演出火焰中水蒸气的浓度分布，进而结合相关算法反演出火焰温度场的实时数据。实验过程中，系统表现出较高的测量精度和良好的动态响应特性，能够有效捕捉火焰温度的细微变化，为燃气炉燃烧效率优化和安全运行提供可靠的数据支持。">
+    <meta name="generator" content="Hugo 0.144.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="惠昊">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://liuxunchen.github.io/xliu-group/zh/post/tdlas-1/">
+    
+
+    <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/tdlas-1/">
+  <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+  <meta property="og:title" content="TDLAS">
+  <meta property="og:description" content="TDLAS（Tunable Diode Laser Absorption Spectroscopy），可调谐二极管激光吸收光谱技术）是一种基于气体分子对特定波长激光的吸收特性，实现对气体成分、浓度等参数进行高精度检测的光谱分析技术。它凭借高灵敏度、高选择性、快速响应等优势，在环境监测、工业过程控制、医疗诊断、安全检测等众多领域得到了广泛应用。
+技术核心原理 TDLAS 技术的核心原理基于比尔 - 朗伯定律（Beer-Lambert Law） 和气体分子的特征吸收光谱： 1．特征吸收：不同气体分子的能级结构独特，只能吸收特定波长（频率）的激光，形成特征吸收峰。例如，水对1.3-1.5μm 和 1.8-2.0μm附近的激光有强烈吸收。 2．比尔 - 朗伯定律：当激光穿过待测气体时，部分能量被气体分子吸收，吸收强度与气体浓度、光程长度成正比。根据比尔 - 朗伯定律，光强衰减可表示为：It(t)=I0(t)exp[−α(ν)]其中，I0(t)为未被气体吸收的激光强度；It(t)为吸收后的光强；α(ν)为气体的吸收系数。 3．可调谐激光：使用可调谐二极管激光器（如分布反馈式激光器 DFB），其输出波长可通过温度或电流精确调节，能精准扫描气体分子的特征吸收峰，避免其他气体或背景干扰。
+应用场景 TDLAS 技术的核心优势有：非接触测量、抗干扰性、微型化潜力等，使其渗透到非常多的领域： 1．大气污染物检测 实时监测大气中的有害气体，如氮氧化物（NOₓ）、硫氧化物（SO₂）、挥发性有机物（VOCs）、一氧化碳（CO）等，为空气质量管控和污染溯源提供数据支持。 例如，在工业排放口安装 TDLAS 系统，可连续监测废气中污染物浓度，确保排放符合环保标准。 2．易燃易爆气体泄漏检测 在煤矿、石油、燃气管道等场景，实时监测甲烷（CH₄）、丙烷（C₃H₈）等易燃易爆气体的泄漏，及时触发报警，预防爆炸事故。 相比传统传感器，TDLAS 的非接触式测量可适应高温、高压等恶劣环境，且响应速度达毫秒级。 3．航空器燃油箱安全监测 如参考文档所述，TDLAS 技术被用于测量飞机燃油箱中的氧气浓度，评估机载惰性气体生成系统（OBIGGS）的效率，降低燃油箱爆炸风险。其无校准方法可适应高空恶劣环境，无需现场校准即可稳定工作。 4．能源生产与存储监测 在氢能产业中，检测氢气（H₂）纯度及杂质（如 CO、CH₄），保障燃料电池和氢储存系统的安全运行；在燃煤电厂，监测烟气中的 NOₓ和 SO₂，优化脱硫脱硝工艺，减少污染物排放。
+实验中的具体应用 在具体的实验中，本次使用TDLAS主要用在测量氢燃气炉的火焰温度测量中，选用1398nm的红外激光（可以看why choose this line pair，对于波长的选择），主要是基于高温火焰中的产物水蒸气的吸收光谱特性与温度的关联性实现的。 将激光器产生的红外激光穿过待测火焰被探测器接收后，通过分析激光在特定波长下的吸收强度变化，推演出火焰中水蒸气的浓度分布，进而结合相关算法反演出火焰温度场的实时数据。实验过程中，系统表现出较高的测量精度和良好的动态响应特性，能够有效捕捉火焰温度的细微变化，为燃气炉燃烧效率优化和安全运行提供可靠的数据支持。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-08-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-08-22T00:00:00+00:00">
+
+  <meta itemprop="name" content="TDLAS">
+  <meta itemprop="description" content="TDLAS（Tunable Diode Laser Absorption Spectroscopy），可调谐二极管激光吸收光谱技术）是一种基于气体分子对特定波长激光的吸收特性，实现对气体成分、浓度等参数进行高精度检测的光谱分析技术。它凭借高灵敏度、高选择性、快速响应等优势，在环境监测、工业过程控制、医疗诊断、安全检测等众多领域得到了广泛应用。
+技术核心原理 TDLAS 技术的核心原理基于比尔 - 朗伯定律（Beer-Lambert Law） 和气体分子的特征吸收光谱： 1．特征吸收：不同气体分子的能级结构独特，只能吸收特定波长（频率）的激光，形成特征吸收峰。例如，水对1.3-1.5μm 和 1.8-2.0μm附近的激光有强烈吸收。 2．比尔 - 朗伯定律：当激光穿过待测气体时，部分能量被气体分子吸收，吸收强度与气体浓度、光程长度成正比。根据比尔 - 朗伯定律，光强衰减可表示为：It(t)=I0(t)exp[−α(ν)]其中，I0(t)为未被气体吸收的激光强度；It(t)为吸收后的光强；α(ν)为气体的吸收系数。 3．可调谐激光：使用可调谐二极管激光器（如分布反馈式激光器 DFB），其输出波长可通过温度或电流精确调节，能精准扫描气体分子的特征吸收峰，避免其他气体或背景干扰。
+应用场景 TDLAS 技术的核心优势有：非接触测量、抗干扰性、微型化潜力等，使其渗透到非常多的领域： 1．大气污染物检测 实时监测大气中的有害气体，如氮氧化物（NOₓ）、硫氧化物（SO₂）、挥发性有机物（VOCs）、一氧化碳（CO）等，为空气质量管控和污染溯源提供数据支持。 例如，在工业排放口安装 TDLAS 系统，可连续监测废气中污染物浓度，确保排放符合环保标准。 2．易燃易爆气体泄漏检测 在煤矿、石油、燃气管道等场景，实时监测甲烷（CH₄）、丙烷（C₃H₈）等易燃易爆气体的泄漏，及时触发报警，预防爆炸事故。 相比传统传感器，TDLAS 的非接触式测量可适应高温、高压等恶劣环境，且响应速度达毫秒级。 3．航空器燃油箱安全监测 如参考文档所述，TDLAS 技术被用于测量飞机燃油箱中的氧气浓度，评估机载惰性气体生成系统（OBIGGS）的效率，降低燃油箱爆炸风险。其无校准方法可适应高空恶劣环境，无需现场校准即可稳定工作。 4．能源生产与存储监测 在氢能产业中，检测氢气（H₂）纯度及杂质（如 CO、CH₄），保障燃料电池和氢储存系统的安全运行；在燃煤电厂，监测烟气中的 NOₓ和 SO₂，优化脱硫脱硝工艺，减少污染物排放。
+实验中的具体应用 在具体的实验中，本次使用TDLAS主要用在测量氢燃气炉的火焰温度测量中，选用1398nm的红外激光（可以看why choose this line pair，对于波长的选择），主要是基于高温火焰中的产物水蒸气的吸收光谱特性与温度的关联性实现的。 将激光器产生的红外激光穿过待测火焰被探测器接收后，通过分析激光在特定波长下的吸收强度变化，推演出火焰中水蒸气的浓度分布，进而结合相关算法反演出火焰温度场的实时数据。实验过程中，系统表现出较高的测量精度和良好的动态响应特性，能够有效捕捉火焰温度的细微变化，为燃气炉燃烧效率优化和安全运行提供可靠的数据支持。">
+  <meta itemprop="datePublished" content="2025-08-22T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-08-22T00:00:00+00:00">
+  <meta itemprop="wordCount" content="49">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="TDLAS">
+  <meta name="twitter:description" content="TDLAS（Tunable Diode Laser Absorption Spectroscopy），可调谐二极管激光吸收光谱技术）是一种基于气体分子对特定波长激光的吸收特性，实现对气体成分、浓度等参数进行高精度检测的光谱分析技术。它凭借高灵敏度、高选择性、快速响应等优势，在环境监测、工业过程控制、医疗诊断、安全检测等众多领域得到了广泛应用。
+技术核心原理 TDLAS 技术的核心原理基于比尔 - 朗伯定律（Beer-Lambert Law） 和气体分子的特征吸收光谱： 1．特征吸收：不同气体分子的能级结构独特，只能吸收特定波长（频率）的激光，形成特征吸收峰。例如，水对1.3-1.5μm 和 1.8-2.0μm附近的激光有强烈吸收。 2．比尔 - 朗伯定律：当激光穿过待测气体时，部分能量被气体分子吸收，吸收强度与气体浓度、光程长度成正比。根据比尔 - 朗伯定律，光强衰减可表示为：It(t)=I0(t)exp[−α(ν)]其中，I0(t)为未被气体吸收的激光强度；It(t)为吸收后的光强；α(ν)为气体的吸收系数。 3．可调谐激光：使用可调谐二极管激光器（如分布反馈式激光器 DFB），其输出波长可通过温度或电流精确调节，能精准扫描气体分子的特征吸收峰，避免其他气体或背景干扰。
+应用场景 TDLAS 技术的核心优势有：非接触测量、抗干扰性、微型化潜力等，使其渗透到非常多的领域： 1．大气污染物检测 实时监测大气中的有害气体，如氮氧化物（NOₓ）、硫氧化物（SO₂）、挥发性有机物（VOCs）、一氧化碳（CO）等，为空气质量管控和污染溯源提供数据支持。 例如，在工业排放口安装 TDLAS 系统，可连续监测废气中污染物浓度，确保排放符合环保标准。 2．易燃易爆气体泄漏检测 在煤矿、石油、燃气管道等场景，实时监测甲烷（CH₄）、丙烷（C₃H₈）等易燃易爆气体的泄漏，及时触发报警，预防爆炸事故。 相比传统传感器，TDLAS 的非接触式测量可适应高温、高压等恶劣环境，且响应速度达毫秒级。 3．航空器燃油箱安全监测 如参考文档所述，TDLAS 技术被用于测量飞机燃油箱中的氧气浓度，评估机载惰性气体生成系统（OBIGGS）的效率，降低燃油箱爆炸风险。其无校准方法可适应高空恶劣环境，无需现场校准即可稳定工作。 4．能源生产与存储监测 在氢能产业中，检测氢气（H₂）纯度及杂质（如 CO、CH₄），保障燃料电池和氢储存系统的安全运行；在燃煤电厂，监测烟气中的 NOₓ和 SO₂，优化脱硫脱硝工艺，减少污染物排放。
+实验中的具体应用 在具体的实验中，本次使用TDLAS主要用在测量氢燃气炉的火焰温度测量中，选用1398nm的红外激光（可以看why choose this line pair，对于波长的选择），主要是基于高温火焰中的产物水蒸气的吸收光谱特性与温度的关联性实现的。 将激光器产生的红外激光穿过待测火焰被探测器接收后，通过分析激光在特定波长下的吸收强度变化，推演出火焰中水蒸气的浓度分布，进而结合相关算法反演出火焰温度场的实时数据。实验过程中，系统表现出较高的测量精度和良好的动态响应特性，能够有效捕捉火焰温度的细微变化，为燃气炉燃烧效率优化和安全运行提供可靠的数据支持。">
+
+      
+    
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('https://liuxunchen.github.io/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        刘训臣燃烧诊断实验室主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/our-alumni/" title="Alumni 页">
+              Alumni
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/news/" title="News 页">
+              News
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/paper/" title="Paper 页">
+              Paper
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">TDLAS</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Post
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">TDLAS</h1>
+      
+      <p class="tracked"><strong>惠昊</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-08-22T00:00:00Z">八月 22, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>TDLAS（Tunable Diode Laser Absorption Spectroscopy），可调谐二极管激光吸收光谱技术）是一种基于气体分子对特定波长激光的吸收特性，实现对气体成分、浓度等参数进行高精度检测的光谱分析技术。它凭借高灵敏度、高选择性、快速响应等优势，在环境监测、工业过程控制、医疗诊断、安全检测等众多领域得到了广泛应用。</p>
+<h2 id="技术核心原理">技术核心原理</h2>
+<p>TDLAS 技术的核心原理基于比尔 - 朗伯定律（Beer-Lambert Law） 和气体分子的特征吸收光谱：
+1．特征吸收：不同气体分子的能级结构独特，只能吸收特定波长（频率）的激光，形成特征吸收峰。例如，水对1.3-1.5μm 和 1.8-2.0μm附近的激光有强烈吸收。
+2．比尔 - 朗伯定律：当激光穿过待测气体时，部分能量被气体分子吸收，吸收强度与气体浓度、光程长度成正比。根据比尔 - 朗伯定律，光强衰减可表示为：It(t)=I0(t)exp[−α(ν)]其中，I0(t)为未被气体吸收的激光强度；It(t)为吸收后的光强；α(ν)为气体的吸收系数。
+3．可调谐激光：使用可调谐二极管激光器（如分布反馈式激光器 DFB），其输出波长可通过温度或电流精确调节，能精准扫描气体分子的特征吸收峰，避免其他气体或背景干扰。</p>
+<h2 id="应用场景">应用场景</h2>
+<p>TDLAS 技术的核心优势有：非接触测量、抗干扰性、微型化潜力等，使其渗透到非常多的领域：
+1．大气污染物检测
+实时监测大气中的有害气体，如氮氧化物（NOₓ）、硫氧化物（SO₂）、挥发性有机物（VOCs）、一氧化碳（CO）等，为空气质量管控和污染溯源提供数据支持。
+例如，在工业排放口安装 TDLAS 系统，可连续监测废气中污染物浓度，确保排放符合环保标准。
+2．易燃易爆气体泄漏检测
+在煤矿、石油、燃气管道等场景，实时监测甲烷（CH₄）、丙烷（C₃H₈）等易燃易爆气体的泄漏，及时触发报警，预防爆炸事故。
+相比传统传感器，TDLAS 的非接触式测量可适应高温、高压等恶劣环境，且响应速度达毫秒级。
+3．航空器燃油箱安全监测
+如参考文档所述，TDLAS 技术被用于测量飞机燃油箱中的氧气浓度，评估机载惰性气体生成系统（OBIGGS）的效率，降低燃油箱爆炸风险。其无校准方法可适应高空恶劣环境，无需现场校准即可稳定工作。
+4．能源生产与存储监测
+在氢能产业中，检测氢气（H₂）纯度及杂质（如 CO、CH₄），保障燃料电池和氢储存系统的安全运行；在燃煤电厂，监测烟气中的 NOₓ和 SO₂，优化脱硫脱硝工艺，减少污染物排放。</p>
+<h2 id="实验中的具体应用">实验中的具体应用</h2>
+<p>在具体的实验中，本次使用TDLAS主要用在测量氢燃气炉的火焰温度测量中，选用1398nm的红外激光（可以看why choose this line pair，对于波长的选择），主要是基于高温火焰中的产物水蒸气的吸收光谱特性与温度的关联性实现的。
+将激光器产生的红外激光穿过待测火焰被探测器接收后，通过分析激光在特定波长下的吸收强度变化，推演出火焰中水蒸气的浓度分布，进而结合相关算法反演出火焰温度场的实时数据。实验过程中，系统表现出较高的测量精度和良好的动态响应特性，能够有效捕捉火焰温度的细微变化，为燃气炉燃烧效率优化和安全运行提供可靠的数据支持。</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://liuxunchen.github.io/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

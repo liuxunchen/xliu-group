@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>利用Boltzmann回归的方法求解温度 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="于近几日拜读了Nicolas Q. Minesi等人的《Multi‑line Boltzmann regression for near‑electronvolt temperature and CO sensing via MHz‑rate infrared laser absorption spectroscopy》，文章核心是提出一种基于中红外激光吸收的高温诊断技术，可在2000K至9000K以上的极端环境中，实现一氧化碳（CO）浓度与温度的快速精准测量。该技术的关键突破在于通过分布式反馈量子级联激光器（DFBQCL）与偏置 tee 电路（bias-tee circuit）的结合，以1 MHz频率实现1 cm⁻¹的光谱扫描深度——这一速率与扫描范围的匹配，使其能同时捕获2011 cm⁻¹（约4.97微米）附近4条孤立的CO振转谱线（P(1,25)、R(8,24)、P(4,7)、R(10,115)），这些谱线的低能级能量跨度达3000至42000 cm⁻¹，可覆盖不同温度下的粒子布居信息，通过玻尔兹曼回归的方法算出 CO 的浓度和温度。这种用多条谱线的方法比只用一对谱线测量的误差更小。
+$$
+\frac{A_{i}}{A_{j}} = \frac{S_{i}(T)}{S_{j}(T)} = R(T)
+$$$$
+\frac{\delta T}{T} = \frac{k_{B}}{h c} \cdot \frac{T}{\Delta E} \cdot \sqrt{\sum_{i=1}^{2} \left[ \left( \frac{\delta S_{i}^{0}}{S_{i}^{0}} \right)^2 &#43; \left( \frac{1}{SNR} \cdot \frac{\exp(\alpha_{i}^{pk})}{\alpha_{i}^{pk}} \right)^2 \right]}
+$$
+其中，$\Delta E$（谱线低能级能量差）对不确定性影响显著——当温度升高时，$T/\Delta E$项增大，单一双线法的误差会明显激增（如T&gt;4000K时，双线法温度不确定性超5%）。为此，文章提出多线拟合策略，通过4条谱线的信息互补抵消误差：一方面，高能级谱线（如R(10,115)，$E&rsquo;&rsquo;≈42000$ cm⁻¹）在高温下（&gt;7000K）提供有效布居信号，低能级谱线（如P(4,7)，$E&rsquo;&rsquo;≈3000$ cm⁻¹）在中低温段保持高灵敏度；另一方面，多谱线的加权拟合可平均化随机噪声，使2000-8000K范围内的温度不确定性控制在2%以内，浓度不确定性在4%以内下图是对线对拟合和多线拟合的温度及浓度不确定性对比：
+
+多线玻尔兹曼回归的具体流程需严格控制信号处理与数据拟合环节：
+
+激光扫描与信号采集：采用梯形波调制DFBQCL，扫描覆盖4条谱线的2010.6-2011.6 cm⁻¹区间，同步记录入射光强度（$I_0$）与透射光强度（$I_t$），确保1 MHz速率下每条谱线的扫描时间（&gt;10 ns）高于探测系统带宽（200 MHz）的限制，避免信号失真；
+吸光度与积分面积计算：根据$\alpha(v) = -\ln(I_t/I_0)$计算吸光度后，需进行基线校正以消除激光波动、探测器暗电流等背景干扰；随后采用Voigt函数拟合谱线轮廓（兼顾多普勒展宽与碰撞展宽），积分得到每条谱线的积分吸光度面积（$A_i$），该函数的多项式近似（McLean方法）可保证拟合精度；
+线性回归与温度反演：结合比尔-朗伯定律（$A_i = n_{CO} L S_i(T)$）与谱线强度的温度依赖性（$S_i(T) = S_i^0 q(T) \exp[-hcE_i&rsquo;&rsquo;(1/T-1/T_0)/k_B]$），可推导出线性关系：
+$$
+  \ln\left(\frac{A_i}{S_i^0}\right) = a \cdot E_i&#39;&#39; &#43; b
+  $$
+其中$S_i^0$为296K下的参考线强（取自HITEMP2020数据库，相对不确定度&lt;2%），斜率$a = \frac{hc}{k_B}\left(\frac{1}{T_0} - \frac{1}{T}\right)$、截距$b = \ln(n_{CO} L q(T))$（$q(T)$为配分函数修正项，考虑分子配分函数变化与受激辐射效应）。实验中以$E_i&rsquo;&rsquo;$为横轴、$\ln(A_i/S_i^0)$为纵轴，采用York加权最小二乘法对4个数据点拟合（该方法可同时考虑横轴与纵轴的误差传播），得到斜率$a$后，即可反推温度：
+$$
+  T = \frac{1}{\frac{1}{T_0} - \frac{a \cdot k_B}{h c}}
+  $$
+
+该多线法的优势在高温段尤为显著：当温度超过4000K时，传统双线法因$\Delta E$有限导致$T/\Delta E$增大，不确定性激增；而多谱线的大能级跨度（最大$\Delta E&rsquo;&rsquo;≈39000$ cm⁻¹）可降低$T/\Delta E$项的影响，同时通过不同谱线的噪声互补，进一步抑制误差——文章在冲击管实验中验证，即使温度高达9310K（超过HITEMP数据库配分函数制表上限），通过线性外推配分函数仍可实现可靠测量，证明了其在极端高温环境中的适用性。此外就我粗浅的看法来说，文章选择的 4 条谱线（P (1,25)、R (8,24)、P (4,7)、R (10,115)）低能级能量跨度为 3000-42000 cm⁻¹，虽能覆盖 2000K 以上高温，但在 T&lt;2000K 的中低温段存在明显短板：若需拓展至 T&lt;2000K 的测量场景，可补充 1-2 条更低能级的 CO 谱线，通过增加低能级数据点提升拟合精度。">
+    <meta name="generator" content="Hugo 0.144.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="高寅斌">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://liuxunchen.github.io/xliu-group/zh/post/boltzmann-blog/">
+    
+
+    <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/boltzmann-blog/">
+  <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+  <meta property="og:title" content="利用Boltzmann回归的方法求解温度">
+  <meta property="og:description" content="于近几日拜读了Nicolas Q. Minesi等人的《Multi‑line Boltzmann regression for near‑electronvolt temperature and CO sensing via MHz‑rate infrared laser absorption spectroscopy》，文章核心是提出一种基于中红外激光吸收的高温诊断技术，可在2000K至9000K以上的极端环境中，实现一氧化碳（CO）浓度与温度的快速精准测量。该技术的关键突破在于通过分布式反馈量子级联激光器（DFBQCL）与偏置 tee 电路（bias-tee circuit）的结合，以1 MHz频率实现1 cm⁻¹的光谱扫描深度——这一速率与扫描范围的匹配，使其能同时捕获2011 cm⁻¹（约4.97微米）附近4条孤立的CO振转谱线（P(1,25)、R(8,24)、P(4,7)、R(10,115)），这些谱线的低能级能量跨度达3000至42000 cm⁻¹，可覆盖不同温度下的粒子布居信息，通过玻尔兹曼回归的方法算出 CO 的浓度和温度。这种用多条谱线的方法比只用一对谱线测量的误差更小。
+$$\frac{A_{i}}{A_{j}} = \frac{S_{i}(T)}{S_{j}(T)} = R(T)$$$$\frac{\delta T}{T} = \frac{k_{B}}{h c} \cdot \frac{T}{\Delta E} \cdot \sqrt{\sum_{i=1}^{2} \left[ \left( \frac{\delta S_{i}^{0}}{S_{i}^{0}} \right)^2 &#43; \left( \frac{1}{SNR} \cdot \frac{\exp(\alpha_{i}^{pk})}{\alpha_{i}^{pk}} \right)^2 \right]}$$ 其中，$\Delta E$（谱线低能级能量差）对不确定性影响显著——当温度升高时，$T/\Delta E$项增大，单一双线法的误差会明显激增（如T&gt;4000K时，双线法温度不确定性超5%）。为此，文章提出多线拟合策略，通过4条谱线的信息互补抵消误差：一方面，高能级谱线（如R(10,115)，$E’’≈42000$ cm⁻¹）在高温下（&gt;7000K）提供有效布居信号，低能级谱线（如P(4,7)，$E’’≈3000$ cm⁻¹）在中低温段保持高灵敏度；另一方面，多谱线的加权拟合可平均化随机噪声，使2000-8000K范围内的温度不确定性控制在2%以内，浓度不确定性在4%以内下图是对线对拟合和多线拟合的温度及浓度不确定性对比： 多线玻尔兹曼回归的具体流程需严格控制信号处理与数据拟合环节：
+激光扫描与信号采集：采用梯形波调制DFBQCL，扫描覆盖4条谱线的2010.6-2011.6 cm⁻¹区间，同步记录入射光强度（$I_0$）与透射光强度（$I_t$），确保1 MHz速率下每条谱线的扫描时间（&gt;10 ns）高于探测系统带宽（200 MHz）的限制，避免信号失真； 吸光度与积分面积计算：根据$\alpha(v) = -\ln(I_t/I_0)$计算吸光度后，需进行基线校正以消除激光波动、探测器暗电流等背景干扰；随后采用Voigt函数拟合谱线轮廓（兼顾多普勒展宽与碰撞展宽），积分得到每条谱线的积分吸光度面积（$A_i$），该函数的多项式近似（McLean方法）可保证拟合精度； 线性回归与温度反演：结合比尔-朗伯定律（$A_i = n_{CO} L S_i(T)$）与谱线强度的温度依赖性（$S_i(T) = S_i^0 q(T) \exp[-hcE_i’’(1/T-1/T_0)/k_B]$），可推导出线性关系： $$\ln\left(\frac{A_i}{S_i^0}\right) = a \cdot E_i&#39;&#39; &#43; b$$
+其中$S_i^0$为296K下的参考线强（取自HITEMP2020数据库，相对不确定度&lt;2%），斜率$a = \frac{hc}{k_B}\left(\frac{1}{T_0} - \frac{1}{T}\right)$、截距$b = \ln(n_{CO} L q(T))$（$q(T)$为配分函数修正项，考虑分子配分函数变化与受激辐射效应）。实验中以$E_i’’$为横轴、$\ln(A_i/S_i^0)$为纵轴，采用York加权最小二乘法对4个数据点拟合（该方法可同时考虑横轴与纵轴的误差传播），得到斜率$a$后，即可反推温度： $$T = \frac{1}{\frac{1}{T_0} - \frac{a \cdot k_B}{h c}}$$ 该多线法的优势在高温段尤为显著：当温度超过4000K时，传统双线法因$\Delta E$有限导致$T/\Delta E$增大，不确定性激增；而多谱线的大能级跨度（最大$\Delta E’’≈39000$ cm⁻¹）可降低$T/\Delta E$项的影响，同时通过不同谱线的噪声互补，进一步抑制误差——文章在冲击管实验中验证，即使温度高达9310K（超过HITEMP数据库配分函数制表上限），通过线性外推配分函数仍可实现可靠测量，证明了其在极端高温环境中的适用性。此外就我粗浅的看法来说，文章选择的 4 条谱线（P (1,25)、R (8,24)、P (4,7)、R (10,115)）低能级能量跨度为 3000-42000 cm⁻¹，虽能覆盖 2000K 以上高温，但在 T&lt;2000K 的中低温段存在明显短板：若需拓展至 T&lt;2000K 的测量场景，可补充 1-2 条更低能级的 CO 谱线，通过增加低能级数据点提升拟合精度。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-08-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-08-15T00:00:00+00:00">
+
+  <meta itemprop="name" content="利用Boltzmann回归的方法求解温度">
+  <meta itemprop="description" content="于近几日拜读了Nicolas Q. Minesi等人的《Multi‑line Boltzmann regression for near‑electronvolt temperature and CO sensing via MHz‑rate infrared laser absorption spectroscopy》，文章核心是提出一种基于中红外激光吸收的高温诊断技术，可在2000K至9000K以上的极端环境中，实现一氧化碳（CO）浓度与温度的快速精准测量。该技术的关键突破在于通过分布式反馈量子级联激光器（DFBQCL）与偏置 tee 电路（bias-tee circuit）的结合，以1 MHz频率实现1 cm⁻¹的光谱扫描深度——这一速率与扫描范围的匹配，使其能同时捕获2011 cm⁻¹（约4.97微米）附近4条孤立的CO振转谱线（P(1,25)、R(8,24)、P(4,7)、R(10,115)），这些谱线的低能级能量跨度达3000至42000 cm⁻¹，可覆盖不同温度下的粒子布居信息，通过玻尔兹曼回归的方法算出 CO 的浓度和温度。这种用多条谱线的方法比只用一对谱线测量的误差更小。
+$$\frac{A_{i}}{A_{j}} = \frac{S_{i}(T)}{S_{j}(T)} = R(T)$$$$\frac{\delta T}{T} = \frac{k_{B}}{h c} \cdot \frac{T}{\Delta E} \cdot \sqrt{\sum_{i=1}^{2} \left[ \left( \frac{\delta S_{i}^{0}}{S_{i}^{0}} \right)^2 &#43; \left( \frac{1}{SNR} \cdot \frac{\exp(\alpha_{i}^{pk})}{\alpha_{i}^{pk}} \right)^2 \right]}$$ 其中，$\Delta E$（谱线低能级能量差）对不确定性影响显著——当温度升高时，$T/\Delta E$项增大，单一双线法的误差会明显激增（如T&gt;4000K时，双线法温度不确定性超5%）。为此，文章提出多线拟合策略，通过4条谱线的信息互补抵消误差：一方面，高能级谱线（如R(10,115)，$E’’≈42000$ cm⁻¹）在高温下（&gt;7000K）提供有效布居信号，低能级谱线（如P(4,7)，$E’’≈3000$ cm⁻¹）在中低温段保持高灵敏度；另一方面，多谱线的加权拟合可平均化随机噪声，使2000-8000K范围内的温度不确定性控制在2%以内，浓度不确定性在4%以内下图是对线对拟合和多线拟合的温度及浓度不确定性对比： 多线玻尔兹曼回归的具体流程需严格控制信号处理与数据拟合环节：
+激光扫描与信号采集：采用梯形波调制DFBQCL，扫描覆盖4条谱线的2010.6-2011.6 cm⁻¹区间，同步记录入射光强度（$I_0$）与透射光强度（$I_t$），确保1 MHz速率下每条谱线的扫描时间（&gt;10 ns）高于探测系统带宽（200 MHz）的限制，避免信号失真； 吸光度与积分面积计算：根据$\alpha(v) = -\ln(I_t/I_0)$计算吸光度后，需进行基线校正以消除激光波动、探测器暗电流等背景干扰；随后采用Voigt函数拟合谱线轮廓（兼顾多普勒展宽与碰撞展宽），积分得到每条谱线的积分吸光度面积（$A_i$），该函数的多项式近似（McLean方法）可保证拟合精度； 线性回归与温度反演：结合比尔-朗伯定律（$A_i = n_{CO} L S_i(T)$）与谱线强度的温度依赖性（$S_i(T) = S_i^0 q(T) \exp[-hcE_i’’(1/T-1/T_0)/k_B]$），可推导出线性关系： $$\ln\left(\frac{A_i}{S_i^0}\right) = a \cdot E_i&#39;&#39; &#43; b$$
+其中$S_i^0$为296K下的参考线强（取自HITEMP2020数据库，相对不确定度&lt;2%），斜率$a = \frac{hc}{k_B}\left(\frac{1}{T_0} - \frac{1}{T}\right)$、截距$b = \ln(n_{CO} L q(T))$（$q(T)$为配分函数修正项，考虑分子配分函数变化与受激辐射效应）。实验中以$E_i’’$为横轴、$\ln(A_i/S_i^0)$为纵轴，采用York加权最小二乘法对4个数据点拟合（该方法可同时考虑横轴与纵轴的误差传播），得到斜率$a$后，即可反推温度： $$T = \frac{1}{\frac{1}{T_0} - \frac{a \cdot k_B}{h c}}$$ 该多线法的优势在高温段尤为显著：当温度超过4000K时，传统双线法因$\Delta E$有限导致$T/\Delta E$增大，不确定性激增；而多谱线的大能级跨度（最大$\Delta E’’≈39000$ cm⁻¹）可降低$T/\Delta E$项的影响，同时通过不同谱线的噪声互补，进一步抑制误差——文章在冲击管实验中验证，即使温度高达9310K（超过HITEMP数据库配分函数制表上限），通过线性外推配分函数仍可实现可靠测量，证明了其在极端高温环境中的适用性。此外就我粗浅的看法来说，文章选择的 4 条谱线（P (1,25)、R (8,24)、P (4,7)、R (10,115)）低能级能量跨度为 3000-42000 cm⁻¹，虽能覆盖 2000K 以上高温，但在 T&lt;2000K 的中低温段存在明显短板：若需拓展至 T&lt;2000K 的测量场景，可补充 1-2 条更低能级的 CO 谱线，通过增加低能级数据点提升拟合精度。">
+  <meta itemprop="datePublished" content="2025-08-15T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-08-15T00:00:00+00:00">
+  <meta itemprop="wordCount" content="131">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="利用Boltzmann回归的方法求解温度">
+  <meta name="twitter:description" content="于近几日拜读了Nicolas Q. Minesi等人的《Multi‑line Boltzmann regression for near‑electronvolt temperature and CO sensing via MHz‑rate infrared laser absorption spectroscopy》，文章核心是提出一种基于中红外激光吸收的高温诊断技术，可在2000K至9000K以上的极端环境中，实现一氧化碳（CO）浓度与温度的快速精准测量。该技术的关键突破在于通过分布式反馈量子级联激光器（DFBQCL）与偏置 tee 电路（bias-tee circuit）的结合，以1 MHz频率实现1 cm⁻¹的光谱扫描深度——这一速率与扫描范围的匹配，使其能同时捕获2011 cm⁻¹（约4.97微米）附近4条孤立的CO振转谱线（P(1,25)、R(8,24)、P(4,7)、R(10,115)），这些谱线的低能级能量跨度达3000至42000 cm⁻¹，可覆盖不同温度下的粒子布居信息，通过玻尔兹曼回归的方法算出 CO 的浓度和温度。这种用多条谱线的方法比只用一对谱线测量的误差更小。
+$$\frac{A_{i}}{A_{j}} = \frac{S_{i}(T)}{S_{j}(T)} = R(T)$$$$\frac{\delta T}{T} = \frac{k_{B}}{h c} \cdot \frac{T}{\Delta E} \cdot \sqrt{\sum_{i=1}^{2} \left[ \left( \frac{\delta S_{i}^{0}}{S_{i}^{0}} \right)^2 &#43; \left( \frac{1}{SNR} \cdot \frac{\exp(\alpha_{i}^{pk})}{\alpha_{i}^{pk}} \right)^2 \right]}$$ 其中，$\Delta E$（谱线低能级能量差）对不确定性影响显著——当温度升高时，$T/\Delta E$项增大，单一双线法的误差会明显激增（如T&gt;4000K时，双线法温度不确定性超5%）。为此，文章提出多线拟合策略，通过4条谱线的信息互补抵消误差：一方面，高能级谱线（如R(10,115)，$E’’≈42000$ cm⁻¹）在高温下（&gt;7000K）提供有效布居信号，低能级谱线（如P(4,7)，$E’’≈3000$ cm⁻¹）在中低温段保持高灵敏度；另一方面，多谱线的加权拟合可平均化随机噪声，使2000-8000K范围内的温度不确定性控制在2%以内，浓度不确定性在4%以内下图是对线对拟合和多线拟合的温度及浓度不确定性对比： 多线玻尔兹曼回归的具体流程需严格控制信号处理与数据拟合环节：
+激光扫描与信号采集：采用梯形波调制DFBQCL，扫描覆盖4条谱线的2010.6-2011.6 cm⁻¹区间，同步记录入射光强度（$I_0$）与透射光强度（$I_t$），确保1 MHz速率下每条谱线的扫描时间（&gt;10 ns）高于探测系统带宽（200 MHz）的限制，避免信号失真； 吸光度与积分面积计算：根据$\alpha(v) = -\ln(I_t/I_0)$计算吸光度后，需进行基线校正以消除激光波动、探测器暗电流等背景干扰；随后采用Voigt函数拟合谱线轮廓（兼顾多普勒展宽与碰撞展宽），积分得到每条谱线的积分吸光度面积（$A_i$），该函数的多项式近似（McLean方法）可保证拟合精度； 线性回归与温度反演：结合比尔-朗伯定律（$A_i = n_{CO} L S_i(T)$）与谱线强度的温度依赖性（$S_i(T) = S_i^0 q(T) \exp[-hcE_i’’(1/T-1/T_0)/k_B]$），可推导出线性关系： $$\ln\left(\frac{A_i}{S_i^0}\right) = a \cdot E_i&#39;&#39; &#43; b$$
+其中$S_i^0$为296K下的参考线强（取自HITEMP2020数据库，相对不确定度&lt;2%），斜率$a = \frac{hc}{k_B}\left(\frac{1}{T_0} - \frac{1}{T}\right)$、截距$b = \ln(n_{CO} L q(T))$（$q(T)$为配分函数修正项，考虑分子配分函数变化与受激辐射效应）。实验中以$E_i’’$为横轴、$\ln(A_i/S_i^0)$为纵轴，采用York加权最小二乘法对4个数据点拟合（该方法可同时考虑横轴与纵轴的误差传播），得到斜率$a$后，即可反推温度： $$T = \frac{1}{\frac{1}{T_0} - \frac{a \cdot k_B}{h c}}$$ 该多线法的优势在高温段尤为显著：当温度超过4000K时，传统双线法因$\Delta E$有限导致$T/\Delta E$增大，不确定性激增；而多谱线的大能级跨度（最大$\Delta E’’≈39000$ cm⁻¹）可降低$T/\Delta E$项的影响，同时通过不同谱线的噪声互补，进一步抑制误差——文章在冲击管实验中验证，即使温度高达9310K（超过HITEMP数据库配分函数制表上限），通过线性外推配分函数仍可实现可靠测量，证明了其在极端高温环境中的适用性。此外就我粗浅的看法来说，文章选择的 4 条谱线（P (1,25)、R (8,24)、P (4,7)、R (10,115)）低能级能量跨度为 3000-42000 cm⁻¹，虽能覆盖 2000K 以上高温，但在 T&lt;2000K 的中低温段存在明显短板：若需拓展至 T&lt;2000K 的测量场景，可补充 1-2 条更低能级的 CO 谱线，通过增加低能级数据点提升拟合精度。">
+
+      
+    
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('https://liuxunchen.github.io/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        刘训臣燃烧诊断实验室主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/our-alumni/" title="Alumni 页">
+              Alumni
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/news/" title="News 页">
+              News
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/paper/" title="Paper 页">
+              Paper
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">利用Boltzmann回归的方法求解温度</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Post
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">利用Boltzmann回归的方法求解温度</h1>
+      
+      <p class="tracked"><strong>高寅斌</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-08-15T00:00:00Z">八月 15, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>于近几日拜读了Nicolas Q. Minesi等人的《Multi‑line Boltzmann regression for near‑electronvolt temperature and CO sensing via MHz‑rate infrared laser absorption spectroscopy》，文章核心是提出一种基于中红外激光吸收的高温诊断技术，可在2000K至9000K以上的极端环境中，实现一氧化碳（CO）浓度与温度的快速精准测量。该技术的关键突破在于通过分布式反馈量子级联激光器（DFBQCL）与偏置 tee 电路（bias-tee circuit）的结合，以1 MHz频率实现1 cm⁻¹的光谱扫描深度——这一速率与扫描范围的匹配，使其能同时捕获2011 cm⁻¹（约4.97微米）附近4条孤立的CO振转谱线（P(1,25)、R(8,24)、P(4,7)、R(10,115)），这些谱线的低能级能量跨度达3000至42000 cm⁻¹，可覆盖不同温度下的粒子布居信息，通过玻尔兹曼回归的方法算出 CO 的浓度和温度。这种用多条谱线的方法比只用一对谱线测量的误差更小。</p>
+$$
+\frac{A_{i}}{A_{j}} = \frac{S_{i}(T)}{S_{j}(T)} = R(T)
+$$$$
+\frac{\delta T}{T} = \frac{k_{B}}{h c} \cdot \frac{T}{\Delta E} \cdot \sqrt{\sum_{i=1}^{2} \left[ \left( \frac{\delta S_{i}^{0}}{S_{i}^{0}} \right)^2 + \left( \frac{1}{SNR} \cdot \frac{\exp(\alpha_{i}^{pk})}{\alpha_{i}^{pk}} \right)^2 \right]}
+$$<p>
+其中，$\Delta E$（谱线低能级能量差）对不确定性影响显著——当温度升高时，$T/\Delta E$项增大，单一双线法的误差会明显激增（如T&gt;4000K时，双线法温度不确定性超5%）。为此，文章提出多线拟合策略，通过4条谱线的信息互补抵消误差：一方面，高能级谱线（如R(10,115)，$E&rsquo;&rsquo;≈42000$ cm⁻¹）在高温下（&gt;7000K）提供有效布居信号，低能级谱线（如P(4,7)，$E&rsquo;&rsquo;≈3000$ cm⁻¹）在中低温段保持高灵敏度；另一方面，多谱线的加权拟合可平均化随机噪声，使2000-8000K范围内的温度不确定性控制在2%以内，浓度不确定性在4%以内下图是对线对拟合和多线拟合的温度及浓度不确定性对比：
+<img src="/xliu-group/zh/post/boltzmann-blog/01.png" alt="1"></p>
+<p>多线玻尔兹曼回归的具体流程需严格控制信号处理与数据拟合环节：</p>
+<ol>
+<li>激光扫描与信号采集：采用梯形波调制DFBQCL，扫描覆盖4条谱线的2010.6-2011.6 cm⁻¹区间，同步记录入射光强度（$I_0$）与透射光强度（$I_t$），确保1 MHz速率下每条谱线的扫描时间（&gt;10 ns）高于探测系统带宽（200 MHz）的限制，避免信号失真；</li>
+<li>吸光度与积分面积计算：根据$\alpha(v) = -\ln(I_t/I_0)$计算吸光度后，需进行基线校正以消除激光波动、探测器暗电流等背景干扰；随后采用Voigt函数拟合谱线轮廓（兼顾多普勒展宽与碰撞展宽），积分得到每条谱线的积分吸光度面积（$A_i$），该函数的多项式近似（McLean方法）可保证拟合精度；</li>
+<li>线性回归与温度反演：结合比尔-朗伯定律（$A_i = n_{CO} L S_i(T)$）与谱线强度的温度依赖性（$S_i(T) = S_i^0 q(T) \exp[-hcE_i&rsquo;&rsquo;(1/T-1/T_0)/k_B]$），可推导出线性关系：
+$$
+  \ln\left(\frac{A_i}{S_i^0}\right) = a \cdot E_i'' + b
+  $$<br>
+其中$S_i^0$为296K下的参考线强（取自HITEMP2020数据库，相对不确定度&lt;2%），斜率$a = \frac{hc}{k_B}\left(\frac{1}{T_0} - \frac{1}{T}\right)$、截距$b = \ln(n_{CO} L q(T))$（$q(T)$为配分函数修正项，考虑分子配分函数变化与受激辐射效应）。实验中以$E_i&rsquo;&rsquo;$为横轴、$\ln(A_i/S_i^0)$为纵轴，采用York加权最小二乘法对4个数据点拟合（该方法可同时考虑横轴与纵轴的误差传播），得到斜率$a$后，即可反推温度：
+$$
+  T = \frac{1}{\frac{1}{T_0} - \frac{a \cdot k_B}{h c}}
+  $$</li>
+</ol>
+<p>该多线法的优势在高温段尤为显著：当温度超过4000K时，传统双线法因$\Delta E$有限导致$T/\Delta E$增大，不确定性激增；而多谱线的大能级跨度（最大$\Delta E&rsquo;&rsquo;≈39000$ cm⁻¹）可降低$T/\Delta E$项的影响，同时通过不同谱线的噪声互补，进一步抑制误差——文章在冲击管实验中验证，即使温度高达9310K（超过HITEMP数据库配分函数制表上限），通过线性外推配分函数仍可实现可靠测量，证明了其在极端高温环境中的适用性。此外就我粗浅的看法来说，文章选择的 4 条谱线（P (1,25)、R (8,24)、P (4,7)、R (10,115)）低能级能量跨度为 3000-42000 cm⁻¹，虽能覆盖 2000K 以上高温，但在 T&lt;2000K 的中低温段存在明显短板：若需拓展至 T&lt;2000K 的测量场景，可补充 1-2 条更低能级的 CO 谱线，通过增加低能级数据点提升拟合精度。</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://liuxunchen.github.io/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
