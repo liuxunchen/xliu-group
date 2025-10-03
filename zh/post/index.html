@@ -180,8 +180,7 @@ script.async = true;
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="吸收光谱简介">吸收光谱简介</h1>
-<h2 id="简介">简介</h2>
+      <h2 id="吸收光谱简介">吸收光谱简介</h2>
 <p>在燃烧诊断中，吸收光谱的测量方法从光源上分非激光和激光两大类。
 传统的非激光的吸收光谱测量，最早从 Hertzberg 那时侯开始，多采用宽频的非相干光源如闪光灯和红外热幅射光源，结合光栅、滤片或者干涉仪进行分光，通过测量不同波长电磁波的透射光强被火焰吸收减弱得到吸收光谱定量信息，就可以获得燃烧体系中分子浓度、温度、压力和速度的信息，能得到很多对火焰结构的测量结果和深刻理解。
 比如Gaydon的书《Flames，Their Structure, Radiation, and Temperature》</p>
@@ -208,6 +207,55 @@ $$<p>其中，
 $\rho_\nu$ 为普朗克定理中光场辐射强度，单位[ $\mathrm{J \cdot m^{-3} \cdot Hz^{-1}}$]。</p>
     </div>
   <a href="/xliu-group/zh/post/tdlas/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        九月 16, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/wito/" class="link black dim">
+        用Witoszynski曲线设计收缩段
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>今天阅读了Witoszynski提出witoszynski曲线的文章，witoszynski曲线最初的设计是用于优化扩压器设计，目的是减小气体或液体的流速而没有显著能量损失。</p>
+<p>Witoszynski工作的核心成果是描述扩压器内流线径向坐标r的表达式：
+$r = \frac{r_0}{\sqrt{1 - \left(1 - \frac{r_0^2}{r_1^2}\right) \frac{\left(1 - 3\frac{z^2}{a^2}\right)^2}{\left(1 + \frac{z^2}{a^2}\right)^3}}}$</p>
+<p>其中，</p>
+<ul>
+<li><strong>r</strong>：径向坐标</li>
+<li><strong>r₀</strong>：入口半径，</li>
+<li><strong>r₁</strong>：出口半径，</li>
+<li><strong>z</strong>：表示沿流向的轴向坐标，范围是0到$\frac{a}{\sqrt{3}}$</li>
+<li><strong>a</strong>：几何常数参数，
+流线示意图如下：
+<img src="/xliu-group/zh/post/wito/%E5%9B%BE%E7%89%872.png" alt=""></li>
+</ul>
+<p>根据文章，流线图v对应的为公式中的r，α对应公式中的a。
+流线径向坐标r表达式的推导始于轴对称理想流体在柱坐标下的微分方程：
+$\frac{\partial^2 \psi}{\partial r^2} - \frac{1}{r} \frac{\partial \psi}{\partial r} + \frac{\partial^2 \psi}{\partial z^2} = 0$</p>
+<p>其解为流函数的级数形式：
+$\psi = r^2 f(z) - \frac{r^4}{2 \cdot 4} \frac{d^2 f(z)}{dz^2} + \frac{r^6}{2 \cdot 4 ^2\cdot 6} \frac{d^4 f(z)}{dz^4} + \cdots$</p>
+<p>$f(z)$是一个光滑的函数，满足$f_{\infty}=1$.</p>
+<p>则假设一个符合条件的$f(z)$函数，将其带入流函数得
+<img src="/xliu-group/zh/post/wito/%E5%9B%BE%E7%89%875.png" alt=""></p>
+<p>A由边界条件而定
+<img src="/xliu-group/zh/post/wito/%E5%9B%BE%E7%89%876.png" alt="">
+把A带入
+得出r的表达式</p>
+$$
+R = \frac{R_0}{\sqrt{1 - \left[1 - \left( \frac{R_0}{R_1} \right)^2 \right] \frac{\left( 1 - \frac{z^2}{z_0^2} \right)^2}{\left( 1 + \frac{z^2}{3z_0^2} \right)^3}}}
+$$<p>
+与原式子的不同点在于，公式轴向坐标z的范围简化，变成0到$z_0$，于是公式随之变化，但其实两式是相同的。
+那么如何用wito曲线设计收缩段呢</p>
+    </div>
+  <a href="/xliu-group/zh/post/wito/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
   </div>
 
         </div>
@@ -545,84 +593,6 @@ $$ |\Delta E_i''| = |E_1'' - E_2''| \geq 700\ cm^{-1} $$<p>共有 33 对线对�
 </ol>
     </div>
   <a href="/xliu-group/zh/post/dikong/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        六月 23, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/crossflow/" class="link black dim">
-        横向射流轨迹的拟合
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>横向射流（crossflow）是很常见的一种流体混合结构，当一股小尺寸的射流垂直进入大尺寸的横流时，垂直的射流就会逐渐转到横向过来，形成横向射流。
-在这个过程中形成的涡系主要包括剪切涡、马蹄涡、尾迹涡和对旋涡，其中剪切涡和对旋涡的生成发展、传播和最终破碎是横向射流混合增强的主要因素。通过控制射流和主流的动量比，可以控制轨迹，改变穿透深度和形成的火焰长度。</p>
-<p>远场的横向射流的轨迹一般可以用幂函数表示[1,2]。如图1，横向射流轨迹的可以由速度比$r$和射流直径$d$进行无量纲化。</p>
-$$
- \left(\frac{y}{rd}\right) = A \left(\frac{x}{rd}\right)^{B}
-$$<p>典型的轨迹方程中，$B\approx \frac{1}{3}$。</p>
-<p>以我们实验测量的横向射流的轨迹为例。</p>
-<figure><img src="/xliu-group/zh/post/crossflow/1.png"><figcaption>
-      <h4>图1 实验原始图片、拟合轨迹、和以轨迹为坐标转化后的图像</h4>
-    </figcaption>
-</figure>
-
-<hr>
-<p>拟合得到轨迹方程包含如下几步：</p>
-<ol>
-<li>在每个高度，也就是$y$坐标上，找到浓度或速度的最大值对应的$x$值。这里找到的最大点坐标还比较粗糙，最好再和相邻的几个点通过抛物线拟合的方法，得到更精确的坐标。
-如图2 ，得到的最大点基本描绘出了轨迹，但还需要修剪一下数据。</li>
-</ol>
-<figure><img src="/xliu-group/zh/post/crossflow/2.png"><figcaption>
-      <h4>图2 找最大点</h4>
-    </figcaption>
-</figure>
-
-<ol start="2">
-<li>去掉头尾部分。去掉轨迹后面几个点比较好理解，因为到轨迹最后信噪比很低了；去除开头几个点是为什么呢？
-以实验测量的双喷嘴横向射流为例子，图3中给出了初步找到的中心线和修正后的中心线。</li>
-</ol>
-<figure><img src="/xliu-group/zh/post/crossflow/3.png"><figcaption>
-      <h4>图3 修正后的中心线</h4>
-    </figcaption>
-</figure>
-
-<ol start="3">
-<li>下一步就是拟合了。首先要把找到的轨迹起始点归零。然后求log10 ，得到拟合直线，此时会发现需要去掉开头的非常接近零的几个点，也就是近场不符合幂函数规律的点，便于拟合。
-从图4中可以看出，拟合的直线需要确定两个拟合变量，一个是拟合长度范围，一个是拟合起始位置。
-不一定拟合长度越长越好，需要确定恰当的范围。
-我们将这两个变量都在一定范围内变化，看得到的结果情况。</li>
-</ol>
-<figure><img src="/xliu-group/zh/post/crossflow/4.png"><figcaption>
-       <h4>图4 变量拟合</h4>
-     </figcaption>
- </figure>
-
-<p>图4中，1)为待拟合的直线，2)横坐标为拟合位置、纵坐标为拟合长度，当拟合长度大时，拟合位置变化的就小。3)为2)图的梯度，可以看到有趣的梯度变化的图案，说明了拟合参数的影响。
-可见当拟合长度和位置恰当时，得到的参数有一个稳定的区域，数值基本不变。表现为梯度接近零，可以用这个指标来确定恰当的拟合长度和位置。</p>
-<p>在这个例子中，得到直线的方程为:</p>
-$$
-\ln(y) = 0.30\times \ln(x) + 1.36
-$$<p>
-而 $r = 7$, $d = 10mm$，得到</p>
-$$
- \left(\frac{y}{rd}\right) = 0.2 \left(\frac{x}{rd}\right)^{0.3}
-$$<h1 id="参考文献">参考文献</h1>
-<ol>
-<li>BROADWELL J E, BREIDENTHAL R E. Structure and mixing of a transverse jet in incompressible flow[J]. Journal of Fluid Mechanics, 1984, 148: 405-412.</li>
-<li>HASSELBRINK E F, MUNGAL M G. Transverse jets and jet flames. Part 1. Scaling laws for strong transverse jets[J]. Journal of Fluid Mechanics, 2001, 443: 1-25.</li>
-<li>SMITH S H, MUNGAL M G. Mixing, structure and scaling of the jet in crossflow[J]. Journal of Fluid Mechanics, 1998, 357: 83-122.</li>
-<li>SU L K, MUNGAL M G. Simultaneous measurements of scalar and velocity field evolution in turbulent crossflowing jets[J]. Journal of Fluid Mechanics, 2004, 513: 1-45.</li>
-</ol>
-    </div>
-  <a href="/xliu-group/zh/post/crossflow/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
   </div>
 
         </div>

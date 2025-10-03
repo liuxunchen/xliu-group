@@ -4,47 +4,45 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>刘训臣燃烧诊断实验室主页</title>
+    <title>用Witoszynski曲线设计收缩段 | 刘训臣燃烧诊断实验室主页</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Witoszynski曲线
-今天阅读了Witoszynski提出witoszynski曲线的文章，witoszynski曲线最初的设计是用于优化扩散器设计，目的是减小气体或液体的流速而没有显著能量损失。
-Witoszynski工作的核心成果是描述扩散器内流线径向坐标r的表达式：
-
+    <meta name="description" content="今天阅读了Witoszynski提出witoszynski曲线的文章，witoszynski曲线最初的设计是用于优化扩压器设计，目的是减小气体或液体的流速而没有显著能量损失。
+Witoszynski工作的核心成果是描述扩压器内流线径向坐标r的表达式：
+$r = \frac{r_0}{\sqrt{1 - \left(1 - \frac{r_0^2}{r_1^2}\right) \frac{\left(1 - 3\frac{z^2}{a^2}\right)^2}{\left(1 &#43; \frac{z^2}{a^2}\right)^3}}}$
+其中，
 
 r：径向坐标
-r₀：扩散段入口处的初始半径，是流线起点的参考值
-r₁：扩散段出口处的目标半径，定义了扩展的几何范围
-z：轴向坐标，表示沿流向的坐标，z的范围是0到$\frac{a}{\sqrt{3}}$
-a：几何常数参数，代表的是扩散段的长度
-
+r₀：入口半径，
+r₁：出口半径，
+z：表示沿流向的轴向坐标，范围是0到$\frac{a}{\sqrt{3}}$
+a：几何常数参数，
 流线示意图如下：
 
-根据文章，推测该流线示意图有印刷错误，流线图v对应的为公式中的r，α对应公式中的a。
+
+根据文章，流线图v对应的为公式中的r，α对应公式中的a。
 流线径向坐标r表达式的推导始于轴对称理想流体在柱坐标下的微分方程：
-
+$\frac{\partial^2 \psi}{\partial r^2} - \frac{1}{r} \frac{\partial \psi}{\partial r} &#43; \frac{\partial^2 \psi}{\partial z^2} = 0$
 其解为流函数的级数形式：
-
-f（z）是一个光滑的函数，满足f（∞）=1
-则假设一个符合条件的f（z）函数，将其带入流函数得
+$\psi = r^2 f(z) - \frac{r^4}{2 \cdot 4} \frac{d^2 f(z)}{dz^2} &#43; \frac{r^6}{2 \cdot 4 ^2\cdot 6} \frac{d^4 f(z)}{dz^4} &#43; \cdots$
+$f(z)$是一个光滑的函数，满足$f_{\infty}=1$.
+则假设一个符合条件的$f(z)$函数，将其带入流函数得
 
 A由边界条件而定
 
 把A带入
 得出r的表达式
-\[
-R = \frac{R_0}{\sqrt{1 - \left[1 - \left( \frac{R_0}{R_i} \right)^2 \right] \frac{\left( 1 - \frac{x^2}{L^2} \right)^2}{\left( 1 &#43; \frac{x^2}{3L^2} \right)^3}}}
-\]
-与原式子的不同点在于，公式轴向坐标x的范围简化，变成0到L，于是公式随之变化，但其实两式是相同的。
-
-用python绘制出不同参数下的wito曲线如图 .
-">
+$$
+R = \frac{R_0}{\sqrt{1 - \left[1 - \left( \frac{R_0}{R_1} \right)^2 \right] \frac{\left( 1 - \frac{z^2}{z_0^2} \right)^2}{\left( 1 &#43; \frac{z^2}{3z_0^2} \right)^3}}}
+$$
+与原式子的不同点在于，公式轴向坐标z的范围简化，变成0到$z_0$，于是公式随之变化，但其实两式是相同的。
+那么如何用wito曲线设计收缩段呢">
     <meta name="generator" content="Hugo 0.144.2">
     
     
     
       <meta name="robots" content="index, follow">
     
-    <meta name="author" content="刘训臣">
+    <meta name="author" content="王硕">
     
 
     
@@ -69,36 +67,43 @@ R = \frac{R_0}{\sqrt{1 - \left[1 - \left( \frac{R_0}{R_i} \right)^2 \right] \fra
 
     <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/wito/">
   <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
-  <meta property="og:title" content="刘训臣燃烧诊断实验室主页">
-  <meta property="og:description" content="Witoszynski曲线 今天阅读了Witoszynski提出witoszynski曲线的文章，witoszynski曲线最初的设计是用于优化扩散器设计，目的是减小气体或液体的流速而没有显著能量损失。
-Witoszynski工作的核心成果是描述扩散器内流线径向坐标r的表达式： r：径向坐标 r₀：扩散段入口处的初始半径，是流线起点的参考值 r₁：扩散段出口处的目标半径，定义了扩展的几何范围 z：轴向坐标，表示沿流向的坐标，z的范围是0到$\frac{a}{\sqrt{3}}$ a：几何常数参数，代表的是扩散段的长度 流线示意图如下： 根据文章，推测该流线示意图有印刷错误，流线图v对应的为公式中的r，α对应公式中的a。
-流线径向坐标r表达式的推导始于轴对称理想流体在柱坐标下的微分方程：
-其解为流函数的级数形式： f（z）是一个光滑的函数，满足f（∞）=1
-则假设一个符合条件的f（z）函数，将其带入流函数得 A由边界条件而定 把A带入 得出r的表达式
-\[R = \frac{R_0}{\sqrt{1 - \left[1 - \left( \frac{R_0}{R_i} \right)^2 \right] \frac{\left( 1 - \frac{x^2}{L^2} \right)^2}{\left( 1 &#43; \frac{x^2}{3L^2} \right)^3}}}\] 与原式子的不同点在于，公式轴向坐标x的范围简化，变成0到L，于是公式随之变化，但其实两式是相同的。
-用python绘制出不同参数下的wito曲线如图 .">
+  <meta property="og:title" content="用Witoszynski曲线设计收缩段">
+  <meta property="og:description" content="今天阅读了Witoszynski提出witoszynski曲线的文章，witoszynski曲线最初的设计是用于优化扩压器设计，目的是减小气体或液体的流速而没有显著能量损失。
+Witoszynski工作的核心成果是描述扩压器内流线径向坐标r的表达式： $r = \frac{r_0}{\sqrt{1 - \left(1 - \frac{r_0^2}{r_1^2}\right) \frac{\left(1 - 3\frac{z^2}{a^2}\right)^2}{\left(1 &#43; \frac{z^2}{a^2}\right)^3}}}$
+其中，
+r：径向坐标 r₀：入口半径， r₁：出口半径， z：表示沿流向的轴向坐标，范围是0到$\frac{a}{\sqrt{3}}$ a：几何常数参数， 流线示意图如下： 根据文章，流线图v对应的为公式中的r，α对应公式中的a。 流线径向坐标r表达式的推导始于轴对称理想流体在柱坐标下的微分方程： $\frac{\partial^2 \psi}{\partial r^2} - \frac{1}{r} \frac{\partial \psi}{\partial r} &#43; \frac{\partial^2 \psi}{\partial z^2} = 0$
+其解为流函数的级数形式： $\psi = r^2 f(z) - \frac{r^4}{2 \cdot 4} \frac{d^2 f(z)}{dz^2} &#43; \frac{r^6}{2 \cdot 4 ^2\cdot 6} \frac{d^4 f(z)}{dz^4} &#43; \cdots$
+$f(z)$是一个光滑的函数，满足$f_{\infty}=1$.
+则假设一个符合条件的$f(z)$函数，将其带入流函数得 A由边界条件而定 把A带入 得出r的表达式
+$$R = \frac{R_0}{\sqrt{1 - \left[1 - \left( \frac{R_0}{R_1} \right)^2 \right] \frac{\left( 1 - \frac{z^2}{z_0^2} \right)^2}{\left( 1 &#43; \frac{z^2}{3z_0^2} \right)^3}}}$$ 与原式子的不同点在于，公式轴向坐标z的范围简化，变成0到$z_0$，于是公式随之变化，但其实两式是相同的。 那么如何用wito曲线设计收缩段呢">
   <meta property="og:locale" content="zh">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-09-16T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-09-16T00:00:00+00:00">
 
-  <meta itemprop="name" content="刘训臣燃烧诊断实验室主页">
-  <meta itemprop="description" content="Witoszynski曲线 今天阅读了Witoszynski提出witoszynski曲线的文章，witoszynski曲线最初的设计是用于优化扩散器设计，目的是减小气体或液体的流速而没有显著能量损失。
-Witoszynski工作的核心成果是描述扩散器内流线径向坐标r的表达式： r：径向坐标 r₀：扩散段入口处的初始半径，是流线起点的参考值 r₁：扩散段出口处的目标半径，定义了扩展的几何范围 z：轴向坐标，表示沿流向的坐标，z的范围是0到$\frac{a}{\sqrt{3}}$ a：几何常数参数，代表的是扩散段的长度 流线示意图如下： 根据文章，推测该流线示意图有印刷错误，流线图v对应的为公式中的r，α对应公式中的a。
-流线径向坐标r表达式的推导始于轴对称理想流体在柱坐标下的微分方程：
-其解为流函数的级数形式： f（z）是一个光滑的函数，满足f（∞）=1
-则假设一个符合条件的f（z）函数，将其带入流函数得 A由边界条件而定 把A带入 得出r的表达式
-\[R = \frac{R_0}{\sqrt{1 - \left[1 - \left( \frac{R_0}{R_i} \right)^2 \right] \frac{\left( 1 - \frac{x^2}{L^2} \right)^2}{\left( 1 &#43; \frac{x^2}{3L^2} \right)^3}}}\] 与原式子的不同点在于，公式轴向坐标x的范围简化，变成0到L，于是公式随之变化，但其实两式是相同的。
-用python绘制出不同参数下的wito曲线如图 .">
-  <meta itemprop="wordCount" content="41">
+  <meta itemprop="name" content="用Witoszynski曲线设计收缩段">
+  <meta itemprop="description" content="今天阅读了Witoszynski提出witoszynski曲线的文章，witoszynski曲线最初的设计是用于优化扩压器设计，目的是减小气体或液体的流速而没有显著能量损失。
+Witoszynski工作的核心成果是描述扩压器内流线径向坐标r的表达式： $r = \frac{r_0}{\sqrt{1 - \left(1 - \frac{r_0^2}{r_1^2}\right) \frac{\left(1 - 3\frac{z^2}{a^2}\right)^2}{\left(1 &#43; \frac{z^2}{a^2}\right)^3}}}$
+其中，
+r：径向坐标 r₀：入口半径， r₁：出口半径， z：表示沿流向的轴向坐标，范围是0到$\frac{a}{\sqrt{3}}$ a：几何常数参数， 流线示意图如下： 根据文章，流线图v对应的为公式中的r，α对应公式中的a。 流线径向坐标r表达式的推导始于轴对称理想流体在柱坐标下的微分方程： $\frac{\partial^2 \psi}{\partial r^2} - \frac{1}{r} \frac{\partial \psi}{\partial r} &#43; \frac{\partial^2 \psi}{\partial z^2} = 0$
+其解为流函数的级数形式： $\psi = r^2 f(z) - \frac{r^4}{2 \cdot 4} \frac{d^2 f(z)}{dz^2} &#43; \frac{r^6}{2 \cdot 4 ^2\cdot 6} \frac{d^4 f(z)}{dz^4} &#43; \cdots$
+$f(z)$是一个光滑的函数，满足$f_{\infty}=1$.
+则假设一个符合条件的$f(z)$函数，将其带入流函数得 A由边界条件而定 把A带入 得出r的表达式
+$$R = \frac{R_0}{\sqrt{1 - \left[1 - \left( \frac{R_0}{R_1} \right)^2 \right] \frac{\left( 1 - \frac{z^2}{z_0^2} \right)^2}{\left( 1 &#43; \frac{z^2}{3z_0^2} \right)^3}}}$$ 与原式子的不同点在于，公式轴向坐标z的范围简化，变成0到$z_0$，于是公式随之变化，但其实两式是相同的。 那么如何用wito曲线设计收缩段呢">
+  <meta itemprop="datePublished" content="2025-09-16T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-09-16T00:00:00+00:00">
+  <meta itemprop="wordCount" content="239">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="刘训臣燃烧诊断实验室主页">
-  <meta name="twitter:description" content="Witoszynski曲线 今天阅读了Witoszynski提出witoszynski曲线的文章，witoszynski曲线最初的设计是用于优化扩散器设计，目的是减小气体或液体的流速而没有显著能量损失。
-Witoszynski工作的核心成果是描述扩散器内流线径向坐标r的表达式： r：径向坐标 r₀：扩散段入口处的初始半径，是流线起点的参考值 r₁：扩散段出口处的目标半径，定义了扩展的几何范围 z：轴向坐标，表示沿流向的坐标，z的范围是0到$\frac{a}{\sqrt{3}}$ a：几何常数参数，代表的是扩散段的长度 流线示意图如下： 根据文章，推测该流线示意图有印刷错误，流线图v对应的为公式中的r，α对应公式中的a。
-流线径向坐标r表达式的推导始于轴对称理想流体在柱坐标下的微分方程：
-其解为流函数的级数形式： f（z）是一个光滑的函数，满足f（∞）=1
-则假设一个符合条件的f（z）函数，将其带入流函数得 A由边界条件而定 把A带入 得出r的表达式
-\[R = \frac{R_0}{\sqrt{1 - \left[1 - \left( \frac{R_0}{R_i} \right)^2 \right] \frac{\left( 1 - \frac{x^2}{L^2} \right)^2}{\left( 1 &#43; \frac{x^2}{3L^2} \right)^3}}}\] 与原式子的不同点在于，公式轴向坐标x的范围简化，变成0到L，于是公式随之变化，但其实两式是相同的。
-用python绘制出不同参数下的wito曲线如图 .">
+  <meta name="twitter:title" content="用Witoszynski曲线设计收缩段">
+  <meta name="twitter:description" content="今天阅读了Witoszynski提出witoszynski曲线的文章，witoszynski曲线最初的设计是用于优化扩压器设计，目的是减小气体或液体的流速而没有显著能量损失。
+Witoszynski工作的核心成果是描述扩压器内流线径向坐标r的表达式： $r = \frac{r_0}{\sqrt{1 - \left(1 - \frac{r_0^2}{r_1^2}\right) \frac{\left(1 - 3\frac{z^2}{a^2}\right)^2}{\left(1 &#43; \frac{z^2}{a^2}\right)^3}}}$
+其中，
+r：径向坐标 r₀：入口半径， r₁：出口半径， z：表示沿流向的轴向坐标，范围是0到$\frac{a}{\sqrt{3}}$ a：几何常数参数， 流线示意图如下： 根据文章，流线图v对应的为公式中的r，α对应公式中的a。 流线径向坐标r表达式的推导始于轴对称理想流体在柱坐标下的微分方程： $\frac{\partial^2 \psi}{\partial r^2} - \frac{1}{r} \frac{\partial \psi}{\partial r} &#43; \frac{\partial^2 \psi}{\partial z^2} = 0$
+其解为流函数的级数形式： $\psi = r^2 f(z) - \frac{r^4}{2 \cdot 4} \frac{d^2 f(z)}{dz^2} &#43; \frac{r^6}{2 \cdot 4 ^2\cdot 6} \frac{d^4 f(z)}{dz^4} &#43; \cdots$
+$f(z)$是一个光滑的函数，满足$f_{\infty}=1$.
+则假设一个符合条件的$f(z)$函数，将其带入流函数得 A由边界条件而定 把A带入 得出r的表达式
+$$R = \frac{R_0}{\sqrt{1 - \left[1 - \left( \frac{R_0}{R_1} \right)^2 \right] \frac{\left( 1 - \frac{z^2}{z_0^2} \right)^2}{\left( 1 &#43; \frac{z^2}{3z_0^2} \right)^3}}}$$ 与原式子的不同点在于，公式轴向坐标z的范围简化，变成0到$z_0$，于是公式随之变化，但其实两式是相同的。 那么如何用wito曲线设计收缩段呢">
 
       
     
@@ -194,7 +199,7 @@ script.async = true;
 
       <div class="tc-l pv6 ph3 ph4-ns">
         
-          <div class="f2 f1-l fw2 white-90 mb0 lh-title">刘训臣燃烧诊断实验室主页</div>
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">用Witoszynski曲线设计收缩段</div>
           
         
       </div>
@@ -213,49 +218,83 @@ script.async = true;
           
         Post
       </aside><div id="sharing" class="mt3 ananke-socials"></div>
-<h1 class="f1 athelas mt3 mb1"></h1>
+<h1 class="f1 athelas mt3 mb1">用Witoszynski曲线设计收缩段</h1>
       
-      <p class="tracked"><strong>刘训臣</strong>
+      <p class="tracked"><strong>王硕</strong>
       </p>
       
       
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-09-16T00:00:00Z">九月 16, 2025</time>
       
 
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><h1 id="witoszynski曲线">Witoszynski曲线</h1>
-<p>今天阅读了Witoszynski提出witoszynski曲线的文章，witoszynski曲线最初的设计是用于优化扩散器设计，目的是减小气体或液体的流速而没有显著能量损失。</p>
-<p>Witoszynski工作的核心成果是描述扩散器内流线径向坐标r的表达式：
-<img src="/xliu-group/zh/post/wito/%E5%9B%BE%E7%89%871.png" alt=""></p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>今天阅读了Witoszynski提出witoszynski曲线的文章，witoszynski曲线最初的设计是用于优化扩压器设计，目的是减小气体或液体的流速而没有显著能量损失。</p>
+<p>Witoszynski工作的核心成果是描述扩压器内流线径向坐标r的表达式：
+$r = \frac{r_0}{\sqrt{1 - \left(1 - \frac{r_0^2}{r_1^2}\right) \frac{\left(1 - 3\frac{z^2}{a^2}\right)^2}{\left(1 + \frac{z^2}{a^2}\right)^3}}}$</p>
+<p>其中，</p>
 <ul>
 <li><strong>r</strong>：径向坐标</li>
-<li><strong>r₀</strong>：扩散段入口处的初始半径，是流线起点的参考值</li>
-<li><strong>r₁</strong>：扩散段出口处的目标半径，定义了扩展的几何范围</li>
-<li><strong>z</strong>：轴向坐标，表示沿流向的坐标，z的范围是0到$\frac{a}{\sqrt{3}}$</li>
-<li><strong>a</strong>：几何常数参数，代表的是扩散段的长度</li>
+<li><strong>r₀</strong>：入口半径，</li>
+<li><strong>r₁</strong>：出口半径，</li>
+<li><strong>z</strong>：表示沿流向的轴向坐标，范围是0到$\frac{a}{\sqrt{3}}$</li>
+<li><strong>a</strong>：几何常数参数，
+流线示意图如下：
+<img src="/xliu-group/zh/post/wito/%E5%9B%BE%E7%89%872.png" alt=""></li>
 </ul>
-<p>流线示意图如下：
-<img src="/xliu-group/zh/post/wito/%E5%9B%BE%E7%89%872.png" alt=""></p>
-<p>根据文章，推测该流线示意图有印刷错误，流线图v对应的为公式中的r，α对应公式中的a。</p>
-<p>流线径向坐标r表达式的推导始于轴对称理想流体在柱坐标下的微分方程：</p>
-<p><img src="/xliu-group/zh/post/wito/%E5%9B%BE%E7%89%873.png" alt="">
-其解为流函数的级数形式：
-<img src="/xliu-group/zh/post/wito/%E5%9B%BE%E7%89%874.png" alt=""></p>
-<p>f（z）是一个光滑的函数，满足f（∞）=1</p>
-<p>则假设一个符合条件的f（z）函数，将其带入流函数得
-<img src="/xliu-group/zh/post/wito/%E5%9B%BE%E7%89%875.png" alt="">
-A由边界条件而定
+<p>根据文章，流线图v对应的为公式中的r，α对应公式中的a。
+流线径向坐标r表达式的推导始于轴对称理想流体在柱坐标下的微分方程：
+$\frac{\partial^2 \psi}{\partial r^2} - \frac{1}{r} \frac{\partial \psi}{\partial r} + \frac{\partial^2 \psi}{\partial z^2} = 0$</p>
+<p>其解为流函数的级数形式：
+$\psi = r^2 f(z) - \frac{r^4}{2 \cdot 4} \frac{d^2 f(z)}{dz^2} + \frac{r^6}{2 \cdot 4 ^2\cdot 6} \frac{d^4 f(z)}{dz^4} + \cdots$</p>
+<p>$f(z)$是一个光滑的函数，满足$f_{\infty}=1$.</p>
+<p>则假设一个符合条件的$f(z)$函数，将其带入流函数得
+<img src="/xliu-group/zh/post/wito/%E5%9B%BE%E7%89%875.png" alt=""></p>
+<p>A由边界条件而定
 <img src="/xliu-group/zh/post/wito/%E5%9B%BE%E7%89%876.png" alt="">
 把A带入
 得出r的表达式</p>
-\[
-R = \frac{R_0}{\sqrt{1 - \left[1 - \left( \frac{R_0}{R_i} \right)^2 \right] \frac{\left( 1 - \frac{x^2}{L^2} \right)^2}{\left( 1 + \frac{x^2}{3L^2} \right)^3}}}
-\]<p>
-与原式子的不同点在于，公式轴向坐标x的范围简化，变成0到L，于是公式随之变化，但其实两式是相同的。</p>
-<p><img src="/xliu-group/zh/post/wito/%E5%9B%BE%E7%89%877.png" alt="">
-用python绘制出不同参数下的wito曲线如图 .
-<img src="/xliu-group/zh/post/wito/%E5%9B%BE%E7%89%878.png" alt=""></p>
+$$
+R = \frac{R_0}{\sqrt{1 - \left[1 - \left( \frac{R_0}{R_1} \right)^2 \right] \frac{\left( 1 - \frac{z^2}{z_0^2} \right)^2}{\left( 1 + \frac{z^2}{3z_0^2} \right)^3}}}
+$$<p>
+与原式子的不同点在于，公式轴向坐标z的范围简化，变成0到$z_0$，于是公式随之变化，但其实两式是相同的。
+那么如何用wito曲线设计收缩段呢</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># set parameters</span>
+</span></span><span style="display:flex;"><span>R1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span> 
+</span></span><span style="display:flex;"><span>R0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">40</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>z0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">600</span> <span style="color:#75715e"># total length</span>
+</span></span><span style="display:flex;"><span>N <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span> <span style="color:#75715e"># how many points</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># set variables</span>
+</span></span><span style="display:flex;"><span>z <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>,z0,N)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># set unknowns</span>
+</span></span><span style="display:flex;"><span>f <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(N) <span style="color:#75715e"># relative velocity profile</span>
+</span></span><span style="display:flex;"><span>v <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(N) <span style="color:#75715e"># velocity profile</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(N) <span style="color:#75715e"># acceleration</span>
+</span></span><span style="display:flex;"><span>r <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(N) <span style="color:#75715e"># diameter</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># calculate total velocity ratio</span>
+</span></span><span style="display:flex;"><span>v_ratio <span style="color:#f92672">=</span> R0<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span><span style="color:#f92672">/</span>R1<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;velocity ratio&#39;</span>)
+</span></span><span style="display:flex;"><span>print(v_ratio)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(N):
+</span></span><span style="display:flex;"><span>    f[i] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>z[i]<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span><span style="color:#f92672">/</span>z0<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>)<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span><span style="color:#f92672">/</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">+</span>z[i]<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span><span style="color:#f92672">/</span>(z0<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span><span style="color:#f92672">*</span><span style="color:#ae81ff">3</span>))<span style="color:#f92672">**</span><span style="color:#ae81ff">3</span> <span style="color:#75715e"># range from 1 to 0</span>
+</span></span><span style="display:flex;"><span>    v[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>v_ratio)<span style="color:#f92672">*</span>f[i] <span style="color:#75715e"># range from v_ratio to 1</span>
+</span></span><span style="display:flex;"><span>    r[i] <span style="color:#f92672">=</span> R0<span style="color:#f92672">/</span>math<span style="color:#f92672">.</span>sqrt(v[i]) <span style="color:#75715e"># range from R1 to R0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>,N<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>    a[i] <span style="color:#f92672">=</span> (v[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">-</span>v[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span> <span style="color:#75715e"># zero at both end</span>
+</span></span></code></pre></div><p>在设计收缩段时，通常是已知入口半径根据所需要的速度来求得出口半径，
+确定出口半径之后，再设计收缩段形状。
+首先由连续性方程$A_1 \cdot v_1 = A_2 \cdot v_2$
+得出$\frac{v_2}{v_1} = \left( \frac{R_1}{R_2} \right)^2$，代码中的v_ratio即入口速度和出口速度之比，等于出口半径和入口半径之比的平方（v_ratio＜1），
+定义了速度比之后，使用平滑函数$f(z) = \frac{\left(1 - \frac{z^2}{z_0^2}\right)^2}{\left(1 + \frac{z^2}{3z_0^2}\right)^3}$，确保无流动分离,
+根据wito公式的一般形式，变形将速度比带入可得$\left( \frac{R_0}{r(z)} \right)^2= v(z) = 1 - (1 - v_{\text{ratio}}) \cdot f(z) $，
+然后可以得出$r(z) = \frac{R_0}{\sqrt{v(z)}} = \frac{R_0}{\sqrt{1 - (1 - v_{\text{ratio}}) \cdot f(z)}}$，从而实现曲线的绘制。</p>
 <ul class="pa0">
   
 </ul>

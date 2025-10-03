@@ -243,8 +243,7 @@ script.async = true;
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <h1 id="吸收光谱简介">吸收光谱简介</h1>
-<h2 id="简介">简介</h2>
+          <h2 id="吸收光谱简介">吸收光谱简介</h2>
 <p>在燃烧诊断中，吸收光谱的测量方法从光源上分非激光和激光两大类。
 传统的非激光的吸收光谱测量，最早从 Hertzberg 那时侯开始，多采用宽频的非相干光源如闪光灯和红外热幅射光源，结合光栅、滤片或者干涉仪进行分光，通过测量不同波长电磁波的透射光强被火焰吸收减弱得到吸收光谱定量信息，就可以获得燃烧体系中分子浓度、温度、压力和速度的信息，能得到很多对火焰结构的测量结果和深刻理解。
 比如Gaydon的书《Flames，Their Structure, Radiation, and Temperature》</p>
@@ -272,6 +271,66 @@ $\rho_\nu$ 为普朗克定理中光场辐射强度，单位[ $\mathrm{J \cdot m^
         </div>
         
           <p class="f6 lh-copy mv0">By 刘训臣</p><a href="/xliu-group/zh/post/tdlas/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="w-100 mb4 relative">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+          
+        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+          <a href="/xliu-group/zh/post/wito/" class="db grow">
+            <img src="https://liuxunchen.github.io/xliu-group/images/sdust.jpg" class="img" alt="image from 用Witoszynski曲线设计收缩段">
+          </a>
+        </div>
+      
+      <div class="blah w-100 w-60-ns pl3-ns">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/xliu-group/zh/post/wito/" class="color-inherit dim link">
+            用Witoszynski曲线设计收缩段
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <p>今天阅读了Witoszynski提出witoszynski曲线的文章，witoszynski曲线最初的设计是用于优化扩压器设计，目的是减小气体或液体的流速而没有显著能量损失。</p>
+<p>Witoszynski工作的核心成果是描述扩压器内流线径向坐标r的表达式：
+$r = \frac{r_0}{\sqrt{1 - \left(1 - \frac{r_0^2}{r_1^2}\right) \frac{\left(1 - 3\frac{z^2}{a^2}\right)^2}{\left(1 + \frac{z^2}{a^2}\right)^3}}}$</p>
+<p>其中，</p>
+<ul>
+<li><strong>r</strong>：径向坐标</li>
+<li><strong>r₀</strong>：入口半径，</li>
+<li><strong>r₁</strong>：出口半径，</li>
+<li><strong>z</strong>：表示沿流向的轴向坐标，范围是0到$\frac{a}{\sqrt{3}}$</li>
+<li><strong>a</strong>：几何常数参数，
+流线示意图如下：
+<img src="/xliu-group/zh/post/wito/%E5%9B%BE%E7%89%872.png" alt=""></li>
+</ul>
+<p>根据文章，流线图v对应的为公式中的r，α对应公式中的a。
+流线径向坐标r表达式的推导始于轴对称理想流体在柱坐标下的微分方程：
+$\frac{\partial^2 \psi}{\partial r^2} - \frac{1}{r} \frac{\partial \psi}{\partial r} + \frac{\partial^2 \psi}{\partial z^2} = 0$</p>
+<p>其解为流函数的级数形式：
+$\psi = r^2 f(z) - \frac{r^4}{2 \cdot 4} \frac{d^2 f(z)}{dz^2} + \frac{r^6}{2 \cdot 4 ^2\cdot 6} \frac{d^4 f(z)}{dz^4} + \cdots$</p>
+<p>$f(z)$是一个光滑的函数，满足$f_{\infty}=1$.</p>
+<p>则假设一个符合条件的$f(z)$函数，将其带入流函数得
+<img src="/xliu-group/zh/post/wito/%E5%9B%BE%E7%89%875.png" alt=""></p>
+<p>A由边界条件而定
+<img src="/xliu-group/zh/post/wito/%E5%9B%BE%E7%89%876.png" alt="">
+把A带入
+得出r的表达式</p>
+$$
+R = \frac{R_0}{\sqrt{1 - \left[1 - \left( \frac{R_0}{R_1} \right)^2 \right] \frac{\left( 1 - \frac{z^2}{z_0^2} \right)^2}{\left( 1 + \frac{z^2}{3z_0^2} \right)^3}}}
+$$<p>
+与原式子的不同点在于，公式轴向坐标z的范围简化，变成0到$z_0$，于是公式随之变化，但其实两式是相同的。
+那么如何用wito曲线设计收缩段呢</p>
+        </div>
+        
+          <p class="f6 lh-copy mv0">By 王硕</p><a href="/xliu-group/zh/post/wito/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
       </div>
     </div>
   </div>
@@ -359,63 +418,18 @@ $$<p>将上述式子与图像坐标系的两个式子联立可得：</p>
 
           </div>
         
-          <div class="w-100 mb4 relative">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
-    <div class="flex-column flex-row-ns flex">
-      
-          
-        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-          <a href="/xliu-group/zh/post/tdlas-1/" class="db grow">
-            <img src="https://liuxunchen.github.io/xliu-group/images/sdust.jpg" class="img" alt="image from TDLAS">
-          </a>
-        </div>
-      
-      <div class="blah w-100 w-60-ns pl3-ns">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/xliu-group/zh/post/tdlas-1/" class="color-inherit dim link">
-            TDLAS
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>TDLAS（Tunable Diode Laser Absorption Spectroscopy），可调谐二极管激光吸收光谱技术）是一种基于气体分子对特定波长激光的吸收特性，实现对气体成分、浓度等参数进行高精度检测的光谱分析技术。它凭借高灵敏度、高选择性、快速响应等优势，在环境监测、工业过程控制、医疗诊断、安全检测等众多领域得到了广泛应用。</p>
-<h2 id="技术核心原理">技术核心原理</h2>
-<p>TDLAS 技术的核心原理基于比尔 - 朗伯定律（Beer-Lambert Law） 和气体分子的特征吸收光谱：
-1．特征吸收：不同气体分子的能级结构独特，只能吸收特定波长（频率）的激光，形成特征吸收峰。例如，水对1.3-1.5μm 和 1.8-2.0μm附近的激光有强烈吸收。
-2．比尔 - 朗伯定律：当激光穿过待测气体时，部分能量被气体分子吸收，吸收强度与气体浓度、光程长度成正比。根据比尔 - 朗伯定律，光强衰减可表示为：It(t)=I0(t)exp[−α(ν)]其中，I0(t)为未被气体吸收的激光强度；It(t)为吸收后的光强；α(ν)为气体的吸收系数。
-3．可调谐激光：使用可调谐二极管激光器（如分布反馈式激光器 DFB），其输出波长可通过温度或电流精确调节，能精准扫描气体分子的特征吸收峰，避免其他气体或背景干扰。</p>
-<h2 id="应用场景">应用场景</h2>
-<p>TDLAS 技术的核心优势有：非接触测量、抗干扰性、微型化潜力等，使其渗透到非常多的领域：
-1．大气污染物检测
-实时监测大气中的有害气体，如氮氧化物（NOₓ）、硫氧化物（SO₂）、挥发性有机物（VOCs）、一氧化碳（CO）等，为空气质量管控和污染溯源提供数据支持。
-例如，在工业排放口安装 TDLAS 系统，可连续监测废气中污染物浓度，确保排放符合环保标准。
-2．易燃易爆气体泄漏检测
-在煤矿、石油、燃气管道等场景，实时监测甲烷（CH₄）、丙烷（C₃H₈）等易燃易爆气体的泄漏，及时触发报警，预防爆炸事故。
-相比传统传感器，TDLAS 的非接触式测量可适应高温、高压等恶劣环境，且响应速度达毫秒级。
-3．航空器燃油箱安全监测
-如参考文档所述，TDLAS 技术被用于测量飞机燃油箱中的氧气浓度，评估机载惰性气体生成系统（OBIGGS）的效率，降低燃油箱爆炸风险。其无校准方法可适应高空恶劣环境，无需现场校准即可稳定工作。
-4．能源生产与存储监测
-在氢能产业中，检测氢气（H₂）纯度及杂质（如 CO、CH₄），保障燃料电池和氢储存系统的安全运行；在燃煤电厂，监测烟气中的 NOₓ和 SO₂，优化脱硫脱硝工艺，减少污染物排放。</p>
-<h2 id="实验中的具体应用">实验中的具体应用</h2>
-<p>在具体的实验中，本次使用TDLAS主要用在测量氢燃气炉的火焰温度测量中，选用1398nm的红外激光（可以看why choose this line pair，对于波长的选择），主要是基于高温火焰中的产物水蒸气的吸收光谱特性与温度的关联性实现的。
-将激光器产生的红外激光穿过待测火焰被探测器接收后，通过分析激光在特定波长下的吸收强度变化，推演出火焰中水蒸气的浓度分布，进而结合相关算法反演出火焰温度场的实时数据。实验过程中，系统表现出较高的测量精度和良好的动态响应特性，能够有效捕捉火焰温度的细微变化，为燃气炉燃烧效率优化和安全运行提供可靠的数据支持。</p>
-        </div>
-        
-          <p class="f6 lh-copy mv0">By 惠昊</p><a href="/xliu-group/zh/post/tdlas-1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
         <section class="w-100">
           <h1 class="f3">更多</h1>
           
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/xliu-group/zh/post/tdlas-1/" class="link black dim">
+                TDLAS
+              </a>
+            </h2>
           
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/xliu-group/zh/post/wq/" class="link black dim">
@@ -432,12 +446,6 @@ $$<p>将上述式子与图像坐标系的两个式子联立可得：</p>
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/xliu-group/zh/post/hydrogen-oxygen-flame-combustion/" class="link black dim">
                 利用JANAF表估算氢氧火焰温度
-              </a>
-            </h2>
-          
-            <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/xliu-group/zh/post/why-choose-this-line-pair/" class="link black dim">
-                why choose this line pair
               </a>
             </h2>
           

@@ -27,6 +27,11 @@
                 href="https://liuxunchen.github.io/xliu-group/zh/"
                 />
   </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/wito/</loc>
+    <lastmod>2025-09-16T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/post/opencv/</loc>
     <lastmod>2025-09-11T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -213,10 +218,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/post/newlabview/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/wito/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
