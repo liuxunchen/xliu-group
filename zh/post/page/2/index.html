@@ -171,397 +171,6 @@ script.async = true;
             <div class="mb3 pa4 blue overflow-hidden">
     
       <div class="f6">
-        六月 23, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/crossflow/" class="link black dim">
-        横向射流轨迹的拟合
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>横向射流（crossflow）是很常见的一种流体混合结构，当一股小尺寸的射流垂直进入大尺寸的横流时，垂直的射流就会逐渐转到横向过来，形成横向射流。
-在这个过程中形成的涡系主要包括剪切涡、马蹄涡、尾迹涡和对旋涡，其中剪切涡和对旋涡的生成发展、传播和最终破碎是横向射流混合增强的主要因素。通过控制射流和主流的动量比，可以控制轨迹，改变穿透深度和形成的火焰长度。</p>
-<p>远场的横向射流的轨迹一般可以用幂函数表示[1,2]。如图1，横向射流轨迹的可以由速度比$r$和射流直径$d$进行无量纲化。</p>
-$$
- \left(\frac{y}{rd}\right) = A \left(\frac{x}{rd}\right)^{B}
-$$<p>典型的轨迹方程中，$B\approx \frac{1}{3}$。</p>
-<p>以我们实验测量的横向射流的轨迹为例。</p>
-<figure><img src="/xliu-group/zh/post/crossflow/1.png"><figcaption>
-      <h4>图1 实验原始图片、拟合轨迹、和以轨迹为坐标转化后的图像</h4>
-    </figcaption>
-</figure>
-
-<hr>
-<p>拟合得到轨迹方程包含如下几步：</p>
-<ol>
-<li>在每个高度，也就是$y$坐标上，找到浓度或速度的最大值对应的$x$值。这里找到的最大点坐标还比较粗糙，最好再和相邻的几个点通过抛物线拟合的方法，得到更精确的坐标。
-如图2 ，得到的最大点基本描绘出了轨迹，但还需要修剪一下数据。</li>
-</ol>
-<figure><img src="/xliu-group/zh/post/crossflow/2.png"><figcaption>
-      <h4>图2 找最大点</h4>
-    </figcaption>
-</figure>
-
-<ol start="2">
-<li>去掉头尾部分。去掉轨迹后面几个点比较好理解，因为到轨迹最后信噪比很低了；去除开头几个点是为什么呢？
-以实验测量的双喷嘴横向射流为例子，图3中给出了初步找到的中心线和修正后的中心线。</li>
-</ol>
-<figure><img src="/xliu-group/zh/post/crossflow/3.png"><figcaption>
-      <h4>图3 修正后的中心线</h4>
-    </figcaption>
-</figure>
-
-<ol start="3">
-<li>下一步就是拟合了。首先要把找到的轨迹起始点归零。然后求log10 ，得到拟合直线，此时会发现需要去掉开头的非常接近零的几个点，也就是近场不符合幂函数规律的点，便于拟合。
-从图4中可以看出，拟合的直线需要确定两个拟合变量，一个是拟合长度范围，一个是拟合起始位置。
-不一定拟合长度越长越好，需要确定恰当的范围。
-我们将这两个变量都在一定范围内变化，看得到的结果情况。</li>
-</ol>
-<figure><img src="/xliu-group/zh/post/crossflow/4.png"><figcaption>
-       <h4>图4 变量拟合</h4>
-     </figcaption>
- </figure>
-
-<p>图4中，1)为待拟合的直线，2)横坐标为拟合位置、纵坐标为拟合长度，当拟合长度大时，拟合位置变化的就小。3)为2)图的梯度，可以看到有趣的梯度变化的图案，说明了拟合参数的影响。
-可见当拟合长度和位置恰当时，得到的参数有一个稳定的区域，数值基本不变。表现为梯度接近零，可以用这个指标来确定恰当的拟合长度和位置。</p>
-<p>在这个例子中，得到直线的方程为:</p>
-$$
-\ln(y) = 0.30\times \ln(x) + 1.36
-$$<p>
-而 $r = 7$, $d = 10mm$，得到</p>
-$$
- \left(\frac{y}{rd}\right) = 0.2 \left(\frac{x}{rd}\right)^{0.3}
-$$<h1 id="参考文献">参考文献</h1>
-<ol>
-<li>BROADWELL J E, BREIDENTHAL R E. Structure and mixing of a transverse jet in incompressible flow[J]. Journal of Fluid Mechanics, 1984, 148: 405-412.</li>
-<li>HASSELBRINK E F, MUNGAL M G. Transverse jets and jet flames. Part 1. Scaling laws for strong transverse jets[J]. Journal of Fluid Mechanics, 2001, 443: 1-25.</li>
-<li>SMITH S H, MUNGAL M G. Mixing, structure and scaling of the jet in crossflow[J]. Journal of Fluid Mechanics, 1998, 357: 83-122.</li>
-<li>SU L K, MUNGAL M G. Simultaneous measurements of scalar and velocity field evolution in turbulent crossflowing jets[J]. Journal of Fluid Mechanics, 2004, 513: 1-45.</li>
-</ol>
-    </div>
-  <a href="/xliu-group/zh/post/crossflow/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        六月 22, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/dianyuan/" class="link black dim">
-        利用HDM3065 Hantek 6位半万用表对5V电源输出电压结果的测试
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>在电子设备的使用中，电源输出电压的稳定性至关重要。今天，我将通过实际测量和数据分析，使用最小二乘法拟合它的输出电压值，结合得到的方差来评判它的输出电压效果。</p>
-<h2 id="测试方法">测试方法</h2>
-<p>首先，介绍一下测试方法。我使用万用表作为测量工具，将电源输出电压从 0V 开始，以 0.1V 为步长逐步调节，直至达到 5V。我这里用到的是 Hantek 的 HDM3065 系列的万用表来测量小电源的输出电压，我们将万用表连接到测电压端，红黑表笔分别接到小电源的正负极，用来测量小电源的输出电压。连接到其他的地方以后也可以测试电流、电阻等。我们将红色线接到电源正极，黑色线连接到电源负极。</p>
-<p>该万用表有专用的 IO 控制软件，将万用表连接到电脑以后，我们可以通过电脑的 IO 软件发送指令，万用表便会执行相应的操作。为了保证数据的可靠性，针对小电源的每个电压值，我都进行了五十次测量，并将测量的数据都记录下来。</p>
-<figure><img src="/xliu-group/zh/post/dianyuan/image1.png"><figcaption>
-      <h4>测量连接示意图</h4>
-    </figcaption>
-</figure>
-
-<h2 id="数据处理">数据处理</h2>
-<p>数据记录下来之后，我们需要用到 Python 来处理这些数据，运用最小二乘法对数据进行处理。最小二乘法的核心思想是通过最小化误差的平方和寻找数据的最佳函数匹配。在这里，我们假设电源输出电压与设定电压之间存在线性关系，通过最小二乘法拟合出一条直线，来描述这种关系。经过计算，可以得到拟合直线的方程。</p>
-<p>通过计算方差来评估电源输出电压的稳定性。方差是用来衡量一组数据离散程度的统计量，方差越小，说明数据越集中，电源输出电压越稳定。分别计算每个设定电压点下十个测量数值的方差，发现大部分电压点的方差都较小，说明该电源在不同输出电压下的稳定性表现良好。</p>
-<h2 id="测试结果">测试结果</h2>
-<p>测试结果如下图所示：</p>
-<p><figure><img src="/xliu-group/zh/post/dianyuan/image2.png"><figcaption>
-      <h4>最小二乘法拟合图</h4>
-    </figcaption>
-</figure>
-
-<figure><img src="/xliu-group/zh/post/dianyuan/image3.png"><figcaption>
-      <h4>拟合值相对于拟合直线理论值残差图</h4>
-    </figcaption>
-</figure>
-
-<figure><img src="/xliu-group/zh/post/dianyuan/image4.png"><figcaption>
-      <h4>拟合值相对于设定值的残差图</h4>
-    </figcaption>
-</figure>
-</p>
-<p>我们可以看到该小电源的线性效果还是很好的，方差也很小，说明电压输出比较稳定。从残差图中我们可以看出，残差图上的点代表对应设定电压下，输出电压实际值与拟合模型预测值的差值，可以看出这些点的值都比较小，残差绝对值大多在 0.006V 以内，数值很小，表明实际值和拟合预测值偏差不大，模型对该电源电压数据的拟合精度较高。这张残差图显示模型拟合效果不错，误差随机且整体很小，能较好描述设定电压和输出电压的关系。并且我们可以在图中看出，拟合值相对于设定值的插值都在-0.01内，数据很小，也没有某些值与设定值差距较大，说明该小电源的输出效果还是很不错的。</p>
-<p>另外，我还对每个电压值下测量的电压输出值查看其分布规律，根据测试结果生成的数据大致都有如下图的趋势。这里由于数据过多，我就不列出来了，拿出几个图来看一下分布规律即可：</p>
-<p><figure><img src="/xliu-group/zh/post/dianyuan/image5.png"><figcaption>
-      <h4>0.9V电压分布</h4>
-    </figcaption>
-</figure>
-
-<figure><img src="/xliu-group/zh/post/dianyuan/image6.png"><figcaption>
-      <h4>1.1V电压分布</h4>
-    </figcaption>
-</figure>
-</p>
-<p><figure><img src="/xliu-group/zh/post/dianyuan/image7.png"><figcaption>
-      <h4>2.9V电压分布</h4>
-    </figcaption>
-</figure>
-
-<figure><img src="/xliu-group/zh/post/dianyuan/image8.png"><figcaption>
-      <h4>4.3V电压分布</h4>
-    </figcaption>
-</figure>
-</p>
-<p>图中每个蓝色柱子代表“输出电压落在某一小区间内的测量次数密度”，且直方图与曲线贴合度较高，故可以看出，电压的波动符合正态分布规律。</p>
-<h2 id="结论">结论</h2>
-<p>通过最小二乘法得到了输出电压的估算值，我们大致了解到了该小电源输出电压的大致水平；结合方差的计算结果，我们对其稳定性也有了清晰的认知。从本次测量结果来看，该小电源的输出电压效果整体表现良好，在每个电压值下都能提供接近于小电源显示电压值的输出电压；但会存在一定的波动，所以在对于电压稳定性较高要求的条件下不适用。在今后的电子项目的实验中，掌握这种评估电源输出电压效果的方法，有助于我们更好地选择合适的电源，保证项目的顺利进行。</p>
-    </div>
-  <a href="/xliu-group/zh/post/dianyuan/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        六月 22, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/nozzle2/" class="link black dim">
-        腔体流量测定实验失败复盘
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>近期开展的几组腔体标量测定实验均以无合理结果告终。按推论，超声速射流的二氧化碳应发生相变，然数次实验混合多种浓度，始终未观测到相变现象，直至拆下设备，才发现隐蔽却致命问题——<strong>底座焊缝漏气</strong>，该被忽视细节成贯穿实验的“数据杀手” 。</p>
-<h2 id="一实验过程与数据异常记录">一、实验过程与数据异常记录</h2>
-<h3 id="一首次实验">（一）首次实验</h3>
-<p>核心目标：测定腔体在不同浓度二氧化碳下的标量数据。实验初始参数为压力 0.103896MPa、温度 26.1℃。测试数据如下：</p>
-<ul>
-<li>纯空气测试：发现垫圈处存在 3.3L/min 漏气，修正后记录流动态流量 125L/min、压力 0.502MPa；</li>
-<li>混合气体测试：CO₂浓度 10%和 50%工况下，压力稳定在 0.641MPa，但温度数据剧烈波动，由 26.1 摄氏度到 24.9 摄氏度不等，现猜测可能是底部剧烈漏气导致腔内温度变化；</li>
-<li>最终结论：因数据离散度过高，判定实验存在异常。</li>
-</ul>
-<figure><img src="/xliu-group/zh/post/nozzle2/Picture4.png"><figcaption>
-      <h4>第一组实验数据记录！</h4>
-    </figcaption>
-</figure>
-
-<h3 id="二二次实验">（二）二次实验</h3>
-<p>改进方向：更换合适垫圈并优化气路控制，杜绝不合理漏气，初始压力 0.103421MPa、温度 27.2℃。实验现象依旧反常：</p>
-<ul>
-<li>纯空气阶段：流量 120L/min 数据正常，但进入混合气体测试后失控；</li>
-<li>10% CO₂混合：空气/CO₂流量比理论 9:1，实测达 11.6:1，压力波动超±0.02MPa；</li>
-<li>70% CO₂混合：温度压力仅记录平均值，数据失去代表性。</li>
-</ul>
-<figure><img src="/xliu-group/zh/post/nozzle2/Picture5.png"><figcaption>
-      <h4>第二组实验数据记录！</h4>
-    </figcaption>
-</figure>
-
-<h2 id="二隐藏缺陷的发现过程">二、隐藏缺陷的发现过程</h2>
-<p>因需更换实验，将腔体从底座拆下，拆卸全部管路前心血来潮再次实验，发现孔口气流微弱，排查气路后，确定<strong>底座焊缝存在严重漏气</strong>，基本大部分流量和压力都在此损失。</p>
-<p>原因追溯：</p>
-<ul>
-<li>结构设计盲区：焊缝位于底座隐蔽处，常规检查难以发现；</li>
-<li>实验惯性思维：首次实验将漏气归因于垫圈问题，未对腔体整体密封性做系统性排查；</li>
-<li>缺乏预实验检测：未在实验前单独对腔体做气密性测试，导致隐患持续影响数据质量。</li>
-</ul>
-<h2 id="三系统性改进方案">三、系统性改进方案</h2>
-<p>更换新的腔体，同时修改高度尺，此前实验存在喷嘴高度过低问题，致使纹影系统需拆除底座才能拍摄出口平面，此次一并修正。</p>
-<h2 id="四经验总结">四、经验总结</h2>
-<p>这次失败深刻揭示**“隐蔽位置 = 安全盲区”的认知误区**。实验设计中，不能仅关注直观可见部件，更要对设备结构做系统性检查，避免同类问题再发生。科研路上，每个失败数据都是珍贵的“排雷记录”，正是这些教训推动实验设计不断迭代升级。</p>
-    </div>
-  <a href="/xliu-group/zh/post/nozzle2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        六月 22, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/guanglu/" class="link black dim">
-        使用镜片搭建光路发出片光拍摄粒子
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="设备准备">设备准备</h2>
-<p>实验所需的镜片如下所示：</p>
-<table>
-  <thead>
-      <tr>
-          <th>型号</th>
-          <th>名称</th>
-          <th>型号</th>
-          <th>名称</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>D25.4×3mm(中心厚)  F=-25mm</td>
-          <td>石英平凹柱面镜</td>
-          <td>D25.4mm F30mm</td>
-          <td>石英平凸透镜</td>
-      </tr>
-      <tr>
-          <td>50(母线方向)×100×2mm F500mm</td>
-          <td>石英平凸柱面镜</td>
-          <td>D25.4mm F35mm</td>
-          <td>石英平凸透镜</td>
-      </tr>
-      <tr>
-          <td>100(母线方向)×50×2mm F1000mm</td>
-          <td>石英平凸柱面镜</td>
-          <td>D25.4mm F40mm</td>
-          <td>石英平凸透镜</td>
-      </tr>
-  </tbody>
-</table>
-<p>由于定制的平凸柱面镜尺寸较大，需定制镜架，其示意图如下图所示：</p>
-<p><figure><img src="/xliu-group/zh/post/guanglu/image1.png"><figcaption>
-      <h4>镜架示意图1</h4>
-    </figcaption>
-</figure>
-
-<figure><img src="/xliu-group/zh/post/guanglu/image2.png"><figcaption>
-      <h4>镜架示意图2</h4>
-    </figcaption>
-</figure>
-</p>
-<p>对其进行组装后，实物图如下图所示：</p>
-<figure><img src="/xliu-group/zh/post/guanglu/image3.png"><figcaption>
-      <h4>组装实物图</h4>
-    </figcaption>
-</figure>
-
-<p>小的笼板与大的镜架之间需要用一个转接板来连接，转接板的尺寸与形状如下图所示：</p>
-<figure><img src="/xliu-group/zh/post/guanglu/image4.png"><figcaption>
-      <h4>转接板示意图</h4>
-    </figcaption>
-</figure>
-
-<h2 id="实验原理">实验原理</h2>
-<figure><img src="/xliu-group/zh/post/guanglu/image5.png"><figcaption>
-      <h4>光路结构图</h4>
-    </figcaption>
-</figure>
-
-<p>如图所示即为光路的结构：</p>
-<p>图中1为紫外LED光源，利用该光源发出扩散状的紫外光。
-图中2和3分别为焦距为40mm和焦距为35mm的平凸透镜，且都为平面朝向光源，利用两个平凸透镜聚焦原扩散的光。
-图中4为焦距30mm的平凸透镜，并且放置的方式为平面背向光源，利用该透镜将原本聚焦的光线进行发散，使其发出的光束为一接近平行的光束。
-图中5为转接板，用于连接小的笼板与大的镜架。
-图中6为平凹柱面镜，将平行光束向两个方向发散，形成一束椭圆形的光束。
-图中7和8均为平凸柱面镜，平凸柱面镜在母线方向具有曲率，因此可以在母线方向将平行光束聚焦成为一条线，因此7、8两平凸柱面镜分别在两个母线方向上将光束聚焦，形成一束片光。</p>
-<p>在8的后面接近比色皿的地方放置一个光学狭缝，来控制通过的光，形成片光。</p>
-<p>最终形成的片光大约为一束长度大约10cm，宽度大约2mm的片光。</p>
-<h2 id="实验过程">实验过程</h2>
-<p>由于光路搭建的前期，定制的镜架还没有制作好，因此先利用平行光束对比色皿里的粒子进行照射，并利用相机对其进行拍摄，但由于前期光束会将整个比色皿都照亮，而且前期对于BAM蓝粉量的把控没有做好，因此导致第一次拍摄的效果不尽人意，第一次拍摄的效果如图下图所示：</p>
-<figure><img src="/xliu-group/zh/post/guanglu/image6.png"><figcaption>
-      <h4>第一次拍摄效果</h4>
-    </figcaption>
-</figure>
-
-<p>可以看到蓝色荧光粒子过于繁杂，整个被紫外光照亮的区域都会被拍到，因此效果并不理想。</p>
-<p>待定制镜架到了以后，将其搭建成如原理图所示的光路，使其形成片光，用片光照射比色皿，只让片光区域的粒子发亮，并且减少BAM蓝粉的用量，拍摄的结果如下图所示：</p>
-<p><figure><img src="/xliu-group/zh/post/guanglu/image7.bmp"><figcaption>
-      <h4>第二次拍摄效果1</h4>
-    </figcaption>
-</figure>
-
-<figure><img src="/xliu-group/zh/post/guanglu/image8.bmp"><figcaption>
-      <h4>第二次拍摄效果2</h4>
-    </figcaption>
-</figure>
-</p>
-<p>可以看得出来，粒子数量明显减少，不像第一次拍摄时那么混乱，不过此次相机调试没有进行好，导致图像偏暗，后续还需对相机继续进行调试。</p>
-<p>该光路并不完善，由于其间隔的距离较长，利用6mm光杆固定不稳定，需要在利用丝杆来固定。另外想要避免其他光源的干涉，并为了保证镜片的干净，需要在光路的外围添加一层铝发黑的铝板，用来隔绝其他光源，并可以使镜片在其他环境下依旧保持干净。</p>
-<p>实验还需继续完善，经过此次实验，可以为后续的液体及气体实验奠定基础，为以后的经验积累经验，熟悉后续实验的操作流程，剩下的实验我会继续记录，到以后会继续和大家分享。</p>
-    </div>
-  <a href="/xliu-group/zh/post/guanglu/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        六月 17, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/chin_mistake/" class="link black dim">
-        航空燃烧室技术界的一些错误提法
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="前言">前言</h1>
-<p>人们常说航空发动机是如何的难搞，像是什么皇冠上的珍珠。其实，依照笔者经验也不是那么难，搞过航空燃烧室的预先研究（至今仍未停止）、技术研发、型号研发、型号使用中排故等，深知怎么搞，即搞的路线或者说是研发体制，是关键所在。但在这一切之先，首先概念要正确，基础知识牢固，各种概念和提法要正确，这将是本文的要点。</p>
-<h1 id="一燃烧室没有总压恢复系数">一、燃烧室没有总压恢复系数</h1>
-<p>参考文献[1] 中有表1：涡扇发动机加力燃烧室性能提升（台架状态）如下所示。
-<img src="/xliu-group/zh/post/chin_mistake/1.png" alt="表1" title="表1">
-其中提到总压恢复系数，这是一个概念错误。本文将在下文讨论，提到总压恢复系数还在其他地方也出现。</p>
-$$
-\sigma_\text{B} = \frac{P_{t4}}{P_{t3}}
-$$<p>
-燃烧室的总压恢复系数一般在0.92~0.96（不包含由燃烧导致的热租损失）。”
-这里明确说明总压恢复系数是燃烧室出口总压与进口总压之比，不清楚该章节作者所说压力损失到什么程度又恢复到0.92~0.96 。
-参考文献[2]在3.3节《设计输入》之下的 3）性能参数要求中第（1）项就是$\sigma_B$：总压恢复系数。</p>
-<p>笔者曾与某设计所燃烧副总师讨论问题时，该副总师提到他们总压恢复系数是多少。笔者当场严肃指出这是一个基本概念错误。
-总的来说，总压恢复系数这个错误概念扩展甚广。</p>
-<p>以下说明为什么这是基本概念错误：
-机械能与热能的转换是热力学第二定律范围内的事情。热力学第二定律有多种表达方式，简单地说，由机械能向热能转换是可以自发地产生，没什么条件；但由热能向机械能转换是有条件的，而且不可能百分之百地转换。
-也就是由机械能向热能转换了之后，不可能自然地逆转回来。
-总压是压力与动压头相加，是机械能。
-总压损失了是转变为热能，那时不可能自然地恢复回来的，所以没有恢复的提法。</p>
-<p>更为深入的说明为总压损失是一个熵增过程。熵增过程都是不可逆的，那么要说明什么是熵？
-熵是状态或然率的函数，用一个例子可以说明这状态或然率的函数是什么含义。
-有一容器，左、右两部分，中间有一隔板密封地隔开。
-左边是氮气（N2），右边是氧气（O2）。
-如果中间的隔板打破掉了，容器内必然是氮气与氧气混合，试想一下中间隔板打破后氮气仍然集中在左边，氧气仍然集中在右边，这样一种状态其出现的或然率有多少？
-显然为零。
-而相互混合的状态是或然率最大的状态。
-所以由相互各自集中一边的状态到相互混合的状态是熵增大的过程。
-这也清楚地说明熵增后不可能自然出现熵减的过程。</p>
-<p>有人一定会问，这是一个基本概念，有那么重要吗？
-笔者与 A. H. Lefebvre 讨论如何搞发动机燃烧室，两人都赞同以下观点：“搞航空燃烧室是以基础知识来解决燃烧室的各种问题。”
-要强调这里是基础知识，而不是基础研究。
-首先必须具有良好的基础知识，然后要有以基础知识去解决各种问题的能力（和经验）。
-Lefebvre曾批评某发动机公司搞燃烧的人基础知识太差，他的原话是：“ As for combustion fundamental, they know nothing.”
-（说一无所知，有点夸大了。）
-要具备良好基础知识，必须先重视基础知识，重视基本概念。
-说“总压恢复系数”的人就是不重视基础知识。</p>
-<h1 id="二有贫油燃烧但没有贫油喷嘴">二、有贫油燃烧，但没有贫油喷嘴</h1>
-<p>参考文献[3]研究了（以其标题而言）“贫油直喷喷嘴”。
-这个提法错了。喷嘴在一定压力降下喷出燃油，只有在燃烧室某个工况下与进燃烧区的空气量相组合燃烧时才有贫油燃烧、富油燃烧或化学恰当比燃烧。
-喷嘴本身不存在贫油喷嘴或富油喷嘴。
-按照该文的内容应该是《用于贫油直喷燃烧的喷嘴雾化特性实验研究》。</p>
-<p>顺便提一下，贫油直喷燃烧是三十年前路易斯（Lewis）研究中心工程师提出的，没有什么设计方案和设计理念的一个建议，以取代贫油预混预蒸发的低污染燃烧（Lean Premixed Prevaporized, LPP）。
-其实在低污染燃烧室之前的除了蒸发管燃烧室之外，全部都是没有预混合的燃油直喷，要取代LPP的应该是贫油直接混合燃烧（LDM, Lean Direct Mixing）。</p>
-<p>同时也需要指出，通常讲喷雾特性，不单是液滴滴径（索特平均直径），还有液滴尺寸分布指数（显示其尺寸分布的均匀性）。</p>
-<h1 id="三没有中心分级燃烧室">三、没有中心分级燃烧室</h1>
-<p>参考文献[4] “针对中心主、副模分区的燃烧室头部组织结构的单管燃烧室模型进行数值模拟研究”。
-该文的研究得出高温升燃烧室在设计研发上很有意义的结果，证实了过去在实验中得到的现象。
-但其标题中提出的“中心分级燃烧室”是不对的。
-在贫油预混预蒸发低污染燃烧室出现之前，几乎所有的常规燃烧室都是先由副油喷射工作，然后主油打开工作，这种方式从来不叫分级燃烧。
-只在LPP燃烧室中出现主油分级，即主油不是一次全部打开，而是分级打开的。
-参考文献[4] 所研究的就是先由副油工作然后主油打开工作，这种方式不应称之为分级燃烧室。
-正确的提法应该是“以同心圆排列的副油主油分区燃烧，副油燃烧位于中心，主油燃烧位于外圈。”
-这样的分区燃烧是近二十年来燃气轮机燃烧室（不仅是航空燃烧室）技术的一大进展。</p>
-    </div>
-  <a href="/xliu-group/zh/post/chin_mistake/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
         六月 16, 2025
       </div>
     
@@ -823,6 +432,256 @@ Clouthier综述中提到数据来自 Ramsay 和 Till 未发表的工作，后人
 <p>[1]: KOSTKA S, ROY S, LAKUSTA P J, 等. Comparison of line-peak and line-scanning excitation in two-color laser-induced-fluorescence thermometry of OH[J/OL]. Applied Optics, 2009, 48(32): 6332. DOI:10.1364/AO.48.006332.</p>
     </div>
   <a href="/xliu-group/zh/post/ch2o/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        三月 22, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/method/" class="link black dim">
+        激光诊断方法
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>激光燃烧诊断技术通过测量激光与燃烧场中分子的吸收、发射、散射相互作用，得到原位定量的火焰温度、组分浓度和流场密度、速度等信息，具有极高的时空分辨率、灵敏度与选择性， 是最主要的非接触燃烧实验方法。常见方法包括瑞利散射、米散射、拉曼散射、荧光散射、吸收效应和多普勒效应等过程，这几种测试方法各有优缺点、互为补充，总的发展趋势是从线平均测量到场分辨测量，从低频稳态测量到高频动态测量。激光燃烧诊断的核心设备是激光光源。可以说是“一代激光器,一代测试方法”。</p>
+<p>光谱诊断方法的优点是对火焰无干扰，成像方法可以提供较高的时间和空间分辨率，通过图像能够准确地区分不同组分，并精确地测量温度、不同组分的浓度。
+下面是常用的几种激光诊断方法的示意图。</p>
+<figure><img src="/xliu-group/zh/post/method/method.png"><figcaption>
+      <h4>常见的激光诊断方法 [Wolfrum](https://pubs.rsc.org/en/content/articlelanding/2002/fd/b107878j).</h4>
+    </figcaption>
+</figure>
+
+<p>应用光谱研究火焰的历史可以追溯到1860年Kirchhoff和Bunsen针对火焰中金属的光谱测量和1857年Swan对蜡烛火焰的测量。</p>
+<figure><img src="/xliu-group/zh/post/method/tree.png" width="auto"><figcaption>
+      <h4>学术家谱</h4>
+    </figcaption>
+</figure>
+
+<p>博士导师研究分子光谱，发现导师的前面的导师可以追溯到剑桥大学的Sugdun，是做了很多工业实际应用研究。再之前的 Norrish 就是做的用光谱方法研究闪光灯热解。
+现在算是重新回到了应用研究上来。</p>
+<p>燃烧诊断主要是光测和光谱知识在燃烧中的应用。宏上要观理解为何要做实验和发展燃烧诊断方法，为何需要诊断方法解决什么问题。
+参考driezler 上课ppt中的说法，燃烧诊断的任务包含如下几个：</p>
+<ol>
+<li>燃烧理论，这方面比较成熟了；</li>
+<li>仿真对照，精细测量，验证CFD；</li>
+<li>燃烧器中的火焰结构和运动（主要是成像），研究燃烧现象，火焰结构和运动，湍流燃烧机理，包含标准火焰的研究；</li>
+<li>发展技术和方法，发展实际应用的传感器（tdlas 主要问题是空间分辨率问题，对于燃烧器的尺寸来说，TDLAS测量的空间分辨率太粗，可以做传感器，但研究其他问题不够用）</li>
+</ol>
+<p>燃烧诊断研究基本问题是测量温度，组分，压力，速度；进一步需要和燃烧学结合，目标和主线是研究火焰和燃烧室，燃烧诊断的目标是解决燃烧研究的问题。因此很多时候，是要把特定的实验方法用在特定的燃烧研究里面。
+诊断研究现在阶段需求，理论研究比较成熟，要以工业应用需求为主，还是从燃烧室的现象和要解决的问题出发。</p>
+<p>一个光谱诊断方法的简介文件。
+<a href="/xliu-group/zh/post/method/%E5%85%89%E8%B0%B1%E8%AF%8A%E6%96%AD.pdf">光谱诊断方法简介</a></p>
+<p>如何做燃烧的仿真？湍流燃烧还是很难算的，Fluent 可以大概算算。用 Cantera 和 Chemkin 算一般的反应动力学计算，比如火焰温度。
+分子光谱仿真？就很小众了，图形化的有 pgophor，最全的应该是 SPFIT/SPCAT 。LIFbase是专门的几个双原子分子的LIF光谱数据库仿真。
+几何光学仿真用 zemax，但感觉一般也不需要。</p>
+    </div>
+  <a href="/xliu-group/zh/post/method/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        三月 10, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/lec1/" class="link black dim">
+        热工基础
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>热工基础课程的前两周上完了，讲了前4章。基本把热力学的内容讲完了。
+在极少的课时下，如何讲完？
+热力学作为很成熟的知识，的确也应该更加精炼，大学里面的课程，总的趋势就是成熟的知识逐渐减少课时。学生总要学习新知识。未来可能中学里面就要学很多现在大学的知识吧。</p>
+<p>我想我做了比较好的尝试。思路是从统计力学2个基本假设开始讲，引出配分函数和熵的概念、不同的系综；进而可以联系到热力学的4个基本假设，然后建立热力学函数。
+这门课不讲化学平衡和相平衡。
+主要还是内能和焓的概念。
+然后是理想气体，从熵的公式引出绝热等过程的熵变和热功变化。</p>
+<p>从几个基本假设出发的思路还是很清晰的。避免了从现象出发的很多绕弯子。也是前面推荐Daily书的初衷。</p>
+<p>第三周开始讲喷管流动，这部分主要是可压缩的空气动力学。参考书主要是《Thermodynamics-An engineering approach》和清华大学吴望一的《流体力学》。
+不得不说，老外的书详细，适合自学和教学；但是吴的书，精妙之处更多，很多数学推导更简洁更优美。多看几本书总有好处，空气动力学经典的Anderson 以后再看吧。</p>
+<p>第四周开始讲传热。首先是从随即行走模型导出了扩散方程。按照这个思路比较好，从基本原理出发，比较直观地就可以得到傅里叶公式。
+传热的其他部分没有很多重要的内容了，毕竟现在都是用有限元直接算就可以了。</p>
+<p><a href="/xliu-group/zh/post/lec1/lec1.pdf">Lecture-1</a></p>
+    </div>
+  <a href="/xliu-group/zh/post/lec1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        二月 20, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/20250220/" class="link black dim">
+        lvpyio
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>今天尝试了 LaVision 公司的 python package，太坑了，又发现 DeepSeek 太香了。</p>
+<p>lvpyio 的网址：
+<a href="https://www.lavision.de/en/downloads/software/python_add_ons.php">https://www.lavision.de/en/downloads/software/python_add_ons.php</a></p>
+<p>之前都是把 DaVis 计算得到的速度场或者标量场结果存成文本文件，例如 B00001.txt 再用python读。下面是我写的读标量场和矢量场的函数，其中load_piv 中 size 参数非0时，会将数据 binning 降低数据数量，提高对比度。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#%% read DaVis txt file</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_piv</span>(filename, size):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    extract PIV data
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    filename: txt file name
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    size: average size
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    lavision <span style="color:#f92672">=</span> open(filename)
+</span></span><span style="display:flex;"><span>    step, xnum, ynum <span style="color:#f92672">=</span> lavision<span style="color:#f92672">.</span>readline()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">6</span>]
+</span></span><span style="display:flex;"><span>    lavision<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>    step <span style="color:#f92672">=</span> int(step)
+</span></span><span style="display:flex;"><span>    xnum <span style="color:#f92672">=</span> int(xnum)
+</span></span><span style="display:flex;"><span>    ynum <span style="color:#f92672">=</span> int(ynum)
+</span></span><span style="display:flex;"><span>    size <span style="color:#f92672">=</span> int(size)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    oned <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(filename, decimal<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#39;</span>, skiprows<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">0</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
+</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">1</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
+</span></span><span style="display:flex;"><span>    U <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">2</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
+</span></span><span style="display:flex;"><span>    V <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">3</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> size <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        X <span style="color:#f92672">=</span> X[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        Y <span style="color:#f92672">=</span> Y[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        U <span style="color:#f92672">=</span> U[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        V <span style="color:#f92672">=</span> V[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)                                                                           
+</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> Y<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+</span></span><span style="display:flex;"><span>    U <span style="color:#f92672">=</span> U<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+</span></span><span style="display:flex;"><span>    V <span style="color:#f92672">=</span> V<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> step, xnum, ynum, X, Y, U, V   
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_plif</span>():
+</span></span><span style="display:flex;"><span>    plif <span style="color:#f92672">=</span> open(filename)
+</span></span><span style="display:flex;"><span>    firstline <span style="color:#f92672">=</span> plif<span style="color:#f92672">.</span>readline()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)
+</span></span><span style="display:flex;"><span>    x_num,y_num <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>    delta_x,x0 <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">6</span>:<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>    delta_y,y0 <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">10</span>:<span style="color:#ae81ff">12</span>]
+</span></span><span style="display:flex;"><span>    plif<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>    x_num <span style="color:#f92672">=</span> int(x_num)
+</span></span><span style="display:flex;"><span>    y_num <span style="color:#f92672">=</span> int(y_num)
+</span></span><span style="display:flex;"><span>    x0 <span style="color:#f92672">=</span> float(x0)
+</span></span><span style="display:flex;"><span>    y0 <span style="color:#f92672">=</span> float(y0)
+</span></span><span style="display:flex;"><span>    delta_x <span style="color:#f92672">=</span> float(delta_x)
+</span></span><span style="display:flex;"><span>    delta_y <span style="color:#f92672">=</span> float(delta_y)
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(x0, x0<span style="color:#f92672">+</span>(x_num)<span style="color:#f92672">*</span>delta_x, delta_x)
+</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(y0, y0<span style="color:#f92672">+</span>(y_num)<span style="color:#f92672">*</span>delta_y, delta_y)   
+</span></span><span style="display:flex;"><span>    plif_txt <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(filename, decimal<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#39;</span>, skiprows<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span>    plif <span style="color:#f92672">=</span> plif_txt<span style="color:#f92672">.</span>values
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> x_num,y_num,X,Y,plif
+</span></span></code></pre></div><p>貌似用官方的软件包可以读更多的文件格式吧。于是就开始安装了。
+首先发现不知道为什么 spyder 启动出问题了，numpy 版本不对，需要重装 numpy，就好了。</p>
+    </div>
+  <a href="/xliu-group/zh/post/20250220/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        十一月 8, 2024
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/20241108/" class="link black dim">
+        TDLAS的问题
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>最见看到之前课题组近年燃烧年会发的会议论文，没有接受口头报告，只有一个海报。
+<figure><img src="/xliu-group/zh/post/20241108/title.png"><figcaption>
+      <h4>论文题目</h4>
+    </figcaption>
+</figure>
+
+是用我发展的4um QCL测CO2的方法在腔体里面测固体颗粒燃烧的信号。
+看了一下实验记录，是2020年夏天做的实验。
+固体推进剂这个方向，本来也不是我该做的，合作只是奉命服务。</p>
+<!--
+本来是说2019年底，两个人同一年评职称，让我让一下，给我搞一篇文章。
+结果成了拿我搞的啥设备去给他做实验。
+到最后发表了论文，连我的名字都没有。
+-->
+<p>但也非常欣慰，毕竟发表了，了却了一桩心事。顾明明博士本来不做 TDLAS，去交大做博后才接触，青年基金也是做的中红外TDLAS 数据处理的方法。把 line mixing 模型用来处理 4.2um 的CO2带头部分的谱线，还是挺成功。但即使是这个新的模型，根本问题还是参数多，需要调。应用起来就不够直接。</p>
+<figure><img src="/xliu-group/zh/post/20241108/setup.png"><figcaption>
+      <h4>实验装置图</h4>
+    </figcaption>
+</figure>
+
+<p>这个实验不是很成功。根本问题还是由于 TDLAS 是线积分测量，无法区分腔体内部路径上不同位置的信息。
+测到的温度，其实是路径平均的温度，虽然4.2um那高温信号占主要的，但也要考虑这么长路径上腔体里面其他位置扩散出去的CO2的干扰。
+其实还不如不加腔体，那样的话在大气环境中还扩散的快一点。</p>
+<p>这就叫路径依赖。</p>
+<p>想起来之前还做过一个失败的实验。用5um NO2 吸收逢的QCL激光测在真空腔体里面的 不同NH3含量的Mckenna 火焰。这个是之前用石英喷嘴取样加紫外光电离质谱做过的体系。用取样测量方法的话，周围环境中的燃烧产物、扩散出去的物质是不用管的。但是用吸收光谱的方法就不行了。低压环境倒是有利于TDLAS测量，NO2 两个分裂的吸收峰很清楚，但是测到的温度又很低，后来发现是因为腔体里面有扩散出去的产物的吸收。
+这就很难办了。也可以吹扫，但再加上这些过程复杂的方法，都很不可靠。</p>
+<p>核心问题，还是如何在TDLAS线积分信号的基础上得到空间分辨率。考虑过用饱和吸收，或者用FLDI频谱特征去提取。但似乎都不很靠谱。
+TDLAS方法在大气研究中有成功的应用，比如用吸收池抽气进去低压测量各种污染物的浓度，再比如卫星测大气柱的辐射或者吸收光谱。
+这是因为空间尺度不同的问题。大气研究中，空间尺度大，TDLAS测量的就是一个点的数据。而燃烧诊断中，研究的火焰尺寸不会很大，TDLAS 测量的一条路径上，需要考虑分布不均匀的问题。
+最好还是用综横多路再反演的方法得到空间分辨率。
+这样空间分辨率就不会很高，若要提高空间分辨率，似乎很难。最近有用高速红外相机做探测器来测TDLAS光谱的，把一个激光束扩束后，在红外相机上成像测量扫描波长后图像强度。
+如果红外相机帧频不够高，还可以在采集端用光纤束分光，也可以提高空间分辨率，多个pd探测器，多路数据采集。
+这样就可以得到比较高的空间分辨率。但成本的确也高。</p>
+    </div>
+  <a href="/xliu-group/zh/post/20241108/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        十月 15, 2024
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/daily-book/" class="link black dim">
+        介绍好书：John Daily 统计热力学
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><figure><img src="/xliu-group/zh/post/daily-book/daily-book-cover.jpg"><figcaption>
+      <h4>封面</h4>
+    </figcaption>
+</figure>
+
+最近读到一本好书，剑桥大学出版社2018年出版的 John Daily 《Statistical Thermodynamics an Engineering approach》。
+最早知道 Daily 还是读到他在PECS上关于LIF 的综述，算是比较早期这方面的综述了。当时他还是在伯克利大学，后来去了科罗拉多大学主持了燃烧研究中心做机械系主任。
+这本书是John 在伯克利大学和科罗拉多大学教研究生《高等热力学》的教材。</p>
+<p>面向热流体方向（机械工程、航空工程、动力工程）的热力学气体动力学课程，早期有 Sonntag &amp;  Van Wylen:  Fundamentals of Statistical Thermodynamics ; 斯坦福大学的 Vincenti &amp; Kruger: Introduction to Physical Gas Dynamics。
+作者的这本教材可以看作是前面书的简化版，包含了最主要的内容。
+之前给本科上的物理化学和准备的热工基础课程想包含的内容，这本书都有：量子力学、分子能级、配风函数、热力学量、JANAF表、Boltzmann方程等等，基本该涉及的知识点都有。</p>
+<p>作为研究生教材，这本书更多的可以作为一个地图和指引，告诉研究生哪些内容需要去看的提要。面向本科生教学的话，可以先简单介绍一些基础知识。这本书还有对应的Coursera 课程，有视频和PPT，一开始就介绍了一些基本知识。
+<a href="https://www.coursera.org/learn/macroscopic-microscopic-thermodynamics">https://www.coursera.org/learn/macroscopic-microscopic-thermodynamics</a></p>
+<p>这本书最大的优点是采用了公理化的热力学体系，即 Herbert B. Callen 在 《Thermodynamics and an Introduction to Thermostatistics》 中提出的四大公设的体系。
+一门学科在历史上发展的顺序和学科体系查成熟后的体系肯定是不同的。
+最终在课程中的呈现，肯定和历史发展的顺序不同。
+比如现代量子力学的教学，如果学时多，尚可以慢慢来从两朵乌云开始讲，但很多时候已经不再是按照历史顺序来讲了，而是按照现代的体系来讲。</p>
+<p>在AI时代，本科生要学的东西越来越多。现在教学的课时越来越少了，传统课程的教学要跟上时代，就是要体现新的思路，顺应时代的发展。
+可以预见，未来的热流体课程中，热力学和统计力学也不应该分开慢慢讲了，也不应该第一定律、第二定律出发那样讲了。
+未来的热力学教学，应该按照这样简洁明了的公理化体系来讲，节省时间。
+时代的进步发展总是这样，留给一成不变旧内容的时间总是越来越少。</p>
+    </div>
+  <a href="/xliu-group/zh/post/daily-book/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
   </div>
 
         </div>
