@@ -19,30 +19,10 @@
     <loc>https://liuxunchen.github.io/xliu-group/news/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://liuxunchen.github.io/xliu-group/zh/news/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://liuxunchen.github.io/xliu-group/news/"
-                />
   </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/paper/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://liuxunchen.github.io/xliu-group/zh/paper/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://liuxunchen.github.io/xliu-group/paper/"
-                />
   </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/tags/</loc>
     <changefreq>monthly</changefreq>
