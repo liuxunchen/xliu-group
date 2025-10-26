@@ -2,18 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/hitran/</loc>
-    <lastmod>2025-10-21T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/</loc>
-    <lastmod>2025-10-21T00:00:00+00:00</lastmod>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/people/ranjiaxing/</loc>
+    <lastmod>2025-10-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/</loc>
-    <lastmod>2025-10-21T00:00:00+00:00</lastmod>
+    <lastmod>2025-10-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -27,13 +22,33 @@
                 href="https://liuxunchen.github.io/xliu-group/zh/"
                 />
   </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/people/zjy/</loc>
+    <lastmod>2025-10-22T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/people/zxh/</loc>
+    <lastmod>2025-10-22T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/hitran/</loc>
+    <lastmod>2025-10-21T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/</loc>
+    <lastmod>2025-10-21T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/people/zhm/</loc>
     <lastmod>2025-10-21T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/people/zxh/</loc>
-    <lastmod>2025-10-20T00:00:00+00:00</lastmod>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/people/zhaodianhu/</loc>
+    <lastmod>2025-10-21T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -208,6 +223,10 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/post/newlabview/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/nozzle-failed-experiments/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
