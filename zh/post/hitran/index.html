@@ -83,10 +83,14 @@ def read_hitran_par(filename):
   <meta property="og:locale" content="zh">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-11-08T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-08T00:00:00+00:00">
 
   <meta itemprop="name" content="HITRAN 数据库用法">
   <meta itemprop="description" content="HITRAN 数据库给出了线强$S$，单位为$[\mathrm{cm^2 \cdot cm^{-1}}]$。 对于 每行160位的数据，可以用下面 python 代码读取每个跃迁的参数。
 # HITRAN 160位格式读取函数 def read_hitran_par(filename): &#34;&#34;&#34; 读取HITRAN 160位格式的par文件 返回格式: [波数, 线强, 爱因斯坦A系数, 空气加宽半宽, 自加宽半宽, 低态能量, 温度依赖系数, 压力位移] &#34;&#34;&#34; database = [] with open(filename, &#39;r&#39;) as f: for line_num, line in enumerate(f, 1): line = line.rstrip(&#39;\n&#39;) # 只去掉行尾换行符，保留其他空白 if len(line) &lt; 160: # 确保行长度足够 print(f&#34;警告: 第 {line_num} 行长度不足160字符，已跳过&#34;) continue try: # 根据HITRAN格式定义解析各个字段 nu = float(line[3:15]) # 波数 S = float(line[15:25]) # 线强 A = float(line[25:35]) # 爱因斯坦A系数 gamma_air = float(line[35:40]) # 空气加宽半宽 gamma_self = float(line[40:45]) # 自加宽半宽 E = float(line[45:55]) # 低态能量 n_air = float(line[55:59]) # 温度依赖系数 delta_air = float(line[59:67]) # 压力位移 # 将解析的数据添加到数据库 database.append([nu, S, A, gamma_air, gamma_self, E, n_air, delta_air]) except ValueError as e: print(f&#34;解析第 {line_num} 行时出错: {repr(line)}&#34;) print(f&#34;错误信息: {e}&#34;) continue print(f&#34;成功读取 {len(database)} 条谱线&#34;) return np.array(database) 光谱模型中的三个参数：谱线位置是上下能级的能级差，数据库给出了位置和下能级，因此可以计算上能级位置；谱线强度的定义如上篇文章给出 。 吸收光谱简介">
+  <meta itemprop="datePublished" content="2025-11-08T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-11-08T00:00:00+00:00">
   <meta itemprop="wordCount" content="421">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="HITRAN 数据库用法">
@@ -200,6 +204,8 @@ script.async = true;
       </p>
       
       
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-11-08T00:00:00Z">十一月 8, 2025</time>
       
 
       
