@@ -79,7 +79,7 @@ class HitranGUI(QMainWindow):
         
     def init_ui(self):
         """初始化UI"""
-        self.setWindowTitle('HITRAN光谱仿真工具')
+        self.setWindowTitle('HITRAN光谱仿真工具 山东科技大学')
         self.setGeometry(100, 100, 1400, 900)
         
         # 创建中心部件
