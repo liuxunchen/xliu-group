@@ -1,6 +1,16 @@
 # hitran_spectrum.py
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import rcParams
+
+# 强制使用思源黑体
+rcParams['font.family'] = 'sans-serif'
+rcParams['font.sans-serif'] = ['Source Han Sans CN']  # 思源黑体
+rcParams['axes.unicode_minus'] = False
+print("使用思源黑体显示中文")
+rcParams['text.usetex'] = False 
+rcParams['mathtext.fontset'] = 'stix'
+
 import math
 from scipy import special
 from scipy import constants
@@ -12,6 +22,29 @@ class HitranSpectrum:
     HITRAN光谱仿真类
     用于读取HITRAN数据库并计算吸收光谱
     """
+    
+    # HITRAN 160位格式定义
+    HITRAN_FORMAT_160 = {
+        'M':          {'pos': 1,   'len': 2,  'format': '%2d'},   # 分子ID
+        'I':          {'pos': 3,   'len': 1,  'format': '%1d'},   # 同位素ID
+        'nu':         {'pos': 4,   'len': 12, 'format': '%12f'},  # 波数
+        'S':          {'pos': 16,  'len': 10, 'format': '%10f'},  # 线强
+        'A':          {'pos': 26,  'len': 10, 'format': '%10f'},  # 爱因斯坦A系数
+        'gamma_air':  {'pos': 36,  'len': 5,  'format': '%5f'},   # 空气加宽半宽
+        'gamma_self': {'pos': 41,  'len': 5,  'format': '%5f'},   # 自加宽半宽
+        'E':          {'pos': 46,  'len': 10, 'format': '%10f'},  # 低态能量
+        'n_air':      {'pos': 56,  'len': 4,  'format': '%4f'},   # 温度依赖系数
+        'delta_air':  {'pos': 60,  'len': 8,  'format': '%8f'},   # 压力位移
+        'V':          {'pos': 68,  'len': 15, 'format': '%15s'},  # 空位
+        'V_':         {'pos': 83,  'len': 15, 'format': '%15s'},  # 空位
+        'Q':          {'pos': 98,  'len': 15, 'format': '%15s'},  # 空位
+        'Q_':         {'pos': 113, 'len': 15, 'format': '%15s'},  # 空位
+        'Ierr':       {'pos': 128, 'len': 6,  'format': '%6s'},   # 空位
+        'Iref':       {'pos': 134, 'len': 12, 'format': '%12s'},  # 空位
+        'flag':       {'pos': 146, 'len': 1,  'format': '%1s'},   # 空位
+        'g':          {'pos': 147, 'len': 7,  'format': '%7f'},   # 空位
+        'g_':         {'pos': 154, 'len': 7,  'format': '%7f'}    # 空位
+    }
     
     # ISO字典定义 
     ISO = {
@@ -276,29 +309,48 @@ class HitranSpectrum:
                     continue
                     
                 try:
-                    # 读取分子ID和同位素ID
-                    molec_id = int(line[0:2].strip())  # 位置1-2
-                    local_iso_id = int(line[2:3].strip())  # 位置3
+                    # 使用HITRAN格式定义解析各个字段
+                    fields = {}
+                    
+                    # 解析每个字段
+                    for field_name, field_info in self.HITRAN_FORMAT_160.items():
+                        start_pos = field_info['pos'] - 1  # 转换为0-based索引
+                        end_pos = start_pos + field_info['len']
+                        field_str = line[start_pos:end_pos].strip()
+                        
+                        if field_str:  # 只处理非空字段
+                            if field_info['format'].endswith('d'):
+                                fields[field_name] = int(field_str)
+                            elif field_info['format'].endswith('f'):
+                                fields[field_name] = float(field_str)
+                            else:
+                                fields[field_name] = field_str
+                    
+                    # 提取主要字段
+                    molec_id = fields.get('M')
+                    local_iso_id = fields.get('I')
+                    nu = fields.get('nu')
+                    S = fields.get('S')
+                    A = fields.get('A')
+                    gamma_air = fields.get('gamma_air')
+                    gamma_self = fields.get('gamma_self')
+                    E = fields.get('E')
+                    n_air = fields.get('n_air')
+                    delta_air = fields.get('delta_air')
+                    
+                    # 验证必需字段
+                    if None in [molec_id, local_iso_id, nu, S, A, gamma_air, gamma_self, E, n_air, delta_air]:
+                        print(f"警告: 第 {line_num} 行缺少必需字段，已跳过")
+                        continue
                     
                     molecule_ids.add(molec_id)
                     isotope_ids.add(local_iso_id)
                     
-                    # 根据HITRAN格式定义解析各个字段
-                    nu = float(line[3:15])           # 波数 (位置4-15)
-                    S = float(line[15:25])           # 线强 (位置16-25)
-                    A = float(line[25:35])           # 爱因斯坦A系数 (位置26-35)
-                    gamma_air = float(line[35:40])   # 空气加宽半宽 (位置36-40)
-                    gamma_self = float(line[40:45])  # 自加宽半宽 (位置41-45)
-                    E = float(line[45:55])           # 低态能量 (位置46-55)
-                    n_air = float(line[55:59])       # 温度依赖系数 (位置56-59)
-                    delta_air = float(line[59:67])   # 压力位移 (位置60-67)
-                    
                     database.append([nu, S, A, gamma_air, gamma_self, E, n_air, delta_air])
                     
-                except ValueError as e:
+                except (ValueError, IndexError) as e:
                     print(f"解析第 {line_num} 行时出错: {repr(line)}")
                     print(f"错误信息: {e}")
-                    print(f"分子ID: {line[0:2]}, 同位素ID: {line[2:3]}")
                     continue
         
         if len(molecule_ids) == 0:
@@ -483,7 +535,7 @@ def main():
     使用示例
     """
     # 初始化HitranSpectrum类
-    hitran = HitranSpectrum('CO_1416.par', '/home/xliu/prj/210-TDLAS/3-simulation/Q/')
+    hitran = HitranSpectrum('/home/xliu/prj/210-TDLAS/3-simulation/hitran_database/01_H2O/H2O-4650_5410.par', '/home/xliu/prj/210-TDLAS/3-simulation/Q/')
     
     # 显示一些基本信息
     if len(hitran.database) > 0:
@@ -494,8 +546,8 @@ def main():
     # 设置计算参数
     T = 600
     p = 1
-    c = 0.00001
-    l = 100
+    c = 0.25
+    l = 10
     omega_wing = 10  # 谱线计算域的倍数
     
     # 方法1: 使用默认波数范围（数据库的首末谱线位置）
@@ -504,9 +556,9 @@ def main():
     
     # 方法2: 设置确定的波数范围
     print("使用指定波数范围计算...")
-    start = 1870
-    end = 2310
-    resolution = 0.001
+    start = 4650
+    end = 5410
+    resolution = 0.01
     od2, ab2, tr2, wavenumber2, coef2 = hitran.OD(T, p, c, l, start=start, end=end, 
                                           resolution=resolution, omega_wing=omega_wing)
     
@@ -524,7 +576,7 @@ def main():
     plt.plot(wavenumber2, ab2, label='指定范围', color='orange')
     plt.xlim(start, end)
     plt.legend()
-    plt.xlabel('波数 (cm⁻¹)')
+    plt.xlabel('波数 (cm$^{-1}$)')
     plt.ylabel('吸收率')
     plt.title('HITRAN光谱仿真 - 指定波数范围')
     
