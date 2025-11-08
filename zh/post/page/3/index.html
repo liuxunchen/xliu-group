@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="Post">
   <meta itemprop="description" content="科研笔记和一些想法">
-  <meta itemprop="datePublished" content="2025-10-21T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-10-21T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2025-10-03T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-10-03T00:00:00+00:00">
   <meta itemprop="wordCount" content="1">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Post">
@@ -154,46 +154,6 @@ script.async = true;
 
     </section>
     <aside class="flex-ns mt5 flex-wrap justify-around">
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        十月 15, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/daily-book/" class="link black dim">
-        介绍好书：John Daily 统计热力学
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p><figure><img src="/xliu-group/zh/post/daily-book/daily-book-cover.jpg"><figcaption>
-      <h4>封面</h4>
-    </figcaption>
-</figure>
-
-最近读到一本好书，剑桥大学出版社2018年出版的 John Daily 《Statistical Thermodynamics an Engineering approach》。
-最早知道 Daily 还是读到他在PECS上关于LIF 的综述，算是比较早期这方面的综述了。当时他还是在伯克利大学，后来去了科罗拉多大学主持了燃烧研究中心做机械系主任。
-这本书是John 在伯克利大学和科罗拉多大学教研究生《高等热力学》的教材。</p>
-<p>面向热流体方向（机械工程、航空工程、动力工程）的热力学气体动力学课程，早期有 Sonntag &amp;  Van Wylen:  Fundamentals of Statistical Thermodynamics ; 斯坦福大学的 Vincenti &amp; Kruger: Introduction to Physical Gas Dynamics。
-作者的这本教材可以看作是前面书的简化版，包含了最主要的内容。
-之前给本科上的物理化学和准备的热工基础课程想包含的内容，这本书都有：量子力学、分子能级、配风函数、热力学量、JANAF表、Boltzmann方程等等，基本该涉及的知识点都有。</p>
-<p>作为研究生教材，这本书更多的可以作为一个地图和指引，告诉研究生哪些内容需要去看的提要。面向本科生教学的话，可以先简单介绍一些基础知识。这本书还有对应的Coursera 课程，有视频和PPT，一开始就介绍了一些基本知识。
-<a href="https://www.coursera.org/learn/macroscopic-microscopic-thermodynamics">https://www.coursera.org/learn/macroscopic-microscopic-thermodynamics</a></p>
-<p>这本书最大的优点是采用了公理化的热力学体系，即 Herbert B. Callen 在 《Thermodynamics and an Introduction to Thermostatistics》 中提出的四大公设的体系。
-一门学科在历史上发展的顺序和学科体系查成熟后的体系肯定是不同的。
-最终在课程中的呈现，肯定和历史发展的顺序不同。
-比如现代量子力学的教学，如果学时多，尚可以慢慢来从两朵乌云开始讲，但很多时候已经不再是按照历史顺序来讲了，而是按照现代的体系来讲。</p>
-<p>在AI时代，本科生要学的东西越来越多。现在教学的课时越来越少了，传统课程的教学要跟上时代，就是要体现新的思路，顺应时代的发展。
-可以预见，未来的热流体课程中，热力学和统计力学也不应该分开慢慢讲了，也不应该第一定律、第二定律出发那样讲了。
-未来的热力学教学，应该按照这样简洁明了的公理化体系来讲，节省时间。
-时代的进步发展总是这样，留给一成不变旧内容的时间总是越来越少。</p>
-    </div>
-  <a href="/xliu-group/zh/post/daily-book/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
       
         <div class="w-100 w-30-l mb4 relative bg-white">
             <div class="mb3 pa4 blue overflow-hidden">
@@ -353,6 +313,61 @@ script.async = true;
 </ol>
     </div>
   <a href="/xliu-group/zh/post/%E8%BF%9E%E4%BA%91%E6%B8%AF%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AE%9E%E9%AA%8C/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/hitran/" class="link black dim">
+        HITRAN 数据库用法
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>HITRAN 数据库给出了线强$S$，单位为$[\mathrm{cm^2 \cdot cm^{-1}}]$。
+对于 每行160位的数据，可以用下面 python 代码读取每个跃迁的参数。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># HITRAN 160位格式读取函数</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">read_hitran_par</span>(filename):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    读取HITRAN 160位格式的par文件
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    返回格式: [波数, 线强, 爱因斯坦A系数, 空气加宽半宽, 自加宽半宽, 低态能量, 温度依赖系数, 压力位移]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    database <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> open(filename, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> line_num, line <span style="color:#f92672">in</span> enumerate(f, <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>            line <span style="color:#f92672">=</span> line<span style="color:#f92672">.</span>rstrip(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)  <span style="color:#75715e"># 只去掉行尾换行符，保留其他空白</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> len(line) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">160</span>:  <span style="color:#75715e"># 确保行长度足够</span>
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;警告: 第 </span><span style="color:#e6db74">{</span>line_num<span style="color:#e6db74">}</span><span style="color:#e6db74"> 行长度不足160字符，已跳过&#34;</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># 根据HITRAN格式定义解析各个字段</span>
+</span></span><span style="display:flex;"><span>                nu <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">15</span>])           <span style="color:#75715e"># 波数</span>
+</span></span><span style="display:flex;"><span>                S <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">15</span>:<span style="color:#ae81ff">25</span>])           <span style="color:#75715e"># 线强</span>
+</span></span><span style="display:flex;"><span>                A <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">25</span>:<span style="color:#ae81ff">35</span>])           <span style="color:#75715e"># 爱因斯坦A系数</span>
+</span></span><span style="display:flex;"><span>                gamma_air <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">35</span>:<span style="color:#ae81ff">40</span>])   <span style="color:#75715e"># 空气加宽半宽</span>
+</span></span><span style="display:flex;"><span>                gamma_self <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">40</span>:<span style="color:#ae81ff">45</span>])  <span style="color:#75715e"># 自加宽半宽</span>
+</span></span><span style="display:flex;"><span>                E <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">45</span>:<span style="color:#ae81ff">55</span>])           <span style="color:#75715e"># 低态能量</span>
+</span></span><span style="display:flex;"><span>                n_air <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">55</span>:<span style="color:#ae81ff">59</span>])       <span style="color:#75715e"># 温度依赖系数</span>
+</span></span><span style="display:flex;"><span>                delta_air <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">59</span>:<span style="color:#ae81ff">67</span>])   <span style="color:#75715e"># 压力位移</span>
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># 将解析的数据添加到数据库</span>
+</span></span><span style="display:flex;"><span>                database<span style="color:#f92672">.</span>append([nu, S, A, gamma_air, gamma_self, E, n_air, delta_air])
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ValueError</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;解析第 </span><span style="color:#e6db74">{</span>line_num<span style="color:#e6db74">}</span><span style="color:#e6db74"> 行时出错: </span><span style="color:#e6db74">{</span>repr(line)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;错误信息: </span><span style="color:#e6db74">{</span>e<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;成功读取 </span><span style="color:#e6db74">{</span>len(database)<span style="color:#e6db74">}</span><span style="color:#e6db74"> 条谱线&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>array(database)
+</span></span></code></pre></div><p>光谱模型中的三个参数：谱线位置是上下能级的能级差，数据库给出了位置和下能级，因此可以计算上能级位置；谱线强度的定义如上篇文章给出 。
+<a href="/xliu-group/zh/post/absorption/">吸收光谱简介</a></p>
+    </div>
+  <a href="/xliu-group/zh/post/hitran/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
   </div>
 
         </div>

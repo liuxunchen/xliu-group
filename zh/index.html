@@ -219,85 +219,14 @@ script.async = true;
       
           
         <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-          <a href="/xliu-group/zh/post/hitran/" class="db grow">
-            <img src="https://liuxunchen.github.io/xliu-group/images/sdust.jpg" class="img" alt="image from HITRAN 数据库用法">
-          </a>
-        </div>
-      
-      <div class="blah w-100 w-60-ns pl3-ns">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/xliu-group/zh/post/hitran/" class="color-inherit dim link">
-            HITRAN 数据库用法
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>HITRAN 数据库给出了线强$S$，单位为$[\mathrm{cm^2 \cdot cm^{-1}}]$。
-对于 每行160位的数据，可以用下面 python 代码读取：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># HITRAN 160位格式读取函数</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">read_hitran_par</span>(filename):
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    读取HITRAN 160位格式的par文件
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    返回格式: [波数, 线强, 爱因斯坦A系数, 空气加宽半宽, 自加宽半宽, 低态能量, 温度依赖系数, 压力位移]
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>    database <span style="color:#f92672">=</span> []
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> open(filename, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> f:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> line_num, line <span style="color:#f92672">in</span> enumerate(f, <span style="color:#ae81ff">1</span>):
-</span></span><span style="display:flex;"><span>            line <span style="color:#f92672">=</span> line<span style="color:#f92672">.</span>rstrip(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)  <span style="color:#75715e"># 只去掉行尾换行符，保留其他空白</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> len(line) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">160</span>:  <span style="color:#75715e"># 确保行长度足够</span>
-</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;警告: 第 </span><span style="color:#e6db74">{</span>line_num<span style="color:#e6db74">}</span><span style="color:#e6db74"> 行长度不足160字符，已跳过&#34;</span>)
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">continue</span>
-</span></span><span style="display:flex;"><span>                
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>:
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># 根据HITRAN格式定义解析各个字段</span>
-</span></span><span style="display:flex;"><span>                nu <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">15</span>])           <span style="color:#75715e"># 波数</span>
-</span></span><span style="display:flex;"><span>                S <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">15</span>:<span style="color:#ae81ff">25</span>])           <span style="color:#75715e"># 线强</span>
-</span></span><span style="display:flex;"><span>                A <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">25</span>:<span style="color:#ae81ff">35</span>])           <span style="color:#75715e"># 爱因斯坦A系数</span>
-</span></span><span style="display:flex;"><span>                gamma_air <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">35</span>:<span style="color:#ae81ff">40</span>])   <span style="color:#75715e"># 空气加宽半宽</span>
-</span></span><span style="display:flex;"><span>                gamma_self <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">40</span>:<span style="color:#ae81ff">45</span>])  <span style="color:#75715e"># 自加宽半宽</span>
-</span></span><span style="display:flex;"><span>                E <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">45</span>:<span style="color:#ae81ff">55</span>])           <span style="color:#75715e"># 低态能量</span>
-</span></span><span style="display:flex;"><span>                n_air <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">55</span>:<span style="color:#ae81ff">59</span>])       <span style="color:#75715e"># 温度依赖系数</span>
-</span></span><span style="display:flex;"><span>                delta_air <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">59</span>:<span style="color:#ae81ff">67</span>])   <span style="color:#75715e"># 压力位移</span>
-</span></span><span style="display:flex;"><span>                
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># 将解析的数据添加到数据库</span>
-</span></span><span style="display:flex;"><span>                database<span style="color:#f92672">.</span>append([nu, S, A, gamma_air, gamma_self, E, n_air, delta_air])
-</span></span><span style="display:flex;"><span>                
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ValueError</span> <span style="color:#66d9ef">as</span> e:
-</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;解析第 </span><span style="color:#e6db74">{</span>line_num<span style="color:#e6db74">}</span><span style="color:#e6db74"> 行时出错: </span><span style="color:#e6db74">{</span>repr(line)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;错误信息: </span><span style="color:#e6db74">{</span>e<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">continue</span>
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;成功读取 </span><span style="color:#e6db74">{</span>len(database)<span style="color:#e6db74">}</span><span style="color:#e6db74"> 条谱线&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>array(database)
-</span></span></code></pre></div><p>我们用Faddeeva 函数 计算Voigt 线形。
-Voigt 线型是Gaussian展宽（温度导致的速度展宽）和压力展宽的卷积。其中温度展宽的计算需要用到不同的分子同位素的质量。压力展宽用的是数据库中的参数，（这里忽略了 gamma_self 自展宽，复杂环境中各种分子的碰撞展宽太多了，就不考虑自展宽了。）
-注意这里用的是 CGS 单位制的物理常数。</p>
-        </div>
-        
-          <p class="f6 lh-copy mv0">By 刘训臣</p><a href="/xliu-group/zh/post/hitran/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
-          <div class="w-100 mb4 relative">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
-    <div class="flex-column flex-row-ns flex">
-      
-          
-        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-          <a href="/xliu-group/zh/post/tdlas/" class="db grow">
+          <a href="/xliu-group/zh/post/absorption/" class="db grow">
             <img src="https://liuxunchen.github.io/xliu-group/images/sdust.jpg" class="img" alt="image from 吸收光谱简介">
           </a>
         </div>
       
       <div class="blah w-100 w-60-ns pl3-ns">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/xliu-group/zh/post/tdlas/" class="color-inherit dim link">
+          <a href="/xliu-group/zh/post/absorption/" class="color-inherit dim link">
             吸收光谱简介
             </a>
         </h1>
@@ -329,7 +258,7 @@ $$<p>其中，
 $\rho_\nu$ 为普朗克定理中光场辐射强度，单位[ $\mathrm{J \cdot m^{-3} \cdot Hz^{-1}}$]。</p>
         </div>
         
-          <p class="f6 lh-copy mv0">By 刘训臣</p><a href="/xliu-group/zh/post/tdlas/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+          <p class="f6 lh-copy mv0">By 刘训臣</p><a href="/xliu-group/zh/post/absorption/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
       </div>
     </div>
   </div>
@@ -405,18 +334,55 @@ C 点，吹熄完全由燃料射流本身产生的应变效应引起的。
 
           </div>
         
+          <div class="w-100 mb4 relative">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+          
+        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+          <a href="/xliu-group/zh/post/why-choose-this-line-pair/" class="db grow">
+            <img src="https://liuxunchen.github.io/xliu-group/images/sdust.jpg" class="img" alt="image from why choose this line pair">
+          </a>
+        </div>
+      
+      <div class="blah w-100 w-60-ns pl3-ns">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/xliu-group/zh/post/why-choose-this-line-pair/" class="color-inherit dim link">
+            why choose this line pair
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <h2 id="1-高信噪比snr测量所需的足够吸收">1. 高信噪比（SNR）测量所需的足够吸收</h2>
+<p>我们假设最小可检测吸光度为 $10^{-4}$，期望信噪比为 10，这要求峰值吸收大于 $10^{-3}$。此外，为满足波长调制测量中(6)式的&quot;弱跃迁&quot;假设，峰值吸收最好小于约 0.05。</p>
+<p>对于我们的实验室实验，光程长度为 70cm，水蒸气摩尔分数在 0.05-0.2 之间（典型的碳氢化合物燃烧产物，压力为 1atm），对线强度和线形状函数乘积的约束为：</p>
+$$ 0.05\ cm^{-1}atm^{-1} \geq S_i(T)\phi_{\nu,peak} \geq 0.004\ cm^{-1}atm^{-1} $$<h2 id="2-尽量减少环境ho的干扰">2. 尽量减少环境H₂O的干扰</h2>
+<p><img src="/xliu-group/zh/post/why-choose-this-line-pair/image1.png" alt="不同较低状态能量下H₂O线在室温下的线强度与温度的关系"></p>
+<p>燃烧应用的感兴趣范围是 1000-2500K，如果我们要求目标范围内的线强度至少是其室温强度的 3 倍，则对最低低态能量的约束变为：</p>
+$$ E \geq 1700\ cm^{-1} $$<h2 id="3-两条吸收线的波长必须位于单次激光扫描范围内">3. 两条吸收线的波长必须位于单次激光扫描范围内</h2>
+<p>我们要求两个跃迁的光谱分离在 0.3-1 cm⁻¹ 之间，以形成合适的线对。将谱线分离限制在 1 cm⁻¹ 或更小，可在扫描范围内提供足够的激光强度以获得良好的信噪比。0.3 cm⁻¹ 的下限避免了大气压下两个吸收特征重叠引起的干扰，否则会使数据分析更复杂。</p>
+<h2 id="4-线对必须具有足够不同的低态能量但两条谱线的线强也要相近">4. 线对必须具有足够不同的低态能量，但两条谱线的线强也要相近</h2>
+<p>希望线对具有较大的低态能量差异，以提供高温度灵敏度[11]。如果一条跃迁强得多，强跃迁的翼部会对弱跃迁的测量产生显著影响。对线选择提出了 700 cm⁻¹ 的最小低态能量差异约束：</p>
+$$ |\Delta E_i''| = |E_1'' - E_2''| \geq 700\ cm^{-1} $$<p>共有 33 对线对满足标准 3.1-3.4，这些候选线对在 1000-2500 K 温度范围内具有良好的温度灵敏度。</p>
+<h2 id="5-两条谱线必须与附近跃迁隔离">5. 两条谱线必须与附近跃迁隔离</h2>
+<p>总共有 21 对有前景的线对因受相邻吸收特征的干扰而被拒绝。其余 12 对线对被认为是使用上述选择标准在燃烧环境（1000-2500 K）中进行温度测量的最有前景的水蒸气特征。</p>
+        </div>
+        
+          <p class="f6 lh-copy mv0">By 惠昊</p><a href="/xliu-group/zh/post/why-choose-this-line-pair/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
       </section>
 
       
         <section class="w-100">
           <h1 class="f3">更多</h1>
           
-          
-            <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/xliu-group/zh/post/why-choose-this-line-pair/" class="link black dim">
-                why choose this line pair
-              </a>
-            </h2>
           
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/xliu-group/zh/post/laser_car/" class="link black dim">
@@ -433,6 +399,12 @@ C 点，吹熄完全由燃料射流本身产生的应变效应引起的。
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/xliu-group/zh/post/crossflow/" class="link black dim">
                 横向射流轨迹的拟合
+              </a>
+            </h2>
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/xliu-group/zh/post/dianyuan/" class="link black dim">
+                利用HDM3065 Hantek 6位半万用表对5V电源输出电压结果的测试
               </a>
             </h2>
           

@@ -32,16 +32,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/hitran/</loc>
-    <lastmod>2025-10-21T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/</loc>
-    <lastmod>2025-10-21T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/people/zhm/</loc>
     <lastmod>2025-10-21T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -52,7 +42,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/tdlas/</loc>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/</loc>
+    <lastmod>2025-10-03T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/absorption/</loc>
     <lastmod>2025-10-03T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -247,6 +242,10 @@
                 hreflang="zh"
                 href="https://liuxunchen.github.io/xliu-group/zh/categories/"
                 />
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/hitran/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/tags/</loc>
     <changefreq>monthly</changefreq>

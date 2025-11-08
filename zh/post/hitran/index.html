@@ -7,7 +7,7 @@
     <title>HITRAN 数据库用法 | 刘训臣燃烧诊断实验室主页</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="HITRAN 数据库给出了线强$S$，单位为$[\mathrm{cm^2 \cdot cm^{-1}}]$。
-对于 每行160位的数据，可以用下面 python 代码读取：
+对于 每行160位的数据，可以用下面 python 代码读取每个跃迁的参数。
 # HITRAN 160位格式读取函数
 def read_hitran_par(filename):
     &#34;&#34;&#34;
@@ -44,9 +44,8 @@ def read_hitran_par(filename):
     
     print(f&#34;成功读取 {len(database)} 条谱线&#34;)
     return np.array(database)
-我们用Faddeeva 函数 计算Voigt 线形。
-Voigt 线型是Gaussian展宽（温度导致的速度展宽）和压力展宽的卷积。其中温度展宽的计算需要用到不同的分子同位素的质量。压力展宽用的是数据库中的参数，（这里忽略了 gamma_self 自展宽，复杂环境中各种分子的碰撞展宽太多了，就不考虑自展宽了。）
-注意这里用的是 CGS 单位制的物理常数。">
+光谱模型中的三个参数：谱线位置是上下能级的能级差，数据库给出了位置和下能级，因此可以计算上能级位置；谱线强度的定义如上篇文章给出 。
+吸收光谱简介">
     <meta name="generator" content="Hugo 0.144.2">
     
     
@@ -79,24 +78,20 @@ Voigt 线型是Gaussian展宽（温度导致的速度展宽）和压力展宽的
     <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/hitran/">
   <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
   <meta property="og:title" content="HITRAN 数据库用法">
-  <meta property="og:description" content="HITRAN 数据库给出了线强$S$，单位为$[\mathrm{cm^2 \cdot cm^{-1}}]$。 对于 每行160位的数据，可以用下面 python 代码读取：
-# HITRAN 160位格式读取函数 def read_hitran_par(filename): &#34;&#34;&#34; 读取HITRAN 160位格式的par文件 返回格式: [波数, 线强, 爱因斯坦A系数, 空气加宽半宽, 自加宽半宽, 低态能量, 温度依赖系数, 压力位移] &#34;&#34;&#34; database = [] with open(filename, &#39;r&#39;) as f: for line_num, line in enumerate(f, 1): line = line.rstrip(&#39;\n&#39;) # 只去掉行尾换行符，保留其他空白 if len(line) &lt; 160: # 确保行长度足够 print(f&#34;警告: 第 {line_num} 行长度不足160字符，已跳过&#34;) continue try: # 根据HITRAN格式定义解析各个字段 nu = float(line[3:15]) # 波数 S = float(line[15:25]) # 线强 A = float(line[25:35]) # 爱因斯坦A系数 gamma_air = float(line[35:40]) # 空气加宽半宽 gamma_self = float(line[40:45]) # 自加宽半宽 E = float(line[45:55]) # 低态能量 n_air = float(line[55:59]) # 温度依赖系数 delta_air = float(line[59:67]) # 压力位移 # 将解析的数据添加到数据库 database.append([nu, S, A, gamma_air, gamma_self, E, n_air, delta_air]) except ValueError as e: print(f&#34;解析第 {line_num} 行时出错: {repr(line)}&#34;) print(f&#34;错误信息: {e}&#34;) continue print(f&#34;成功读取 {len(database)} 条谱线&#34;) return np.array(database) 我们用Faddeeva 函数 计算Voigt 线形。 Voigt 线型是Gaussian展宽（温度导致的速度展宽）和压力展宽的卷积。其中温度展宽的计算需要用到不同的分子同位素的质量。压力展宽用的是数据库中的参数，（这里忽略了 gamma_self 自展宽，复杂环境中各种分子的碰撞展宽太多了，就不考虑自展宽了。） 注意这里用的是 CGS 单位制的物理常数。">
+  <meta property="og:description" content="HITRAN 数据库给出了线强$S$，单位为$[\mathrm{cm^2 \cdot cm^{-1}}]$。 对于 每行160位的数据，可以用下面 python 代码读取每个跃迁的参数。
+# HITRAN 160位格式读取函数 def read_hitran_par(filename): &#34;&#34;&#34; 读取HITRAN 160位格式的par文件 返回格式: [波数, 线强, 爱因斯坦A系数, 空气加宽半宽, 自加宽半宽, 低态能量, 温度依赖系数, 压力位移] &#34;&#34;&#34; database = [] with open(filename, &#39;r&#39;) as f: for line_num, line in enumerate(f, 1): line = line.rstrip(&#39;\n&#39;) # 只去掉行尾换行符，保留其他空白 if len(line) &lt; 160: # 确保行长度足够 print(f&#34;警告: 第 {line_num} 行长度不足160字符，已跳过&#34;) continue try: # 根据HITRAN格式定义解析各个字段 nu = float(line[3:15]) # 波数 S = float(line[15:25]) # 线强 A = float(line[25:35]) # 爱因斯坦A系数 gamma_air = float(line[35:40]) # 空气加宽半宽 gamma_self = float(line[40:45]) # 自加宽半宽 E = float(line[45:55]) # 低态能量 n_air = float(line[55:59]) # 温度依赖系数 delta_air = float(line[59:67]) # 压力位移 # 将解析的数据添加到数据库 database.append([nu, S, A, gamma_air, gamma_self, E, n_air, delta_air]) except ValueError as e: print(f&#34;解析第 {line_num} 行时出错: {repr(line)}&#34;) print(f&#34;错误信息: {e}&#34;) continue print(f&#34;成功读取 {len(database)} 条谱线&#34;) return np.array(database) 光谱模型中的三个参数：谱线位置是上下能级的能级差，数据库给出了位置和下能级，因此可以计算上能级位置；谱线强度的定义如上篇文章给出 。 吸收光谱简介">
   <meta property="og:locale" content="zh">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2025-10-21T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-10-21T00:00:00+00:00">
 
   <meta itemprop="name" content="HITRAN 数据库用法">
-  <meta itemprop="description" content="HITRAN 数据库给出了线强$S$，单位为$[\mathrm{cm^2 \cdot cm^{-1}}]$。 对于 每行160位的数据，可以用下面 python 代码读取：
-# HITRAN 160位格式读取函数 def read_hitran_par(filename): &#34;&#34;&#34; 读取HITRAN 160位格式的par文件 返回格式: [波数, 线强, 爱因斯坦A系数, 空气加宽半宽, 自加宽半宽, 低态能量, 温度依赖系数, 压力位移] &#34;&#34;&#34; database = [] with open(filename, &#39;r&#39;) as f: for line_num, line in enumerate(f, 1): line = line.rstrip(&#39;\n&#39;) # 只去掉行尾换行符，保留其他空白 if len(line) &lt; 160: # 确保行长度足够 print(f&#34;警告: 第 {line_num} 行长度不足160字符，已跳过&#34;) continue try: # 根据HITRAN格式定义解析各个字段 nu = float(line[3:15]) # 波数 S = float(line[15:25]) # 线强 A = float(line[25:35]) # 爱因斯坦A系数 gamma_air = float(line[35:40]) # 空气加宽半宽 gamma_self = float(line[40:45]) # 自加宽半宽 E = float(line[45:55]) # 低态能量 n_air = float(line[55:59]) # 温度依赖系数 delta_air = float(line[59:67]) # 压力位移 # 将解析的数据添加到数据库 database.append([nu, S, A, gamma_air, gamma_self, E, n_air, delta_air]) except ValueError as e: print(f&#34;解析第 {line_num} 行时出错: {repr(line)}&#34;) print(f&#34;错误信息: {e}&#34;) continue print(f&#34;成功读取 {len(database)} 条谱线&#34;) return np.array(database) 我们用Faddeeva 函数 计算Voigt 线形。 Voigt 线型是Gaussian展宽（温度导致的速度展宽）和压力展宽的卷积。其中温度展宽的计算需要用到不同的分子同位素的质量。压力展宽用的是数据库中的参数，（这里忽略了 gamma_self 自展宽，复杂环境中各种分子的碰撞展宽太多了，就不考虑自展宽了。） 注意这里用的是 CGS 单位制的物理常数。">
-  <meta itemprop="datePublished" content="2025-10-21T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-10-21T00:00:00+00:00">
-  <meta itemprop="wordCount" content="388">
+  <meta itemprop="description" content="HITRAN 数据库给出了线强$S$，单位为$[\mathrm{cm^2 \cdot cm^{-1}}]$。 对于 每行160位的数据，可以用下面 python 代码读取每个跃迁的参数。
+# HITRAN 160位格式读取函数 def read_hitran_par(filename): &#34;&#34;&#34; 读取HITRAN 160位格式的par文件 返回格式: [波数, 线强, 爱因斯坦A系数, 空气加宽半宽, 自加宽半宽, 低态能量, 温度依赖系数, 压力位移] &#34;&#34;&#34; database = [] with open(filename, &#39;r&#39;) as f: for line_num, line in enumerate(f, 1): line = line.rstrip(&#39;\n&#39;) # 只去掉行尾换行符，保留其他空白 if len(line) &lt; 160: # 确保行长度足够 print(f&#34;警告: 第 {line_num} 行长度不足160字符，已跳过&#34;) continue try: # 根据HITRAN格式定义解析各个字段 nu = float(line[3:15]) # 波数 S = float(line[15:25]) # 线强 A = float(line[25:35]) # 爱因斯坦A系数 gamma_air = float(line[35:40]) # 空气加宽半宽 gamma_self = float(line[40:45]) # 自加宽半宽 E = float(line[45:55]) # 低态能量 n_air = float(line[55:59]) # 温度依赖系数 delta_air = float(line[59:67]) # 压力位移 # 将解析的数据添加到数据库 database.append([nu, S, A, gamma_air, gamma_self, E, n_air, delta_air]) except ValueError as e: print(f&#34;解析第 {line_num} 行时出错: {repr(line)}&#34;) print(f&#34;错误信息: {e}&#34;) continue print(f&#34;成功读取 {len(database)} 条谱线&#34;) return np.array(database) 光谱模型中的三个参数：谱线位置是上下能级的能级差，数据库给出了位置和下能级，因此可以计算上能级位置；谱线强度的定义如上篇文章给出 。 吸收光谱简介">
+  <meta itemprop="wordCount" content="421">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="HITRAN 数据库用法">
-  <meta name="twitter:description" content="HITRAN 数据库给出了线强$S$，单位为$[\mathrm{cm^2 \cdot cm^{-1}}]$。 对于 每行160位的数据，可以用下面 python 代码读取：
-# HITRAN 160位格式读取函数 def read_hitran_par(filename): &#34;&#34;&#34; 读取HITRAN 160位格式的par文件 返回格式: [波数, 线强, 爱因斯坦A系数, 空气加宽半宽, 自加宽半宽, 低态能量, 温度依赖系数, 压力位移] &#34;&#34;&#34; database = [] with open(filename, &#39;r&#39;) as f: for line_num, line in enumerate(f, 1): line = line.rstrip(&#39;\n&#39;) # 只去掉行尾换行符，保留其他空白 if len(line) &lt; 160: # 确保行长度足够 print(f&#34;警告: 第 {line_num} 行长度不足160字符，已跳过&#34;) continue try: # 根据HITRAN格式定义解析各个字段 nu = float(line[3:15]) # 波数 S = float(line[15:25]) # 线强 A = float(line[25:35]) # 爱因斯坦A系数 gamma_air = float(line[35:40]) # 空气加宽半宽 gamma_self = float(line[40:45]) # 自加宽半宽 E = float(line[45:55]) # 低态能量 n_air = float(line[55:59]) # 温度依赖系数 delta_air = float(line[59:67]) # 压力位移 # 将解析的数据添加到数据库 database.append([nu, S, A, gamma_air, gamma_self, E, n_air, delta_air]) except ValueError as e: print(f&#34;解析第 {line_num} 行时出错: {repr(line)}&#34;) print(f&#34;错误信息: {e}&#34;) continue print(f&#34;成功读取 {len(database)} 条谱线&#34;) return np.array(database) 我们用Faddeeva 函数 计算Voigt 线形。 Voigt 线型是Gaussian展宽（温度导致的速度展宽）和压力展宽的卷积。其中温度展宽的计算需要用到不同的分子同位素的质量。压力展宽用的是数据库中的参数，（这里忽略了 gamma_self 自展宽，复杂环境中各种分子的碰撞展宽太多了，就不考虑自展宽了。） 注意这里用的是 CGS 单位制的物理常数。">
+  <meta name="twitter:description" content="HITRAN 数据库给出了线强$S$，单位为$[\mathrm{cm^2 \cdot cm^{-1}}]$。 对于 每行160位的数据，可以用下面 python 代码读取每个跃迁的参数。
+# HITRAN 160位格式读取函数 def read_hitran_par(filename): &#34;&#34;&#34; 读取HITRAN 160位格式的par文件 返回格式: [波数, 线强, 爱因斯坦A系数, 空气加宽半宽, 自加宽半宽, 低态能量, 温度依赖系数, 压力位移] &#34;&#34;&#34; database = [] with open(filename, &#39;r&#39;) as f: for line_num, line in enumerate(f, 1): line = line.rstrip(&#39;\n&#39;) # 只去掉行尾换行符，保留其他空白 if len(line) &lt; 160: # 确保行长度足够 print(f&#34;警告: 第 {line_num} 行长度不足160字符，已跳过&#34;) continue try: # 根据HITRAN格式定义解析各个字段 nu = float(line[3:15]) # 波数 S = float(line[15:25]) # 线强 A = float(line[25:35]) # 爱因斯坦A系数 gamma_air = float(line[35:40]) # 空气加宽半宽 gamma_self = float(line[40:45]) # 自加宽半宽 E = float(line[45:55]) # 低态能量 n_air = float(line[55:59]) # 温度依赖系数 delta_air = float(line[59:67]) # 压力位移 # 将解析的数据添加到数据库 database.append([nu, S, A, gamma_air, gamma_self, E, n_air, delta_air]) except ValueError as e: print(f&#34;解析第 {line_num} 行时出错: {repr(line)}&#34;) print(f&#34;错误信息: {e}&#34;) continue print(f&#34;成功读取 {len(database)} 条谱线&#34;) return np.array(database) 光谱模型中的三个参数：谱线位置是上下能级的能级差，数据库给出了位置和下能级，因此可以计算上能级位置；谱线强度的定义如上篇文章给出 。 吸收光谱简介">
 
       
     
@@ -206,14 +201,12 @@ script.async = true;
       
       
       
-      <time class="f6 mv4 dib tracked" datetime="2025-10-21T00:00:00Z">十月 21, 2025</time>
-      
 
       
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>HITRAN 数据库给出了线强$S$，单位为$[\mathrm{cm^2 \cdot cm^{-1}}]$。
-对于 每行160位的数据，可以用下面 python 代码读取：</p>
+对于 每行160位的数据，可以用下面 python 代码读取每个跃迁的参数。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># HITRAN 160位格式读取函数</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">read_hitran_par</span>(filename):
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
@@ -250,8 +243,10 @@ script.async = true;
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;成功读取 </span><span style="color:#e6db74">{</span>len(database)<span style="color:#e6db74">}</span><span style="color:#e6db74"> 条谱线&#34;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>array(database)
-</span></span></code></pre></div><p>我们用Faddeeva 函数 计算Voigt 线形。
-Voigt 线型是Gaussian展宽（温度导致的速度展宽）和压力展宽的卷积。其中温度展宽的计算需要用到不同的分子同位素的质量。压力展宽用的是数据库中的参数，（这里忽略了 gamma_self 自展宽，复杂环境中各种分子的碰撞展宽太多了，就不考虑自展宽了。）
+</span></span></code></pre></div><p>光谱模型中的三个参数：谱线位置是上下能级的能级差，数据库给出了位置和下能级，因此可以计算上能级位置；谱线强度的定义如上篇文章给出 。
+<a href="/xliu-group/zh/post/absorption/">吸收光谱简介</a></p>
+<p>线宽模型：我们用Faddeeva 函数 计算Voigt 线形。
+Voigt 线型是Gaussian展宽（温度导致的速度展宽）和压力展宽的卷积。其中温度展宽的计算需要用到不同的分子同位素的质量。压力展宽用的是数据库中的参数，（这里可以忽略 gamma_self 自展宽，复杂环境中各种分子的碰撞展宽太多了，就不考虑自展宽了。）
 注意这里用的是 CGS 单位制的物理常数。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># physical constants</span>
@@ -275,7 +270,8 @@ Voigt 线型是Gaussian展宽（温度导致的速度展宽）和压力展宽的
 </span></span><span style="display:flex;"><span>    variable <span style="color:#f92672">=</span> (wavenumber<span style="color:#f92672">-</span> nu <span style="color:#f92672">-</span> delta_air<span style="color:#f92672">*</span>p<span style="color:#f92672">+</span>gamma<span style="color:#f92672">*</span><span style="color:#ae81ff">1</span>j)<span style="color:#f92672">/</span>(sigma<span style="color:#f92672">*</span>math<span style="color:#f92672">.</span>sqrt(<span style="color:#ae81ff">2</span>)) <span style="color:#75715e"># air shift</span>
 </span></span><span style="display:flex;"><span>    voigt <span style="color:#f92672">=</span> (special<span style="color:#f92672">.</span>wofz(variable))<span style="color:#f92672">.</span>real<span style="color:#f92672">/</span>(sigma<span style="color:#f92672">*</span>math<span style="color:#f92672">.</span>sqrt(<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>constants<span style="color:#f92672">.</span>pi))
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> voigt
-</span></span></code></pre></div><p>接下来就可以一行一行的叠加计算了。调用coef 或者 OD 函数时，只需要数据库par 文件和配分函数 txt 文件。</p>
+</span></span></code></pre></div><p>接下来只需要数据库par 文件就可以一行一行的叠加计算了。
+计算调用coef 吸收系数，OD 为乘了浓度和吸收距离的光学厚度。coef 和 OD 可以线性叠加。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">##################################################################################</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># line-by-line coef calculation</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">coef</span>(Mass,T,p,database,partition_function,wavenumber):<span style="color:#75715e">#,color): # k  absorption coef </span>
@@ -301,6 +297,19 @@ Voigt 线型是Gaussian展宽（温度导致的速度展宽）和压力展宽的
 </span></span><span style="display:flex;"><span>    Ab <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>Tr
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> OD,Ab,Tr
 </span></span></code></pre></div><p>完整的<a href="/xliu-group/zh/post/hitran/read_par.py">代码py 文件</a>，读取 <a href="/xliu-group/zh/post/hitran/CO_1416.par">CO_1416.par 数据库文件</a>和<a href="/xliu-group/zh/post/hitran/q5.txt"> q5.txt 配分函数文件</a>。</p>
+<p>借助deepseek，我们可以写一个更加完整的 hitran_spectrum.py 程序，可以读取par 文件后自动查找分子质量，自动给出 par 文件包括的波数范围（当然也可以给定波数范围），这里omega_wing参数参考了hapi 中的定义，只计算谱线周围10倍线宽范围。或者说离的很远的谱线吸收就可以忽略了。这在大的波数范围内计算节约时间。</p>
+<p>这里运行 hitran_spectrum.py ，只需要读取par 文件和Q文件夹（其中是q1 q2 等所有的配分函数文件），程序就可以自己找到对应的分子数和同位素编号，找到对应的分子质量和配分函数。</p>
+<p>还做了一个图形界面hitran_gui.py 。可以点击选择par 文件和Q文件夹，点击按钮读取数据；输入温度、浓度、长度、压力，就可以点击按钮计算并存文件了。</p>
+<p>两个文件下载：</p>
+<p><a href="/xliu-group/zh/post/hitran/hitran_spectrum.py">hitran_spectrum.py</a></p>
+<p><a href="/xliu-group/zh/post/hitran/hitran_gui.py">hitran_gui.py</a></p>
+<figure><img src="/xliu-group/zh/post/hitran/hitran_gui.png"><figcaption>
+      <h4>hitran_gui截图</h4>
+    </figcaption>
+</figure>
+
+<p>很多时候，不需要完整地计算par 文件中的每一行数据，只需要选择某一个同位素、或者某一个谱带。
+这就只需要删除 par 文件中的行就可以了。这就需要vi emacs 等能选择字符匹配的文本编辑工具了。具体来说就不属于仿真软件的功能了（尽管hapi 中有比较好的选择工具，但用下来，还是感觉直接编辑par 文件更直接一些。）</p>
 <ul class="pa0">
   
 </ul>
