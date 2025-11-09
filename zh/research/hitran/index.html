@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>HITRAN 数据库用法 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="HITRAN 数据库给出了线强$S$，单位为$[\mathrm{cm^2 \cdot cm^{-1}}]$。
+对于 每行160位的数据，可以用下面 python 代码读取每个跃迁的参数。
+# HITRAN 160位格式读取函数
+def read_hitran_par(filename):
+    &#34;&#34;&#34;
+    读取HITRAN 160位格式的par文件
+    返回格式: [波数, 线强, 爱因斯坦A系数, 空气加宽半宽, 自加宽半宽, 低态能量, 温度依赖系数, 压力位移]
+    &#34;&#34;&#34;
+    database = []
+    
+    with open(filename, &#39;r&#39;) as f:
+        for line_num, line in enumerate(f, 1):
+            line = line.rstrip(&#39;\n&#39;)  # 只去掉行尾换行符，保留其他空白
+            if len(line) &lt; 160:  # 确保行长度足够
+                print(f&#34;警告: 第 {line_num} 行长度不足160字符，已跳过&#34;)
+                continue
+                
+            try:
+                # 根据HITRAN格式定义解析各个字段
+                nu = float(line[3:15])           # 波数
+                S = float(line[15:25])           # 线强
+                A = float(line[25:35])           # 爱因斯坦A系数
+                gamma_air = float(line[35:40])   # 空气加宽半宽
+                gamma_self = float(line[40:45])  # 自加宽半宽
+                E = float(line[45:55])           # 低态能量
+                n_air = float(line[55:59])       # 温度依赖系数
+                delta_air = float(line[59:67])   # 压力位移
+                
+                # 将解析的数据添加到数据库
+                database.append([nu, S, A, gamma_air, gamma_self, E, n_air, delta_air])
+                
+            except ValueError as e:
+                print(f&#34;解析第 {line_num} 行时出错: {repr(line)}&#34;)
+                print(f&#34;错误信息: {e}&#34;)
+                continue
+    
+    print(f&#34;成功读取 {len(database)} 条谱线&#34;)
+    return np.array(database)
+光谱模型中的三个参数：谱线位置是上下能级的能级差，数据库给出了位置和下能级，因此可以计算上能级位置；谱线强度的定义如上篇文章给出 。
+吸收光谱简介">
+    <meta name="generator" content="Hugo 0.142.0">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="刘训臣">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/research/hitran/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/research/hitran/">
+  <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+  <meta property="og:title" content="HITRAN 数据库用法">
+  <meta property="og:description" content="HITRAN 数据库给出了线强$S$，单位为$[\mathrm{cm^2 \cdot cm^{-1}}]$。 对于 每行160位的数据，可以用下面 python 代码读取每个跃迁的参数。
+# HITRAN 160位格式读取函数 def read_hitran_par(filename): &#34;&#34;&#34; 读取HITRAN 160位格式的par文件 返回格式: [波数, 线强, 爱因斯坦A系数, 空气加宽半宽, 自加宽半宽, 低态能量, 温度依赖系数, 压力位移] &#34;&#34;&#34; database = [] with open(filename, &#39;r&#39;) as f: for line_num, line in enumerate(f, 1): line = line.rstrip(&#39;\n&#39;) # 只去掉行尾换行符，保留其他空白 if len(line) &lt; 160: # 确保行长度足够 print(f&#34;警告: 第 {line_num} 行长度不足160字符，已跳过&#34;) continue try: # 根据HITRAN格式定义解析各个字段 nu = float(line[3:15]) # 波数 S = float(line[15:25]) # 线强 A = float(line[25:35]) # 爱因斯坦A系数 gamma_air = float(line[35:40]) # 空气加宽半宽 gamma_self = float(line[40:45]) # 自加宽半宽 E = float(line[45:55]) # 低态能量 n_air = float(line[55:59]) # 温度依赖系数 delta_air = float(line[59:67]) # 压力位移 # 将解析的数据添加到数据库 database.append([nu, S, A, gamma_air, gamma_self, E, n_air, delta_air]) except ValueError as e: print(f&#34;解析第 {line_num} 行时出错: {repr(line)}&#34;) print(f&#34;错误信息: {e}&#34;) continue print(f&#34;成功读取 {len(database)} 条谱线&#34;) return np.array(database) 光谱模型中的三个参数：谱线位置是上下能级的能级差，数据库给出了位置和下能级，因此可以计算上能级位置；谱线强度的定义如上篇文章给出 。 吸收光谱简介">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="research">
+    <meta property="article:published_time" content="2025-11-08T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-08T00:00:00+00:00">
+
+  <meta itemprop="name" content="HITRAN 数据库用法">
+  <meta itemprop="description" content="HITRAN 数据库给出了线强$S$，单位为$[\mathrm{cm^2 \cdot cm^{-1}}]$。 对于 每行160位的数据，可以用下面 python 代码读取每个跃迁的参数。
+# HITRAN 160位格式读取函数 def read_hitran_par(filename): &#34;&#34;&#34; 读取HITRAN 160位格式的par文件 返回格式: [波数, 线强, 爱因斯坦A系数, 空气加宽半宽, 自加宽半宽, 低态能量, 温度依赖系数, 压力位移] &#34;&#34;&#34; database = [] with open(filename, &#39;r&#39;) as f: for line_num, line in enumerate(f, 1): line = line.rstrip(&#39;\n&#39;) # 只去掉行尾换行符，保留其他空白 if len(line) &lt; 160: # 确保行长度足够 print(f&#34;警告: 第 {line_num} 行长度不足160字符，已跳过&#34;) continue try: # 根据HITRAN格式定义解析各个字段 nu = float(line[3:15]) # 波数 S = float(line[15:25]) # 线强 A = float(line[25:35]) # 爱因斯坦A系数 gamma_air = float(line[35:40]) # 空气加宽半宽 gamma_self = float(line[40:45]) # 自加宽半宽 E = float(line[45:55]) # 低态能量 n_air = float(line[55:59]) # 温度依赖系数 delta_air = float(line[59:67]) # 压力位移 # 将解析的数据添加到数据库 database.append([nu, S, A, gamma_air, gamma_self, E, n_air, delta_air]) except ValueError as e: print(f&#34;解析第 {line_num} 行时出错: {repr(line)}&#34;) print(f&#34;错误信息: {e}&#34;) continue print(f&#34;成功读取 {len(database)} 条谱线&#34;) return np.array(database) 光谱模型中的三个参数：谱线位置是上下能级的能级差，数据库给出了位置和下能级，因此可以计算上能级位置；谱线强度的定义如上篇文章给出 。 吸收光谱简介">
+  <meta itemprop="datePublished" content="2025-11-08T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-11-08T00:00:00+00:00">
+  <meta itemprop="wordCount" content="421">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="HITRAN 数据库用法">
+  <meta name="twitter:description" content="HITRAN 数据库给出了线强$S$，单位为$[\mathrm{cm^2 \cdot cm^{-1}}]$。 对于 每行160位的数据，可以用下面 python 代码读取每个跃迁的参数。
+# HITRAN 160位格式读取函数 def read_hitran_par(filename): &#34;&#34;&#34; 读取HITRAN 160位格式的par文件 返回格式: [波数, 线强, 爱因斯坦A系数, 空气加宽半宽, 自加宽半宽, 低态能量, 温度依赖系数, 压力位移] &#34;&#34;&#34; database = [] with open(filename, &#39;r&#39;) as f: for line_num, line in enumerate(f, 1): line = line.rstrip(&#39;\n&#39;) # 只去掉行尾换行符，保留其他空白 if len(line) &lt; 160: # 确保行长度足够 print(f&#34;警告: 第 {line_num} 行长度不足160字符，已跳过&#34;) continue try: # 根据HITRAN格式定义解析各个字段 nu = float(line[3:15]) # 波数 S = float(line[15:25]) # 线强 A = float(line[25:35]) # 爱因斯坦A系数 gamma_air = float(line[35:40]) # 空气加宽半宽 gamma_self = float(line[40:45]) # 自加宽半宽 E = float(line[45:55]) # 低态能量 n_air = float(line[55:59]) # 温度依赖系数 delta_air = float(line[59:67]) # 压力位移 # 将解析的数据添加到数据库 database.append([nu, S, A, gamma_air, gamma_self, E, n_air, delta_air]) except ValueError as e: print(f&#34;解析第 {line_num} 行时出错: {repr(line)}&#34;) print(f&#34;错误信息: {e}&#34;) continue print(f&#34;成功读取 {len(database)} 条谱线&#34;) return np.array(database) 光谱模型中的三个参数：谱线位置是上下能级的能级差，数据库给出了位置和下能级，因此可以计算上能级位置；谱线强度的定义如上篇文章给出 。 吸收光谱简介">
+
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        刘训臣燃烧诊断实验室主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/our-alumni/" title="Alumni 页">
+              Alumni
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">HITRAN 数据库用法</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Research
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">HITRAN 数据库用法</h1>
+      
+      <p class="tracked"><strong>刘训臣</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-11-08T00:00:00Z">十一月 8, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>HITRAN 数据库给出了线强$S$，单位为$[\mathrm{cm^2 \cdot cm^{-1}}]$。
+对于 每行160位的数据，可以用下面 python 代码读取每个跃迁的参数。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># HITRAN 160位格式读取函数</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">read_hitran_par</span>(filename):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    读取HITRAN 160位格式的par文件
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    返回格式: [波数, 线强, 爱因斯坦A系数, 空气加宽半宽, 自加宽半宽, 低态能量, 温度依赖系数, 压力位移]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    database <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> open(filename, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> line_num, line <span style="color:#f92672">in</span> enumerate(f, <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>            line <span style="color:#f92672">=</span> line<span style="color:#f92672">.</span>rstrip(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)  <span style="color:#75715e"># 只去掉行尾换行符，保留其他空白</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> len(line) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">160</span>:  <span style="color:#75715e"># 确保行长度足够</span>
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;警告: 第 </span><span style="color:#e6db74">{</span>line_num<span style="color:#e6db74">}</span><span style="color:#e6db74"> 行长度不足160字符，已跳过&#34;</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># 根据HITRAN格式定义解析各个字段</span>
+</span></span><span style="display:flex;"><span>                nu <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">15</span>])           <span style="color:#75715e"># 波数</span>
+</span></span><span style="display:flex;"><span>                S <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">15</span>:<span style="color:#ae81ff">25</span>])           <span style="color:#75715e"># 线强</span>
+</span></span><span style="display:flex;"><span>                A <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">25</span>:<span style="color:#ae81ff">35</span>])           <span style="color:#75715e"># 爱因斯坦A系数</span>
+</span></span><span style="display:flex;"><span>                gamma_air <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">35</span>:<span style="color:#ae81ff">40</span>])   <span style="color:#75715e"># 空气加宽半宽</span>
+</span></span><span style="display:flex;"><span>                gamma_self <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">40</span>:<span style="color:#ae81ff">45</span>])  <span style="color:#75715e"># 自加宽半宽</span>
+</span></span><span style="display:flex;"><span>                E <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">45</span>:<span style="color:#ae81ff">55</span>])           <span style="color:#75715e"># 低态能量</span>
+</span></span><span style="display:flex;"><span>                n_air <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">55</span>:<span style="color:#ae81ff">59</span>])       <span style="color:#75715e"># 温度依赖系数</span>
+</span></span><span style="display:flex;"><span>                delta_air <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">59</span>:<span style="color:#ae81ff">67</span>])   <span style="color:#75715e"># 压力位移</span>
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># 将解析的数据添加到数据库</span>
+</span></span><span style="display:flex;"><span>                database<span style="color:#f92672">.</span>append([nu, S, A, gamma_air, gamma_self, E, n_air, delta_air])
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ValueError</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;解析第 </span><span style="color:#e6db74">{</span>line_num<span style="color:#e6db74">}</span><span style="color:#e6db74"> 行时出错: </span><span style="color:#e6db74">{</span>repr(line)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;错误信息: </span><span style="color:#e6db74">{</span>e<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;成功读取 </span><span style="color:#e6db74">{</span>len(database)<span style="color:#e6db74">}</span><span style="color:#e6db74"> 条谱线&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>array(database)
+</span></span></code></pre></div><p>光谱模型中的三个参数：谱线位置是上下能级的能级差，数据库给出了位置和下能级，因此可以计算上能级位置；谱线强度的定义如上篇文章给出 。
+<a href="/xliu-group/zh/post/absorption/">吸收光谱简介</a></p>
+<p>线宽模型：我们用Faddeeva 函数 计算Voigt 线形。
+Voigt 线型是Gaussian展宽（温度导致的速度展宽）和压力展宽的卷积。其中温度展宽的计算需要用到不同的分子同位素的质量。压力展宽用的是数据库中的参数，（这里可以忽略 gamma_self 自展宽，复杂环境中各种分子的碰撞展宽太多了，就不考虑自展宽了。）
+注意这里用的是 CGS 单位制的物理常数。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># physical constants</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>T_ref <span style="color:#f92672">=</span> <span style="color:#ae81ff">296.0</span>
+</span></span><span style="display:flex;"><span>cBolts <span style="color:#f92672">=</span> constants<span style="color:#f92672">.</span>Boltzmann<span style="color:#f92672">*</span><span style="color:#ae81ff">1E7</span> <span style="color:#75715e"># CGS Boltzmann constant unit is erg/K, CGS, c is cm/s </span>
+</span></span><span style="display:flex;"><span>cc <span style="color:#f92672">=</span> constants<span style="color:#f92672">.</span>speed_of_light<span style="color:#f92672">*</span><span style="color:#ae81ff">1E2</span> <span style="color:#75715e"># CGS</span>
+</span></span><span style="display:flex;"><span>cNA <span style="color:#f92672">=</span> constants<span style="color:#f92672">.</span>N_A
+</span></span><span style="display:flex;"><span>c2 <span style="color:#f92672">=</span> constants<span style="color:#f92672">.</span>physical_constants[<span style="color:#e6db74">&#39;second radiation constant&#39;</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span> <span style="color:#75715e"># CGS cm K</span>
+</span></span><span style="display:flex;"><span>cP <span style="color:#f92672">=</span> constants<span style="color:#f92672">.</span>physical_constants[<span style="color:#e6db74">&#39;standard atmosphere&#39;</span>][<span style="color:#ae81ff">0</span>]<span style="color:#f92672">*</span><span style="color:#ae81ff">10</span> <span style="color:#75715e"># pressure unit in CGS is Ba. covert to 0.1 Pa </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##################################################################################</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Voigt lineshape from Faddeeva function</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cGammaD <span style="color:#f92672">=</span> math<span style="color:#f92672">.</span>sqrt(<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>cBolts<span style="color:#f92672">*</span>cNA<span style="color:#f92672">*</span>math<span style="color:#f92672">.</span>log(<span style="color:#ae81ff">2</span>))<span style="color:#f92672">/</span>cc
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">profile_voigt</span>(Mass,nu,gamma_air,n_air,delta_air,T,p,wavenumber): <span style="color:#75715e"># return voigt profile on wavenumber, function of (T,p)</span>
+</span></span><span style="display:flex;"><span>    gamma <span style="color:#f92672">=</span> gamma_air<span style="color:#f92672">*</span>p<span style="color:#f92672">*</span>((T_ref<span style="color:#f92672">/</span>T)<span style="color:#f92672">**</span>n_air)<span style="color:#75715e">#+gamma_self*p*c*((T_ref/T)**n_self) # Eqn 6</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#gamma = gamma_air*gamma_air_ratio*p*(1-c)*((T_ref/T)**n_air)+gamma_self*p*c*((T_ref/T)**n_self) # Eqn 6</span>
+</span></span><span style="display:flex;"><span>    GammaD <span style="color:#f92672">=</span> cGammaD<span style="color:#f92672">*</span>math<span style="color:#f92672">.</span>sqrt(T<span style="color:#f92672">/</span>Mass)<span style="color:#f92672">*</span>nu<span style="color:#75715e"># + laser # eqn (5), </span>
+</span></span><span style="display:flex;"><span>    sigma <span style="color:#f92672">=</span> GammaD<span style="color:#f92672">/</span>(math<span style="color:#f92672">.</span>sqrt(<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>math<span style="color:#f92672">.</span>log(<span style="color:#ae81ff">2</span>)))
+</span></span><span style="display:flex;"><span>    variable <span style="color:#f92672">=</span> (wavenumber<span style="color:#f92672">-</span> nu <span style="color:#f92672">-</span> delta_air<span style="color:#f92672">*</span>p<span style="color:#f92672">+</span>gamma<span style="color:#f92672">*</span><span style="color:#ae81ff">1</span>j)<span style="color:#f92672">/</span>(sigma<span style="color:#f92672">*</span>math<span style="color:#f92672">.</span>sqrt(<span style="color:#ae81ff">2</span>)) <span style="color:#75715e"># air shift</span>
+</span></span><span style="display:flex;"><span>    voigt <span style="color:#f92672">=</span> (special<span style="color:#f92672">.</span>wofz(variable))<span style="color:#f92672">.</span>real<span style="color:#f92672">/</span>(sigma<span style="color:#f92672">*</span>math<span style="color:#f92672">.</span>sqrt(<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>constants<span style="color:#f92672">.</span>pi))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> voigt
+</span></span></code></pre></div><p>接下来只需要数据库par 文件就可以一行一行的叠加计算了。
+计算调用coef 吸收系数，OD 为乘了浓度和吸收距离的光学厚度。coef 和 OD 可以线性叠加。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">##################################################################################</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># line-by-line coef calculation</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">coef</span>(Mass,T,p,database,partition_function,wavenumber):<span style="color:#75715e">#,color): # k  absorption coef </span>
+</span></span><span style="display:flex;"><span>    coef <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(len(wavenumber))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> database:
+</span></span><span style="display:flex;"><span>        nu          <span style="color:#f92672">=</span> line[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>        S           <span style="color:#f92672">=</span> line[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>        gamma_air   <span style="color:#f92672">=</span> line[<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>        E           <span style="color:#f92672">=</span> line[<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>        n_air       <span style="color:#f92672">=</span> line[<span style="color:#ae81ff">6</span>]
+</span></span><span style="display:flex;"><span>        delta_air   <span style="color:#f92672">=</span> line[<span style="color:#ae81ff">7</span>]
+</span></span><span style="display:flex;"><span>        profile <span style="color:#f92672">=</span> profile_voigt(Mass,nu,gamma_air,n_air,delta_air,T,p,wavenumber)
+</span></span><span style="display:flex;"><span>        intensity <span style="color:#f92672">=</span> S <span style="color:#f92672">*</span> partition_function[int(T_ref<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)]<span style="color:#f92672">/</span>partition_function[int(T<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)] <span style="color:#f92672">*</span> math<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>c2<span style="color:#f92672">*</span>E<span style="color:#f92672">/</span>T)<span style="color:#f92672">/</span>math<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>c2<span style="color:#f92672">*</span>E<span style="color:#f92672">/</span>T_ref)<span style="color:#f92672">*</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>math<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>c2<span style="color:#f92672">*</span>nu<span style="color:#f92672">/</span>T))<span style="color:#f92672">/</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>math<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>c2<span style="color:#f92672">*</span>nu<span style="color:#f92672">/</span>T_ref)) <span style="color:#75715e"># Eqn 4, T is rounded</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#        ax1.bar(nu,peak,align=&#39;center&#39;,width=0.001,color=&#39;b&#39;)</span>
+</span></span><span style="display:flex;"><span>        coef <span style="color:#f92672">+=</span> profile<span style="color:#f92672">*</span>intensity
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> coef
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">OD</span>(Mass,T,p,c,l,database,partition_function,wavenumber): <span style="color:#75715e"># optical density # k*[X]*l   absorption coef times volume density, assuming total pressure p and c is pressure fraction. c needs to times length in unit cm to get dimensionless optical depth \tao, bkg is added at the end</span>
+</span></span><span style="display:flex;"><span>    acoef <span style="color:#f92672">=</span> coef(Mass,T,p,database,partition_function,wavenumber)
+</span></span><span style="display:flex;"><span>    density <span style="color:#f92672">=</span> p<span style="color:#f92672">*</span>c<span style="color:#f92672">*</span>cP<span style="color:#f92672">/</span>(cBolts) <span style="color:#f92672">/</span>T <span style="color:#75715e"># volumn density /cm^3 from p/kT  # check if concentration change</span>
+</span></span><span style="display:flex;"><span>    OD <span style="color:#f92672">=</span> acoef<span style="color:#f92672">*</span>density<span style="color:#f92672">*</span>l
+</span></span><span style="display:flex;"><span>    Tr <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>OD)
+</span></span><span style="display:flex;"><span>    Ab <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>Tr
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> OD,Ab,Tr
+</span></span></code></pre></div><p>完整的<a href="./read_par.py">代码py 文件</a>，读取 <a href="./CO_1416.par">CO_1416.par 数据库文件</a>和<a href="./q5.txt"> q5.txt 配分函数文件</a>。</p>
+<p>借助deepseek，我们可以写一个更加完整的 hitran_spectrum.py 程序，可以读取par 文件后自动查找分子质量，自动给出 par 文件包括的波数范围（当然也可以给定波数范围），这里omega_wing参数参考了hapi 中的定义，只计算谱线周围10倍线宽范围。或者说离的很远的谱线吸收就可以忽略了。这在大的波数范围内计算节约时间。</p>
+<p>这里运行 hitran_spectrum.py ，只需要读取par 文件和Q文件夹（其中是q1 q2 等所有的配分函数文件），程序就可以自己找到对应的分子数和同位素编号，找到对应的分子质量和配分函数。</p>
+<p>还做了一个图形界面hitran_gui.py 。可以点击选择par 文件和Q文件夹，点击按钮读取数据；输入温度、浓度、长度、压力，就可以点击按钮计算并存文件了。</p>
+<p>两个文件下载：</p>
+<p><a href="./hitran_spectrum.py">hitran_spectrum.py</a></p>
+<p><a href="./hitran_gui.py">hitran_gui.py</a></p>
+<figure><img src="hitran_gui.png"><figcaption>
+      <h4>hitran_gui截图</h4>
+    </figcaption>
+</figure>
+
+<p>很多时候，不需要完整地计算par 文件中的每一行数据，只需要选择某一个同位素、或者某一个谱带。
+这就只需要删除 par 文件中的行就可以了。这就需要vi emacs 等能选择字符匹配的文本编辑工具了。具体来说就不属于仿真软件的功能了（尽管hapi 中有比较好的选择工具，但用下来，还是感觉直接编辑par 文件更直接一些。）</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
