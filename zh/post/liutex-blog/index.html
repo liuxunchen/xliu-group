@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>liutex在二维流场的应用 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="近期阅读了《Liutex-涡定义和第三代涡识别方法》这篇文章，liutex方法是为三维流场设计的，它的求解包含三维速度梯度张量分解、RS 分解等步骤，理论的核心逻辑可概括为三点：1.从速度梯度张量中提取旋转相关的共轭复特征值；2.通过数学运算剥离剪切、拉伸等非旋转成分；3.最终得到仅反映刚性旋转的 Liutex 向量（大小 &#43; 方向），根据这个核心逻辑，可以针对性简化，用于求解二维流场的liutex，处理二维流场的数据。
+文章中强调，速度梯度张量是涡识别的基础，其特征值包含了流场旋转、拉伸、剪切的全部信息。
+二维流场中，通过np.gradient计算速度梯度张量的 4 个偏导数，
+    dUdY = np.gradient(U, Y[:, 0], axis=0, edge_order=1)
+    dVdX = np.gradient(V, X[0, :], axis=1, edge_order=1)
+    dUdX = np.gradient(U, X[0, :], axis=1, edge_order=1)
+    dVdY = np.gradient(V, Y[:, 0], axis=0, edge_order=1)
+    grad_tensor = np.zeros((U.shape[0], U.shape[1], 2, 2), dtype=np.float32)
+    grad_tensor[:, :, 0, 0] = dUdX
+    grad_tensor[:, :, 0, 1] = dUdY
+    grad_tensor[:, :, 1, 0] = dVdX
+    grad_tensor[:, :, 1, 1] = dVdY
+组装为 2×2 矩阵：
+$$
+\nabla \vec{v} = \left[
+\begin{array}{cc}  % cc表示2列，均居中对齐
+\frac{\partial U}{\partial X} & \frac{\partial U}{\partial Y} \\
+\frac{\partial V}{\partial X} & \frac{\partial V}{\partial Y}
+\end{array}
+\right]
+$$当流场存在刚性旋转时，速度梯度张量会存在共轭复特征值，其虚部直接影响旋转的强度。在二维流场中，通过特征值分解并提取虚部：">
+    <meta name="generator" content="Hugo 0.147.8">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="王硕">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/liutex-blog/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/liutex-blog/">
+  <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+  <meta property="og:title" content="liutex在二维流场的应用">
+  <meta property="og:description" content="近期阅读了《Liutex-涡定义和第三代涡识别方法》这篇文章，liutex方法是为三维流场设计的，它的求解包含三维速度梯度张量分解、RS 分解等步骤，理论的核心逻辑可概括为三点：1.从速度梯度张量中提取旋转相关的共轭复特征值；2.通过数学运算剥离剪切、拉伸等非旋转成分；3.最终得到仅反映刚性旋转的 Liutex 向量（大小 &#43; 方向），根据这个核心逻辑，可以针对性简化，用于求解二维流场的liutex，处理二维流场的数据。 文章中强调，速度梯度张量是涡识别的基础，其特征值包含了流场旋转、拉伸、剪切的全部信息。 二维流场中，通过np.gradient计算速度梯度张量的 4 个偏导数，
+dUdY = np.gradient(U, Y[:, 0], axis=0, edge_order=1) dVdX = np.gradient(V, X[0, :], axis=1, edge_order=1) dUdX = np.gradient(U, X[0, :], axis=1, edge_order=1) dVdY = np.gradient(V, Y[:, 0], axis=0, edge_order=1) grad_tensor = np.zeros((U.shape[0], U.shape[1], 2, 2), dtype=np.float32) grad_tensor[:, :, 0, 0] = dUdX grad_tensor[:, :, 0, 1] = dUdY grad_tensor[:, :, 1, 0] = dVdX grad_tensor[:, :, 1, 1] = dVdY 组装为 2×2 矩阵：
+$$\nabla \vec{v} = \left[\begin{array}{cc} % cc表示2列，均居中对齐\frac{\partial U}{\partial X} &amp; \frac{\partial U}{\partial Y} \\\frac{\partial V}{\partial X} &amp; \frac{\partial V}{\partial Y}\end{array}\right]$$当流场存在刚性旋转时，速度梯度张量会存在共轭复特征值，其虚部直接影响旋转的强度。在二维流场中，通过特征值分解并提取虚部：">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-11-11T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-11T00:00:00+00:00">
+
+  <meta itemprop="name" content="liutex在二维流场的应用">
+  <meta itemprop="description" content="近期阅读了《Liutex-涡定义和第三代涡识别方法》这篇文章，liutex方法是为三维流场设计的，它的求解包含三维速度梯度张量分解、RS 分解等步骤，理论的核心逻辑可概括为三点：1.从速度梯度张量中提取旋转相关的共轭复特征值；2.通过数学运算剥离剪切、拉伸等非旋转成分；3.最终得到仅反映刚性旋转的 Liutex 向量（大小 &#43; 方向），根据这个核心逻辑，可以针对性简化，用于求解二维流场的liutex，处理二维流场的数据。 文章中强调，速度梯度张量是涡识别的基础，其特征值包含了流场旋转、拉伸、剪切的全部信息。 二维流场中，通过np.gradient计算速度梯度张量的 4 个偏导数，
+dUdY = np.gradient(U, Y[:, 0], axis=0, edge_order=1) dVdX = np.gradient(V, X[0, :], axis=1, edge_order=1) dUdX = np.gradient(U, X[0, :], axis=1, edge_order=1) dVdY = np.gradient(V, Y[:, 0], axis=0, edge_order=1) grad_tensor = np.zeros((U.shape[0], U.shape[1], 2, 2), dtype=np.float32) grad_tensor[:, :, 0, 0] = dUdX grad_tensor[:, :, 0, 1] = dUdY grad_tensor[:, :, 1, 0] = dVdX grad_tensor[:, :, 1, 1] = dVdY 组装为 2×2 矩阵：
+$$\nabla \vec{v} = \left[\begin{array}{cc} % cc表示2列，均居中对齐\frac{\partial U}{\partial X} &amp; \frac{\partial U}{\partial Y} \\\frac{\partial V}{\partial X} &amp; \frac{\partial V}{\partial Y}\end{array}\right]$$当流场存在刚性旋转时，速度梯度张量会存在共轭复特征值，其虚部直接影响旋转的强度。在二维流场中，通过特征值分解并提取虚部：">
+  <meta itemprop="datePublished" content="2025-11-11T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-11-11T00:00:00+00:00">
+  <meta itemprop="wordCount" content="154">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="liutex在二维流场的应用">
+  <meta name="twitter:description" content="近期阅读了《Liutex-涡定义和第三代涡识别方法》这篇文章，liutex方法是为三维流场设计的，它的求解包含三维速度梯度张量分解、RS 分解等步骤，理论的核心逻辑可概括为三点：1.从速度梯度张量中提取旋转相关的共轭复特征值；2.通过数学运算剥离剪切、拉伸等非旋转成分；3.最终得到仅反映刚性旋转的 Liutex 向量（大小 &#43; 方向），根据这个核心逻辑，可以针对性简化，用于求解二维流场的liutex，处理二维流场的数据。 文章中强调，速度梯度张量是涡识别的基础，其特征值包含了流场旋转、拉伸、剪切的全部信息。 二维流场中，通过np.gradient计算速度梯度张量的 4 个偏导数，
+dUdY = np.gradient(U, Y[:, 0], axis=0, edge_order=1) dVdX = np.gradient(V, X[0, :], axis=1, edge_order=1) dUdX = np.gradient(U, X[0, :], axis=1, edge_order=1) dVdY = np.gradient(V, Y[:, 0], axis=0, edge_order=1) grad_tensor = np.zeros((U.shape[0], U.shape[1], 2, 2), dtype=np.float32) grad_tensor[:, :, 0, 0] = dUdX grad_tensor[:, :, 0, 1] = dUdY grad_tensor[:, :, 1, 0] = dVdX grad_tensor[:, :, 1, 1] = dVdY 组装为 2×2 矩阵：
+$$\nabla \vec{v} = \left[\begin{array}{cc} % cc表示2列，均居中对齐\frac{\partial U}{\partial X} &amp; \frac{\partial U}{\partial Y} \\\frac{\partial V}{\partial X} &amp; \frac{\partial V}{\partial Y}\end{array}\right]$$当流场存在刚性旋转时，速度梯度张量会存在共轭复特征值，其虚部直接影响旋转的强度。在二维流场中，通过特征值分解并提取虚部：">
+
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        刘训臣燃烧诊断实验室主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/our-alumni/" title="Alumni 页">
+              Alumni
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">liutex在二维流场的应用</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Post
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">liutex在二维流场的应用</h1>
+      
+      <p class="tracked"><strong>王硕</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-11-11T00:00:00Z">十一月 11, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>近期阅读了《Liutex-涡定义和第三代涡识别方法》这篇文章，liutex方法是为三维流场设计的，它的求解包含三维速度梯度张量分解、RS 分解等步骤，理论的核心逻辑可概括为三点：1.从速度梯度张量中提取旋转相关的共轭复特征值；2.通过数学运算剥离剪切、拉伸等非旋转成分；3.最终得到仅反映刚性旋转的 Liutex 向量（大小 + 方向），根据这个核心逻辑，可以针对性简化，用于求解二维流场的liutex，处理二维流场的数据。
+文章中强调，速度梯度张量是涡识别的基础，其特征值包含了流场旋转、拉伸、剪切的全部信息。
+二维流场中，通过np.gradient计算速度梯度张量的 4 个偏导数，</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    dUdY <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>gradient(U, Y[:, <span style="color:#ae81ff">0</span>], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, edge_order<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    dVdX <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>gradient(V, X[<span style="color:#ae81ff">0</span>, :], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, edge_order<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    dUdX <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>gradient(U, X[<span style="color:#ae81ff">0</span>, :], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, edge_order<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    dVdY <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>gradient(V, Y[:, <span style="color:#ae81ff">0</span>], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, edge_order<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    grad_tensor <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((U<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>], U<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>], <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>), dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>float32)
+</span></span><span style="display:flex;"><span>    grad_tensor[:, :, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> dUdX
+</span></span><span style="display:flex;"><span>    grad_tensor[:, :, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> dUdY
+</span></span><span style="display:flex;"><span>    grad_tensor[:, :, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> dVdX
+</span></span><span style="display:flex;"><span>    grad_tensor[:, :, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> dVdY
+</span></span></code></pre></div><p>组装为 2×2 矩阵：</p>
+$$
+\nabla \vec{v} = \left[
+\begin{array}{cc}  % cc表示2列，均居中对齐
+\frac{\partial U}{\partial X} & \frac{\partial U}{\partial Y} \\
+\frac{\partial V}{\partial X} & \frac{\partial V}{\partial Y}
+\end{array}
+\right]
+$$<p>当流场存在刚性旋转时，速度梯度张量会存在共轭复特征值，其虚部直接影响旋转的强度。在二维流场中，通过特征值分解并提取虚部：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>   eig_vals <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>eigvals(grad_tensor)
+</span></span><span style="display:flex;"><span>    wi0 <span style="color:#f92672">=</span> eig_vals[:, :, <span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>imag
+</span></span><span style="display:flex;"><span>    wi1 <span style="color:#f92672">=</span> eig_vals[:, :, <span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>imag
+</span></span></code></pre></div><p>由于共轭复特征值的虚部大小相等、符号相反，wi0 * wi1的绝对值恰好是虚部大小的平方，这一步为后续剥离剪切成分提供了关键依据。
+三维流场中，Liutex 是向量，其方向为速度梯度张量的实特征向量。二维流场中旋转轴固定，用涡量的符号来表征旋转方向（当vor＞0是逆时针旋转，值为正，相反vor＜0是顺时针旋转，值为负）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    vor <span style="color:#f92672">=</span> dVdX <span style="color:#f92672">-</span> dUdY
+</span></span><span style="display:flex;"><span>    vor_sign <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>where(vor <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1.0</span>, np<span style="color:#f92672">.</span>where(vor <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">0.0</span>))
+</span></span></code></pre></div><p>vor=R+S，即vor是旋转与剪切/拉伸的总和，sqrt_term是剪切/拉伸量，liutex的大小通过vor与sqrt_term的差值来求得。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>   sqrt_term <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sqrt(np<span style="color:#f92672">.</span>abs(np<span style="color:#f92672">.</span>square(vor) <span style="color:#f92672">-</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>abs(wi0 <span style="color:#f92672">*</span> wi1)))
+</span></span><span style="display:flex;"><span>    R <span style="color:#f92672">=</span> (np<span style="color:#f92672">.</span>abs(vor) <span style="color:#f92672">-</span> sqrt_term) <span style="color:#f92672">*</span> vor_sign
+</span></span><span style="display:flex;"><span>    stretch <span style="color:#f92672">=</span> sqrt_term
+</span></span></code></pre></div><p>通过此段代码，可以准确的求出流场中的刚性旋转部分。
+以下是通过此代码处理得到的瞬时liutex及流线图
+<img src="/xliu-group/zh/post/liutex-blog/%E5%9B%BE%E7%89%871.png" alt=""></p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

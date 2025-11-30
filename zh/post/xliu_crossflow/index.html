@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>横向射流轨迹的拟合 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="横向射流（crossflow）是很常见的一种流体混合结构，当一股小尺寸的射流垂直进入大尺寸的横流时，垂直的射流就会逐渐转到横向过来，形成横向射流。
+在这个过程中形成的涡系主要包括剪切涡、马蹄涡、尾迹涡和对旋涡，其中剪切涡和对旋涡的生成发展、传播和最终破碎是横向射流混合增强的主要因素。通过控制射流和主流的动量比，可以控制轨迹，改变穿透深度和形成的火焰长度。
+远场的横向射流的轨迹一般可以用幂函数表示[1,2]。如图1，横向射流轨迹的可以由速度比$r$和射流直径$d$进行无量纲化。
+$$
+ \left(\frac{y}{rd}\right) = A \left(\frac{x}{rd}\right)^{B}
+$$典型的轨迹方程中，$B\approx \frac{1}{3}$。
+以我们实验测量的横向射流的轨迹为例。
+
+      图1 实验原始图片、拟合轨迹、和以轨迹为坐标转化后的图像
+    
+
+
+
+拟合得到轨迹方程包含如下几步：
+
+在每个高度，也就是$y$坐标上，找到浓度或速度的最大值对应的$x$值。这里找到的最大点坐标还比较粗糙，最好再和相邻的几个点通过抛物线拟合的方法，得到更精确的坐标。
+如图2 ，得到的最大点基本描绘出了轨迹，但还需要修剪一下数据。
+
+
+      图2 找最大点
+    
+
+
+
+去掉头尾部分。去掉轨迹后面几个点比较好理解，因为到轨迹最后信噪比很低了；去除开头几个点是为什么呢？
+以实验测量的双喷嘴横向射流为例子，图3中给出了初步找到的中心线和修正后的中心线。
+
+
+      图3 修正后的中心线
+    
+
+
+
+下一步就是拟合了。首先要把找到的轨迹起始点归零。然后求log10 ，得到拟合直线，此时会发现需要去掉开头的非常接近零的几个点，也就是近场不符合幂函数规律的点，便于拟合。
+从图4中可以看出，拟合的直线需要确定两个拟合变量，一个是拟合长度范围，一个是拟合起始位置。
+不一定拟合长度越长越好，需要确定恰当的范围。
+我们将这两个变量都在一定范围内变化，看得到的结果情况。
+
+
+       图4 变量拟合
+     
+ 
+
+图4中，1)为待拟合的直线，2)横坐标为拟合位置、纵坐标为拟合长度，当拟合长度大时，拟合位置变化的就小。3)为2)图的梯度，可以看到有趣的梯度变化的图案，说明了拟合参数的影响。
+可见当拟合长度和位置恰当时，得到的参数有一个稳定的区域，数值基本不变。表现为梯度接近零，可以用这个指标来确定恰当的拟合长度和位置。
+在这个例子中，得到直线的方程为:
+$$
+\ln(y) = 0.30\times \ln(x) &#43; 1.36
+$$
+而 $r = 7$, $d = 10mm$，得到
+$$
+ \left(\frac{y}{rd}\right) = 0.2 \left(\frac{x}{rd}\right)^{0.3}
+$$参考文献
+
+BROADWELL J E, BREIDENTHAL R E. Structure and mixing of a transverse jet in incompressible flow[J]. Journal of Fluid Mechanics, 1984, 148: 405-412.
+HASSELBRINK E F, MUNGAL M G. Transverse jets and jet flames. Part 1. Scaling laws for strong transverse jets[J]. Journal of Fluid Mechanics, 2001, 443: 1-25.
+SMITH S H, MUNGAL M G. Mixing, structure and scaling of the jet in crossflow[J]. Journal of Fluid Mechanics, 1998, 357: 83-122.
+SU L K, MUNGAL M G. Simultaneous measurements of scalar and velocity field evolution in turbulent crossflowing jets[J]. Journal of Fluid Mechanics, 2004, 513: 1-45.
+">
+    <meta name="generator" content="Hugo 0.144.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="刘训臣">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://liuxunchen.github.io/xliu-group/zh/post/xliu_crossflow/">
+    
+
+    <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/xliu_crossflow/">
+  <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+  <meta property="og:title" content="横向射流轨迹的拟合">
+  <meta property="og:description" content="横向射流（crossflow）是很常见的一种流体混合结构，当一股小尺寸的射流垂直进入大尺寸的横流时，垂直的射流就会逐渐转到横向过来，形成横向射流。 在这个过程中形成的涡系主要包括剪切涡、马蹄涡、尾迹涡和对旋涡，其中剪切涡和对旋涡的生成发展、传播和最终破碎是横向射流混合增强的主要因素。通过控制射流和主流的动量比，可以控制轨迹，改变穿透深度和形成的火焰长度。
+远场的横向射流的轨迹一般可以用幂函数表示[1,2]。如图1，横向射流轨迹的可以由速度比$r$和射流直径$d$进行无量纲化。
+$$ \left(\frac{y}{rd}\right) = A \left(\frac{x}{rd}\right)^{B} $$典型的轨迹方程中，$B\approx \frac{1}{3}$。
+以我们实验测量的横向射流的轨迹为例。
+图1 实验原始图片、拟合轨迹、和以轨迹为坐标转化后的图像 拟合得到轨迹方程包含如下几步：
+在每个高度，也就是$y$坐标上，找到浓度或速度的最大值对应的$x$值。这里找到的最大点坐标还比较粗糙，最好再和相邻的几个点通过抛物线拟合的方法，得到更精确的坐标。 如图2 ，得到的最大点基本描绘出了轨迹，但还需要修剪一下数据。 图2 找最大点 去掉头尾部分。去掉轨迹后面几个点比较好理解，因为到轨迹最后信噪比很低了；去除开头几个点是为什么呢？ 以实验测量的双喷嘴横向射流为例子，图3中给出了初步找到的中心线和修正后的中心线。 图3 修正后的中心线 下一步就是拟合了。首先要把找到的轨迹起始点归零。然后求log10 ，得到拟合直线，此时会发现需要去掉开头的非常接近零的几个点，也就是近场不符合幂函数规律的点，便于拟合。 从图4中可以看出，拟合的直线需要确定两个拟合变量，一个是拟合长度范围，一个是拟合起始位置。 不一定拟合长度越长越好，需要确定恰当的范围。 我们将这两个变量都在一定范围内变化，看得到的结果情况。 图4 变量拟合 图4中，1)为待拟合的直线，2)横坐标为拟合位置、纵坐标为拟合长度，当拟合长度大时，拟合位置变化的就小。3)为2)图的梯度，可以看到有趣的梯度变化的图案，说明了拟合参数的影响。 可见当拟合长度和位置恰当时，得到的参数有一个稳定的区域，数值基本不变。表现为梯度接近零，可以用这个指标来确定恰当的拟合长度和位置。
+在这个例子中，得到直线的方程为:
+$$ \ln(y) = 0.30\times \ln(x) &#43; 1.36 $$ 而 $r = 7$, $d = 10mm$，得到
+$$ \left(\frac{y}{rd}\right) = 0.2 \left(\frac{x}{rd}\right)^{0.3} $$参考文献 BROADWELL J E, BREIDENTHAL R E. Structure and mixing of a transverse jet in incompressible flow[J]. Journal of Fluid Mechanics, 1984, 148: 405-412. HASSELBRINK E F, MUNGAL M G. Transverse jets and jet flames. Part 1. Scaling laws for strong transverse jets[J]. Journal of Fluid Mechanics, 2001, 443: 1-25. SMITH S H, MUNGAL M G. Mixing, structure and scaling of the jet in crossflow[J]. Journal of Fluid Mechanics, 1998, 357: 83-122. SU L K, MUNGAL M G. Simultaneous measurements of scalar and velocity field evolution in turbulent crossflowing jets[J]. Journal of Fluid Mechanics, 2004, 513: 1-45.">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-06-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-06-23T00:00:00+00:00">
+
+  <meta itemprop="name" content="横向射流轨迹的拟合">
+  <meta itemprop="description" content="横向射流（crossflow）是很常见的一种流体混合结构，当一股小尺寸的射流垂直进入大尺寸的横流时，垂直的射流就会逐渐转到横向过来，形成横向射流。 在这个过程中形成的涡系主要包括剪切涡、马蹄涡、尾迹涡和对旋涡，其中剪切涡和对旋涡的生成发展、传播和最终破碎是横向射流混合增强的主要因素。通过控制射流和主流的动量比，可以控制轨迹，改变穿透深度和形成的火焰长度。
+远场的横向射流的轨迹一般可以用幂函数表示[1,2]。如图1，横向射流轨迹的可以由速度比$r$和射流直径$d$进行无量纲化。
+$$ \left(\frac{y}{rd}\right) = A \left(\frac{x}{rd}\right)^{B} $$典型的轨迹方程中，$B\approx \frac{1}{3}$。
+以我们实验测量的横向射流的轨迹为例。
+图1 实验原始图片、拟合轨迹、和以轨迹为坐标转化后的图像 拟合得到轨迹方程包含如下几步：
+在每个高度，也就是$y$坐标上，找到浓度或速度的最大值对应的$x$值。这里找到的最大点坐标还比较粗糙，最好再和相邻的几个点通过抛物线拟合的方法，得到更精确的坐标。 如图2 ，得到的最大点基本描绘出了轨迹，但还需要修剪一下数据。 图2 找最大点 去掉头尾部分。去掉轨迹后面几个点比较好理解，因为到轨迹最后信噪比很低了；去除开头几个点是为什么呢？ 以实验测量的双喷嘴横向射流为例子，图3中给出了初步找到的中心线和修正后的中心线。 图3 修正后的中心线 下一步就是拟合了。首先要把找到的轨迹起始点归零。然后求log10 ，得到拟合直线，此时会发现需要去掉开头的非常接近零的几个点，也就是近场不符合幂函数规律的点，便于拟合。 从图4中可以看出，拟合的直线需要确定两个拟合变量，一个是拟合长度范围，一个是拟合起始位置。 不一定拟合长度越长越好，需要确定恰当的范围。 我们将这两个变量都在一定范围内变化，看得到的结果情况。 图4 变量拟合 图4中，1)为待拟合的直线，2)横坐标为拟合位置、纵坐标为拟合长度，当拟合长度大时，拟合位置变化的就小。3)为2)图的梯度，可以看到有趣的梯度变化的图案，说明了拟合参数的影响。 可见当拟合长度和位置恰当时，得到的参数有一个稳定的区域，数值基本不变。表现为梯度接近零，可以用这个指标来确定恰当的拟合长度和位置。
+在这个例子中，得到直线的方程为:
+$$ \ln(y) = 0.30\times \ln(x) &#43; 1.36 $$ 而 $r = 7$, $d = 10mm$，得到
+$$ \left(\frac{y}{rd}\right) = 0.2 \left(\frac{x}{rd}\right)^{0.3} $$参考文献 BROADWELL J E, BREIDENTHAL R E. Structure and mixing of a transverse jet in incompressible flow[J]. Journal of Fluid Mechanics, 1984, 148: 405-412. HASSELBRINK E F, MUNGAL M G. Transverse jets and jet flames. Part 1. Scaling laws for strong transverse jets[J]. Journal of Fluid Mechanics, 2001, 443: 1-25. SMITH S H, MUNGAL M G. Mixing, structure and scaling of the jet in crossflow[J]. Journal of Fluid Mechanics, 1998, 357: 83-122. SU L K, MUNGAL M G. Simultaneous measurements of scalar and velocity field evolution in turbulent crossflowing jets[J]. Journal of Fluid Mechanics, 2004, 513: 1-45.">
+  <meta itemprop="datePublished" content="2025-06-23T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-06-23T00:00:00+00:00">
+  <meta itemprop="wordCount" content="150">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="横向射流轨迹的拟合">
+  <meta name="twitter:description" content="横向射流（crossflow）是很常见的一种流体混合结构，当一股小尺寸的射流垂直进入大尺寸的横流时，垂直的射流就会逐渐转到横向过来，形成横向射流。 在这个过程中形成的涡系主要包括剪切涡、马蹄涡、尾迹涡和对旋涡，其中剪切涡和对旋涡的生成发展、传播和最终破碎是横向射流混合增强的主要因素。通过控制射流和主流的动量比，可以控制轨迹，改变穿透深度和形成的火焰长度。
+远场的横向射流的轨迹一般可以用幂函数表示[1,2]。如图1，横向射流轨迹的可以由速度比$r$和射流直径$d$进行无量纲化。
+$$ \left(\frac{y}{rd}\right) = A \left(\frac{x}{rd}\right)^{B} $$典型的轨迹方程中，$B\approx \frac{1}{3}$。
+以我们实验测量的横向射流的轨迹为例。
+图1 实验原始图片、拟合轨迹、和以轨迹为坐标转化后的图像 拟合得到轨迹方程包含如下几步：
+在每个高度，也就是$y$坐标上，找到浓度或速度的最大值对应的$x$值。这里找到的最大点坐标还比较粗糙，最好再和相邻的几个点通过抛物线拟合的方法，得到更精确的坐标。 如图2 ，得到的最大点基本描绘出了轨迹，但还需要修剪一下数据。 图2 找最大点 去掉头尾部分。去掉轨迹后面几个点比较好理解，因为到轨迹最后信噪比很低了；去除开头几个点是为什么呢？ 以实验测量的双喷嘴横向射流为例子，图3中给出了初步找到的中心线和修正后的中心线。 图3 修正后的中心线 下一步就是拟合了。首先要把找到的轨迹起始点归零。然后求log10 ，得到拟合直线，此时会发现需要去掉开头的非常接近零的几个点，也就是近场不符合幂函数规律的点，便于拟合。 从图4中可以看出，拟合的直线需要确定两个拟合变量，一个是拟合长度范围，一个是拟合起始位置。 不一定拟合长度越长越好，需要确定恰当的范围。 我们将这两个变量都在一定范围内变化，看得到的结果情况。 图4 变量拟合 图4中，1)为待拟合的直线，2)横坐标为拟合位置、纵坐标为拟合长度，当拟合长度大时，拟合位置变化的就小。3)为2)图的梯度，可以看到有趣的梯度变化的图案，说明了拟合参数的影响。 可见当拟合长度和位置恰当时，得到的参数有一个稳定的区域，数值基本不变。表现为梯度接近零，可以用这个指标来确定恰当的拟合长度和位置。
+在这个例子中，得到直线的方程为:
+$$ \ln(y) = 0.30\times \ln(x) &#43; 1.36 $$ 而 $r = 7$, $d = 10mm$，得到
+$$ \left(\frac{y}{rd}\right) = 0.2 \left(\frac{x}{rd}\right)^{0.3} $$参考文献 BROADWELL J E, BREIDENTHAL R E. Structure and mixing of a transverse jet in incompressible flow[J]. Journal of Fluid Mechanics, 1984, 148: 405-412. HASSELBRINK E F, MUNGAL M G. Transverse jets and jet flames. Part 1. Scaling laws for strong transverse jets[J]. Journal of Fluid Mechanics, 2001, 443: 1-25. SMITH S H, MUNGAL M G. Mixing, structure and scaling of the jet in crossflow[J]. Journal of Fluid Mechanics, 1998, 357: 83-122. SU L K, MUNGAL M G. Simultaneous measurements of scalar and velocity field evolution in turbulent crossflowing jets[J]. Journal of Fluid Mechanics, 2004, 513: 1-45.">
+
+      
+    
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('https://liuxunchen.github.io/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        刘训臣燃烧诊断实验室主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/our-alumni/" title="Alumni 页">
+              Alumni
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">横向射流轨迹的拟合</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Post
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">横向射流轨迹的拟合</h1>
+      
+      <p class="tracked"><strong>刘训臣</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-06-23T00:00:00Z">六月 23, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>横向射流（crossflow）是很常见的一种流体混合结构，当一股小尺寸的射流垂直进入大尺寸的横流时，垂直的射流就会逐渐转到横向过来，形成横向射流。
+在这个过程中形成的涡系主要包括剪切涡、马蹄涡、尾迹涡和对旋涡，其中剪切涡和对旋涡的生成发展、传播和最终破碎是横向射流混合增强的主要因素。通过控制射流和主流的动量比，可以控制轨迹，改变穿透深度和形成的火焰长度。</p>
+<p>远场的横向射流的轨迹一般可以用幂函数表示[1,2]。如图1，横向射流轨迹的可以由速度比$r$和射流直径$d$进行无量纲化。</p>
+$$
+ \left(\frac{y}{rd}\right) = A \left(\frac{x}{rd}\right)^{B}
+$$<p>典型的轨迹方程中，$B\approx \frac{1}{3}$。</p>
+<p>以我们实验测量的横向射流的轨迹为例。</p>
+<figure><img src="/xliu-group/zh/post/xliu_crossflow/1.png"><figcaption>
+      <h4>图1 实验原始图片、拟合轨迹、和以轨迹为坐标转化后的图像</h4>
+    </figcaption>
+</figure>
+
+<hr>
+<p>拟合得到轨迹方程包含如下几步：</p>
+<ol>
+<li>在每个高度，也就是$y$坐标上，找到浓度或速度的最大值对应的$x$值。这里找到的最大点坐标还比较粗糙，最好再和相邻的几个点通过抛物线拟合的方法，得到更精确的坐标。
+如图2 ，得到的最大点基本描绘出了轨迹，但还需要修剪一下数据。</li>
+</ol>
+<figure><img src="/xliu-group/zh/post/xliu_crossflow/2.png"><figcaption>
+      <h4>图2 找最大点</h4>
+    </figcaption>
+</figure>
+
+<ol start="2">
+<li>去掉头尾部分。去掉轨迹后面几个点比较好理解，因为到轨迹最后信噪比很低了；去除开头几个点是为什么呢？
+以实验测量的双喷嘴横向射流为例子，图3中给出了初步找到的中心线和修正后的中心线。</li>
+</ol>
+<figure><img src="/xliu-group/zh/post/xliu_crossflow/3.png"><figcaption>
+      <h4>图3 修正后的中心线</h4>
+    </figcaption>
+</figure>
+
+<ol start="3">
+<li>下一步就是拟合了。首先要把找到的轨迹起始点归零。然后求log10 ，得到拟合直线，此时会发现需要去掉开头的非常接近零的几个点，也就是近场不符合幂函数规律的点，便于拟合。
+从图4中可以看出，拟合的直线需要确定两个拟合变量，一个是拟合长度范围，一个是拟合起始位置。
+不一定拟合长度越长越好，需要确定恰当的范围。
+我们将这两个变量都在一定范围内变化，看得到的结果情况。</li>
+</ol>
+<figure><img src="/xliu-group/zh/post/xliu_crossflow/4.png"><figcaption>
+       <h4>图4 变量拟合</h4>
+     </figcaption>
+ </figure>
+
+<p>图4中，1)为待拟合的直线，2)横坐标为拟合位置、纵坐标为拟合长度，当拟合长度大时，拟合位置变化的就小。3)为2)图的梯度，可以看到有趣的梯度变化的图案，说明了拟合参数的影响。
+可见当拟合长度和位置恰当时，得到的参数有一个稳定的区域，数值基本不变。表现为梯度接近零，可以用这个指标来确定恰当的拟合长度和位置。</p>
+<p>在这个例子中，得到直线的方程为:</p>
+$$
+\ln(y) = 0.30\times \ln(x) + 1.36
+$$<p>
+而 $r = 7$, $d = 10mm$，得到</p>
+$$
+ \left(\frac{y}{rd}\right) = 0.2 \left(\frac{x}{rd}\right)^{0.3}
+$$<h1 id="参考文献">参考文献</h1>
+<ol>
+<li>BROADWELL J E, BREIDENTHAL R E. Structure and mixing of a transverse jet in incompressible flow[J]. Journal of Fluid Mechanics, 1984, 148: 405-412.</li>
+<li>HASSELBRINK E F, MUNGAL M G. Transverse jets and jet flames. Part 1. Scaling laws for strong transverse jets[J]. Journal of Fluid Mechanics, 2001, 443: 1-25.</li>
+<li>SMITH S H, MUNGAL M G. Mixing, structure and scaling of the jet in crossflow[J]. Journal of Fluid Mechanics, 1998, 357: 83-122.</li>
+<li>SU L K, MUNGAL M G. Simultaneous measurements of scalar and velocity field evolution in turbulent crossflowing jets[J]. Journal of Fluid Mechanics, 2004, 513: 1-45.</li>
+</ol>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://liuxunchen.github.io/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

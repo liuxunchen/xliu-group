@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
-  <head>
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
@@ -46,17 +46,17 @@ def read_hitran_par(filename):
     return np.array(database)
 光谱模型中的三个参数：谱线位置是上下能级的能级差，数据库给出了位置和下能级，因此可以计算上能级位置；谱线强度的定义如上篇文章给出 。
 吸收光谱简介">
-    <meta name="generator" content="Hugo 0.144.2">
+    <meta name="generator" content="Hugo 0.147.8">
     
     
     
-      <meta name="robots" content="index, follow">
+      <meta name="robots" content="noindex, nofollow">
     
     <meta name="author" content="刘训臣">
     
 
     
-<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.css" >
 
 
 
@@ -72,10 +72,10 @@ def read_hitran_par(filename):
     
 
     
-      <link rel="canonical" href="https://liuxunchen.github.io/xliu-group/zh/post/hitran/">
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/hitran/">
     
 
-    <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/hitran/">
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/hitran/">
   <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
   <meta property="og:title" content="HITRAN 数据库用法">
   <meta property="og:description" content="HITRAN 数据库给出了线强$S$，单位为$[\mathrm{cm^2 \cdot cm^{-1}}]$。 对于 每行160位的数据，可以用下面 python 代码读取每个跃迁的参数。
@@ -97,8 +97,6 @@ def read_hitran_par(filename):
   <meta name="twitter:description" content="HITRAN 数据库给出了线强$S$，单位为$[\mathrm{cm^2 \cdot cm^{-1}}]$。 对于 每行160位的数据，可以用下面 python 代码读取每个跃迁的参数。
 # HITRAN 160位格式读取函数 def read_hitran_par(filename): &#34;&#34;&#34; 读取HITRAN 160位格式的par文件 返回格式: [波数, 线强, 爱因斯坦A系数, 空气加宽半宽, 自加宽半宽, 低态能量, 温度依赖系数, 压力位移] &#34;&#34;&#34; database = [] with open(filename, &#39;r&#39;) as f: for line_num, line in enumerate(f, 1): line = line.rstrip(&#39;\n&#39;) # 只去掉行尾换行符，保留其他空白 if len(line) &lt; 160: # 确保行长度足够 print(f&#34;警告: 第 {line_num} 行长度不足160字符，已跳过&#34;) continue try: # 根据HITRAN格式定义解析各个字段 nu = float(line[3:15]) # 波数 S = float(line[15:25]) # 线强 A = float(line[25:35]) # 爱因斯坦A系数 gamma_air = float(line[35:40]) # 空气加宽半宽 gamma_self = float(line[40:45]) # 自加宽半宽 E = float(line[45:55]) # 低态能量 n_air = float(line[55:59]) # 温度依赖系数 delta_air = float(line[59:67]) # 压力位移 # 将解析的数据添加到数据库 database.append([nu, S, A, gamma_air, gamma_self, E, n_air, delta_air]) except ValueError as e: print(f&#34;解析第 {line_num} 行时出错: {repr(line)}&#34;) print(f&#34;错误信息: {e}&#34;) continue print(f&#34;成功读取 {len(database)} 条谱线&#34;) return np.array(database) 光谱模型中的三个参数：谱线位置是上下能级的能级差，数据库给出了位置和下能级，因此可以计算上能级位置；谱线强度的定义如上篇文章给出 。 吸收光谱简介">
 
-      
-    
 	
 	
 	    
@@ -127,7 +125,7 @@ script.async = true;
 
     
 	
-  </head><body class="ma0 avenir bg-near-white production">
+  </head><body class="ma0 avenir bg-near-white development">
 
     
    
@@ -136,7 +134,7 @@ script.async = true;
   
   
   
-  <header class="cover bg-center" style="background-image: url('https://liuxunchen.github.io/xliu-group/images/sdust.jpg');">
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
     <div class="bg-black-60">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l center items-center justify-between">
@@ -345,7 +343,7 @@ Voigt 线型是Gaussian展宽（温度导致的速度展宽）和压力展宽的
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://liuxunchen.github.io/xliu-group/zh/" >
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
     &copy;  刘训臣燃烧诊断实验室主页 2025 
   </a>
     <div><div class="ananke-socials"></div>

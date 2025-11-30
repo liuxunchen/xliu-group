@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="Post">
   <meta itemprop="description" content="科研笔记和一些想法">
-  <meta itemprop="datePublished" content="2025-11-08T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-11-08T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2025-11-30T09:36:53+08:00">
+  <meta itemprop="dateModified" content="2025-11-30T09:36:53+08:00">
   <meta itemprop="wordCount" content="1">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Post">
@@ -169,53 +169,32 @@ script.async = true;
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/hitran/" class="link black dim">
+      <a href="/xliu-group/zh/post/xliu_hitran/" class="link black dim">
         HITRAN 数据库用法
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>HITRAN 数据库给出了线强$S$，单位为$[\mathrm{cm^2 \cdot cm^{-1}}]$。
-对于 每行160位的数据，可以用下面 python 代码读取每个跃迁的参数。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># HITRAN 160位格式读取函数</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">read_hitran_par</span>(filename):
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    读取HITRAN 160位格式的par文件
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    返回格式: [波数, 线强, 爱因斯坦A系数, 空气加宽半宽, 自加宽半宽, 低态能量, 温度依赖系数, 压力位移]
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>    database <span style="color:#f92672">=</span> []
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> open(filename, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> f:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> line_num, line <span style="color:#f92672">in</span> enumerate(f, <span style="color:#ae81ff">1</span>):
-</span></span><span style="display:flex;"><span>            line <span style="color:#f92672">=</span> line<span style="color:#f92672">.</span>rstrip(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)  <span style="color:#75715e"># 只去掉行尾换行符，保留其他空白</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> len(line) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">160</span>:  <span style="color:#75715e"># 确保行长度足够</span>
-</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;警告: 第 </span><span style="color:#e6db74">{</span>line_num<span style="color:#e6db74">}</span><span style="color:#e6db74"> 行长度不足160字符，已跳过&#34;</span>)
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">continue</span>
-</span></span><span style="display:flex;"><span>                
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>:
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># 根据HITRAN格式定义解析各个字段</span>
-</span></span><span style="display:flex;"><span>                nu <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">15</span>])           <span style="color:#75715e"># 波数</span>
-</span></span><span style="display:flex;"><span>                S <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">15</span>:<span style="color:#ae81ff">25</span>])           <span style="color:#75715e"># 线强</span>
-</span></span><span style="display:flex;"><span>                A <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">25</span>:<span style="color:#ae81ff">35</span>])           <span style="color:#75715e"># 爱因斯坦A系数</span>
-</span></span><span style="display:flex;"><span>                gamma_air <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">35</span>:<span style="color:#ae81ff">40</span>])   <span style="color:#75715e"># 空气加宽半宽</span>
-</span></span><span style="display:flex;"><span>                gamma_self <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">40</span>:<span style="color:#ae81ff">45</span>])  <span style="color:#75715e"># 自加宽半宽</span>
-</span></span><span style="display:flex;"><span>                E <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">45</span>:<span style="color:#ae81ff">55</span>])           <span style="color:#75715e"># 低态能量</span>
-</span></span><span style="display:flex;"><span>                n_air <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">55</span>:<span style="color:#ae81ff">59</span>])       <span style="color:#75715e"># 温度依赖系数</span>
-</span></span><span style="display:flex;"><span>                delta_air <span style="color:#f92672">=</span> float(line[<span style="color:#ae81ff">59</span>:<span style="color:#ae81ff">67</span>])   <span style="color:#75715e"># 压力位移</span>
-</span></span><span style="display:flex;"><span>                
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># 将解析的数据添加到数据库</span>
-</span></span><span style="display:flex;"><span>                database<span style="color:#f92672">.</span>append([nu, S, A, gamma_air, gamma_self, E, n_air, delta_air])
-</span></span><span style="display:flex;"><span>                
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ValueError</span> <span style="color:#66d9ef">as</span> e:
-</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;解析第 </span><span style="color:#e6db74">{</span>line_num<span style="color:#e6db74">}</span><span style="color:#e6db74"> 行时出错: </span><span style="color:#e6db74">{</span>repr(line)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;错误信息: </span><span style="color:#e6db74">{</span>e<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">continue</span>
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;成功读取 </span><span style="color:#e6db74">{</span>len(database)<span style="color:#e6db74">}</span><span style="color:#e6db74"> 条谱线&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>array(database)
-</span></span></code></pre></div><p>光谱模型中的三个参数：谱线位置是上下能级的能级差，数据库给出了位置和下能级，因此可以计算上能级位置；谱线强度的定义如上篇文章给出 。
-<a href="/xliu-group/zh/post/absorption/">吸收光谱简介</a></p>
+      <p>在上一篇 <a href="/xliu-group/zh/post/xliu_absorption/">吸收光谱简介</a> ，我们介绍了分子吸收光谱的基本知识。
+常见的分子光谱的数据库有：</p>
+<ul>
+<li>HITRAN, USA Harvard-Smithsonian Center for Astrophysics Molecular Data</li>
+<li>NASA JPL Molecular Spectroscopy, USA</li>
+<li>The Cologne Database for Molecular Spectroscopy, CDMS, Germany</li>
+<li>GEISA Spectroscopic Database, France</li>
+<li>Pacific Northwest National Labs Spectral Database, USA</li>
+<li>Ames Research Center Infrared Spectral Database of PAH, USA</li>
+<li>MPI-Mainz-UV-VIS Spectral Atlas of Gaseous Molecules, Germany</li>
+<li>surface types: US Geological Society Digital Spectral Laboratory, USA</li>
+<li>NIST Chemistry WebBook, USA</li>
+<li>AIST Integrated Spectral Data Base System for Organic Compounds, Japan</li>
+<li>Bremen, Institute of Environmental Physics, Germany</li>
+<li>LISA database (SCOOP), France</li>
+<li>Institute of Atmospheric Optics (CO2 O3), Tomsk, Russia</li>
+<li>Instituto Superior Tecnico SPATRAN, Gas and Plasma Radiation Database, Italy</li>
+</ul>
+<p>HITRAN数据库是我们最常用的分子光谱谱线的数据库。NASA JPL 数据库中有很多星际分子的谱线，另外JPL数据库用的 SPCAT/SPFIT 软件也是功能非常强大。未来我们会尝试用 SPCAT 模拟高温反应流体的分子光谱。Tomsk 有很好的CO2的光谱数据库。</p>
     </div>
-  <a href="/xliu-group/zh/post/hitran/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  <a href="/xliu-group/zh/post/xliu_hitran/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
   </div>
 
         </div>
@@ -228,7 +207,7 @@ script.async = true;
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/absorption/" class="link black dim">
+      <a href="/xliu-group/zh/post/xliu_absorption/" class="link black dim">
         吸收光谱简介
       </a>
     </h1>
@@ -259,7 +238,97 @@ B  &= \frac{2 \pi^2}{3\epsilon_0h^2} |\vec{p}|^2
 $$<p>其中，
 $\rho_\nu$ 为普朗克定理中光场辐射强度，单位[ $\mathrm{J \cdot m^{-3} \cdot Hz^{-1}}$]。</p>
     </div>
-  <a href="/xliu-group/zh/post/absorption/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  <a href="/xliu-group/zh/post/xliu_absorption/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        九月 16, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/wangshuo4/" class="link black dim">
+        用Witoszynski曲线设计收缩段
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>今天阅读了Witoszynski提出witoszynski曲线的文章，witoszynski曲线最初的设计是用于优化扩压器设计，目的是减小气体或液体的流速而没有显著能量损失。</p>
+<p>Witoszynski工作的核心成果是描述扩压器内流线径向坐标r的表达式：
+$r = \frac{r_0}{\sqrt{1 - \left(1 - \frac{r_0^2}{r_1^2}\right) \frac{\left(1 - 3\frac{z^2}{a^2}\right)^2}{\left(1 + \frac{z^2}{a^2}\right)^3}}}$</p>
+<p>其中，</p>
+<ul>
+<li><strong>r</strong>：径向坐标</li>
+<li><strong>r₀</strong>：入口半径，</li>
+<li><strong>r₁</strong>：出口半径，</li>
+<li><strong>z</strong>：表示沿流向的轴向坐标，范围是0到$\frac{a}{\sqrt{3}}$</li>
+<li><strong>a</strong>：几何常数参数，
+流线示意图如下：
+<img src="/xliu-group/zh/post/wangshuo4/%E5%9B%BE%E7%89%872.png" alt=""></li>
+</ul>
+<p>根据文章，流线图v对应的为公式中的r，α对应公式中的a。
+流线径向坐标r表达式的推导始于轴对称理想流体在柱坐标下的微分方程：
+$\frac{\partial^2 \psi}{\partial r^2} - \frac{1}{r} \frac{\partial \psi}{\partial r} + \frac{\partial^2 \psi}{\partial z^2} = 0$</p>
+<p>其解为流函数的级数形式：
+$\psi = r^2 f(z) - \frac{r^4}{2 \cdot 4} \frac{d^2 f(z)}{dz^2} + \frac{r^6}{2 \cdot 4 ^2\cdot 6} \frac{d^4 f(z)}{dz^4} + \cdots$</p>
+<p>$f(z)$是一个光滑的函数，满足$f_{\infty}=1$.</p>
+<p>则假设一个符合条件的$f(z)$函数，将其带入流函数得
+<img src="/xliu-group/zh/post/wangshuo4/%E5%9B%BE%E7%89%875.png" alt=""></p>
+<p>A由边界条件而定
+<img src="/xliu-group/zh/post/wangshuo4/%E5%9B%BE%E7%89%876.png" alt="">
+把A带入
+得出r的表达式</p>
+$$
+R = \frac{R_0}{\sqrt{1 - \left[1 - \left( \frac{R_0}{R_1} \right)^2 \right] \frac{\left( 1 - \frac{z^2}{z_0^2} \right)^2}{\left( 1 + \frac{z^2}{3z_0^2} \right)^3}}}
+$$<p>
+与原式子的不同点在于，公式轴向坐标z的范围简化，变成0到$z_0$，于是公式随之变化，但其实两式是相同的。
+那么如何用wito曲线设计收缩段呢</p>
+    </div>
+  <a href="/xliu-group/zh/post/wangshuo4/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        八月 21, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/wangshuo3/" class="link black dim">
+         解决流量计跳数问题总结和感悟
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>在进行第二次轴向分级燃烧第一级点火燃烧实验时，主流空气更换了两个大量程流量计2000slpm，在实验过程中，返回数据出现了位数错乱现象，如下图。
+<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%871.png" alt="">
+<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%872.png" alt="">
+流量的读取是通过截取固定位置及位数的返回码而后经过换算实现的，因此流量显示出现了频繁的掉数。刚开始考虑可能是硬件问题，例如信号线接线不牢固，拓展坞插口异常，usb转485设备传输不稳定，流量计信号线之间存在电磁干扰等问题。于是急忙重新接了一次线，更换了另一个拓展坞，发现问题依然存在，但是好在，在实验中发现了，只有流量计流量在二百多到三百的时候才会出现掉数，大流量则不会出现这种情况，这起码证明掉数的原因并非是设备密集而导致的干扰问题，也非接线的问题。至此，除usb转485接口外，其他硬件因素基本已经排查完毕。</p>
+<p>当时因为只有两个大量程流量计出现了跳数，考虑可能是用大流量计测较小流量会出现错误，询问流量计客服后，用串口助手测试，发现收发功能码都是正常的，但是用labview则会出现返回码不完整和冗余的现象，考虑可能是labview的编写问题。后来，购买的高质量usb转485设备到了，迫不及待的换上试了一下，确实质量好，也确实好用了很多，但是问题并没有解决，于是便开始一心解决软件及程序问题。</p>
+<p>经过多途径的大量搜索，怀疑可能是大量程流量计在收发小流量时，写入速度大于读取速度，累计数据量增大导致缓冲区溢出，进而导致跳数。于是基于这一猜想，想出了几种解决方案：</p>
+<ol>
+<li>在读取前，增加一个清除读取缓冲区，保证每次的读数不会被前面影响</li>
+<li>在写入和读取之间增加一个延时，避免读取过快过慢导致的错位</li>
+<li>使用条件结构，在只有返回数为7时，才进行数据的读取和写入</li>
+<li>使用条件结构，判断起始位是否是01，如果是，再进行读数和存储</li>
+</ol>
+<p>实践后发现无论哪种方法，都无法避免其在特定的流量范围内出现返回码不完整的问题，总是会频繁的出现0103020A这个不完整的返回码。还有一个比较麻烦的方法就是在visa读取后，增加一个队列，数据存入队列，长度等于7则处理，不足7则继续等待，这个学习了一会，还没学会，后续可以再学习一下。</p>
+<p>在验证这些方案是否可行的过程中，突然发现，每次返回数的位数出现偏差，都是以0A为结尾，于是搜索了一下发现，<strong>labview的默认终止符是0A</strong>！在前面的blog中提到，读取流量的位数是第4，5位，如图。
+<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%873.png" alt="">
+<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%874.png" alt=""></p>
+<p>在十六进制中，0A的取值范围为0A00-0AFF，对应十进制的值为2560-2815，再除以流量计的放大倍数为256-281.5，即在这个流量范围内都会因触发终止符而中断，导致后续的错位，致使无法正常显示流量。解决办法即是在visa配置串口将启用终止符创建常量，并将其关闭，如图。
+<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%875.png" alt="">
+<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%876.png" alt=""></p>
+<p>完成修改后，再次测试程序，返回码中断，错位问题得到解决，如图。
+<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%877.png" alt=""></p>
+<p>经过此次经历让我发现，labview的学习任重而道远。一步就能解决的问题，竟然走了这么多弯路。</p>
+    </div>
+  <a href="/xliu-group/zh/post/wangshuo3/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
   </div>
 
         </div>
@@ -272,7 +341,7 @@ $\rho_\nu$ 为普朗克定理中光场辐射强度，单位[ $\mathrm{J \cdot m^
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/wq/" class="link black dim">
+      <a href="/xliu-group/zh/post/wangshuo2/" class="link black dim">
         文献阅读
       </a>
     </h1>
@@ -280,11 +349,11 @@ $\rho_\nu$ 为普朗克定理中光场辐射强度，单位[ $\mathrm{J \cdot m^
       <p>Blow-out limits of nonpremixed turbulent jet flames in a cross flow at atmospheric and sub-atmospheric pressures</p>
 <p>文章重点研究了非预混湍流射流火焰的吹熄极限。</p>
 <p>实验采用的设备如图：
-<img src="/xliu-group/zh/post/wq/%E5%9B%BE%E7%89%871.png" alt="">
+<img src="/xliu-group/zh/post/wangshuo2/%E5%9B%BE%E7%89%871.png" alt="">
 风洞的横截面高度1.5m，宽度1.2m，长度10m，高压机械风扇产生横向气流，蜂窝结构用以稳定气流，另一端是开放式，燃料喷嘴的内径范围 3 - 8mm，壁厚 1.5mm，喷嘴放在风洞出口0.5m 处，距离底部 0.3m，燃料是丙烷，流量由气体流量计调节。燃料温度与环境温度相同。</p>
 <p>在合肥和拉萨分别进行了实验，火焰用 CCD 相机记录。将实验结果进行了比较，以评估压力对横流火焰吹熄极限的影响，所有实验重复了三次。</p>
 <p>实验结果如下：
-<img src="/xliu-group/zh/post/wq/%E5%9B%BE%E7%89%872.png" alt="">
+<img src="/xliu-group/zh/post/wangshuo2/%E5%9B%BE%E7%89%872.png" alt="">
 a,b 图分别为合肥和拉萨实验火焰形状变化图
 (a) 图工况：射流速度39.3m/s，喷管内径3mm，环境压力 100KPa
 保持喷嘴形状和射流速度不变，随横流速度的增加，火焰有三种状态，
@@ -299,12 +368,12 @@ a,b 图分别为合肥和拉萨实验火焰形状变化图
 由于迎风侧与背风侧的混合程度不同，导致火焰抬升高度不同。
 （由射流与横流的相互作用，横流中射流火焰的流场比静止空气中自由射流火焰更复杂。迎风侧的火焰边缘由于横流，会遭受更高的应变效应，横向正应变相较于背风测更大。）</p>
 <p>整理实验数据绘制了横流速度与燃料射流速度的吹熄极限图
-<img src="/xliu-group/zh/post/wq/%E5%9B%BE%E7%89%873.png" alt="">
+<img src="/xliu-group/zh/post/wangshuo2/%E5%9B%BE%E7%89%873.png" alt="">
 由图可知
 100KPa，吹灭极限处的气流速度随燃料喷射速度增大而增大（位于吹熄曲线的横流主导区域）
 64KPa，吹灭极限处的气流速度随燃料喷射速度增大而增大，然后又减少。呈非单调行为，与 kalghatgi 观察的一样</p>
 <p>将速度与喷嘴直径的比值与 kalghatgi 的数据（100KPa）作比较，如下图：
-<img src="/xliu-group/zh/post/wq/%E5%9B%BE%E7%89%874.png" alt="">
+<img src="/xliu-group/zh/post/wangshuo2/%E5%9B%BE%E7%89%874.png" alt="">
 结果显示，在标准大气压下两者数据相吻合。
 由此图可知，在标准大气压和亚大气压两种情况下，数据都显示出非线性行为。
 有两个区域:
@@ -316,39 +385,7 @@ C 点，吹熄完全由燃料射流本身产生的应变效应引起的。
 吹熄极限曲线包围的是火焰存在区域。
 环境压力降低到 64kpa，吹熄极限曲线明显缩小，这说明随着环境压力的降低，火焰对于燃料射流速度和横流速度的吹熄更敏感，更容易熄灭。吹熄时（横流速度 / 喷管内径）局部最大值约为 400s⁻¹ 约是标准大气压的三分之一，射流速度 / 直径的值也有所下降。</p>
     </div>
-  <a href="/xliu-group/zh/post/wq/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        七月 22, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/why-choose-this-line-pair/" class="link black dim">
-        why choose this line pair
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="1-高信噪比snr测量所需的足够吸收">1. 高信噪比（SNR）测量所需的足够吸收</h2>
-<p>我们假设最小可检测吸光度为 $10^{-4}$，期望信噪比为 10，这要求峰值吸收大于 $10^{-3}$。此外，为满足波长调制测量中(6)式的&quot;弱跃迁&quot;假设，峰值吸收最好小于约 0.05。</p>
-<p>对于我们的实验室实验，光程长度为 70cm，水蒸气摩尔分数在 0.05-0.2 之间（典型的碳氢化合物燃烧产物，压力为 1atm），对线强度和线形状函数乘积的约束为：</p>
-$$ 0.05\ cm^{-1}atm^{-1} \geq S_i(T)\phi_{\nu,peak} \geq 0.004\ cm^{-1}atm^{-1} $$<h2 id="2-尽量减少环境ho的干扰">2. 尽量减少环境H₂O的干扰</h2>
-<p><img src="/xliu-group/zh/post/why-choose-this-line-pair/image1.png" alt="不同较低状态能量下H₂O线在室温下的线强度与温度的关系"></p>
-<p>燃烧应用的感兴趣范围是 1000-2500K，如果我们要求目标范围内的线强度至少是其室温强度的 3 倍，则对最低低态能量的约束变为：</p>
-$$ E \geq 1700\ cm^{-1} $$<h2 id="3-两条吸收线的波长必须位于单次激光扫描范围内">3. 两条吸收线的波长必须位于单次激光扫描范围内</h2>
-<p>我们要求两个跃迁的光谱分离在 0.3-1 cm⁻¹ 之间，以形成合适的线对。将谱线分离限制在 1 cm⁻¹ 或更小，可在扫描范围内提供足够的激光强度以获得良好的信噪比。0.3 cm⁻¹ 的下限避免了大气压下两个吸收特征重叠引起的干扰，否则会使数据分析更复杂。</p>
-<h2 id="4-线对必须具有足够不同的低态能量但两条谱线的线强也要相近">4. 线对必须具有足够不同的低态能量，但两条谱线的线强也要相近</h2>
-<p>希望线对具有较大的低态能量差异，以提供高温度灵敏度[11]。如果一条跃迁强得多，强跃迁的翼部会对弱跃迁的测量产生显著影响。对线选择提出了 700 cm⁻¹ 的最小低态能量差异约束：</p>
-$$ |\Delta E_i''| = |E_1'' - E_2''| \geq 700\ cm^{-1} $$<p>共有 33 对线对满足标准 3.1-3.4，这些候选线对在 1000-2500 K 温度范围内具有良好的温度灵敏度。</p>
-<h2 id="5-两条谱线必须与附近跃迁隔离">5. 两条谱线必须与附近跃迁隔离</h2>
-<p>总共有 21 对有前景的线对因受相邻吸收特征的干扰而被拒绝。其余 12 对线对被认为是使用上述选择标准在燃烧环境（1000-2500 K）中进行温度测量的最有前景的水蒸气特征。</p>
-    </div>
-  <a href="/xliu-group/zh/post/why-choose-this-line-pair/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  <a href="/xliu-group/zh/post/wangshuo2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
   </div>
 
         </div>
@@ -361,7 +398,7 @@ $$ |\Delta E_i''| = |E_1'' - E_2''| \geq 700\ cm^{-1} $$<p>共有 33 对线对�
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/laser_car/" class="link black dim">
+      <a href="/xliu-group/zh/post/xliu_laser_car/" class="link black dim">
         激光车
       </a>
     </h1>
@@ -372,14 +409,14 @@ $$ |\Delta E_i''| = |E_1'' - E_2''| \geq 700\ cm^{-1} $$<p>共有 33 对线对�
 <p>我的看法是应当发展这种先进的测试设备，用于现有的实验台。
 于是我们研发了激光器，并把激光器需要的洁净室功能集成到一个自走的底盘上做成了一个激光车，可以很方便地用集装箱运输。到了实验场地插上一个电缆就可以工作。非常方便。
 激光就像是灯泡一样。可以把实验台照亮。</p>
-<p><img src="/xliu-group/zh/post/laser_car/1.jpg" alt="1">
-<img src="/xliu-group/zh/post/laser_car/2.jpg" alt="2"></p>
+<p><img src="/xliu-group/zh/post/xliu_laser_car/1.jpg" alt="1">
+<img src="/xliu-group/zh/post/xliu_laser_car/2.jpg" alt="2"></p>
 <p>而不能反过来，不能因为灯泡去盖一个房子。
 但这样往往比较容易申请到“大项目”，可以下一步争取到“大帽子”，名利双收。
 这种科研上的盲目扩张和恒大爆雷没有本质区别。
 趋之若鹜，其实是浪费资源，也浪费了自己宝贵的科研时间。</p>
     </div>
-  <a href="/xliu-group/zh/post/laser_car/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  <a href="/xliu-group/zh/post/xliu_laser_car/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
   </div>
 
         </div>
@@ -392,7 +429,7 @@ $$ |\Delta E_i''| = |E_1'' - E_2''| \geq 700\ cm^{-1} $$<p>共有 33 对线对�
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/dikong/" class="link black dim">
+      <a href="/xliu-group/zh/post/xliu_dikong/" class="link black dim">
         低空经济会议
       </a>
     </h1>
@@ -400,14 +437,14 @@ $$ |\Delta E_i''| = |E_1'' - E_2''| \geq 700\ cm^{-1} $$<p>共有 33 对线对�
       <p>2025年6月28日我们学院组织了一个低空经济为主题的会。并且有一个低空经济现代产业学院的揭牌仪式。欢迎大家来参会！感谢来做报告的专家！</p>
 <p><a href="https://cmee.sdust.edu.cn/info/1002/6607.htm">2025低空技术与装备研讨会在青岛召开</a></p>
 <p><a href="https://cmee.sdust.edu.cn/info/1002/6608.htm">机电学院举办低空技术与装备专业建设论坛</a></p>
-<p><img src="/xliu-group/zh/post/dikong/1.png" alt="1">
-<img src="/xliu-group/zh/post/dikong/2.png" alt="1">
-<img src="/xliu-group/zh/post/dikong/B1.png" alt="1">
-<img src="/xliu-group/zh/post/dikong/B2.png" alt="1">
-<img src="/xliu-group/zh/post/dikong/B4.png" alt="1">
-<img src="/xliu-group/zh/post/dikong/B5.png" alt="1">
-<img src="/xliu-group/zh/post/dikong/B6.png" alt="1">
-<img src="/xliu-group/zh/post/dikong/B7.png" alt="1"></p>
+<p><img src="/xliu-group/zh/post/xliu_dikong/1.png" alt="1">
+<img src="/xliu-group/zh/post/xliu_dikong/2.png" alt="1">
+<img src="/xliu-group/zh/post/xliu_dikong/B1.png" alt="1">
+<img src="/xliu-group/zh/post/xliu_dikong/B2.png" alt="1">
+<img src="/xliu-group/zh/post/xliu_dikong/B4.png" alt="1">
+<img src="/xliu-group/zh/post/xliu_dikong/B5.png" alt="1">
+<img src="/xliu-group/zh/post/xliu_dikong/B6.png" alt="1">
+<img src="/xliu-group/zh/post/xliu_dikong/B7.png" alt="1"></p>
 <hr>
 <p>未来我们也会做一些无人机方面的工作。最近要做的就是有一个风墙吹风的无人机飞行测试笼子。
 侧面采用很多个风扇吹风产生风速和分布可变可控的强风环境，模拟无人机在强风环境下飞行控制实验。</p>
@@ -423,7 +460,7 @@ $$ |\Delta E_i''| = |E_1'' - E_2''| \geq 700\ cm^{-1} $$<p>共有 33 对线对�
 </li>
 </ol>
     </div>
-  <a href="/xliu-group/zh/post/dikong/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  <a href="/xliu-group/zh/post/xliu_dikong/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
   </div>
 
         </div>
@@ -436,7 +473,7 @@ $$ |\Delta E_i''| = |E_1'' - E_2''| \geq 700\ cm^{-1} $$<p>共有 33 对线对�
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/crossflow/" class="link black dim">
+      <a href="/xliu-group/zh/post/xliu_crossflow/" class="link black dim">
         横向射流轨迹的拟合
       </a>
     </h1>
@@ -448,7 +485,7 @@ $$
  \left(\frac{y}{rd}\right) = A \left(\frac{x}{rd}\right)^{B}
 $$<p>典型的轨迹方程中，$B\approx \frac{1}{3}$。</p>
 <p>以我们实验测量的横向射流的轨迹为例。</p>
-<figure><img src="/xliu-group/zh/post/crossflow/1.png"><figcaption>
+<figure><img src="/xliu-group/zh/post/xliu_crossflow/1.png"><figcaption>
       <h4>图1 实验原始图片、拟合轨迹、和以轨迹为坐标转化后的图像</h4>
     </figcaption>
 </figure>
@@ -459,7 +496,7 @@ $$<p>典型的轨迹方程中，$B\approx \frac{1}{3}$。</p>
 <li>在每个高度，也就是$y$坐标上，找到浓度或速度的最大值对应的$x$值。这里找到的最大点坐标还比较粗糙，最好再和相邻的几个点通过抛物线拟合的方法，得到更精确的坐标。
 如图2 ，得到的最大点基本描绘出了轨迹，但还需要修剪一下数据。</li>
 </ol>
-<figure><img src="/xliu-group/zh/post/crossflow/2.png"><figcaption>
+<figure><img src="/xliu-group/zh/post/xliu_crossflow/2.png"><figcaption>
       <h4>图2 找最大点</h4>
     </figcaption>
 </figure>
@@ -468,7 +505,7 @@ $$<p>典型的轨迹方程中，$B\approx \frac{1}{3}$。</p>
 <li>去掉头尾部分。去掉轨迹后面几个点比较好理解，因为到轨迹最后信噪比很低了；去除开头几个点是为什么呢？
 以实验测量的双喷嘴横向射流为例子，图3中给出了初步找到的中心线和修正后的中心线。</li>
 </ol>
-<figure><img src="/xliu-group/zh/post/crossflow/3.png"><figcaption>
+<figure><img src="/xliu-group/zh/post/xliu_crossflow/3.png"><figcaption>
       <h4>图3 修正后的中心线</h4>
     </figcaption>
 </figure>
@@ -479,7 +516,7 @@ $$<p>典型的轨迹方程中，$B\approx \frac{1}{3}$。</p>
 不一定拟合长度越长越好，需要确定恰当的范围。
 我们将这两个变量都在一定范围内变化，看得到的结果情况。</li>
 </ol>
-<figure><img src="/xliu-group/zh/post/crossflow/4.png"><figcaption>
+<figure><img src="/xliu-group/zh/post/xliu_crossflow/4.png"><figcaption>
        <h4>图4 变量拟合</h4>
      </figcaption>
  </figure>
@@ -501,7 +538,7 @@ $$<h1 id="参考文献">参考文献</h1>
 <li>SU L K, MUNGAL M G. Simultaneous measurements of scalar and velocity field evolution in turbulent crossflowing jets[J]. Journal of Fluid Mechanics, 2004, 513: 1-45.</li>
 </ol>
     </div>
-  <a href="/xliu-group/zh/post/crossflow/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  <a href="/xliu-group/zh/post/xliu_crossflow/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
   </div>
 
         </div>
@@ -514,7 +551,7 @@ $$<h1 id="参考文献">参考文献</h1>
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/dianyuan/" class="link black dim">
+      <a href="/xliu-group/zh/post/wangchen1/" class="link black dim">
         利用HDM3065 Hantek 6位半万用表对5V电源输出电压结果的测试
       </a>
     </h1>
@@ -523,7 +560,7 @@ $$<h1 id="参考文献">参考文献</h1>
 <h2 id="测试方法">测试方法</h2>
 <p>首先，介绍一下测试方法。我使用万用表作为测量工具，将电源输出电压从 0V 开始，以 0.1V 为步长逐步调节，直至达到 5V。我这里用到的是 Hantek 的 HDM3065 系列的万用表来测量小电源的输出电压，我们将万用表连接到测电压端，红黑表笔分别接到小电源的正负极，用来测量小电源的输出电压。连接到其他的地方以后也可以测试电流、电阻等。我们将红色线接到电源正极，黑色线连接到电源负极。</p>
 <p>该万用表有专用的 IO 控制软件，将万用表连接到电脑以后，我们可以通过电脑的 IO 软件发送指令，万用表便会执行相应的操作。为了保证数据的可靠性，针对小电源的每个电压值，我都进行了五十次测量，并将测量的数据都记录下来。</p>
-<figure><img src="/xliu-group/zh/post/dianyuan/image1.png"><figcaption>
+<figure><img src="/xliu-group/zh/post/wangchen1/image1.png"><figcaption>
       <h4>测量连接示意图</h4>
     </figcaption>
 </figure>
@@ -533,39 +570,39 @@ $$<h1 id="参考文献">参考文献</h1>
 <p>通过计算方差来评估电源输出电压的稳定性。方差是用来衡量一组数据离散程度的统计量，方差越小，说明数据越集中，电源输出电压越稳定。分别计算每个设定电压点下十个测量数值的方差，发现大部分电压点的方差都较小，说明该电源在不同输出电压下的稳定性表现良好。</p>
 <h2 id="测试结果">测试结果</h2>
 <p>测试结果如下图所示：</p>
-<p><figure><img src="/xliu-group/zh/post/dianyuan/image2.png"><figcaption>
+<p><figure><img src="/xliu-group/zh/post/wangchen1/image2.png"><figcaption>
       <h4>最小二乘法拟合图</h4>
     </figcaption>
 </figure>
 
-<figure><img src="/xliu-group/zh/post/dianyuan/image3.png"><figcaption>
+<figure><img src="/xliu-group/zh/post/wangchen1/image3.png"><figcaption>
       <h4>拟合值相对于拟合直线理论值残差图</h4>
     </figcaption>
 </figure>
 
-<figure><img src="/xliu-group/zh/post/dianyuan/image4.png"><figcaption>
+<figure><img src="/xliu-group/zh/post/wangchen1/image4.png"><figcaption>
       <h4>拟合值相对于设定值的残差图</h4>
     </figcaption>
 </figure>
 </p>
 <p>我们可以看到该小电源的线性效果还是很好的，方差也很小，说明电压输出比较稳定。从残差图中我们可以看出，残差图上的点代表对应设定电压下，输出电压实际值与拟合模型预测值的差值，可以看出这些点的值都比较小，残差绝对值大多在 0.006V 以内，数值很小，表明实际值和拟合预测值偏差不大，模型对该电源电压数据的拟合精度较高。这张残差图显示模型拟合效果不错，误差随机且整体很小，能较好描述设定电压和输出电压的关系。并且我们可以在图中看出，拟合值相对于设定值的插值都在-0.01内，数据很小，也没有某些值与设定值差距较大，说明该小电源的输出效果还是很不错的。</p>
 <p>另外，我还对每个电压值下测量的电压输出值查看其分布规律，根据测试结果生成的数据大致都有如下图的趋势。这里由于数据过多，我就不列出来了，拿出几个图来看一下分布规律即可：</p>
-<p><figure><img src="/xliu-group/zh/post/dianyuan/image5.png"><figcaption>
+<p><figure><img src="/xliu-group/zh/post/wangchen1/image5.png"><figcaption>
       <h4>0.9V电压分布</h4>
     </figcaption>
 </figure>
 
-<figure><img src="/xliu-group/zh/post/dianyuan/image6.png"><figcaption>
+<figure><img src="/xliu-group/zh/post/wangchen1/image6.png"><figcaption>
       <h4>1.1V电压分布</h4>
     </figcaption>
 </figure>
 </p>
-<p><figure><img src="/xliu-group/zh/post/dianyuan/image7.png"><figcaption>
+<p><figure><img src="/xliu-group/zh/post/wangchen1/image7.png"><figcaption>
       <h4>2.9V电压分布</h4>
     </figcaption>
 </figure>
 
-<figure><img src="/xliu-group/zh/post/dianyuan/image8.png"><figcaption>
+<figure><img src="/xliu-group/zh/post/wangchen1/image8.png"><figcaption>
       <h4>4.3V电压分布</h4>
     </figcaption>
 </figure>
@@ -574,7 +611,7 @@ $$<h1 id="参考文献">参考文献</h1>
 <h2 id="结论">结论</h2>
 <p>通过最小二乘法得到了输出电压的估算值，我们大致了解到了该小电源输出电压的大致水平；结合方差的计算结果，我们对其稳定性也有了清晰的认知。从本次测量结果来看，该小电源的输出电压效果整体表现良好，在每个电压值下都能提供接近于小电源显示电压值的输出电压；但会存在一定的波动，所以在对于电压稳定性较高要求的条件下不适用。在今后的电子项目的实验中，掌握这种评估电源输出电压效果的方法，有助于我们更好地选择合适的电源，保证项目的顺利进行。</p>
     </div>
-  <a href="/xliu-group/zh/post/dianyuan/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  <a href="/xliu-group/zh/post/wangchen1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
   </div>
 
         </div>
@@ -587,7 +624,7 @@ $$<h1 id="参考文献">参考文献</h1>
       </div>
     
     <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/nozzle2/" class="link black dim">
+      <a href="/xliu-group/zh/post/gaoyinbin2/" class="link black dim">
         腔体流量测定实验失败复盘
       </a>
     </h1>
@@ -601,7 +638,7 @@ $$<h1 id="参考文献">参考文献</h1>
 <li>混合气体测试：CO₂浓度 10%和 50%工况下，压力稳定在 0.641MPa，但温度数据剧烈波动，由 26.1 摄氏度到 24.9 摄氏度不等，现猜测可能是底部剧烈漏气导致腔内温度变化；</li>
 <li>最终结论：因数据离散度过高，判定实验存在异常。</li>
 </ul>
-<figure><img src="/xliu-group/zh/post/nozzle2/Picture4.png"><figcaption>
+<figure><img src="/xliu-group/zh/post/gaoyinbin2/Picture4.png"><figcaption>
       <h4>第一组实验数据记录！</h4>
     </figcaption>
 </figure>
@@ -613,7 +650,7 @@ $$<h1 id="参考文献">参考文献</h1>
 <li>10% CO₂混合：空气/CO₂流量比理论 9:1，实测达 11.6:1，压力波动超±0.02MPa；</li>
 <li>70% CO₂混合：温度压力仅记录平均值，数据失去代表性。</li>
 </ul>
-<figure><img src="/xliu-group/zh/post/nozzle2/Picture5.png"><figcaption>
+<figure><img src="/xliu-group/zh/post/gaoyinbin2/Picture5.png"><figcaption>
       <h4>第二组实验数据记录！</h4>
     </figcaption>
 </figure>
@@ -631,118 +668,7 @@ $$<h1 id="参考文献">参考文献</h1>
 <h2 id="四经验总结">四、经验总结</h2>
 <p>这次失败深刻揭示**“隐蔽位置 = 安全盲区”的认知误区**。实验设计中，不能仅关注直观可见部件，更要对设备结构做系统性检查，避免同类问题再发生。科研路上，每个失败数据都是珍贵的“排雷记录”，正是这些教训推动实验设计不断迭代升级。</p>
     </div>
-  <a href="/xliu-group/zh/post/nozzle2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        六月 22, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/guanglu/" class="link black dim">
-        使用镜片搭建光路发出片光拍摄粒子
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="设备准备">设备准备</h2>
-<p>实验所需的镜片如下所示：</p>
-<table>
-  <thead>
-      <tr>
-          <th>型号</th>
-          <th>名称</th>
-          <th>型号</th>
-          <th>名称</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>D25.4×3mm(中心厚)  F=-25mm</td>
-          <td>石英平凹柱面镜</td>
-          <td>D25.4mm F30mm</td>
-          <td>石英平凸透镜</td>
-      </tr>
-      <tr>
-          <td>50(母线方向)×100×2mm F500mm</td>
-          <td>石英平凸柱面镜</td>
-          <td>D25.4mm F35mm</td>
-          <td>石英平凸透镜</td>
-      </tr>
-      <tr>
-          <td>100(母线方向)×50×2mm F1000mm</td>
-          <td>石英平凸柱面镜</td>
-          <td>D25.4mm F40mm</td>
-          <td>石英平凸透镜</td>
-      </tr>
-  </tbody>
-</table>
-<p>由于定制的平凸柱面镜尺寸较大，需定制镜架，其示意图如下图所示：</p>
-<p><figure><img src="/xliu-group/zh/post/guanglu/image1.png"><figcaption>
-      <h4>镜架示意图1</h4>
-    </figcaption>
-</figure>
-
-<figure><img src="/xliu-group/zh/post/guanglu/image2.png"><figcaption>
-      <h4>镜架示意图2</h4>
-    </figcaption>
-</figure>
-</p>
-<p>对其进行组装后，实物图如下图所示：</p>
-<figure><img src="/xliu-group/zh/post/guanglu/image3.png"><figcaption>
-      <h4>组装实物图</h4>
-    </figcaption>
-</figure>
-
-<p>小的笼板与大的镜架之间需要用一个转接板来连接，转接板的尺寸与形状如下图所示：</p>
-<figure><img src="/xliu-group/zh/post/guanglu/image4.png"><figcaption>
-      <h4>转接板示意图</h4>
-    </figcaption>
-</figure>
-
-<h2 id="实验原理">实验原理</h2>
-<figure><img src="/xliu-group/zh/post/guanglu/image5.png"><figcaption>
-      <h4>光路结构图</h4>
-    </figcaption>
-</figure>
-
-<p>如图所示即为光路的结构：</p>
-<p>图中1为紫外LED光源，利用该光源发出扩散状的紫外光。
-图中2和3分别为焦距为40mm和焦距为35mm的平凸透镜，且都为平面朝向光源，利用两个平凸透镜聚焦原扩散的光。
-图中4为焦距30mm的平凸透镜，并且放置的方式为平面背向光源，利用该透镜将原本聚焦的光线进行发散，使其发出的光束为一接近平行的光束。
-图中5为转接板，用于连接小的笼板与大的镜架。
-图中6为平凹柱面镜，将平行光束向两个方向发散，形成一束椭圆形的光束。
-图中7和8均为平凸柱面镜，平凸柱面镜在母线方向具有曲率，因此可以在母线方向将平行光束聚焦成为一条线，因此7、8两平凸柱面镜分别在两个母线方向上将光束聚焦，形成一束片光。</p>
-<p>在8的后面接近比色皿的地方放置一个光学狭缝，来控制通过的光，形成片光。</p>
-<p>最终形成的片光大约为一束长度大约10cm，宽度大约2mm的片光。</p>
-<h2 id="实验过程">实验过程</h2>
-<p>由于光路搭建的前期，定制的镜架还没有制作好，因此先利用平行光束对比色皿里的粒子进行照射，并利用相机对其进行拍摄，但由于前期光束会将整个比色皿都照亮，而且前期对于BAM蓝粉量的把控没有做好，因此导致第一次拍摄的效果不尽人意，第一次拍摄的效果如图下图所示：</p>
-<figure><img src="/xliu-group/zh/post/guanglu/image6.png"><figcaption>
-      <h4>第一次拍摄效果</h4>
-    </figcaption>
-</figure>
-
-<p>可以看到蓝色荧光粒子过于繁杂，整个被紫外光照亮的区域都会被拍到，因此效果并不理想。</p>
-<p>待定制镜架到了以后，将其搭建成如原理图所示的光路，使其形成片光，用片光照射比色皿，只让片光区域的粒子发亮，并且减少BAM蓝粉的用量，拍摄的结果如下图所示：</p>
-<p><figure><img src="/xliu-group/zh/post/guanglu/image7.bmp"><figcaption>
-      <h4>第二次拍摄效果1</h4>
-    </figcaption>
-</figure>
-
-<figure><img src="/xliu-group/zh/post/guanglu/image8.bmp"><figcaption>
-      <h4>第二次拍摄效果2</h4>
-    </figcaption>
-</figure>
-</p>
-<p>可以看得出来，粒子数量明显减少，不像第一次拍摄时那么混乱，不过此次相机调试没有进行好，导致图像偏暗，后续还需对相机继续进行调试。</p>
-<p>该光路并不完善，由于其间隔的距离较长，利用6mm光杆固定不稳定，需要在利用丝杆来固定。另外想要避免其他光源的干涉，并为了保证镜片的干净，需要在光路的外围添加一层铝发黑的铝板，用来隔绝其他光源，并可以使镜片在其他环境下依旧保持干净。</p>
-<p>实验还需继续完善，经过此次实验，可以为后续的液体及气体实验奠定基础，为以后的经验积累经验，熟悉后续实验的操作流程，剩下的实验我会继续记录，到以后会继续和大家分享。</p>
-    </div>
-  <a href="/xliu-group/zh/post/guanglu/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  <a href="/xliu-group/zh/post/gaoyinbin2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
   </div>
 
         </div>
