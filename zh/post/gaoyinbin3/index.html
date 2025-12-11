@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>利用JANAF表估算氢氧火焰温度 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="最近在着手准备有关JANAF表使用的相关论文，发现了一个有趣的问题，氢氧焰的燃烧温度应该怎么计算？这似乎并不难回答，按照热力学第一定律，反应前后的总焓保证不变即可，似乎很容易写出下面的热平衡：
+$$\Delta_f H(H_2) &#43; \frac{1}{2}\Delta_f H(O_2) = \Delta_f H(H_2O) &#43; \Delta H(H_2O)$$因为方程左边均为单质，这样看来水生成焓在数值上应该等于负的反应焓，查询JANAF表可以得知$\Delta_f H(H_2O)$等于-241.826kJ·mol⁻¹，我们可以查询多少温度下的焓变等于这个值的负值，结果是5200K，看起来这个问题就这么解决了，
+但很明显这个答案与现实不符，一当量比的氢氧焰不可能有这么高的温度，在与老师讨论后发现了问题所在，
+
+xliu: 这个道理没有解答本质问题。算一下，这个组分下，全部转化为H2O，是否 Gibbs 自由能达到了最低？【cantera 给组分就能算】焓是否守恒？
+下面文章应该分为三层阐述：
+一、只考虑一个反应，看不同温度下，是否Gibbs 自由能达到了最小？
+HP 限制下，不同温度，根据组分守恒（K 和 组分的一次关系，也就是自由能最小）得到组分，看是否H守恒。
+这就是扫描方法得到自由能最低点温度。
+二、把温度也作为变量，和组分一起变。在HP 限制下，将温度作为变量进行迭代求解。cantera 中 温度也作为变量和元素势一起优化迭代。本文下面也是直接变化温度，手动迭代温度。
+三、然后考虑更多的组分 O OH ，通过组分变换达到自由能最小。在组分的元素守恒条件下，变为一元二次方程。
+考虑温度一般是从 以下两个入手：
+dU = T dS - p dV &#43; \Sigma \mu dN
+dH = T dS &#43; V dp &#43; \Sigma \mu dN
+通过约束 UV,或者 HP, 使得 dN 调整，使得熵最大，得到 T. Cantera 中6种 约束： TP, SP， SV ，TV 分别对应 4种自由能，再加上 HP 和 UV。
+引用Gordon 报告。">
+    <meta name="generator" content="Hugo 0.147.8">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="高寅斌">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/gaoyinbin3/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/gaoyinbin3/">
+  <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+  <meta property="og:title" content="利用JANAF表估算氢氧火焰温度">
+  <meta property="og:description" content="最近在着手准备有关JANAF表使用的相关论文，发现了一个有趣的问题，氢氧焰的燃烧温度应该怎么计算？这似乎并不难回答，按照热力学第一定律，反应前后的总焓保证不变即可，似乎很容易写出下面的热平衡：
+$$\Delta_f H(H_2) &#43; \frac{1}{2}\Delta_f H(O_2) = \Delta_f H(H_2O) &#43; \Delta H(H_2O)$$因为方程左边均为单质，这样看来水生成焓在数值上应该等于负的反应焓，查询JANAF表可以得知$\Delta_f H(H_2O)$等于-241.826kJ·mol⁻¹，我们可以查询多少温度下的焓变等于这个值的负值，结果是5200K，看起来这个问题就这么解决了，
+但很明显这个答案与现实不符，一当量比的氢氧焰不可能有这么高的温度，在与老师讨论后发现了问题所在，
+xliu: 这个道理没有解答本质问题。算一下，这个组分下，全部转化为H2O，是否 Gibbs 自由能达到了最低？【cantera 给组分就能算】焓是否守恒？
+下面文章应该分为三层阐述：
+一、只考虑一个反应，看不同温度下，是否Gibbs 自由能达到了最小？
+HP 限制下，不同温度，根据组分守恒（K 和 组分的一次关系，也就是自由能最小）得到组分，看是否H守恒。 这就是扫描方法得到自由能最低点温度。
+二、把温度也作为变量，和组分一起变。在HP 限制下，将温度作为变量进行迭代求解。cantera 中 温度也作为变量和元素势一起优化迭代。本文下面也是直接变化温度，手动迭代温度。
+三、然后考虑更多的组分 O OH ，通过组分变换达到自由能最小。在组分的元素守恒条件下，变为一元二次方程。
+考虑温度一般是从 以下两个入手： dU = T dS - p dV &#43; \Sigma \mu dN dH = T dS &#43; V dp &#43; \Sigma \mu dN
+通过约束 UV,或者 HP, 使得 dN 调整，使得熵最大，得到 T. Cantera 中6种 约束： TP, SP， SV ，TV 分别对应 4种自由能，再加上 HP 和 UV。 引用Gordon 报告。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-08-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-08-15T00:00:00+00:00">
+
+  <meta itemprop="name" content="利用JANAF表估算氢氧火焰温度">
+  <meta itemprop="description" content="最近在着手准备有关JANAF表使用的相关论文，发现了一个有趣的问题，氢氧焰的燃烧温度应该怎么计算？这似乎并不难回答，按照热力学第一定律，反应前后的总焓保证不变即可，似乎很容易写出下面的热平衡：
+$$\Delta_f H(H_2) &#43; \frac{1}{2}\Delta_f H(O_2) = \Delta_f H(H_2O) &#43; \Delta H(H_2O)$$因为方程左边均为单质，这样看来水生成焓在数值上应该等于负的反应焓，查询JANAF表可以得知$\Delta_f H(H_2O)$等于-241.826kJ·mol⁻¹，我们可以查询多少温度下的焓变等于这个值的负值，结果是5200K，看起来这个问题就这么解决了，
+但很明显这个答案与现实不符，一当量比的氢氧焰不可能有这么高的温度，在与老师讨论后发现了问题所在，
+xliu: 这个道理没有解答本质问题。算一下，这个组分下，全部转化为H2O，是否 Gibbs 自由能达到了最低？【cantera 给组分就能算】焓是否守恒？
+下面文章应该分为三层阐述：
+一、只考虑一个反应，看不同温度下，是否Gibbs 自由能达到了最小？
+HP 限制下，不同温度，根据组分守恒（K 和 组分的一次关系，也就是自由能最小）得到组分，看是否H守恒。 这就是扫描方法得到自由能最低点温度。
+二、把温度也作为变量，和组分一起变。在HP 限制下，将温度作为变量进行迭代求解。cantera 中 温度也作为变量和元素势一起优化迭代。本文下面也是直接变化温度，手动迭代温度。
+三、然后考虑更多的组分 O OH ，通过组分变换达到自由能最小。在组分的元素守恒条件下，变为一元二次方程。
+考虑温度一般是从 以下两个入手： dU = T dS - p dV &#43; \Sigma \mu dN dH = T dS &#43; V dp &#43; \Sigma \mu dN
+通过约束 UV,或者 HP, 使得 dN 调整，使得熵最大，得到 T. Cantera 中6种 约束： TP, SP， SV ，TV 分别对应 4种自由能，再加上 HP 和 UV。 引用Gordon 报告。">
+  <meta itemprop="datePublished" content="2025-08-15T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-08-15T00:00:00+00:00">
+  <meta itemprop="wordCount" content="366">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="利用JANAF表估算氢氧火焰温度">
+  <meta name="twitter:description" content="最近在着手准备有关JANAF表使用的相关论文，发现了一个有趣的问题，氢氧焰的燃烧温度应该怎么计算？这似乎并不难回答，按照热力学第一定律，反应前后的总焓保证不变即可，似乎很容易写出下面的热平衡：
+$$\Delta_f H(H_2) &#43; \frac{1}{2}\Delta_f H(O_2) = \Delta_f H(H_2O) &#43; \Delta H(H_2O)$$因为方程左边均为单质，这样看来水生成焓在数值上应该等于负的反应焓，查询JANAF表可以得知$\Delta_f H(H_2O)$等于-241.826kJ·mol⁻¹，我们可以查询多少温度下的焓变等于这个值的负值，结果是5200K，看起来这个问题就这么解决了，
+但很明显这个答案与现实不符，一当量比的氢氧焰不可能有这么高的温度，在与老师讨论后发现了问题所在，
+xliu: 这个道理没有解答本质问题。算一下，这个组分下，全部转化为H2O，是否 Gibbs 自由能达到了最低？【cantera 给组分就能算】焓是否守恒？
+下面文章应该分为三层阐述：
+一、只考虑一个反应，看不同温度下，是否Gibbs 自由能达到了最小？
+HP 限制下，不同温度，根据组分守恒（K 和 组分的一次关系，也就是自由能最小）得到组分，看是否H守恒。 这就是扫描方法得到自由能最低点温度。
+二、把温度也作为变量，和组分一起变。在HP 限制下，将温度作为变量进行迭代求解。cantera 中 温度也作为变量和元素势一起优化迭代。本文下面也是直接变化温度，手动迭代温度。
+三、然后考虑更多的组分 O OH ，通过组分变换达到自由能最小。在组分的元素守恒条件下，变为一元二次方程。
+考虑温度一般是从 以下两个入手： dU = T dS - p dV &#43; \Sigma \mu dN dH = T dS &#43; V dp &#43; \Sigma \mu dN
+通过约束 UV,或者 HP, 使得 dN 调整，使得熵最大，得到 T. Cantera 中6种 约束： TP, SP， SV ，TV 分别对应 4种自由能，再加上 HP 和 UV。 引用Gordon 报告。">
+
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        刘训臣燃烧诊断实验室主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/our-alumni/" title="Alumni 页">
+              Alumni
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">利用JANAF表估算氢氧火焰温度</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Post
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">利用JANAF表估算氢氧火焰温度</h1>
+      
+      <p class="tracked"><strong>高寅斌</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-08-15T00:00:00Z">八月 15, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>最近在着手准备有关JANAF表使用的相关论文，发现了一个有趣的问题，氢氧焰的燃烧温度应该怎么计算？这似乎并不难回答，按照热力学第一定律，反应前后的总焓保证不变即可，似乎很容易写出下面的热平衡：</p>
+$$\Delta_f H(H_2) + \frac{1}{2}\Delta_f H(O_2) = \Delta_f H(H_2O) + \Delta H(H_2O)$$<p>因为方程左边均为单质，这样看来水生成焓在数值上应该等于负的反应焓，查询JANAF表可以得知$\Delta_f H(H_2O)$等于-241.826kJ·mol⁻¹，我们可以查询多少温度下的焓变等于这个值的负值，结果是5200K，看起来这个问题就这么解决了，</p>
+<p>但很明显这个答案与现实不符，一当量比的氢氧焰不可能有这么高的温度，在与老师讨论后发现了问题所在，</p>
+<hr>
+<p>xliu: 这个道理没有解答本质问题。算一下，这个组分下，全部转化为H2O，是否 Gibbs 自由能达到了最低？【cantera 给组分就能算】焓是否守恒？</p>
+<p>下面文章应该分为三层阐述：</p>
+<p>一、只考虑一个反应，看不同温度下，是否Gibbs 自由能达到了最小？</p>
+<p>HP 限制下，不同温度，根据组分守恒（K 和 组分的一次关系，也就是自由能最小）得到组分，看是否H守恒。
+这就是扫描方法得到自由能最低点温度。</p>
+<p>二、把温度也作为变量，和组分一起变。在HP 限制下，将温度作为变量进行迭代求解。cantera 中 温度也作为变量和元素势一起优化迭代。本文下面也是直接变化温度，手动迭代温度。</p>
+<p>三、然后考虑更多的组分 O OH ，通过组分变换达到自由能最小。在组分的元素守恒条件下，变为一元二次方程。</p>
+<p>考虑温度一般是从 以下两个入手：
+dU = T dS - p dV + \Sigma \mu dN
+dH = T dS + V dp + \Sigma \mu dN</p>
+<p>通过约束 UV,或者 HP, 使得 dN 调整，使得熵最大，得到 T. Cantera 中6种 约束： TP, SP， SV ，TV 分别对应 4种自由能，再加上 HP 和 UV。
+引用Gordon 报告。</p>
+<hr>
+<p>水在高温下的分解没有被考虑，那么考虑分解结果如何呢？</p>
+<p>下面来完整的算一下，所用到的数据均来自JANAF表：</p>
+<p>由于$H_2O$在高温下会发生分解，则分别写出主要的分解方程式</p>
+<p>反应1：</p>
+$$H_2 + \frac{1}{2}O_2 \to a1H_2O + b1H + c1OH$$<p>由元素守恒可得<br>
+</p>
+$$\begin{cases}2 = 2a1 + b1 + c1 \\1 = a1 + c1 \end{cases} \Rightarrow \begin{cases}b1 = 1 - a1 \\c1 = 1 - a1 \end{cases}$$<p>反应1的分解为：</p>
+$$H_2O \to H + OH$$<p>该分解反应平衡常数 </p>
+$$K = \frac{bc}{a} = \frac{(1 - a1)^2}{a1}$$<p>反应2：</p>
+$$H_2 + \frac{1}{2}O_2 \to a2H_2O + b2H_2 + c2O_2$$<p>由元素守恒可得<br>
+</p>
+$$\begin{cases}2 = 2a2 + 2b2 \\1 = a2 + 2c2 \end{cases} \Rightarrow \begin{cases}b2 = 1 - a2 \\c2 = \frac{1 - a2}{2} \end{cases}$$<p>反应2的分解为 </p>
+$$H_2O \to H_2 + \frac{1}{2}O_2$$<p>该分解反应平衡常数 </p>
+$$K = \frac{b2c2^{\frac{1}{2}}}{a2} = \frac{(1 - a2)(\frac{1 - a2}{2})^{\frac{1}{2}}}{a2}$$<p>设产物温度为3100K</p>
+<p>对反应1：查询JANAF表得：$\Delta_f H(H_2O) = -71298$ ，$\Delta_f H(H) = 39877$ ，$\Delta_f H(OH) = -5552$ ，则 $\Delta G_1 = 105623$</p>
+<p>则 </p>
+$$K = e^{-\frac{\Delta G}{RT}} = 0.0166$$<p> ，由 $K = \frac{(1 - a1)^2}{a1}$ 求得 $a1 = 0.879$</p>
+<p>即有0.121 mol的水发生了分解，产物为H和OH</p>
+<p>对反应2：查询JANAF表得 $\Delta_f H(H_2O) = -71298$ ，$\Delta_f H(H_2) = \Delta_f H(O_2) = 0$ ，则 $\Delta G_2 = 71298$</p>
+<p>则 </p>
+$$K = e^{-\frac{\Delta G}{RT}} = 0.0629$$<p> ，求得 $a2 = 0.825$</p>
+<p>即有0.175 mol的水分解，产物为H₂和O₂</p>
+<p>由热力学第1定律，反应前后总焓不变</p>
+<p>写出热平衡</p>
+$$0 = [(1 - 0.121 - 0.175)(\Delta_f H(H_2O) + \Delta H(H_2O))] + [b1(\Delta_f H(H) + \Delta H(H))] + [c1(\Delta_f H(OH) + \Delta H(OH))] + [b2\Delta H(H_2)] + [c2\Delta H(O_2)]$$<p>求得 $0 &gt; -2688.0705$</p>
+<p>设产物温度3200K</p>
+<p>同理，求得对反应1：$\Delta G_1 = 92313$ ，则 </p>
+$$K = e^{-\frac{\Delta G}{RT}} = 0.0311$$<p>由 $K = \frac{(1 - a1)^2}{a1}$ 求得 $a1 = 0.8385$ ，即有0.1615 mol H₂O发生了分解</p>
+<p>对反应2：$\Delta G_2 = 65430$ ，则 $K = 0.0855$</p>
+<p>由 $K = \frac{(1 - a2)(\frac{1 - a2}{2})^{\frac{1}{2}}}{a2}$ 求得 $a2 = 0.79$ ，即有0.21 mol H₂O发生了分解</p>
+<p>写出热平衡</p>
+$$0 = [(1 - 0.1615 - 0.21)(\Delta_f H(H_2O) + \Delta H(H_2O))] + [b1(\Delta_f H(H) + \Delta H(H))] + [c1(\Delta_f H(OH) + \Delta H(OH))] + [b2\Delta H(H_2)] + [c2\Delta H(O_2)]$$<p>求得 $0 &lt; 32831.1045$</p>
+<p>插值得 $T = 3107$ K</p>
+<p>作为验证我查询了deepseek提供的NASA CEA的数据，结果为3093K，仍存在细微的误差，应该来自于其他副反应，但主要的两个分解反应都已经考虑到，作为估算已十分准确，充分证明了JANAF表的可行，希望我的论文顺利见刊。</p>
+<p>xliu cantera 比较。下标。</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

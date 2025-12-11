@@ -3,12 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/post/</loc>
-    <lastmod>2025-11-30T09:36:53+08:00</lastmod>
+    <lastmod>2025-12-11T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-talas-1/</loc>
+    <lastmod>2025-12-11T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/</loc>
-    <lastmod>2025-11-30T09:36:53+08:00</lastmod>
+    <lastmod>2025-12-11T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -21,6 +26,11 @@
                 hreflang="zh"
                 href="https://liuxunchen.github.io/xliu-group/zh/"
                 />
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/</loc>
+    <lastmod>2025-12-09T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/research/</loc>
     <lastmod>2025-11-29T00:00:00+00:00</lastmod>
@@ -89,6 +99,11 @@
   </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/post/xliu_laser_car/</loc>
     <lastmod>2025-06-30T16:14:01+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/research/xliu_diagnostic/</loc>
+    <lastmod>2025-06-30T01:26:06+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -217,7 +232,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/xliu_tdlas/</loc>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/xliu_tdlas_biomass/</loc>
     <lastmod>2024-11-08T21:22:03+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

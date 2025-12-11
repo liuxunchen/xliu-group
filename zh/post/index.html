@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="Post">
   <meta itemprop="description" content="科研笔记和一些想法">
-  <meta itemprop="datePublished" content="2025-11-30T09:36:53+08:00">
-  <meta itemprop="dateModified" content="2025-11-30T09:36:53+08:00">
+  <meta itemprop="datePublished" content="2025-12-11T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-12-11T00:00:00+00:00">
   <meta itemprop="wordCount" content="1">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Post">
@@ -160,6 +160,115 @@ script.async = true;
 
     </section>
     <aside class="flex-ns mt5 flex-wrap justify-around">
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        十二月 11, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/zhanghongmin-talas-1/" class="link black dim">
+        光谱模拟
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>基于本实验室之前发布的对于测量燃烧气体的吸收率以及光谱透射率的界面，我在其基础上做出了相应的更新：
+1.在原本只有CO2,H2O分子的基础上，添加了CO,NO,N2O以及NO2气体的测量。
+2.更新了压力调节范围现在其可调压力范围处于10pa-10Mpa
+3.现在界面可以自主选择使用哪个气体，如果不需要某种气体，可任意删除，如果需要哪种气体，也可自主添加。
+压缩包如下，请自行打包下载使用。
+<a href="./flame_spectrum.zip">flame_spectrum.zip</a></p>
+<p>接下来我会详细的说明一下该界面如何使用:
+首先，需要在终端中运行py文件，建议是在anaconda的运行终端中运行运行出来的界面如下图所示。</p>
+<figure><img src="%E5%B9%B3%E8%A1%A1%E7%95%8C%E9%9D%A2.png"><figcaption>
+      <h4>平衡界面</h4>
+    </figcaption>
+</figure>
+
+<p>可以看到左侧栏目中有反应机理，初始条件以及组分设置的选择。我们首先点击初始化气体对象的选项，加载我们的反应机理，确定后续反应的原理。然后我们选择组分设置中的输入方式以及预设，输入方式一般采用当量比，预设中有多种选项，后续我们以甲烷-空气反应为例。选择完毕后，就可以点击计算平衡，我们就可以看到右侧热力学状态对比以及主要组分中分内容，如下图所示。</p>
+<figure><img src="%E7%83%AD%E5%8A%9B%E5%AD%A6%E7%8A%B6%E6%80%81%E5%8F%8A%E7%BB%84%E5%88%86.png"><figcaption>
+      <h4>热力学状态及组分</h4>
+    </figcaption>
+</figure>
+
+<p>接下来我们就可以点击传输到光谱模拟，我们的界面就会跳转到光谱模拟，其界面如下图所示:</p>
+<figure><img src="%E5%85%89%E8%B0%B1%E6%A8%A1%E6%8B%9F.png"><figcaption>
+      <h4>光谱模拟</h4>
+    </figcaption>
+</figure>
+
+<p>可以看到现在只有H2O跟CO2的文件，我们可以点击添加分子来选择加入哪个分子，点击完毕以后就会弹出选择界面，我们下面以CO为例，当我们加入CO以后，我们需要在手动设置参数组设置我们需要的温度，压强，气体浓度等等，并且在下面波数范围以及光程长度，我们同样手动设置一下。在设置完成之后，点击加载分子数据以及开始计算按钮，我这里自己随意设置一下参数，可以看到右图数据如下图所示。可以看到在下图中不同气体利用不同颜色已经标注，非常明显看出气体在不同波数下吸收程度以及透射率等参数变化情况，我们可以尝试多加入几种气体观察一下，如下图所示。</p>
+<figure><img src="%E5%8A%A0%E5%85%A5CO%E5%85%89%E8%B0%B1%E6%A8%A1%E6%8B%9F.png"><figcaption>
+      <h4>加入CO光谱模拟</h4>
+    </figcaption>
+</figure>
+
+<figure><img src="%E6%B7%B7%E5%90%88%E6%B0%94%E4%BD%93%E5%85%89%E8%B0%B1%E6%A8%A1%E6%8B%9F.png"><figcaption>
+      <h4>混合气体光谱模拟</h4>
+    </figcaption>
+</figure>
+
+<p>最后我们也可以删除不需要的气体浓度，总之该方法能为从事气体光谱模拟检测研究工作的研究者提供一定便利，我们会继续改进，后续如有问题欢迎留言。</p>
+    </div>
+  <a href="/xliu-group/zh/post/zhanghongmin-talas-1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        十二月 9, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/xliu_flame_spectrum/" class="link black dim">
+        反应流体光谱仿真程序 flame spectrum
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>我们的反应流体光谱仿真程序分两步。</p>
+<p>第一步，气体的化学平衡计算，用Cantera 计算。输入温度压力组分，选择化学平衡的约束条件。得到平衡后的热力学状态，比如火焰温度。
+<figure><img src="/xliu-group/zh/post/xliu_flame_spectrum/Screenshot202511092320%E6%B0%94%E4%BD%93%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1%E4%B8%8E%E5%85%89%E8%B0%B1%E8%81%94%E5%90%88%E6%A8%A1%E6%8B%9F%20-%20%E5%B1%B1%E4%B8%9C%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6.png"><figcaption>
+      <h4>化学平衡计算截图</h4>
+    </figcaption>
+</figure>
+</p>
+<p>第二步，光谱仿真，用HITRAN计算。化学平衡后得到的温度压力主要组分浓度参数，用来做光谱仿真。主要组分是H2O和CO2 。</p>
+<p>当然也可以直接在这个光谱仿真页面输入组分浓度和温度压力参数，直接仿真光谱。</p>
+<p>下面图是2um附近仿真，可以看到水的吸收比较强，大概比CO2高了一个数量级。
+<figure><img src="/xliu-group/zh/post/xliu_flame_spectrum/Screenshot202511100003%E6%B0%94%E4%BD%93%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1%E4%B8%8E%E5%85%89%E8%B0%B1%E8%81%94%E5%90%88%E6%A8%A1%E6%8B%9F%20-%20%E5%B1%B1%E4%B8%9C%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6.png"><figcaption>
+      <h4>2um附近水、二氧化碳混合气体光谱仿真截图</h4>
+    </figcaption>
+</figure>
+</p>
+<p>下面图是我们之前4um激光测同轴扩散火焰的仿真。可见此处二氧化碳吸收强，而且没有水的干扰。
+<figure><img src="/xliu-group/zh/post/xliu_flame_spectrum/Screenshot202511100107%E6%B0%94%E4%BD%93%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1%E4%B8%8E%E5%85%89%E8%B0%B1%E8%81%94%E5%90%88%E6%A8%A1%E6%8B%9F%20-%20%E5%B1%B1%E4%B8%9C%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6.png"><figcaption>
+      <h4>4.2um附近水、二氧化碳混合气体光谱仿真截图</h4>
+    </figcaption>
+</figure>
+</p>
+<p>这个软件框架很灵活，只需要选择不同的数据库就可以模拟不同波段的光谱。</p>
+<p>请打包下载几个 py 文件和示例中的par 文件。
+flame_spectrum.py 调用了 voigt_simulation 文件夹中 hitran_spectrum_dual.py （可以单独运行对H2O和CO2混合气体仿真）。</p>
+<p><a href="/xliu-group/zh/post/xliu_flame_spectrum/flame_spectrum.zip">flame_spectrum.zip</a></p>
+<p>有问题和建议，请随时留言或者发邮件咨询。</p>
+<p>未来新版本软件将包含更多的分子，特别是HITRAN数据库中没有的分子或者波段。比如紫外波段很多自由基还没有高分辨率光谱工作以支持HITRAN数据库条目。完全可以用 NASA JPL数据库 产生HITRAN数据来做。</p>
+<p>第一部分反应流体的仿真用Cantera 就可以了，准备主要把第二部分做丰富。
+燃烧仿真，湍流燃烧还是很难算的，Fluent 可以大概算算。用 Cantera 和 Chemkin 算一般的反应动力学计算，比如火焰温度。
+分子光谱仿真就很小众了，图形化的有 pgophor，最全的应该是 SPFIT/SPCAT 。LIFbase是专门的几个双原子分子的LIF光谱数据库仿真。
+几何光学仿真用 zemax，但感觉一般也不需要。</p>
+<p>通过一段时间的积累，我们的程序就可以自动化仿真出不同火焰的不同波段光谱了。
+Gaydon 在 《The Spectroscopy of Flames》中就给出了很多不同火焰的光谱plate。
+希望我们能有一天可以给出这些光谱的仿真，达到对火焰比较好的理解。</p>
+    </div>
+  <a href="/xliu-group/zh/post/xliu_flame_spectrum/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
       
         <div class="w-100 w-30-l mb4 relative bg-white">
             <div class="mb3 pa4 blue overflow-hidden">
@@ -539,136 +648,6 @@ $$<h1 id="参考文献">参考文献</h1>
 </ol>
     </div>
   <a href="/xliu-group/zh/post/xliu_crossflow/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        六月 22, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/wangchen1/" class="link black dim">
-        利用HDM3065 Hantek 6位半万用表对5V电源输出电压结果的测试
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>在电子设备的使用中，电源输出电压的稳定性至关重要。今天，我将通过实际测量和数据分析，使用最小二乘法拟合它的输出电压值，结合得到的方差来评判它的输出电压效果。</p>
-<h2 id="测试方法">测试方法</h2>
-<p>首先，介绍一下测试方法。我使用万用表作为测量工具，将电源输出电压从 0V 开始，以 0.1V 为步长逐步调节，直至达到 5V。我这里用到的是 Hantek 的 HDM3065 系列的万用表来测量小电源的输出电压，我们将万用表连接到测电压端，红黑表笔分别接到小电源的正负极，用来测量小电源的输出电压。连接到其他的地方以后也可以测试电流、电阻等。我们将红色线接到电源正极，黑色线连接到电源负极。</p>
-<p>该万用表有专用的 IO 控制软件，将万用表连接到电脑以后，我们可以通过电脑的 IO 软件发送指令，万用表便会执行相应的操作。为了保证数据的可靠性，针对小电源的每个电压值，我都进行了五十次测量，并将测量的数据都记录下来。</p>
-<figure><img src="/xliu-group/zh/post/wangchen1/image1.png"><figcaption>
-      <h4>测量连接示意图</h4>
-    </figcaption>
-</figure>
-
-<h2 id="数据处理">数据处理</h2>
-<p>数据记录下来之后，我们需要用到 Python 来处理这些数据，运用最小二乘法对数据进行处理。最小二乘法的核心思想是通过最小化误差的平方和寻找数据的最佳函数匹配。在这里，我们假设电源输出电压与设定电压之间存在线性关系，通过最小二乘法拟合出一条直线，来描述这种关系。经过计算，可以得到拟合直线的方程。</p>
-<p>通过计算方差来评估电源输出电压的稳定性。方差是用来衡量一组数据离散程度的统计量，方差越小，说明数据越集中，电源输出电压越稳定。分别计算每个设定电压点下十个测量数值的方差，发现大部分电压点的方差都较小，说明该电源在不同输出电压下的稳定性表现良好。</p>
-<h2 id="测试结果">测试结果</h2>
-<p>测试结果如下图所示：</p>
-<p><figure><img src="/xliu-group/zh/post/wangchen1/image2.png"><figcaption>
-      <h4>最小二乘法拟合图</h4>
-    </figcaption>
-</figure>
-
-<figure><img src="/xliu-group/zh/post/wangchen1/image3.png"><figcaption>
-      <h4>拟合值相对于拟合直线理论值残差图</h4>
-    </figcaption>
-</figure>
-
-<figure><img src="/xliu-group/zh/post/wangchen1/image4.png"><figcaption>
-      <h4>拟合值相对于设定值的残差图</h4>
-    </figcaption>
-</figure>
-</p>
-<p>我们可以看到该小电源的线性效果还是很好的，方差也很小，说明电压输出比较稳定。从残差图中我们可以看出，残差图上的点代表对应设定电压下，输出电压实际值与拟合模型预测值的差值，可以看出这些点的值都比较小，残差绝对值大多在 0.006V 以内，数值很小，表明实际值和拟合预测值偏差不大，模型对该电源电压数据的拟合精度较高。这张残差图显示模型拟合效果不错，误差随机且整体很小，能较好描述设定电压和输出电压的关系。并且我们可以在图中看出，拟合值相对于设定值的插值都在-0.01内，数据很小，也没有某些值与设定值差距较大，说明该小电源的输出效果还是很不错的。</p>
-<p>另外，我还对每个电压值下测量的电压输出值查看其分布规律，根据测试结果生成的数据大致都有如下图的趋势。这里由于数据过多，我就不列出来了，拿出几个图来看一下分布规律即可：</p>
-<p><figure><img src="/xliu-group/zh/post/wangchen1/image5.png"><figcaption>
-      <h4>0.9V电压分布</h4>
-    </figcaption>
-</figure>
-
-<figure><img src="/xliu-group/zh/post/wangchen1/image6.png"><figcaption>
-      <h4>1.1V电压分布</h4>
-    </figcaption>
-</figure>
-</p>
-<p><figure><img src="/xliu-group/zh/post/wangchen1/image7.png"><figcaption>
-      <h4>2.9V电压分布</h4>
-    </figcaption>
-</figure>
-
-<figure><img src="/xliu-group/zh/post/wangchen1/image8.png"><figcaption>
-      <h4>4.3V电压分布</h4>
-    </figcaption>
-</figure>
-</p>
-<p>图中每个蓝色柱子代表“输出电压落在某一小区间内的测量次数密度”，且直方图与曲线贴合度较高，故可以看出，电压的波动符合正态分布规律。</p>
-<h2 id="结论">结论</h2>
-<p>通过最小二乘法得到了输出电压的估算值，我们大致了解到了该小电源输出电压的大致水平；结合方差的计算结果，我们对其稳定性也有了清晰的认知。从本次测量结果来看，该小电源的输出电压效果整体表现良好，在每个电压值下都能提供接近于小电源显示电压值的输出电压；但会存在一定的波动，所以在对于电压稳定性较高要求的条件下不适用。在今后的电子项目的实验中，掌握这种评估电源输出电压效果的方法，有助于我们更好地选择合适的电源，保证项目的顺利进行。</p>
-    </div>
-  <a href="/xliu-group/zh/post/wangchen1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        六月 22, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/gaoyinbin2/" class="link black dim">
-        腔体流量测定实验失败复盘
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>近期开展的几组腔体标量测定实验均以无合理结果告终。按推论，超声速射流的二氧化碳应发生相变，然数次实验混合多种浓度，始终未观测到相变现象，直至拆下设备，才发现隐蔽却致命问题——<strong>底座焊缝漏气</strong>，该被忽视细节成贯穿实验的“数据杀手” 。</p>
-<h2 id="一实验过程与数据异常记录">一、实验过程与数据异常记录</h2>
-<h3 id="一首次实验">（一）首次实验</h3>
-<p>核心目标：测定腔体在不同浓度二氧化碳下的标量数据。实验初始参数为压力 0.103896MPa、温度 26.1℃。测试数据如下：</p>
-<ul>
-<li>纯空气测试：发现垫圈处存在 3.3L/min 漏气，修正后记录流动态流量 125L/min、压力 0.502MPa；</li>
-<li>混合气体测试：CO₂浓度 10%和 50%工况下，压力稳定在 0.641MPa，但温度数据剧烈波动，由 26.1 摄氏度到 24.9 摄氏度不等，现猜测可能是底部剧烈漏气导致腔内温度变化；</li>
-<li>最终结论：因数据离散度过高，判定实验存在异常。</li>
-</ul>
-<figure><img src="/xliu-group/zh/post/gaoyinbin2/Picture4.png"><figcaption>
-      <h4>第一组实验数据记录！</h4>
-    </figcaption>
-</figure>
-
-<h3 id="二二次实验">（二）二次实验</h3>
-<p>改进方向：更换合适垫圈并优化气路控制，杜绝不合理漏气，初始压力 0.103421MPa、温度 27.2℃。实验现象依旧反常：</p>
-<ul>
-<li>纯空气阶段：流量 120L/min 数据正常，但进入混合气体测试后失控；</li>
-<li>10% CO₂混合：空气/CO₂流量比理论 9:1，实测达 11.6:1，压力波动超±0.02MPa；</li>
-<li>70% CO₂混合：温度压力仅记录平均值，数据失去代表性。</li>
-</ul>
-<figure><img src="/xliu-group/zh/post/gaoyinbin2/Picture5.png"><figcaption>
-      <h4>第二组实验数据记录！</h4>
-    </figcaption>
-</figure>
-
-<h2 id="二隐藏缺陷的发现过程">二、隐藏缺陷的发现过程</h2>
-<p>因需更换实验，将腔体从底座拆下，拆卸全部管路前心血来潮再次实验，发现孔口气流微弱，排查气路后，确定<strong>底座焊缝存在严重漏气</strong>，基本大部分流量和压力都在此损失。</p>
-<p>原因追溯：</p>
-<ul>
-<li>结构设计盲区：焊缝位于底座隐蔽处，常规检查难以发现；</li>
-<li>实验惯性思维：首次实验将漏气归因于垫圈问题，未对腔体整体密封性做系统性排查；</li>
-<li>缺乏预实验检测：未在实验前单独对腔体做气密性测试，导致隐患持续影响数据质量。</li>
-</ul>
-<h2 id="三系统性改进方案">三、系统性改进方案</h2>
-<p>更换新的腔体，同时修改高度尺，此前实验存在喷嘴高度过低问题，致使纹影系统需拆除底座才能拍摄出口平面，此次一并修正。</p>
-<h2 id="四经验总结">四、经验总结</h2>
-<p>这次失败深刻揭示**“隐蔽位置 = 安全盲区”的认知误区**。实验设计中，不能仅关注直观可见部件，更要对设备结构做系统性检查，避免同类问题再发生。科研路上，每个失败数据都是珍贵的“排雷记录”，正是这些教训推动实验设计不断迭代升级。</p>
-    </div>
-  <a href="/xliu-group/zh/post/gaoyinbin2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
   </div>
 
         </div>

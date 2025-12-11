@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>波长选取 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="在 TDLAS（可调谐二极管激光吸收光谱）技术的应用中，激光器的选择直接决定了气体检测的精度、灵敏度与抗干扰能力，而 “观察窗口”（即目标分子的特征吸收谱线区间）的合理选取是核心前提。由于市面上激光器的波长覆盖范围、输出功率、线宽特性等参数差异显著，且不同气体的吸收谱线分布复杂，为了筛选出最适配的激光器，必须通过系统的光谱仿真与多维度评估来实现科学决策。
+下面进行NO和CO波长的选取，从而选取适配的激光器。
+1.NO的波长选取
+首先，基于 HITRAN 数据库等权威光谱资源，提取目标气体（如本场景中的 NO）在待测工况下的全波段吸收光谱参数，包括各吸收峰的波数、线强、温度、压强展宽系数等关键。
+经过仿真初步筛选来选择受NO温度变化影响较小的吸收峰，在波数约1900 cm⁻¹附近。
+还需排除H2O对NO的吸收干扰，通过对1902 cm-1-1904 cm-1 NO/H2O的吸收光谱进行仿真，来选择受水干扰最小的吸收峰，如下图所示。
+
+      1902 cm-1-1904 cm-1 NO/H2O的吸收光谱
+    
+
+
+然后基于HITRAN数据库用法
+通过化学平衡后得到的温度压力主要组分浓度参数，对H2O、CO2和NO混合气体的吸收光谱来做光谱仿真，选择透射率较低的峰，如下图所示。
+
+      H2O、CO2和NO混合气体的吸收光谱
+    
+
+
+由上图可最终选择受水干扰最小和透射率较低的波峰对应的波数为1903.133630cm-1，对应的波长约为5.26um,为后续激光器的选择提供依据。
+2.CO的波长选取
+CO波长选取方法同上，经过仿真初步筛选来选择受CO温度变化影响较小的吸收峰，在波数约2170 cm⁻¹附近。由于CO吸收不受H2O干扰，所以通过化学平衡后得到的温度压力主要组分浓度参数，对H2O、CO2和CO混合气体的吸收光谱来做光谱仿真，选择透射率较低的峰，如下图所示。
+
+      H2O、CO2和CO混合气体的吸收光谱
+    
+
+
+由上图可最终选择透射率较低的波峰对应的波数为2172.7588cm-1，对应的波长约为4.6um,为后续激光器的选择提供依据。">
+    <meta name="generator" content="Hugo 0.147.8">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="冉佳兴">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/ranjiaxing1/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/ranjiaxing1/">
+  <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+  <meta property="og:title" content="波长选取">
+  <meta property="og:description" content="在 TDLAS（可调谐二极管激光吸收光谱）技术的应用中，激光器的选择直接决定了气体检测的精度、灵敏度与抗干扰能力，而 “观察窗口”（即目标分子的特征吸收谱线区间）的合理选取是核心前提。由于市面上激光器的波长覆盖范围、输出功率、线宽特性等参数差异显著，且不同气体的吸收谱线分布复杂，为了筛选出最适配的激光器，必须通过系统的光谱仿真与多维度评估来实现科学决策。
+下面进行NO和CO波长的选取，从而选取适配的激光器。
+1.NO的波长选取
+首先，基于 HITRAN 数据库等权威光谱资源，提取目标气体（如本场景中的 NO）在待测工况下的全波段吸收光谱参数，包括各吸收峰的波数、线强、温度、压强展宽系数等关键。
+经过仿真初步筛选来选择受NO温度变化影响较小的吸收峰，在波数约1900 cm⁻¹附近。 还需排除H2O对NO的吸收干扰，通过对1902 cm-1-1904 cm-1 NO/H2O的吸收光谱进行仿真，来选择受水干扰最小的吸收峰，如下图所示。
+1902 cm-1-1904 cm-1 NO/H2O的吸收光谱 然后基于HITRAN数据库用法
+通过化学平衡后得到的温度压力主要组分浓度参数，对H2O、CO2和NO混合气体的吸收光谱来做光谱仿真，选择透射率较低的峰，如下图所示。
+H2O、CO2和NO混合气体的吸收光谱 由上图可最终选择受水干扰最小和透射率较低的波峰对应的波数为1903.133630cm-1，对应的波长约为5.26um,为后续激光器的选择提供依据。
+2.CO的波长选取
+CO波长选取方法同上，经过仿真初步筛选来选择受CO温度变化影响较小的吸收峰，在波数约2170 cm⁻¹附近。由于CO吸收不受H2O干扰，所以通过化学平衡后得到的温度压力主要组分浓度参数，对H2O、CO2和CO混合气体的吸收光谱来做光谱仿真，选择透射率较低的峰，如下图所示。
+H2O、CO2和CO混合气体的吸收光谱 由上图可最终选择透射率较低的波峰对应的波数为2172.7588cm-1，对应的波长约为4.6um,为后续激光器的选择提供依据。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-11-30T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-30T00:00:00+00:00">
+
+  <meta itemprop="name" content="波长选取">
+  <meta itemprop="description" content="在 TDLAS（可调谐二极管激光吸收光谱）技术的应用中，激光器的选择直接决定了气体检测的精度、灵敏度与抗干扰能力，而 “观察窗口”（即目标分子的特征吸收谱线区间）的合理选取是核心前提。由于市面上激光器的波长覆盖范围、输出功率、线宽特性等参数差异显著，且不同气体的吸收谱线分布复杂，为了筛选出最适配的激光器，必须通过系统的光谱仿真与多维度评估来实现科学决策。
+下面进行NO和CO波长的选取，从而选取适配的激光器。
+1.NO的波长选取
+首先，基于 HITRAN 数据库等权威光谱资源，提取目标气体（如本场景中的 NO）在待测工况下的全波段吸收光谱参数，包括各吸收峰的波数、线强、温度、压强展宽系数等关键。
+经过仿真初步筛选来选择受NO温度变化影响较小的吸收峰，在波数约1900 cm⁻¹附近。 还需排除H2O对NO的吸收干扰，通过对1902 cm-1-1904 cm-1 NO/H2O的吸收光谱进行仿真，来选择受水干扰最小的吸收峰，如下图所示。
+1902 cm-1-1904 cm-1 NO/H2O的吸收光谱 然后基于HITRAN数据库用法
+通过化学平衡后得到的温度压力主要组分浓度参数，对H2O、CO2和NO混合气体的吸收光谱来做光谱仿真，选择透射率较低的峰，如下图所示。
+H2O、CO2和NO混合气体的吸收光谱 由上图可最终选择受水干扰最小和透射率较低的波峰对应的波数为1903.133630cm-1，对应的波长约为5.26um,为后续激光器的选择提供依据。
+2.CO的波长选取
+CO波长选取方法同上，经过仿真初步筛选来选择受CO温度变化影响较小的吸收峰，在波数约2170 cm⁻¹附近。由于CO吸收不受H2O干扰，所以通过化学平衡后得到的温度压力主要组分浓度参数，对H2O、CO2和CO混合气体的吸收光谱来做光谱仿真，选择透射率较低的峰，如下图所示。
+H2O、CO2和CO混合气体的吸收光谱 由上图可最终选择透射率较低的波峰对应的波数为2172.7588cm-1，对应的波长约为4.6um,为后续激光器的选择提供依据。">
+  <meta itemprop="datePublished" content="2025-11-30T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-11-30T00:00:00+00:00">
+  <meta itemprop="wordCount" content="28">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="波长选取">
+  <meta name="twitter:description" content="在 TDLAS（可调谐二极管激光吸收光谱）技术的应用中，激光器的选择直接决定了气体检测的精度、灵敏度与抗干扰能力，而 “观察窗口”（即目标分子的特征吸收谱线区间）的合理选取是核心前提。由于市面上激光器的波长覆盖范围、输出功率、线宽特性等参数差异显著，且不同气体的吸收谱线分布复杂，为了筛选出最适配的激光器，必须通过系统的光谱仿真与多维度评估来实现科学决策。
+下面进行NO和CO波长的选取，从而选取适配的激光器。
+1.NO的波长选取
+首先，基于 HITRAN 数据库等权威光谱资源，提取目标气体（如本场景中的 NO）在待测工况下的全波段吸收光谱参数，包括各吸收峰的波数、线强、温度、压强展宽系数等关键。
+经过仿真初步筛选来选择受NO温度变化影响较小的吸收峰，在波数约1900 cm⁻¹附近。 还需排除H2O对NO的吸收干扰，通过对1902 cm-1-1904 cm-1 NO/H2O的吸收光谱进行仿真，来选择受水干扰最小的吸收峰，如下图所示。
+1902 cm-1-1904 cm-1 NO/H2O的吸收光谱 然后基于HITRAN数据库用法
+通过化学平衡后得到的温度压力主要组分浓度参数，对H2O、CO2和NO混合气体的吸收光谱来做光谱仿真，选择透射率较低的峰，如下图所示。
+H2O、CO2和NO混合气体的吸收光谱 由上图可最终选择受水干扰最小和透射率较低的波峰对应的波数为1903.133630cm-1，对应的波长约为5.26um,为后续激光器的选择提供依据。
+2.CO的波长选取
+CO波长选取方法同上，经过仿真初步筛选来选择受CO温度变化影响较小的吸收峰，在波数约2170 cm⁻¹附近。由于CO吸收不受H2O干扰，所以通过化学平衡后得到的温度压力主要组分浓度参数，对H2O、CO2和CO混合气体的吸收光谱来做光谱仿真，选择透射率较低的峰，如下图所示。
+H2O、CO2和CO混合气体的吸收光谱 由上图可最终选择透射率较低的波峰对应的波数为2172.7588cm-1，对应的波长约为4.6um,为后续激光器的选择提供依据。">
+
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        刘训臣燃烧诊断实验室主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/our-alumni/" title="Alumni 页">
+              Alumni
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">波长选取</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Post
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">波长选取</h1>
+      
+      <p class="tracked"><strong>冉佳兴</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-11-30T00:00:00Z">十一月 30, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>在 TDLAS（可调谐二极管激光吸收光谱）技术的应用中，激光器的选择直接决定了气体检测的精度、灵敏度与抗干扰能力，而 “观察窗口”（即目标分子的特征吸收谱线区间）的合理选取是核心前提。由于市面上激光器的波长覆盖范围、输出功率、线宽特性等参数差异显著，且不同气体的吸收谱线分布复杂，为了筛选出最适配的激光器，必须通过系统的光谱仿真与多维度评估来实现科学决策。</p>
+<p>下面进行NO和CO波长的选取，从而选取适配的激光器。</p>
+<p>1.NO的波长选取</p>
+<p>首先，基于 HITRAN 数据库等权威光谱资源，提取目标气体（如本场景中的 NO）在待测工况下的全波段吸收光谱参数，包括各吸收峰的波数、线强、温度、压强展宽系数等关键。</p>
+<p>经过仿真初步筛选来选择受NO温度变化影响较小的吸收峰，在波数约1900 cm⁻¹附近。
+还需排除H2O对NO的吸收干扰，通过对1902 cm-1-1904 cm-1 NO/H2O的吸收光谱进行仿真，来选择受水干扰最小的吸收峰，如下图所示。</p>
+<figure><img src="/xliu-group/zh/post/ranjiaxing1/NO%E3%80%81H2O%E7%9A%84%E5%90%B8%E6%94%B6%E5%85%89%E8%B0%B1.png"><figcaption>
+      <h4>1902 cm-1-1904 cm-1 NO/H2O的吸收光谱</h4>
+    </figcaption>
+</figure>
+
+<p>然后基于<a href="/xliu-group/zh/post/xliu_hitran/">HITRAN数据库用法</a></p>
+<p>通过化学平衡后得到的温度压力主要组分浓度参数，对H2O、CO2和NO混合气体的吸收光谱来做光谱仿真，选择透射率较低的峰，如下图所示。</p>
+<figure><img src="/xliu-group/zh/post/ranjiaxing1/NO.png"><figcaption>
+      <h4>H2O、CO2和NO混合气体的吸收光谱</h4>
+    </figcaption>
+</figure>
+
+<p>由上图可最终选择受水干扰最小和透射率较低的波峰对应的波数为1903.133630cm-1，对应的波长约为5.26um,为后续激光器的选择提供依据。</p>
+<p>2.CO的波长选取</p>
+<p>CO波长选取方法同上，经过仿真初步筛选来选择受CO温度变化影响较小的吸收峰，在波数约2170 cm⁻¹附近。由于CO吸收不受H2O干扰，所以通过化学平衡后得到的温度压力主要组分浓度参数，对H2O、CO2和CO混合气体的吸收光谱来做光谱仿真，选择透射率较低的峰，如下图所示。</p>
+<figure><img src="/xliu-group/zh/post/ranjiaxing1/CO.png"><figcaption>
+      <h4>H2O、CO2和CO混合气体的吸收光谱</h4>
+    </figcaption>
+</figure>
+
+<p>由上图可最终选择透射率较低的波峰对应的波数为2172.7588cm-1，对应的波长约为4.6um,为后续激光器的选择提供依据。</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
