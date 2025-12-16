@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title> PIV 流场分析软件介绍 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="在流体力学、空气动力学、燃烧诊断等科研领域，流场数据的精准计算与深度分析是核心环节。传统数据处理流程繁琐，算法选择受限，往往耗费大量时间精力。今天给大家介绍的软件，集成四大核心功能模块，无需复杂编程，就能实现从原始图像到流场动态特性分析的一站式解决方案，让科研效率直接翻倍！
+该软件基于 PyQt6 打造直观友好的图形界面，整合了先进的计算机视觉与数据模态分解算法，专为科研场景设计。无论是单组图像的速度场计算，还是多序列图像的批量处理，亦或是流场数据的深度模态分析，都能轻松应对。无需编写一行代码，只需通过简单的参数设置和鼠标操作，就能完成复杂的流场计算任务。
+该软件有四大核心功能模块，覆盖流场分析的全流程。
+
+      软件主界面
+    
+
+
+双图片速度场计算
+作为软件的基础核心模块，该功能支持从两幅连续时刻的流场图像中，计算高精度二维速度场（U、V 分量），提供两种主流算法供选择：
+
+光流法（Farneback算法）：基于 OpenCV 实现，计算速度快、对硬件资源要求低，适合粒子密度大、有大片连续灰度值的流场场景，比如常规流体流动观测。
+神经网络法（PIV-LiteFlowNet-en 模型）：依托预训练深度学习模型，精度更高，对复杂流动模式和低信噪比图像的鲁棒性更强，适合复杂流场研究，但需 GPU 支持以保证运算速度。
+
+计算完成后，会实时生成 U 分量云图、V 分量云图、速度矢量场图和速度分布直方图，还能通过滑块调节矢量箭头长度和速度阈值，让结果可视化更清晰。
+
+      双图片速度场计算模块界面
+    
+
+
+多图像序列批处理
+针对按时间序列排列的多幅流场图像，该模块可实现自动化批量处理，无需手动逐组计算。它会依次对（img1,img2）、（img2,img3）&hellip;进行运算，最终生成 n-1 个速度场数据。
+同样支持光流法和神经网络法，内置进度监控和内存管理功能，即使是长时间批量处理或使用耗资源的神经网络法，也能保证稳定性。生成的速度场文件会自动按序号命名保存，大幅提升数据处理效率，特别适合长时间序列流场观测实验。
+
+      多图像序列批处理模块界
+    
+
+
+在选用以上两种方法时，可以根据以下场景选择：
+
+优先选光流法：实时性优先、场景简单稳定、资源有限、无标注数据。
+优先选神经网络法：复杂场景、高精度需求、可接受高计算成本、有充足训练数据。
+
+DMD 分析模块
+动态模态分解（DMD）是流场分析的关键技术，该模块采用先进的 BOP-DMD 算法，能从流场时间序列数据中，提取主导的时空演化模态、频率及增长率 / 衰减率，助力研究人员挖掘流场潜在规律。
+支持加载多种格式的流场文件（.npy、.csv、.dat、.txt），分析结果通过三大可视化图表呈现：
+
+复平面上的特征值图（直观展示模态稳定性）
+前 9 阶时间模态演化曲线
+前 9 阶空间模态分布云图
+
+还能对比原始数据与 DMD 重构数据，甚至进行短期流场预测。
+
+      DMD 分析模块界面
+    
+
+
+
+      DMD 分析模块特征值
+    
+
+
+
+      DMD 分析模块时间模态
+    
+
+
+
+      DMD 分析模块空间模态
+    
+
+
+文件格式转换
+流场数据处理中常面临格式不兼容问题，该模块提供 .npy 与 .csv 格式的批量转换功能：
+
+.npy 格式：二进制文件，体积小、读写速度快，适合软件内部计算和数据存储。
+.csv 格式：文本文件，可读性强，可用 Excel、记事本打开，方便数据交换、人工检查或导入其他不支持 .npy 格式的软件。
+
+操作简单，只需选择目标文件夹和转换方向，一键即可完成批量转换，且完全保留原始数据的 U、V 分量和位置信息。">
+    <meta name="generator" content="Hugo 0.144.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="王晨">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://liuxunchen.github.io/xliu-group/zh/post/wangchen3/">
+    
+
+    <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/wangchen3/">
+  <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+  <meta property="og:title" content=" PIV 流场分析软件介绍">
+  <meta property="og:description" content="在流体力学、空气动力学、燃烧诊断等科研领域，流场数据的精准计算与深度分析是核心环节。传统数据处理流程繁琐，算法选择受限，往往耗费大量时间精力。今天给大家介绍的软件，集成四大核心功能模块，无需复杂编程，就能实现从原始图像到流场动态特性分析的一站式解决方案，让科研效率直接翻倍！
+该软件基于 PyQt6 打造直观友好的图形界面，整合了先进的计算机视觉与数据模态分解算法，专为科研场景设计。无论是单组图像的速度场计算，还是多序列图像的批量处理，亦或是流场数据的深度模态分析，都能轻松应对。无需编写一行代码，只需通过简单的参数设置和鼠标操作，就能完成复杂的流场计算任务。
+该软件有四大核心功能模块，覆盖流场分析的全流程。
+软件主界面 双图片速度场计算 作为软件的基础核心模块，该功能支持从两幅连续时刻的流场图像中，计算高精度二维速度场（U、V 分量），提供两种主流算法供选择：
+光流法（Farneback算法）：基于 OpenCV 实现，计算速度快、对硬件资源要求低，适合粒子密度大、有大片连续灰度值的流场场景，比如常规流体流动观测。 神经网络法（PIV-LiteFlowNet-en 模型）：依托预训练深度学习模型，精度更高，对复杂流动模式和低信噪比图像的鲁棒性更强，适合复杂流场研究，但需 GPU 支持以保证运算速度。 计算完成后，会实时生成 U 分量云图、V 分量云图、速度矢量场图和速度分布直方图，还能通过滑块调节矢量箭头长度和速度阈值，让结果可视化更清晰。
+双图片速度场计算模块界面 多图像序列批处理 针对按时间序列排列的多幅流场图像，该模块可实现自动化批量处理，无需手动逐组计算。它会依次对（img1,img2）、（img2,img3）…进行运算，最终生成 n-1 个速度场数据。
+同样支持光流法和神经网络法，内置进度监控和内存管理功能，即使是长时间批量处理或使用耗资源的神经网络法，也能保证稳定性。生成的速度场文件会自动按序号命名保存，大幅提升数据处理效率，特别适合长时间序列流场观测实验。
+多图像序列批处理模块界 在选用以上两种方法时，可以根据以下场景选择：
+优先选光流法：实时性优先、场景简单稳定、资源有限、无标注数据。 优先选神经网络法：复杂场景、高精度需求、可接受高计算成本、有充足训练数据。 DMD 分析模块 动态模态分解（DMD）是流场分析的关键技术，该模块采用先进的 BOP-DMD 算法，能从流场时间序列数据中，提取主导的时空演化模态、频率及增长率 / 衰减率，助力研究人员挖掘流场潜在规律。
+支持加载多种格式的流场文件（.npy、.csv、.dat、.txt），分析结果通过三大可视化图表呈现：
+复平面上的特征值图（直观展示模态稳定性） 前 9 阶时间模态演化曲线 前 9 阶空间模态分布云图 还能对比原始数据与 DMD 重构数据，甚至进行短期流场预测。
+DMD 分析模块界面 DMD 分析模块特征值 DMD 分析模块时间模态 DMD 分析模块空间模态 文件格式转换 流场数据处理中常面临格式不兼容问题，该模块提供 .npy 与 .csv 格式的批量转换功能：
+.npy 格式：二进制文件，体积小、读写速度快，适合软件内部计算和数据存储。 .csv 格式：文本文件，可读性强，可用 Excel、记事本打开，方便数据交换、人工检查或导入其他不支持 .npy 格式的软件。 操作简单，只需选择目标文件夹和转换方向，一键即可完成批量转换，且完全保留原始数据的 U、V 分量和位置信息。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-12-11T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-11T00:00:00+00:00">
+
+  <meta itemprop="name" content=" PIV 流场分析软件介绍">
+  <meta itemprop="description" content="在流体力学、空气动力学、燃烧诊断等科研领域，流场数据的精准计算与深度分析是核心环节。传统数据处理流程繁琐，算法选择受限，往往耗费大量时间精力。今天给大家介绍的软件，集成四大核心功能模块，无需复杂编程，就能实现从原始图像到流场动态特性分析的一站式解决方案，让科研效率直接翻倍！
+该软件基于 PyQt6 打造直观友好的图形界面，整合了先进的计算机视觉与数据模态分解算法，专为科研场景设计。无论是单组图像的速度场计算，还是多序列图像的批量处理，亦或是流场数据的深度模态分析，都能轻松应对。无需编写一行代码，只需通过简单的参数设置和鼠标操作，就能完成复杂的流场计算任务。
+该软件有四大核心功能模块，覆盖流场分析的全流程。
+软件主界面 双图片速度场计算 作为软件的基础核心模块，该功能支持从两幅连续时刻的流场图像中，计算高精度二维速度场（U、V 分量），提供两种主流算法供选择：
+光流法（Farneback算法）：基于 OpenCV 实现，计算速度快、对硬件资源要求低，适合粒子密度大、有大片连续灰度值的流场场景，比如常规流体流动观测。 神经网络法（PIV-LiteFlowNet-en 模型）：依托预训练深度学习模型，精度更高，对复杂流动模式和低信噪比图像的鲁棒性更强，适合复杂流场研究，但需 GPU 支持以保证运算速度。 计算完成后，会实时生成 U 分量云图、V 分量云图、速度矢量场图和速度分布直方图，还能通过滑块调节矢量箭头长度和速度阈值，让结果可视化更清晰。
+双图片速度场计算模块界面 多图像序列批处理 针对按时间序列排列的多幅流场图像，该模块可实现自动化批量处理，无需手动逐组计算。它会依次对（img1,img2）、（img2,img3）…进行运算，最终生成 n-1 个速度场数据。
+同样支持光流法和神经网络法，内置进度监控和内存管理功能，即使是长时间批量处理或使用耗资源的神经网络法，也能保证稳定性。生成的速度场文件会自动按序号命名保存，大幅提升数据处理效率，特别适合长时间序列流场观测实验。
+多图像序列批处理模块界 在选用以上两种方法时，可以根据以下场景选择：
+优先选光流法：实时性优先、场景简单稳定、资源有限、无标注数据。 优先选神经网络法：复杂场景、高精度需求、可接受高计算成本、有充足训练数据。 DMD 分析模块 动态模态分解（DMD）是流场分析的关键技术，该模块采用先进的 BOP-DMD 算法，能从流场时间序列数据中，提取主导的时空演化模态、频率及增长率 / 衰减率，助力研究人员挖掘流场潜在规律。
+支持加载多种格式的流场文件（.npy、.csv、.dat、.txt），分析结果通过三大可视化图表呈现：
+复平面上的特征值图（直观展示模态稳定性） 前 9 阶时间模态演化曲线 前 9 阶空间模态分布云图 还能对比原始数据与 DMD 重构数据，甚至进行短期流场预测。
+DMD 分析模块界面 DMD 分析模块特征值 DMD 分析模块时间模态 DMD 分析模块空间模态 文件格式转换 流场数据处理中常面临格式不兼容问题，该模块提供 .npy 与 .csv 格式的批量转换功能：
+.npy 格式：二进制文件，体积小、读写速度快，适合软件内部计算和数据存储。 .csv 格式：文本文件，可读性强，可用 Excel、记事本打开，方便数据交换、人工检查或导入其他不支持 .npy 格式的软件。 操作简单，只需选择目标文件夹和转换方向，一键即可完成批量转换，且完全保留原始数据的 U、V 分量和位置信息。">
+  <meta itemprop="datePublished" content="2025-12-11T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-12-11T00:00:00+00:00">
+  <meta itemprop="wordCount" content="89">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content=" PIV 流场分析软件介绍">
+  <meta name="twitter:description" content="在流体力学、空气动力学、燃烧诊断等科研领域，流场数据的精准计算与深度分析是核心环节。传统数据处理流程繁琐，算法选择受限，往往耗费大量时间精力。今天给大家介绍的软件，集成四大核心功能模块，无需复杂编程，就能实现从原始图像到流场动态特性分析的一站式解决方案，让科研效率直接翻倍！
+该软件基于 PyQt6 打造直观友好的图形界面，整合了先进的计算机视觉与数据模态分解算法，专为科研场景设计。无论是单组图像的速度场计算，还是多序列图像的批量处理，亦或是流场数据的深度模态分析，都能轻松应对。无需编写一行代码，只需通过简单的参数设置和鼠标操作，就能完成复杂的流场计算任务。
+该软件有四大核心功能模块，覆盖流场分析的全流程。
+软件主界面 双图片速度场计算 作为软件的基础核心模块，该功能支持从两幅连续时刻的流场图像中，计算高精度二维速度场（U、V 分量），提供两种主流算法供选择：
+光流法（Farneback算法）：基于 OpenCV 实现，计算速度快、对硬件资源要求低，适合粒子密度大、有大片连续灰度值的流场场景，比如常规流体流动观测。 神经网络法（PIV-LiteFlowNet-en 模型）：依托预训练深度学习模型，精度更高，对复杂流动模式和低信噪比图像的鲁棒性更强，适合复杂流场研究，但需 GPU 支持以保证运算速度。 计算完成后，会实时生成 U 分量云图、V 分量云图、速度矢量场图和速度分布直方图，还能通过滑块调节矢量箭头长度和速度阈值，让结果可视化更清晰。
+双图片速度场计算模块界面 多图像序列批处理 针对按时间序列排列的多幅流场图像，该模块可实现自动化批量处理，无需手动逐组计算。它会依次对（img1,img2）、（img2,img3）…进行运算，最终生成 n-1 个速度场数据。
+同样支持光流法和神经网络法，内置进度监控和内存管理功能，即使是长时间批量处理或使用耗资源的神经网络法，也能保证稳定性。生成的速度场文件会自动按序号命名保存，大幅提升数据处理效率，特别适合长时间序列流场观测实验。
+多图像序列批处理模块界 在选用以上两种方法时，可以根据以下场景选择：
+优先选光流法：实时性优先、场景简单稳定、资源有限、无标注数据。 优先选神经网络法：复杂场景、高精度需求、可接受高计算成本、有充足训练数据。 DMD 分析模块 动态模态分解（DMD）是流场分析的关键技术，该模块采用先进的 BOP-DMD 算法，能从流场时间序列数据中，提取主导的时空演化模态、频率及增长率 / 衰减率，助力研究人员挖掘流场潜在规律。
+支持加载多种格式的流场文件（.npy、.csv、.dat、.txt），分析结果通过三大可视化图表呈现：
+复平面上的特征值图（直观展示模态稳定性） 前 9 阶时间模态演化曲线 前 9 阶空间模态分布云图 还能对比原始数据与 DMD 重构数据，甚至进行短期流场预测。
+DMD 分析模块界面 DMD 分析模块特征值 DMD 分析模块时间模态 DMD 分析模块空间模态 文件格式转换 流场数据处理中常面临格式不兼容问题，该模块提供 .npy 与 .csv 格式的批量转换功能：
+.npy 格式：二进制文件，体积小、读写速度快，适合软件内部计算和数据存储。 .csv 格式：文本文件，可读性强，可用 Excel、记事本打开，方便数据交换、人工检查或导入其他不支持 .npy 格式的软件。 操作简单，只需选择目标文件夹和转换方向，一键即可完成批量转换，且完全保留原始数据的 U、V 分量和位置信息。">
+
+      
+    
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('https://liuxunchen.github.io/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        刘训臣燃烧诊断实验室主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/our-alumni/" title="Alumni 页">
+              Alumni
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title"> PIV 流场分析软件介绍</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Post
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1"> PIV 流场分析软件介绍</h1>
+      
+      <p class="tracked"><strong>王晨</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-12-11T00:00:00Z">十二月 11, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>在流体力学、空气动力学、燃烧诊断等科研领域，流场数据的精准计算与深度分析是核心环节。传统数据处理流程繁琐，算法选择受限，往往耗费大量时间精力。今天给大家介绍的软件，集成四大核心功能模块，无需复杂编程，就能实现从原始图像到流场动态特性分析的一站式解决方案，让科研效率直接翻倍！</p>
+<p>该软件基于 <strong>PyQt6</strong> 打造直观友好的图形界面，整合了先进的计算机视觉与数据模态分解算法，专为科研场景设计。无论是单组图像的速度场计算，还是多序列图像的批量处理，亦或是流场数据的深度模态分析，都能轻松应对。无需编写一行代码，只需通过简单的参数设置和鼠标操作，就能完成复杂的流场计算任务。</p>
+<p>该软件有四大核心功能模块，覆盖流场分析的全流程。</p>
+<figure><img src="/xliu-group/zh/post/wangchen3/image1.png"><figcaption>
+      <h4>软件主界面</h4>
+    </figcaption>
+</figure>
+
+<h2 id="双图片速度场计算">双图片速度场计算</h2>
+<p>作为软件的基础核心模块，该功能支持从两幅连续时刻的流场图像中，计算高精度二维速度场（U、V 分量），提供两种主流算法供选择：</p>
+<ul>
+<li><strong>光流法（Farneback算法）</strong>：基于 OpenCV 实现，计算速度快、对硬件资源要求低，适合粒子密度大、有大片连续灰度值的流场场景，比如常规流体流动观测。</li>
+<li><strong>神经网络法（PIV-LiteFlowNet-en 模型）</strong>：依托预训练深度学习模型，精度更高，对复杂流动模式和低信噪比图像的鲁棒性更强，适合复杂流场研究，但需 GPU 支持以保证运算速度。</li>
+</ul>
+<p>计算完成后，会实时生成 <strong>U 分量云图</strong>、<strong>V 分量云图</strong>、<strong>速度矢量场图</strong>和<strong>速度分布直方图</strong>，还能通过滑块调节矢量箭头长度和速度阈值，让结果可视化更清晰。</p>
+<figure><img src="/xliu-group/zh/post/wangchen3/image2.png"><figcaption>
+      <h4>双图片速度场计算模块界面</h4>
+    </figcaption>
+</figure>
+
+<h2 id="多图像序列批处理">多图像序列批处理</h2>
+<p>针对按时间序列排列的多幅流场图像，该模块可实现自动化批量处理，无需手动逐组计算。它会依次对（img1,img2）、（img2,img3）&hellip;进行运算，最终生成 <code>n-1</code> 个速度场数据。</p>
+<p>同样支持光流法和神经网络法，内置进度监控和内存管理功能，即使是长时间批量处理或使用耗资源的神经网络法，也能保证稳定性。生成的速度场文件会自动按序号命名保存，大幅提升数据处理效率，特别适合长时间序列流场观测实验。</p>
+<figure><img src="/xliu-group/zh/post/wangchen3/image3.png"><figcaption>
+      <h4>多图像序列批处理模块界</h4>
+    </figcaption>
+</figure>
+
+<p>在选用以上两种方法时，可以根据以下场景选择：</p>
+<ul>
+<li><strong>优先选光流法</strong>：实时性优先、场景简单稳定、资源有限、无标注数据。</li>
+<li><strong>优先选神经网络法</strong>：复杂场景、高精度需求、可接受高计算成本、有充足训练数据。</li>
+</ul>
+<h2 id="dmd-分析模块">DMD 分析模块</h2>
+<p>动态模态分解（DMD）是流场分析的关键技术，该模块采用先进的 <strong>BOP-DMD 算法</strong>，能从流场时间序列数据中，提取主导的时空演化模态、频率及增长率 / 衰减率，助力研究人员挖掘流场潜在规律。</p>
+<p>支持加载多种格式的流场文件（<code>.npy</code>、<code>.csv</code>、<code>.dat</code>、<code>.txt</code>），分析结果通过三大可视化图表呈现：</p>
+<ol>
+<li>复平面上的特征值图（直观展示模态稳定性）</li>
+<li>前 9 阶时间模态演化曲线</li>
+<li>前 9 阶空间模态分布云图</li>
+</ol>
+<p>还能对比原始数据与 DMD 重构数据，甚至进行短期流场预测。</p>
+<figure><img src="/xliu-group/zh/post/wangchen3/image4.png"><figcaption>
+      <h4>DMD 分析模块界面</h4>
+    </figcaption>
+</figure>
+
+<figure><img src="/xliu-group/zh/post/wangchen3/image5.png"><figcaption>
+      <h4>DMD 分析模块特征值</h4>
+    </figcaption>
+</figure>
+
+<figure><img src="/xliu-group/zh/post/wangchen3/image6.png"><figcaption>
+      <h4>DMD 分析模块时间模态</h4>
+    </figcaption>
+</figure>
+
+<figure><img src="/xliu-group/zh/post/wangchen3/image7.png"><figcaption>
+      <h4>DMD 分析模块空间模态</h4>
+    </figcaption>
+</figure>
+
+<h2 id="文件格式转换">文件格式转换</h2>
+<p>流场数据处理中常面临格式不兼容问题，该模块提供 <code>.npy</code> 与 <code>.csv</code> 格式的批量转换功能：</p>
+<ul>
+<li><strong>.npy 格式</strong>：二进制文件，体积小、读写速度快，适合软件内部计算和数据存储。</li>
+<li><strong>.csv 格式</strong>：文本文件，可读性强，可用 Excel、记事本打开，方便数据交换、人工检查或导入其他不支持 <code>.npy</code> 格式的软件。</li>
+</ul>
+<p>操作简单，只需选择目标文件夹和转换方向，一键即可完成批量转换，且完全保留原始数据的 U、V 分量和位置信息。</p>
+<figure><img src="/xliu-group/zh/post/wangchen3/image8.png"><figcaption>
+      <h4>文件格式转换模块界面</h4>
+    </figcaption>
+</figure>
+
+<hr>
+<p><strong>注：</strong></p>
+<ol>
+<li>神经网络法和 DMD 分析对硬件要求较高，建议配备性能较好的 GPU，以提升运算速度；</li>
+<li>批量处理前，建议统一图像文件名格式（可按 “前缀 + 序号” 命名），便于软件自动识别序列；</li>
+<li>保存数据时，推荐优先使用 <code>.npy</code> 格式（占用空间小、读写快），需跨软件使用时再转换为 <code>.csv</code> 格式。</li>
+</ol>
+<hr>
+<p>这款高分辨率波前分析软件，将复杂的流场计算与分析流程标准化、可视化、自动化，有效降低科研门槛，提升数据处理效率和分析深度。无论是日常实验数据处理，还是复杂流场机理研究，都是得力助手。</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://liuxunchen.github.io/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

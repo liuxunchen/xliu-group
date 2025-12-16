@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>利用JANAF表估算氢氧火焰温度 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="最近在着手准备有关JANAF表使用的相关论文，发现了一个有趣的问题，氢氧焰的燃烧温度应该怎么计算？这似乎并不难回答，按照热力学第一定律，反应前后的总焓保证不变即可，似乎很容易写出下面的热平衡：
+$$\Delta_f H(H_2) &#43; \frac{1}{2}\Delta_f H(O_2) = \Delta_f H(H_2O) &#43; \Delta H(H_2O)$$因为方程左边均为单质，这样看来水生成焓在数值上应该等于负的反应焓，查询JANAF表可以得知$\Delta_f H(H_2O)$等于-241.826kJ·mol⁻¹，我们可以查询多少温度下的焓变等于这个值的负值，结果是约5000K，按此结果我们做一下验算，我们看一下5000K下该反应的$\Delta G°$，$\Delta G°$取最小值的温度，就是标准状态下该反应平衡常数最大、反应进行得最彻底的理想温度，因此如果结果是5000K，$\Delta G°$应该为最小，带入数据，5000K时$\Delta_r G°(5000K) = \Delta_f G°(H₂O, g, 5000K) = 40.949$ kJ·mol⁻¹，4900K时$\Delta_r G°(4900K) = \Delta_f G°(H₂O, g, 4900K) = 34.998$kJ·mol⁻¹，很显然5000K并不是理想温度，且高出非常多，那么这个答案必然存在问题，我们不妨仔细分析一下这个问题：
+首先得明确核心约束：定HP意味着产物的总焓必须和反应物初始总焓完全匹配，而温度和组分都是这个约束下的结果，不是提前固定的。所以要先做一件基础工作——计算反应物的总焓：根据氢氧的混合比例（比如化学计量比2:1）、初始温度（比如室温298K）和设定的压力，算出反应物的总焓值，这个值是后续所有筛选的“基准线”。接下来就是先划定一个合理的温度范围，然后按一定步长逐个遍历这个区间里的每个温度。对每个遍历到的温度，都要在“固定这个温度&#43;固定设定压力”的前提下，让产物的组分自由调整（但必须满足氢、氧原子总数不变的元素守恒），直到找到吉布斯自由能最小的状态——这个状态就是该温度下的化学平衡组分，意味着此时的组分比例是最稳定的，再没有自发变化的趋势。之后，需要计算这个“特定温度&#43;对应平衡组分”组合下的产物总焓$H_{prod}$，把它和之前算的反应物总焓基准线做对比。等把所有温度都遍历完，就会得到一系列“温度-产物焓”的对应关系，而要找的那个真实燃烧温度，就是其中产物焓和反应物总焓最接近（甚至相等）的那个温度——如果刚好有某个扫描温度对应的产物焓和基准线完全匹配，那这个温度就是定HP下的平衡温度，对应的组分就是最终答案；如果没有完全匹配的用相邻两个温度的焓值做线性插值，就能算出精确的平衡温度，以及对应的平衡组分。
+反应物配比为化学计量比（2 mol H₂ &#43; 1 mol O₂），初始温度为 \( T_r = 298.15\ \text{K} \)，单物质摩尔焓满足：
+$$
+H_i(T_r) = \Delta H_i(T_r) &#43; \Delta_f H_i(T_r)
+$$（H₂、O₂为单质，$\Delta_f H_i(T_r) = 0$）
+$$
+H_{\text{react}} = 2 \cdot H_{\text{H}_2}(T_r) &#43; 1 \cdot H_{\text{O}_2}(T_r)
+$$$$2n_{\text{H}_2\text{O}} &#43; 2n_{\text{H}_2} = 4 \implies n_{\text{H}_2} = 2 - n_{\text{H}_2\text{O}}$$$$n_{\text{H}_2\text{O}} &#43; 2n_{\text{O}_2} = 2 \implies n_{\text{O}_2} = \frac{2 - n_{\text{H}_2\text{O}}}{2}$$$$n_{\text{total}} = n_{\text{H}_2\text{O}} &#43; n_{\text{H}_2} &#43; n_{\text{O}_2}$$总吉布斯自由能表达式：">
+    <meta name="generator" content="Hugo 0.144.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="高寅斌">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin-ho-flame/">
+    
+
+    <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin-ho-flame/">
+  <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+  <meta property="og:title" content="利用JANAF表估算氢氧火焰温度">
+  <meta property="og:description" content="最近在着手准备有关JANAF表使用的相关论文，发现了一个有趣的问题，氢氧焰的燃烧温度应该怎么计算？这似乎并不难回答，按照热力学第一定律，反应前后的总焓保证不变即可，似乎很容易写出下面的热平衡：
+$$\Delta_f H(H_2) &#43; \frac{1}{2}\Delta_f H(O_2) = \Delta_f H(H_2O) &#43; \Delta H(H_2O)$$因为方程左边均为单质，这样看来水生成焓在数值上应该等于负的反应焓，查询JANAF表可以得知$\Delta_f H(H_2O)$等于-241.826kJ·mol⁻¹，我们可以查询多少温度下的焓变等于这个值的负值，结果是约5000K，按此结果我们做一下验算，我们看一下5000K下该反应的$\Delta G°$，$\Delta G°$取最小值的温度，就是标准状态下该反应平衡常数最大、反应进行得最彻底的理想温度，因此如果结果是5000K，$\Delta G°$应该为最小，带入数据，5000K时$\Delta_r G°(5000K) = \Delta_f G°(H₂O, g, 5000K) = 40.949$ kJ·mol⁻¹，4900K时$\Delta_r G°(4900K) = \Delta_f G°(H₂O, g, 4900K) = 34.998$kJ·mol⁻¹，很显然5000K并不是理想温度，且高出非常多，那么这个答案必然存在问题，我们不妨仔细分析一下这个问题：
+首先得明确核心约束：定HP意味着产物的总焓必须和反应物初始总焓完全匹配，而温度和组分都是这个约束下的结果，不是提前固定的。所以要先做一件基础工作——计算反应物的总焓：根据氢氧的混合比例（比如化学计量比2:1）、初始温度（比如室温298K）和设定的压力，算出反应物的总焓值，这个值是后续所有筛选的“基准线”。接下来就是先划定一个合理的温度范围，然后按一定步长逐个遍历这个区间里的每个温度。对每个遍历到的温度，都要在“固定这个温度&#43;固定设定压力”的前提下，让产物的组分自由调整（但必须满足氢、氧原子总数不变的元素守恒），直到找到吉布斯自由能最小的状态——这个状态就是该温度下的化学平衡组分，意味着此时的组分比例是最稳定的，再没有自发变化的趋势。之后，需要计算这个“特定温度&#43;对应平衡组分”组合下的产物总焓$H_{prod}$，把它和之前算的反应物总焓基准线做对比。等把所有温度都遍历完，就会得到一系列“温度-产物焓”的对应关系，而要找的那个真实燃烧温度，就是其中产物焓和反应物总焓最接近（甚至相等）的那个温度——如果刚好有某个扫描温度对应的产物焓和基准线完全匹配，那这个温度就是定HP下的平衡温度，对应的组分就是最终答案；如果没有完全匹配的用相邻两个温度的焓值做线性插值，就能算出精确的平衡温度，以及对应的平衡组分。
+反应物配比为化学计量比（2 mol H₂ &#43; 1 mol O₂），初始温度为 \( T_r = 298.15\ \text{K} \)，单物质摩尔焓满足：
+$$H_i(T_r) = \Delta H_i(T_r) &#43; \Delta_f H_i(T_r)$$（H₂、O₂为单质，$\Delta_f H_i(T_r) = 0$）
+$$H_{\text{react}} = 2 \cdot H_{\text{H}_2}(T_r) &#43; 1 \cdot H_{\text{O}_2}(T_r)$$$$2n_{\text{H}_2\text{O}} &#43; 2n_{\text{H}_2} = 4 \implies n_{\text{H}_2} = 2 - n_{\text{H}_2\text{O}}$$$$n_{\text{H}_2\text{O}} &#43; 2n_{\text{O}_2} = 2 \implies n_{\text{O}_2} = \frac{2 - n_{\text{H}_2\text{O}}}{2}$$$$n_{\text{total}} = n_{\text{H}_2\text{O}} &#43; n_{\text{H}_2} &#43; n_{\text{O}_2}$$总吉布斯自由能表达式：">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-08-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-08-15T00:00:00+00:00">
+
+  <meta itemprop="name" content="利用JANAF表估算氢氧火焰温度">
+  <meta itemprop="description" content="最近在着手准备有关JANAF表使用的相关论文，发现了一个有趣的问题，氢氧焰的燃烧温度应该怎么计算？这似乎并不难回答，按照热力学第一定律，反应前后的总焓保证不变即可，似乎很容易写出下面的热平衡：
+$$\Delta_f H(H_2) &#43; \frac{1}{2}\Delta_f H(O_2) = \Delta_f H(H_2O) &#43; \Delta H(H_2O)$$因为方程左边均为单质，这样看来水生成焓在数值上应该等于负的反应焓，查询JANAF表可以得知$\Delta_f H(H_2O)$等于-241.826kJ·mol⁻¹，我们可以查询多少温度下的焓变等于这个值的负值，结果是约5000K，按此结果我们做一下验算，我们看一下5000K下该反应的$\Delta G°$，$\Delta G°$取最小值的温度，就是标准状态下该反应平衡常数最大、反应进行得最彻底的理想温度，因此如果结果是5000K，$\Delta G°$应该为最小，带入数据，5000K时$\Delta_r G°(5000K) = \Delta_f G°(H₂O, g, 5000K) = 40.949$ kJ·mol⁻¹，4900K时$\Delta_r G°(4900K) = \Delta_f G°(H₂O, g, 4900K) = 34.998$kJ·mol⁻¹，很显然5000K并不是理想温度，且高出非常多，那么这个答案必然存在问题，我们不妨仔细分析一下这个问题：
+首先得明确核心约束：定HP意味着产物的总焓必须和反应物初始总焓完全匹配，而温度和组分都是这个约束下的结果，不是提前固定的。所以要先做一件基础工作——计算反应物的总焓：根据氢氧的混合比例（比如化学计量比2:1）、初始温度（比如室温298K）和设定的压力，算出反应物的总焓值，这个值是后续所有筛选的“基准线”。接下来就是先划定一个合理的温度范围，然后按一定步长逐个遍历这个区间里的每个温度。对每个遍历到的温度，都要在“固定这个温度&#43;固定设定压力”的前提下，让产物的组分自由调整（但必须满足氢、氧原子总数不变的元素守恒），直到找到吉布斯自由能最小的状态——这个状态就是该温度下的化学平衡组分，意味着此时的组分比例是最稳定的，再没有自发变化的趋势。之后，需要计算这个“特定温度&#43;对应平衡组分”组合下的产物总焓$H_{prod}$，把它和之前算的反应物总焓基准线做对比。等把所有温度都遍历完，就会得到一系列“温度-产物焓”的对应关系，而要找的那个真实燃烧温度，就是其中产物焓和反应物总焓最接近（甚至相等）的那个温度——如果刚好有某个扫描温度对应的产物焓和基准线完全匹配，那这个温度就是定HP下的平衡温度，对应的组分就是最终答案；如果没有完全匹配的用相邻两个温度的焓值做线性插值，就能算出精确的平衡温度，以及对应的平衡组分。
+反应物配比为化学计量比（2 mol H₂ &#43; 1 mol O₂），初始温度为 \( T_r = 298.15\ \text{K} \)，单物质摩尔焓满足：
+$$H_i(T_r) = \Delta H_i(T_r) &#43; \Delta_f H_i(T_r)$$（H₂、O₂为单质，$\Delta_f H_i(T_r) = 0$）
+$$H_{\text{react}} = 2 \cdot H_{\text{H}_2}(T_r) &#43; 1 \cdot H_{\text{O}_2}(T_r)$$$$2n_{\text{H}_2\text{O}} &#43; 2n_{\text{H}_2} = 4 \implies n_{\text{H}_2} = 2 - n_{\text{H}_2\text{O}}$$$$n_{\text{H}_2\text{O}} &#43; 2n_{\text{O}_2} = 2 \implies n_{\text{O}_2} = \frac{2 - n_{\text{H}_2\text{O}}}{2}$$$$n_{\text{total}} = n_{\text{H}_2\text{O}} &#43; n_{\text{H}_2} &#43; n_{\text{O}_2}$$总吉布斯自由能表达式：">
+  <meta itemprop="datePublished" content="2025-08-15T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-08-15T00:00:00+00:00">
+  <meta itemprop="wordCount" content="563">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="利用JANAF表估算氢氧火焰温度">
+  <meta name="twitter:description" content="最近在着手准备有关JANAF表使用的相关论文，发现了一个有趣的问题，氢氧焰的燃烧温度应该怎么计算？这似乎并不难回答，按照热力学第一定律，反应前后的总焓保证不变即可，似乎很容易写出下面的热平衡：
+$$\Delta_f H(H_2) &#43; \frac{1}{2}\Delta_f H(O_2) = \Delta_f H(H_2O) &#43; \Delta H(H_2O)$$因为方程左边均为单质，这样看来水生成焓在数值上应该等于负的反应焓，查询JANAF表可以得知$\Delta_f H(H_2O)$等于-241.826kJ·mol⁻¹，我们可以查询多少温度下的焓变等于这个值的负值，结果是约5000K，按此结果我们做一下验算，我们看一下5000K下该反应的$\Delta G°$，$\Delta G°$取最小值的温度，就是标准状态下该反应平衡常数最大、反应进行得最彻底的理想温度，因此如果结果是5000K，$\Delta G°$应该为最小，带入数据，5000K时$\Delta_r G°(5000K) = \Delta_f G°(H₂O, g, 5000K) = 40.949$ kJ·mol⁻¹，4900K时$\Delta_r G°(4900K) = \Delta_f G°(H₂O, g, 4900K) = 34.998$kJ·mol⁻¹，很显然5000K并不是理想温度，且高出非常多，那么这个答案必然存在问题，我们不妨仔细分析一下这个问题：
+首先得明确核心约束：定HP意味着产物的总焓必须和反应物初始总焓完全匹配，而温度和组分都是这个约束下的结果，不是提前固定的。所以要先做一件基础工作——计算反应物的总焓：根据氢氧的混合比例（比如化学计量比2:1）、初始温度（比如室温298K）和设定的压力，算出反应物的总焓值，这个值是后续所有筛选的“基准线”。接下来就是先划定一个合理的温度范围，然后按一定步长逐个遍历这个区间里的每个温度。对每个遍历到的温度，都要在“固定这个温度&#43;固定设定压力”的前提下，让产物的组分自由调整（但必须满足氢、氧原子总数不变的元素守恒），直到找到吉布斯自由能最小的状态——这个状态就是该温度下的化学平衡组分，意味着此时的组分比例是最稳定的，再没有自发变化的趋势。之后，需要计算这个“特定温度&#43;对应平衡组分”组合下的产物总焓$H_{prod}$，把它和之前算的反应物总焓基准线做对比。等把所有温度都遍历完，就会得到一系列“温度-产物焓”的对应关系，而要找的那个真实燃烧温度，就是其中产物焓和反应物总焓最接近（甚至相等）的那个温度——如果刚好有某个扫描温度对应的产物焓和基准线完全匹配，那这个温度就是定HP下的平衡温度，对应的组分就是最终答案；如果没有完全匹配的用相邻两个温度的焓值做线性插值，就能算出精确的平衡温度，以及对应的平衡组分。
+反应物配比为化学计量比（2 mol H₂ &#43; 1 mol O₂），初始温度为 \( T_r = 298.15\ \text{K} \)，单物质摩尔焓满足：
+$$H_i(T_r) = \Delta H_i(T_r) &#43; \Delta_f H_i(T_r)$$（H₂、O₂为单质，$\Delta_f H_i(T_r) = 0$）
+$$H_{\text{react}} = 2 \cdot H_{\text{H}_2}(T_r) &#43; 1 \cdot H_{\text{O}_2}(T_r)$$$$2n_{\text{H}_2\text{O}} &#43; 2n_{\text{H}_2} = 4 \implies n_{\text{H}_2} = 2 - n_{\text{H}_2\text{O}}$$$$n_{\text{H}_2\text{O}} &#43; 2n_{\text{O}_2} = 2 \implies n_{\text{O}_2} = \frac{2 - n_{\text{H}_2\text{O}}}{2}$$$$n_{\text{total}} = n_{\text{H}_2\text{O}} &#43; n_{\text{H}_2} &#43; n_{\text{O}_2}$$总吉布斯自由能表达式：">
+
+      
+    
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('https://liuxunchen.github.io/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        刘训臣燃烧诊断实验室主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/our-alumni/" title="Alumni 页">
+              Alumni
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">利用JANAF表估算氢氧火焰温度</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Post
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">利用JANAF表估算氢氧火焰温度</h1>
+      
+      <p class="tracked"><strong>高寅斌</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-08-15T00:00:00Z">八月 15, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>最近在着手准备有关JANAF表使用的相关论文，发现了一个有趣的问题，氢氧焰的燃烧温度应该怎么计算？这似乎并不难回答，按照热力学第一定律，反应前后的总焓保证不变即可，似乎很容易写出下面的热平衡：</p>
+$$\Delta_f H(H_2) + \frac{1}{2}\Delta_f H(O_2) = \Delta_f H(H_2O) + \Delta H(H_2O)$$<p>因为方程左边均为单质，这样看来水生成焓在数值上应该等于负的反应焓，查询JANAF表可以得知$\Delta_f H(H_2O)$等于-241.826kJ·mol⁻¹，我们可以查询多少温度下的焓变等于这个值的负值，结果是约5000K，按此结果我们做一下验算，我们看一下5000K下该反应的$\Delta G°$，$\Delta G°$取最小值的温度，就是标准状态下该反应平衡常数最大、反应进行得最彻底的理想温度，因此如果结果是5000K，$\Delta G°$应该为最小，带入数据，5000K时$\Delta_r G°(5000K) = \Delta_f G°(H₂O, g, 5000K) = 40.949$ kJ·mol⁻¹，4900K时$\Delta_r G°(4900K) = \Delta_f G°(H₂O, g, 4900K) = 34.998$kJ·mol⁻¹，很显然5000K并不是理想温度，且高出非常多，那么这个答案必然存在问题，我们不妨仔细分析一下这个问题：</p>
+<p>首先得明确核心约束：定HP意味着产物的总焓必须和反应物初始总焓完全匹配，而温度和组分都是这个约束下的结果，不是提前固定的。所以要先做一件基础工作——计算反应物的总焓：根据氢氧的混合比例（比如化学计量比2:1）、初始温度（比如室温298K）和设定的压力，算出反应物的总焓值，这个值是后续所有筛选的“基准线”。接下来就是先划定一个合理的温度范围，然后按一定步长逐个遍历这个区间里的每个温度。对每个遍历到的温度，都要在“固定这个温度+固定设定压力”的前提下，让产物的组分自由调整（但必须满足氢、氧原子总数不变的元素守恒），直到找到吉布斯自由能最小的状态——这个状态就是该温度下的化学平衡组分，意味着此时的组分比例是最稳定的，再没有自发变化的趋势。之后，需要计算这个“特定温度+对应平衡组分”组合下的产物总焓$H_{prod}$，把它和之前算的反应物总焓基准线做对比。等把所有温度都遍历完，就会得到一系列“温度-产物焓”的对应关系，而要找的那个真实燃烧温度，就是其中产物焓和反应物总焓最接近（甚至相等）的那个温度——如果刚好有某个扫描温度对应的产物焓和基准线完全匹配，那这个温度就是定HP下的平衡温度，对应的组分就是最终答案；如果没有完全匹配的用相邻两个温度的焓值做线性插值，就能算出精确的平衡温度，以及对应的平衡组分。</p>
+<p>反应物配比为化学计量比（2 mol H₂ + 1 mol O₂），初始温度为 \( T_r = 298.15\ \text{K} \)，单物质摩尔焓满足：</p>
+$$
+H_i(T_r) = \Delta H_i(T_r) + \Delta_f H_i(T_r)
+$$<p>（H₂、O₂为单质，$\Delta_f H_i(T_r) = 0$）</p>
+$$
+H_{\text{react}} = 2 \cdot H_{\text{H}_2}(T_r) + 1 \cdot H_{\text{O}_2}(T_r)
+$$$$2n_{\text{H}_2\text{O}} + 2n_{\text{H}_2} = 4 \implies n_{\text{H}_2} = 2 - n_{\text{H}_2\text{O}}$$$$n_{\text{H}_2\text{O}} + 2n_{\text{O}_2} = 2 \implies n_{\text{O}_2} = \frac{2 - n_{\text{H}_2\text{O}}}{2}$$$$n_{\text{total}} = n_{\text{H}_2\text{O}} + n_{\text{H}_2} + n_{\text{O}_2}$$<p>总吉布斯自由能表达式：</p>
+$$\begin{align*}
+G_{\text{total}}(T,P,n_{\text{H}_2\text{O}}) &= n_{\text{H}_2\text{O}} \left[ \Delta_f G_{\text{H}_2\text{O}}(T) + R T \ln\left(\frac{n_{\text{H}_2\text{O}}}{n_{\text{total}}} \cdot \frac{P}{P_0}\right) \right] \\
+&+ (2 - n_{\text{H}_2\text{O}}) \left[ \Delta_f G_{\text{H}_2}(T) + R T \ln\left(\frac{2 - n_{\text{H}_2\text{O}}}{n_{\text{total}}} \cdot \frac{P}{P_0}\right) \right] \\
+&+ \frac{2 - n_{\text{H}_2\text{O}}}{2} \left[ \Delta_f G_{\text{O}_2}(T) + R T \ln\left(\frac{2 - n_{\text{H}_2\text{O}}}{2n_{\text{total}}} \cdot \frac{P}{P_0}\right) \right]
+\end{align*}$$<p>平衡组分优化目标：</p>
+$$\min_{n_{\text{H}_2\text{O}}} G_{\text{total}}(T,P,n_{\text{H}_2\text{O}}) \quad \text{s.t.} \quad 0 \leq n_{\text{H}_2\text{O}} \leq 2$$<p>解得平衡组分：</p>
+$$n_{\text{H}_2\text{O}}^*、n_{\text{H}_2}^* = 2 - n_{\text{H}_2\text{O}}^*、n_{\text{O}_2}^* = \frac{2 - n_{\text{H}_2\text{O}}^*}{2}$$<p>产物总焓计算：
+物质 $i$ 在温度 $T$ 下的摩尔焓：</p>
+$$H_i(T) = \Delta H_i(T) + \Delta_f H_i(T)$$<p>平衡组分对应的总焓：</p>
+$$H_{\text{product}}(T) = n_{\text{H}_2\text{O}}^* \cdot H_{\text{H}_2\text{O}}(T) + n_{\text{H}_2}^* \cdot H_{\text{H}_2}(T) + n_{\text{O}_2}^* \cdot H_{\text{O}_2}(T)$$<p>定HP平衡温度插值：
+找到相邻温度 $T_a &lt; T_b$ 满足 $H_{\text{product}}(T_a) \leq H_{\text{react}} \leq H_{\text{product}}(T_b)$，线性插值求解 $T_{\text{eq}}$：
+$T_{\text{eq}} = T_a + \frac{H_{\text{react}} - H_{\text{product}}(T_a)}{H_{\text{product}}(T_b) - H_{\text{product}}(T_a)} \cdot (T_b - T_a)$
+我们可以使用python代码完成这些流程，得到的结果部分如下：
+正在计算 4700K 平衡组分&hellip;
+产物总焓：355.18 kJ | 平衡组分（H2O,H2,O2）：[0.4524 1.5476 0.7738]</p>
+<p>正在计算 4750K 平衡组分&hellip;
+产物总焓：367.17 kJ | 平衡组分（H2O,H2,O2）：[0.4305 1.5695 0.7848]</p>
+<p>正在计算 4800K 平衡组分&hellip;
+产物总焓：378.87 kJ | 平衡组分（H2O,H2,O2）：[0.4096 1.5904 0.7952]</p>
+<p>正在计算 4850K 平衡组分&hellip;
+产物总焓：390.30 kJ | 平衡组分（H2O,H2,O2）：[0.3898 1.6102 0.8051]</p>
+<p>正在计算 4900K 平衡组分&hellip;
+产物总焓：401.46 kJ | 平衡组分（H2O,H2,O2）：[0.3711 1.6289 0.8144]</p>
+<p>正在计算 4950K 平衡组分&hellip;
+产物总焓：412.37 kJ | 平衡组分（H2O,H2,O2）：[0.3534 1.6466 0.8233]</p>
+<p>正在计算 5000K 平衡组分&hellip;
+产物总焓：423.04 kJ | 平衡组分（H2O,H2,O2）：[0.3366 1.6634 0.8317]</p>
+<p>📌 定HP平衡温度（插值）：3554.00 K
+📌 平衡温度下组分（H2O,H2,O2）：[1.2781 0.7219 0.361 ] mol
+📌 平衡温度下产物总焓：-0.00 kJ（与反应物焓偏差：-0.00 kJ）</p>
+<p>这就是扫描的方法，但这样的方法无疑耗时又费力，那么可以在此基础上优化一下，采用“温度和组分一起迭代求解”的策略：</p>
+<p>首先，给出一个温度的初始猜测值$T_{guess}$（例如3000 K）。假设不同的组分可以求解在该$T_{guess}$下的平衡组成$\xi_{eq}$。用得到的$(T_{guess}, \xi_{eq})$计算产物总焓$H_{prod}$。判断：若$H_{prod} &lt; 0$，说明产物焓太低，系统能量有盈余，应升高$T_{guess}$；若$H_{prod} &gt; 0$，说明产物焓太高，能量不足，应降低$T_{guess}$。根据差值大小，更新$T_{guess}$，直到$|H_{prod}|$足够接近0。</p>
+<p>内层循环：在固定温度$T$下，求平衡组成$\xi$。假设组分变化，比如氢气2mol，氧气1mol，然后氢气反应了$A$，剩余$2-A$mol，氧气反应了$1-1/2A$mol，生成了$A$mol的水，类似地扫描不同的组分，按照外层猜测的温度，从JANAF表查出该温度下$H_2, O_2, H_2O$的$\Delta_f G°$。计算此温度下的平衡常数$K = exp(-\Delta G°/(RT))$。求解化学平衡方程$K = [\xi / ((2-\xi) \times sqrt(1-0.5\xi))] \times sqrt(3-0.5\xi)$得到$\xi_{eq}$。这可以通过扫描平衡计算方程左右两边的差值，寻找使差值最小的$\xi$来实现，这等价于寻找系统总吉布斯自由能$G$最小的点。</p>
+<p>确定了求解的基本方法之后，就可以引入更多的产物而不仅仅是水，因为高温下氢氧燃烧存在显著的解离反应，忽略这些解离产物会导致温度和组分的计算结果与实际严重偏离，最开始时求解温度约5000K很重要的一点原因就是这个问题。</p>
+<p>下面来完整的算一下，所用到的数据均来自JANAF表：</p>
+<p>由于$H_2O$在高温下会发生分解，则分别写出主要的分解方程式：</p>
+$$H_2 + \frac{1}{2}O_2 \to a1H_2O + b1H + c1OH$$$$\begin{cases}2 = 2a1 + b1 + c1 \\1 = a1 + c1 \end{cases} \Rightarrow \begin{cases}b1 = 1 - a1 \\c1 = 1 - a1 \end{cases}$$$$H_2O \to H + OH$$$$K = \frac{bc}{a} = \frac{(1 - a1)^2}{a1}$$$$H_2 + \frac{1}{2}O_2 \to a2H_2O + b2H_2 + c2O_2$$$$\begin{cases}2 = 2a2 + 2b2 \\1 = a2 + 2c2 \end{cases} \Rightarrow \begin{cases}b2 = 1 - a2 \\c2 = \frac{1 - a2}{2} \end{cases}$$$$H_2O \to H_2 + \frac{1}{2}O_2$$$$K = \frac{b2c2^{\frac{1}{2}}}{a2} = \frac{(1 - a2)(\frac{1 - a2}{2})^{\frac{1}{2}}}{a2}$$<p>第一步：假设产物温度为3100K</p>
+<ul>
+<li>
+<p>对反应1：查询JANAF表得$\Delta_f H(H_2O) = -71298$（J·mol⁻¹），$\Delta_f H(H) = 39877$（J·mol⁻¹），$\Delta_f H(OH) = -5552$（J·mol⁻¹），计算得$\Delta G_1 = 105623$（J·mol⁻¹）。则平衡常数$K = e^{-\frac{\Delta G}{RT}} = 0.0166$，由$K = \frac{(1 - a1)^2}{a1}$求得$a1 = 0.879$，即有0.121 mol的水发生了分解，产物为H和OH。</p>
+</li>
+<li>
+<p>对反应2：查询JANAF表得$\Delta_f H(H_2O) = -71298$（J·mol⁻¹），$\Delta_f H(H_2) = \Delta_f H(O_2) = 0$（J·mol⁻¹），计算得$\Delta G_2 = 71298$（J·mol⁻¹）。则平衡常数$K = e^{-\frac{\Delta G}{RT}} = 0.0629$，由$K = \frac{(1 - a2)(\frac{1 - a2}{2})^{\frac{1}{2}}}{a2}$求得$a2 = 0.825$，即有0.175 mol的水分解，产物为$H_2$和$O_2$。</p>
+</li>
+</ul>
+<p>由热力学第一定律，反应前后总焓不变，写出热平衡方程：</p>
+$$0 = [(1 - 0.121 - 0.175)(\Delta_f H(H_2O) + \Delta H(H_2O))] + [b1(\Delta_f H(H) + \Delta H(H))] + [c1(\Delta_f H(OH) + \Delta H(OH))] + [b2\Delta H(H_2)] + [c2\Delta H(O_2)]$$<p>计算结果：$0 &gt; -2688.0705$（J·mol⁻¹），说明产物焓偏低，需升高温度。</p>
+<p>第二步：假设产物温度为3200K</p>
+<ul>
+<li>
+<p>对反应1：查询JANAF表得$\Delta G_1 = 92313$（J·mol⁻¹），则平衡常数$K = e^{-\frac{\Delta G}{RT}} = 0.0311$，由$K = \frac{(1 - a1)^2}{a1}$求得$a1 = 0.8385$，即有0.1615 mol $H_2O$发生了分解。</p>
+</li>
+<li>
+<p>对反应2：查询JANAF表得$\Delta G_2 = 65430$（J·mol⁻¹），则平衡常数$K = e^{-\frac{\Delta G}{RT}} = 0.0855$，由$K = \frac{(1 - a2)(\frac{1 - a2}{2})^{\frac{1}{2}}}{a2}$求得$a2 = 0.79$，即有0.21 mol $H_2O$发生了分解。</p>
+</li>
+</ul>
+<p>由热力学第一定律，写出热平衡方程：</p>
+$$0 = [(1 - 0.1615 - 0.21)(\Delta_f H(H_2O) + \Delta H(H_2O))] + [b1(\Delta_f H(H) + \Delta H(H))] + [c1(\Delta_f H(OH) + \Delta H(OH))] + [b2\Delta H(H_2)] + [c2\Delta H(O_2)]$$<p>计算结果：$0 &lt; 32831.1045$（J·mol⁻¹），说明产物焓偏高，需降低温度。</p>
+<p>第三步：线性插值求平衡温度</p>
+<p>根据3100K（焓差-2688.0705 J·mol⁻¹）和3200K（焓差32831.1045 J·mol⁻¹）的计算结果，线性插值得：</p>
+$$T = 3107 \text{ K}$$<p>作为验证，我使用Cantera在HP约束下计算，结果为3093K，仍存在细微的误差，应该来自于未考虑其他副反应（如$H_2O_2$、$HO_2$等次要组分的生成），但主要的两个分解反应都已纳入计算，作为估算已十分准确，充分证明了JANAF表在氢氧火焰温度估算中的可行性。希望我的论文顺利见刊。</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://liuxunchen.github.io/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
