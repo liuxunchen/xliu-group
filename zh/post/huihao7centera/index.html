@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>centera | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="【三种模型没有说清楚。表格不要用图片。NPL 的参数不是仿真的，要自己测。代码写详细。】
+使用centera计算设计的Hencken燃烧器的燃烧参数，主要包括了热流密度、温度和焓差通量等。
+主要有三种模型，分别为free flame 、burner flame 和impinginglet。在这其中free flame 模型只能通过调整混合气体的参数来间接的改变火焰的速度即火焰的速度也是一个求解结果；impinginglet 模型主要是用来仿真冲击射流，即火焰在对一块板进行烧蚀的情况；因此在单纯的对火焰炉火焰的燃烧参数进行仿真的情况下，选择了burner flame模型进行仿真。
+主要仿真了在不同质量通量的条件下的：焓通量、热流密度和温度等等，仿真结果如下图所示（主要进行了氢氧火焰和氧乙炔火焰的仿真）
+
+对氢氧火焰在质量通量为4的条件下的温度和热流密度分布也进行了仿真
+
+在对氧乙炔和氢氧火焰进行仿真时需要更换不同的反应机理文件，因为h2o2.yaml是针对 H₂-O₂ 氢氧燃烧体系；gri30_ion.yaml是对烃类燃烧
+此外还设定不同的质量通量并在燃烧时进行了HP化学平衡计算
+
+
+最后我们也参考了NPL的测量对我们的炉子的截面尺寸、面内一致性、焓值不确定度、波动度、复现性等参数进行仿真
+截面尺寸：40mm*40mm
+面内一致性：1.5%
+焓值不确定度：0.45%
+波动度：0.1%-0.3%
+复现性：0.12%-0.3%">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="惠昊">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/huihao7centera/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/huihao7centera/">
+  <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+  <meta property="og:title" content="centera">
+  <meta property="og:description" content="【三种模型没有说清楚。表格不要用图片。NPL 的参数不是仿真的，要自己测。代码写详细。】
+使用centera计算设计的Hencken燃烧器的燃烧参数，主要包括了热流密度、温度和焓差通量等。 主要有三种模型，分别为free flame 、burner flame 和impinginglet。在这其中free flame 模型只能通过调整混合气体的参数来间接的改变火焰的速度即火焰的速度也是一个求解结果；impinginglet 模型主要是用来仿真冲击射流，即火焰在对一块板进行烧蚀的情况；因此在单纯的对火焰炉火焰的燃烧参数进行仿真的情况下，选择了burner flame模型进行仿真。 主要仿真了在不同质量通量的条件下的：焓通量、热流密度和温度等等，仿真结果如下图所示（主要进行了氢氧火焰和氧乙炔火焰的仿真） 对氢氧火焰在质量通量为4的条件下的温度和热流密度分布也进行了仿真 在对氧乙炔和氢氧火焰进行仿真时需要更换不同的反应机理文件，因为h2o2.yaml是针对 H₂-O₂ 氢氧燃烧体系；gri30_ion.yaml是对烃类燃烧 此外还设定不同的质量通量并在燃烧时进行了HP化学平衡计算 最后我们也参考了NPL的测量对我们的炉子的截面尺寸、面内一致性、焓值不确定度、波动度、复现性等参数进行仿真 截面尺寸：40mm*40mm 面内一致性：1.5% 焓值不确定度：0.45% 波动度：0.1%-0.3% 复现性：0.12%-0.3%">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2026-02-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-02-28T00:00:00+00:00">
+
+  <meta itemprop="name" content="centera">
+  <meta itemprop="description" content="【三种模型没有说清楚。表格不要用图片。NPL 的参数不是仿真的，要自己测。代码写详细。】
+使用centera计算设计的Hencken燃烧器的燃烧参数，主要包括了热流密度、温度和焓差通量等。 主要有三种模型，分别为free flame 、burner flame 和impinginglet。在这其中free flame 模型只能通过调整混合气体的参数来间接的改变火焰的速度即火焰的速度也是一个求解结果；impinginglet 模型主要是用来仿真冲击射流，即火焰在对一块板进行烧蚀的情况；因此在单纯的对火焰炉火焰的燃烧参数进行仿真的情况下，选择了burner flame模型进行仿真。 主要仿真了在不同质量通量的条件下的：焓通量、热流密度和温度等等，仿真结果如下图所示（主要进行了氢氧火焰和氧乙炔火焰的仿真） 对氢氧火焰在质量通量为4的条件下的温度和热流密度分布也进行了仿真 在对氧乙炔和氢氧火焰进行仿真时需要更换不同的反应机理文件，因为h2o2.yaml是针对 H₂-O₂ 氢氧燃烧体系；gri30_ion.yaml是对烃类燃烧 此外还设定不同的质量通量并在燃烧时进行了HP化学平衡计算 最后我们也参考了NPL的测量对我们的炉子的截面尺寸、面内一致性、焓值不确定度、波动度、复现性等参数进行仿真 截面尺寸：40mm*40mm 面内一致性：1.5% 焓值不确定度：0.45% 波动度：0.1%-0.3% 复现性：0.12%-0.3%">
+  <meta itemprop="datePublished" content="2026-02-28T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-02-28T00:00:00+00:00">
+  <meta itemprop="wordCount" content="24">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="centera">
+  <meta name="twitter:description" content="【三种模型没有说清楚。表格不要用图片。NPL 的参数不是仿真的，要自己测。代码写详细。】
+使用centera计算设计的Hencken燃烧器的燃烧参数，主要包括了热流密度、温度和焓差通量等。 主要有三种模型，分别为free flame 、burner flame 和impinginglet。在这其中free flame 模型只能通过调整混合气体的参数来间接的改变火焰的速度即火焰的速度也是一个求解结果；impinginglet 模型主要是用来仿真冲击射流，即火焰在对一块板进行烧蚀的情况；因此在单纯的对火焰炉火焰的燃烧参数进行仿真的情况下，选择了burner flame模型进行仿真。 主要仿真了在不同质量通量的条件下的：焓通量、热流密度和温度等等，仿真结果如下图所示（主要进行了氢氧火焰和氧乙炔火焰的仿真） 对氢氧火焰在质量通量为4的条件下的温度和热流密度分布也进行了仿真 在对氧乙炔和氢氧火焰进行仿真时需要更换不同的反应机理文件，因为h2o2.yaml是针对 H₂-O₂ 氢氧燃烧体系；gri30_ion.yaml是对烃类燃烧 此外还设定不同的质量通量并在燃烧时进行了HP化学平衡计算 最后我们也参考了NPL的测量对我们的炉子的截面尺寸、面内一致性、焓值不确定度、波动度、复现性等参数进行仿真 截面尺寸：40mm*40mm 面内一致性：1.5% 焓值不确定度：0.45% 波动度：0.1%-0.3% 复现性：0.12%-0.3%">
+
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        刘训臣燃烧诊断实验室主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/our-alumni/" title="Alumni 页">
+              Alumni
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">centera</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Post
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">centera</h1>
+      
+      <p class="tracked"><strong>惠昊</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-02-28T00:00:00Z">二月 28, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>【三种模型没有说清楚。表格不要用图片。NPL 的参数不是仿真的，要自己测。代码写详细。】</p>
+<p>使用centera计算设计的Hencken燃烧器的燃烧参数，主要包括了热流密度、温度和焓差通量等。
+主要有三种模型，分别为free flame 、burner flame 和impinginglet。在这其中free flame 模型只能通过调整混合气体的参数来间接的改变火焰的速度即火焰的速度也是一个求解结果；impinginglet 模型主要是用来仿真冲击射流，即火焰在对一块板进行烧蚀的情况；因此在单纯的对火焰炉火焰的燃烧参数进行仿真的情况下，选择了burner flame模型进行仿真。
+主要仿真了在不同质量通量的条件下的：焓通量、热流密度和温度等等，仿真结果如下图所示（主要进行了氢氧火焰和氧乙炔火焰的仿真）
+<img src="/xliu-group/zh/post/huihao7centera/image1.png" alt="仿真结果">
+对氢氧火焰在质量通量为4的条件下的温度和热流密度分布也进行了仿真
+<img src="/xliu-group/zh/post/huihao7centera/image2.png" alt="温度和热流密度分布">
+在对氧乙炔和氢氧火焰进行仿真时需要更换不同的反应机理文件，因为h2o2.yaml是针对 H₂-O₂ 氢氧燃烧体系；gri30_ion.yaml是对烃类燃烧
+此外还设定不同的质量通量并在燃烧时进行了HP化学平衡计算
+<img src="/xliu-group/zh/post/huihao7centera/image3.png" alt="参数设定">
+<img src="/xliu-group/zh/post/huihao7centera/image4.png" alt="平衡计算">
+最后我们也参考了NPL的测量对我们的炉子的截面尺寸、面内一致性、焓值不确定度、波动度、复现性等参数进行仿真
+截面尺寸：40mm*40mm
+面内一致性：1.5%
+焓值不确定度：0.45%
+波动度：0.1%-0.3%
+复现性：0.12%-0.3%</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

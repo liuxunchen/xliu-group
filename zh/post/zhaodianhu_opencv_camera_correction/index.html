@@ -1,23 +1,61 @@
 <!DOCTYPE html>
 <html lang="zh">
-  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Zhaodianhu_opencv_camera_correction | 刘训臣燃烧诊断实验室主页</title>
+    <title>手机相机标定 | 刘训臣燃烧诊断实验室主页</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="">
-    <meta name="generator" content="Hugo 0.147.8">
+    <meta name="description" content="在现实生活中，用相机拍照是很常见的事情。由于相机镜头有畸变（近大远小）、拍摄角度有区别，而从二维的图像中读取三维点的信息比较困难，这是因为相机通过透镜将3D世界投影到2D图像上时，会产生径向畸变（鱼眼效果）和切向畸变（透镜安装偏差），同时相机的内参模糊（焦距、主点位置未知）。因此需要建立真实世界坐标和图像像素坐标之间的数学关系，让计算机能反向推算出真实世界的结构，而这就需要标定。传统的标定方法需要精密3D标定板，成本高且麻烦。张正友教授在1999年提出的标定法，仅需打印一张棋盘格，拍摄多张照片，就能实现高精度标定。
+掌握相机标定的关键是理解世界坐标系、相机坐标系、图像坐标系和像素坐标系之间的转换关系。下面介绍一下坐标系和它们之间的关系。
+一、四大坐标系
+1.1 世界坐标系
+世界坐标系是描述真实世界的绝对坐标系（绝对参考），用于表示物体、相机在空间中的绝对位置，是所有其他坐标系的参考基准。世界坐标系的原点是用户自定义的三维空间中的任意点，坐标轴通常以右手坐标系定义 (X右, Y上, Z前)。
+1.2 相机坐标系
+相机坐标系是以相机为中心的局部坐标系，Z坐标表示深度（物体到相机的距离），描述了相机观察世界的视角。原点是相机光心，Z轴为相机光轴方向（指向拍摄方向），X轴与图像平面x轴平行，Y轴与图像平面y轴平行。相机坐标系是描述“从相机角度看物体在哪里”（观察视角）。
+1.3 图像坐标系
+图像坐标系描述光线在图像传感器上的实际投影位置，是还未考虑像素离散化的理想图像平面，可用于表示镜头畸变等光学特性。坐标轴原点为图像平面与光轴的交点（主点），x轴向右，y轴向下的二维坐标系，单位是物理单位（毫米）。图像坐标系是描述“光线在传感器上形成的光点位置”（连续物理投影）。
+1.4 像素坐标系
+像素是数字图像的实际存储格式，考虑了图像传感器的离散化特性，是计算机处理图像的基本单位。像素坐标系是描述像素位置的坐标，原点在图像左上角，坐标轴u轴向右，v轴向下，单位是像素。像素坐标系是描述“计算机实际存储的图像像素位置”（离散数字表示）。
+1.5 坐标系之间的关系
+世界坐标系 (X_w, Y_w, Z_w)
+↓ 刚体变换 (外参)
+相机坐标系 (X_c, Y_c, Z_c)
+↓ 透视投影
+图像坐标系 (x, y) [毫米单位]
+↓ 缩放&#43;平移
+像素坐标系 (u, v) [像素单位]
+世界坐标系 → 相机坐标系
+$$
+\begin{bmatrix}
+X_c \
+Y_c \
+Z_c \
+1
+\end{bmatrix}
+\begin{bmatrix}
+R_{3\times3} &amp; t_{3\times1} \
+0_{1\times3} &amp; 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+X_w \
+Y_w \
+Z_w \
+1
+\end{bmatrix}
+$$">
+    <meta name="generator" content="Hugo 0.144.2">
     
     
     
-      <meta name="robots" content="noindex, nofollow">
+      <meta name="robots" content="index, follow">
     
-    <meta name="author" content="刘训臣">
+    <meta name="author" content="赵殿虎">
     
 
     
-<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.css" >
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
 
 
 
@@ -33,27 +71,47 @@
     
 
     
-      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/">
+      <link rel="canonical" href="https://liuxunchen.github.io/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/">
     
 
-    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/">
+    <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/">
   <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
-  <meta property="og:title" content="Zhaodianhu_opencv_camera_correction">
-  <meta property="og:description" content="山东科技大学 机械电子工程学院 激光诊断实验室">
+  <meta property="og:title" content="手机相机标定">
+  <meta property="og:description" content="在现实生活中，用相机拍照是很常见的事情。由于相机镜头有畸变（近大远小）、拍摄角度有区别，而从二维的图像中读取三维点的信息比较困难，这是因为相机通过透镜将3D世界投影到2D图像上时，会产生径向畸变（鱼眼效果）和切向畸变（透镜安装偏差），同时相机的内参模糊（焦距、主点位置未知）。因此需要建立真实世界坐标和图像像素坐标之间的数学关系，让计算机能反向推算出真实世界的结构，而这就需要标定。传统的标定方法需要精密3D标定板，成本高且麻烦。张正友教授在1999年提出的标定法，仅需打印一张棋盘格，拍摄多张照片，就能实现高精度标定。
+掌握相机标定的关键是理解世界坐标系、相机坐标系、图像坐标系和像素坐标系之间的转换关系。下面介绍一下坐标系和它们之间的关系。
+一、四大坐标系 1.1 世界坐标系 世界坐标系是描述真实世界的绝对坐标系（绝对参考），用于表示物体、相机在空间中的绝对位置，是所有其他坐标系的参考基准。世界坐标系的原点是用户自定义的三维空间中的任意点，坐标轴通常以右手坐标系定义 (X右, Y上, Z前)。
+1.2 相机坐标系 相机坐标系是以相机为中心的局部坐标系，Z坐标表示深度（物体到相机的距离），描述了相机观察世界的视角。原点是相机光心，Z轴为相机光轴方向（指向拍摄方向），X轴与图像平面x轴平行，Y轴与图像平面y轴平行。相机坐标系是描述“从相机角度看物体在哪里”（观察视角）。
+1.3 图像坐标系 图像坐标系描述光线在图像传感器上的实际投影位置，是还未考虑像素离散化的理想图像平面，可用于表示镜头畸变等光学特性。坐标轴原点为图像平面与光轴的交点（主点），x轴向右，y轴向下的二维坐标系，单位是物理单位（毫米）。图像坐标系是描述“光线在传感器上形成的光点位置”（连续物理投影）。
+1.4 像素坐标系 像素是数字图像的实际存储格式，考虑了图像传感器的离散化特性，是计算机处理图像的基本单位。像素坐标系是描述像素位置的坐标，原点在图像左上角，坐标轴u轴向右，v轴向下，单位是像素。像素坐标系是描述“计算机实际存储的图像像素位置”（离散数字表示）。
+1.5 坐标系之间的关系 世界坐标系 (X_w, Y_w, Z_w) ↓ 刚体变换 (外参) 相机坐标系 (X_c, Y_c, Z_c) ↓ 透视投影 图像坐标系 (x, y) [毫米单位] ↓ 缩放&#43;平移 像素坐标系 (u, v) [像素单位]
+世界坐标系 → 相机坐标系 $$ \begin{bmatrix} X_c \ Y_c \ Z_c \ 1 \end{bmatrix} \begin{bmatrix} R_{3\times3} &amp; t_{3\times1} \ 0_{1\times3} &amp; 1 \end{bmatrix} \cdot \begin{bmatrix} X_w \ Y_w \ Z_w \ 1 \end{bmatrix} $$">
   <meta property="og:locale" content="zh">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2025-11-30T13:07:14+08:00">
-    <meta property="article:modified_time" content="2025-11-30T13:07:14+08:00">
 
-  <meta itemprop="name" content="Zhaodianhu_opencv_camera_correction">
-  <meta itemprop="description" content="山东科技大学 机械电子工程学院 激光诊断实验室">
-  <meta itemprop="datePublished" content="2025-11-30T13:07:14+08:00">
-  <meta itemprop="dateModified" content="2025-11-30T13:07:14+08:00">
+  <meta itemprop="name" content="手机相机标定">
+  <meta itemprop="description" content="在现实生活中，用相机拍照是很常见的事情。由于相机镜头有畸变（近大远小）、拍摄角度有区别，而从二维的图像中读取三维点的信息比较困难，这是因为相机通过透镜将3D世界投影到2D图像上时，会产生径向畸变（鱼眼效果）和切向畸变（透镜安装偏差），同时相机的内参模糊（焦距、主点位置未知）。因此需要建立真实世界坐标和图像像素坐标之间的数学关系，让计算机能反向推算出真实世界的结构，而这就需要标定。传统的标定方法需要精密3D标定板，成本高且麻烦。张正友教授在1999年提出的标定法，仅需打印一张棋盘格，拍摄多张照片，就能实现高精度标定。
+掌握相机标定的关键是理解世界坐标系、相机坐标系、图像坐标系和像素坐标系之间的转换关系。下面介绍一下坐标系和它们之间的关系。
+一、四大坐标系 1.1 世界坐标系 世界坐标系是描述真实世界的绝对坐标系（绝对参考），用于表示物体、相机在空间中的绝对位置，是所有其他坐标系的参考基准。世界坐标系的原点是用户自定义的三维空间中的任意点，坐标轴通常以右手坐标系定义 (X右, Y上, Z前)。
+1.2 相机坐标系 相机坐标系是以相机为中心的局部坐标系，Z坐标表示深度（物体到相机的距离），描述了相机观察世界的视角。原点是相机光心，Z轴为相机光轴方向（指向拍摄方向），X轴与图像平面x轴平行，Y轴与图像平面y轴平行。相机坐标系是描述“从相机角度看物体在哪里”（观察视角）。
+1.3 图像坐标系 图像坐标系描述光线在图像传感器上的实际投影位置，是还未考虑像素离散化的理想图像平面，可用于表示镜头畸变等光学特性。坐标轴原点为图像平面与光轴的交点（主点），x轴向右，y轴向下的二维坐标系，单位是物理单位（毫米）。图像坐标系是描述“光线在传感器上形成的光点位置”（连续物理投影）。
+1.4 像素坐标系 像素是数字图像的实际存储格式，考虑了图像传感器的离散化特性，是计算机处理图像的基本单位。像素坐标系是描述像素位置的坐标，原点在图像左上角，坐标轴u轴向右，v轴向下，单位是像素。像素坐标系是描述“计算机实际存储的图像像素位置”（离散数字表示）。
+1.5 坐标系之间的关系 世界坐标系 (X_w, Y_w, Z_w) ↓ 刚体变换 (外参) 相机坐标系 (X_c, Y_c, Z_c) ↓ 透视投影 图像坐标系 (x, y) [毫米单位] ↓ 缩放&#43;平移 像素坐标系 (u, v) [像素单位]
+世界坐标系 → 相机坐标系 $$ \begin{bmatrix} X_c \ Y_c \ Z_c \ 1 \end{bmatrix} \begin{bmatrix} R_{3\times3} &amp; t_{3\times1} \ 0_{1\times3} &amp; 1 \end{bmatrix} \cdot \begin{bmatrix} X_w \ Y_w \ Z_w \ 1 \end{bmatrix} $$">
+  <meta itemprop="wordCount" content="467">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Zhaodianhu_opencv_camera_correction">
-  <meta name="twitter:description" content="山东科技大学 机械电子工程学院 激光诊断实验室">
+  <meta name="twitter:title" content="手机相机标定">
+  <meta name="twitter:description" content="在现实生活中，用相机拍照是很常见的事情。由于相机镜头有畸变（近大远小）、拍摄角度有区别，而从二维的图像中读取三维点的信息比较困难，这是因为相机通过透镜将3D世界投影到2D图像上时，会产生径向畸变（鱼眼效果）和切向畸变（透镜安装偏差），同时相机的内参模糊（焦距、主点位置未知）。因此需要建立真实世界坐标和图像像素坐标之间的数学关系，让计算机能反向推算出真实世界的结构，而这就需要标定。传统的标定方法需要精密3D标定板，成本高且麻烦。张正友教授在1999年提出的标定法，仅需打印一张棋盘格，拍摄多张照片，就能实现高精度标定。
+掌握相机标定的关键是理解世界坐标系、相机坐标系、图像坐标系和像素坐标系之间的转换关系。下面介绍一下坐标系和它们之间的关系。
+一、四大坐标系 1.1 世界坐标系 世界坐标系是描述真实世界的绝对坐标系（绝对参考），用于表示物体、相机在空间中的绝对位置，是所有其他坐标系的参考基准。世界坐标系的原点是用户自定义的三维空间中的任意点，坐标轴通常以右手坐标系定义 (X右, Y上, Z前)。
+1.2 相机坐标系 相机坐标系是以相机为中心的局部坐标系，Z坐标表示深度（物体到相机的距离），描述了相机观察世界的视角。原点是相机光心，Z轴为相机光轴方向（指向拍摄方向），X轴与图像平面x轴平行，Y轴与图像平面y轴平行。相机坐标系是描述“从相机角度看物体在哪里”（观察视角）。
+1.3 图像坐标系 图像坐标系描述光线在图像传感器上的实际投影位置，是还未考虑像素离散化的理想图像平面，可用于表示镜头畸变等光学特性。坐标轴原点为图像平面与光轴的交点（主点），x轴向右，y轴向下的二维坐标系，单位是物理单位（毫米）。图像坐标系是描述“光线在传感器上形成的光点位置”（连续物理投影）。
+1.4 像素坐标系 像素是数字图像的实际存储格式，考虑了图像传感器的离散化特性，是计算机处理图像的基本单位。像素坐标系是描述像素位置的坐标，原点在图像左上角，坐标轴u轴向右，v轴向下，单位是像素。像素坐标系是描述“计算机实际存储的图像像素位置”（离散数字表示）。
+1.5 坐标系之间的关系 世界坐标系 (X_w, Y_w, Z_w) ↓ 刚体变换 (外参) 相机坐标系 (X_c, Y_c, Z_c) ↓ 透视投影 图像坐标系 (x, y) [毫米单位] ↓ 缩放&#43;平移 像素坐标系 (u, v) [像素单位]
+世界坐标系 → 相机坐标系 $$ \begin{bmatrix} X_c \ Y_c \ Z_c \ 1 \end{bmatrix} \begin{bmatrix} R_{3\times3} &amp; t_{3\times1} \ 0_{1\times3} &amp; 1 \end{bmatrix} \cdot \begin{bmatrix} X_w \ Y_w \ Z_w \ 1 \end{bmatrix} $$">
 
+      
+    
 	
 	
 	    
@@ -82,7 +140,7 @@ script.async = true;
 
     
 	
-  </head><body class="ma0 avenir bg-near-white development">
+  </head><body class="ma0 avenir bg-near-white production">
 
     
    
@@ -91,7 +149,7 @@ script.async = true;
   
   
   
-  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
+  <header class="cover bg-center" style="background-image: url('https://liuxunchen.github.io/xliu-group/images/sdust.jpg');">
     <div class="bg-black-60">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l center items-center justify-between">
@@ -140,7 +198,7 @@ script.async = true;
 
       <div class="tc-l pv6 ph3 ph4-ns">
         
-          <div class="f2 f1-l fw2 white-90 mb0 lh-title">Zhaodianhu_opencv_camera_correction</div>
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">手机相机标定</div>
           
         
       </div>
@@ -159,20 +217,243 @@ script.async = true;
           
         Post
       </aside><div id="sharing" class="mt3 ananke-socials"></div>
-<h1 class="f1 athelas mt3 mb1">Zhaodianhu_opencv_camera_correction</h1>
+<h1 class="f1 athelas mt3 mb1">手机相机标定</h1>
       
-      <p class="tracked"><strong>刘训臣</strong>
+      <p class="tracked"><strong>赵殿虎</strong>
       </p>
       
       
-      
-      <time class="f6 mv4 dib tracked" datetime="2025-11-30T13:07:14+08:00">十一月 30, 2025</time>
       
 
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><ul class="pa0">
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>在现实生活中，用相机拍照是很常见的事情。由于相机镜头有畸变（近大远小）、拍摄角度有区别，而从二维的图像中读取三维点的信息比较困难，这是因为相机通过透镜将3D世界投影到2D图像上时，会产生径向畸变（鱼眼效果）和切向畸变（透镜安装偏差），同时相机的内参模糊（焦距、主点位置未知）。因此需要建立真实世界坐标和图像像素坐标之间的数学关系，让计算机能反向推算出真实世界的结构，而这就需要标定。传统的标定方法需要精密3D标定板，成本高且麻烦。张正友教授在1999年提出的标定法，仅需打印一张棋盘格，拍摄多张照片，就能实现高精度标定。</p>
+<p>掌握相机标定的关键是理解世界坐标系、相机坐标系、图像坐标系和像素坐标系之间的转换关系。下面介绍一下坐标系和它们之间的关系。</p>
+<h2 id="一四大坐标系">一、四大坐标系</h2>
+<h3 id="11-世界坐标系">1.1 世界坐标系</h3>
+<p>世界坐标系是描述真实世界的绝对坐标系（绝对参考），用于表示物体、相机在空间中的绝对位置，是所有其他坐标系的参考基准。世界坐标系的原点是用户自定义的三维空间中的任意点，坐标轴通常以右手坐标系定义 (X右, Y上, Z前)。</p>
+<h3 id="12-相机坐标系">1.2 相机坐标系</h3>
+<p>相机坐标系是以相机为中心的局部坐标系，Z坐标表示深度（物体到相机的距离），描述了相机观察世界的视角。原点是相机光心，Z轴为相机光轴方向（指向拍摄方向），X轴与图像平面x轴平行，Y轴与图像平面y轴平行。<strong>相机坐标系</strong>是描述“从相机角度看物体在哪里”（观察视角）。</p>
+<h3 id="13-图像坐标系">1.3 图像坐标系</h3>
+<p>图像坐标系描述光线在图像传感器上的实际投影位置，是还未考虑像素离散化的理想图像平面，可用于表示镜头畸变等光学特性。坐标轴原点为图像平面与光轴的交点（主点），x轴向右，y轴向下的二维坐标系，单位是物理单位（毫米）。<strong>图像坐标系</strong>是描述“光线在传感器上形成的光点位置”（连续物理投影）。</p>
+<h3 id="14-像素坐标系">1.4 像素坐标系</h3>
+<p>像素是数字图像的实际存储格式，考虑了图像传感器的离散化特性，是计算机处理图像的基本单位。像素坐标系是描述像素位置的坐标，原点在图像左上角，坐标轴u轴向右，v轴向下，单位是像素。<strong>像素坐标系</strong>是描述“计算机实际存储的图像像素位置”（离散数字表示）。</p>
+<h3 id="15-坐标系之间的关系">1.5 坐标系之间的关系</h3>
+<p>世界坐标系 (X_w, Y_w, Z_w)
+↓ 刚体变换 (外参)
+相机坐标系 (X_c, Y_c, Z_c)
+↓ 透视投影
+图像坐标系 (x, y) [毫米单位]
+↓ 缩放+平移
+像素坐标系 (u, v) [像素单位]</p>
+<h4 id="世界坐标系--相机坐标系">世界坐标系 → 相机坐标系</h4>
+<h1 id="endbmatrix">$$
+\begin{bmatrix}
+X_c \
+Y_c \
+Z_c \
+1
+\end{bmatrix}</h1>
+<p>\begin{bmatrix}
+R_{3\times3} &amp; t_{3\times1} \
+0_{1\times3} &amp; 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+X_w \
+Y_w \
+Z_w \
+1
+\end{bmatrix}
+$$</p>
+<h4 id="相机坐标系--图像坐标系">相机坐标系 → 图像坐标系</h4>
+$$
+\begin{bmatrix}
+x \\
+y \\
+1
+\end{bmatrix}
+\sim
+\begin{bmatrix}
+f_x & 0 & 0 & 0 \\
+0 & f_y & 0 & 0 \\
+0 & 0 & 1 & 0
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+X_c \\
+Y_c \\
+Z_c \\
+1
+\end{bmatrix}
+$$<h4 id="图像坐标系--像素坐标系">图像坐标系 → 像素坐标系</h4>
+<h1 id="endbmatrix-1">$$
+\begin{bmatrix}
+u \
+v \
+1
+\end{bmatrix}</h1>
+<p>\begin{bmatrix}
+\frac{1}{dx} &amp; 0 &amp; c_x \
+0 &amp; \frac{1}{dy} &amp; c_y \
+0 &amp; 0 &amp; 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x \
+y \
+1
+\end{bmatrix}
+$$</p>
+<h4 id="完整投影矩阵">完整投影矩阵</h4>
+<h1 id="endbmatrix-2">$$
+s \begin{bmatrix}
+u \
+v \
+1
+\end{bmatrix}</h1>
+<p>\begin{bmatrix}
+f_x &amp; \gamma &amp; c_x \
+0 &amp; f_y &amp; c_y \
+0 &amp; 0 &amp; 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+r_{11} &amp; r_{12} &amp; r_{13} &amp; t_x \
+r_{21} &amp; r_{22} &amp; r_{23} &amp; t_y \
+r_{31} &amp; r_{32} &amp; r_{33} &amp; t_z
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+X_w \
+Y_w \
+Z_w \
+1
+\end{bmatrix}
+$$</p>
+<h1 id="_text像素">$$
+\underbrace{
+\begin{bmatrix}
+u \
+v \
+1
+\end{bmatrix}
+}_{\text{像素}}</h1>
+<p>\underbrace{
+K
+}<em>{\text{内参}}
+\cdot
+\underbrace{
+[R|t]
+}</em>{\text{外参}}
+\cdot
+\underbrace{
+\begin{bmatrix}
+X_w \
+Y_w \
+Z_w \
+1
+\end{bmatrix}
+}_{\text{世界}}
+$$</p>
+<h2 id="二四大矩阵">二、四大矩阵</h2>
+<h3 id="21-内参矩阵-k">2.1 内参矩阵 K</h3>
+<p>内参矩阵是描述相机内部光学特性的矩阵，包括焦距、主点和倾斜系数。</p>
+$$
+K =
+\begin{bmatrix}
+f_x & \gamma & c_x \\
+0 & f_y & c_y \\
+0 & 0 & 1
+\end{bmatrix}
+$$<h3 id="22-外参矩阵-rt">2.2 外参矩阵 [R|t]</h3>
+<p>外参矩阵描述相机在世界坐标系中的位置和朝向。</p>
+$$
+[R|t] = 
+\begin{bmatrix}
+r_{11} & r_{12} & r_{13} & t_x \\
+r_{21} & r_{22} & r_{23} & t_y \\
+r_{31} & r_{32} & r_{33} & t_z
+\end{bmatrix}
+$$<h3 id="23-投影矩阵-p">2.3 投影矩阵 P</h3>
+<p>投影矩阵是将3D世界点直接投影到2D像素坐标的完整变换矩阵。</p>
+$$
+P = K[R|t] = 
+\begin{bmatrix}
+p_{11} & p_{12} & p_{13} & p_{14} \\
+p_{21} & p_{22} & p_{23} & p_{24} \\
+p_{31} & p_{32} & p_{33} & p_{34}
+\end{bmatrix}
+$$<h3 id="24-基础矩阵-f">2.4 基础矩阵 F</h3>
+<p>基础矩阵是描述两个相机之间的极线几何关系，用于约束对应点的搜索。</p>
+$$
+\mathbf{m}_2^T F \mathbf{m}_1 = 0
+$$<p>其中$\mathbf{m}_1 = [u_1, v_1, 1]^T$, $\mathbf{m}_2 = [u_2, v_2, 1]^T$。</p>
+<h3 id="25-各矩阵之间的关系">2.5 各矩阵之间的关系</h3>
+<p><strong>外参矩阵</strong>[R|t]：建立世界与相机的联系，描述<strong>相机在世界中的位置和朝向</strong>。</p>
+<p><strong>内参矩阵</strong>K：建立相机与图像的联系，描述<strong>相机的内部光学特性</strong>。</p>
+<p><strong>投影矩阵</strong>P = K[R|t]：世界到图像的完整映射，实现了<strong>从世界坐标到像素坐标的一步变换</strong>。</p>
+<p><strong>基础矩阵</strong>F = K₂⁻ᵀ[t]×RK₁⁻¹：建立多相机间的几何约束，描述<strong>相机之间的极线几何关系</strong>，与两个相机的内参和相对外参有关。</p>
+<h2 id="三立体校正与多目视觉定位">三、立体校正与多目视觉定位</h2>
+<p>立体校正：
+目标：使两个相机的图像平面共面且行对齐，这样对应点就在同一行上，从而将匹配搜索从二维降为一维。
+方法：使用两个相机的内参矩阵K1、K2和它们之间的相对外参R、t，计算立体校正的映射矩阵。OpenCV中可以使用stereoRectify函数得到校正旋转矩阵R1、R2和投影矩阵P1、P2，然后使用initUndistortRectifyMap生成映射，再通过remap函数进行图像重映射。</p>
+<p>多目视觉定位：
+目标：通过多个相机观察同一个点，确定该点在三维空间中的位置。
+方法：对于每个相机，都有投影矩阵P_i。对于同一个三维点X，在每个相机中的图像坐标为x_i。根据投影方程：x_i = P_i * X（在齐次坐标下，等号表示尺度相等）。我们可以通过多个这样的方程进行三角测量，求解X。最少需要两个相机，但多个相机可以提高精度和鲁棒性。</p>
+<p>简单流程：</p>
+<ol>
+<li>标定每个相机，得到内参矩阵K_i和畸变系数。</li>
+<li>进行多相机标定，得到每两个相机之间的相对外参（旋转矩阵R和平移向量t）。</li>
+<li>将所有相机的外参统一到同一个世界坐标系下（例如，以第一个相机为世界坐标系原点，则第一个相机的外参为[R1|t1]=[I|0]，其他相机的外参通过相对外参转换得到）。</li>
+<li>对于每个相机，计算其投影矩阵P_i = K_i [R_i|t_i]。</li>
+<li>进行立体校正（如果需要密集匹配）或直接使用特征匹配找到不同图像中的对应点。</li>
+<li>利用多个相机的投影矩阵和对应点的图像坐标，通过三角测量求解三维点坐标。</li>
+</ol>
+<h2 id="四实验手机相机标定">四、实验：手机相机标定</h2>
+<p>张正友标定法的基本步骤是：<strong>在不同角度下，对标定参考物(棋盘格)进行拍摄，然后提取出棋盘格的顶点，接着解析出相机的畸变系数和内外参数，最后再根据极大似然估计，对参数进行优化</strong>。</p>
+<p>先准备一个棋盘格：</p>
+<p><img src="/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/%E6%A3%8B%E7%9B%98%E6%A0%BC.jpg" alt="棋盘格" title="棋盘格"></p>
+<p>拍摄十几张不同角度的照片，再用张正友标定校正程序处理。</p>
+<p><img src="/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/%E4%B8%80%E5%8A%A0ACE3-1.jpg" alt="一加ACE3-1" title="一加ACE3-1"></p>
+<p><img src="/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/%E4%B8%80%E5%8A%A0ACE3-2.jpg" alt="一加ACE3-2" title="一加ACE3-2"></p>
+<p>处理完的照片如上所示。得到的一加ACE3相机参数为：</p>
+<p>相机内参矩阵：
+[[2.67145471e+03 0.00000000e+00 1.96494182e+03]
+[0.00000000e+00 2.65796863e+03 1.17664010e+03]
+[0.00000000e+00 0.00000000e+00 1.00000000e+00]]</p>
+<p>畸变系数：
+[[ 0.02013825 -0.16912024  0.00120101 -0.00280289  0.01630901]]</p>
+<p>重投影误差：
+5.1888530562115776</p>
+<p>再用小米14pro拍照。</p>
+<p><img src="/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/%E5%B0%8F%E7%B1%B314pro-1.jpg" alt="小米14pro-1" title="小米14pro-1"></p>
+<p><img src="/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/%E5%B0%8F%E7%B1%B314pro-2.jpg" alt="小米14pro-2" title="小米14pro-2"></p>
+<p>处理完的照片如上所示。得到的相机参数为：</p>
+<p>相机内参矩阵：
+[[5.74733279e+03 0.00000000e+00 4.12361790e+03]
+[0.00000000e+00 5.74384199e+03 2.99945732e+03]
+[0.00000000e+00 0.00000000e+00 1.00000000e+00]]</p>
+<p>畸变系数：
+[[ 2.51253869e-01 -1.39748323e+00 -7.89344902e-03  1.94376106e-03
+3.27697509e+00]]</p>
+<p>重投影误差：
+1.5179901132758307</p>
+<p>最后用苹果手机拍照。</p>
+<p><img src="/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/apple-1.jpg" alt="apple-1" title="apple-1"></p>
+<p><img src="/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/apple-2.jpg" alt="apple-2" title="apple-2"></p>
+<p>处理后得到的参数如下：</p>
+<p>相机内参矩阵：
+[[4.96577762e+03 0.00000000e+00 1.21390611e+03]
+[0.00000000e+00 4.93388129e+03 6.73719051e+02]
+[0.00000000e+00 0.00000000e+00 1.00000000e+00]]</p>
+<p>畸变系数：
+[[-6.16653824e-01  2.81741785e+01 -1.53272648e-02  2.28871714e-03
+-3.23475413e+02]]</p>
+<p>重投影误差：
+1.087200170045067</p>
+<ul class="pa0">
   
 </ul>
 <div class="mt6 instapaper_ignoref">
@@ -193,8 +474,8 @@ script.async = true;
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
-    &copy;  刘训臣燃烧诊断实验室主页 2025 
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://liuxunchen.github.io/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
   </a>
     <div><div class="ananke-socials"></div>
 </div>

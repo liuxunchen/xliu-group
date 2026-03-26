@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="Post">
   <meta itemprop="description" content="科研笔记和一些想法">
-  <meta itemprop="datePublished" content="2025-12-15T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-12-15T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2026-03-08T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-03-08T00:00:00+00:00">
   <meta itemprop="wordCount" content="1">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Post">
@@ -160,6 +160,164 @@ script.async = true;
 
     </section>
     <aside class="flex-ns mt5 flex-wrap justify-around">
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        三月 8, 2026
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/wangchen4/" class="link black dim">
+        声激励喷嘴的结构与参数设计
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>今天和大家聊聊声激励脉动系统的结构与参数设计，这也是我的相关实验的核心内容，声激励脉动系统的核心是通过特定结构设计，选择合适的将声能与流体动能结合，观察声流扰动对火焰熄火边界的影响，其结构的设计和参数阈值的选择，直接决定最终激励效果，所以设计环节需要重点把控。</p>
+<h2 id="声激励喷嘴">声激励喷嘴</h2>
+<p>通过阅读相关文献，可以看到前人研究声激励对火焰形态影响的实验装置，因此，本次声激励喷嘴的结构设计，将参考前人的研究，进行声激励喷嘴的设计，如图1为前人所采用的实验装置示意图。如图我们可以看到，前人是在腔体底部安装一个扬声器，在腔体部分通入甲烷和空气通过预混后在出口处直接形成火焰，通过高速相机拍摄火焰形态，对火焰形态进行研究。本研究的声激励实验装置是用于横向射流火焰的研究，因此需要设计适用于本实验的实验装置。</p>
+<figure><img src="/xliu-group/zh/post/wangchen4/image1.png"><figcaption>
+      <h4>前人实验装置图</h4>
+    </figcaption>
+</figure>
+
+<p>需要优先对扬声器进行选择，因为腔体尺寸需要匹配扬声器的参数进行选择，扬声器参数如图2所示。</p>
+<figure><img src="/xliu-group/zh/post/wangchen4/image2.png"><figcaption>
+      <h4>扬声器参数</h4>
+    </figcaption>
+</figure>
+
+<p>由于扬声器需要固定在腔体当中，因此，腔体的直径选择需要大一些，并且在腔体内部安装一个法兰，用于固定扬声器，因此选择直径为325mm的不锈钢腔体，并且在内部高度合适的部位焊接法兰。如图3所示为需要焊接在腔体内部的法兰，其上面分别有八个孔用来固定扬声器，焊接高度距离底部为140mm，适应扬声器的高度。</p>
+<figure><img src="/xliu-group/zh/post/wangchen4/image3.png"><figcaption>
+      <h4>腔体内部法兰</h4>
+    </figcaption>
+</figure>
+
+<p>另外需要在腔体的地步进行密封处理，所以需要在尾部焊接一个法兰并且用一块大小相同的不锈钢板进行尾部的封闭，并且在法兰除使用一个规格相同的密封垫片，用于保证装置的密封性。尾部法兰与密封不锈钢片的尺寸如图4、图5所示，密封垫片与法兰的规格相同，待扬声器连接好后进行密封。</p>
+<figure><img src="/xliu-group/zh/post/wangchen4/image4.png"><figcaption>
+      <h4>尾部法兰</h4>
+    </figcaption>
+</figure>
+
+<figure><img src="/xliu-group/zh/post/wangchen4/image5.png"><figcaption>
+      <h4>尾部密封不锈钢片</h4>
+    </figcaption>
+</figure>
+
+<p>最终需要将腔体转到10mm的细管上接入横向射流火焰实验装置，但市面上没有合适的漏斗转接，因此通过两次转接最终将235mm的腔体转到10mm的细管上，用于接到横向射流火焰的实验装置上。</p>
+<p>另外需要在腔体部位开孔通入空气，并且在细管出口处连接一个三通，一端连接细管，一段连接实验装置，剩余的一端用于连接甲烷。并且需要为扬声器供电，在腔体部分开孔安装航插并且进行密封，即可为扬声器供电使其正常工作。</p>
+<p>声激励喷嘴的装配图如图6所示。</p>
+<figure><img src="/xliu-group/zh/post/wangchen4/image6.png"><figcaption>
+      <h4>声激励喷嘴实物图</h4>
+    </figcaption>
+</figure>
+
+<h2 id="功率放大器">功率放大器</h2>
+<p>根据扬声器的参数，对功率放大器的规格进行选择，选择功率适用于扬声器的功率放大器，确保扬声器能正常工作。</p>
+<h2 id="信号发生器">信号发生器</h2>
+<p>关于信号发生器的选择，需要适配于扬声器的频率范围，该设备中选用10MHz的信号发生器作为输入源。</p>
+<p>经过该三个部分，构成了完整的声激励脉动系统，用于实验当中，后续可以采用该系统进行实验，并且可以采用不同相位的激励来观察火焰的燃烧情况，待后续有实验结果还会继续与大家分享。</p>
+    </div>
+  <a href="/xliu-group/zh/post/wangchen4/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        二月 28, 2026
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/gaoyinbin5qtf/" class="link black dim">
+        QTF滤波
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>吸收光谱法主要利用了激光在通过物质时，物质对其的吸收效应原理，是基本光学诊断方法之一。其具体方法是通过使特定频率的激光透过需要测量的物质等，得出物质对激光的吸收率可以计算出系统中的温度、浓度等信息。可以利用石英音叉 (QTF) 的高 Q 值共振特性实现滤波功能，基于此可以发展一种利用晶振的高品质因数，窄带宽特性，过滤光谱信号中的噪声的方法。在应用中，因为激光器扫描频率固定，在控制扫描频率为晶体振荡器共振频率的一半时，因吸收峰信号会在扫描电压的上升下降沿都出现，故吸收峰电信号频率为扫描频率的两倍，从而给信号加上可以使晶体振荡器通过的电信号频率分量。在通过晶体振荡器后，该部分电信号分量将会转换成可以供交流电压表交流电压，这样滤波后可以直接通过六位半电压表测定，不需要再使用昂贵的数据采集卡，下图展示的是测量原理：</p>
+<p><img src="/xliu-group/zh/post/gaoyinbin5qtf/image1.png" alt="测量原理图"></p>
+<p>晶体振荡器（假设共振频率为20Hz）,将半导体激光器的扫描电压频率调至晶体振荡器共振频率的一半时（10Hz），若无吸收，则光探测器即会探测到10Hz的电信号，而10Hz的电信号无法引起共振频率为20Hz的晶体振荡器的响应，在通过晶体振荡器后，将不会出现电压信号，无法被交流电压表读出数据。而如果用10Hz正弦信号调制激光器时，如果包含吸收性气体时，则会在扫描电压到达特定值时，半导体激光器会发出可以被气体吸收的激光，而气体吸收了这部分波长的激光，在光探测器探测到就会与没有吸收相比产生如蓝圈所标注的吸收信号。而这个吸收信号的频率在正弦信号的上升沿和下降沿都会出现。即出现频率为20Hz，这部分信号的变化相当于在无吸收基础上增加了20Hz的交变电信号分量，这个20Hz的信号分量刚好可以引发晶体振荡器的共振。并且原来的探测信号因为其频率为10Hz，不会对20Hz的吸收峰信号产生影响。并且在实际使用过程中，往往采用高共振频率、高品质因数的晶体振荡器，这更加隔绝了噪声的干扰。
+在本部分实验过程中，可以通过气阀在吸收池内配给不同浓度的二氧化碳（其余气体为氮气），在吸收池内吸收可以确保吸收光程足够，这样浓度可以给的比较低，目前的使用hitran数据库仿真的结果是在浓度的100ppm比较好。</p>
+<p>已经使用了晶振频率为32768HZ的晶振做了实验，晶振的接线如下图所示：
+<img src="/xliu-group/zh/post/gaoyinbin5qtf/image2.png" alt="晶振的接线示意图">
+接好线后可以使用信号发生器输出一个与晶振频率相同的正弦波，通过滤波后即可通过六位半电压表测量出它的电压强度，信号发生器输出正弦信号，振幅2v，从32760记录至32768HZ，在未采集到明显峰时步长设置0.1HZ，在电压显著变化处步长设置为0.05HZ，每步步长间隔时间至少10s，等基本不存在较大变化后开始采样，每个频率采样100次求算平均值以消除噪声的干扰，同理在扫描后再反扫，所得结果记录如下图所示可以绘制频率和滤波电压结果如下图所示
+<img src="/xliu-group/zh/post/gaoyinbin5qtf/image3.png" alt="实验结果">
+可以确定晶体振荡器在电信号频率为32763.15Hz的时候，电压响应接近最大值，实际实验中需要先以此为指导，确定实验中使用的最佳相应频率是多少。</p>
+    </div>
+  <a href="/xliu-group/zh/post/gaoyinbin5qtf/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        二月 28, 2026
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/gaoyinbin6new-experiment/" class="link black dim">
+        新的实验推进结果
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>在之前的实验准备好了射流系统与纹影拍摄，本课题作为tdlas实验原理是激光在通过物质时，物质对其的吸收效应原理，其具体方法是通过使特定频率的激光透过需要测量的物质等，得出物质对激光的吸收率可以计算出系统中的温度、浓度等信息。
+光学实验方法中我们首先需要搭建光路，实验中光路采用双光路耦合设计，分为起指引作用的可见光路与核心测量的中红外激光光路，其中可见光路的核心作用是确保激光精准扫描到超声速射流，其激光经平面金镜反射后投射至混合腔体出口的硒化锌窗口片并反射，通过观察可见光斑投射位置可实时校准射流系统与测量光路的相对姿态；中红外激光光路为热力学参数测量的核心，激光器基于不同电流产生不同波长中红外激光的原理工作，因此实验选用Red Pitaya 开发板作为调制模块，输出特定频率与振幅的三角波信号驱动激光器，实现激光波长的周期性调谐，调谐后的中红外激光经平面金镜反射后至硒化锌窗口片并发生透射，两条光路在硒化锌窗口片处实现初步同轴耦合，后续需依次穿过两个同轴布置的小孔光阑，进一步滤除杂散光并校准同轴度。同时考虑到扫描电流可能引发光斑光强的空间不规则变化，激光进入探测器前会经凸透镜聚焦处理，提升信号强度与稳定性，下图所示是实验中所使用的光路实物图与光路的原理图
+<img src="/xliu-group/zh/post/gaoyinbin6new-experiment/image1.png" alt="光路实物图">
+<img src="/xliu-group/zh/post/gaoyinbin6new-experiment/image2.png" alt="光路原理图">
+搭建好光路后就可以进行实验，下面是初步调制后的激光测试结果，可以看到即使没有射流仍然会有吸收，这是因为空气中仍有二氧化碳和水，所以在严格测试的条件下需要用氮气吹扫尽可能消除空气中的干扰
+<img src="/xliu-group/zh/post/gaoyinbin6new-experiment/image3.png" alt="初步实验结果">
+这个实验结果仍有些问题，可以看到在上升段有一个明显地凹陷，调制所使用的是三角波，不应该出现这些问题，在排查过后发现问题在红外窗口片处，当去除红外窗口片后该异常便会消失，猜想是因为红外窗口片的入射角度和太小，反射回去的光之间相互干扰，目前实验中暂时去除了窗口片，后续另一项QTF实验中再更换更大的窗口片即可，目前实验正在推进，等后续测试数据处理后会再更新</p>
+    </div>
+  <a href="/xliu-group/zh/post/gaoyinbin6new-experiment/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        十二月 25, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/huihao5_i2_cell/" class="link black dim">
+        I2-cell
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>按照如下的图片制作了碘吸收池
+<img src="/xliu-group/zh/post/huihao5_i2_cell/image1.png" alt="流程图"></p>
+<p>碘的升华温度为30度，蒸汽压力与温度的关系为
+<img src="/xliu-group/zh/post/huihao5_i2_cell/image2.png" alt="蒸汽压公式"></p>
+<p>其中P为碘的饱和蒸汽压，原来的压力单位是有问题的，不是pa，而为mmHg。
+t为冷端温度，单位（℃）
+以上部公式可得出，按照常规的制作方法，把碘密封在玻璃瓶中抽真空，因碘在室温下也会挥发，因此抽真空高度不高，同时会造成系统的污染。</p>
+<p>制作流程：</p>
+<ol>
+<li>按照图示接好排气系统</li>
+<li>装固态碘：先在液氮筒②内灌入液氮，然后从 d 处把金属膜装入管内，这种方法能使碘蒸汽冷却在管内，不至于污染系统。碘的多少按需要放，装完后用火焰把 a 处封死。</li>
+<li>排气。排气将液氮灌满液氮筒①，然后将液氮筒②往下移，只冷却住底部的碘，然后开启机械泵，扩散泵进行排气。液氮筒①的作用是进一步防止碘蒸汽进入排气系统。在抽气过程中不断地灌满液筒①、②，还可以用煤气火烤碘管的上面部分以保证吸收池的真空度。</li>
+<li>封碘吸收池。封碘吸收池排气完成后，在收口 b 处把吸收池与碘管一起封下，然后用火焰蒸馏碘，把碘蒸汽赶入吸收池内，再在 c 处封下吸收池，这样一个吸收池就制成了。
+对于充入碘蒸汽压有严格要求的，将 b 处封离后的吸收池及碘管将放在可调温度的水浴加热容器内，并按碘蒸汽压与温度关系式调节相应的所需温度，使吸收池内的蒸汽压达到饱和值；然后用细小的火焰快速在 c 处封下吸收池。通过以上工艺，我们制成的碘吸收池已用于激光研究工作中，解决了真空系统被碘蒸汽污染的技术难题。</li>
+</ol>
+<p>需要注意的问题：</p>
+<ol>
+<li>如想要碘蒸馏瓶，在与吸收池连接时不行使用橡胶或硅胶管连接碘蒸汽会与其发生反应</li>
+<li>在进行吸收池密封后退火时，要先将表面水分或其他杂志清除干净，避免退火后在外壁产生污点</li>
+</ol>
+<p>制作的碘吸收池如图：
+<img src="/xliu-group/zh/post/huihao5_i2_cell/image3.png" alt="碘吸收池"></p>
+    </div>
+  <a href="/xliu-group/zh/post/huihao5_i2_cell/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
       
         <div class="w-100 w-30-l mb4 relative bg-white">
             <div class="mb3 pa4 blue overflow-hidden">
@@ -476,182 +634,6 @@ $\rho_\nu$ 为普朗克定理中光场辐射强度，单位[ $\mathrm{J \cdot m^
 
         </div>
       
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        九月 16, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/wangshuo4/" class="link black dim">
-        用Witoszynski曲线设计收缩段
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>今天阅读了Witoszynski提出witoszynski曲线的文章，witoszynski曲线最初的设计是用于优化扩压器设计，目的是减小气体或液体的流速而没有显著能量损失。</p>
-<p>Witoszynski工作的核心成果是描述扩压器内流线径向坐标r的表达式：
-$r = \frac{r_0}{\sqrt{1 - \left(1 - \frac{r_0^2}{r_1^2}\right) \frac{\left(1 - 3\frac{z^2}{a^2}\right)^2}{\left(1 + \frac{z^2}{a^2}\right)^3}}}$</p>
-<p>其中，</p>
-<ul>
-<li><strong>r</strong>：径向坐标</li>
-<li><strong>r₀</strong>：入口半径，</li>
-<li><strong>r₁</strong>：出口半径，</li>
-<li><strong>z</strong>：表示沿流向的轴向坐标，范围是0到$\frac{a}{\sqrt{3}}$</li>
-<li><strong>a</strong>：几何常数参数，
-流线示意图如下：
-<img src="/xliu-group/zh/post/wangshuo4/%E5%9B%BE%E7%89%872.png" alt=""></li>
-</ul>
-<p>根据文章，流线图v对应的为公式中的r，α对应公式中的a。
-流线径向坐标r表达式的推导始于轴对称理想流体在柱坐标下的微分方程：
-$\frac{\partial^2 \psi}{\partial r^2} - \frac{1}{r} \frac{\partial \psi}{\partial r} + \frac{\partial^2 \psi}{\partial z^2} = 0$</p>
-<p>其解为流函数的级数形式：
-$\psi = r^2 f(z) - \frac{r^4}{2 \cdot 4} \frac{d^2 f(z)}{dz^2} + \frac{r^6}{2 \cdot 4 ^2\cdot 6} \frac{d^4 f(z)}{dz^4} + \cdots$</p>
-<p>$f(z)$是一个光滑的函数，满足$f_{\infty}=1$.</p>
-<p>则假设一个符合条件的$f(z)$函数，将其带入流函数得
-<img src="/xliu-group/zh/post/wangshuo4/%E5%9B%BE%E7%89%875.png" alt=""></p>
-<p>A由边界条件而定
-<img src="/xliu-group/zh/post/wangshuo4/%E5%9B%BE%E7%89%876.png" alt="">
-把A带入
-得出r的表达式</p>
-$$
-R = \frac{R_0}{\sqrt{1 - \left[1 - \left( \frac{R_0}{R_1} \right)^2 \right] \frac{\left( 1 - \frac{z^2}{z_0^2} \right)^2}{\left( 1 + \frac{z^2}{3z_0^2} \right)^3}}}
-$$<p>
-与原式子的不同点在于，公式轴向坐标z的范围简化，变成0到$z_0$，于是公式随之变化，但其实两式是相同的。
-那么如何用wito曲线设计收缩段呢</p>
-    </div>
-  <a href="/xliu-group/zh/post/wangshuo4/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        八月 21, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/wangshuo3/" class="link black dim">
-         解决流量计跳数问题总结和感悟
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>在进行第二次轴向分级燃烧第一级点火燃烧实验时，主流空气更换了两个大量程流量计2000slpm，在实验过程中，返回数据出现了位数错乱现象，如下图。
-<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%871.png" alt="">
-<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%872.png" alt="">
-流量的读取是通过截取固定位置及位数的返回码而后经过换算实现的，因此流量显示出现了频繁的掉数。刚开始考虑可能是硬件问题，例如信号线接线不牢固，拓展坞插口异常，usb转485设备传输不稳定，流量计信号线之间存在电磁干扰等问题。于是急忙重新接了一次线，更换了另一个拓展坞，发现问题依然存在，但是好在，在实验中发现了，只有流量计流量在二百多到三百的时候才会出现掉数，大流量则不会出现这种情况，这起码证明掉数的原因并非是设备密集而导致的干扰问题，也非接线的问题。至此，除usb转485接口外，其他硬件因素基本已经排查完毕。</p>
-<p>当时因为只有两个大量程流量计出现了跳数，考虑可能是用大流量计测较小流量会出现错误，询问流量计客服后，用串口助手测试，发现收发功能码都是正常的，但是用labview则会出现返回码不完整和冗余的现象，考虑可能是labview的编写问题。后来，购买的高质量usb转485设备到了，迫不及待的换上试了一下，确实质量好，也确实好用了很多，但是问题并没有解决，于是便开始一心解决软件及程序问题。</p>
-<p>经过多途径的大量搜索，怀疑可能是大量程流量计在收发小流量时，写入速度大于读取速度，累计数据量增大导致缓冲区溢出，进而导致跳数。于是基于这一猜想，想出了几种解决方案：</p>
-<ol>
-<li>在读取前，增加一个清除读取缓冲区，保证每次的读数不会被前面影响</li>
-<li>在写入和读取之间增加一个延时，避免读取过快过慢导致的错位</li>
-<li>使用条件结构，在只有返回数为7时，才进行数据的读取和写入</li>
-<li>使用条件结构，判断起始位是否是01，如果是，再进行读数和存储</li>
-</ol>
-<p>实践后发现无论哪种方法，都无法避免其在特定的流量范围内出现返回码不完整的问题，总是会频繁的出现0103020A这个不完整的返回码。还有一个比较麻烦的方法就是在visa读取后，增加一个队列，数据存入队列，长度等于7则处理，不足7则继续等待，这个学习了一会，还没学会，后续可以再学习一下。</p>
-<p>在验证这些方案是否可行的过程中，突然发现，每次返回数的位数出现偏差，都是以0A为结尾，于是搜索了一下发现，<strong>labview的默认终止符是0A</strong>！在前面的blog中提到，读取流量的位数是第4，5位，如图。
-<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%873.png" alt="">
-<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%874.png" alt=""></p>
-<p>在十六进制中，0A的取值范围为0A00-0AFF，对应十进制的值为2560-2815，再除以流量计的放大倍数为256-281.5，即在这个流量范围内都会因触发终止符而中断，导致后续的错位，致使无法正常显示流量。解决办法即是在visa配置串口将启用终止符创建常量，并将其关闭，如图。
-<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%875.png" alt="">
-<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%876.png" alt=""></p>
-<p>完成修改后，再次测试程序，返回码中断，错位问题得到解决，如图。
-<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%877.png" alt=""></p>
-<p>经过此次经历让我发现，labview的学习任重而道远。一步就能解决的问题，竟然走了这么多弯路。</p>
-    </div>
-  <a href="/xliu-group/zh/post/wangshuo3/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        八月 20, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/wangshuo2/" class="link black dim">
-        文献阅读
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>Blow-out limits of nonpremixed turbulent jet flames in a cross flow at atmospheric and sub-atmospheric pressures</p>
-<p>文章重点研究了非预混湍流射流火焰的吹熄极限。</p>
-<p>实验采用的设备如图：
-<img src="/xliu-group/zh/post/wangshuo2/%E5%9B%BE%E7%89%871.png" alt="">
-风洞的横截面高度1.5m，宽度1.2m，长度10m，高压机械风扇产生横向气流，蜂窝结构用以稳定气流，另一端是开放式，燃料喷嘴的内径范围 3 - 8mm，壁厚 1.5mm，喷嘴放在风洞出口0.5m 处，距离底部 0.3m，燃料是丙烷，流量由气体流量计调节。燃料温度与环境温度相同。</p>
-<p>在合肥和拉萨分别进行了实验，火焰用 CCD 相机记录。将实验结果进行了比较，以评估压力对横流火焰吹熄极限的影响，所有实验重复了三次。</p>
-<p>实验结果如下：
-<img src="/xliu-group/zh/post/wangshuo2/%E5%9B%BE%E7%89%872.png" alt="">
-a,b 图分别为合肥和拉萨实验火焰形状变化图
-(a) 图工况：射流速度39.3m/s，喷管内径3mm，环境压力 100KPa
-保持喷嘴形状和射流速度不变，随横流速度的增加，火焰有三种状态，
-0 - 2m/s，火焰高度长度减少，弯曲程度变得更明显，蓝色火焰区扩大。
-这归因于横流增大，增强了喷嘴和抬升火焰边缘区域空气的卷吸和混合，使燃料核心区域局部预混更强，整体火焰亮度减低。
-2 - 3m/s，火焰整体形态变化不大，火焰主体与横流几乎平行，火焰前缘近乎垂直，火焰变得更蓝，亮度显著降低，在水平方向略有拉长。
-结果同 Moore 等人在共流条件下观察到的过程相似，当横流超过一个阈值，火焰从稳定火焰过渡到熄灭和消失。火焰前缘向下游移动，尺寸变小；扩散火焰尺寸显著减少；整个火焰以火焰前缘的消失而结束，此为吹熄。
-临界吹熄横流速度定义为火焰不能持续存在，发生熄灭，所以吹熄极限是 3.37m/s
-(b) 图工况：射流速度 16.9m/s，喷管内径 3mm，环境压力 64KPa
-火焰出现与 a 相似的三种状态
-(c) 图是火焰边缘特写，工况为：射流速度 19.7m/s，环境压力 100KPa
-由于迎风侧与背风侧的混合程度不同，导致火焰抬升高度不同。
-（由射流与横流的相互作用，横流中射流火焰的流场比静止空气中自由射流火焰更复杂。迎风侧的火焰边缘由于横流，会遭受更高的应变效应，横向正应变相较于背风测更大。）</p>
-<p>整理实验数据绘制了横流速度与燃料射流速度的吹熄极限图
-<img src="/xliu-group/zh/post/wangshuo2/%E5%9B%BE%E7%89%873.png" alt="">
-由图可知
-100KPa，吹灭极限处的气流速度随燃料喷射速度增大而增大（位于吹熄曲线的横流主导区域）
-64KPa，吹灭极限处的气流速度随燃料喷射速度增大而增大，然后又减少。呈非单调行为，与 kalghatgi 观察的一样</p>
-<p>将速度与喷嘴直径的比值与 kalghatgi 的数据（100KPa）作比较，如下图：
-<img src="/xliu-group/zh/post/wangshuo2/%E5%9B%BE%E7%89%874.png" alt="">
-结果显示，在标准大气压下两者数据相吻合。
-由此图可知，在标准大气压和亚大气压两种情况下，数据都显示出非线性行为。
-有两个区域:
-1.横流主导：在 “横流主导” 区域，熄灭主要由横流产生的应变引起。在这种情况下，首先火焰被吹向平行于横流的方向，然后，火焰沿水平方向被横流吹灭。
-在点 A，燃料射流速度接近静止空气中自熄灭极限的值（对应点 C），自 A 点以后向燃料射流主导转变
-2.燃料射流主导：熄灭主要由高速燃料射流本身产生的应变引起。
-B 点是可持续火焰的最大值，射流速度超过点 B 时，即使在横流中，火焰也无法维持。若要维持火焰，射流速度必须降低
-C 点，吹熄完全由燃料射流本身产生的应变效应引起的。
-吹熄极限曲线包围的是火焰存在区域。
-环境压力降低到 64kpa，吹熄极限曲线明显缩小，这说明随着环境压力的降低，火焰对于燃料射流速度和横流速度的吹熄更敏感，更容易熄灭。吹熄时（横流速度 / 喷管内径）局部最大值约为 400s⁻¹ 约是标准大气压的三分之一，射流速度 / 直径的值也有所下降。</p>
-    </div>
-  <a href="/xliu-group/zh/post/wangshuo2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        八月 15, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/gaoyinbin-ho-flame/" class="link black dim">
-        利用JANAF表估算氢氧火焰温度
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>最近在着手准备有关JANAF表使用的相关论文，发现了一个有趣的问题，氢氧焰的燃烧温度应该怎么计算？这似乎并不难回答，按照热力学第一定律，反应前后的总焓保证不变即可，似乎很容易写出下面的热平衡：</p>
-$$\Delta_f H(H_2) + \frac{1}{2}\Delta_f H(O_2) = \Delta_f H(H_2O) + \Delta H(H_2O)$$<p>因为方程左边均为单质，这样看来水生成焓在数值上应该等于负的反应焓，查询JANAF表可以得知$\Delta_f H(H_2O)$等于-241.826kJ·mol⁻¹，我们可以查询多少温度下的焓变等于这个值的负值，结果是约5000K，按此结果我们做一下验算，我们看一下5000K下该反应的$\Delta G°$，$\Delta G°$取最小值的温度，就是标准状态下该反应平衡常数最大、反应进行得最彻底的理想温度，因此如果结果是5000K，$\Delta G°$应该为最小，带入数据，5000K时$\Delta_r G°(5000K) = \Delta_f G°(H₂O, g, 5000K) = 40.949$ kJ·mol⁻¹，4900K时$\Delta_r G°(4900K) = \Delta_f G°(H₂O, g, 4900K) = 34.998$kJ·mol⁻¹，很显然5000K并不是理想温度，且高出非常多，那么这个答案必然存在问题，我们不妨仔细分析一下这个问题：</p>
-<p>首先得明确核心约束：定HP意味着产物的总焓必须和反应物初始总焓完全匹配，而温度和组分都是这个约束下的结果，不是提前固定的。所以要先做一件基础工作——计算反应物的总焓：根据氢氧的混合比例（比如化学计量比2:1）、初始温度（比如室温298K）和设定的压力，算出反应物的总焓值，这个值是后续所有筛选的“基准线”。接下来就是先划定一个合理的温度范围，然后按一定步长逐个遍历这个区间里的每个温度。对每个遍历到的温度，都要在“固定这个温度+固定设定压力”的前提下，让产物的组分自由调整（但必须满足氢、氧原子总数不变的元素守恒），直到找到吉布斯自由能最小的状态——这个状态就是该温度下的化学平衡组分，意味着此时的组分比例是最稳定的，再没有自发变化的趋势。之后，需要计算这个“特定温度+对应平衡组分”组合下的产物总焓$H_{prod}$，把它和之前算的反应物总焓基准线做对比。等把所有温度都遍历完，就会得到一系列“温度-产物焓”的对应关系，而要找的那个真实燃烧温度，就是其中产物焓和反应物总焓最接近（甚至相等）的那个温度——如果刚好有某个扫描温度对应的产物焓和基准线完全匹配，那这个温度就是定HP下的平衡温度，对应的组分就是最终答案；如果没有完全匹配的用相邻两个温度的焓值做线性插值，就能算出精确的平衡温度，以及对应的平衡组分。</p>
-<p>反应物配比为化学计量比（2 mol H₂ + 1 mol O₂），初始温度为 \( T_r = 298.15\ \text{K} \)，单物质摩尔焓满足：</p>
-$$
-H_i(T_r) = \Delta H_i(T_r) + \Delta_f H_i(T_r)
-$$<p>（H₂、O₂为单质，$\Delta_f H_i(T_r) = 0$）</p>
-$$
-H_{\text{react}} = 2 \cdot H_{\text{H}_2}(T_r) + 1 \cdot H_{\text{O}_2}(T_r)
-$$$$2n_{\text{H}_2\text{O}} + 2n_{\text{H}_2} = 4 \implies n_{\text{H}_2} = 2 - n_{\text{H}_2\text{O}}$$$$n_{\text{H}_2\text{O}} + 2n_{\text{O}_2} = 2 \implies n_{\text{O}_2} = \frac{2 - n_{\text{H}_2\text{O}}}{2}$$$$n_{\text{total}} = n_{\text{H}_2\text{O}} + n_{\text{H}_2} + n_{\text{O}_2}$$<p>总吉布斯自由能表达式：</p>
-    </div>
-  <a href="/xliu-group/zh/post/gaoyinbin-ho-flame/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
     </aside>
     
     <ul class="pagination pagination-default">
@@ -671,10 +653,13 @@ $$$$2n_{\text{H}_2\text{O}} + 2n_{\text{H}_2} = 4 \implies n_{\text{H}_2} = 2 - 
         <a href="/xliu-group/zh/post/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
       </li>
       <li class="page-item">
+        <a href="/xliu-group/zh/post/page/4/" aria-label="Page 4" class="page-link" role="button">4</a>
+      </li>
+      <li class="page-item">
         <a href="/xliu-group/zh/post/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/xliu-group/zh/post/page/3/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/xliu-group/zh/post/page/4/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
   </article>
@@ -683,7 +668,7 @@ $$$$2n_{\text{H}_2\text{O}} + 2n_{\text{H}_2} = 4 \implies n_{\text{H}_2} = 2 - 
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://liuxunchen.github.io/xliu-group/zh/" >
-    &copy;  刘训臣燃烧诊断实验室主页 2025 
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
   </a>
     <div><div class="ananke-socials"></div>
 </div>

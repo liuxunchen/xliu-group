@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>新的实验推进结果 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="在之前的实验准备好了射流系统与纹影拍摄，本课题作为tdlas实验原理是激光在通过物质时，物质对其的吸收效应原理，其具体方法是通过使特定频率的激光透过需要测量的物质等，得出物质对激光的吸收率可以计算出系统中的温度、浓度等信息。
+光学实验方法中我们首先需要搭建光路，实验中光路采用双光路耦合设计，分为起指引作用的可见光路与核心测量的中红外激光光路，其中可见光路的核心作用是确保激光精准扫描到超声速射流，其激光经平面金镜反射后投射至混合腔体出口的硒化锌窗口片并反射，通过观察可见光斑投射位置可实时校准射流系统与测量光路的相对姿态；中红外激光光路为热力学参数测量的核心，激光器基于不同电流产生不同波长中红外激光的原理工作，因此实验选用Red Pitaya 开发板作为调制模块，输出特定频率与振幅的三角波信号驱动激光器，实现激光波长的周期性调谐，调谐后的中红外激光经平面金镜反射后至硒化锌窗口片并发生透射，两条光路在硒化锌窗口片处实现初步同轴耦合，后续需依次穿过两个同轴布置的小孔光阑，进一步滤除杂散光并校准同轴度。同时考虑到扫描电流可能引发光斑光强的空间不规则变化，激光进入探测器前会经凸透镜聚焦处理，提升信号强度与稳定性，下图所示是实验中所使用的光路实物图与光路的原理图
+
+
+搭建好光路后就可以进行实验，下面是初步调制后的激光测试结果，可以看到即使没有射流仍然会有吸收，这是因为空气中仍有二氧化碳和水，所以在严格测试的条件下需要用氮气吹扫尽可能消除空气中的干扰
+
+这个实验结果仍有些问题，可以看到在上升段有一个明显地凹陷，调制所使用的是三角波，不应该出现这些问题，在排查过后发现问题在红外窗口片处，当去除红外窗口片后该异常便会消失，猜想是因为红外窗口片的入射角度和太小，反射回去的光之间相互干扰，目前实验中暂时去除了窗口片，后续另一项QTF实验中再更换更大的窗口片即可，目前实验正在推进，等后续测试数据处理后会再更新">
+    <meta name="generator" content="Hugo 0.144.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="高寅斌">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin6new-experiment/">
+    
+
+    <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin6new-experiment/">
+  <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+  <meta property="og:title" content="新的实验推进结果">
+  <meta property="og:description" content="在之前的实验准备好了射流系统与纹影拍摄，本课题作为tdlas实验原理是激光在通过物质时，物质对其的吸收效应原理，其具体方法是通过使特定频率的激光透过需要测量的物质等，得出物质对激光的吸收率可以计算出系统中的温度、浓度等信息。 光学实验方法中我们首先需要搭建光路，实验中光路采用双光路耦合设计，分为起指引作用的可见光路与核心测量的中红外激光光路，其中可见光路的核心作用是确保激光精准扫描到超声速射流，其激光经平面金镜反射后投射至混合腔体出口的硒化锌窗口片并反射，通过观察可见光斑投射位置可实时校准射流系统与测量光路的相对姿态；中红外激光光路为热力学参数测量的核心，激光器基于不同电流产生不同波长中红外激光的原理工作，因此实验选用Red Pitaya 开发板作为调制模块，输出特定频率与振幅的三角波信号驱动激光器，实现激光波长的周期性调谐，调谐后的中红外激光经平面金镜反射后至硒化锌窗口片并发生透射，两条光路在硒化锌窗口片处实现初步同轴耦合，后续需依次穿过两个同轴布置的小孔光阑，进一步滤除杂散光并校准同轴度。同时考虑到扫描电流可能引发光斑光强的空间不规则变化，激光进入探测器前会经凸透镜聚焦处理，提升信号强度与稳定性，下图所示是实验中所使用的光路实物图与光路的原理图 搭建好光路后就可以进行实验，下面是初步调制后的激光测试结果，可以看到即使没有射流仍然会有吸收，这是因为空气中仍有二氧化碳和水，所以在严格测试的条件下需要用氮气吹扫尽可能消除空气中的干扰 这个实验结果仍有些问题，可以看到在上升段有一个明显地凹陷，调制所使用的是三角波，不应该出现这些问题，在排查过后发现问题在红外窗口片处，当去除红外窗口片后该异常便会消失，猜想是因为红外窗口片的入射角度和太小，反射回去的光之间相互干扰，目前实验中暂时去除了窗口片，后续另一项QTF实验中再更换更大的窗口片即可，目前实验正在推进，等后续测试数据处理后会再更新">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2026-02-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-02-28T00:00:00+00:00">
+
+  <meta itemprop="name" content="新的实验推进结果">
+  <meta itemprop="description" content="在之前的实验准备好了射流系统与纹影拍摄，本课题作为tdlas实验原理是激光在通过物质时，物质对其的吸收效应原理，其具体方法是通过使特定频率的激光透过需要测量的物质等，得出物质对激光的吸收率可以计算出系统中的温度、浓度等信息。 光学实验方法中我们首先需要搭建光路，实验中光路采用双光路耦合设计，分为起指引作用的可见光路与核心测量的中红外激光光路，其中可见光路的核心作用是确保激光精准扫描到超声速射流，其激光经平面金镜反射后投射至混合腔体出口的硒化锌窗口片并反射，通过观察可见光斑投射位置可实时校准射流系统与测量光路的相对姿态；中红外激光光路为热力学参数测量的核心，激光器基于不同电流产生不同波长中红外激光的原理工作，因此实验选用Red Pitaya 开发板作为调制模块，输出特定频率与振幅的三角波信号驱动激光器，实现激光波长的周期性调谐，调谐后的中红外激光经平面金镜反射后至硒化锌窗口片并发生透射，两条光路在硒化锌窗口片处实现初步同轴耦合，后续需依次穿过两个同轴布置的小孔光阑，进一步滤除杂散光并校准同轴度。同时考虑到扫描电流可能引发光斑光强的空间不规则变化，激光进入探测器前会经凸透镜聚焦处理，提升信号强度与稳定性，下图所示是实验中所使用的光路实物图与光路的原理图 搭建好光路后就可以进行实验，下面是初步调制后的激光测试结果，可以看到即使没有射流仍然会有吸收，这是因为空气中仍有二氧化碳和水，所以在严格测试的条件下需要用氮气吹扫尽可能消除空气中的干扰 这个实验结果仍有些问题，可以看到在上升段有一个明显地凹陷，调制所使用的是三角波，不应该出现这些问题，在排查过后发现问题在红外窗口片处，当去除红外窗口片后该异常便会消失，猜想是因为红外窗口片的入射角度和太小，反射回去的光之间相互干扰，目前实验中暂时去除了窗口片，后续另一项QTF实验中再更换更大的窗口片即可，目前实验正在推进，等后续测试数据处理后会再更新">
+  <meta itemprop="datePublished" content="2026-02-28T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-02-28T00:00:00+00:00">
+  <meta itemprop="wordCount" content="6">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="新的实验推进结果">
+  <meta name="twitter:description" content="在之前的实验准备好了射流系统与纹影拍摄，本课题作为tdlas实验原理是激光在通过物质时，物质对其的吸收效应原理，其具体方法是通过使特定频率的激光透过需要测量的物质等，得出物质对激光的吸收率可以计算出系统中的温度、浓度等信息。 光学实验方法中我们首先需要搭建光路，实验中光路采用双光路耦合设计，分为起指引作用的可见光路与核心测量的中红外激光光路，其中可见光路的核心作用是确保激光精准扫描到超声速射流，其激光经平面金镜反射后投射至混合腔体出口的硒化锌窗口片并反射，通过观察可见光斑投射位置可实时校准射流系统与测量光路的相对姿态；中红外激光光路为热力学参数测量的核心，激光器基于不同电流产生不同波长中红外激光的原理工作，因此实验选用Red Pitaya 开发板作为调制模块，输出特定频率与振幅的三角波信号驱动激光器，实现激光波长的周期性调谐，调谐后的中红外激光经平面金镜反射后至硒化锌窗口片并发生透射，两条光路在硒化锌窗口片处实现初步同轴耦合，后续需依次穿过两个同轴布置的小孔光阑，进一步滤除杂散光并校准同轴度。同时考虑到扫描电流可能引发光斑光强的空间不规则变化，激光进入探测器前会经凸透镜聚焦处理，提升信号强度与稳定性，下图所示是实验中所使用的光路实物图与光路的原理图 搭建好光路后就可以进行实验，下面是初步调制后的激光测试结果，可以看到即使没有射流仍然会有吸收，这是因为空气中仍有二氧化碳和水，所以在严格测试的条件下需要用氮气吹扫尽可能消除空气中的干扰 这个实验结果仍有些问题，可以看到在上升段有一个明显地凹陷，调制所使用的是三角波，不应该出现这些问题，在排查过后发现问题在红外窗口片处，当去除红外窗口片后该异常便会消失，猜想是因为红外窗口片的入射角度和太小，反射回去的光之间相互干扰，目前实验中暂时去除了窗口片，后续另一项QTF实验中再更换更大的窗口片即可，目前实验正在推进，等后续测试数据处理后会再更新">
+
+      
+    
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('https://liuxunchen.github.io/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        刘训臣燃烧诊断实验室主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/our-alumni/" title="Alumni 页">
+              Alumni
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">新的实验推进结果</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Post
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">新的实验推进结果</h1>
+      
+      <p class="tracked"><strong>高寅斌</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-02-28T00:00:00Z">二月 28, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>在之前的实验准备好了射流系统与纹影拍摄，本课题作为tdlas实验原理是激光在通过物质时，物质对其的吸收效应原理，其具体方法是通过使特定频率的激光透过需要测量的物质等，得出物质对激光的吸收率可以计算出系统中的温度、浓度等信息。
+光学实验方法中我们首先需要搭建光路，实验中光路采用双光路耦合设计，分为起指引作用的可见光路与核心测量的中红外激光光路，其中可见光路的核心作用是确保激光精准扫描到超声速射流，其激光经平面金镜反射后投射至混合腔体出口的硒化锌窗口片并反射，通过观察可见光斑投射位置可实时校准射流系统与测量光路的相对姿态；中红外激光光路为热力学参数测量的核心，激光器基于不同电流产生不同波长中红外激光的原理工作，因此实验选用Red Pitaya 开发板作为调制模块，输出特定频率与振幅的三角波信号驱动激光器，实现激光波长的周期性调谐，调谐后的中红外激光经平面金镜反射后至硒化锌窗口片并发生透射，两条光路在硒化锌窗口片处实现初步同轴耦合，后续需依次穿过两个同轴布置的小孔光阑，进一步滤除杂散光并校准同轴度。同时考虑到扫描电流可能引发光斑光强的空间不规则变化，激光进入探测器前会经凸透镜聚焦处理，提升信号强度与稳定性，下图所示是实验中所使用的光路实物图与光路的原理图
+<img src="/xliu-group/zh/post/gaoyinbin6new-experiment/image1.png" alt="光路实物图">
+<img src="/xliu-group/zh/post/gaoyinbin6new-experiment/image2.png" alt="光路原理图">
+搭建好光路后就可以进行实验，下面是初步调制后的激光测试结果，可以看到即使没有射流仍然会有吸收，这是因为空气中仍有二氧化碳和水，所以在严格测试的条件下需要用氮气吹扫尽可能消除空气中的干扰
+<img src="/xliu-group/zh/post/gaoyinbin6new-experiment/image3.png" alt="初步实验结果">
+这个实验结果仍有些问题，可以看到在上升段有一个明显地凹陷，调制所使用的是三角波，不应该出现这些问题，在排查过后发现问题在红外窗口片处，当去除红外窗口片后该异常便会消失，猜想是因为红外窗口片的入射角度和太小，反射回去的光之间相互干扰，目前实验中暂时去除了窗口片，后续另一项QTF实验中再更换更大的窗口片即可，目前实验正在推进，等后续测试数据处理后会再更新</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://liuxunchen.github.io/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

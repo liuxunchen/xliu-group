@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="Post">
   <meta itemprop="description" content="科研笔记和一些想法">
-  <meta itemprop="datePublished" content="2025-12-15T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-12-15T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2026-03-08T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-03-08T00:00:00+00:00">
   <meta itemprop="wordCount" content="1">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Post">
@@ -160,6 +160,182 @@ script.async = true;
 
     </section>
     <aside class="flex-ns mt5 flex-wrap justify-around">
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        九月 16, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/wangshuo4/" class="link black dim">
+        用Witoszynski曲线设计收缩段
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>今天阅读了Witoszynski提出witoszynski曲线的文章，witoszynski曲线最初的设计是用于优化扩压器设计，目的是减小气体或液体的流速而没有显著能量损失。</p>
+<p>Witoszynski工作的核心成果是描述扩压器内流线径向坐标r的表达式：
+$r = \frac{r_0}{\sqrt{1 - \left(1 - \frac{r_0^2}{r_1^2}\right) \frac{\left(1 - 3\frac{z^2}{a^2}\right)^2}{\left(1 + \frac{z^2}{a^2}\right)^3}}}$</p>
+<p>其中，</p>
+<ul>
+<li><strong>r</strong>：径向坐标</li>
+<li><strong>r₀</strong>：入口半径，</li>
+<li><strong>r₁</strong>：出口半径，</li>
+<li><strong>z</strong>：表示沿流向的轴向坐标，范围是0到$\frac{a}{\sqrt{3}}$</li>
+<li><strong>a</strong>：几何常数参数，
+流线示意图如下：
+<img src="/xliu-group/zh/post/wangshuo4/%E5%9B%BE%E7%89%872.png" alt=""></li>
+</ul>
+<p>根据文章，流线图v对应的为公式中的r，α对应公式中的a。
+流线径向坐标r表达式的推导始于轴对称理想流体在柱坐标下的微分方程：
+$\frac{\partial^2 \psi}{\partial r^2} - \frac{1}{r} \frac{\partial \psi}{\partial r} + \frac{\partial^2 \psi}{\partial z^2} = 0$</p>
+<p>其解为流函数的级数形式：
+$\psi = r^2 f(z) - \frac{r^4}{2 \cdot 4} \frac{d^2 f(z)}{dz^2} + \frac{r^6}{2 \cdot 4 ^2\cdot 6} \frac{d^4 f(z)}{dz^4} + \cdots$</p>
+<p>$f(z)$是一个光滑的函数，满足$f_{\infty}=1$.</p>
+<p>则假设一个符合条件的$f(z)$函数，将其带入流函数得
+<img src="/xliu-group/zh/post/wangshuo4/%E5%9B%BE%E7%89%875.png" alt=""></p>
+<p>A由边界条件而定
+<img src="/xliu-group/zh/post/wangshuo4/%E5%9B%BE%E7%89%876.png" alt="">
+把A带入
+得出r的表达式</p>
+$$
+R = \frac{R_0}{\sqrt{1 - \left[1 - \left( \frac{R_0}{R_1} \right)^2 \right] \frac{\left( 1 - \frac{z^2}{z_0^2} \right)^2}{\left( 1 + \frac{z^2}{3z_0^2} \right)^3}}}
+$$<p>
+与原式子的不同点在于，公式轴向坐标z的范围简化，变成0到$z_0$，于是公式随之变化，但其实两式是相同的。
+那么如何用wito曲线设计收缩段呢</p>
+    </div>
+  <a href="/xliu-group/zh/post/wangshuo4/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        八月 21, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/wangshuo3/" class="link black dim">
+         解决流量计跳数问题总结和感悟
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>在进行第二次轴向分级燃烧第一级点火燃烧实验时，主流空气更换了两个大量程流量计2000slpm，在实验过程中，返回数据出现了位数错乱现象，如下图。
+<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%871.png" alt="">
+<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%872.png" alt="">
+流量的读取是通过截取固定位置及位数的返回码而后经过换算实现的，因此流量显示出现了频繁的掉数。刚开始考虑可能是硬件问题，例如信号线接线不牢固，拓展坞插口异常，usb转485设备传输不稳定，流量计信号线之间存在电磁干扰等问题。于是急忙重新接了一次线，更换了另一个拓展坞，发现问题依然存在，但是好在，在实验中发现了，只有流量计流量在二百多到三百的时候才会出现掉数，大流量则不会出现这种情况，这起码证明掉数的原因并非是设备密集而导致的干扰问题，也非接线的问题。至此，除usb转485接口外，其他硬件因素基本已经排查完毕。</p>
+<p>当时因为只有两个大量程流量计出现了跳数，考虑可能是用大流量计测较小流量会出现错误，询问流量计客服后，用串口助手测试，发现收发功能码都是正常的，但是用labview则会出现返回码不完整和冗余的现象，考虑可能是labview的编写问题。后来，购买的高质量usb转485设备到了，迫不及待的换上试了一下，确实质量好，也确实好用了很多，但是问题并没有解决，于是便开始一心解决软件及程序问题。</p>
+<p>经过多途径的大量搜索，怀疑可能是大量程流量计在收发小流量时，写入速度大于读取速度，累计数据量增大导致缓冲区溢出，进而导致跳数。于是基于这一猜想，想出了几种解决方案：</p>
+<ol>
+<li>在读取前，增加一个清除读取缓冲区，保证每次的读数不会被前面影响</li>
+<li>在写入和读取之间增加一个延时，避免读取过快过慢导致的错位</li>
+<li>使用条件结构，在只有返回数为7时，才进行数据的读取和写入</li>
+<li>使用条件结构，判断起始位是否是01，如果是，再进行读数和存储</li>
+</ol>
+<p>实践后发现无论哪种方法，都无法避免其在特定的流量范围内出现返回码不完整的问题，总是会频繁的出现0103020A这个不完整的返回码。还有一个比较麻烦的方法就是在visa读取后，增加一个队列，数据存入队列，长度等于7则处理，不足7则继续等待，这个学习了一会，还没学会，后续可以再学习一下。</p>
+<p>在验证这些方案是否可行的过程中，突然发现，每次返回数的位数出现偏差，都是以0A为结尾，于是搜索了一下发现，<strong>labview的默认终止符是0A</strong>！在前面的blog中提到，读取流量的位数是第4，5位，如图。
+<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%873.png" alt="">
+<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%874.png" alt=""></p>
+<p>在十六进制中，0A的取值范围为0A00-0AFF，对应十进制的值为2560-2815，再除以流量计的放大倍数为256-281.5，即在这个流量范围内都会因触发终止符而中断，导致后续的错位，致使无法正常显示流量。解决办法即是在visa配置串口将启用终止符创建常量，并将其关闭，如图。
+<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%875.png" alt="">
+<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%876.png" alt=""></p>
+<p>完成修改后，再次测试程序，返回码中断，错位问题得到解决，如图。
+<img src="/xliu-group/zh/post/wangshuo3/%E5%9B%BE%E7%89%877.png" alt=""></p>
+<p>经过此次经历让我发现，labview的学习任重而道远。一步就能解决的问题，竟然走了这么多弯路。</p>
+    </div>
+  <a href="/xliu-group/zh/post/wangshuo3/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        八月 20, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/wangshuo2/" class="link black dim">
+        文献阅读
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>Blow-out limits of nonpremixed turbulent jet flames in a cross flow at atmospheric and sub-atmospheric pressures</p>
+<p>文章重点研究了非预混湍流射流火焰的吹熄极限。</p>
+<p>实验采用的设备如图：
+<img src="/xliu-group/zh/post/wangshuo2/%E5%9B%BE%E7%89%871.png" alt="">
+风洞的横截面高度1.5m，宽度1.2m，长度10m，高压机械风扇产生横向气流，蜂窝结构用以稳定气流，另一端是开放式，燃料喷嘴的内径范围 3 - 8mm，壁厚 1.5mm，喷嘴放在风洞出口0.5m 处，距离底部 0.3m，燃料是丙烷，流量由气体流量计调节。燃料温度与环境温度相同。</p>
+<p>在合肥和拉萨分别进行了实验，火焰用 CCD 相机记录。将实验结果进行了比较，以评估压力对横流火焰吹熄极限的影响，所有实验重复了三次。</p>
+<p>实验结果如下：
+<img src="/xliu-group/zh/post/wangshuo2/%E5%9B%BE%E7%89%872.png" alt="">
+a,b 图分别为合肥和拉萨实验火焰形状变化图
+(a) 图工况：射流速度39.3m/s，喷管内径3mm，环境压力 100KPa
+保持喷嘴形状和射流速度不变，随横流速度的增加，火焰有三种状态，
+0 - 2m/s，火焰高度长度减少，弯曲程度变得更明显，蓝色火焰区扩大。
+这归因于横流增大，增强了喷嘴和抬升火焰边缘区域空气的卷吸和混合，使燃料核心区域局部预混更强，整体火焰亮度减低。
+2 - 3m/s，火焰整体形态变化不大，火焰主体与横流几乎平行，火焰前缘近乎垂直，火焰变得更蓝，亮度显著降低，在水平方向略有拉长。
+结果同 Moore 等人在共流条件下观察到的过程相似，当横流超过一个阈值，火焰从稳定火焰过渡到熄灭和消失。火焰前缘向下游移动，尺寸变小；扩散火焰尺寸显著减少；整个火焰以火焰前缘的消失而结束，此为吹熄。
+临界吹熄横流速度定义为火焰不能持续存在，发生熄灭，所以吹熄极限是 3.37m/s
+(b) 图工况：射流速度 16.9m/s，喷管内径 3mm，环境压力 64KPa
+火焰出现与 a 相似的三种状态
+(c) 图是火焰边缘特写，工况为：射流速度 19.7m/s，环境压力 100KPa
+由于迎风侧与背风侧的混合程度不同，导致火焰抬升高度不同。
+（由射流与横流的相互作用，横流中射流火焰的流场比静止空气中自由射流火焰更复杂。迎风侧的火焰边缘由于横流，会遭受更高的应变效应，横向正应变相较于背风测更大。）</p>
+<p>整理实验数据绘制了横流速度与燃料射流速度的吹熄极限图
+<img src="/xliu-group/zh/post/wangshuo2/%E5%9B%BE%E7%89%873.png" alt="">
+由图可知
+100KPa，吹灭极限处的气流速度随燃料喷射速度增大而增大（位于吹熄曲线的横流主导区域）
+64KPa，吹灭极限处的气流速度随燃料喷射速度增大而增大，然后又减少。呈非单调行为，与 kalghatgi 观察的一样</p>
+<p>将速度与喷嘴直径的比值与 kalghatgi 的数据（100KPa）作比较，如下图：
+<img src="/xliu-group/zh/post/wangshuo2/%E5%9B%BE%E7%89%874.png" alt="">
+结果显示，在标准大气压下两者数据相吻合。
+由此图可知，在标准大气压和亚大气压两种情况下，数据都显示出非线性行为。
+有两个区域:
+1.横流主导：在 “横流主导” 区域，熄灭主要由横流产生的应变引起。在这种情况下，首先火焰被吹向平行于横流的方向，然后，火焰沿水平方向被横流吹灭。
+在点 A，燃料射流速度接近静止空气中自熄灭极限的值（对应点 C），自 A 点以后向燃料射流主导转变
+2.燃料射流主导：熄灭主要由高速燃料射流本身产生的应变引起。
+B 点是可持续火焰的最大值，射流速度超过点 B 时，即使在横流中，火焰也无法维持。若要维持火焰，射流速度必须降低
+C 点，吹熄完全由燃料射流本身产生的应变效应引起的。
+吹熄极限曲线包围的是火焰存在区域。
+环境压力降低到 64kpa，吹熄极限曲线明显缩小，这说明随着环境压力的降低，火焰对于燃料射流速度和横流速度的吹熄更敏感，更容易熄灭。吹熄时（横流速度 / 喷管内径）局部最大值约为 400s⁻¹ 约是标准大气压的三分之一，射流速度 / 直径的值也有所下降。</p>
+    </div>
+  <a href="/xliu-group/zh/post/wangshuo2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        八月 15, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/gaoyinbin-ho-flame/" class="link black dim">
+        利用JANAF表估算氢氧火焰温度
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>最近在着手准备有关JANAF表使用的相关论文，发现了一个有趣的问题，氢氧焰的燃烧温度应该怎么计算？这似乎并不难回答，按照热力学第一定律，反应前后的总焓保证不变即可，似乎很容易写出下面的热平衡：</p>
+$$\Delta_f H(H_2) + \frac{1}{2}\Delta_f H(O_2) = \Delta_f H(H_2O) + \Delta H(H_2O)$$<p>因为方程左边均为单质，这样看来水生成焓在数值上应该等于负的反应焓，查询JANAF表可以得知$\Delta_f H(H_2O)$等于-241.826kJ·mol⁻¹，我们可以查询多少温度下的焓变等于这个值的负值，结果是约5000K，按此结果我们做一下验算，我们看一下5000K下该反应的$\Delta G°$，$\Delta G°$取最小值的温度，就是标准状态下该反应平衡常数最大、反应进行得最彻底的理想温度，因此如果结果是5000K，$\Delta G°$应该为最小，带入数据，5000K时$\Delta_r G°(5000K) = \Delta_f G°(H₂O, g, 5000K) = 40.949$ kJ·mol⁻¹，4900K时$\Delta_r G°(4900K) = \Delta_f G°(H₂O, g, 4900K) = 34.998$kJ·mol⁻¹，很显然5000K并不是理想温度，且高出非常多，那么这个答案必然存在问题，我们不妨仔细分析一下这个问题：</p>
+<p>首先得明确核心约束：定HP意味着产物的总焓必须和反应物初始总焓完全匹配，而温度和组分都是这个约束下的结果，不是提前固定的。所以要先做一件基础工作——计算反应物的总焓：根据氢氧的混合比例（比如化学计量比2:1）、初始温度（比如室温298K）和设定的压力，算出反应物的总焓值，这个值是后续所有筛选的“基准线”。接下来就是先划定一个合理的温度范围，然后按一定步长逐个遍历这个区间里的每个温度。对每个遍历到的温度，都要在“固定这个温度+固定设定压力”的前提下，让产物的组分自由调整（但必须满足氢、氧原子总数不变的元素守恒），直到找到吉布斯自由能最小的状态——这个状态就是该温度下的化学平衡组分，意味着此时的组分比例是最稳定的，再没有自发变化的趋势。之后，需要计算这个“特定温度+对应平衡组分”组合下的产物总焓$H_{prod}$，把它和之前算的反应物总焓基准线做对比。等把所有温度都遍历完，就会得到一系列“温度-产物焓”的对应关系，而要找的那个真实燃烧温度，就是其中产物焓和反应物总焓最接近（甚至相等）的那个温度——如果刚好有某个扫描温度对应的产物焓和基准线完全匹配，那这个温度就是定HP下的平衡温度，对应的组分就是最终答案；如果没有完全匹配的用相邻两个温度的焓值做线性插值，就能算出精确的平衡温度，以及对应的平衡组分。</p>
+<p>反应物配比为化学计量比（2 mol H₂ + 1 mol O₂），初始温度为 \( T_r = 298.15\ \text{K} \)，单物质摩尔焓满足：</p>
+$$
+H_i(T_r) = \Delta H_i(T_r) + \Delta_f H_i(T_r)
+$$<p>（H₂、O₂为单质，$\Delta_f H_i(T_r) = 0$）</p>
+$$
+H_{\text{react}} = 2 \cdot H_{\text{H}_2}(T_r) + 1 \cdot H_{\text{O}_2}(T_r)
+$$$$2n_{\text{H}_2\text{O}} + 2n_{\text{H}_2} = 4 \implies n_{\text{H}_2} = 2 - n_{\text{H}_2\text{O}}$$$$n_{\text{H}_2\text{O}} + 2n_{\text{O}_2} = 2 \implies n_{\text{O}_2} = \frac{2 - n_{\text{H}_2\text{O}}}{2}$$$$n_{\text{total}} = n_{\text{H}_2\text{O}} + n_{\text{H}_2} + n_{\text{O}_2}$$<p>总吉布斯自由能表达式：</p>
+    </div>
+  <a href="/xliu-group/zh/post/gaoyinbin-ho-flame/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
       
         <div class="w-100 w-30-l mb4 relative bg-white">
             <div class="mb3 pa4 blue overflow-hidden">
@@ -555,248 +731,6 @@ $$<h1 id="参考文献">参考文献</h1>
 
         </div>
       
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        六月 17, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/xliu_chin_mistake/" class="link black dim">
-        航空燃烧室技术界的一些错误提法
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="前言">前言</h1>
-<p>人们常说航空发动机是如何的难搞，像是什么皇冠上的珍珠。其实，依照笔者经验也不是那么难，搞过航空燃烧室的预先研究（至今仍未停止）、技术研发、型号研发、型号使用中排故等，深知怎么搞，即搞的路线或者说是研发体制，是关键所在。但在这一切之先，首先概念要正确，基础知识牢固，各种概念和提法要正确，这将是本文的要点。</p>
-<h1 id="一燃烧室没有总压恢复系数">一、燃烧室没有总压恢复系数</h1>
-<p>参考文献[1] 中有表1：涡扇发动机加力燃烧室性能提升（台架状态）如下所示。
-<img src="/xliu-group/zh/post/xliu_chin_mistake/1.png" alt="表1" title="表1">
-其中提到总压恢复系数，这是一个概念错误。本文将在下文讨论，提到总压恢复系数还在其他地方也出现。</p>
-$$
-\sigma_\text{B} = \frac{P_{t4}}{P_{t3}}
-$$<p>
-燃烧室的总压恢复系数一般在0.92~0.96（不包含由燃烧导致的热租损失）。”
-这里明确说明总压恢复系数是燃烧室出口总压与进口总压之比，不清楚该章节作者所说压力损失到什么程度又恢复到0.92~0.96 。
-参考文献[2]在3.3节《设计输入》之下的 3）性能参数要求中第（1）项就是$\sigma_B$：总压恢复系数。</p>
-<p>笔者曾与某设计所燃烧副总师讨论问题时，该副总师提到他们总压恢复系数是多少。笔者当场严肃指出这是一个基本概念错误。
-总的来说，总压恢复系数这个错误概念扩展甚广。</p>
-<p>以下说明为什么这是基本概念错误：
-机械能与热能的转换是热力学第二定律范围内的事情。热力学第二定律有多种表达方式，简单地说，由机械能向热能转换是可以自发地产生，没什么条件；但由热能向机械能转换是有条件的，而且不可能百分之百地转换。
-也就是由机械能向热能转换了之后，不可能自然地逆转回来。
-总压是压力与动压头相加，是机械能。
-总压损失了是转变为热能，那时不可能自然地恢复回来的，所以没有恢复的提法。</p>
-<p>更为深入的说明为总压损失是一个熵增过程。熵增过程都是不可逆的，那么要说明什么是熵？
-熵是状态或然率的函数，用一个例子可以说明这状态或然率的函数是什么含义。
-有一容器，左、右两部分，中间有一隔板密封地隔开。
-左边是氮气（N2），右边是氧气（O2）。
-如果中间的隔板打破掉了，容器内必然是氮气与氧气混合，试想一下中间隔板打破后氮气仍然集中在左边，氧气仍然集中在右边，这样一种状态其出现的或然率有多少？
-显然为零。
-而相互混合的状态是或然率最大的状态。
-所以由相互各自集中一边的状态到相互混合的状态是熵增大的过程。
-这也清楚地说明熵增后不可能自然出现熵减的过程。</p>
-<p>有人一定会问，这是一个基本概念，有那么重要吗？
-笔者与 A. H. Lefebvre 讨论如何搞发动机燃烧室，两人都赞同以下观点：“搞航空燃烧室是以基础知识来解决燃烧室的各种问题。”
-要强调这里是基础知识，而不是基础研究。
-首先必须具有良好的基础知识，然后要有以基础知识去解决各种问题的能力（和经验）。
-Lefebvre曾批评某发动机公司搞燃烧的人基础知识太差，他的原话是：“ As for combustion fundamental, they know nothing.”
-（说一无所知，有点夸大了。）
-要具备良好基础知识，必须先重视基础知识，重视基本概念。
-说“总压恢复系数”的人就是不重视基础知识。</p>
-<h1 id="二有贫油燃烧但没有贫油喷嘴">二、有贫油燃烧，但没有贫油喷嘴</h1>
-<p>参考文献[3]研究了（以其标题而言）“贫油直喷喷嘴”。
-这个提法错了。喷嘴在一定压力降下喷出燃油，只有在燃烧室某个工况下与进燃烧区的空气量相组合燃烧时才有贫油燃烧、富油燃烧或化学恰当比燃烧。
-喷嘴本身不存在贫油喷嘴或富油喷嘴。
-按照该文的内容应该是《用于贫油直喷燃烧的喷嘴雾化特性实验研究》。</p>
-<p>顺便提一下，贫油直喷燃烧是三十年前路易斯（Lewis）研究中心工程师提出的，没有什么设计方案和设计理念的一个建议，以取代贫油预混预蒸发的低污染燃烧（Lean Premixed Prevaporized, LPP）。
-其实在低污染燃烧室之前的除了蒸发管燃烧室之外，全部都是没有预混合的燃油直喷，要取代LPP的应该是贫油直接混合燃烧（LDM, Lean Direct Mixing）。</p>
-<p>同时也需要指出，通常讲喷雾特性，不单是液滴滴径（索特平均直径），还有液滴尺寸分布指数（显示其尺寸分布的均匀性）。</p>
-<h1 id="三没有中心分级燃烧室">三、没有中心分级燃烧室</h1>
-<p>参考文献[4] “针对中心主、副模分区的燃烧室头部组织结构的单管燃烧室模型进行数值模拟研究”。
-该文的研究得出高温升燃烧室在设计研发上很有意义的结果，证实了过去在实验中得到的现象。
-但其标题中提出的“中心分级燃烧室”是不对的。
-在贫油预混预蒸发低污染燃烧室出现之前，几乎所有的常规燃烧室都是先由副油喷射工作，然后主油打开工作，这种方式从来不叫分级燃烧。
-只在LPP燃烧室中出现主油分级，即主油不是一次全部打开，而是分级打开的。
-参考文献[4] 所研究的就是先由副油工作然后主油打开工作，这种方式不应称之为分级燃烧室。
-正确的提法应该是“以同心圆排列的副油主油分区燃烧，副油燃烧位于中心，主油燃烧位于外圈。”
-这样的分区燃烧是近二十年来燃气轮机燃烧室（不仅是航空燃烧室）技术的一大进展。</p>
-    </div>
-  <a href="/xliu-group/zh/post/xliu_chin_mistake/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        六月 16, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/xliu_math/" class="link black dim">
-        在hugo网页中实现latex显示
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>又一次靠DeepSeek的帮忙，最近搞定了如何在我们这个网站中显示latex 公式的问题。how nice !</p>
-<p>$$
-\int_0^1 \frac{xdy}{\sqrt{1-x^2y^2}} = \arcsin(x), \text{for} |x|&lt;1</p>
-<p>\left| A \right|</p>
-<p>$$</p>
-<p>用 hugo 编译 markdown 文件的方式产生网页的方法主要参考官方的这个说明文件：
-<a href="https://gohugo.io/content-management/mathematics/">Mathematics_in_Markdown</a> 。
-但一直不能正常显示。
-最近用DeepSeek 找了几个方法试验，终于不经意间解决了问题。</p>
-<p>需要3个步骤：</p>
-<ul>
-<li>修改设置文件 /config.toml</li>
-</ul>
-<pre tabindex="0"><code>[markup.goldmark.renderer]
-unsafe = true  # 允许原始HTML
-xHTML = true
-
-[markup]
-[markup.goldmark]
-  [markup.goldmark.parser]
-    attribute = true
-    autoHeadingID = true
-[params]
-math = true
-</code></pre><ul>
-<li>配置模板 /layouts/_default/baseof.html ，需要包含下面内容</li>
-</ul>
-<pre tabindex="0"><code>  {{ if .Param &#34;math&#34; }}
-  {{ partial &#34;math.html&#34; . }}
-{{ end }}
-</code></pre><ul>
-<li>添加 mathjax /layouts/partials/math.html 。注意，这里和官方说明文件不一样，主要是DeepSeek 给出建议改这个文件，发现如果延迟初始化Mathjax的执行就好了。发现是需要保证Mathjax 正确的初始化。</li>
-</ul>
-<pre tabindex="0"><code>&lt;script&gt;
-// 添加初始化检查
-if (!window.MathJax) {
-  window.MathJax = {
-    tex: {
-      inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]],
-      displayMath: [[&#39;$$&#39;, &#39;$$&#39;], [&#39;\\[&#39;, &#39;\\]&#39;]],
-      processEscapes: true
-    },
-    svg: {
-      fontCache: &#39;global&#39;
-    },
-    startup: {
-      ready: () =&gt; {
-        MathJax.startup.defaultReady();
-        console.log(&#34;MathJax is fully initialized&#34;);
-      }
-    }
-  };
-  
-  // 创建并加载 MathJax 脚本
-  const script = document.createElement(&#39;script&#39;);
-script.src = &#39;https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js&#39;;
-//script.src = &#39;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js&#39;;
-// 或
-// script.src = &#39;https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-svg.js&#39;;
-  script.async = true;
-  script.id = &#39;MathJax-script&#39;;
-  document.head.appendChild(script);
-}
-&lt;/script&gt;
-</code></pre>
-    </div>
-  <a href="/xliu-group/zh/post/xliu_math/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        五月 12, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/wangshuo1/" class="link black dim">
-        使用 LabVIEW 实现AFG-C9000系列气体质量流量计瞬时流量的读取和储存
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="流量计瞬时流量的读取和储存">流量计瞬时流量的读取和储存</h1>
-<p>以AFG-C9000系列气体质量流量计为例, LabView VI code: <a href="/xliu-group/zh/post/wangshuo1/485%E8%AF%BB%E6%95%B0.vi">485读数</a></p>
-<p>原计划采用4-20mA模拟量采集方式，通过计算机端进行流量数据的读取。然而，该方法所使用的自带软件仅能直接读取并显示电流值的波形图，且存储的数据同样为电流值（如下图），需在实验完成后通过特定公式进行换算，以转换为实际的流量值。</p>
-<p><img src="/xliu-group/zh/post/wangshuo1/%E4%B8%8A%E4%BC%A01.png" alt=""></p>
-<p>由于4-20mA信号无法直接实现流量的实时查看，为确保瞬时流量的精准读取与可靠存储，拟采用LabVIEW开发基于RS-485通讯协议的程序。通过该程序，利用RS-485通讯实时读取瞬时流量数据，并按照预设格式进行本地存储，以保证数据的完整性、准确性。</p>
-<p>首先，优先检索Excel表格是否存在。使用条件判断结构，若指定路径下不存在目标文件，则根据预设的文件命名规则和表头结构，在对应路径下自动创建新的Excel文件，保证文件真实存在，以实现数据的存储。为便于后续数据检索与管理，文件名将以当前时间的年月日格式命名，确保文件名唯一且易于识别。</p>
-<p><img src="/xliu-group/zh/post/wangshuo1/%E4%B8%8A%E4%BC%A02.png" alt=""></p>
-<p><img src="/xliu-group/zh/post/wangshuo1/%E4%B8%8A%E4%BC%A03.png" alt=""></p>
-<p>依据流量计的通讯协议，通过发送十六位功能码实现瞬时流量的精准读取。为确保数据采集的稳定性和可控性，程序中增加延时，可以设置灵活的读数间隔时间。例如，设置间隔时间为1000毫秒时，每隔一秒读取一次流量数据；设置间隔时间为100毫秒时，每秒读取十次流量数据，以满足不同应用场景下的数据采集频率需求。</p>
-<p><img src="/xliu-group/zh/post/wangshuo1/%E4%B8%8A%E4%BC%A04.png" alt=""></p>
-<p>在运行程序并成功发送功能码后，流量计将返回一组数据（如下图），在返回的数据中，返回的第7-10位，为返回流量数值。</p>
-<p><img src="/xliu-group/zh/post/wangshuo1/%E4%B8%8A%E4%BC%A05.png" alt=""></p>
-<p>以图中数据为例，返回的十六进制数值00E5通过转换计算（14×16+5）得到十进制流量值为229。该数值存在放大倍数，为10，故实际流量为22.9L/min。</p>
-<p>为便于实时监测与分析，将计算所得的流量数据以数值形式显示于前面板，同时绘制动态波形图表，以直观展现流量的具体数值及其变化趋势。</p>
-<p><img src="/xliu-group/zh/post/wangshuo1/%E4%B8%8A%E4%BC%A06.png" alt=""></p>
-<p>前面板的设计效果如图所示。为确保操作的直观性和功能的可靠性，界面布局经过优化，以清晰呈现流量数据、波形图表及其他关键信息。</p>
-<p><img src="/xliu-group/zh/post/wangshuo1/%E4%B8%8A%E4%BC%A07.png" alt=""></p>
-<p>最后将采集的流量数据及其对应的时间同步存储至程序初始化时创建的Excel文件中。</p>
-<p><img src="/xliu-group/zh/post/wangshuo1/%E4%B8%8A%E4%BC%A08.png" alt=""></p>
-<p>程序运行结果如下图，经观察比对，计算机端的读数与流量计读数相吻合，验证了数据采集与处理的准确性和可靠性。</p>
-<p><img src="/xliu-group/zh/post/wangshuo1/%E4%B8%8A%E4%BC%A09.png" alt=""></p>
-<p>欢迎大家讨论，指正。</p>
-    </div>
-  <a href="/xliu-group/zh/post/wangshuo1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        五月 9, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/huihao1/" class="link black dim">
-        使用 LabVIEW 实现对CC-M3H040-NN14伺服电机的控制
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="使用-labview-实现对伺服电机的控制">使用 LabVIEW 实现对伺服电机的控制</h1>
-<p>本次要控制的伺服驱动器的型号是：<code>CC-D3P040A2-A</code>；伺服电机是：<code>CC-M3H040-NN14</code>。</p>
-<p><img src="/xliu-group/zh/post/huihao1/image1.jpeg" alt="伺服电机图片"></p>
-<p><a href="/xliu-group/zh/post/huihao1/read.vi">labview control to read motor position</a></p>
-<p><a href="/xliu-group/zh/post/huihao1/Flame_step_motor.vi">labview control to read/move</a></p>
-<h2 id="1-控制器地址设置">1. 控制器地址设置</h2>
-<p><img src="media/image2.png" alt="地址设置图示"><br>
-在需要使用多个控制器的情况下，需要设置好控制器的地址，用以在发送控制码的情况下区分不同的控制器。控制器的地址位发生改变相应的代码上的地址位也要改变，那么代码最后的校验码也要重新进行计算。</p>
-<p>例如 <code>01</code> 即为地址位；最后两位为校验码。</p>
-<h2 id="2-使能控制与通讯模式设置">2. 使能控制与通讯模式设置</h2>
-<p>在单独使用 LabVIEW 控制不开启上位机软件的情况下，要在发送距离、速度、启动和启动复位代码前发送使能开的代码，或者其他用于控制通讯模式的代码。例如本次所控制的驱动，不仅要使能开，且要额外增加两个代码，让其控制模式从 I/O 变为通讯模式：</p>
-<p><img src="/xliu-group/zh/post/huihao1/image3.png" alt="通讯模式设置代码"><br>
-写入两个代码让其都变为通讯模式（使用 485 控制是通讯模式）。</p>
-<h2 id="3-电子齿轮比设置">3. 电子齿轮比设置</h2>
-<p><img src="/xliu-group/zh/post/huihao1/image5.png" alt="电子齿轮比参数设置"><br>
-要开始设置电机的移动量，在此之前要知道电机的电子齿轮比为多少。例如在这个电机的默认齿轮比下，我发送 1000 个脉冲它只能旋转 0.1 圈，因此想要让其在一次动作下旋转一圈，就要发送 10000 个脉冲或者改变它的齿轮比。</p>
-<p>上图即为需要改变的参数的图片，例如我输入是 1000 个脉冲，但我想让其旋转 1/5 圈，但是在现在齿轮比下只能旋转 1/10 圈；现在齿轮比分母为 2500，则我要将其改变为 1250。</p>
-<h2 id="4-转速设置">4. 转速设置</h2>
-<p>设置好转速。</p>
-<h2 id="5-启动与复位设置">5. 启动与复位设置</h2>
-<p>在设置启动，需要多次连续启动的情况下，同时也要设置启动复位，确保连续启动的顺利。</p>
-<h2 id="6-多段代码写入延时">6. 多段代码写入延时</h2>
-<p><img src="/xliu-group/zh/post/huihao1/image6.png" alt="延时设置图示"><br>
-另一个问题是在 LabVIEW 写入时写入多段代码时，使用多个写入 VISA 中间要加入延时的程序（试过顺序结构写入但是感觉还是会崩溃），确保写入的代码不会混乱。</p>
-<h2 id="7-多电机控制方式">7. 多电机控制方式</h2>
-<p>要控制多个电机时可以有多种方式进行选择，首先最简单的你想要实时读取两个电机的参数可以使用轮询的方式，将两个电机的 485 通讯线的 AB 口分别接到一起（这种方式在别的控制方式选择下依然是较好的方式，因为可以不用反复选择不同的 COM 口，且在设置好不同的地址位的情况下，并不会相互影响），选择一个条件结构，将其的条件设置好，分别发送两个对应不同电机的问询码，控制器读到与自己相对应的码时会反馈，这样两个控制器便会轮流反馈其的位置。</p>
-    </div>
-  <a href="/xliu-group/zh/post/huihao1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
     </aside>
     
     <ul class="pagination pagination-default">
@@ -816,10 +750,13 @@ script.src = &#39;https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js&#39
         <a href="/xliu-group/zh/post/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
       </li>
       <li class="page-item">
+        <a href="/xliu-group/zh/post/page/4/" aria-label="Page 4" class="page-link" role="button">4</a>
+      </li>
+      <li class="page-item">
         <a href="/xliu-group/zh/post/page/3/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/xliu-group/zh/post/page/3/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/xliu-group/zh/post/page/4/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
   </article>
@@ -828,7 +765,7 @@ script.src = &#39;https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js&#39
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://liuxunchen.github.io/xliu-group/zh/" >
-    &copy;  刘训臣燃烧诊断实验室主页 2025 
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
   </a>
     <div><div class="ananke-socials"></div>
 </div>

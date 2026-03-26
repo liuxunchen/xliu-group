@@ -3,17 +3,12 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/post/</loc>
-    <lastmod>2025-12-15T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/huihao4_etalon/</loc>
-    <lastmod>2025-12-15T00:00:00+00:00</lastmod>
+    <lastmod>2026-03-08T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/</loc>
-    <lastmod>2025-12-15T00:00:00+00:00</lastmod>
+    <lastmod>2026-03-08T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -26,6 +21,31 @@
                 hreflang="zh"
                 href="https://liuxunchen.github.io/xliu-group/zh/"
                 />
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/wangchen4/</loc>
+    <lastmod>2026-03-08T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin5qtf/</loc>
+    <lastmod>2026-02-28T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin6new-experiment/</loc>
+    <lastmod>2026-02-28T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/huihao5_i2_cell/</loc>
+    <lastmod>2025-12-25T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/huihao4_etalon/</loc>
+    <lastmod>2025-12-15T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/post/wangchen3/</loc>
     <lastmod>2025-12-11T00:00:00+00:00</lastmod>
@@ -267,6 +287,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-talas-2/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/categories/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -322,5 +346,9 @@
                 hreflang="zh"
                 href="https://liuxunchen.github.io/xliu-group/zh/tags/"
                 />
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
