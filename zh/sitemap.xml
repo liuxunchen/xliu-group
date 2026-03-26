@@ -287,10 +287,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-talas-2/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/categories/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -346,9 +342,5 @@
                 hreflang="zh"
                 href="https://liuxunchen.github.io/xliu-group/zh/tags/"
                 />
-  </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
 </urlset>

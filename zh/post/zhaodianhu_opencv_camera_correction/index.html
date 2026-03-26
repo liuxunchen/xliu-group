@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
-  <head>
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
@@ -45,17 +45,17 @@ Z_w \
 1
 \end{bmatrix}
 $$">
-    <meta name="generator" content="Hugo 0.144.2">
+    <meta name="generator" content="Hugo 0.152.2">
     
     
     
-      <meta name="robots" content="index, follow">
+      <meta name="robots" content="noindex, nofollow">
     
     <meta name="author" content="赵殿虎">
     
 
     
-<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.css" >
 
 
 
@@ -71,10 +71,10 @@ $$">
     
 
     
-      <link rel="canonical" href="https://liuxunchen.github.io/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/">
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/">
     
 
-    <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/">
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/">
   <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
   <meta property="og:title" content="手机相机标定">
   <meta property="og:description" content="在现实生活中，用相机拍照是很常见的事情。由于相机镜头有畸变（近大远小）、拍摄角度有区别，而从二维的图像中读取三维点的信息比较困难，这是因为相机通过透镜将3D世界投影到2D图像上时，会产生径向畸变（鱼眼效果）和切向畸变（透镜安装偏差），同时相机的内参模糊（焦距、主点位置未知）。因此需要建立真实世界坐标和图像像素坐标之间的数学关系，让计算机能反向推算出真实世界的结构，而这就需要标定。传统的标定方法需要精密3D标定板，成本高且麻烦。张正友教授在1999年提出的标定法，仅需打印一张棋盘格，拍摄多张照片，就能实现高精度标定。
@@ -110,8 +110,6 @@ $$">
 1.5 坐标系之间的关系 世界坐标系 (X_w, Y_w, Z_w) ↓ 刚体变换 (外参) 相机坐标系 (X_c, Y_c, Z_c) ↓ 透视投影 图像坐标系 (x, y) [毫米单位] ↓ 缩放&#43;平移 像素坐标系 (u, v) [像素单位]
 世界坐标系 → 相机坐标系 $$ \begin{bmatrix} X_c \ Y_c \ Z_c \ 1 \end{bmatrix} \begin{bmatrix} R_{3\times3} &amp; t_{3\times1} \ 0_{1\times3} &amp; 1 \end{bmatrix} \cdot \begin{bmatrix} X_w \ Y_w \ Z_w \ 1 \end{bmatrix} $$">
 
-      
-    
 	
 	
 	    
@@ -140,7 +138,7 @@ script.async = true;
 
     
 	
-  </head><body class="ma0 avenir bg-near-white production">
+  </head><body class="ma0 avenir bg-near-white development">
 
     
    
@@ -149,7 +147,7 @@ script.async = true;
   
   
   
-  <header class="cover bg-center" style="background-image: url('https://liuxunchen.github.io/xliu-group/images/sdust.jpg');">
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
     <div class="bg-black-60">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l center items-center justify-between">
@@ -474,7 +472,7 @@ $$<p>其中$\mathbf{m}_1 = [u_1, v_1, 1]^T$, $\mathbf{m}_2 = [u_2, v_2, 1]^T$。
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://liuxunchen.github.io/xliu-group/zh/" >
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
     &copy;  刘训臣燃烧诊断实验室主页 2026 
   </a>
     <div><div class="ananke-socials"></div>
