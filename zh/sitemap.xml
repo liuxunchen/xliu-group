@@ -32,7 +32,17 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/2026w10/</loc>
+    <lastmod>2026-03-06T11:41:42+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin6new-experiment/</loc>
+    <lastmod>2026-02-28T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo6/</loc>
     <lastmod>2026-02-28T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -59,16 +69,6 @@
   </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/</loc>
     <lastmod>2025-12-09T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/research/</loc>
-    <lastmod>2025-11-29T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/research/spectrum/</loc>
-    <lastmod>2025-11-09T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -133,6 +133,11 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/research/xliu_diagnostic/</loc>
+    <lastmod>2025-06-30T01:26:06+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/research/</loc>
     <lastmod>2025-06-30T01:26:06+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -324,6 +329,10 @@
                 href="https://liuxunchen.github.io/xliu-group/zh/paper/"
                 />
   </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/research/piv/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://liuxunchen.github.io/xliu-group/zh/tags/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -337,5 +346,13 @@
                 hreflang="zh"
                 href="https://liuxunchen.github.io/xliu-group/zh/tags/"
                 />
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/research/spectrum/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://liuxunchen.github.io/xliu-group/zh/research/literature/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>

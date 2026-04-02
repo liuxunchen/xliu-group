@@ -96,11 +96,15 @@ $$ \underbrace{ \begin{bmatrix} u \ v \ 1 \end{bmatrix} }_{\text{像素}} \under
   <meta property="og:locale" content="zh">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2026-03-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-28T00:00:00+00:00">
 
   <meta itemprop="name" content="手机相机标定">
   <meta itemprop="description" content="在现实生活中，用相机拍照是很常见的事情，由于相机镜头有畸变，近大远小，拍摄角度有区别，而从二维的图像中读取三维点的信息比较困难，这是因为相机通过透镜将3D世界投影到2D图像上时，会产生径向畸变（鱼眼效果）和切向畸变（透镜安装偏差），同时相机的内参模糊（焦距、主点位置未知），需要建立真实时间坐标和图像像素坐标之间的数学关系，让计算机能反向推算出真实世界的结构，而这就需要标定。传统的标定方法需要精密3D标定板，成本高且麻烦，张正友教授在1999年提出的标定法，仅需打印一张棋盘格，拍摄多张照片，就能实现高精度标定。下面简单介绍一下相关矩阵。
 完整投影矩阵 $$ s \begin{bmatrix} u \ v \ 1 \end{bmatrix} \begin{bmatrix} f_x &amp; \gamma &amp; c_x \ 0 &amp; f_y &amp; c_y \ 0 &amp; 0 &amp; 1 \end{bmatrix} \cdot \begin{bmatrix} r_{11} &amp; r_{12} &amp; r_{13} &amp; t_x \ r_{21} &amp; r_{22} &amp; r_{23} &amp; t_y \ r_{31} &amp; r_{32} &amp; r_{33} &amp; t_z \end{bmatrix} \cdot \begin{bmatrix} X_w \ Y_w \ Z_w \ 1 \end{bmatrix} $$
 $$ \underbrace{ \begin{bmatrix} u \ v \ 1 \end{bmatrix} }_{\text{像素}} \underbrace{ K }{\text{内参}} \cdot \underbrace{ [R|t] }{\text{外参}} \cdot \underbrace{ \begin{bmatrix} X_w \ Y_w \ Z_w \ 1 \end{bmatrix} }_{\text{世界}} $$">
+  <meta itemprop="datePublished" content="2026-03-28T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-03-28T00:00:00+00:00">
   <meta itemprop="wordCount" content="345">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="手机相机标定">
@@ -219,6 +223,8 @@ script.async = true;
       </p>
       
       
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-03-28T00:00:00Z">三月 28, 2026</time>
       
 
       
