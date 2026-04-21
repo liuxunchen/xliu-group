@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="Post">
   <meta itemprop="description" content="科研笔记和一些想法">
-  <meta itemprop="datePublished" content="2026-03-28T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-03-28T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2026-04-02T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-04-02T00:00:00+00:00">
   <meta itemprop="wordCount" content="1">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Post">
@@ -160,6 +160,63 @@ script.async = true;
 
     </section>
     <aside class="flex-ns mt5 flex-wrap justify-around">
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        六月 22, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/gaoyinbin2/" class="link black dim">
+        腔体流量测定实验失败复盘
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>近期开展的几组腔体标量测定实验均以无合理结果告终。按推论，超声速射流的二氧化碳应发生相变，然数次实验混合多种浓度，始终未观测到相变现象，直至拆下设备，才发现隐蔽却致命问题——<strong>底座焊缝漏气</strong>，该被忽视细节成贯穿实验的“数据杀手” 。</p>
+<h2 id="一实验过程与数据异常记录">一、实验过程与数据异常记录</h2>
+<h3 id="一首次实验">（一）首次实验</h3>
+<p>核心目标：测定腔体在不同浓度二氧化碳下的标量数据。实验初始参数为压力 0.103896MPa、温度 26.1℃。测试数据如下：</p>
+<ul>
+<li>纯空气测试：发现垫圈处存在 3.3L/min 漏气，修正后记录流动态流量 125L/min、压力 0.502MPa；</li>
+<li>混合气体测试：CO₂浓度 10%和 50%工况下，压力稳定在 0.641MPa，但温度数据剧烈波动，由 26.1 摄氏度到 24.9 摄氏度不等，现猜测可能是底部剧烈漏气导致腔内温度变化；</li>
+<li>最终结论：因数据离散度过高，判定实验存在异常。</li>
+</ul>
+<figure><img src="/xliu-group/zh/post/gaoyinbin2/Picture4.png"><figcaption>
+      <h4>第一组实验数据记录！</h4>
+    </figcaption>
+</figure>
+
+<h3 id="二二次实验">（二）二次实验</h3>
+<p>改进方向：更换合适垫圈并优化气路控制，杜绝不合理漏气，初始压力 0.103421MPa、温度 27.2℃。实验现象依旧反常：</p>
+<ul>
+<li>纯空气阶段：流量 120L/min 数据正常，但进入混合气体测试后失控；</li>
+<li>10% CO₂混合：空气/CO₂流量比理论 9:1，实测达 11.6:1，压力波动超±0.02MPa；</li>
+<li>70% CO₂混合：温度压力仅记录平均值，数据失去代表性。</li>
+</ul>
+<figure><img src="/xliu-group/zh/post/gaoyinbin2/Picture5.png"><figcaption>
+      <h4>第二组实验数据记录！</h4>
+    </figcaption>
+</figure>
+
+<h2 id="二隐藏缺陷的发现过程">二、隐藏缺陷的发现过程</h2>
+<p>因需更换实验，将腔体从底座拆下，拆卸全部管路前心血来潮再次实验，发现孔口气流微弱，排查气路后，确定<strong>底座焊缝存在严重漏气</strong>，基本大部分流量和压力都在此损失。</p>
+<p>原因追溯：</p>
+<ul>
+<li>结构设计盲区：焊缝位于底座隐蔽处，常规检查难以发现；</li>
+<li>实验惯性思维：首次实验将漏气归因于垫圈问题，未对腔体整体密封性做系统性排查；</li>
+<li>缺乏预实验检测：未在实验前单独对腔体做气密性测试，导致隐患持续影响数据质量。</li>
+</ul>
+<h2 id="三系统性改进方案">三、系统性改进方案</h2>
+<p>更换新的腔体，同时修改高度尺，此前实验存在喷嘴高度过低问题，致使纹影系统需拆除底座才能拍摄出口平面，此次一并修正。</p>
+<h2 id="四经验总结">四、经验总结</h2>
+<p>这次失败深刻揭示**“隐蔽位置 = 安全盲区”的认知误区**。实验设计中，不能仅关注直观可见部件，更要对设备结构做系统性检查，避免同类问题再发生。科研路上，每个失败数据都是珍贵的“排雷记录”，正是这些教训推动实验设计不断迭代升级。</p>
+    </div>
+  <a href="/xliu-group/zh/post/gaoyinbin2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
       
         <div class="w-100 w-30-l mb4 relative bg-white">
             <div class="mb3 pa4 blue overflow-hidden">
@@ -477,6 +534,44 @@ script.src = &#39;https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js&#39
       </div>
     
     <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/huihao2/" class="link black dim">
+        连云港实验第一次
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="实验概述">实验概述</h2>
+<p>本次实验主要测试新设计的炉体水冷结构方案的可行性。实验结果表明，水冷系统能有效保护炉体，承受燃烧温度。</p>
+<h2 id="水冷结构测试">水冷结构测试</h2>
+<ul>
+<li>冷却水温上升不明显，最高温度低于40℃。</li>
+<li>停止燃烧后炉面温度较低，验证了水冷结构的有效性。</li>
+</ul>
+<h2 id="流量记录">流量记录</h2>
+<p>实验中的流量数据记录如下：<br>
+<img src="/xliu-group/zh/post/huihao2/image2.jpeg" alt="">{width=&ldquo;5.26in&rdquo; height=&ldquo;4.92in&rdquo;}</p>
+<h2 id="问题发现与改进">问题发现与改进</h2>
+<h3 id="问题描述">问题描述</h3>
+<p>气体从气管进入炉体时，因缺乏静压室结构，导致出气不均匀。以下是氢气流量为50和200时的火焰照片：<br>
+<img src="/xliu-group/zh/post/huihao2/image3.png" alt="">{width=&ldquo;2.7in&rdquo; height=&ldquo;2.16in&rdquo;}
+<img src="/xliu-group/zh/post/huihao2/image4.png" alt="">{width=&ldquo;2.7in&rdquo; height=&ldquo;2.16in&rdquo;}</p>
+<h3 id="改进方案">改进方案</h3>
+<p>增加静压室结构，通过挡板和孔板使气体均匀分布：</p>
+<p>改进后气体流速分布均匀性显著提升：<br>
+<img src="/xliu-group/zh/post/huihao2/image6.jpeg" alt="">{width=&ldquo;4.93in&rdquo; height=&ldquo;2.49in&rdquo;}</p>
+    </div>
+  <a href="/xliu-group/zh/post/huihao2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
+        五月 9, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
       <a href="/xliu-group/zh/post/huihao1/" class="link black dim">
         使用 LabVIEW 实现对CC-M3H040-NN14伺服电机的控制
       </a>
@@ -650,114 +745,6 @@ Clouthier综述中提到数据来自 Ramsay 和 Till 未发表的工作，后人
 <p>诊断研究现在阶段需求，理论研究比较成熟，要以工业应用需求为主，还是从燃烧室的现象和要解决的问题出发。</p>
     </div>
   <a href="/xliu-group/zh/post/xliu_method/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        三月 10, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/xliu_lec1/" class="link black dim">
-        热工基础
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>热工基础课程的前两周上完了，讲了前4章。基本把热力学的内容讲完了。
-在极少的课时下，如何讲完？
-热力学作为很成熟的知识，的确也应该更加精炼，大学里面的课程，总的趋势就是成熟的知识逐渐减少课时。学生总要学习新知识。未来可能中学里面就要学很多现在大学的知识吧。</p>
-<p>我想我做了比较好的尝试。思路是从统计力学2个基本假设开始讲，引出配分函数和熵的概念、不同的系综；进而可以联系到热力学的4个基本假设，然后建立热力学函数。
-这门课不讲化学平衡和相平衡。
-主要还是内能和焓的概念。
-然后是理想气体，从熵的公式引出绝热等过程的熵变和热功变化。</p>
-<p>从几个基本假设出发的思路还是很清晰的。避免了从现象出发的很多绕弯子。也是前面推荐Daily书的初衷。</p>
-<p>第三周开始讲喷管流动，这部分主要是可压缩的空气动力学。参考书主要是《Thermodynamics-An engineering approach》和清华大学吴望一的《流体力学》。
-不得不说，老外的书详细，适合自学和教学；但是吴的书，精妙之处更多，很多数学推导更简洁更优美。多看几本书总有好处，空气动力学经典的Anderson 以后再看吧。</p>
-<p>第四周开始讲传热。首先是从随即行走模型导出了扩散方程。按照这个思路比较好，从基本原理出发，比较直观地就可以得到傅里叶公式。
-传热的其他部分没有很多重要的内容了，毕竟现在都是用有限元直接算就可以了。</p>
-<p><a href="/xliu-group/zh/post/xliu_lec1/lec1.pdf">Lecture-1</a></p>
-    </div>
-  <a href="/xliu-group/zh/post/xliu_lec1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        二月 20, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/xliu_davis/" class="link black dim">
-        lvpyio
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>今天尝试了 LaVision 公司的 python package，太坑了，又发现 DeepSeek 太香了。</p>
-<p>lvpyio 的网址：
-<a href="https://www.lavision.de/en/downloads/software/python_add_ons.php">https://www.lavision.de/en/downloads/software/python_add_ons.php</a></p>
-<p>之前都是把 DaVis 计算得到的速度场或者标量场结果存成文本文件，例如 B00001.txt 再用python读。下面是我写的读标量场和矢量场的函数，其中load_piv 中 size 参数非0时，会将数据 binning 降低数据数量，提高对比度。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#%% read DaVis txt file</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_piv</span>(filename, size):
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    extract PIV data
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    filename: txt file name
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    size: average size
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>    lavision <span style="color:#f92672">=</span> open(filename)
-</span></span><span style="display:flex;"><span>    step, xnum, ynum <span style="color:#f92672">=</span> lavision<span style="color:#f92672">.</span>readline()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">6</span>]
-</span></span><span style="display:flex;"><span>    lavision<span style="color:#f92672">.</span>close()
-</span></span><span style="display:flex;"><span>    step <span style="color:#f92672">=</span> int(step)
-</span></span><span style="display:flex;"><span>    xnum <span style="color:#f92672">=</span> int(xnum)
-</span></span><span style="display:flex;"><span>    ynum <span style="color:#f92672">=</span> int(ynum)
-</span></span><span style="display:flex;"><span>    size <span style="color:#f92672">=</span> int(size)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    oned <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(filename, decimal<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#39;</span>, skiprows<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
-</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">0</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
-</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">1</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
-</span></span><span style="display:flex;"><span>    U <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">2</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
-</span></span><span style="display:flex;"><span>    V <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">3</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> size <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>:
-</span></span><span style="display:flex;"><span>        X <span style="color:#f92672">=</span> X[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
-</span></span><span style="display:flex;"><span>        Y <span style="color:#f92672">=</span> Y[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
-</span></span><span style="display:flex;"><span>        U <span style="color:#f92672">=</span> U[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
-</span></span><span style="display:flex;"><span>        V <span style="color:#f92672">=</span> V[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
-</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)                                                                           
-</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> Y<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
-</span></span><span style="display:flex;"><span>    U <span style="color:#f92672">=</span> U<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
-</span></span><span style="display:flex;"><span>    V <span style="color:#f92672">=</span> V<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> step, xnum, ynum, X, Y, U, V   
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_plif</span>():
-</span></span><span style="display:flex;"><span>    plif <span style="color:#f92672">=</span> open(filename)
-</span></span><span style="display:flex;"><span>    firstline <span style="color:#f92672">=</span> plif<span style="color:#f92672">.</span>readline()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)
-</span></span><span style="display:flex;"><span>    x_num,y_num <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">5</span>]
-</span></span><span style="display:flex;"><span>    delta_x,x0 <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">6</span>:<span style="color:#ae81ff">8</span>]
-</span></span><span style="display:flex;"><span>    delta_y,y0 <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">10</span>:<span style="color:#ae81ff">12</span>]
-</span></span><span style="display:flex;"><span>    plif<span style="color:#f92672">.</span>close()
-</span></span><span style="display:flex;"><span>    x_num <span style="color:#f92672">=</span> int(x_num)
-</span></span><span style="display:flex;"><span>    y_num <span style="color:#f92672">=</span> int(y_num)
-</span></span><span style="display:flex;"><span>    x0 <span style="color:#f92672">=</span> float(x0)
-</span></span><span style="display:flex;"><span>    y0 <span style="color:#f92672">=</span> float(y0)
-</span></span><span style="display:flex;"><span>    delta_x <span style="color:#f92672">=</span> float(delta_x)
-</span></span><span style="display:flex;"><span>    delta_y <span style="color:#f92672">=</span> float(delta_y)
-</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(x0, x0<span style="color:#f92672">+</span>(x_num)<span style="color:#f92672">*</span>delta_x, delta_x)
-</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(y0, y0<span style="color:#f92672">+</span>(y_num)<span style="color:#f92672">*</span>delta_y, delta_y)   
-</span></span><span style="display:flex;"><span>    plif_txt <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(filename, decimal<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#39;</span>, skiprows<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
-</span></span><span style="display:flex;"><span>    plif <span style="color:#f92672">=</span> plif_txt<span style="color:#f92672">.</span>values
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> x_num,y_num,X,Y,plif
-</span></span></code></pre></div><p>貌似用官方的软件包可以读更多的文件格式吧。于是就开始安装了。
-首先发现不知道为什么 spyder 启动出问题了，numpy 版本不对，需要重装 numpy，就好了。</p>
-    </div>
-  <a href="/xliu-group/zh/post/xliu_davis/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
   </div>
 
         </div>

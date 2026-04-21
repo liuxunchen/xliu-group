@@ -1,74 +1,56 @@
 <!DOCTYPE html>
 <html lang="zh">
-  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>手机相机标定 | 刘训臣燃烧诊断实验室主页</title>
+    <title>刘训臣燃烧诊断实验室主页</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="在现实生活中，用相机拍照是很常见的事情，由于相机镜头有畸变，近大远小，拍摄角度有区别，而从二维的图像中读取三维点的信息比较困难，这是因为相机通过透镜将3D世界投影到2D图像上时，会产生径向畸变（鱼眼效果）和切向畸变（透镜安装偏差），同时相机的内参模糊（焦距、主点位置未知），需要建立真实时间坐标和图像像素坐标之间的数学关系，让计算机能反向推算出真实世界的结构，而这就需要标定。传统的标定方法需要精密3D标定板，成本高且麻烦，张正友教授在1999年提出的标定法，仅需打印一张棋盘格，拍摄多张照片，就能实现高精度标定。下面简单介绍一下相关矩阵。
-完整投影矩阵
+    <meta name="description" content="layout:     post
+title: &ldquo;手机相机标定&rdquo;
+date: &ldquo;2026-4-2&rdquo;
+author: &ldquo;赵殿虎&rdquo;
+在现实生活中，用相机拍照是很常见的事情，由于相机镜头有畸变，近大远小，拍摄角度有区别，而从二维的图像中读取三维点的信息比较困难，这是因为相机通过透镜将3D世界投影到2D图像上时，会产生径向畸变（鱼眼效果）和切向畸变（透镜安装偏差），同时相机的内参模糊（焦距、主点位置未知），需要建立真实时间坐标和图像像素坐标之间的数学关系，让计算机能反向推算出真实世界的结构，而这就需要标定。传统的标定方法需要精密3D标定板，成本高且麻烦，张正友教授在1999年提出的标定法，仅需打印一张棋盘格，拍摄多张照片，就能实现高精度标定。下面简单介绍一下相关矩阵。
+内参矩阵 K
 $$
-s \begin{bmatrix}
-u \
-v \
-1
-\end{bmatrix}
+K =
 \begin{bmatrix}
-f_x &amp; \gamma &amp; c_x \
-0 &amp; f_y &amp; c_y \
-0 &amp; 0 &amp; 1
+f_x & \gamma & c_x \\
+0 & f_y & c_y \\
+0 & 0 & 1
 \end{bmatrix}
-\cdot
-\begin{bmatrix}
-r_{11} &amp; r_{12} &amp; r_{13} &amp; t_x \
-r_{21} &amp; r_{22} &amp; r_{23} &amp; t_y \
-r_{31} &amp; r_{32} &amp; r_{33} &amp; t_z
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-X_w \
-Y_w \
-Z_w \
-1
-\end{bmatrix}
+$$外参矩阵 [R|t]
 $$
+[R|t] = 
+\begin{bmatrix}
+r_{11} & r_{12} & r_{13} & t_x \\
+r_{21} & r_{22} & r_{23} & t_y \\
+r_{31} & r_{32} & r_{33} & t_z
+\end{bmatrix}
+$$投影矩阵 P
 $$
-\underbrace{
+P = K[R|t] = 
 \begin{bmatrix}
-u \
-v \
-1
+p_{11} & p_{12} & p_{13} & p_{14} \\
+p_{21} & p_{22} & p_{23} & p_{24} \\
+p_{31} & p_{32} & p_{33} & p_{34}
 \end{bmatrix}
-}_{\text{像素}}
-\underbrace{
-K
-}{\text{内参}}
-\cdot
-\underbrace{
-[R|t]
-}{\text{外参}}
-\cdot
-\underbrace{
-\begin{bmatrix}
-X_w \
-Y_w \
-Z_w \
-1
-\end{bmatrix}
-}_{\text{世界}}
-$$">
-    <meta name="generator" content="Hugo 0.152.2">
+$$基础矩阵 F
+$$
+\mathbf{m}_2^T F \mathbf{m}_1 = 0
+$$$$\mathbf{m}_1 = [u_1, v_1, 1]^T$$$$\mathbf{m}_2 = [u_2, v_2, 1]^T$$各矩阵之间的关系
+外参矩阵[R|t]：建立世界与相机的联系，描述相机在世界中的位置和朝向。">
+    <meta name="generator" content="Hugo 0.144.2">
     
     
     
-      <meta name="robots" content="noindex, nofollow">
+      <meta name="robots" content="index, follow">
     
-    <meta name="author" content="赵殿虎">
+    <meta name="author" content="刘训臣">
     
 
     
-<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.css" >
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
 
 
 
@@ -84,34 +66,32 @@ $$">
     
 
     
-      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/">
+      <link rel="canonical" href="https://liuxunchen.github.io/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/">
     
 
-    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/">
+    <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/zhaodianhu_opencv_camera_correction/">
   <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
-  <meta property="og:title" content="手机相机标定">
-  <meta property="og:description" content="在现实生活中，用相机拍照是很常见的事情，由于相机镜头有畸变，近大远小，拍摄角度有区别，而从二维的图像中读取三维点的信息比较困难，这是因为相机通过透镜将3D世界投影到2D图像上时，会产生径向畸变（鱼眼效果）和切向畸变（透镜安装偏差），同时相机的内参模糊（焦距、主点位置未知），需要建立真实时间坐标和图像像素坐标之间的数学关系，让计算机能反向推算出真实世界的结构，而这就需要标定。传统的标定方法需要精密3D标定板，成本高且麻烦，张正友教授在1999年提出的标定法，仅需打印一张棋盘格，拍摄多张照片，就能实现高精度标定。下面简单介绍一下相关矩阵。
-完整投影矩阵 $$ s \begin{bmatrix} u \ v \ 1 \end{bmatrix} \begin{bmatrix} f_x &amp; \gamma &amp; c_x \ 0 &amp; f_y &amp; c_y \ 0 &amp; 0 &amp; 1 \end{bmatrix} \cdot \begin{bmatrix} r_{11} &amp; r_{12} &amp; r_{13} &amp; t_x \ r_{21} &amp; r_{22} &amp; r_{23} &amp; t_y \ r_{31} &amp; r_{32} &amp; r_{33} &amp; t_z \end{bmatrix} \cdot \begin{bmatrix} X_w \ Y_w \ Z_w \ 1 \end{bmatrix} $$
-$$ \underbrace{ \begin{bmatrix} u \ v \ 1 \end{bmatrix} }_{\text{像素}} \underbrace{ K }{\text{内参}} \cdot \underbrace{ [R|t] }{\text{外参}} \cdot \underbrace{ \begin{bmatrix} X_w \ Y_w \ Z_w \ 1 \end{bmatrix} }_{\text{世界}} $$">
+  <meta property="og:title" content="刘训臣燃烧诊断实验室主页">
+  <meta property="og:description" content="layout: post title: “手机相机标定” date: “2026-4-2” author: “赵殿虎”
+在现实生活中，用相机拍照是很常见的事情，由于相机镜头有畸变，近大远小，拍摄角度有区别，而从二维的图像中读取三维点的信息比较困难，这是因为相机通过透镜将3D世界投影到2D图像上时，会产生径向畸变（鱼眼效果）和切向畸变（透镜安装偏差），同时相机的内参模糊（焦距、主点位置未知），需要建立真实时间坐标和图像像素坐标之间的数学关系，让计算机能反向推算出真实世界的结构，而这就需要标定。传统的标定方法需要精密3D标定板，成本高且麻烦，张正友教授在1999年提出的标定法，仅需打印一张棋盘格，拍摄多张照片，就能实现高精度标定。下面简单介绍一下相关矩阵。
+内参矩阵 K $$K =\begin{bmatrix}f_x &amp; \gamma &amp; c_x \\0 &amp; f_y &amp; c_y \\0 &amp; 0 &amp; 1\end{bmatrix}$$外参矩阵 [R|t] $$[R|t] = \begin{bmatrix}r_{11} &amp; r_{12} &amp; r_{13} &amp; t_x \\r_{21} &amp; r_{22} &amp; r_{23} &amp; t_y \\r_{31} &amp; r_{32} &amp; r_{33} &amp; t_z\end{bmatrix}$$投影矩阵 P $$P = K[R|t] = \begin{bmatrix}p_{11} &amp; p_{12} &amp; p_{13} &amp; p_{14} \\p_{21} &amp; p_{22} &amp; p_{23} &amp; p_{24} \\p_{31} &amp; p_{32} &amp; p_{33} &amp; p_{34}\end{bmatrix}$$基础矩阵 F $$\mathbf{m}_2^T F \mathbf{m}_1 = 0$$$$\mathbf{m}_1 = [u_1, v_1, 1]^T$$$$\mathbf{m}_2 = [u_2, v_2, 1]^T$$各矩阵之间的关系 外参矩阵[R|t]：建立世界与相机的联系，描述相机在世界中的位置和朝向。">
   <meta property="og:locale" content="zh">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2026-03-28T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-03-28T00:00:00+00:00">
 
-  <meta itemprop="name" content="手机相机标定">
-  <meta itemprop="description" content="在现实生活中，用相机拍照是很常见的事情，由于相机镜头有畸变，近大远小，拍摄角度有区别，而从二维的图像中读取三维点的信息比较困难，这是因为相机通过透镜将3D世界投影到2D图像上时，会产生径向畸变（鱼眼效果）和切向畸变（透镜安装偏差），同时相机的内参模糊（焦距、主点位置未知），需要建立真实时间坐标和图像像素坐标之间的数学关系，让计算机能反向推算出真实世界的结构，而这就需要标定。传统的标定方法需要精密3D标定板，成本高且麻烦，张正友教授在1999年提出的标定法，仅需打印一张棋盘格，拍摄多张照片，就能实现高精度标定。下面简单介绍一下相关矩阵。
-完整投影矩阵 $$ s \begin{bmatrix} u \ v \ 1 \end{bmatrix} \begin{bmatrix} f_x &amp; \gamma &amp; c_x \ 0 &amp; f_y &amp; c_y \ 0 &amp; 0 &amp; 1 \end{bmatrix} \cdot \begin{bmatrix} r_{11} &amp; r_{12} &amp; r_{13} &amp; t_x \ r_{21} &amp; r_{22} &amp; r_{23} &amp; t_y \ r_{31} &amp; r_{32} &amp; r_{33} &amp; t_z \end{bmatrix} \cdot \begin{bmatrix} X_w \ Y_w \ Z_w \ 1 \end{bmatrix} $$
-$$ \underbrace{ \begin{bmatrix} u \ v \ 1 \end{bmatrix} }_{\text{像素}} \underbrace{ K }{\text{内参}} \cdot \underbrace{ [R|t] }{\text{外参}} \cdot \underbrace{ \begin{bmatrix} X_w \ Y_w \ Z_w \ 1 \end{bmatrix} }_{\text{世界}} $$">
-  <meta itemprop="datePublished" content="2026-03-28T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-03-28T00:00:00+00:00">
-  <meta itemprop="wordCount" content="345">
+  <meta itemprop="name" content="刘训臣燃烧诊断实验室主页">
+  <meta itemprop="description" content="layout: post title: “手机相机标定” date: “2026-4-2” author: “赵殿虎”
+在现实生活中，用相机拍照是很常见的事情，由于相机镜头有畸变，近大远小，拍摄角度有区别，而从二维的图像中读取三维点的信息比较困难，这是因为相机通过透镜将3D世界投影到2D图像上时，会产生径向畸变（鱼眼效果）和切向畸变（透镜安装偏差），同时相机的内参模糊（焦距、主点位置未知），需要建立真实时间坐标和图像像素坐标之间的数学关系，让计算机能反向推算出真实世界的结构，而这就需要标定。传统的标定方法需要精密3D标定板，成本高且麻烦，张正友教授在1999年提出的标定法，仅需打印一张棋盘格，拍摄多张照片，就能实现高精度标定。下面简单介绍一下相关矩阵。
+内参矩阵 K $$K =\begin{bmatrix}f_x &amp; \gamma &amp; c_x \\0 &amp; f_y &amp; c_y \\0 &amp; 0 &amp; 1\end{bmatrix}$$外参矩阵 [R|t] $$[R|t] = \begin{bmatrix}r_{11} &amp; r_{12} &amp; r_{13} &amp; t_x \\r_{21} &amp; r_{22} &amp; r_{23} &amp; t_y \\r_{31} &amp; r_{32} &amp; r_{33} &amp; t_z\end{bmatrix}$$投影矩阵 P $$P = K[R|t] = \begin{bmatrix}p_{11} &amp; p_{12} &amp; p_{13} &amp; p_{14} \\p_{21} &amp; p_{22} &amp; p_{23} &amp; p_{24} \\p_{31} &amp; p_{32} &amp; p_{33} &amp; p_{34}\end{bmatrix}$$基础矩阵 F $$\mathbf{m}_2^T F \mathbf{m}_1 = 0$$$$\mathbf{m}_1 = [u_1, v_1, 1]^T$$$$\mathbf{m}_2 = [u_2, v_2, 1]^T$$各矩阵之间的关系 外参矩阵[R|t]：建立世界与相机的联系，描述相机在世界中的位置和朝向。">
+  <meta itemprop="wordCount" content="250">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="手机相机标定">
-  <meta name="twitter:description" content="在现实生活中，用相机拍照是很常见的事情，由于相机镜头有畸变，近大远小，拍摄角度有区别，而从二维的图像中读取三维点的信息比较困难，这是因为相机通过透镜将3D世界投影到2D图像上时，会产生径向畸变（鱼眼效果）和切向畸变（透镜安装偏差），同时相机的内参模糊（焦距、主点位置未知），需要建立真实时间坐标和图像像素坐标之间的数学关系，让计算机能反向推算出真实世界的结构，而这就需要标定。传统的标定方法需要精密3D标定板，成本高且麻烦，张正友教授在1999年提出的标定法，仅需打印一张棋盘格，拍摄多张照片，就能实现高精度标定。下面简单介绍一下相关矩阵。
-完整投影矩阵 $$ s \begin{bmatrix} u \ v \ 1 \end{bmatrix} \begin{bmatrix} f_x &amp; \gamma &amp; c_x \ 0 &amp; f_y &amp; c_y \ 0 &amp; 0 &amp; 1 \end{bmatrix} \cdot \begin{bmatrix} r_{11} &amp; r_{12} &amp; r_{13} &amp; t_x \ r_{21} &amp; r_{22} &amp; r_{23} &amp; t_y \ r_{31} &amp; r_{32} &amp; r_{33} &amp; t_z \end{bmatrix} \cdot \begin{bmatrix} X_w \ Y_w \ Z_w \ 1 \end{bmatrix} $$
-$$ \underbrace{ \begin{bmatrix} u \ v \ 1 \end{bmatrix} }_{\text{像素}} \underbrace{ K }{\text{内参}} \cdot \underbrace{ [R|t] }{\text{外参}} \cdot \underbrace{ \begin{bmatrix} X_w \ Y_w \ Z_w \ 1 \end{bmatrix} }_{\text{世界}} $$">
+  <meta name="twitter:title" content="刘训臣燃烧诊断实验室主页">
+  <meta name="twitter:description" content="layout: post title: “手机相机标定” date: “2026-4-2” author: “赵殿虎”
+在现实生活中，用相机拍照是很常见的事情，由于相机镜头有畸变，近大远小，拍摄角度有区别，而从二维的图像中读取三维点的信息比较困难，这是因为相机通过透镜将3D世界投影到2D图像上时，会产生径向畸变（鱼眼效果）和切向畸变（透镜安装偏差），同时相机的内参模糊（焦距、主点位置未知），需要建立真实时间坐标和图像像素坐标之间的数学关系，让计算机能反向推算出真实世界的结构，而这就需要标定。传统的标定方法需要精密3D标定板，成本高且麻烦，张正友教授在1999年提出的标定法，仅需打印一张棋盘格，拍摄多张照片，就能实现高精度标定。下面简单介绍一下相关矩阵。
+内参矩阵 K $$K =\begin{bmatrix}f_x &amp; \gamma &amp; c_x \\0 &amp; f_y &amp; c_y \\0 &amp; 0 &amp; 1\end{bmatrix}$$外参矩阵 [R|t] $$[R|t] = \begin{bmatrix}r_{11} &amp; r_{12} &amp; r_{13} &amp; t_x \\r_{21} &amp; r_{22} &amp; r_{23} &amp; t_y \\r_{31} &amp; r_{32} &amp; r_{33} &amp; t_z\end{bmatrix}$$投影矩阵 P $$P = K[R|t] = \begin{bmatrix}p_{11} &amp; p_{12} &amp; p_{13} &amp; p_{14} \\p_{21} &amp; p_{22} &amp; p_{23} &amp; p_{24} \\p_{31} &amp; p_{32} &amp; p_{33} &amp; p_{34}\end{bmatrix}$$基础矩阵 F $$\mathbf{m}_2^T F \mathbf{m}_1 = 0$$$$\mathbf{m}_1 = [u_1, v_1, 1]^T$$$$\mathbf{m}_2 = [u_2, v_2, 1]^T$$各矩阵之间的关系 外参矩阵[R|t]：建立世界与相机的联系，描述相机在世界中的位置和朝向。">
 
+      
+    
 	
 	
 	    
@@ -140,7 +120,7 @@ script.async = true;
 
     
 	
-  </head><body class="ma0 avenir bg-near-white development">
+  </head><body class="ma0 avenir bg-near-white production">
 
     
    
@@ -149,7 +129,7 @@ script.async = true;
   
   
   
-  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
+  <header class="cover bg-center" style="background-image: url('https://liuxunchen.github.io/xliu-group/images/sdust.jpg');">
     <div class="bg-black-60">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l center items-center justify-between">
@@ -198,7 +178,7 @@ script.async = true;
 
       <div class="tc-l pv6 ph3 ph4-ns">
         
-          <div class="f2 f1-l fw2 white-90 mb0 lh-title">手机相机标定</div>
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">刘训臣燃烧诊断实验室主页</div>
           
         
       </div>
@@ -217,74 +197,23 @@ script.async = true;
           
         Post
       </aside><div id="sharing" class="mt3 ananke-socials"></div>
-<h1 class="f1 athelas mt3 mb1">手机相机标定</h1>
+<h1 class="f1 athelas mt3 mb1"></h1>
       
-      <p class="tracked"><strong>赵殿虎</strong>
+      <p class="tracked"><strong>刘训臣</strong>
       </p>
       
       
-      
-      <time class="f6 mv4 dib tracked" datetime="2026-03-28T00:00:00Z">三月 28, 2026</time>
       
 
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>在现实生活中，用相机拍照是很常见的事情，由于相机镜头有畸变，近大远小，拍摄角度有区别，而从二维的图像中读取三维点的信息比较困难，这是因为相机通过透镜将3D世界投影到2D图像上时，会产生径向畸变（鱼眼效果）和切向畸变（透镜安装偏差），同时相机的内参模糊（焦距、主点位置未知），需要建立真实时间坐标和图像像素坐标之间的数学关系，让计算机能反向推算出真实世界的结构，而这就需要标定。传统的标定方法需要精密3D标定板，成本高且麻烦，张正友教授在1999年提出的标定法，仅需打印一张棋盘格，拍摄多张照片，就能实现高精度标定。下面简单介绍一下相关矩阵。</p>
-<h4 id="完整投影矩阵">完整投影矩阵</h4>
-<h1 id="endbmatrix">$$
-s \begin{bmatrix}
-u \
-v \
-1
-\end{bmatrix}</h1>
-<p>\begin{bmatrix}
-f_x &amp; \gamma &amp; c_x \
-0 &amp; f_y &amp; c_y \
-0 &amp; 0 &amp; 1
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-r_{11} &amp; r_{12} &amp; r_{13} &amp; t_x \
-r_{21} &amp; r_{22} &amp; r_{23} &amp; t_y \
-r_{31} &amp; r_{32} &amp; r_{33} &amp; t_z
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-X_w \
-Y_w \
-Z_w \
-1
-\end{bmatrix}
-$$</p>
-<h1 id="_text像素">$$
-\underbrace{
-\begin{bmatrix}
-u \
-v \
-1
-\end{bmatrix}
-}_{\text{像素}}</h1>
-<p>\underbrace{
-K
-}<em>{\text{内参}}
-\cdot
-\underbrace{
-[R|t]
-}</em>{\text{外参}}
-\cdot
-\underbrace{
-\begin{bmatrix}
-X_w \
-Y_w \
-Z_w \
-1
-\end{bmatrix}
-}_{\text{世界}}
-$$</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>layout:     post
+title: &ldquo;手机相机标定&rdquo;
+date: &ldquo;2026-4-2&rdquo;
+author: &ldquo;赵殿虎&rdquo;</p>
+<p>在现实生活中，用相机拍照是很常见的事情，由于相机镜头有畸变，近大远小，拍摄角度有区别，而从二维的图像中读取三维点的信息比较困难，这是因为相机通过透镜将3D世界投影到2D图像上时，会产生径向畸变（鱼眼效果）和切向畸变（透镜安装偏差），同时相机的内参模糊（焦距、主点位置未知），需要建立真实时间坐标和图像像素坐标之间的数学关系，让计算机能反向推算出真实世界的结构，而这就需要标定。传统的标定方法需要精密3D标定板，成本高且麻烦，张正友教授在1999年提出的标定法，仅需打印一张棋盘格，拍摄多张照片，就能实现高精度标定。下面简单介绍一下相关矩阵。</p>
 <h3 id="内参矩阵-k">内参矩阵 K</h3>
-<p>内参矩阵是描述相机内部光学特性的矩阵，包括焦距、主点和倾斜系数。
-</p>
 $$
 K =
 \begin{bmatrix}
@@ -293,8 +222,6 @@ f_x & \gamma & c_x \\
 0 & 0 & 1
 \end{bmatrix}
 $$<h3 id="外参矩阵-rt">外参矩阵 [R|t]</h3>
-<p>外参矩阵描述相机在世界坐标系中的位置和朝向。
-</p>
 $$
 [R|t] = 
 \begin{bmatrix}
@@ -303,8 +230,6 @@ r_{21} & r_{22} & r_{23} & t_y \\
 r_{31} & r_{32} & r_{33} & t_z
 \end{bmatrix}
 $$<h3 id="投影矩阵-p">投影矩阵 P</h3>
-<p>投影矩阵是将3D世界点直接投影到2D像素坐标的完整变换矩阵。
-</p>
 $$
 P = K[R|t] = 
 \begin{bmatrix}
@@ -313,14 +238,9 @@ p_{21} & p_{22} & p_{23} & p_{24} \\
 p_{31} & p_{32} & p_{33} & p_{34}
 \end{bmatrix}
 $$<h3 id="基础矩阵-f">基础矩阵 F</h3>
-<p>基础矩阵是描述两个相机之间的极线几何关系，用于约束对应点的搜索。
-</p>
 $$
 \mathbf{m}_2^T F \mathbf{m}_1 = 0
-$$<p>
-其中</p>
-$$\mathbf{m}_1 = [u_1, v_1, 1]^T$$<p>, </p>
-$$\mathbf{m}_2 = [u_2, v_2, 1]^T$$<h3 id="各矩阵之间的关系">各矩阵之间的关系</h3>
+$$$$\mathbf{m}_1 = [u_1, v_1, 1]^T$$$$\mathbf{m}_2 = [u_2, v_2, 1]^T$$<h3 id="各矩阵之间的关系">各矩阵之间的关系</h3>
 <p><strong>外参矩阵</strong>[R|t]：建立世界与相机的联系，描述<strong>相机在世界中的位置和朝向</strong>。</p>
 <p><strong>内参矩阵</strong>K：建立相机与图像的联系，描述<strong>相机的内部光学特性</strong>。</p>
 <p><strong>投影矩阵</strong>P = K[R|t]：世界到图像的完整映射，实现了<strong>从世界坐标到像素坐标的一步变换</strong>。</p>
@@ -357,52 +277,52 @@ $$\mathbf{m}_2 = [u_2, v_2, 1]^T$$<h3 id="各矩阵之间的关系">各矩阵之
 <table>
   <thead>
       <tr>
-          <th>测试工具</th>
-          <th>相机内参矩阵</th>
-          <th>畸变系数</th>
-          <th>重投影误差</th>
+          <th style="text-align: center">测试工具</th>
+          <th style="text-align: center">相机内参矩阵</th>
+          <th style="text-align: center">畸变系数</th>
+          <th style="text-align: center">重投影误差</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td>一加ACE3</td>
-          <td>[[2.67145471e+03 0.00000000e+00 1.96494182e+03]<br/> [0.00000000e+00 2.65796863e+03 1.17664010e+03]<br/> [0.00000000e+00 0.00000000e+00 1.00000000e+00]]</td>
-          <td>[[ 0.02013825 -0.16912024  0.00120101 -0.00280289  0.01630901]]</td>
-          <td>5.1888530562115776</td>
+          <td style="text-align: center">一加ACE3</td>
+          <td style="text-align: center">[[2.67145471e+03 0.00000000e+00 1.96494182e+03]<br/> [0.00000000e+00 2.65796863e+03 1.17664010e+03]<br/> [0.00000000e+00 0.00000000e+00 1.00000000e+00]]</td>
+          <td style="text-align: center">[[ 0.02013825 -0.16912024  0.00120101 -0.00280289  0.01630901]]</td>
+          <td style="text-align: center">5.1888530562115776</td>
       </tr>
       <tr>
-          <td>小米14pro</td>
-          <td>[[5.74733279e+03 0.00000000e+00 4.12361790e+03]<br/> [0.00000000e+00 5.74384199e+03 2.99945732e+03]<br/> [0.00000000e+00 0.00000000e+00 1.00000000e+00]]</td>
-          <td>[[ 2.51253869e-01 -1.39748323e+00 -7.89344902e-03  1.94376106e-03<br/>   3.27697509e+00]]</td>
-          <td>1.5179901132758307</td>
+          <td style="text-align: center">小米14pro</td>
+          <td style="text-align: center">[[5.74733279e+03 0.00000000e+00 4.12361790e+03]<br/> [0.00000000e+00 5.74384199e+03 2.99945732e+03]<br/> [0.00000000e+00 0.00000000e+00 1.00000000e+00]]</td>
+          <td style="text-align: center">[[ 2.51253869e-01 -1.39748323e+00 -7.89344902e-03  1.94376106e-03<br/>   3.27697509e+00]]</td>
+          <td style="text-align: center">1.5179901132758307</td>
       </tr>
       <tr>
-          <td>苹果14</td>
-          <td>[[4.96577762e+03 0.00000000e+00 1.21390611e+03]<br/> [0.00000000e+00 4.93388129e+03 6.73719051e+02]<br/> [0.00000000e+00 0.00000000e+00 1.00000000e+00]]</td>
-          <td>[[-6.16653824e-01  2.81741785e+01 -1.53272648e-02  2.28871714e-03<br/>  -3.23475413e+02]]</td>
-          <td>1.087200170045067</td>
+          <td style="text-align: center">苹果14</td>
+          <td style="text-align: center">[[4.96577762e+03 0.00000000e+00 1.21390611e+03]<br/> [0.00000000e+00 4.93388129e+03 6.73719051e+02]<br/> [0.00000000e+00 0.00000000e+00 1.00000000e+00]]</td>
+          <td style="text-align: center">[[-6.16653824e-01  2.81741785e+01 -1.53272648e-02  2.28871714e-03<br/>  -3.23475413e+02]]</td>
+          <td style="text-align: center">1.087200170045067</td>
       </tr>
       <tr>
-          <td>工业相机+工业变焦镜头H0612M-3MP</td>
-          <td>[[1.30639706e+03 0.00000000e+00 9.44799694e+02]<br/> [0.00000000e+00 1.30284842e+03 6.27288314e+02]<br/> [0.00000000e+00 0.00000000e+00 1.00000000e+00]]</td>
-          <td>[[-2.71007666e-01  2.33704318e+00  8.67004421e-04 -1.89484818e-03<br/>  -1.21988306e+01]]</td>
-          <td>0.3490834671838416</td>
+          <td style="text-align: center">工业相机+工业变焦镜头H0612M-3MP</td>
+          <td style="text-align: center">[[1.30639706e+03 0.00000000e+00 9.44799694e+02]<br/> [0.00000000e+00 1.30284842e+03 6.27288314e+02]<br/> [0.00000000e+00 0.00000000e+00 1.00000000e+00]]</td>
+          <td style="text-align: center">[[-2.71007666e-01  2.33704318e+00  8.67004421e-04 -1.89484818e-03<br/>  -1.21988306e+01]]</td>
+          <td style="text-align: center">0.3490834671838416</td>
       </tr>
       <tr>
-          <td>工业相机+nikon镜头AF-S NIKKOR18-135MM1:3.5-5.6G</td>
-          <td>[[3.03819315e+03 0.00000000e+00 8.66031322e+02]<br/> [0.00000000e+00 3.03206388e+03 7.59420488e+02]<br/> [0.00000000e+00 0.00000000e+00 1.00000000e+00]]</td>
-          <td>[[-1.62818008e-01 -1.12551964e+00  2.61012038e-03 -6.78454128e-03<br/>   9.86627356e+00]]</td>
-          <td>0.4393161012326991</td>
+          <td style="text-align: center">工业相机+nikon镜头AF-S NIKKOR18-135MM1:3.5-5.6G</td>
+          <td style="text-align: center">[[3.03819315e+03 0.00000000e+00 8.66031322e+02]<br/> [0.00000000e+00 3.03206388e+03 7.59420488e+02]<br/> [0.00000000e+00 0.00000000e+00 1.00000000e+00]]</td>
+          <td style="text-align: center">[[-1.62818008e-01 -1.12551964e+00  2.61012038e-03 -6.78454128e-03<br/>   9.86627356e+00]]</td>
+          <td style="text-align: center">0.4393161012326991</td>
       </tr>
       <tr>
-          <td>工业相机+nikon镜头AF NIKKOR 80-200MM1:2.8 D</td>
-          <td>[[1.43292044e+04 0.00000000e+00 1.20360683e+03]<br/> [0.00000000e+00 1.42446798e+04 3.80655459e+02]<br/> [0.00000000e+00 0.00000000e+00 1.00000000e+00]]</td>
-          <td>[[-2.21247724e+00  1.87265561e+02 -8.58170657e-03 -5.13365113e-02<br/>  -1.01355171e-02]]</td>
-          <td>1.6415417215595733</td>
+          <td style="text-align: center">工业相机+nikon镜头AF NIKKOR 80-200MM1:2.8 D</td>
+          <td style="text-align: center">[[1.43292044e+04 0.00000000e+00 1.20360683e+03]<br/> [0.00000000e+00 1.42446798e+04 3.80655459e+02]<br/> [0.00000000e+00 0.00000000e+00 1.00000000e+00]]</td>
+          <td style="text-align: center">[[-2.21247724e+00  1.87265561e+02 -8.58170657e-03 -5.13365113e-02<br/>  -1.01355171e-02]]</td>
+          <td style="text-align: center">1.6415417215595733</td>
       </tr>
   </tbody>
 </table>
-<p>从以上参数可以看出，手机相机中苹果14的参数最好，在三款手机中，苹果14的重投影误差最小，内参相对合理，是相对最好的选择。工业相机 + 工业变焦镜头 H0612M-3MP 的重投影误差最小，畸变参数合理，内参稳定。在测试的过程中，由于测试的两款尼康镜头一个有污点擦不干净，还有一个是长焦镜头，需要距离非常远加上手持拍照不稳定，拍摄效果可能不如上述的工业变焦镜头。综上所述，手机相机镜头在标定精度和光学性能上显著逊于工业镜头，根本原因在于两者的设计目标截然不同，工业镜头以高精度、低畸变、参数稳定为核心，采用定焦、固定光圈结构，使用低色散玻璃镜片和坚固的镜筒，确保成像几何关系长期可重复；而手机镜头受限于7-8mm的机身厚度，必须采用塑料非球面镜片、内变焦和浮动对焦结构，光学性能被大幅压缩，畸变往往较大且随对焦距离变化。前者用体积和成本换精度，后者在轻薄中靠算法弥补光学缺陷。</p>
+<p>从以上参数可以看出，手机相机中苹果14的参数最好，在三款手机中，苹果14的重投影误差最小，内参相对合理，是相对最好的选择。工业相机 + 工业变焦镜头 H0612M-3MP 的重投影误差最小，畸变参数合理，内参稳定。在测试的过程中，由于测试的两款尼康镜头一个有污点擦不干净，还有一个是长焦镜头，需要距离非常远加上手持拍照不稳定，拍摄效果可能不如上述的工业变焦镜头。综上所述，手机相机镜头在标定精度和光学性能上显著逊于工业镜头，根本原因在于两者的设计目标截然不同，工业镜头以高精度、低畸变、参数稳定为核心，采用定焦、固定光圈结构，使用低色散玻璃镜片和坚固的镜筒，确保成像几何关系长期可重复；而手机镜头受限于7-8mm的机身厚度，必须采用塑料非球面镜片、内变焦和浮动对焦结构，光学性能被大幅压缩，畸变往往较大且随对焦距离变化。</p>
 <ul class="pa0">
   
 </ul>
@@ -424,7 +344,7 @@ $$\mathbf{m}_2 = [u_2, v_2, 1]^T$$<h3 id="各矩阵之间的关系">各矩阵之
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://liuxunchen.github.io/xliu-group/zh/" >
     &copy;  刘训臣燃烧诊断实验室主页 2026 
   </a>
     <div><div class="ananke-socials"></div>
