@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Openpiv分析 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="【这都是设想。要分段。加上具体的算例。】
+OpenPIV颗粒与液滴辨别
+OpenPIV：
+在流体力学实验中，气液两相流、液液两相流的流场分析常面临一个核心难题——颗粒（多为示踪粒子）与液滴难以精准区分，而这直接影响流场参数计算的准确性。这时，OpenPIV就成了区分的好帮手。
+OpenPIV是一款开源的粒子图像测速（PIV）软件，基于Python开发，凭借强大的图像预处理、相位分离及粒子识别功能，能够高效处理粒子图像，提取运动参数。它无需复杂的付费授权，且支持自定义参数、脚本化自动化处理，适配从宏观到微尺度的各类两相流场景，尤其适合需要精准区分不同粒子（颗粒与液滴）的实验需求，是科研、实验中不可或缺的实用工具。
+在气泡雾化的研究中我们想依托OpenPIV的核心功能，建立高效、准确的颗粒与液滴辨别流程，实现两类目标的精准分割、特征提取及运动参数区分，解决气液两相流中颗粒（示踪粒子）与液滴（分散相/连续相液滴）易混淆的问题，为后续流场分析提供可靠的目标分类基础。核心是通过参数优化和算法筛选，使辨别准确率达到90%以上，满足PIV测量中两相流场的分离分析需求。
+下面列举了一些判断的依据：1. 颗粒与液滴的图像特征差异（粒径大小、灰度强度、边缘清晰度、运动特性）；2. OpenPIV软件内置相位分离、动态掩膜、粒子滤波等核心功能（如phase_separation模块、preprocess模块）；3. 相关文献及OpenPIV官方教程中相位分离方法（如Khalitov &amp; Longmire方法、中值滤波法）；4. 实验场景的实际需求（如颗粒为示踪粒子、液滴为研究对象，或反之）。
+辨别颗粒与液滴需要的一些设备：1. 成像设备：高速相机（分辨率≥1024×768，帧率≥100fps），配备显微镜头（微尺度场景）或普通镜头（宏观场景），确保清晰捕捉颗粒与液滴的轮廓及细节；2. 光源系统：激光光源（波长532nm优先，适配荧光示踪粒子）或LED面光源，避免反光干扰，保证颗粒与液滴的灰度对比度；
+编程软件算法准备：1. 核心软件：OpenPIV（Python版本）；2. 依赖库：NumPy、SciPy（图像滤波、数组运算）、Matplotlib（图像显示与可视化）、OpenCV（辅助图像预处理）；3. 辅助工具：Jupyter Notebook（代码调试、分步执行）、图像查看器（如IrfanView，预处理检查）。
+拍照需要采集的东西：1. 采集包含颗粒与液滴的两相流图像样本，涵盖不同实验工况（不同流速、浓度），保证样本代表性；2. 样本要求：图像清晰，无明显噪声、模糊或反光；颗粒与液滴的尺寸、灰度有可区分差异（如颗粒粒径小、灰度均匀，液滴粒径大、边缘有反光）；3. 样本数量：静态图像≥50张，动态序列图像≥10组（每组≥50帧），用于算法调试、参数优化及准确率验证。
+此外我们还要进行采集样本的预处理：1. 格式统一：转换为OpenPIV支持的格式（.png、.tif），确保图像尺寸一致；2. 噪声去除：通过OpenPIV内置滤波（high_pass、median_filter）或OpenCV高斯滤波，避免噪声误判为微小颗粒/液滴；3. 灰度调整：利用OpenPIV的intensity_clip功能，增强颗粒、液滴与背景的对比度，便于后续特征提取；4. 图像标注：手动标注≥20张样本，明确颗粒与液滴的位置、轮廓，用于后续准确率验证。
+预处理完成之后 导入预处理后的样本图像，利用OpenPIV的tools模块及Matplotlib，查看灰度直方图、颗粒/液滴尺寸分布；然后提取4大核心特征，精准区分两类目标：（1）尺寸特征：通过OpenPIV粒子检测功能，统计粒径范围（像素单位），通常颗粒10-50μm，液滴50-200μm，明确尺寸差异；（2）灰度特征：分析灰度均值、方差，颗粒灰度均匀、方差小，液滴因反光导致方差大；（3）边缘特征：利用OpenPIV的dynamic_masking功能（edges方法）提取边缘，颗粒边缘清晰规则，液滴边缘易因反光模糊或出现亮环；（4）运动特征（动态样本）：通过OpenPIV计算粒子位移，颗粒跟随流体运动，速度与流体一致，液滴速度可能偏离。最后算平均速度
+同时我们需要选择合适的算法 基于特征分析结果，优先测试以下2种核心算法，对比辨别效果，搭配辅助算法提升准确率：1. 中值滤波法（median_filter_method）：利用侵蚀-膨胀滤波（开运算）去除微小颗粒，保留较大液滴，再通过掩码提取微小颗粒，适合尺寸差异明显的场景；核心参数：kernel_size（必须为奇数）、thresh_factor（掩码阈值）；2. Khalitov &amp; Longmire方法：通过设定尺寸、亮度阈值，结合开运算去除微小区域，实现两相分离，适合尺寸、灰度均有差异的场景；核心参数：big_particles_criteria（液滴筛选）、small_particles_criteria（颗粒筛选）、opening_ksize（开运算核尺寸）；3. 辅助算法：动态掩膜（dynamic_masking），通过边缘或灰度阈值掩膜目标区域，辅助区分边缘模糊的液滴与清晰的颗粒，核心参数：filter_size、threshold。以手动标注样本为参考，逐步优化核心参数，确保准确率达到90%以上：1. 中值滤波法优化：（1）kernel_size：从3、5、7、9等奇数逐步调整，避免过度滤波导致液滴轮廓失真；（2）thresh_factor：在1.0-1.2之间调整，确保掩码准确区分液滴与颗粒；2. Khalitov &amp; Longmire方法优化：（1）尺寸阈值：设定颗粒max_size和液滴min_size，明确尺寸边界；（2）亮度阈值：设定min_brightness、max_brightness，排除背景干扰；（3）opening_ksize：设为3或5，去除微小噪声，避免误判；3. 优化验证：每调整一组参数，对比辨别结果与手动标注结果，计算准确率，记录最优参数组合。
+基于最优参数，通过Python代码搭建完整流程，实现批量自动化处理，步骤如下：
+
+导入模块：from openpiv import tools, phase_separation, preprocess；2. 图像导入：读取预处理后的静态/动态样本；3. 预处理：调用preprocess.high_pass或preprocess.median_filter去除噪声，调用preprocess.intensity_clip调整灰度；4. 相位分离（核心）：调用选定算法（如phase_separation.median_filter_method），输入最优参数，得到颗粒图像和液滴图像；5. 特征验证：提取分离后两类目标的尺寸、灰度特征，验证与前期分析一致；6. 结果保存：保存分离后的图像及辨别结果（坐标、尺寸），用于后续分析。
+最后我们要对结果进行误差分析与修正：1. 误差类型分析：（1）尺寸重叠误差：小液滴与大颗粒尺寸重叠，结合灰度、边缘特征补充筛选；（2）噪声干扰误差：噪声未完全去除，优化滤波参数，增加high_pass滤波步骤；（3）反光干扰误差：液滴反光导致边缘模糊，调整光源角度或优化动态掩膜参数；2. 误差修正：调整流程参数，重新验证，直至误差率低于10%。
+####实操注意事项
+1.样本质量是辨别准确率的关键，需确保图像无明显噪声、反光，颗粒与液滴特征差异显著；
+2.参数调整需循序渐进，每次仅调整一个参数，对比验证结果，避免无法定位最优参数；
+3.动态序列图像处理时，需保证帧间图像一致性（光源、相机位置不变），避免外界干扰；
+4.若颗粒与液滴尺寸、灰度差异小，可结合荧光示踪技术，通过滤镜分离荧光信号，提升准确率；
+">
+    <meta name="generator" content="Hugo 0.159.0">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="赵鑫浩">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/zhaoxinhao2_droplet/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/zhaoxinhao2_droplet/">
+  <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+  <meta property="og:title" content="Openpiv分析">
+  <meta property="og:description" content="【这都是设想。要分段。加上具体的算例。】
+OpenPIV颗粒与液滴辨别 OpenPIV： 在流体力学实验中，气液两相流、液液两相流的流场分析常面临一个核心难题——颗粒（多为示踪粒子）与液滴难以精准区分，而这直接影响流场参数计算的准确性。这时，OpenPIV就成了区分的好帮手。 OpenPIV是一款开源的粒子图像测速（PIV）软件，基于Python开发，凭借强大的图像预处理、相位分离及粒子识别功能，能够高效处理粒子图像，提取运动参数。它无需复杂的付费授权，且支持自定义参数、脚本化自动化处理，适配从宏观到微尺度的各类两相流场景，尤其适合需要精准区分不同粒子（颗粒与液滴）的实验需求，是科研、实验中不可或缺的实用工具。 在气泡雾化的研究中我们想依托OpenPIV的核心功能，建立高效、准确的颗粒与液滴辨别流程，实现两类目标的精准分割、特征提取及运动参数区分，解决气液两相流中颗粒（示踪粒子）与液滴（分散相/连续相液滴）易混淆的问题，为后续流场分析提供可靠的目标分类基础。核心是通过参数优化和算法筛选，使辨别准确率达到90%以上，满足PIV测量中两相流场的分离分析需求。 下面列举了一些判断的依据：1. 颗粒与液滴的图像特征差异（粒径大小、灰度强度、边缘清晰度、运动特性）；2. OpenPIV软件内置相位分离、动态掩膜、粒子滤波等核心功能（如phase_separation模块、preprocess模块）；3. 相关文献及OpenPIV官方教程中相位分离方法（如Khalitov &amp; Longmire方法、中值滤波法）；4. 实验场景的实际需求（如颗粒为示踪粒子、液滴为研究对象，或反之）。 辨别颗粒与液滴需要的一些设备：1. 成像设备：高速相机（分辨率≥1024×768，帧率≥100fps），配备显微镜头（微尺度场景）或普通镜头（宏观场景），确保清晰捕捉颗粒与液滴的轮廓及细节；2. 光源系统：激光光源（波长532nm优先，适配荧光示踪粒子）或LED面光源，避免反光干扰，保证颗粒与液滴的灰度对比度； 编程软件算法准备：1. 核心软件：OpenPIV（Python版本）；2. 依赖库：NumPy、SciPy（图像滤波、数组运算）、Matplotlib（图像显示与可视化）、OpenCV（辅助图像预处理）；3. 辅助工具：Jupyter Notebook（代码调试、分步执行）、图像查看器（如IrfanView，预处理检查）。 拍照需要采集的东西：1. 采集包含颗粒与液滴的两相流图像样本，涵盖不同实验工况（不同流速、浓度），保证样本代表性；2. 样本要求：图像清晰，无明显噪声、模糊或反光；颗粒与液滴的尺寸、灰度有可区分差异（如颗粒粒径小、灰度均匀，液滴粒径大、边缘有反光）；3. 样本数量：静态图像≥50张，动态序列图像≥10组（每组≥50帧），用于算法调试、参数优化及准确率验证。 此外我们还要进行采集样本的预处理：1. 格式统一：转换为OpenPIV支持的格式（.png、.tif），确保图像尺寸一致；2. 噪声去除：通过OpenPIV内置滤波（high_pass、median_filter）或OpenCV高斯滤波，避免噪声误判为微小颗粒/液滴；3. 灰度调整：利用OpenPIV的intensity_clip功能，增强颗粒、液滴与背景的对比度，便于后续特征提取；4. 图像标注：手动标注≥20张样本，明确颗粒与液滴的位置、轮廓，用于后续准确率验证。 预处理完成之后 导入预处理后的样本图像，利用OpenPIV的tools模块及Matplotlib，查看灰度直方图、颗粒/液滴尺寸分布；然后提取4大核心特征，精准区分两类目标：（1）尺寸特征：通过OpenPIV粒子检测功能，统计粒径范围（像素单位），通常颗粒10-50μm，液滴50-200μm，明确尺寸差异；（2）灰度特征：分析灰度均值、方差，颗粒灰度均匀、方差小，液滴因反光导致方差大；（3）边缘特征：利用OpenPIV的dynamic_masking功能（edges方法）提取边缘，颗粒边缘清晰规则，液滴边缘易因反光模糊或出现亮环；（4）运动特征（动态样本）：通过OpenPIV计算粒子位移，颗粒跟随流体运动，速度与流体一致，液滴速度可能偏离。最后算平均速度 同时我们需要选择合适的算法 基于特征分析结果，优先测试以下2种核心算法，对比辨别效果，搭配辅助算法提升准确率：1. 中值滤波法（median_filter_method）：利用侵蚀-膨胀滤波（开运算）去除微小颗粒，保留较大液滴，再通过掩码提取微小颗粒，适合尺寸差异明显的场景；核心参数：kernel_size（必须为奇数）、thresh_factor（掩码阈值）；2. Khalitov &amp; Longmire方法：通过设定尺寸、亮度阈值，结合开运算去除微小区域，实现两相分离，适合尺寸、灰度均有差异的场景；核心参数：big_particles_criteria（液滴筛选）、small_particles_criteria（颗粒筛选）、opening_ksize（开运算核尺寸）；3. 辅助算法：动态掩膜（dynamic_masking），通过边缘或灰度阈值掩膜目标区域，辅助区分边缘模糊的液滴与清晰的颗粒，核心参数：filter_size、threshold。以手动标注样本为参考，逐步优化核心参数，确保准确率达到90%以上：1. 中值滤波法优化：（1）kernel_size：从3、5、7、9等奇数逐步调整，避免过度滤波导致液滴轮廓失真；（2）thresh_factor：在1.0-1.2之间调整，确保掩码准确区分液滴与颗粒；2. Khalitov &amp; Longmire方法优化：（1）尺寸阈值：设定颗粒max_size和液滴min_size，明确尺寸边界；（2）亮度阈值：设定min_brightness、max_brightness，排除背景干扰；（3）opening_ksize：设为3或5，去除微小噪声，避免误判；3. 优化验证：每调整一组参数，对比辨别结果与手动标注结果，计算准确率，记录最优参数组合。 基于最优参数，通过Python代码搭建完整流程，实现批量自动化处理，步骤如下：
+导入模块：from openpiv import tools, phase_separation, preprocess；2. 图像导入：读取预处理后的静态/动态样本；3. 预处理：调用preprocess.high_pass或preprocess.median_filter去除噪声，调用preprocess.intensity_clip调整灰度；4. 相位分离（核心）：调用选定算法（如phase_separation.median_filter_method），输入最优参数，得到颗粒图像和液滴图像；5. 特征验证：提取分离后两类目标的尺寸、灰度特征，验证与前期分析一致；6. 结果保存：保存分离后的图像及辨别结果（坐标、尺寸），用于后续分析。 最后我们要对结果进行误差分析与修正：1. 误差类型分析：（1）尺寸重叠误差：小液滴与大颗粒尺寸重叠，结合灰度、边缘特征补充筛选；（2）噪声干扰误差：噪声未完全去除，优化滤波参数，增加high_pass滤波步骤；（3）反光干扰误差：液滴反光导致边缘模糊，调整光源角度或优化动态掩膜参数；2. 误差修正：调整流程参数，重新验证，直至误差率低于10%。 ####实操注意事项 1.样本质量是辨别准确率的关键，需确保图像无明显噪声、反光，颗粒与液滴特征差异显著； 2.参数调整需循序渐进，每次仅调整一个参数，对比验证结果，避免无法定位最优参数； 3.动态序列图像处理时，需保证帧间图像一致性（光源、相机位置不变），避免外界干扰； 4.若颗粒与液滴尺寸、灰度差异小，可结合荧光示踪技术，通过滤镜分离荧光信号，提升准确率；">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2026-05-12T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-05-12T00:00:00+00:00">
+
+  <meta itemprop="name" content="Openpiv分析">
+  <meta itemprop="description" content="【这都是设想。要分段。加上具体的算例。】
+OpenPIV颗粒与液滴辨别 OpenPIV： 在流体力学实验中，气液两相流、液液两相流的流场分析常面临一个核心难题——颗粒（多为示踪粒子）与液滴难以精准区分，而这直接影响流场参数计算的准确性。这时，OpenPIV就成了区分的好帮手。 OpenPIV是一款开源的粒子图像测速（PIV）软件，基于Python开发，凭借强大的图像预处理、相位分离及粒子识别功能，能够高效处理粒子图像，提取运动参数。它无需复杂的付费授权，且支持自定义参数、脚本化自动化处理，适配从宏观到微尺度的各类两相流场景，尤其适合需要精准区分不同粒子（颗粒与液滴）的实验需求，是科研、实验中不可或缺的实用工具。 在气泡雾化的研究中我们想依托OpenPIV的核心功能，建立高效、准确的颗粒与液滴辨别流程，实现两类目标的精准分割、特征提取及运动参数区分，解决气液两相流中颗粒（示踪粒子）与液滴（分散相/连续相液滴）易混淆的问题，为后续流场分析提供可靠的目标分类基础。核心是通过参数优化和算法筛选，使辨别准确率达到90%以上，满足PIV测量中两相流场的分离分析需求。 下面列举了一些判断的依据：1. 颗粒与液滴的图像特征差异（粒径大小、灰度强度、边缘清晰度、运动特性）；2. OpenPIV软件内置相位分离、动态掩膜、粒子滤波等核心功能（如phase_separation模块、preprocess模块）；3. 相关文献及OpenPIV官方教程中相位分离方法（如Khalitov &amp; Longmire方法、中值滤波法）；4. 实验场景的实际需求（如颗粒为示踪粒子、液滴为研究对象，或反之）。 辨别颗粒与液滴需要的一些设备：1. 成像设备：高速相机（分辨率≥1024×768，帧率≥100fps），配备显微镜头（微尺度场景）或普通镜头（宏观场景），确保清晰捕捉颗粒与液滴的轮廓及细节；2. 光源系统：激光光源（波长532nm优先，适配荧光示踪粒子）或LED面光源，避免反光干扰，保证颗粒与液滴的灰度对比度； 编程软件算法准备：1. 核心软件：OpenPIV（Python版本）；2. 依赖库：NumPy、SciPy（图像滤波、数组运算）、Matplotlib（图像显示与可视化）、OpenCV（辅助图像预处理）；3. 辅助工具：Jupyter Notebook（代码调试、分步执行）、图像查看器（如IrfanView，预处理检查）。 拍照需要采集的东西：1. 采集包含颗粒与液滴的两相流图像样本，涵盖不同实验工况（不同流速、浓度），保证样本代表性；2. 样本要求：图像清晰，无明显噪声、模糊或反光；颗粒与液滴的尺寸、灰度有可区分差异（如颗粒粒径小、灰度均匀，液滴粒径大、边缘有反光）；3. 样本数量：静态图像≥50张，动态序列图像≥10组（每组≥50帧），用于算法调试、参数优化及准确率验证。 此外我们还要进行采集样本的预处理：1. 格式统一：转换为OpenPIV支持的格式（.png、.tif），确保图像尺寸一致；2. 噪声去除：通过OpenPIV内置滤波（high_pass、median_filter）或OpenCV高斯滤波，避免噪声误判为微小颗粒/液滴；3. 灰度调整：利用OpenPIV的intensity_clip功能，增强颗粒、液滴与背景的对比度，便于后续特征提取；4. 图像标注：手动标注≥20张样本，明确颗粒与液滴的位置、轮廓，用于后续准确率验证。 预处理完成之后 导入预处理后的样本图像，利用OpenPIV的tools模块及Matplotlib，查看灰度直方图、颗粒/液滴尺寸分布；然后提取4大核心特征，精准区分两类目标：（1）尺寸特征：通过OpenPIV粒子检测功能，统计粒径范围（像素单位），通常颗粒10-50μm，液滴50-200μm，明确尺寸差异；（2）灰度特征：分析灰度均值、方差，颗粒灰度均匀、方差小，液滴因反光导致方差大；（3）边缘特征：利用OpenPIV的dynamic_masking功能（edges方法）提取边缘，颗粒边缘清晰规则，液滴边缘易因反光模糊或出现亮环；（4）运动特征（动态样本）：通过OpenPIV计算粒子位移，颗粒跟随流体运动，速度与流体一致，液滴速度可能偏离。最后算平均速度 同时我们需要选择合适的算法 基于特征分析结果，优先测试以下2种核心算法，对比辨别效果，搭配辅助算法提升准确率：1. 中值滤波法（median_filter_method）：利用侵蚀-膨胀滤波（开运算）去除微小颗粒，保留较大液滴，再通过掩码提取微小颗粒，适合尺寸差异明显的场景；核心参数：kernel_size（必须为奇数）、thresh_factor（掩码阈值）；2. Khalitov &amp; Longmire方法：通过设定尺寸、亮度阈值，结合开运算去除微小区域，实现两相分离，适合尺寸、灰度均有差异的场景；核心参数：big_particles_criteria（液滴筛选）、small_particles_criteria（颗粒筛选）、opening_ksize（开运算核尺寸）；3. 辅助算法：动态掩膜（dynamic_masking），通过边缘或灰度阈值掩膜目标区域，辅助区分边缘模糊的液滴与清晰的颗粒，核心参数：filter_size、threshold。以手动标注样本为参考，逐步优化核心参数，确保准确率达到90%以上：1. 中值滤波法优化：（1）kernel_size：从3、5、7、9等奇数逐步调整，避免过度滤波导致液滴轮廓失真；（2）thresh_factor：在1.0-1.2之间调整，确保掩码准确区分液滴与颗粒；2. Khalitov &amp; Longmire方法优化：（1）尺寸阈值：设定颗粒max_size和液滴min_size，明确尺寸边界；（2）亮度阈值：设定min_brightness、max_brightness，排除背景干扰；（3）opening_ksize：设为3或5，去除微小噪声，避免误判；3. 优化验证：每调整一组参数，对比辨别结果与手动标注结果，计算准确率，记录最优参数组合。 基于最优参数，通过Python代码搭建完整流程，实现批量自动化处理，步骤如下：
+导入模块：from openpiv import tools, phase_separation, preprocess；2. 图像导入：读取预处理后的静态/动态样本；3. 预处理：调用preprocess.high_pass或preprocess.median_filter去除噪声，调用preprocess.intensity_clip调整灰度；4. 相位分离（核心）：调用选定算法（如phase_separation.median_filter_method），输入最优参数，得到颗粒图像和液滴图像；5. 特征验证：提取分离后两类目标的尺寸、灰度特征，验证与前期分析一致；6. 结果保存：保存分离后的图像及辨别结果（坐标、尺寸），用于后续分析。 最后我们要对结果进行误差分析与修正：1. 误差类型分析：（1）尺寸重叠误差：小液滴与大颗粒尺寸重叠，结合灰度、边缘特征补充筛选；（2）噪声干扰误差：噪声未完全去除，优化滤波参数，增加high_pass滤波步骤；（3）反光干扰误差：液滴反光导致边缘模糊，调整光源角度或优化动态掩膜参数；2. 误差修正：调整流程参数，重新验证，直至误差率低于10%。 ####实操注意事项 1.样本质量是辨别准确率的关键，需确保图像无明显噪声、反光，颗粒与液滴特征差异显著； 2.参数调整需循序渐进，每次仅调整一个参数，对比验证结果，避免无法定位最优参数； 3.动态序列图像处理时，需保证帧间图像一致性（光源、相机位置不变），避免外界干扰； 4.若颗粒与液滴尺寸、灰度差异小，可结合荧光示踪技术，通过滤镜分离荧光信号，提升准确率；">
+  <meta itemprop="datePublished" content="2026-05-12T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-05-12T00:00:00+00:00">
+  <meta itemprop="wordCount" content="64">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Openpiv分析">
+  <meta name="twitter:description" content="【这都是设想。要分段。加上具体的算例。】
+OpenPIV颗粒与液滴辨别 OpenPIV： 在流体力学实验中，气液两相流、液液两相流的流场分析常面临一个核心难题——颗粒（多为示踪粒子）与液滴难以精准区分，而这直接影响流场参数计算的准确性。这时，OpenPIV就成了区分的好帮手。 OpenPIV是一款开源的粒子图像测速（PIV）软件，基于Python开发，凭借强大的图像预处理、相位分离及粒子识别功能，能够高效处理粒子图像，提取运动参数。它无需复杂的付费授权，且支持自定义参数、脚本化自动化处理，适配从宏观到微尺度的各类两相流场景，尤其适合需要精准区分不同粒子（颗粒与液滴）的实验需求，是科研、实验中不可或缺的实用工具。 在气泡雾化的研究中我们想依托OpenPIV的核心功能，建立高效、准确的颗粒与液滴辨别流程，实现两类目标的精准分割、特征提取及运动参数区分，解决气液两相流中颗粒（示踪粒子）与液滴（分散相/连续相液滴）易混淆的问题，为后续流场分析提供可靠的目标分类基础。核心是通过参数优化和算法筛选，使辨别准确率达到90%以上，满足PIV测量中两相流场的分离分析需求。 下面列举了一些判断的依据：1. 颗粒与液滴的图像特征差异（粒径大小、灰度强度、边缘清晰度、运动特性）；2. OpenPIV软件内置相位分离、动态掩膜、粒子滤波等核心功能（如phase_separation模块、preprocess模块）；3. 相关文献及OpenPIV官方教程中相位分离方法（如Khalitov &amp; Longmire方法、中值滤波法）；4. 实验场景的实际需求（如颗粒为示踪粒子、液滴为研究对象，或反之）。 辨别颗粒与液滴需要的一些设备：1. 成像设备：高速相机（分辨率≥1024×768，帧率≥100fps），配备显微镜头（微尺度场景）或普通镜头（宏观场景），确保清晰捕捉颗粒与液滴的轮廓及细节；2. 光源系统：激光光源（波长532nm优先，适配荧光示踪粒子）或LED面光源，避免反光干扰，保证颗粒与液滴的灰度对比度； 编程软件算法准备：1. 核心软件：OpenPIV（Python版本）；2. 依赖库：NumPy、SciPy（图像滤波、数组运算）、Matplotlib（图像显示与可视化）、OpenCV（辅助图像预处理）；3. 辅助工具：Jupyter Notebook（代码调试、分步执行）、图像查看器（如IrfanView，预处理检查）。 拍照需要采集的东西：1. 采集包含颗粒与液滴的两相流图像样本，涵盖不同实验工况（不同流速、浓度），保证样本代表性；2. 样本要求：图像清晰，无明显噪声、模糊或反光；颗粒与液滴的尺寸、灰度有可区分差异（如颗粒粒径小、灰度均匀，液滴粒径大、边缘有反光）；3. 样本数量：静态图像≥50张，动态序列图像≥10组（每组≥50帧），用于算法调试、参数优化及准确率验证。 此外我们还要进行采集样本的预处理：1. 格式统一：转换为OpenPIV支持的格式（.png、.tif），确保图像尺寸一致；2. 噪声去除：通过OpenPIV内置滤波（high_pass、median_filter）或OpenCV高斯滤波，避免噪声误判为微小颗粒/液滴；3. 灰度调整：利用OpenPIV的intensity_clip功能，增强颗粒、液滴与背景的对比度，便于后续特征提取；4. 图像标注：手动标注≥20张样本，明确颗粒与液滴的位置、轮廓，用于后续准确率验证。 预处理完成之后 导入预处理后的样本图像，利用OpenPIV的tools模块及Matplotlib，查看灰度直方图、颗粒/液滴尺寸分布；然后提取4大核心特征，精准区分两类目标：（1）尺寸特征：通过OpenPIV粒子检测功能，统计粒径范围（像素单位），通常颗粒10-50μm，液滴50-200μm，明确尺寸差异；（2）灰度特征：分析灰度均值、方差，颗粒灰度均匀、方差小，液滴因反光导致方差大；（3）边缘特征：利用OpenPIV的dynamic_masking功能（edges方法）提取边缘，颗粒边缘清晰规则，液滴边缘易因反光模糊或出现亮环；（4）运动特征（动态样本）：通过OpenPIV计算粒子位移，颗粒跟随流体运动，速度与流体一致，液滴速度可能偏离。最后算平均速度 同时我们需要选择合适的算法 基于特征分析结果，优先测试以下2种核心算法，对比辨别效果，搭配辅助算法提升准确率：1. 中值滤波法（median_filter_method）：利用侵蚀-膨胀滤波（开运算）去除微小颗粒，保留较大液滴，再通过掩码提取微小颗粒，适合尺寸差异明显的场景；核心参数：kernel_size（必须为奇数）、thresh_factor（掩码阈值）；2. Khalitov &amp; Longmire方法：通过设定尺寸、亮度阈值，结合开运算去除微小区域，实现两相分离，适合尺寸、灰度均有差异的场景；核心参数：big_particles_criteria（液滴筛选）、small_particles_criteria（颗粒筛选）、opening_ksize（开运算核尺寸）；3. 辅助算法：动态掩膜（dynamic_masking），通过边缘或灰度阈值掩膜目标区域，辅助区分边缘模糊的液滴与清晰的颗粒，核心参数：filter_size、threshold。以手动标注样本为参考，逐步优化核心参数，确保准确率达到90%以上：1. 中值滤波法优化：（1）kernel_size：从3、5、7、9等奇数逐步调整，避免过度滤波导致液滴轮廓失真；（2）thresh_factor：在1.0-1.2之间调整，确保掩码准确区分液滴与颗粒；2. Khalitov &amp; Longmire方法优化：（1）尺寸阈值：设定颗粒max_size和液滴min_size，明确尺寸边界；（2）亮度阈值：设定min_brightness、max_brightness，排除背景干扰；（3）opening_ksize：设为3或5，去除微小噪声，避免误判；3. 优化验证：每调整一组参数，对比辨别结果与手动标注结果，计算准确率，记录最优参数组合。 基于最优参数，通过Python代码搭建完整流程，实现批量自动化处理，步骤如下：
+导入模块：from openpiv import tools, phase_separation, preprocess；2. 图像导入：读取预处理后的静态/动态样本；3. 预处理：调用preprocess.high_pass或preprocess.median_filter去除噪声，调用preprocess.intensity_clip调整灰度；4. 相位分离（核心）：调用选定算法（如phase_separation.median_filter_method），输入最优参数，得到颗粒图像和液滴图像；5. 特征验证：提取分离后两类目标的尺寸、灰度特征，验证与前期分析一致；6. 结果保存：保存分离后的图像及辨别结果（坐标、尺寸），用于后续分析。 最后我们要对结果进行误差分析与修正：1. 误差类型分析：（1）尺寸重叠误差：小液滴与大颗粒尺寸重叠，结合灰度、边缘特征补充筛选；（2）噪声干扰误差：噪声未完全去除，优化滤波参数，增加high_pass滤波步骤；（3）反光干扰误差：液滴反光导致边缘模糊，调整光源角度或优化动态掩膜参数；2. 误差修正：调整流程参数，重新验证，直至误差率低于10%。 ####实操注意事项 1.样本质量是辨别准确率的关键，需确保图像无明显噪声、反光，颗粒与液滴特征差异显著； 2.参数调整需循序渐进，每次仅调整一个参数，对比验证结果，避免无法定位最优参数； 3.动态序列图像处理时，需保证帧间图像一致性（光源、相机位置不变），避免外界干扰； 4.若颗粒与液滴尺寸、灰度差异小，可结合荧光示踪技术，通过滤镜分离荧光信号，提升准确率；">
+
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        刘训臣燃烧诊断实验室主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/our-alumni/" title="Alumni 页">
+              Alumni
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">Openpiv分析</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Post
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Openpiv分析</h1>
+      
+      <p class="tracked"><strong>赵鑫浩</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-05-12T00:00:00Z">五月 12, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>【这都是设想。要分段。加上具体的算例。】</p>
+<h1 id="openpiv颗粒与液滴辨别">OpenPIV颗粒与液滴辨别</h1>
+<h2 id="openpiv">OpenPIV：</h2>
+<p>在流体力学实验中，气液两相流、液液两相流的流场分析常面临一个核心难题——颗粒（多为示踪粒子）与液滴难以精准区分，而这直接影响流场参数计算的准确性。这时，OpenPIV就成了区分的好帮手。
+OpenPIV是一款开源的粒子图像测速（PIV）软件，基于Python开发，凭借强大的图像预处理、相位分离及粒子识别功能，能够高效处理粒子图像，提取运动参数。它无需复杂的付费授权，且支持自定义参数、脚本化自动化处理，适配从宏观到微尺度的各类两相流场景，尤其适合需要精准区分不同粒子（颗粒与液滴）的实验需求，是科研、实验中不可或缺的实用工具。
+在气泡雾化的研究中我们想依托OpenPIV的核心功能，建立高效、准确的颗粒与液滴辨别流程，实现两类目标的精准分割、特征提取及运动参数区分，解决气液两相流中颗粒（示踪粒子）与液滴（分散相/连续相液滴）易混淆的问题，为后续流场分析提供可靠的目标分类基础。核心是通过参数优化和算法筛选，使辨别准确率达到90%以上，满足PIV测量中两相流场的分离分析需求。
+下面列举了一些判断的依据：1. 颗粒与液滴的图像特征差异（粒径大小、灰度强度、边缘清晰度、运动特性）；2. OpenPIV软件内置相位分离、动态掩膜、粒子滤波等核心功能（如phase_separation模块、preprocess模块）；3. 相关文献及OpenPIV官方教程中相位分离方法（如Khalitov &amp; Longmire方法、中值滤波法）；4. 实验场景的实际需求（如颗粒为示踪粒子、液滴为研究对象，或反之）。
+辨别颗粒与液滴需要的一些设备：1. 成像设备：高速相机（分辨率≥1024×768，帧率≥100fps），配备显微镜头（微尺度场景）或普通镜头（宏观场景），确保清晰捕捉颗粒与液滴的轮廓及细节；2. 光源系统：激光光源（波长532nm优先，适配荧光示踪粒子）或LED面光源，避免反光干扰，保证颗粒与液滴的灰度对比度；
+编程软件算法准备：1. 核心软件：OpenPIV（Python版本）；2. 依赖库：NumPy、SciPy（图像滤波、数组运算）、Matplotlib（图像显示与可视化）、OpenCV（辅助图像预处理）；3. 辅助工具：Jupyter Notebook（代码调试、分步执行）、图像查看器（如IrfanView，预处理检查）。
+拍照需要采集的东西：1. 采集包含颗粒与液滴的两相流图像样本，涵盖不同实验工况（不同流速、浓度），保证样本代表性；2. 样本要求：图像清晰，无明显噪声、模糊或反光；颗粒与液滴的尺寸、灰度有可区分差异（如颗粒粒径小、灰度均匀，液滴粒径大、边缘有反光）；3. 样本数量：静态图像≥50张，动态序列图像≥10组（每组≥50帧），用于算法调试、参数优化及准确率验证。
+此外我们还要进行采集样本的预处理：1. 格式统一：转换为OpenPIV支持的格式（.png、.tif），确保图像尺寸一致；2. 噪声去除：通过OpenPIV内置滤波（high_pass、median_filter）或OpenCV高斯滤波，避免噪声误判为微小颗粒/液滴；3. 灰度调整：利用OpenPIV的intensity_clip功能，增强颗粒、液滴与背景的对比度，便于后续特征提取；4. 图像标注：手动标注≥20张样本，明确颗粒与液滴的位置、轮廓，用于后续准确率验证。
+预处理完成之后 导入预处理后的样本图像，利用OpenPIV的tools模块及Matplotlib，查看灰度直方图、颗粒/液滴尺寸分布；然后提取4大核心特征，精准区分两类目标：（1）尺寸特征：通过OpenPIV粒子检测功能，统计粒径范围（像素单位），通常颗粒10-50μm，液滴50-200μm，明确尺寸差异；（2）灰度特征：分析灰度均值、方差，颗粒灰度均匀、方差小，液滴因反光导致方差大；（3）边缘特征：利用OpenPIV的dynamic_masking功能（edges方法）提取边缘，颗粒边缘清晰规则，液滴边缘易因反光模糊或出现亮环；（4）运动特征（动态样本）：通过OpenPIV计算粒子位移，颗粒跟随流体运动，速度与流体一致，液滴速度可能偏离。最后算平均速度
+同时我们需要选择合适的算法 基于特征分析结果，优先测试以下2种核心算法，对比辨别效果，搭配辅助算法提升准确率：1. 中值滤波法（median_filter_method）：利用侵蚀-膨胀滤波（开运算）去除微小颗粒，保留较大液滴，再通过掩码提取微小颗粒，适合尺寸差异明显的场景；核心参数：kernel_size（必须为奇数）、thresh_factor（掩码阈值）；2. Khalitov &amp; Longmire方法：通过设定尺寸、亮度阈值，结合开运算去除微小区域，实现两相分离，适合尺寸、灰度均有差异的场景；核心参数：big_particles_criteria（液滴筛选）、small_particles_criteria（颗粒筛选）、opening_ksize（开运算核尺寸）；3. 辅助算法：动态掩膜（dynamic_masking），通过边缘或灰度阈值掩膜目标区域，辅助区分边缘模糊的液滴与清晰的颗粒，核心参数：filter_size、threshold。以手动标注样本为参考，逐步优化核心参数，确保准确率达到90%以上：1. 中值滤波法优化：（1）kernel_size：从3、5、7、9等奇数逐步调整，避免过度滤波导致液滴轮廓失真；（2）thresh_factor：在1.0-1.2之间调整，确保掩码准确区分液滴与颗粒；2. Khalitov &amp; Longmire方法优化：（1）尺寸阈值：设定颗粒max_size和液滴min_size，明确尺寸边界；（2）亮度阈值：设定min_brightness、max_brightness，排除背景干扰；（3）opening_ksize：设为3或5，去除微小噪声，避免误判；3. 优化验证：每调整一组参数，对比辨别结果与手动标注结果，计算准确率，记录最优参数组合。
+基于最优参数，通过Python代码搭建完整流程，实现批量自动化处理，步骤如下：</p>
+<ol>
+<li>导入模块：from openpiv import tools, phase_separation, preprocess；2. 图像导入：读取预处理后的静态/动态样本；3. 预处理：调用preprocess.high_pass或preprocess.median_filter去除噪声，调用preprocess.intensity_clip调整灰度；4. 相位分离（核心）：调用选定算法（如phase_separation.median_filter_method），输入最优参数，得到颗粒图像和液滴图像；5. 特征验证：提取分离后两类目标的尺寸、灰度特征，验证与前期分析一致；6. 结果保存：保存分离后的图像及辨别结果（坐标、尺寸），用于后续分析。
+最后我们要对结果进行误差分析与修正：1. 误差类型分析：（1）尺寸重叠误差：小液滴与大颗粒尺寸重叠，结合灰度、边缘特征补充筛选；（2）噪声干扰误差：噪声未完全去除，优化滤波参数，增加high_pass滤波步骤；（3）反光干扰误差：液滴反光导致边缘模糊，调整光源角度或优化动态掩膜参数；2. 误差修正：调整流程参数，重新验证，直至误差率低于10%。
+####实操注意事项
+1.样本质量是辨别准确率的关键，需确保图像无明显噪声、反光，颗粒与液滴特征差异显著；
+2.参数调整需循序渐进，每次仅调整一个参数，对比验证结果，避免无法定位最优参数；
+3.动态序列图像处理时，需保证帧间图像一致性（光源、相机位置不变），避免外界干扰；
+4.若颗粒与液滴尺寸、灰度差异小，可结合荧光示踪技术，通过滤镜分离荧光信号，提升准确率；</li>
+</ol>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

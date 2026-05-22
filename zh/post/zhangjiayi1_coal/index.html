@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="闫伟杰.基于光谱分析和图像处理的火焰温度及辐射特性检测.2014.华中科技大学,PhD dissertation.
+by [张家艺]/xliu-group/zh/people/zhangjiayi/
+光谱法火焰温度和黑度测量方法总结
+一、火焰光谱数据采集
+1.采集对象与范围：利用光谱仪通过多个观测孔采集可见光波段的火焰光谱辐射强度分布。
+2.关键特征识别：光谱中会出现碱金属的特征谱线，可初步判断火焰温度，判断依据就是不同种类的碱金属在燃烧时对应的特征谱线惠子啊不同的温度下消失。
+3.数据特性说明：采集到的是视线方向上的辐射累积值，后续计算得到的温度、黑度均为视线路径上的平均值。
+二、双色法火焰灰性波段判断
+1.波长间隔选取：
+波长间隔的选取需要遵循两点原则：首先，波长间隔应尽可能小，间隔越小，相邻两个波长下的黑度差异就越小，以此保障火焰灰性假设的成立；其次，波长间隔也不能过小，否则会受限于光谱仪输出光谱的波长分辨率。
+2.火焰温度与黑度的分步计算
+首先是基于双色法的初步计算：利用相邻波长的光谱辐射强度比值，结合普朗克定律初步计算目标波段内火焰的温度和黑度随波长的分布。紧接着进行温度修正与平均温度计算。去除碱金属特征谱线处波动剧烈的温度值，计算计算波段内的平均温度（同一火焰对象的温度与波长无关，仅存在一个恒定温度）。将平均温度代入辐射强度与黑度的关系式，重新计算火焰黑度随波长的分布，消除温度波动对黑度的影响。最后进行灰性验证与结果确认灰性判断标准：根据式$\sigma_T = \dfrac{ \sqrt{ \dfrac{1}{m-1} \sum_{i=1}^{m} (T_i - T_a)^2 } }{ T_a }$，通过计算波段内温度、黑度的相对均方误差验证灰性。">
+    <meta name="generator" content="Hugo 0.144.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    <meta name="author" content="刘训臣">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://liuxunchen.github.io/xliu-group/zh/post/zhangjiayi1_coal/">
+    
+
+    <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/zhangjiayi1_coal/">
+  <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+  <meta property="og:title" content="刘训臣燃烧诊断实验室主页">
+  <meta property="og:description" content="闫伟杰.基于光谱分析和图像处理的火焰温度及辐射特性检测.2014.华中科技大学,PhD dissertation. by [张家艺]/xliu-group/zh/people/zhangjiayi/
+光谱法火焰温度和黑度测量方法总结 一、火焰光谱数据采集 1.采集对象与范围：利用光谱仪通过多个观测孔采集可见光波段的火焰光谱辐射强度分布。
+2.关键特征识别：光谱中会出现碱金属的特征谱线，可初步判断火焰温度，判断依据就是不同种类的碱金属在燃烧时对应的特征谱线惠子啊不同的温度下消失。
+3.数据特性说明：采集到的是视线方向上的辐射累积值，后续计算得到的温度、黑度均为视线路径上的平均值。
+二、双色法火焰灰性波段判断 1.波长间隔选取： 波长间隔的选取需要遵循两点原则：首先，波长间隔应尽可能小，间隔越小，相邻两个波长下的黑度差异就越小，以此保障火焰灰性假设的成立；其次，波长间隔也不能过小，否则会受限于光谱仪输出光谱的波长分辨率。
+2.火焰温度与黑度的分步计算 首先是基于双色法的初步计算：利用相邻波长的光谱辐射强度比值，结合普朗克定律初步计算目标波段内火焰的温度和黑度随波长的分布。紧接着进行温度修正与平均温度计算。去除碱金属特征谱线处波动剧烈的温度值，计算计算波段内的平均温度（同一火焰对象的温度与波长无关，仅存在一个恒定温度）。将平均温度代入辐射强度与黑度的关系式，重新计算火焰黑度随波长的分布，消除温度波动对黑度的影响。最后进行灰性验证与结果确认灰性判断标准：根据式$\sigma_T = \dfrac{ \sqrt{ \dfrac{1}{m-1} \sum_{i=1}^{m} (T_i - T_a)^2 } }{ T_a }$，通过计算波段内温度、黑度的相对均方误差验证灰性。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+
+  <meta itemprop="name" content="刘训臣燃烧诊断实验室主页">
+  <meta itemprop="description" content="闫伟杰.基于光谱分析和图像处理的火焰温度及辐射特性检测.2014.华中科技大学,PhD dissertation. by [张家艺]/xliu-group/zh/people/zhangjiayi/
+光谱法火焰温度和黑度测量方法总结 一、火焰光谱数据采集 1.采集对象与范围：利用光谱仪通过多个观测孔采集可见光波段的火焰光谱辐射强度分布。
+2.关键特征识别：光谱中会出现碱金属的特征谱线，可初步判断火焰温度，判断依据就是不同种类的碱金属在燃烧时对应的特征谱线惠子啊不同的温度下消失。
+3.数据特性说明：采集到的是视线方向上的辐射累积值，后续计算得到的温度、黑度均为视线路径上的平均值。
+二、双色法火焰灰性波段判断 1.波长间隔选取： 波长间隔的选取需要遵循两点原则：首先，波长间隔应尽可能小，间隔越小，相邻两个波长下的黑度差异就越小，以此保障火焰灰性假设的成立；其次，波长间隔也不能过小，否则会受限于光谱仪输出光谱的波长分辨率。
+2.火焰温度与黑度的分步计算 首先是基于双色法的初步计算：利用相邻波长的光谱辐射强度比值，结合普朗克定律初步计算目标波段内火焰的温度和黑度随波长的分布。紧接着进行温度修正与平均温度计算。去除碱金属特征谱线处波动剧烈的温度值，计算计算波段内的平均温度（同一火焰对象的温度与波长无关，仅存在一个恒定温度）。将平均温度代入辐射强度与黑度的关系式，重新计算火焰黑度随波长的分布，消除温度波动对黑度的影响。最后进行灰性验证与结果确认灰性判断标准：根据式$\sigma_T = \dfrac{ \sqrt{ \dfrac{1}{m-1} \sum_{i=1}^{m} (T_i - T_a)^2 } }{ T_a }$，通过计算波段内温度、黑度的相对均方误差验证灰性。">
+  <meta itemprop="wordCount" content="26">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="刘训臣燃烧诊断实验室主页">
+  <meta name="twitter:description" content="闫伟杰.基于光谱分析和图像处理的火焰温度及辐射特性检测.2014.华中科技大学,PhD dissertation. by [张家艺]/xliu-group/zh/people/zhangjiayi/
+光谱法火焰温度和黑度测量方法总结 一、火焰光谱数据采集 1.采集对象与范围：利用光谱仪通过多个观测孔采集可见光波段的火焰光谱辐射强度分布。
+2.关键特征识别：光谱中会出现碱金属的特征谱线，可初步判断火焰温度，判断依据就是不同种类的碱金属在燃烧时对应的特征谱线惠子啊不同的温度下消失。
+3.数据特性说明：采集到的是视线方向上的辐射累积值，后续计算得到的温度、黑度均为视线路径上的平均值。
+二、双色法火焰灰性波段判断 1.波长间隔选取： 波长间隔的选取需要遵循两点原则：首先，波长间隔应尽可能小，间隔越小，相邻两个波长下的黑度差异就越小，以此保障火焰灰性假设的成立；其次，波长间隔也不能过小，否则会受限于光谱仪输出光谱的波长分辨率。
+2.火焰温度与黑度的分步计算 首先是基于双色法的初步计算：利用相邻波长的光谱辐射强度比值，结合普朗克定律初步计算目标波段内火焰的温度和黑度随波长的分布。紧接着进行温度修正与平均温度计算。去除碱金属特征谱线处波动剧烈的温度值，计算计算波段内的平均温度（同一火焰对象的温度与波长无关，仅存在一个恒定温度）。将平均温度代入辐射强度与黑度的关系式，重新计算火焰黑度随波长的分布，消除温度波动对黑度的影响。最后进行灰性验证与结果确认灰性判断标准：根据式$\sigma_T = \dfrac{ \sqrt{ \dfrac{1}{m-1} \sum_{i=1}^{m} (T_i - T_a)^2 } }{ T_a }$，通过计算波段内温度、黑度的相对均方误差验证灰性。">
+
+      
+    
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('https://liuxunchen.github.io/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        刘训臣燃烧诊断实验室主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/our-alumni/" title="Alumni 页">
+              Alumni
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">刘训臣燃烧诊断实验室主页</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Post
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1"></h1>
+      
+      <p class="tracked"><strong>刘训臣</strong>
+      </p>
+      
+      
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><h1 id="闫伟杰基于光谱分析和图像处理的火焰温度及辐射特性检测2014华中科技大学phd-dissertation">闫伟杰.基于光谱分析和图像处理的火焰温度及辐射特性检测.2014.华中科技大学,PhD dissertation.</h1>
+<p>by [张家艺]/xliu-group/zh/people/zhangjiayi/</p>
+<h2 id="光谱法火焰温度和黑度测量方法总结">光谱法火焰温度和黑度测量方法总结</h2>
+<h4 id="一火焰光谱数据采集">一、火焰光谱数据采集</h4>
+<p>1.采集对象与范围：利用光谱仪通过多个观测孔采集可见光波段的火焰光谱辐射强度分布。</p>
+<p>2.关键特征识别：光谱中会出现碱金属的特征谱线，可初步判断火焰温度，判断依据就是不同种类的碱金属在燃烧时对应的特征谱线惠子啊不同的温度下消失。</p>
+<p>3.数据特性说明：采集到的是视线方向上的辐射累积值，后续计算得到的温度、黑度均为视线路径上的平均值。</p>
+<h4 id="二双色法火焰灰性波段判断">二、双色法火焰灰性波段判断</h4>
+<h6 id="1波长间隔选取">1.波长间隔选取：</h6>
+<p>波长间隔的选取需要遵循两点原则：首先，波长间隔应尽可能小，间隔越小，相邻两个波长下的黑度差异就越小，以此保障火焰灰性假设的成立；其次，波长间隔也不能过小，否则会受限于光谱仪输出光谱的波长分辨率。</p>
+<h6 id="2火焰温度与黑度的分步计算">2.火焰温度与黑度的分步计算</h6>
+<p>首先是基于双色法的初步计算：利用相邻波长的光谱辐射强度比值，结合普朗克定律初步计算目标波段内火焰的温度和黑度随波长的分布。紧接着进行温度修正与平均温度计算。去除碱金属特征谱线处波动剧烈的温度值，计算计算波段内的平均温度（同一火焰对象的温度与波长无关，仅存在一个恒定温度）。将平均温度代入辐射强度与黑度的关系式，重新计算火焰黑度随波长的分布，消除温度波动对黑度的影响。最后进行灰性验证与结果确认灰性判断标准：根据式$\sigma_T = \dfrac{ \sqrt{ \dfrac{1}{m-1} \sum_{i=1}^{m} (T_i - T_a)^2 } }{ T_a }$，通过计算波段内温度、黑度的相对均方误差验证灰性。</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://liuxunchen.github.io/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

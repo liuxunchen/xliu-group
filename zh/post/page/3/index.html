@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="Post">
   <meta itemprop="description" content="科研笔记和一些想法">
-  <meta itemprop="datePublished" content="2026-04-02T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-04-02T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2026-05-12T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-05-12T00:00:00+00:00">
   <meta itemprop="wordCount" content="1">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Post">
@@ -613,6 +613,75 @@ script.src = &#39;https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js&#39
             <div class="mb3 pa4 blue overflow-hidden">
     
       <div class="f6">
+        五月 8, 2025
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/wangchen5/" class="link black dim">
+        利用OpenCV初步实现张正友标定法对棋盘格进行标定并校正图片
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>进行张正友标定法需要拍摄照片，既然说到拍摄，那就离不开相机。在计算机视觉和机器人领域中，我们需要将现实世界的三维物体“翻译”成相机捕获的二维图像。相机坐标系是这个过程中的核心桥梁，它帮助我们建立起“三维空间”与”二维像素“之间的数学映射关系。
+首先为大家介绍一下相机模型中的四个坐标系，分别是：像素坐标系、图像坐标系、相机坐标系和世界坐标系。</p>
+<h2 id="像素坐标系">像素坐标系</h2>
+<p>如图1所示，像素坐标系u-v的原点为O<sub>0</sub>，横坐标u和纵坐标v分别是图像所在的行和列，在视觉处理库OpenCV中，u对应x，v对应y。</p>
+<h2 id="图像坐标系">图像坐标系</h2>
+<p>如图1所示，像素坐标系x-y的原点为O<sub>1</sub>，为像素坐标系的中点。</p>
+<figure><img src="/xliu-group/zh/post/wangchen5/image1.png"><figcaption>
+      <h4>图像坐标系与像素坐标系关系图</h4>
+    </figcaption>
+</figure>
+
+<p>从上图可知，O<sub>1</sub>在u-v坐标系下的坐标，假设d<sub>x</sub>和d<sub>y</sub>分别表示每个像素在横轴x和纵轴y的物理尺寸，单位为毫米/像素，O<sub>1</sub>在图像坐标系和在像素坐标系的坐标的关系是：</p>
+$$
+u = \frac{x}{d_x} + u_0
+$$$$
+v = \frac{y}{d_y} + v_0
+$$<p>利用线性代数的知识把方程用矩阵表示出来：</p>
+$$
+\left[ 
+\begin{array}{c}
+u \\ 
+v \\ 
+1
+\end{array}
+\right] =
+\left[ 
+\begin{array}{ccc}
+\frac{1}{d_x} & 0 & u_0 \\ 
+0 & \frac{1}{d_y} & v_0 \\ 
+0 & 0 & 1
+\end{array}
+\right]
+\left[ 
+\begin{array}{c}
+x \\ 
+y \\ 
+1
+\end{array}
+\right]
+$$<h2 id="相机坐标系">相机坐标系</h2>
+<p>相机坐标系与图像坐标系的关系如下图：</p>
+<figure><img src="/xliu-group/zh/post/wangchen5/image2.jpg"><figcaption>
+      <h4>相机坐标系与图像坐标系关系图</h4>
+    </figcaption>
+</figure>
+
+<p>通过三角形相似我们可知：</p>
+$$
+\frac{AB}{c\mathrm{O}} = \frac{X_c}{x}, \quad \frac{AO_c}{c\mathrm{O}_c} = \frac{Z_c}{f}, \quad \frac{PB}{c\mathrm{O}} = \frac{Y_c}{y}
+$$<p>将上述式子与图像坐标系的两个式子联立可得：</p>
+    </div>
+  <a href="/xliu-group/zh/post/wangchen5/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            <div class="mb3 pa4 blue overflow-hidden">
+    
+      <div class="f6">
         四月 22, 2025
       </div>
     
@@ -704,47 +773,6 @@ Clouthier综述中提到数据来自 Ramsay 和 Till 未发表的工作，后人
 <p>[1]: KOSTKA S, ROY S, LAKUSTA P J, 等. Comparison of line-peak and line-scanning excitation in two-color laser-induced-fluorescence thermometry of OH[J/OL]. Applied Optics, 2009, 48(32): 6332. DOI:10.1364/AO.48.006332.</p>
     </div>
   <a href="/xliu-group/zh/post/xliu_ch2o/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        三月 22, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/xliu_method/" class="link black dim">
-        激光燃烧诊断是应用研究
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>光谱学本身和火焰研究关系很密切。
-应用光谱研究火焰的历史可以追溯到1860年Kirchhoff和Bunsen针对火焰中金属的光谱测量和1857年Swan对蜡烛火焰的测量。</p>
-<figure><img src="/xliu-group/zh/post/xliu_method/tree.png" width="auto"><figcaption>
-      <h4>学术家谱</h4>
-    </figcaption>
-</figure>
-
-<p>笔者的博士导师是研究分子光谱，纯理论研究。
-但发现导师的前面的导师可以追溯到剑桥大学的Sugdun，是做了很多工业实际应用研究。再之前的 Norrish 就是做的用光谱方法研究闪光灯热解。
-笔者现在又来研究激光燃烧诊断算是重新回到了应用研究上来。</p>
-<p>一些个人观点：
-燃烧诊断主要是成像和光谱在燃烧中的应用。
-研究的任务，需要理解为何要做实验和发展燃烧诊断方法，需要用激光诊断方法解决什么问题，可以参考 Driezler 上课ppt中的说法，燃烧诊断的任务包含如下几个。</p>
-<ol>
-<li>燃烧理论，这方面比较成熟了；</li>
-<li>仿真对照，精细测量，验证CFD；</li>
-<li>燃烧器中的火焰结构和运动（主要是成像），研究燃烧现象，火焰结构和运动，湍流燃烧机理，包含标准火焰的研究；</li>
-<li>发展技术和方法，发展实际应用的传感器（tdlas 主要问题是空间分辨率问题，对于燃烧器的尺寸来说，TDLAS测量的空间分辨率太粗，可以做传感器，但研究其他问题不够用）</li>
-</ol>
-<p>燃烧诊断的目标是解决燃烧研究的问题。因此很多时候，是要把特定的实验方法用在特定的燃烧研究里面。
-燃烧诊断研究基本问题是测量温度，组分，压力，速度，进一步需要和燃烧学结合，目标和主线是研究火焰本身的规律和在燃烧室中的工程应用。</p>
-<p>诊断研究现在阶段需求，理论研究比较成熟，要以工业应用需求为主，还是从燃烧室的现象和要解决的问题出发。</p>
-    </div>
-  <a href="/xliu-group/zh/post/xliu_method/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
   </div>
 
         </div>

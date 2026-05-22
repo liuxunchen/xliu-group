@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Openpiv | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="【修改意见，分段，更新图，放原始代码和原始数据的例子，方便读者下载】
+OpenPIV
+喷雾场 PIV 分析：从图像到速度场全流程
+在燃烧与喷雾诊断研究中，粒子图像测速（PIV）是获取流场速度分布的核心手段。本文将结合实际喷雾图像，完整复现从原始图像预处理、PIV 计算到结果可视化的全流程，帮助快速上手 OpenPIV 工具。
+1. 准备工作：图像读取与预处理1. 准备工作：图像读取与预处理
+我们的实验对象是两帧连续的喷雾图像，记录了燃烧室中液滴的运动。首先需要安全读取图像并进行预处理，以提升后续 PIV 计算的精度。
+1.1 图像读取
+为了避免 TIFF 图像的 LZW 压缩问题，我们使用 PIL 库来读取图像，并将其转换为灰度图
+
+      灰度图
+    
+
+
+可以看到，图像中包含了清晰的喷雾粒子和燃烧室背景，但整体对比度偏低，不利于后续的互相关计算。
+1.2 图像预处理
+我们对图像进行对比度拉伸，增强粒子与背景的区分度
+处理后的图像对比如下：
+
+      灰度图1
+    
+
+
+经过处理，喷雾粒子的边缘更加锐利，灰度分布也更加均匀，为后续的 PIV 计算打下了良好基础。
+2. 核心计算：PIV 速度场求解2. 核心计算：PIV 速度场求解
+OpenPIV 的核心是基于互相关算法的速度场计算。我们设置了关键参数：
+窗口大小 (winsize): 32 像素
+搜索区域 (searchsize): 32 像素
+重叠率 (overlap): 16 像素 (50%)
+时间间隔 (dt): 0.02 秒
+2.1 数据验证与后处理
+原始计算结果中可能存在异常值，我们通过信噪比（sig2noise）进行验证，并使用局部平均法替换异常值。
+3. 结果可视化：从矢量场到统计分析3. 结果可视化：从矢量场到统计分析
+计算完成后，我们需要通过丰富的可视化手段来解读流场信息。
+3.1 速度矢量场
+最直观的方式是直接绘制速度矢量场，我们可以将其叠加在原始图像上，清晰地看到喷雾粒子的运动方向和强度。
+生成的三合一矢量场分析图如下：
+
+      矢量场
+    
+
+
+从图中可以清晰地看到：
+喷雾场在燃烧室出口处（图像右侧）速度明显增大，形成了高速射流。
+中心区域（喷孔附近）的速度分布较为复杂，存在明显的涡结构。
+3.2 详细统计分析
+为了更深入地分析流场特性，我们生成了包含多种统计图表的综合分析图：
+
+      综合分析图
+    
+
+
+这张图包含了丰富的信息：
+速度分量分布：U、V 分量和速度大小的概率密度分布，显示了流场的整体统计特性。
+空间分布：速度大小的空间分布散点图，直观展示了高速区域的位置。
+方向分布：速度方向的直方图，揭示了流场的主导流动方向。
+流线图：通过插值生成的流线图，清晰地描绘了流场的涡结构和流动模式。
+速度剖面：在 Y=3 和 X=7 处的速度剖面，用于定量分析特定位置的流场特性。">
+    <meta name="generator" content="Hugo 0.159.0">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="赵鑫浩">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/zhaoxinhao1_openpiv/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/zhaoxinhao1_openpiv/">
+  <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+  <meta property="og:title" content="Openpiv">
+  <meta property="og:description" content="【修改意见，分段，更新图，放原始代码和原始数据的例子，方便读者下载】
+OpenPIV 喷雾场 PIV 分析：从图像到速度场全流程 在燃烧与喷雾诊断研究中，粒子图像测速（PIV）是获取流场速度分布的核心手段。本文将结合实际喷雾图像，完整复现从原始图像预处理、PIV 计算到结果可视化的全流程，帮助快速上手 OpenPIV 工具。
+1. 准备工作：图像读取与预处理1. 准备工作：图像读取与预处理 我们的实验对象是两帧连续的喷雾图像，记录了燃烧室中液滴的运动。首先需要安全读取图像并进行预处理，以提升后续 PIV 计算的精度。 1.1 图像读取 为了避免 TIFF 图像的 LZW 压缩问题，我们使用 PIL 库来读取图像，并将其转换为灰度图 灰度图 可以看到，图像中包含了清晰的喷雾粒子和燃烧室背景，但整体对比度偏低，不利于后续的互相关计算。
+1.2 图像预处理 我们对图像进行对比度拉伸，增强粒子与背景的区分度 处理后的图像对比如下： 灰度图1 经过处理，喷雾粒子的边缘更加锐利，灰度分布也更加均匀，为后续的 PIV 计算打下了良好基础。
+2. 核心计算：PIV 速度场求解2. 核心计算：PIV 速度场求解 OpenPIV 的核心是基于互相关算法的速度场计算。我们设置了关键参数： 窗口大小 (winsize): 32 像素 搜索区域 (searchsize): 32 像素 重叠率 (overlap): 16 像素 (50%) 时间间隔 (dt): 0.02 秒 2.1 数据验证与后处理 原始计算结果中可能存在异常值，我们通过信噪比（sig2noise）进行验证，并使用局部平均法替换异常值。
+3. 结果可视化：从矢量场到统计分析3. 结果可视化：从矢量场到统计分析 计算完成后，我们需要通过丰富的可视化手段来解读流场信息。 3.1 速度矢量场 最直观的方式是直接绘制速度矢量场，我们可以将其叠加在原始图像上，清晰地看到喷雾粒子的运动方向和强度。 生成的三合一矢量场分析图如下： 矢量场 从图中可以清晰地看到： 喷雾场在燃烧室出口处（图像右侧）速度明显增大，形成了高速射流。 中心区域（喷孔附近）的速度分布较为复杂，存在明显的涡结构。 3.2 详细统计分析 为了更深入地分析流场特性，我们生成了包含多种统计图表的综合分析图： 综合分析图 这张图包含了丰富的信息： 速度分量分布：U、V 分量和速度大小的概率密度分布，显示了流场的整体统计特性。 空间分布：速度大小的空间分布散点图，直观展示了高速区域的位置。 方向分布：速度方向的直方图，揭示了流场的主导流动方向。 流线图：通过插值生成的流线图，清晰地描绘了流场的涡结构和流动模式。 速度剖面：在 Y=3 和 X=7 处的速度剖面，用于定量分析特定位置的流场特性。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2026-04-02T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-04-02T00:00:00+00:00">
+
+  <meta itemprop="name" content="Openpiv">
+  <meta itemprop="description" content="【修改意见，分段，更新图，放原始代码和原始数据的例子，方便读者下载】
+OpenPIV 喷雾场 PIV 分析：从图像到速度场全流程 在燃烧与喷雾诊断研究中，粒子图像测速（PIV）是获取流场速度分布的核心手段。本文将结合实际喷雾图像，完整复现从原始图像预处理、PIV 计算到结果可视化的全流程，帮助快速上手 OpenPIV 工具。
+1. 准备工作：图像读取与预处理1. 准备工作：图像读取与预处理 我们的实验对象是两帧连续的喷雾图像，记录了燃烧室中液滴的运动。首先需要安全读取图像并进行预处理，以提升后续 PIV 计算的精度。 1.1 图像读取 为了避免 TIFF 图像的 LZW 压缩问题，我们使用 PIL 库来读取图像，并将其转换为灰度图 灰度图 可以看到，图像中包含了清晰的喷雾粒子和燃烧室背景，但整体对比度偏低，不利于后续的互相关计算。
+1.2 图像预处理 我们对图像进行对比度拉伸，增强粒子与背景的区分度 处理后的图像对比如下： 灰度图1 经过处理，喷雾粒子的边缘更加锐利，灰度分布也更加均匀，为后续的 PIV 计算打下了良好基础。
+2. 核心计算：PIV 速度场求解2. 核心计算：PIV 速度场求解 OpenPIV 的核心是基于互相关算法的速度场计算。我们设置了关键参数： 窗口大小 (winsize): 32 像素 搜索区域 (searchsize): 32 像素 重叠率 (overlap): 16 像素 (50%) 时间间隔 (dt): 0.02 秒 2.1 数据验证与后处理 原始计算结果中可能存在异常值，我们通过信噪比（sig2noise）进行验证，并使用局部平均法替换异常值。
+3. 结果可视化：从矢量场到统计分析3. 结果可视化：从矢量场到统计分析 计算完成后，我们需要通过丰富的可视化手段来解读流场信息。 3.1 速度矢量场 最直观的方式是直接绘制速度矢量场，我们可以将其叠加在原始图像上，清晰地看到喷雾粒子的运动方向和强度。 生成的三合一矢量场分析图如下： 矢量场 从图中可以清晰地看到： 喷雾场在燃烧室出口处（图像右侧）速度明显增大，形成了高速射流。 中心区域（喷孔附近）的速度分布较为复杂，存在明显的涡结构。 3.2 详细统计分析 为了更深入地分析流场特性，我们生成了包含多种统计图表的综合分析图： 综合分析图 这张图包含了丰富的信息： 速度分量分布：U、V 分量和速度大小的概率密度分布，显示了流场的整体统计特性。 空间分布：速度大小的空间分布散点图，直观展示了高速区域的位置。 方向分布：速度方向的直方图，揭示了流场的主导流动方向。 流线图：通过插值生成的流线图，清晰地描绘了流场的涡结构和流动模式。 速度剖面：在 Y=3 和 X=7 处的速度剖面，用于定量分析特定位置的流场特性。">
+  <meta itemprop="datePublished" content="2026-04-02T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-04-02T00:00:00+00:00">
+  <meta itemprop="wordCount" content="101">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Openpiv">
+  <meta name="twitter:description" content="【修改意见，分段，更新图，放原始代码和原始数据的例子，方便读者下载】
+OpenPIV 喷雾场 PIV 分析：从图像到速度场全流程 在燃烧与喷雾诊断研究中，粒子图像测速（PIV）是获取流场速度分布的核心手段。本文将结合实际喷雾图像，完整复现从原始图像预处理、PIV 计算到结果可视化的全流程，帮助快速上手 OpenPIV 工具。
+1. 准备工作：图像读取与预处理1. 准备工作：图像读取与预处理 我们的实验对象是两帧连续的喷雾图像，记录了燃烧室中液滴的运动。首先需要安全读取图像并进行预处理，以提升后续 PIV 计算的精度。 1.1 图像读取 为了避免 TIFF 图像的 LZW 压缩问题，我们使用 PIL 库来读取图像，并将其转换为灰度图 灰度图 可以看到，图像中包含了清晰的喷雾粒子和燃烧室背景，但整体对比度偏低，不利于后续的互相关计算。
+1.2 图像预处理 我们对图像进行对比度拉伸，增强粒子与背景的区分度 处理后的图像对比如下： 灰度图1 经过处理，喷雾粒子的边缘更加锐利，灰度分布也更加均匀，为后续的 PIV 计算打下了良好基础。
+2. 核心计算：PIV 速度场求解2. 核心计算：PIV 速度场求解 OpenPIV 的核心是基于互相关算法的速度场计算。我们设置了关键参数： 窗口大小 (winsize): 32 像素 搜索区域 (searchsize): 32 像素 重叠率 (overlap): 16 像素 (50%) 时间间隔 (dt): 0.02 秒 2.1 数据验证与后处理 原始计算结果中可能存在异常值，我们通过信噪比（sig2noise）进行验证，并使用局部平均法替换异常值。
+3. 结果可视化：从矢量场到统计分析3. 结果可视化：从矢量场到统计分析 计算完成后，我们需要通过丰富的可视化手段来解读流场信息。 3.1 速度矢量场 最直观的方式是直接绘制速度矢量场，我们可以将其叠加在原始图像上，清晰地看到喷雾粒子的运动方向和强度。 生成的三合一矢量场分析图如下： 矢量场 从图中可以清晰地看到： 喷雾场在燃烧室出口处（图像右侧）速度明显增大，形成了高速射流。 中心区域（喷孔附近）的速度分布较为复杂，存在明显的涡结构。 3.2 详细统计分析 为了更深入地分析流场特性，我们生成了包含多种统计图表的综合分析图： 综合分析图 这张图包含了丰富的信息： 速度分量分布：U、V 分量和速度大小的概率密度分布，显示了流场的整体统计特性。 空间分布：速度大小的空间分布散点图，直观展示了高速区域的位置。 方向分布：速度方向的直方图，揭示了流场的主导流动方向。 流线图：通过插值生成的流线图，清晰地描绘了流场的涡结构和流动模式。 速度剖面：在 Y=3 和 X=7 处的速度剖面，用于定量分析特定位置的流场特性。">
+
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        刘训臣燃烧诊断实验室主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/our-alumni/" title="Alumni 页">
+              Alumni
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">Openpiv</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Post
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Openpiv</h1>
+      
+      <p class="tracked"><strong>赵鑫浩</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-04-02T00:00:00Z">四月 2, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>【修改意见，分段，更新图，放原始代码和原始数据的例子，方便读者下载】</p>
+<h1 id="openpiv">OpenPIV</h1>
+<h2 id="喷雾场-piv-分析从图像到速度场全流程">喷雾场 PIV 分析：从图像到速度场全流程</h2>
+<p>在燃烧与喷雾诊断研究中，粒子图像测速（PIV）是获取流场速度分布的核心手段。本文将结合实际喷雾图像，完整复现从原始图像预处理、PIV 计算到结果可视化的全流程，帮助快速上手 OpenPIV 工具。</p>
+<h4 id="1-准备工作图像读取与预处理1-准备工作图像读取与预处理">1. 准备工作：图像读取与预处理1. 准备工作：图像读取与预处理</h4>
+<p>我们的实验对象是两帧连续的喷雾图像，记录了燃烧室中液滴的运动。首先需要安全读取图像并进行预处理，以提升后续 PIV 计算的精度。
+1.1 图像读取
+为了避免 TIFF 图像的 LZW 压缩问题，我们使用 PIL 库来读取图像，并将其转换为灰度图
+<figure><img src="/xliu-group/zh/post/zhaoxinhao1_openpiv/%E7%81%B0%E5%BA%A6%E5%9B%BE.png"><figcaption>
+      <h4>灰度图</h4>
+    </figcaption>
+</figure>
+</p>
+<p>可以看到，图像中包含了清晰的喷雾粒子和燃烧室背景，但整体对比度偏低，不利于后续的互相关计算。</p>
+<p>1.2 图像预处理
+我们对图像进行对比度拉伸，增强粒子与背景的区分度
+处理后的图像对比如下：
+<figure><img src="/xliu-group/zh/post/zhaoxinhao1_openpiv/%E7%81%B0%E5%BA%A6%E5%9B%BE1.png"><figcaption>
+      <h4>灰度图1</h4>
+    </figcaption>
+</figure>
+
+经过处理，喷雾粒子的边缘更加锐利，灰度分布也更加均匀，为后续的 PIV 计算打下了良好基础。</p>
+<h4 id="2-核心计算piv-速度场求解2-核心计算piv-速度场求解">2. 核心计算：PIV 速度场求解2. 核心计算：PIV 速度场求解</h4>
+<p>OpenPIV 的核心是基于互相关算法的速度场计算。我们设置了关键参数：
+窗口大小 (winsize): 32 像素
+搜索区域 (searchsize): 32 像素
+重叠率 (overlap): 16 像素 (50%)
+时间间隔 (dt): 0.02 秒
+2.1 数据验证与后处理
+原始计算结果中可能存在异常值，我们通过信噪比（sig2noise）进行验证，并使用局部平均法替换异常值。</p>
+<h4 id="3-结果可视化从矢量场到统计分析3-结果可视化从矢量场到统计分析">3. 结果可视化：从矢量场到统计分析3. 结果可视化：从矢量场到统计分析</h4>
+<p>计算完成后，我们需要通过丰富的可视化手段来解读流场信息。
+3.1 速度矢量场
+最直观的方式是直接绘制速度矢量场，我们可以将其叠加在原始图像上，清晰地看到喷雾粒子的运动方向和强度。
+生成的三合一矢量场分析图如下：
+<figure><img src="/xliu-group/zh/post/zhaoxinhao1_openpiv/%E7%9F%A2%E9%87%8F%E5%9C%BA.png"><figcaption>
+      <h4>矢量场</h4>
+    </figcaption>
+</figure>
+
+从图中可以清晰地看到：
+喷雾场在燃烧室出口处（图像右侧）速度明显增大，形成了高速射流。
+中心区域（喷孔附近）的速度分布较为复杂，存在明显的涡结构。
+3.2 详细统计分析
+为了更深入地分析流场特性，我们生成了包含多种统计图表的综合分析图：
+<figure><img src="/xliu-group/zh/post/zhaoxinhao1_openpiv/%E7%BB%BC%E5%90%88%E5%88%86%E6%9E%90%E5%9B%BE.png"><figcaption>
+      <h4>综合分析图</h4>
+    </figcaption>
+</figure>
+
+这张图包含了丰富的信息：
+速度分量分布：U、V 分量和速度大小的概率密度分布，显示了流场的整体统计特性。
+空间分布：速度大小的空间分布散点图，直观展示了高速区域的位置。
+方向分布：速度方向的直方图，揭示了流场的主导流动方向。
+流线图：通过插值生成的流线图，清晰地描绘了流场的涡结构和流动模式。
+速度剖面：在 Y=3 和 X=7 处的速度剖面，用于定量分析特定位置的流场特性。</p>
+<h4 id="4-结果保存与报告生成4-结果保存与报告生成">4. 结果保存与报告生成4. 结果保存与报告生成</h4>
+<p>最后，我们将 PIV 结果保存为文本和 CSV 格式，方便后续分析，并自动生成一份包含所有关键信息的分析报告。
+总结
+通过 OpenPIV，我们成功地从两帧喷雾图像中提取出了完整的速度场信息，并通过多维度的可视化手段对其进行了深入分析。这个流程不仅适用于喷雾场，也可以推广到其他流场的 PIV 分析中。</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

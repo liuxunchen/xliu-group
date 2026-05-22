@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>质量流量计 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="【需写清楚原理和公式推导】
+质量流量计由流量传感器，分流器通道和流量放大电路等部件组成；在质量流量计的基础上，再加上调节阀门和PID控制电路就构成了质量流量控制器。
+如下图所示
+
+      七星质量流量控制器
+    
+
+
+质量流量计和质量流量控制器出厂通常用N2标定。
+质量流量计的单位为：SCCM（标准毫升/分）、SLM（标准升/分）
+标准状态规定为：温度（273.15K）、气压（101325pa)
+为了解决用氮气标定的仪表测其他气体时的读数偏差，实现不同气体间的流量准确换算。需要用到流量转换系数，又称气体转换系数，是热式质量流量计（MFM）/ 控制器（MFC）中，将实际气体流量换算为标定气体（默认氮气 N₂，CF=1.00）等效流量的比例值。
+其基本原理：由于热式流量计通过测量气体带走的热量计算流量，而不同气体的密度（ρ）、定压比热（Cp）、分子结构不同，换热能力差异显著，因此需要系数修正。
+
+$$C = \\frac{0.3106 \\times N}{\\rho \\times C\_p}$$
+其中C：流量转换系数，N：分子结构系数，ρ：标准状态下气体密度（kg/m³），Cp定压比热（J/(kg・℃）
+气体质量流量转换系数如下表所示
+
+      气体质量流量转换系数表1
+    
+
+
+
+      气体质量流量转换系数表2
+    
+
+
+实际流量计算：
+
+$$\\text{实际气体流量} = \\text{仪表显示值（N}\_2\\text{当量）} \\times \\text{转换系数 } C$$
+示例：N₂标定 MFC 测 He，显示 100 SCCM，则实际 He 流量 = 100×1.41=141 SCCM。
+量程选型换算：
+$$\\text{所需N}\_2\\text{标定量程} = \\frac{\\text{实际气体最大流量}}{\\text{转换系数 } C}$$示例：需测 He 200 SCCM，则选 N₂量程 = 200/1.41≈142 SCCM。
+混合气体系数计算：
+按各组分体积分数加权平均：
+$$C\_{\\text{mix}} = \\sum\_{i=1}^{n} \\varphi\_i \\times C\_i$$示例：50% N₂（C=1.00）&#43;50% Ar（C=1.42），$C_{\text{mix}} = 0.5 \times 1.00 &#43; 0.5 \times 1.42 = 1.21$）">
+    <meta name="generator" content="Hugo 0.159.0">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="冉佳兴">
+    
+
+    
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/ranjiaxing3/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/ranjiaxing3/">
+  <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+  <meta property="og:title" content="质量流量计">
+  <meta property="og:description" content="【需写清楚原理和公式推导】
+质量流量计由流量传感器，分流器通道和流量放大电路等部件组成；在质量流量计的基础上，再加上调节阀门和PID控制电路就构成了质量流量控制器。 如下图所示 七星质量流量控制器 质量流量计和质量流量控制器出厂通常用N2标定。 质量流量计的单位为：SCCM（标准毫升/分）、SLM（标准升/分） 标准状态规定为：温度（273.15K）、气压（101325pa) 为了解决用氮气标定的仪表测其他气体时的读数偏差，实现不同气体间的流量准确换算。需要用到流量转换系数，又称气体转换系数，是热式质量流量计（MFM）/ 控制器（MFC）中，将实际气体流量换算为标定气体（默认氮气 N₂，CF=1.00）等效流量的比例值。 其基本原理：由于热式流量计通过测量气体带走的热量计算流量，而不同气体的密度（ρ）、定压比热（Cp）、分子结构不同，换热能力差异显著，因此需要系数修正。 $$C = \\frac{0.3106 \\times N}{\\rho \\times C\_p}$$ 其中C：流量转换系数，N：分子结构系数，ρ：标准状态下气体密度（kg/m³），Cp定压比热（J/(kg・℃） 气体质量流量转换系数如下表所示
+气体质量流量转换系数表1 气体质量流量转换系数表2 实际流量计算： $$\\text{实际气体流量} = \\text{仪表显示值（N}\_2\\text{当量）} \\times \\text{转换系数 } C$$ 示例：N₂标定 MFC 测 He，显示 100 SCCM，则实际 He 流量 = 100×1.41=141 SCCM。
+量程选型换算：
+$$\\text{所需N}\_2\\text{标定量程} = \\frac{\\text{实际气体最大流量}}{\\text{转换系数 } C}$$示例：需测 He 200 SCCM，则选 N₂量程 = 200/1.41≈142 SCCM。
+混合气体系数计算：
+按各组分体积分数加权平均：
+$$C\_{\\text{mix}} = \\sum\_{i=1}^{n} \\varphi\_i \\times C\_i$$示例：50% N₂（C=1.00）&#43;50% Ar（C=1.42），$C_{\text{mix}} = 0.5 \times 1.00 &#43; 0.5 \times 1.42 = 1.21$）">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2026-05-07T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-05-07T00:00:00+00:00">
+
+  <meta itemprop="name" content="质量流量计">
+  <meta itemprop="description" content="【需写清楚原理和公式推导】
+质量流量计由流量传感器，分流器通道和流量放大电路等部件组成；在质量流量计的基础上，再加上调节阀门和PID控制电路就构成了质量流量控制器。 如下图所示 七星质量流量控制器 质量流量计和质量流量控制器出厂通常用N2标定。 质量流量计的单位为：SCCM（标准毫升/分）、SLM（标准升/分） 标准状态规定为：温度（273.15K）、气压（101325pa) 为了解决用氮气标定的仪表测其他气体时的读数偏差，实现不同气体间的流量准确换算。需要用到流量转换系数，又称气体转换系数，是热式质量流量计（MFM）/ 控制器（MFC）中，将实际气体流量换算为标定气体（默认氮气 N₂，CF=1.00）等效流量的比例值。 其基本原理：由于热式流量计通过测量气体带走的热量计算流量，而不同气体的密度（ρ）、定压比热（Cp）、分子结构不同，换热能力差异显著，因此需要系数修正。 $$C = \\frac{0.3106 \\times N}{\\rho \\times C\_p}$$ 其中C：流量转换系数，N：分子结构系数，ρ：标准状态下气体密度（kg/m³），Cp定压比热（J/(kg・℃） 气体质量流量转换系数如下表所示
+气体质量流量转换系数表1 气体质量流量转换系数表2 实际流量计算： $$\\text{实际气体流量} = \\text{仪表显示值（N}\_2\\text{当量）} \\times \\text{转换系数 } C$$ 示例：N₂标定 MFC 测 He，显示 100 SCCM，则实际 He 流量 = 100×1.41=141 SCCM。
+量程选型换算：
+$$\\text{所需N}\_2\\text{标定量程} = \\frac{\\text{实际气体最大流量}}{\\text{转换系数 } C}$$示例：需测 He 200 SCCM，则选 N₂量程 = 200/1.41≈142 SCCM。
+混合气体系数计算：
+按各组分体积分数加权平均：
+$$C\_{\\text{mix}} = \\sum\_{i=1}^{n} \\varphi\_i \\times C\_i$$示例：50% N₂（C=1.00）&#43;50% Ar（C=1.42），$C_{\text{mix}} = 0.5 \times 1.00 &#43; 0.5 \times 1.42 = 1.21$）">
+  <meta itemprop="datePublished" content="2026-05-07T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-05-07T00:00:00+00:00">
+  <meta itemprop="wordCount" content="74">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="质量流量计">
+  <meta name="twitter:description" content="【需写清楚原理和公式推导】
+质量流量计由流量传感器，分流器通道和流量放大电路等部件组成；在质量流量计的基础上，再加上调节阀门和PID控制电路就构成了质量流量控制器。 如下图所示 七星质量流量控制器 质量流量计和质量流量控制器出厂通常用N2标定。 质量流量计的单位为：SCCM（标准毫升/分）、SLM（标准升/分） 标准状态规定为：温度（273.15K）、气压（101325pa) 为了解决用氮气标定的仪表测其他气体时的读数偏差，实现不同气体间的流量准确换算。需要用到流量转换系数，又称气体转换系数，是热式质量流量计（MFM）/ 控制器（MFC）中，将实际气体流量换算为标定气体（默认氮气 N₂，CF=1.00）等效流量的比例值。 其基本原理：由于热式流量计通过测量气体带走的热量计算流量，而不同气体的密度（ρ）、定压比热（Cp）、分子结构不同，换热能力差异显著，因此需要系数修正。 $$C = \\frac{0.3106 \\times N}{\\rho \\times C\_p}$$ 其中C：流量转换系数，N：分子结构系数，ρ：标准状态下气体密度（kg/m³），Cp定压比热（J/(kg・℃） 气体质量流量转换系数如下表所示
+气体质量流量转换系数表1 气体质量流量转换系数表2 实际流量计算： $$\\text{实际气体流量} = \\text{仪表显示值（N}\_2\\text{当量）} \\times \\text{转换系数 } C$$ 示例：N₂标定 MFC 测 He，显示 100 SCCM，则实际 He 流量 = 100×1.41=141 SCCM。
+量程选型换算：
+$$\\text{所需N}\_2\\text{标定量程} = \\frac{\\text{实际气体最大流量}}{\\text{转换系数 } C}$$示例：需测 He 200 SCCM，则选 N₂量程 = 200/1.41≈142 SCCM。
+混合气体系数计算：
+按各组分体积分数加权平均：
+$$C\_{\\text{mix}} = \\sum\_{i=1}^{n} \\varphi\_i \\times C\_i$$示例：50% N₂（C=1.00）&#43;50% Ar（C=1.42），$C_{\text{mix}} = 0.5 \times 1.00 &#43; 0.5 \times 1.42 = 1.21$）">
+
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        刘训臣燃烧诊断实验室主页
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/our-alumni/" title="Alumni 页">
+              Alumni
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">质量流量计</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Post
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">质量流量计</h1>
+      
+      <p class="tracked"><strong>冉佳兴</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-05-07T00:00:00Z">五月 7, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>【需写清楚原理和公式推导】</p>
+<p>质量流量计由流量传感器，分流器通道和流量放大电路等部件组成；在质量流量计的基础上，再加上调节阀门和PID控制电路就构成了质量流量控制器。
+如下图所示
+<figure><img src="/xliu-group/zh/post/ranjiaxing3/%E6%B5%81%E9%87%8F%E8%AE%A1.png"><figcaption>
+      <h4>七星质量流量控制器</h4>
+    </figcaption>
+</figure>
+
+质量流量计和质量流量控制器出厂通常用N2标定。
+质量流量计的单位为：SCCM（标准毫升/分）、SLM（标准升/分）
+标准状态规定为：温度（273.15K）、气压（101325pa)
+为了解决用氮气标定的仪表测其他气体时的读数偏差，实现不同气体间的流量准确换算。需要用到流量转换系数，又称气体转换系数，是热式质量流量计（MFM）/ 控制器（MFC）中，将实际气体流量换算为标定气体（默认氮气 N₂，CF=1.00）等效流量的比例值。
+其基本原理：由于热式流量计通过测量气体带走的热量计算流量，而不同气体的密度（ρ）、定压比热（Cp）、分子结构不同，换热能力差异显著，因此需要系数修正。
+</p>
+$$C = \\frac{0.3106 \\times N}{\\rho \\times C\_p}$$<p>
+其中C：流量转换系数，N：分子结构系数，ρ：标准状态下气体密度（kg/m³），Cp定压比热（J/(kg・℃）
+气体质量流量转换系数如下表所示</p>
+<figure><img src="/xliu-group/zh/post/ranjiaxing3/%E8%A1%A81.png"><figcaption>
+      <h4>气体质量流量转换系数表1</h4>
+    </figcaption>
+</figure>
+
+<p><figure><img src="/xliu-group/zh/post/ranjiaxing3/%E8%A1%A82.png"><figcaption>
+      <h4>气体质量流量转换系数表2</h4>
+    </figcaption>
+</figure>
+
+实际流量计算：
+</p>
+$$\\text{实际气体流量} = \\text{仪表显示值（N}\_2\\text{当量）} \\times \\text{转换系数 } C$$<p>
+示例：N₂标定 MFC 测 He，显示 100 SCCM，则实际 He 流量 = 100×1.41=141 SCCM。</p>
+<p>量程选型换算：</p>
+$$\\text{所需N}\_2\\text{标定量程} = \\frac{\\text{实际气体最大流量}}{\\text{转换系数 } C}$$<p>示例：需测 He 200 SCCM，则选 N₂量程 = 200/1.41≈142 SCCM。</p>
+<p>混合气体系数计算：</p>
+<p>按各组分体积分数加权平均：</p>
+$$C\_{\\text{mix}} = \\sum\_{i=1}^{n} \\varphi\_i \\times C\_i$$<p>示例：50% N₂（C=1.00）+50% Ar（C=1.42），$C_{\text{mix}} = 0.5 \times 1.00 + 0.5 \times 1.42 = 1.21$）</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
