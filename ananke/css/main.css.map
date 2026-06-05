@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "main.css",
-	"sourceRoot": "/home/xliu/Doc/5-hugo-ananke-website",
+	"sourceRoot": "/home/xliu/Documents/5-hugo-ananke-website",
 	"sources": [
 		"ananke/css/main.css"
 	],

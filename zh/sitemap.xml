@@ -2,379 +2,469 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/</loc>
-    <lastmod>2026-05-12T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/xliu-group/zh/post/</loc>
+    <lastmod>2026-06-05T18:12:42+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/</loc>
-    <lastmod>2026-05-12T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/xliu-group/zh/post/xliu_2026_jiaozhou/</loc>
+    <lastmod>2026-06-05T18:12:42+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/xliu-group/zh/</loc>
+    <lastmod>2026-06-05T18:12:42+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://liuxunchen.github.io/xliu-group/"
+                href="http://localhost:1313/xliu-group/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://liuxunchen.github.io/xliu-group/zh/"
+                href="http://localhost:1313/xliu-group/zh/"
                 />
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-tdlas-2/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/zhaoxinhao2_droplet/</loc>
+    <lastmod>2026-05-12T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/xliu-group/zh/post/zhaodianhu1_opencv_camera_correction/</loc>
+    <lastmod>2026-05-12T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/xliu-group/zh/post/ranjiaxing2/</loc>
+    <lastmod>2026-05-07T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/xliu-group/zh/post/wangshuo7/</loc>
+    <lastmod>2026-05-07T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/xliu-group/zh/post/ranjiaxing3/</loc>
+    <lastmod>2026-05-07T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/xliu-group/zh/post/zhanghongmin_3/</loc>
+    <lastmod>2026-05-02T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/xliu-group/zh/post/2026w12/</loc>
+    <lastmod>2026-04-18T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/xliu-group/zh/post/zhaoxinhao1_openpiv/</loc>
+    <lastmod>2026-04-02T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/xliu-group/zh/post/huihao8_fringe/</loc>
+    <lastmod>2026-04-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/xliu-group/zh/post/ranjiaxing1/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/xliu-group/zh/post/gaoyinbin4_boltzmann-/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/xliu-group/zh/post/zhanghongmin-tdlas-2/</loc>
     <lastmod>2026-03-17T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/wangchen4/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/wangchen4/</loc>
     <lastmod>2026-03-08T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/2026w10/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/2026w10/</loc>
     <lastmod>2026-03-06T11:41:42+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo6/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/huihao7centera/</loc>
     <lastmod>2026-02-28T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/huihao6/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/wangshuo6/</loc>
+    <lastmod>2026-02-28T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/xliu-group/zh/post/gaoyinbin5_qtf/</loc>
+    <lastmod>2026-02-28T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/xliu-group/zh/post/gaoyinbin6_nozzle2/</loc>
+    <lastmod>2026-02-28T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/xliu-group/zh/post/huihao6/</loc>
     <lastmod>2026-01-12T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/huihao5_i2_cell/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/huihao5_i2_cell/</loc>
     <lastmod>2025-12-25T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/huihao4_etalon/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/huihao4_etalon/</loc>
     <lastmod>2025-12-15T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/wangchen3/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/wangchen3/</loc>
     <lastmod>2025-12-11T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-tdlas-1/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/zhanghongmin-tdlas-1/</loc>
     <lastmod>2025-12-11T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/xliu_flame_spectrum/</loc>
     <lastmod>2025-12-09T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/huihao3/</loc>
+    <lastmod>2025-11-25T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/xliu-group/zh/post/wangshuo5/</loc>
+    <lastmod>2025-11-11T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/xliu-group/zh/post/xliu_hitran/</loc>
     <lastmod>2025-11-08T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/people/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/people/</loc>
     <lastmod>2025-10-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/people/ranjiaxing/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/people/ranjiaxing/</loc>
     <lastmod>2025-10-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/people/zhangjiayi/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/people/zhangjiayi/</loc>
     <lastmod>2025-10-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/people/zhaoxinhao/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/people/zhaoxinhao/</loc>
     <lastmod>2025-10-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/people/zhanghongmin/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/people/zhanghongmin/</loc>
     <lastmod>2025-10-21T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/people/zhaodianhu/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/people/zhaodianhu/</loc>
     <lastmod>2025-10-21T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/xliu_absorption/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/xliu_absorption/</loc>
     <lastmod>2025-10-03T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo4/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/wangshuo4/</loc>
     <lastmod>2025-09-16T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo3/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/wangshuo3/</loc>
     <lastmod>2025-08-21T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo2/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/wangshuo2/</loc>
     <lastmod>2025-08-20T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin7_hoflame/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/gaoyinbin7_hoflame/</loc>
     <lastmod>2025-08-15T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/xliu_laser_car/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/xliu_laser_car/</loc>
     <lastmod>2025-06-30T16:14:01+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/research/xliu_diagnostic/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/research/xliu_diagnostic/</loc>
     <lastmod>2025-06-30T01:26:06+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/research/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/research/</loc>
     <lastmod>2025-06-30T01:26:06+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/xliu_dikong/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/xliu_dikong/</loc>
     <lastmod>2025-06-29T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/xliu_crossflow/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/xliu_crossflow/</loc>
     <lastmod>2025-06-23T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/wangchen1/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/wangchen1/</loc>
     <lastmod>2025-06-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin2/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/gaoyinbin2/</loc>
     <lastmod>2025-06-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/wangchen2/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/wangchen2/</loc>
     <lastmod>2025-06-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/xliu_chin_mistake/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/xliu_chin_mistake/</loc>
     <lastmod>2025-06-17T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/xliu_math/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/xliu_math/</loc>
     <lastmod>2025-06-16T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo1/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/wangshuo1/</loc>
     <lastmod>2025-05-12T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/huihao2/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/huihao2/</loc>
     <lastmod>2025-05-09T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/huihao1/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/huihao1/</loc>
     <lastmod>2025-05-09T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/wangchen5/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/wangchen5/</loc>
     <lastmod>2025-05-08T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin1/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/gaoyinbin1/</loc>
     <lastmod>2025-04-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/xliu_ch2o/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/xliu_ch2o/</loc>
     <lastmod>2025-03-23T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/xliu_method/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/xliu_method/</loc>
     <lastmod>2025-03-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/people/ayoub/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/people/ayoub/</loc>
     <lastmod>2025-03-16T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/people/muguozhen/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/people/muguozhen/</loc>
     <lastmod>2025-03-12T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/our-alumni/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/our-alumni/</loc>
     <lastmod>2025-03-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/our-alumni/congfeiyu/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/our-alumni/congfeiyu/</loc>
     <lastmod>2025-03-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/our-alumni/liyang/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/our-alumni/liyang/</loc>
     <lastmod>2025-03-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/xliu_lec1/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/xliu_lec1/</loc>
     <lastmod>2025-03-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/our-alumni/zhangxiaoyu/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/our-alumni/zhangxiaoyu/</loc>
     <lastmod>2025-03-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/people/gaoyinbin/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/people/gaoyinbin/</loc>
     <lastmod>2025-03-03T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/people/huihao/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/people/huihao/</loc>
     <lastmod>2025-03-03T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/people/wangchen/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/people/wangchen/</loc>
     <lastmod>2025-03-03T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/people/wangshuo/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/people/wangshuo/</loc>
     <lastmod>2025-03-03T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/our-alumni/qingshanyu/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/our-alumni/qingshanyu/</loc>
     <lastmod>2025-02-28T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/xliu_davis/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/people/qingshanyu/</loc>
+    <lastmod>2025-02-28T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/xliu-group/zh/post/xliu_davis/</loc>
     <lastmod>2025-02-20T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/xliu_tdlas_biomass/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/xliu_tdlas_biomass/</loc>
     <lastmod>2024-11-08T21:22:03+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/xliu_daily-book/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/xliu_daily-book/</loc>
     <lastmod>2024-10-15T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/people/xunchen/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/people/xunchen/</loc>
     <lastmod>2024-10-01T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/xliu_hello-world/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/xliu_hello-world/</loc>
     <lastmod>2024-10-01T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/post/zhangjiayi1_coal/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/post/zhangjiayi1_coal/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/categories/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://liuxunchen.github.io/xliu-group/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://liuxunchen.github.io/xliu-group/zh/categories/"
-                />
-  </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/news/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/categories/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://liuxunchen.github.io/xliu-group/news/"
+                href="http://localhost:1313/xliu-group/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://liuxunchen.github.io/xliu-group/zh/news/"
+                href="http://localhost:1313/xliu-group/zh/categories/"
                 />
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/paper/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/news/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://liuxunchen.github.io/xliu-group/paper/"
+                href="http://localhost:1313/xliu-group/news/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://liuxunchen.github.io/xliu-group/zh/paper/"
+                href="http://localhost:1313/xliu-group/zh/news/"
                 />
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/research/piv/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/tags/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/paper/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://liuxunchen.github.io/xliu-group/tags/"
+                href="http://localhost:1313/xliu-group/paper/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://liuxunchen.github.io/xliu-group/zh/tags/"
+                href="http://localhost:1313/xliu-group/zh/paper/"
                 />
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/research/spectrum/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/research/piv/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/research/burner/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/tags/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/xliu-group/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:1313/xliu-group/zh/tags/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/xliu-group/zh/research/spectrum/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/research/literature/</loc>
+    <loc>http://localhost:1313/xliu-group/zh/research/burner/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/xliu-group/zh/research/literature/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

@@ -2,74 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://liuxunchen.github.io/xliu-group/categories/</loc>
+    <loc>http://localhost:1313/xliu-group/categories/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://liuxunchen.github.io/xliu-group/zh/categories/"
+                href="http://localhost:1313/xliu-group/zh/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://liuxunchen.github.io/xliu-group/categories/"
+                href="http://localhost:1313/xliu-group/categories/"
                 />
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/news/</loc>
+    <loc>http://localhost:1313/xliu-group/news/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://liuxunchen.github.io/xliu-group/zh/news/"
+                href="http://localhost:1313/xliu-group/zh/news/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://liuxunchen.github.io/xliu-group/news/"
+                href="http://localhost:1313/xliu-group/news/"
                 />
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/paper/</loc>
+    <loc>http://localhost:1313/xliu-group/paper/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://liuxunchen.github.io/xliu-group/zh/paper/"
+                href="http://localhost:1313/xliu-group/zh/paper/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://liuxunchen.github.io/xliu-group/paper/"
+                href="http://localhost:1313/xliu-group/paper/"
                 />
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/tags/</loc>
+    <loc>http://localhost:1313/xliu-group/tags/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://liuxunchen.github.io/xliu-group/zh/tags/"
+                href="http://localhost:1313/xliu-group/zh/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://liuxunchen.github.io/xliu-group/tags/"
+                href="http://localhost:1313/xliu-group/tags/"
                 />
   </url><url>
-    <loc>https://liuxunchen.github.io/xliu-group/</loc>
+    <loc>http://localhost:1313/xliu-group/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://liuxunchen.github.io/xliu-group/zh/"
+                href="http://localhost:1313/xliu-group/zh/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://liuxunchen.github.io/xliu-group/"
+                href="http://localhost:1313/xliu-group/"
                 />
   </url>
 </urlset>

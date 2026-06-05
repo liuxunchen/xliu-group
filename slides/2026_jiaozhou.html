@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="刘训臣">
+  <title>激光燃烧诊断研究进展</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="/reveal.js/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="/reveal.js/dist/theme/sky.css" id="theme">
+  <link rel="stylesheet" href="custom.css"/>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">激光燃烧诊断研究进展</h1>
+  <p class="subtitle">山科大机电学院座谈向胶州市领导汇报</p>
+  <p class="author">刘训臣</p>
+  <p class="date">2026年6月6日</p>
+</section>
+
+<section class="slide level2">
+
+<section class="cover-slide" data-no-slide-number>
+<div class="cover-image-wrapper">
+<p><img src="media/campus.jpg" alt="山东科技大学校园" class="cover-image"></p>
+</div>
+<div class="cover-text-wrapper">
+<h2>
+激光燃烧诊断研究进展
+</h2>
+<div class="author-info">
+<p><span>山东科技大学</span> <span>机械电子工程学院</span>
+<span>刘训臣</span></p>
+</div>
+</div>
+<aside class="notes">
+工作汇报封面，校园图背景
+</aside>
+</section>
+<!-- ==================== 教育背景、工作经历 ==================== -->
+</section>
+<section id="教育背景-工作经历" class="slide level2">
+<h2>教育背景 工作经历</h2>
+<div class="timeline">
+<div class="timeline-item">
+<div class="year">
+2002–2007
+</div>
+<div class="desc">
+<strong>山东大学化学与化工学院</strong> · 学士
+</div>
+</div>
+<div class="timeline-item">
+<div class="year">
+2007–2012
+</div>
+<div class="desc">
+<strong>Alberta大学化学系</strong> · 博士
+</div>
+</div>
+<div class="timeline-item">
+<div class="year">
+2012–2014
+</div>
+<div class="desc">
+<strong>Alberta大学化工材料系</strong> · 博士后
+</div>
+</div>
+<div class="timeline-item">
+<div class="year">
+2015–2022
+</div>
+<div class="desc">
+<strong>上海交通大学</strong> · 机械与动力工程学院
+</div>
+</div>
+<div class="timeline-item">
+<div class="year">
+2022–2023
+</div>
+<div class="desc">
+<strong>上海交通大学</strong> · 航空航天学院
+</div>
+</div>
+<div class="timeline-item">
+<div class="year">
+2023–
+</div>
+<div class="desc">
+<strong>山东科技大学</strong> · 机械电子工程学院
+</div>
+</div>
+</div>
+<aside class="notes">
+教育背景时间线，从本科到现任。
+</aside>
+<!-- ==================== 研究主题 ==================== -->
+</section>
+<section id="研究主题" class="slide level2">
+<h2>研究主题</h2>
+<ul>
+<li>面向动力工程 <strong>“卡脖子”</strong> 难题，发展基于
+<strong>吸收、荧光、散射</strong> 的 <strong>激光高频动态诊断</strong>
+方法</li>
+<li>建成世界领先的
+<strong>激光诊断实验平台</strong>，服务航空发动机与燃气轮机<strong>低污染/高温升燃烧室</strong>
+研发</li>
+<li>推进 <strong>深部煤炭原位流态化开采</strong>，发展 2000m、10–25 MPa
+条件下关键参数
+<strong>透明化感知</strong>，支撑原位燃烧发电与气化路径</li>
+</ul>
+<aside class="notes">
+在研项目：中航装备（发动机排气测试），北京卓镭（燃烧诊断系统），航星（发动机出口测试）
+</aside>
+<!-- ==================== 论文与实验室建设 ==================== -->
+</section>
+<section id="激光诊断实验室" class="slide level2">
+<h2>激光诊断实验室</h2>
+<div style="text-align: left;">
+<p><strong>平台与能力</strong><br />
+- 初步具备小型发动机、低速风洞、小型高焓超声速射流喷管测试能力<br />
+- 红外光谱（发动机燃烧、井下气体检测）<br />
+- 高频串脉冲激光 PIV/PLIF 成像（发动机、煤粉燃烧）<br />
+- 瑞利散射成像（高超声速燃烧测速测温、海面浮标）</p>
+<p><strong>论文发表</strong><br />
+已发表论文50余篇，覆盖 Proc. Combust. Inst.、Combust. Flame、Opt.
+Lett.、Opt. Express 等燃烧与光学领域顶刊。</p>
+</div>
+<!-- ==================== 基金与专利 ==================== -->
+</section>
+<section id="基金来源" class="slide level2">
+<h2>基金来源</h2>
+<div style="text-align: left;">
+<div class="small-text">
+<p>航发强旋流多参数测量技术（国自然重大研究计划, 2020-2023）<br />
+基于激光诱导磷光的火焰研究（国自然面上项目, 2021-2024）<br />
+醚类燃料低温氧化光谱研究（国自然青年项目, 2017-2019）<br />
+羽流场测温系统（北京航天试验技术研究所, 2021-2022）<br />
+轴向分级燃烧室一体化设计（上海市面上项目, 2021-2024）<br />
+超高重频TDLAS燃烧诊断（西北核技术研究所, 2021-2023）<br />
+湍流燃烧温度场测量（西北核技术研究所, 2020-2022）<br />
+专用测量系统（中航工程集成设备有限公司，2025-2026）<br />
+轻型航空发动机温度场诊断技术研发及示范应用（青岛中科航星科技有限公司，2026-2027）</p>
+</div>
+</div>
+<!-- ==================== 基金与专利 ==================== -->
+</section>
+<section id="授权专利" class="slide level2">
+<h2>授权专利</h2>
+<div style="text-align: left;">
+<div class="small-text">
+<p>反射模式的TDLAS与PIV、PLIF同时拍摄的测量装置及相关方法<br />
+一种双色粒子图像测速方法及装置<br />
+CN114518230B 发动机羽流场速度温度同步测量系统<br />
+CN114413280B 双级径向旋流标准模型燃烧器<br />
+CN114353121B 多喷嘴燃料注入方法<br />
+CN113357634B 平面火焰燃烧装置及燃烧系统<br />
+CN112629670B 高频动态火焰温度测量方法与系统<br />
+CN112098363B 高频NO-PLIF成像测量装置及方法<br />
+CN112098344B 氮氧化物的高频DFWM定量测量装置及方法<br />
+CN112097953B 高频双色相干反斯托克斯拉曼光谱测温装置及方法<br />
+CN111832617B 发动机冷态测试故障诊断方法<br />
+CN108183387B 光学参量振荡器系统<br />
+CN107782463B 同步测量火焰形态和温度的装置及方法<br />
+CN107576505B 中红外激光发动机燃烧监测系统</p>
+</div>
+</div>
+<!-- ==================== 研究亮点一 ==================== -->
+</section>
+<section id="亮点一燃烧室高频成像" class="slide level2">
+<h2>亮点一：燃烧室高频成像</h2>
+<!-- 图片占位：Picture9 -->
+<div class="r-stretch">
+<figure>
+<img data-src="media/Picture9.png"
+alt="基于高频串脉冲激光的模型燃烧室成像研究" />
+<figcaption
+aria-hidden="true">基于高频串脉冲激光的模型燃烧室成像研究</figcaption>
+</figure>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 class="small-title"
+id="亮点一燃烧室高频成像-自研高能高频串脉冲激光器">亮点一：燃烧室高频成像<br>自研高能高频串脉冲激光器</h3>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img data-src="media/grace-laser.jpg" /></p>
+</div><div class="column" style="width:40%;">
+<p><img data-src="media/grace-laser2.jpg" /></p>
+</div>
+</div>
+<div class="small-text">
+<p>窄线宽、波长可调、脉宽可调种子激光，MOPA多级放大。 </br> 100kHz 2J
+10ms。</p>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 class="small-title"
+id="亮点一燃烧室高频成像-模型燃烧室高频测量">亮点一：燃烧室高频成像<br>模型燃烧室高频测量</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="media/beihang.png" alt="低污染燃烧室" /><br />
+<small>低污染燃烧室</small></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="media/erjiu.jpg" alt="高温升燃烧室" /><br />
+<small>高温升燃烧室</small></p>
+</div>
+</div>
+<div class="small-text">
+<p>实验指导燃烧室设计<br />
+系统研究燃烧室动态结构</p>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 class="small-title"
+id="亮点一燃烧室高频成像-中心分级燃烧组织">亮点一：燃烧室高频成像<br>中心分级燃烧组织</h3>
+<div class="media-row">
+<div class="media-item">
+<p><img src="media/1.gif" width="100%"> <small>火焰 CH
+基团发光成像</small></p>
+</div>
+<div class="media-item">
+<p><img src="media/2.gif" width="100%"> <small>火焰 PIV 图像</small></p>
+</div>
+<div class="media-item">
+<p><img src="media/3.gif" width="100%"> <small>火焰 PLIF
+图像</small></p>
+</div>
+</div>
+<div class="small-text">
+<p>旋流火焰燃烧不稳定性<br />
+熵波产生机制</p>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 class="small-title"
+id="亮点一燃烧室高频成像-plif-与-piv-同步测量">亮点一：燃烧室高频成像<br>PLIF
+与 PIV 同步测量</h3>
+<div class="media-row">
+<p><img src="media/lift_swirl/1.gif" alt="PLIF动画" width="30%">
+<img src="media/lift_swirl/2.gif" alt="PIV动画" width="30%">
+<img src="media/lift_swirl/3.gif" alt="同步对比" width="30%"></p>
+</div>
+<div class="small-text">
+<p>同步测量火焰结构与流场，揭示旋流火焰动态特性<br />
+研究流动激励对旋流火焰吹脱的影响，观测进动涡核<br />
+非定常流场与火焰面同步测量，分析熄火过程</p>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 class="small-title"
+id="亮点一燃烧室高频成像-燃气轮机轴向分级燃烧室">亮点一：燃烧室高频成像<br>燃气轮机轴向分级燃烧室</h3>
+<!-- Picture11 -->
+<p><img data-src="media/Picture11.png" /></p>
+<p><small> <strong>排放规律</strong><br />
+- <strong>CO</strong>：低当量比 → 低温 → CO 氧化慢 →
+CO↑；小喷嘴速度大、停留短 → CO 更高<br />
+- <strong>NO</strong>：φ≈0.65 为界，低温抑制热力 NO，低氧抑制 NO；小喷嘴
+NO 更低<br />
+- <strong>NO₂</strong>：趋势同 CO，受氧化协同影响；大喷嘴 +
+优化当量比可降 NO₂<br />
+<strong>结论：</strong>
+喷嘴尺寸改变掺混与停留时间，当量比改变温度与氧浓度，共同决定污染物排放。</p>
+<p></small></p>
+<!-- ==================== 研究亮点二 ==================== -->
+</section>
+<section id="亮点二双色plif测温方法" class="slide level2">
+<h2>亮点二：双色PLIF测温方法</h2>
+<!-- Picture12 -->
+<div class="r-stretch">
+<figure>
+<img data-src="media/crossflow-T-ave.png"
+alt="燃烧室内喷嘴出口平面温度场成像" />
+<figcaption
+aria-hidden="true">燃烧室内喷嘴出口平面温度场成像</figcaption>
+</figure>
+</div>
+<div class="small-text">
+<ul>
+<li>直圆喷嘴与斜扁喷嘴对近场温度分布的影响</li>
+<li>为喷嘴选型与燃烧室设计提供了关键数据支撑</li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 class="small-title"
+id="亮点二发明双色plif测温新方法-原理与优势">亮点二：发明双色PLIF测温新方法<br>原理与优势</h3>
+<img data-src="media/Picture12.png" />
+<div class="small-text">
+<p><strong>新原理</strong>：利用甲醛光谱特性，发明双色PLIF测温，实现高精度测量<br />
+<strong>新方法</strong>：双波长脉冲串激光器 +
+单相机，设备简单，信噪比高<br />
+<strong>应用价值</strong>：简化传统双光路系统，可直接用于实际发动机燃烧室测量</p>
+</div>
+</section>
+<section class="slide level2">
+
+<section data-background-image="media/plif-T1.gif" data-background-size="cover">
+<h3>
+直圆喷嘴出口温度场
+</h3>
+<!-- 如果需要添加文字或图片，放在这里 -->
+</section>
+<section data-background-image="media/plif-T2.gif" data-background-size="cover">
+<h3>
+斜扁喷嘴出口温度场
+</h3>
+</section>
+<!-- ==================== 研究亮点三 ==================== -->
+</section>
+<section id="亮点三红外光谱测温" class="slide level2">
+<h2>亮点三：红外光谱测温</h2>
+<p><img data-src="media/tdlas.png"
+style="max-height:60vh; margin:0 auto; display:block;" /></p>
+</section>
+<section class="slide level2">
+
+<h3 class="small-title"
+id="亮点三中红激光外吸收光谱高频测温-火箭发动机羽流场测温应用">亮点三：中红激光外吸收光谱高频测温<br>火箭发动机羽流场测温应用</h3>
+<div class="small-text">
+<p>成功应用于低压羽流场测温，验证了复杂环境下的适应性与准确性<br />
+<strong>方法创新</strong>：中红外CO₂高温跃迁 +
+层析反演算法，实现高灵敏度测温<br />
+<strong>技术突破</strong>：无背景干扰、锁相动态测量，首次实现多种火焰动态测量</p>
+</div>
+<div class="media-row">
+<p><img src="media/101-1.png" alt="应用1" width="45%">
+<img src="media/101-2.png" alt="应用2" width="45%"></p>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 class="small-title"
+id="亮点三中红外激光吸收光谱高频测温-航空发动机出口ct测温">亮点三：中红外激光吸收光谱高频测温<br>航空发动机出口CT测温</h3>
+<div class="small-text">
+<p><strong>旋转式TDLAS层析成像</strong>：用于航空发动机出口温度场及组分浓度场的二维成像，解决发动机偏烧、超温、品控测量。</p>
+</div>
+<div class="media-row">
+<p><img src="media/ct1.png" alt="应用1" width="40%">
+<img src="media/ct2.png" alt="应用2" width="45%"></p>
+</div>
+<!-- ==================== 工作规划 ==================== -->
+</section>
+<section id="喷嘴设计" class="slide level2">
+<h2>喷嘴设计</h2>
+<div class="small-text">
+<p><strong>金属泡沫气泡雾化喷嘴</strong>：以三维互通金属泡沫替代传统机械钻孔，在混合室内部实现原位绵密发泡，低压即可形成均匀微米级液滴。<br />
+<strong>预混预蒸发燃烧</strong>：消除局部高温热点，从源头抑制NOx、CO、颗粒物。<br />
+<strong>航天级雾化品质</strong>：仅需常规压缩空气，灵活适配航空煤油与重质燃料，兼具抗堵塞与超低排放优势。非常适合船用锅炉重油燃烧。</p>
+</div>
+<div class="media-row">
+<p><img src="media/atomizer2.png" alt="应用2" width="22%">
+<img src="media/atomizer3.png" alt="应用3" width="22%">
+<img src="media/atomizer4.png" alt="应用3" width="22%">
+<img src="media/atomizer1.png" alt="应用1" width="16%"></p>
+</div>
+<!-- ==================== 工作规划 ==================== -->
+</section>
+<section id="火头研发" class="slide level2">
+<h2>火头研发</h2>
+<div class="small-text">
+<p><strong>氢氧高温燃烧器</strong>：从高超射流基础理论研究出发，攻克传统燃烧器易回火、热变形与短寿难题，实现<strong>3000
+K
+</strong>氢氧焰稳态平面火焰与多喷头阵列协同连续运行，填补超高温工业加热装备短板；已成功应用于
+高纯石英加工，效果远超进口产品，为燃煤/燃气锅炉低碳氢能替代提供高效零碳核心部件。</p>
+</div>
+<div class="media-row">
+<img src="media/nozzle.png" alt="应用1" width="50%">
+<img src="media/hencken.png" alt="应用3" width="50%">
+</div>
+<!-- ==================== 结束页 ==================== -->
+</section>
+<section id="感谢指导期待合作" class="slide level2">
+<h2>感谢指导！期待合作！</h2>
+<div class="r-stretch">
+<p><img data-src="media/end.png" /></p>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="/reveal.js/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        // display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+        ]
+      });
+    </script>
+    </body>
+<!-- 手动加载 MathJax -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [["$", "$"], ["\\(", "\\)"]],
+      displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+    }
+  };
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+</html>

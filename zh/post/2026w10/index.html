@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
-  <head>
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
@@ -37,17 +37,17 @@ MHz速率激光吸收光谱（LAS）与高速摄影结合
 点评：本质上，这还是 TDLAS的空间分辨率问题。 在腔体里面用TDLAS测燃烧产生的N2O，很容易就测到的是扩散到环境中的，这是常见的误区。
 
 Dharmaputra B , Nagpure P , Impagnatiello M ,et al.Flame transfer function measurement of a sequential combustor fuelled with natural gas and hydrogen[J].Combustion and Flame, 2025, 274(000).">
-    <meta name="generator" content="Hugo 0.144.2">
+    <meta name="generator" content="Hugo 0.159.0">
     
     
     
-      <meta name="robots" content="index, follow">
+      <meta name="robots" content="noindex, nofollow">
     
     <meta name="author" content="The group">
     
 
     
-<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.d05fb5f317fcf33b3a52936399bdf6f47dc776516e1692e412ec7d76f4a5faa2.css" >
+<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.css" >
 
 
 
@@ -63,10 +63,10 @@ Dharmaputra B , Nagpure P , Impagnatiello M ,et al.Flame transfer function measu
     
 
     
-      <link rel="canonical" href="https://liuxunchen.github.io/xliu-group/zh/post/2026w10/">
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/2026w10/">
     
 
-    <meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/2026w10/">
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/2026w10/">
   <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
   <meta property="og:title" content="2026年3月课题组文献讨论">
   <meta property="og:description" content="by 张洪民
@@ -102,7 +102,7 @@ MHz速率激光吸收光谱（LAS）与高速摄影结合
 Dharmaputra B , Nagpure P , Impagnatiello M ,et al.Flame transfer function measurement of a sequential combustor fuelled with natural gas and hydrogen[J].Combustion and Flame, 2025, 274(000).">
   <meta itemprop="datePublished" content="2026-03-06T11:41:42+08:00">
   <meta itemprop="dateModified" content="2026-03-06T11:41:42+08:00">
-  <meta itemprop="wordCount" content="794">
+  <meta itemprop="wordCount" content="809">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="2026年3月课题组文献讨论">
   <meta name="twitter:description" content="by 张洪民
@@ -118,8 +118,6 @@ MHz速率激光吸收光谱（LAS）与高速摄影结合
 点评：本质上，这还是 TDLAS的空间分辨率问题。 在腔体里面用TDLAS测燃烧产生的N2O，很容易就测到的是扩散到环境中的，这是常见的误区。
 Dharmaputra B , Nagpure P , Impagnatiello M ,et al.Flame transfer function measurement of a sequential combustor fuelled with natural gas and hydrogen[J].Combustion and Flame, 2025, 274(000).">
 
-      
-    
 	
 	
 	    
@@ -148,7 +146,7 @@ script.async = true;
 
     
 	
-  </head><body class="ma0 avenir bg-near-white production">
+  </head><body class="ma0 avenir bg-near-white development">
 
     
    
@@ -157,7 +155,7 @@ script.async = true;
   
   
   
-  <header class="cover bg-center" style="background-image: url('https://liuxunchen.github.io/xliu-group/images/sdust.jpg');">
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
     <div class="bg-black-60">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l center items-center justify-between">
@@ -288,14 +286,26 @@ $$<p>$\mu_f$：火焰质心位置，表示火焰的平均轴向位置。$\sigma_
 
 <p>上图是OH*化学发光图像，红色区域为火焰核心，下图是垂直积分后得到的轴向强度分布曲线 $I(x)$。竖线标注中黑色虚线表示火焰质心 ，红色虚线表示特征宽度范围$\mu_f \pm \sigma_f$，这一量化方法将火焰图像转化为可比较的数值参数。</p>
 <p><strong>创新点1 实现第二级火焰FTF的实验测量</strong></p>
+<p>作者给出了火焰响应的完整描述公式
+</p>
 $$
 \frac{\dot{Q}^{\prime}}{\bar{Q}} = F_p\frac{p_{\mathrm{us}}^{\prime}}{\bar{p}*{\mathrm{us}}} + F_u\frac{u*{\mathrm{us}}^{\prime}}{\bar{u}*{\mathrm{us}}} + F_T\frac{T*{\mathrm{us}}^{\prime}}{\bar{T}_{\mathrm{us}}}
-$$$$p\_{\\mathrm{us}}^{\\prime}/\\bar{p}*{\\mathrm{us}}$$$$u*{\\mathrm{us}}^{\\prime}/\\bar{u}*{\\mathrm{us}}$$$$T*{\\mathrm{us}}^{\\prime}/\\bar{T}\_{\\mathrm{us}}$$$$F\_p, F\_u, F\_T$$$$F\_T$$$$F\_u$$<p>速度-放热率火焰传递函数。</p>
+$$<p>描述了火焰放热率波动的可能来源：</p>
+$$p\_{\\mathrm{us}}^{\\prime}/\\bar{p}*{\\mathrm{us}}$$<p> 上游压力扰动，</p>
+$$u*{\\mathrm{us}}^{\\prime}/\\bar{u}*{\\mathrm{us}}$$<p> 上游速度扰动，</p>
+$$T*{\\mathrm{us}}^{\\prime}/\\bar{T}\_{\\mathrm{us}}$$<p> 上游温度扰动，</p>
+$$F\_p, F\_u, F\_T$$<p>：对应的传递函数。作者使用TDLAS方法测量未检测到显著的温度波动，因此 </p>
+$$F\_T$$<p> 项可忽略；压力扰动效应可合并到速度扰动分析中。得出了 </p>
+$$F\_u$$<p>速度-放热率火焰传递函数。</p>
 $$
 u\_{\\mathrm{ds}}^{\\prime} = \\gamma \\theta M\_{\\mathrm{us}}(F\_p - 1)\\frac{p\_{\\mathrm{us}}^{\\prime}}{(\\bar{\\rho}\\bar{c})*{\\mathrm{us}}} + (1 + \\theta F\_u)u*{\\mathrm{us}}^{\\prime}
-$$$$
+$$<p>
+</p>
+$$
 \\theta = \\frac{\\bar{T}*{\\mathrm{ds}}}{\\bar{T}*{\\mathrm{us}}} - 1
-$$$$u\_{\\mathrm{ds}}^{\\prime}$$$$F\_{22} = 1 + \\theta F\_u$$<p>，进而解出$F_u$速度-放热率火焰传递函数：</p>
+$$<p>这个公式基于声学守恒定律，将火焰下游速度波动 </p>
+$$u\_{\\mathrm{ds}}^{\\prime}$$<p> 表达为上游压力波动和速度波动的函数。通过测量火焰前后的声学变量，可以反推出火焰传递矩阵元素 </p>
+$$F\_{22} = 1 + \\theta F\_u$$<p>，进而解出$F_u$速度-放热率火焰传递函数：</p>
 $$
 F\_u = \\frac{F\_{22} - 1}{\\theta}
 $$<p><strong>创新点2 发现氢气掺混对FTF影响不同</strong></p>
@@ -528,7 +538,7 @@ Abel 反演可采用基于模型拟合的 Flippid 方法，预设强度分布模
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://liuxunchen.github.io/xliu-group/zh/" >
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
     &copy;  刘训臣燃烧诊断实验室主页 2026 
   </a>
     <div><div class="ananke-socials"></div>

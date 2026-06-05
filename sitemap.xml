@@ -2,14 +2,14 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <sitemap>
-    <loc>https://liuxunchen.github.io/xliu-group/en/sitemap.xml</loc>
+    <loc>http://localhost:1313/xliu-group/zh/sitemap.xml</loc>
+    
+      <lastmod>2026-06-05T18:12:42+08:00</lastmod>
     
   </sitemap>
   
   <sitemap>
-    <loc>https://liuxunchen.github.io/xliu-group/zh/sitemap.xml</loc>
-    
-      <lastmod>2026-05-12T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/xliu-group/en/sitemap.xml</loc>
     
   </sitemap>
   

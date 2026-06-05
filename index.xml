@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>山东科技大学 机械电子工程学院 燃烧诊断实验室 on Xunchen Liu group page</title>
-    <link>https://liuxunchen.github.io/xliu-group/</link>
+    <link>http://localhost:1313/xliu-group/</link>
     <description>Recent content in 山东科技大学 机械电子工程学院 燃烧诊断实验室 on Xunchen Liu group page</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://liuxunchen.github.io/xliu-group/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/xliu-group/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>News</title>
-      <link>https://liuxunchen.github.io/xliu-group/news/</link>
+      <link>http://localhost:1313/xliu-group/news/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://liuxunchen.github.io/xliu-group/news/</guid>
+      <guid>http://localhost:1313/xliu-group/news/</guid>
       <description>&lt;ul&gt;&#xA;&lt;li&gt;欢迎2025级硕士研究生: 张洪民、赵殿虎、冉佳兴、赵鑫浩、张家艺&lt;/li&gt;&#xA;&lt;li&gt;低空经济会议于6月28日举行! &lt;a href=&#34;../post/zh/dikong/&#34;&gt;低空经济会议&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;祝贺三位本科生张晓雨、从飞宇、李杨顺利完成本科毕业设计答辩&lt;/li&gt;&#xA;&lt;li&gt;互访 Prof. Cheng Song&amp;rsquo;s lab of The Hong Kong Polytechnic University&lt;/li&gt;&#xA;&lt;li&gt;欢迎2024级硕士研究生: 高寅斌、惠昊、王硕、王晨、Ayoub Attou&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Paper</title>
-      <link>https://liuxunchen.github.io/xliu-group/paper/</link>
+      <link>http://localhost:1313/xliu-group/paper/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://liuxunchen.github.io/xliu-group/paper/</guid>
+      <guid>http://localhost:1313/xliu-group/paper/</guid>
       <description>&lt;h1 id=&#34;2025&#34;&gt;2025&lt;/h1&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Xunchen Liu*, High frame rate characterization of interaction between twin-nozzle jet in crossflow &lt;a href=&#34;https://doi.org/10.48550/arXiv.2409.19927&#34;&gt;https://doi.org/10.48550/arXiv.2409.19927&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h1 id=&#34;2024&#34;&gt;2024&lt;/h1&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;刘训臣*, 王雅瑶, 王震, 王绍杰. 单激光单相机双色PLIF测量火焰温度场[J]. 工程热物理学报, 2024, 45(12): 3936–3943.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h1 id=&#34;before-2024&#34;&gt;Before 2024&lt;/h1&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Zhen Wang, Yayao Wang, Xunchen Liu*. “Lift-off region temperature field and planar flow field of a twin-nozzle reacting jet in hot crossflow”. Proceedings of the Combustion Institute, 2023, 39(1): 1269-1278. DOI:10.1016/j.proci.2022.08.123.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Bin Zhang, Haoyang Liu, Xunchen Liu*. Hong Liu. 2023. “Prediction Method of Swirling Flame Lean Blowout Based on Flame Image Morphological Features”. Applied Sciences 13, 3173.&lt;/p&gt;</description>
     </item>
   </channel>
