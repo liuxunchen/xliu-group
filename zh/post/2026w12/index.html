@@ -30,15 +30,15 @@ $$\frac{\partial G_1}{\partial t} &#43; \mathbf{v}_0^{\parallel} \cdot \nabla G_
 $$\xi(X,t) = \frac{1}{\nu_0^{\parallel}} \int_0^X \omega_1^&#43; \left( X&#39;, t - \frac{X - X&#39;}{\nu_0^{\parallel}} \right) dX&#39; &#43; \xi_0 \left( t - \frac{X}{\nu_0^{\parallel}} \right)$$
 表明火焰面上任意点位移由上游扰动经对流延迟后的累积效应决定。
 
-      预混锥形火焰
-    
+			预混锥形火焰
+		
 
 
 上图为预混锥形火焰对谐波调制的响应：
 (a) 纹影图像；(b) 直接数值模拟；(c) 基于 G-方程的预测，对比展示了火焰锋面在不同时刻的动态演化。
 低马赫数、贫燃条件下，释热率相对扰动可分解为三项：
 ">
-    <meta name="generator" content="Hugo 0.159.0">
+    <meta name="generator" content="Hugo 0.162.1">
     
     
     
@@ -47,14 +47,78 @@ $$\xi(X,t) = \frac{1}{\nu_0^{\parallel}} \int_0^X \omega_1^&#43; \left( X&#39;, 
     <meta name="author" content="The group">
     
 
+    <link rel="stylesheet" href="/xliu-group/ananke/css/main.css">
+    <script>
+  (function () {
+    "use strict";
+
     
-<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.css" >
-
-
-
-
     
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
 
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
 
     
       
@@ -68,27 +132,27 @@ $$\xi(X,t) = \frac{1}{\nu_0^{\parallel}} \int_0^X \omega_1^&#43; \left( X&#39;, 
     
 
     <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/2026w12/">
-  <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
-  <meta property="og:title" content="2026w12">
-  <meta property="og:description" content="【赵殿虎：文献引用需用国标格式。图要编号。图要说明白是什么。不用放很多图，但是放的图要说明白。 张洪民：分段 。对冲火焰。题目不是这篇文章！ 张家艺：有哪些需要改进的地方？图3 两个分别是什么，为什么不同 。 冉佳兴：要分析原因，因为用的不是窄线宽激光，激发太宽，要分析光谱。文献综述不是让你们搬运文字。要给出思考和批判。
+	<meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+	<meta property="og:title" content="2026w12">
+	<meta property="og:description" content="【赵殿虎：文献引用需用国标格式。图要编号。图要说明白是什么。不用放很多图，但是放的图要说明白。 张洪民：分段 。对冲火焰。题目不是这篇文章！ 张家艺：有哪些需要改进的地方？图3 两个分别是什么，为什么不同 。 冉佳兴：要分析原因，因为用的不是窄线宽激光，激发太宽，要分析光谱。文献综述不是让你们搬运文字。要给出思考和批判。
 】
 A dedicated paper for Pr Sébastien Candel EM2C laboratory, CentraleSupélec by [赵殿虎]/xliu-group/zh/people/zhaodianhu/ 本文介绍了 Candel 教授在燃烧不稳定性领域的奠基性贡献。燃烧室中火焰与压力波耦合会引发强烈热声不稳定性，表现为大幅度自持燃烧振荡。其物理本质是：火焰非稳态释热与压力波形成共振反馈，压力波扰动上游流动，进而改变释热；当相位同步时，化学能持续转化为声能，引发剧烈振荡。 为定量描述这一耦合机制，Candel 团队提出了火焰传递函数（FTF），本文围绕其核心理论展开介绍。 创新点 首次将 G-方程线性化，建立火焰锋面对声学扰动的解析响应模型，并成功用于锥形火焰 FTF 理论预测。 小扰动假设下，线性化 G-方程为： $$\frac{\partial G_1}{\partial t} &#43; \mathbf{v}_0^{\parallel} \cdot \nabla G_1 = \omega_1^&#43; |\nabla G_0|$$ 其中 $\mathbf{v}0^{\parallel}$ 为平均流在火焰切向的分量，$\omega_1^&#43; = S{d1} &#43; \mathbf{v}_1 \cdot \mathbf{n}_0$ 为火焰法向绝对速度扰动。 沿火焰锋面积分可得火焰位移表达式： $$\xi(X,t) = \frac{1}{\nu_0^{\parallel}} \int_0^X \omega_1^&#43; \left( X&#39;, t - \frac{X - X&#39;}{\nu_0^{\parallel}} \right) dX&#39; &#43; \xi_0 \left( t - \frac{X}{\nu_0^{\parallel}} \right)$$ 表明火焰面上任意点位移由上游扰动经对流延迟后的累积效应决定。 预混锥形火焰 上图为预混锥形火焰对谐波调制的响应： (a) 纹影图像；(b) 直接数值模拟；(c) 基于 G-方程的预测，对比展示了火焰锋面在不同时刻的动态演化。 低马赫数、贫燃条件下，释热率相对扰动可分解为三项：">
-  <meta property="og:locale" content="zh">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2026-04-18T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-04-18T00:00:00+00:00">
+	<meta property="og:locale" content="zh">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2026-04-18T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-04-18T00:00:00+00:00">
 
-  <meta itemprop="name" content="2026w12">
-  <meta itemprop="description" content="【赵殿虎：文献引用需用国标格式。图要编号。图要说明白是什么。不用放很多图，但是放的图要说明白。 张洪民：分段 。对冲火焰。题目不是这篇文章！ 张家艺：有哪些需要改进的地方？图3 两个分别是什么，为什么不同 。 冉佳兴：要分析原因，因为用的不是窄线宽激光，激发太宽，要分析光谱。文献综述不是让你们搬运文字。要给出思考和批判。
+	<meta itemprop="name" content="2026w12">
+	<meta itemprop="description" content="【赵殿虎：文献引用需用国标格式。图要编号。图要说明白是什么。不用放很多图，但是放的图要说明白。 张洪民：分段 。对冲火焰。题目不是这篇文章！ 张家艺：有哪些需要改进的地方？图3 两个分别是什么，为什么不同 。 冉佳兴：要分析原因，因为用的不是窄线宽激光，激发太宽，要分析光谱。文献综述不是让你们搬运文字。要给出思考和批判。
 】
 A dedicated paper for Pr Sébastien Candel EM2C laboratory, CentraleSupélec by [赵殿虎]/xliu-group/zh/people/zhaodianhu/ 本文介绍了 Candel 教授在燃烧不稳定性领域的奠基性贡献。燃烧室中火焰与压力波耦合会引发强烈热声不稳定性，表现为大幅度自持燃烧振荡。其物理本质是：火焰非稳态释热与压力波形成共振反馈，压力波扰动上游流动，进而改变释热；当相位同步时，化学能持续转化为声能，引发剧烈振荡。 为定量描述这一耦合机制，Candel 团队提出了火焰传递函数（FTF），本文围绕其核心理论展开介绍。 创新点 首次将 G-方程线性化，建立火焰锋面对声学扰动的解析响应模型，并成功用于锥形火焰 FTF 理论预测。 小扰动假设下，线性化 G-方程为： $$\frac{\partial G_1}{\partial t} &#43; \mathbf{v}_0^{\parallel} \cdot \nabla G_1 = \omega_1^&#43; |\nabla G_0|$$ 其中 $\mathbf{v}0^{\parallel}$ 为平均流在火焰切向的分量，$\omega_1^&#43; = S{d1} &#43; \mathbf{v}_1 \cdot \mathbf{n}_0$ 为火焰法向绝对速度扰动。 沿火焰锋面积分可得火焰位移表达式： $$\xi(X,t) = \frac{1}{\nu_0^{\parallel}} \int_0^X \omega_1^&#43; \left( X&#39;, t - \frac{X - X&#39;}{\nu_0^{\parallel}} \right) dX&#39; &#43; \xi_0 \left( t - \frac{X}{\nu_0^{\parallel}} \right)$$ 表明火焰面上任意点位移由上游扰动经对流延迟后的累积效应决定。 预混锥形火焰 上图为预混锥形火焰对谐波调制的响应： (a) 纹影图像；(b) 直接数值模拟；(c) 基于 G-方程的预测，对比展示了火焰锋面在不同时刻的动态演化。 低马赫数、贫燃条件下，释热率相对扰动可分解为三项：">
-  <meta itemprop="datePublished" content="2026-04-18T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-04-18T00:00:00+00:00">
-  <meta itemprop="wordCount" content="533">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="2026w12">
-  <meta name="twitter:description" content="【赵殿虎：文献引用需用国标格式。图要编号。图要说明白是什么。不用放很多图，但是放的图要说明白。 张洪民：分段 。对冲火焰。题目不是这篇文章！ 张家艺：有哪些需要改进的地方？图3 两个分别是什么，为什么不同 。 冉佳兴：要分析原因，因为用的不是窄线宽激光，激发太宽，要分析光谱。文献综述不是让你们搬运文字。要给出思考和批判。
+	<meta itemprop="datePublished" content="2026-04-18T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-04-18T00:00:00+00:00">
+	<meta itemprop="wordCount" content="533">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="2026w12">
+	<meta name="twitter:description" content="【赵殿虎：文献引用需用国标格式。图要编号。图要说明白是什么。不用放很多图，但是放的图要说明白。 张洪民：分段 。对冲火焰。题目不是这篇文章！ 张家艺：有哪些需要改进的地方？图3 两个分别是什么，为什么不同 。 冉佳兴：要分析原因，因为用的不是窄线宽激光，激发太宽，要分析光谱。文献综述不是让你们搬运文字。要给出思考和批判。
 】
 A dedicated paper for Pr Sébastien Candel EM2C laboratory, CentraleSupélec by [赵殿虎]/xliu-group/zh/people/zhaodianhu/ 本文介绍了 Candel 教授在燃烧不稳定性领域的奠基性贡献。燃烧室中火焰与压力波耦合会引发强烈热声不稳定性，表现为大幅度自持燃烧振荡。其物理本质是：火焰非稳态释热与压力波形成共振反馈，压力波扰动上游流动，进而改变释热；当相位同步时，化学能持续转化为声能，引发剧烈振荡。 为定量描述这一耦合机制，Candel 团队提出了火焰传递函数（FTF），本文围绕其核心理论展开介绍。 创新点 首次将 G-方程线性化，建立火焰锋面对声学扰动的解析响应模型，并成功用于锥形火焰 FTF 理论预测。 小扰动假设下，线性化 G-方程为： $$\frac{\partial G_1}{\partial t} &#43; \mathbf{v}_0^{\parallel} \cdot \nabla G_1 = \omega_1^&#43; |\nabla G_0|$$ 其中 $\mathbf{v}0^{\parallel}$ 为平均流在火焰切向的分量，$\omega_1^&#43; = S{d1} &#43; \mathbf{v}_1 \cdot \mathbf{n}_0$ 为火焰法向绝对速度扰动。 沿火焰锋面积分可得火焰位移表达式： $$\xi(X,t) = \frac{1}{\nu_0^{\parallel}} \int_0^X \omega_1^&#43; \left( X&#39;, t - \frac{X - X&#39;}{\nu_0^{\parallel}} \right) dX&#39; &#43; \xi_0 \left( t - \frac{X}{\nu_0^{\parallel}} \right)$$ 表明火焰面上任意点位移由上游扰动经对流延迟后的累积效应决定。 预混锥形火焰 上图为预混锥形火焰对谐波调制的响应： (a) 纹影图像；(b) 直接数值模拟；(c) 基于 G-方程的预测，对比展示了火焰锋面在不同时刻的动态演化。 低马赫数、贫燃条件下，释热率相对扰动可分解为三项：">
 
@@ -126,6 +190,13 @@ script.async = true;
    
   
 
+
+  
+  
+  
+  
+  
+  
   
   
   
@@ -190,13 +261,11 @@ script.async = true;
     <main class="pb7" role="main">
       
   
-  
-  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
-        Post
-      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+
+  <article class="page-2026w12 flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">
+    <a class="link dim" href="http://localhost:1313/xliu-group/zh/post/">Post</a>
+  </aside><div id="sharing" class="mt3 ananke-socials"></div>
 <h1 class="f1 athelas mt3 mb1">2026w12</h1>
       
       <p class="tracked"><strong>The group</strong>
@@ -210,7 +279,7 @@ script.async = true;
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>【赵殿虎：文献引用需用国标格式。图要编号。图要说明白是什么。不用放很多图，但是放的图要说明白。
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-100-l"><p>【赵殿虎：文献引用需用国标格式。图要编号。图要说明白是什么。不用放很多图，但是放的图要说明白。
 张洪民：分段 。对冲火焰。题目不是这篇文章！
 张家艺：有哪些需要改进的地方？图3 两个分别是什么，为什么不同 。
 冉佳兴：要分析原因，因为用的不是窄线宽激光，激发太宽，要分析光谱。文献综述不是让你们搬运文字。要给出思考和批判。</p>
@@ -234,8 +303,8 @@ $$\frac{\partial G_1}{\partial t} + \mathbf{v}_0^{\parallel} \cdot \nabla G_1 = 
 $$\xi(X,t) = \frac{1}{\nu_0^{\parallel}} \int_0^X \omega_1^+ \left( X', t - \frac{X - X'}{\nu_0^{\parallel}} \right) dX' + \xi_0 \left( t - \frac{X}{\nu_0^{\parallel}} \right)$$<p>
 表明火焰面上任意点位移由上游扰动经对流延迟后的累积效应决定。
 <figure><img src="/xliu-group/zh/post/2026w12/%E9%A2%84%E6%B7%B7%E9%94%A5%E5%BD%A2%E7%81%AB%E7%84%B0.png"><figcaption>
-      <h4>预混锥形火焰</h4>
-    </figcaption>
+			<h4>预混锥形火焰</h4>
+		</figcaption>
 </figure>
 
 上图为预混锥形火焰对谐波调制的响应：
@@ -251,8 +320,8 @@ $$\frac{\dot{Q}_1}{\dot{Q}_0} = \frac{1}{\rho_f} \frac{\int \rho_{f1} dA_0}{\int
 $$\mathrm{FTF}(\omega) = \frac{Q' / \bar{Q}}{u' / \bar{u}} = G(\omega) e^{i\phi(\omega)}$$<p>
 FTF 定义为释热率相对波动与火焰根部速度相对波动之比，表征小声学扰动下的频率响应特性，可用于燃烧器线性稳定性预测与特征频率分析。其局限性在于仅适用于小扰动，需通过强迫实验或高精度数值模拟获取；当紧凑火焰假设不成立时，压力扰动不可忽略。
 <figure><img src="/xliu-group/zh/post/2026w12/FTF%E7%89%A9%E7%90%86%E6%9C%BA%E5%88%B6.png"><figcaption>
-      <h4>FTF物理机制</h4>
-    </figcaption>
+			<h4>FTF物理机制</h4>
+		</figcaption>
 </figure>
 
 实际旋流预混火焰中存在多路径干涉效应，相位呈现明显频率依赖与非线性特征。</p>
@@ -270,8 +339,8 @@ by [张洪民]/xliu-group/zh/people/zhanghongmin/</li>
 光学系统：QCL 激光器，束腰直径 260 μm，蓝宝石导光棒（直径 3 mm，长度 20 mm）
 测量系统：MCT 探测器，16 位 DAQ（采样率 4 MS/s），LVDT 位移传感器
 <figure><img src="/xliu-group/zh/post/2026w12/%E5%AE%9E%E9%AA%8C%E8%A3%85%E7%BD%AE%E5%9B%BE.png"><figcaption>
-      <h4>实验装置图</h4>
-    </figcaption>
+			<h4>实验装置图</h4>
+		</figcaption>
 </figure>
 
 实验过程与结果
@@ -280,8 +349,8 @@ by [张洪民]/xliu-group/zh/people/zhanghongmin/</li>
 引入蓝宝石导光棒，固定 1 cm 标准光程，解决火焰边界层导致的光程不确定与测量畸变问题。
 控制氧化剂流量 5.5 SLPM，抑制碳烟生成，避免光束衰减。
 <figure><img src="/xliu-group/zh/post/2026w12/%E8%93%9D%E5%AE%9D%E7%9F%B3%E6%95%88%E6%9E%9C%E5%9B%BE.png"><figcaption>
-      <h4>蓝宝石效果图</h4>
-    </figcaption>
+			<h4>蓝宝石效果图</h4>
+		</figcaption>
 </figure>
 
 结果表明，加装蓝宝石导光棒后，CO 测量曲线更平滑，消除异常峰值；温度峰值更高、分布更陡峭，更符合真实火焰物理结构，整体测量精度显著提升。</p>
@@ -297,37 +366,37 @@ by [张家艺]/xliu-group/zh/people/zhangjiayi/</li>
 光谱测温系统主要包括：光谱仪、光纤、准直透镜、USB 数据线与计算机。
 系统采用 AvaSpec-ULS2048-USB2 光谱仪，探测器为 HAM S11639 2048 像素线列 CMOS，采样速率 500 光谱/秒，支持实时辐射数据采集。
 <figure><img src="/xliu-group/zh/post/2026w12/%E5%AE%9E%E9%AA%8C%E8%A3%85%E7%BD%AE%E5%9B%BE1.png"><figcaption>
-      <h4>图1 实验装置</h4>
-    </figcaption>
+			<h4>图1 实验装置</h4>
+		</figcaption>
 </figure>
 
 <figure><img src="/xliu-group/zh/post/2026w12/%E5%85%89%E8%B0%B1%E4%BB%AA%E5%8F%82%E6%95%B0%E5%9B%BE2.png"><figcaption>
-      <h4>图2 光谱仪参数图</h4>
-    </figcaption>
+			<h4>图2 光谱仪参数图</h4>
+		</figcaption>
 </figure>
 
 实验过程与结果
 煤粉火焰在 600～940 nm 波段近似灰体，光谱发射率随波长变化较小。
 <figure><img src="/xliu-group/zh/post/2026w12/330%20MW%20%E8%B4%9F%E8%8D%B7%E4%B8%8B%E5%85%89%E8%B0%B1%E5%93%8D%E5%BA%94%E4%BF%A1%E5%8F%B7%E5%92%8C%E5%85%89%E8%B0%B1%E5%8F%91%E5%B0%84%E7%8E%87.png"><figcaption>
-      <h4>图3 330 MW 负荷下光谱响应信号和光谱发射率</h4>
-    </figcaption>
+			<h4>图3 330 MW 负荷下光谱响应信号和光谱发射率</h4>
+		</figcaption>
 </figure>
 
 固定负荷（330 MW）下，随炉膛高度增加，煤焦燃尽度升高、飞灰含碳量降低，导致发射率与火焰温度均下降。
 <figure><img src="/xliu-group/zh/post/2026w12/330%20MW%20%E5%B9%B3%E5%9D%87%E5%8F%91%E5%B0%84%E7%8E%87%E9%9A%8F%E6%97%B6%E9%97%B4%E7%9A%84%E5%8F%98%E5%8C%96.png"><figcaption>
-      <h4>图4 330 MW 负荷下平均发射率随时间的变化</h4>
-    </figcaption>
+			<h4>图4 330 MW 负荷下平均发射率随时间的变化</h4>
+		</figcaption>
 </figure>
 
 <figure><img src="/xliu-group/zh/post/2026w12/330%20MW%20%E8%B4%9F%E8%8D%B7%E4%B8%8B%E6%B8%A9%E5%BA%A6%E9%9A%8F%E6%97%B6%E9%97%B4%E7%9A%84%E5%8F%98%E5%8C%96.png"><figcaption>
-      <h4>图5 330 MW 负荷下火焰温度随时间的变化</h4>
-    </figcaption>
+			<h4>图5 330 MW 负荷下火焰温度随时间的变化</h4>
+		</figcaption>
 </figure>
 
 固定高度（47.15 m）下，机组负荷升高会使发射率上升；而平均发射率与温度呈反比：发射率越高，温度越低。原因在于高温区域煤焦燃尽更充分，飞灰含碳量更低。
 <figure><img src="/xliu-group/zh/post/2026w12/%E4%B8%8D%E5%90%8C%E8%B4%9F%E8%8D%B7%E4%B8%8B%E5%85%89%E8%B0%B1%E5%93%8D%E5%BA%94%E4%BF%A1%E5%8F%B7%E5%92%8C%E5%85%89%E8%B0%B1%E5%8F%91%E5%B0%84%E7%8E%87.png"><figcaption>
-      <h4>图6 不同负荷下光谱响应信号和光谱发射率</h4>
-    </figcaption>
+			<h4>图6 不同负荷下光谱响应信号和光谱发射率</h4>
+		</figcaption>
 </figure>
 
 统计结果显示：
@@ -335,13 +404,13 @@ by [张家艺]/xliu-group/zh/people/zhangjiayi/</li>
 83.54% 的温度分布在 1631～1675 K
 可为锅炉燃烧数值模拟提供可靠实验数据支撑。
 <figure><img src="/xliu-group/zh/post/2026w12/%E5%B9%B3%E5%9D%87%E5%8F%91%E5%B0%84%E7%8E%87%E7%9A%84%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6.png"><figcaption>
-      <h4>图7 平均发射率的概率密度</h4>
-    </figcaption>
+			<h4>图7 平均发射率的概率密度</h4>
+		</figcaption>
 </figure>
 
 <figure><img src="/xliu-group/zh/post/2026w12/%E7%81%AB%E7%84%B0%E6%B8%A9%E5%BA%A6%E7%9A%84%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E5%88%86%E5%B8%83.png"><figcaption>
-      <h4>图8 火焰温度的概率密度分布</h4>
-    </figcaption>
+			<h4>图8 火焰温度的概率密度分布</h4>
+		</figcaption>
 </figure>
 </p>
 <hr>
@@ -355,13 +424,13 @@ by [冉佳兴]/xliu-group/zh/people/ranjiaxing/</li>
 353.06 nm 相比于 355 nm 的优势
 同等成像条件下，353.06 nm 可获得更清晰、信噪比更高的 CH₂O PLIF 图像，低激光能量下即可实现优于 355 nm 高能量条件的信号水平。
 <figure><img src="/xliu-group/zh/post/2026w12/%E5%9B%BE%E5%9B%9B.png"><figcaption>
-      <h4>（a）整体平均 200 张火焰发射图像，(b)(c)：353.06 nm 瞬时/平均成像，(d)(e)：~355 nm 瞬时/平均成像</h4>
-    </figcaption>
+			<h4>（a）整体平均 200 张火焰发射图像，(b)(c)：353.06 nm 瞬时/平均成像，(d)(e)：~355 nm 瞬时/平均成像</h4>
+		</figcaption>
 </figure>
 
 <figure><img src="/xliu-group/zh/post/2026w12/%E5%9B%BE%E4%BA%94.png"><figcaption>
-      <h4>不同能量下的成像质量对比</h4>
-    </figcaption>
+			<h4>不同能量下的成像质量对比</h4>
+		</figcaption>
 </figure>
 
 353.06 nm：荧光分布均匀平滑，全场一致性好
@@ -369,8 +438,8 @@ by [冉佳兴]/xliu-group/zh/people/ranjiaxing/</li>
 相同脉冲能量下，353.06 nm 激发效率约为 355 nm 的 4 倍；即使 355 nm 能量提高至 5 倍，信号强度仍低于 353.06 nm。
 353.06 nm 信号随能量线性增长，无明显饱和；355 nm 在 &gt;40 mJ/脉冲时出现明显饱和，增益效率急剧下降。
 <figure><img src="/xliu-group/zh/post/2026w12/%E5%9B%BE%E5%85%AD.png"><figcaption>
-      <h4>归一化荧光强度随激光能量变化曲线</h4>
-    </figcaption>
+			<h4>归一化荧光强度随激光能量变化曲线</h4>
+		</figcaption>
 </figure>
 </p>
 <hr>
@@ -393,13 +462,13 @@ by [王硕]/xliu-group/zh/people/wangshuo/</li>
 喷射角度减小，有利稳定区显著缩小，稳定性下降
 接近吹熄时，火焰根部受涡结构拉扯，出现局部熄灭与重燃，形成间歇性闪烁
 <figure><img src="/xliu-group/zh/post/2026w12/%E5%96%B7%E5%98%B4%E8%A7%92%E5%BA%A6.png"><figcaption>
-      <h4>喷嘴角度</h4>
-    </figcaption>
+			<h4>喷嘴角度</h4>
+		</figcaption>
 </figure>
 
 <figure><img src="/xliu-group/zh/post/2026w12/%E7%86%84%E7%81%AB.png"><figcaption>
-      <h4>熄火</h4>
-    </figcaption>
+			<h4>熄火</h4>
+		</figcaption>
 </figure>
 
 对本人实验的启发
@@ -436,8 +505,8 @@ by [高寅斌]/xliu-group/zh/people/gaoyinbin/</li>
 以不锈钢激波管为核心，内径 12 cm；端壁布置压电传感器测量激波速度，Kistler 压力传感器同步压力信号。
 光学系统采用 1343 nm DFB 激光器，635 nm 可见光同轴对准；两片凹面镜外置构成多通光路；InGaAs 探测器接收，数据采集率 20 MS/s。
 <figure><img src="/xliu-group/zh/post/2026w12/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260418102035_36_2.png"><figcaption>
-      <h4>微信图片_20260418102035_36_2</h4>
-    </figcaption>
+			<h4>微信图片_20260418102035_36_2</h4>
+		</figcaption>
 </figure>
 
 结果与结论
@@ -461,18 +530,18 @@ H-RAMi 分层互注意力混合模块
 网络架构与无监督损失
 特征提取 + 反卷积上采样输出高分辨率流场；以光度损失、平滑损失、一致性损失与边界损失构成联合约束。
 <figure><img src="/xliu-group/zh/post/2026w12/image1.png"><figcaption>
-      <h4>边界区域与相邻区域定义示意图</h4>
-    </figcaption>
+			<h4>边界区域与相邻区域定义示意图</h4>
+		</figcaption>
 </figure>
 
 <figure><img src="/xliu-group/zh/post/2026w12/image2.png"><figcaption>
-      <h4>H-RAMi 模块结构示意图</h4>
-    </figcaption>
+			<h4>H-RAMi 模块结构示意图</h4>
+		</figcaption>
 </figure>
 
 <figure><img src="/xliu-group/zh/post/2026w12/image3.png"><figcaption>
-      <h4>UnLECNet-PIV 完整网络架构图</h4>
-    </figcaption>
+			<h4>UnLECNet-PIV 完整网络架构图</h4>
+		</figcaption>
 </figure>
 
 实验结果
@@ -481,27 +550,18 @@ UnLECNet-PIV 较基准模型平均 AEE 误差降低约 25.9%
 对小尺度涡结构与流场边界还原更清晰
 抗噪声与泛化能力更强，轻量化且推理速度快，适合工程应用
 <figure><img src="/xliu-group/zh/post/2026w12/image4.png"><figcaption>
-      <h4>流场重建对比图</h4>
-    </figcaption>
+			<h4>流场重建对比图</h4>
+		</figcaption>
 </figure>
 </p>
 <ul class="pa0">
   
+</ul><ul class="pa0">
+  
 </ul>
-<div class="mt6 instapaper_ignoref">
+
       
-      
-      </div>
-    </div>
-
-    <aside class="w-30-l mt6-l">
-
-
-
-
-</aside>
-
-  </article>
+    </div></article>
 
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">

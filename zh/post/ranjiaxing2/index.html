@@ -10,8 +10,8 @@
 研究目的：为了验证 coflow 火焰炉子的装配完整性与运行稳定性，确认能否稳定产生 稳定coflow 火焰形态。
 研究对象：coflow火焰炉子如下图所示
 
-      coflow火焰炉子
-    
+			coflow火焰炉子
+		
 
 
 研究方法：中心燃料管通乙烯，两侧的管通入空气，通过逐步调节流量配比，点火后观察火焰形态，验证 coflow 火焰的形成与稳定性。
@@ -22,12 +22,12 @@
 实验参数：中心燃料管乙烯流量为1.5L/min，空气一根管道为15L/min，一根由于使用的CO2流量计未达到15L/min。
 最终火焰形态如下图所示
 
-      火焰形态
-    
+			火焰形态
+		
 
 
 由图可见在室外环境，由于自然风和流量的影响火焰形态并不是很稳定，下次实验还需加大空气流量，对火焰形成保护气，从而生成稳定的扩散火焰。">
-    <meta name="generator" content="Hugo 0.159.0">
+    <meta name="generator" content="Hugo 0.162.1">
     
     
     
@@ -36,14 +36,78 @@
     <meta name="author" content="冉佳兴">
     
 
+    <link rel="stylesheet" href="/xliu-group/ananke/css/main.css">
+    <script>
+  (function () {
+    "use strict";
+
     
-<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.css" >
-
-
-
-
     
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
 
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
 
     
       
@@ -57,33 +121,33 @@
     
 
     <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/ranjiaxing2/">
-  <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
-  <meta property="og:title" content="coflow实验">
-  <meta property="og:description" content="【多写几句话介绍介绍】
+	<meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+	<meta property="og:title" content="coflow实验">
+	<meta property="og:description" content="【多写几句话介绍介绍】
 研究目的：为了验证 coflow 火焰炉子的装配完整性与运行稳定性，确认能否稳定产生 稳定coflow 火焰形态。
 研究对象：coflow火焰炉子如下图所示 coflow火焰炉子 研究方法：中心燃料管通乙烯，两侧的管通入空气，通过逐步调节流量配比，点火后观察火焰形态，验证 coflow 火焰的形成与稳定性。
 注意事项：乙烯易燃易爆与泄漏、火焰高温灼伤、回火 / 爆燃、高压气瓶爆裂、电气触电、燃烧废气窒息。 泄漏与回火为极高风险；高温灼伤、废气窒息为中风险；设备损坏为低风险。 点火严格按顺序： 通空气 → 通小流量 乙烯 → 点火；熄火：先断乙烯 → 再断空气 → 熄火。 实验全程通风，保持安全距离。
 实验参数：中心燃料管乙烯流量为1.5L/min，空气一根管道为15L/min，一根由于使用的CO2流量计未达到15L/min。
 最终火焰形态如下图所示 火焰形态 由图可见在室外环境，由于自然风和流量的影响火焰形态并不是很稳定，下次实验还需加大空气流量，对火焰形成保护气，从而生成稳定的扩散火焰。">
-  <meta property="og:locale" content="zh">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2026-05-07T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-05-07T00:00:00+00:00">
+	<meta property="og:locale" content="zh">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2026-05-07T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-05-07T00:00:00+00:00">
 
-  <meta itemprop="name" content="coflow实验">
-  <meta itemprop="description" content="【多写几句话介绍介绍】
+	<meta itemprop="name" content="coflow实验">
+	<meta itemprop="description" content="【多写几句话介绍介绍】
 研究目的：为了验证 coflow 火焰炉子的装配完整性与运行稳定性，确认能否稳定产生 稳定coflow 火焰形态。
 研究对象：coflow火焰炉子如下图所示 coflow火焰炉子 研究方法：中心燃料管通乙烯，两侧的管通入空气，通过逐步调节流量配比，点火后观察火焰形态，验证 coflow 火焰的形成与稳定性。
 注意事项：乙烯易燃易爆与泄漏、火焰高温灼伤、回火 / 爆燃、高压气瓶爆裂、电气触电、燃烧废气窒息。 泄漏与回火为极高风险；高温灼伤、废气窒息为中风险；设备损坏为低风险。 点火严格按顺序： 通空气 → 通小流量 乙烯 → 点火；熄火：先断乙烯 → 再断空气 → 熄火。 实验全程通风，保持安全距离。
 实验参数：中心燃料管乙烯流量为1.5L/min，空气一根管道为15L/min，一根由于使用的CO2流量计未达到15L/min。
 最终火焰形态如下图所示 火焰形态 由图可见在室外环境，由于自然风和流量的影响火焰形态并不是很稳定，下次实验还需加大空气流量，对火焰形成保护气，从而生成稳定的扩散火焰。">
-  <meta itemprop="datePublished" content="2026-05-07T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-05-07T00:00:00+00:00">
-  <meta itemprop="wordCount" content="31">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="coflow实验">
-  <meta name="twitter:description" content="【多写几句话介绍介绍】
+	<meta itemprop="datePublished" content="2026-05-07T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-05-07T00:00:00+00:00">
+	<meta itemprop="wordCount" content="31">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="coflow实验">
+	<meta name="twitter:description" content="【多写几句话介绍介绍】
 研究目的：为了验证 coflow 火焰炉子的装配完整性与运行稳定性，确认能否稳定产生 稳定coflow 火焰形态。
 研究对象：coflow火焰炉子如下图所示 coflow火焰炉子 研究方法：中心燃料管通乙烯，两侧的管通入空气，通过逐步调节流量配比，点火后观察火焰形态，验证 coflow 火焰的形成与稳定性。
 注意事项：乙烯易燃易爆与泄漏、火焰高温灼伤、回火 / 爆燃、高压气瓶爆裂、电气触电、燃烧废气窒息。 泄漏与回火为极高风险；高温灼伤、废气窒息为中风险；设备损坏为低风险。 点火严格按顺序： 通空气 → 通小流量 乙烯 → 点火；熄火：先断乙烯 → 再断空气 → 熄火。 实验全程通风，保持安全距离。
@@ -124,6 +188,13 @@ script.async = true;
    
   
 
+
+  
+  
+  
+  
+  
+  
   
   
   
@@ -188,13 +259,11 @@ script.async = true;
     <main class="pb7" role="main">
       
   
-  
-  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
-        Post
-      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+
+  <article class="page-ranjiaxing2 flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">
+    <a class="link dim" href="http://localhost:1313/xliu-group/zh/post/">Post</a>
+  </aside><div id="sharing" class="mt3 ananke-socials"></div>
 <h1 class="f1 athelas mt3 mb1">coflow实验</h1>
       
       <p class="tracked"><strong>冉佳兴</strong>
@@ -208,12 +277,12 @@ script.async = true;
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>【多写几句话介绍介绍】</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-100-l"><p>【多写几句话介绍介绍】</p>
 <p>研究目的：为了验证 coflow 火焰炉子的装配完整性与运行稳定性，确认能否稳定产生 稳定coflow 火焰形态。</p>
 <p>研究对象：coflow火焰炉子如下图所示
 <figure><img src="/xliu-group/zh/post/ranjiaxing2/%E8%AE%BE%E5%A4%87.png"><figcaption>
-      <h4>coflow火焰炉子</h4>
-    </figcaption>
+			<h4>coflow火焰炉子</h4>
+		</figcaption>
 </figure>
 </p>
 <p>研究方法：中心燃料管通乙烯，两侧的管通入空气，通过逐步调节流量配比，点火后观察火焰形态，验证 coflow 火焰的形成与稳定性。</p>
@@ -224,28 +293,19 @@ script.async = true;
 <p>实验参数：中心燃料管乙烯流量为1.5L/min，空气一根管道为15L/min，一根由于使用的CO2流量计未达到15L/min。</p>
 <p>最终火焰形态如下图所示
 <figure><img src="/xliu-group/zh/post/ranjiaxing2/%E7%82%89%E5%AD%90.png"><figcaption>
-      <h4>火焰形态</h4>
-    </figcaption>
+			<h4>火焰形态</h4>
+		</figcaption>
 </figure>
 </p>
 <p>由图可见在室外环境，由于自然风和流量的影响火焰形态并不是很稳定，下次实验还需加大空气流量，对火焰形成保护气，从而生成稳定的扩散火焰。</p>
 <ul class="pa0">
   
+</ul><ul class="pa0">
+  
 </ul>
-<div class="mt6 instapaper_ignoref">
+
       
-      
-      </div>
-    </div>
-
-    <aside class="w-30-l mt6-l">
-
-
-
-
-</aside>
-
-  </article>
+    </div></article>
 
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">

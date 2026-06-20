@@ -1,0 +1,153 @@
+% !TeX encoding = UTF-8
+% !TeX program = xelatex
+% !TeX TXS-program:compile = txs:///xelatex
+% !TeX bibtex-program = biber
+%
+% ============================================================================
+%  山东科技大学学位论文模板 (SDUSTThesis) 编译说明
+% ============================================================================
+%  1. 使用 XeLaTeX 编译（必须）
+%  2. 参考文献使用 biber
+%  3. 完整编译命令（终端）：
+%       xelatex main.tex
+%       biber main
+%       xelatex main.tex
+%       xelatex main.tex
+%  4. 在 Emacs (AUCTeX) 中：
+%       按 C-c C-c 选择 XeLaTeX，再按 C-c C-c 选择 Biber，再按两次 XeLaTeX
+%  5. 本地变量已设置 TeX-engine: xetex，AUCTeX 会自动识别。
+% ============================================================================
+
+\documentclass[master]{sdustthesis}  % 选项: master, doctor, bachelor; 可加 review 盲审
+
+\sdustsetup{
+  zh/title = {XX研究},
+  en/title = {Research on },
+  zh/author = {姓名},
+  en/author = {name},
+  zh/supervisor = {刘训臣},
+  en/supervisor = {Xunchen Liu},
+  zh/major = {机械},
+  en/major = {Mechanical Engineering},
+  zh/department = {机械电子工程学院},
+  zh/keywords = {激光燃烧诊断；光谱测量；温度场重建},
+  en/keywords = {Laser combustion diagnostics; Spectral measurement; Temperature field reconstruction},
+  id = {2023830},
+  enrollment = {2024年9月},
+  defense = {2027年5月25日},
+  secretlevel = {公开},
+  ccode = {TB532},
+  udc = {621},
+  degreetype = {专业学位},
+  degreelevel = {硕士},
+  researchfield = {激光燃烧诊断},
+  eduduration = {三年},
+  graduyear = {2027},
+  submitdate = {2027年6月},
+  supertitle = {教授},
+  reviewers = {匿名评审},
+  defensechair = {待定},
+  defensecommittee = {待定},
+  totalpages = {108},
+  fund = {国家自然科学基金(No. )},
+  zh/display-date = {二〇二七年六月},
+}
+
+% -------- 导言区：自定义宏包和环境（尽量集中管理） ----------
+% 代码块环境（基于 listings）
+% 注：listings 已在 cls 中加载，无需重复
+\lstdefinestyle{mycode}{
+  basicstyle   = \ttfamily\small,
+  commentstyle = \itshape\color{gray},
+  keywordstyle = \bfseries\color{blue},
+  stringstyle  = \color{red},
+  frame        = single,
+  breaklines   = true,
+  tabsize      = 4,
+  numbers      = left,
+  numberstyle  = \tiny\color{gray},
+}
+\lstnewenvironment{codeblock}[1][]{
+  \lstset{style=mycode, #1}
+}{}
+
+% 参考文献（使用 biblatex）
+\usepackage[backend=biber,style=gb7714-2015]{biblatex}
+\renewcommand{\bibfont}{\zihao{5}\setlength{\baselineskip}{16bp}}
+\setlength{\bibitemsep}{3bp plus 1pt}
+\addbibresource{refs.bib}
+
+% 常用宏包（合并去重）
+\usepackage{siunitx}               % 单位
+\usepackage{tikz}                  % 绘图
+\usetikzlibrary{arrows.meta, shapes.geometric, positioning, calc}
+\usepackage{pgfplots}              % 数据图表
+\pgfplotsset{compat=newest}
+\usepackage{subcaption}            % 子图
+\usepackage{bicaption}             % 双标题
+\usepackage{threeparttablex}       % 表格脚注（含 ThreePartTable 环境）
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e} % 算法
+\usepackage{bm}                    % 粗体数学符号
+\usepackage{hologo}                % 排版 logo
+\usepackage{amsthm}                % 定理环境
+\newtheorem{theorem}{定理}[chapter]
+\newtheorem{lemma}{引理}[chapter]
+\usepackage{dcolumn}               % 小数点对齐
+\newcolumntype{d}[1]{D{.}{.}{#1}}  % 定义 d 列类型
+
+
+\begin{document}
+
+% -------- 封面和声明页 ----------
+\maketitle
+\copyrightpage
+
+% -------- 前置部分 ----------
+\frontmatter
+
+% 中英文摘要
+\input{contents/abstract}
+
+% 目录、图清单、表清单
+\tableofcontents
+\listoffigures
+\listoftables
+
+% 变量注释表（可选）
+\input{contents/variablelist}
+
+% -------- 主体部分 ----------
+\mainmatter
+
+% 各章节内容（按照您的文件顺序）
+\input{contents/intro}             % 第1章 绪论
+\input{contents/chapter2}          % 第2章
+\input{contents/math_and_citations}% 第3章
+\input{contents/floats}            % 第4章
+\input{contents/summary}           % 最后一章 总结与展望
+
+% -------- 参考文献 ----------
+\printbibliography[heading=bibintoc]
+
+% -------- 附录 ----------
+\appendix
+\input{contents/app_maxwell_equations}   % 附录A
+\input{contents/app_flow_chart}          % 附录B
+
+% -------- 结尾部分 ----------
+\backmatter
+
+% 作者简历、致谢、学位论文数据集
+\input{contents/resume}
+\input{contents/acknowledgements}
+
+\begin{dataset}
+\end{dataset}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% TeX-engine: xetex
+%%% End:

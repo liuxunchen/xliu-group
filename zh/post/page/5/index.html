@@ -7,7 +7,7 @@
     <title>Post | 刘训臣燃烧诊断实验室主页</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="山东科技大学 机械电子工程学院 激光诊断实验室">
-    <meta name="generator" content="Hugo 0.159.0">
+    <meta name="generator" content="Hugo 0.162.1">
     
     
     
@@ -16,14 +16,78 @@
     <meta name="author" content="刘训臣">
     
 
+    <link rel="stylesheet" href="/xliu-group/ananke/css/main.css">
+    <script>
+  (function () {
+    "use strict";
+
     
-<link rel="stylesheet" href="/xliu-group/ananke/css/main.min.css" >
-
-
-
-
     
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
 
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
 
     
       
@@ -42,20 +106,20 @@
     
 
     <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/">
-  <meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
-  <meta property="og:title" content="Post">
-  <meta property="og:description" content="科研笔记和一些想法">
-  <meta property="og:locale" content="zh">
-  <meta property="og:type" content="website">
+	<meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+	<meta property="og:title" content="Post">
+	<meta property="og:description" content="科研笔记和一些想法">
+	<meta property="og:locale" content="zh">
+	<meta property="og:type" content="website">
 
-  <meta itemprop="name" content="Post">
-  <meta itemprop="description" content="科研笔记和一些想法">
-  <meta itemprop="datePublished" content="2026-06-05T18:12:42+08:00">
-  <meta itemprop="dateModified" content="2026-06-05T18:12:42+08:00">
-  <meta itemprop="wordCount" content="1">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Post">
-  <meta name="twitter:description" content="科研笔记和一些想法">
+	<meta itemprop="name" content="Post">
+	<meta itemprop="description" content="科研笔记和一些想法">
+	<meta itemprop="datePublished" content="2026-06-20T18:01:22+08:00">
+	<meta itemprop="dateModified" content="2026-06-20T00:00:00+00:00">
+	<meta itemprop="wordCount" content="1">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Post">
+	<meta name="twitter:description" content="科研笔记和一些想法">
 
 	
 	
@@ -89,6 +153,7 @@ script.async = true;
 
     
 
+  
   
   
   <header class="cover bg-top" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
@@ -151,17 +216,93 @@ script.async = true;
 
     <main class="pb7" role="main">
       
+  
+  
+
   <article class="pa3 pa4-ns nested-copy-line-height">
     <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links blue"><p>科研笔记和一些想法</p>
 </section>
     <section class="flex-ns mt5 flex-wrap justify-around">
       
         <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
+            
+  <div class="mb3 pa4 blue overflow-hidden">
     
-      <div class="f6">
-        六月 16, 2025
-      </div>
+      <time class="f6 db" datetime="2025-06-17T00:00:00Z">六月 17, 2025</time>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/xliu_chin_mistake/" class="link black dim">
+        航空燃烧室技术界的一些错误提法
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="前言">前言</h1>
+<p>人们常说航空发动机是如何的难搞，像是什么皇冠上的珍珠。其实，依照笔者经验也不是那么难，搞过航空燃烧室的预先研究（至今仍未停止）、技术研发、型号研发、型号使用中排故等，深知怎么搞，即搞的路线或者说是研发体制，是关键所在。但在这一切之先，首先概念要正确，基础知识牢固，各种概念和提法要正确，这将是本文的要点。</p>
+<h1 id="一燃烧室没有总压恢复系数">一、燃烧室没有总压恢复系数</h1>
+<p>参考文献[1] 中有表1：涡扇发动机加力燃烧室性能提升（台架状态）如下所示。
+<img src="/xliu-group/zh/post/xliu_chin_mistake/1.png" alt="表1" title="表1">
+其中提到总压恢复系数，这是一个概念错误。本文将在下文讨论，提到总压恢复系数还在其他地方也出现。</p>
+<p>参考文献[2] 第3.4.3节压力损失有如下一小段：
+“总压恢复系数即燃烧室出口总压与进口总压之比：
+</p>
+$$
+\sigma_\text{B} = \frac{P_{t4}}{P_{t3}}
+$$<p>
+燃烧室的总压恢复系数一般在0.92~0.96（不包含由燃烧导致的热租损失）。”
+这里明确说明总压恢复系数是燃烧室出口总压与进口总压之比，不清楚该章节作者所说压力损失到什么程度又恢复到0.92~0.96 。
+参考文献[2]在3.3节《设计输入》之下的 3）性能参数要求中第（1）项就是$\sigma_B$：总压恢复系数。</p>
+<p>笔者曾与某设计所燃烧副总师讨论问题时，该副总师提到他们总压恢复系数是多少。笔者当场严肃指出这是一个基本概念错误。
+总的来说，总压恢复系数这个错误概念扩展甚广。</p>
+<p>以下说明为什么这是基本概念错误：
+机械能与热能的转换是热力学第二定律范围内的事情。热力学第二定律有多种表达方式，简单地说，由机械能向热能转换是可以自发地产生，没什么条件；但由热能向机械能转换是有条件的，而且不可能百分之百地转换。
+也就是由机械能向热能转换了之后，不可能自然地逆转回来。
+总压是压力与动压头相加，是机械能。
+总压损失了是转变为热能，那时不可能自然地恢复回来的，所以没有恢复的提法。</p>
+<p>更为深入的说明为总压损失是一个熵增过程。熵增过程都是不可逆的，那么要说明什么是熵？
+熵是状态或然率的函数，用一个例子可以说明这状态或然率的函数是什么含义。
+有一容器，左、右两部分，中间有一隔板密封地隔开。
+左边是氮气（N2），右边是氧气（O2）。
+如果中间的隔板打破掉了，容器内必然是氮气与氧气混合，试想一下中间隔板打破后氮气仍然集中在左边，氧气仍然集中在右边，这样一种状态其出现的或然率有多少？
+显然为零。
+而相互混合的状态是或然率最大的状态。
+所以由相互各自集中一边的状态到相互混合的状态是熵增大的过程。
+这也清楚地说明熵增后不可能自然出现熵减的过程。</p>
+<p>有人一定会问，这是一个基本概念，有那么重要吗？
+笔者与 A. H. Lefebvre 讨论如何搞发动机燃烧室，两人都赞同以下观点：“搞航空燃烧室是以基础知识来解决燃烧室的各种问题。”
+要强调这里是基础知识，而不是基础研究。
+首先必须具有良好的基础知识，然后要有以基础知识去解决各种问题的能力（和经验）。
+Lefebvre曾批评某发动机公司搞燃烧的人基础知识太差，他的原话是：“ As for combustion fundamental, they know nothing.”
+（说一无所知，有点夸大了。）
+要具备良好基础知识，必须先重视基础知识，重视基本概念。
+说“总压恢复系数”的人就是不重视基础知识。</p>
+<h1 id="二有贫油燃烧但没有贫油喷嘴">二、有贫油燃烧，但没有贫油喷嘴</h1>
+<p>参考文献[3]研究了（以其标题而言）“贫油直喷喷嘴”。
+这个提法错了。喷嘴在一定压力降下喷出燃油，只有在燃烧室某个工况下与进燃烧区的空气量相组合燃烧时才有贫油燃烧、富油燃烧或化学恰当比燃烧。
+喷嘴本身不存在贫油喷嘴或富油喷嘴。
+按照该文的内容应该是《用于贫油直喷燃烧的喷嘴雾化特性实验研究》。</p>
+<p>顺便提一下，贫油直喷燃烧是三十年前路易斯（Lewis）研究中心工程师提出的，没有什么设计方案和设计理念的一个建议，以取代贫油预混预蒸发的低污染燃烧（Lean Premixed Prevaporized, LPP）。
+其实在低污染燃烧室之前的除了蒸发管燃烧室之外，全部都是没有预混合的燃油直喷，要取代LPP的应该是贫油直接混合燃烧（LDM, Lean Direct Mixing）。</p>
+<p>同时也需要指出，通常讲喷雾特性，不单是液滴滴径（索特平均直径），还有液滴尺寸分布指数（显示其尺寸分布的均匀性）。</p>
+<h1 id="三没有中心分级燃烧室">三、没有中心分级燃烧室</h1>
+<p>参考文献[4] “针对中心主、副模分区的燃烧室头部组织结构的单管燃烧室模型进行数值模拟研究”。
+该文的研究得出高温升燃烧室在设计研发上很有意义的结果，证实了过去在实验中得到的现象。
+但其标题中提出的“中心分级燃烧室”是不对的。
+在贫油预混预蒸发低污染燃烧室出现之前，几乎所有的常规燃烧室都是先由副油喷射工作，然后主油打开工作，这种方式从来不叫分级燃烧。
+只在LPP燃烧室中出现主油分级，即主油不是一次全部打开，而是分级打开的。
+参考文献[4] 所研究的就是先由副油工作然后主油打开工作，这种方式不应称之为分级燃烧室。
+正确的提法应该是“以同心圆排列的副油主油分区燃烧，副油燃烧位于中心，主油燃烧位于外圈。”
+这样的分区燃烧是近二十年来燃气轮机燃烧室（不仅是航空燃烧室）技术的一大进展。</p>
+    </div>
+  <a href="/xliu-group/zh/post/xliu_chin_mistake/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            
+  <div class="mb3 pa4 blue overflow-hidden">
+    
+      <time class="f6 db" datetime="2025-06-16T00:00:00Z">六月 16, 2025</time>
     
     <h1 class="f3 near-black">
       <a href="/xliu-group/zh/post/xliu_math/" class="link black dim">
@@ -182,7 +323,11 @@ script.async = true;
 <ul>
 <li>修改设置文件 /config.toml</li>
 </ul>
-<pre tabindex="0"><code>[markup.goldmark.renderer]
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code>[markup.goldmark.renderer]
 unsafe = true  # 允许原始HTML
 xHTML = true
 
@@ -192,17 +337,25 @@ xHTML = true
     attribute = true
     autoHeadingID = true
 [params]
-math = true
-</code></pre><ul>
+math = true</code></pre>
+  </div><ul>
 <li>配置模板 /layouts/_default/baseof.html ，需要包含下面内容</li>
 </ul>
-<pre tabindex="0"><code>  {{ if .Param &#34;math&#34; }}
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code>  {{ if .Param &#34;math&#34; }}
   {{ partial &#34;math.html&#34; . }}
-{{ end }}
-</code></pre><ul>
+{{ end }}</code></pre>
+  </div><ul>
 <li>添加 mathjax /layouts/partials/math.html 。注意，这里和官方说明文件不一样，主要是DeepSeek 给出建议改这个文件，发现如果延迟初始化Mathjax的执行就好了。发现是需要保证Mathjax 正确的初始化。</li>
 </ul>
-<pre tabindex="0"><code>&lt;script&gt;
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code>&lt;script&gt;
 // 添加初始化检查
 if (!window.MathJax) {
   window.MathJax = {
@@ -232,8 +385,8 @@ script.src = &#39;https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js&#39
   script.id = &#39;MathJax-script&#39;;
   document.head.appendChild(script);
 }
-&lt;/script&gt;
-</code></pre>
+&lt;/script&gt;</code></pre>
+  </div>
     </div>
   <a href="/xliu-group/zh/post/xliu_math/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
   </div>
@@ -241,11 +394,10 @@ script.src = &#39;https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js&#39
         </div>
       
         <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
+            
+  <div class="mb3 pa4 blue overflow-hidden">
     
-      <div class="f6">
-        五月 12, 2025
-      </div>
+      <time class="f6 db" datetime="2025-05-12T00:00:00Z">五月 12, 2025</time>
     
     <h1 class="f3 near-black">
       <a href="/xliu-group/zh/post/wangshuo1/" class="link black dim">
@@ -282,11 +434,10 @@ script.src = &#39;https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js&#39
         </div>
       
         <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
+            
+  <div class="mb3 pa4 blue overflow-hidden">
     
-      <div class="f6">
-        五月 9, 2025
-      </div>
+      <time class="f6 db" datetime="2025-05-09T00:00:00Z">五月 9, 2025</time>
     
     <h1 class="f3 near-black">
       <a href="/xliu-group/zh/post/huihao2/" class="link black dim">
@@ -320,11 +471,10 @@ script.src = &#39;https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js&#39
         </div>
       
         <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
+            
+  <div class="mb3 pa4 blue overflow-hidden">
     
-      <div class="f6">
-        五月 9, 2025
-      </div>
+      <time class="f6 db" datetime="2025-05-09T00:00:00Z">五月 9, 2025</time>
     
     <h1 class="f3 near-black">
       <a href="/xliu-group/zh/post/huihao1/" class="link black dim">
@@ -365,11 +515,10 @@ script.src = &#39;https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js&#39
         </div>
       
         <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
+            
+  <div class="mb3 pa4 blue overflow-hidden">
     
-      <div class="f6">
-        五月 8, 2025
-      </div>
+      <time class="f6 db" datetime="2025-05-08T00:00:00Z">五月 8, 2025</time>
     
     <h1 class="f3 near-black">
       <a href="/xliu-group/zh/post/wangchen5/" class="link black dim">
@@ -384,8 +533,8 @@ script.src = &#39;https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js&#39
 <h2 id="图像坐标系">图像坐标系</h2>
 <p>如图1所示，像素坐标系x-y的原点为O<sub>1</sub>，为像素坐标系的中点。</p>
 <figure><img src="/xliu-group/zh/post/wangchen5/image1.png"><figcaption>
-      <h4>图像坐标系与像素坐标系关系图</h4>
-    </figcaption>
+			<h4>图像坐标系与像素坐标系关系图</h4>
+		</figcaption>
 </figure>
 
 <p>从上图可知，O<sub>1</sub>在u-v坐标系下的坐标，假设d<sub>x</sub>和d<sub>y</sub>分别表示每个像素在横轴x和纵轴y的物理尺寸，单位为毫米/像素，O<sub>1</sub>在图像坐标系和在像素坐标系的坐标的关系是：</p>
@@ -419,8 +568,8 @@ y \\
 $$<h2 id="相机坐标系">相机坐标系</h2>
 <p>相机坐标系与图像坐标系的关系如下图：</p>
 <figure><img src="/xliu-group/zh/post/wangchen5/image2.jpg"><figcaption>
-      <h4>相机坐标系与图像坐标系关系图</h4>
-    </figcaption>
+			<h4>相机坐标系与图像坐标系关系图</h4>
+		</figcaption>
 </figure>
 
 <p>通过三角形相似我们可知：</p>
@@ -434,11 +583,10 @@ $$<p>将上述式子与图像坐标系的两个式子联立可得：</p>
         </div>
       
         <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
+            
+  <div class="mb3 pa4 blue overflow-hidden">
     
-      <div class="f6">
-        四月 22, 2025
-      </div>
+      <time class="f6 db" datetime="2025-04-22T00:00:00Z">四月 22, 2025</time>
     
     <h1 class="f3 near-black">
       <a href="/xliu-group/zh/post/gaoyinbin1/" class="link black dim">
@@ -454,20 +602,20 @@ $$<p>将上述式子与图像坐标系的两个式子联立可得：</p>
 <p>3月24日，因等待新喷嘴制作，实验没有实质性进展。</p>
 <p>3月25日中午，我拿到了1mm和2mm孔径的新喷嘴。下午安装完毕后，我开始核查流量，却又遇到了新问题：实际测定流量与计算流量存在较大偏差，除1mm喷嘴外，其余喷嘴均无法正常测量流量，只能先搁置这一问题。当晚，我使用1mm喷嘴再次进行实验，终于成功拍摄到了第一张气体结构的纹影照片！</p>
 <figure><img src="/xliu-group/zh/post/gaoyinbin1/Picture1.png"><figcaption>
-      <h4>第一张气体结构的纹影照片！</h4>
-    </figcaption>
+			<h4>第一张气体结构的纹影照片！</h4>
+		</figcaption>
 </figure>
 
 <p>那一刻，内心的喜悦与成就感难以言表。 有了前一天的经验，3月26日，我换上2mm孔径的喷嘴继续实验。这次获得的气体结构图像更加清晰，与理论预期基本吻合，实验终于步入正轨。\</p>
 <figure><img src="/xliu-group/zh/post/gaoyinbin1/Picture2.png"><figcaption>
-      <h4>更加清晰的激波图片</h4>
-    </figcaption>
+			<h4>更加清晰的激波图片</h4>
+		</figcaption>
 </figure>
 
 <p>3月27日，我更换了视场更大的新相机，对1mm喷嘴射流重新进行纹影拍摄，又取得了新的实验成果。</p>
 <figure><img src="/xliu-group/zh/post/gaoyinbin1/Picture3.png"><figcaption>
-      <h4>更大视场的图片，可以看到6个马赫环</h4>
-    </figcaption>
+			<h4>更大视场的图片，可以看到6个马赫环</h4>
+		</figcaption>
 </figure>
 
 <p>到了3月28日，纹影实验暂时告一段落。接下来，我计划对试验台进行调整，搭建与纹影系统垂直的TDLAS光路，进一步深入研究。目前，流量测定值与计算值偏差较大的问题仍未解决，我也在不断思考优化方案。此外，后续实验还打算加装腔体，开展空气和二氧化碳混合喷射实验。我会继续记录实验进展，到时候再和大家分享新的发现与挑战！</p>
@@ -478,11 +626,10 @@ $$<p>将上述式子与图像坐标系的两个式子联立可得：</p>
         </div>
       
         <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
+            
+  <div class="mb3 pa4 blue overflow-hidden">
     
-      <div class="f6">
-        三月 23, 2025
-      </div>
+      <time class="f6 db" datetime="2025-03-23T00:00:00Z">三月 23, 2025</time>
     
     <h1 class="f3 near-black">
       <a href="/xliu-group/zh/post/xliu_ch2o/" class="link black dim">
@@ -498,8 +645,8 @@ $$<p>将上述式子与图像坐标系的两个式子联立可得：</p>
 <p>甲醛分子的光谱研究的比较多了，是最早被研究的多原子分子。
 甲醛只有C、O两个重原子，加上两个氢原子，在基态，这四个原子核是平面的。由于原子数多，甲醛的光谱就比较复杂，不像双原子那样，只需要考虑一个转动常数B，而要考虑A B C 三个转动常数。1983年 Dennis Clouthier 和 Ramsay 在Annual Review of Physical Chemistry 上的综述[4]，分子的基态和激发态的光谱参数基本都有了，可以用来对甲醛分子在355nm 处激发态的吸收光谱做仿真。</p>
 <figure><img src="/xliu-group/zh/post/xliu_ch2o/absorption.png"><figcaption>
-      <h4>absorption</h4>
-    </figcaption>
+			<h4>absorption</h4>
+		</figcaption>
 </figure>
 
 <p>355nm 这个吸收带对应的是355nm这里的4^1_0 弯曲振动模式。有趣的是，这个吸收带的高分辨率光谱的工作还没发表过。
@@ -510,8 +657,8 @@ Clouthier综述中提到数据来自 Ramsay 和 Till 未发表的工作，后人
 整体上对应的很好的，但要用的355nm就是在28183cm-1这里，正好有微扰，吸收峰对不上。
 所以仿真的光谱和实验测到的光谱不能完全一致，但是可以定量的对应上是没问题的。</p>
 <figure><img src="/xliu-group/zh/post/xliu_ch2o/simulation.png"><figcaption>
-      <h4>absorption-simulation</h4>
-    </figcaption>
+			<h4>absorption-simulation</h4>
+		</figcaption>
 </figure>
 
 <p>实验中制备高温的甲醛还是比较难的。甲醛在高温时候会聚合反应。需要一边加热一边进料。
@@ -533,11 +680,10 @@ Clouthier综述中提到数据来自 Ramsay 和 Till 未发表的工作，后人
         </div>
       
         <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
+            
+  <div class="mb3 pa4 blue overflow-hidden">
     
-      <div class="f6">
-        三月 22, 2025
-      </div>
+      <time class="f6 db" datetime="2025-03-22T00:00:00Z">三月 22, 2025</time>
     
     <h1 class="f3 near-black">
       <a href="/xliu-group/zh/post/xliu_method/" class="link black dim">
@@ -548,8 +694,8 @@ Clouthier综述中提到数据来自 Ramsay 和 Till 未发表的工作，后人
       <p>光谱学本身和火焰研究关系很密切。
 应用光谱研究火焰的历史可以追溯到1860年Kirchhoff和Bunsen针对火焰中金属的光谱测量和1857年Swan对蜡烛火焰的测量。</p>
 <figure><img src="/xliu-group/zh/post/xliu_method/tree.png" width="auto"><figcaption>
-      <h4>学术家谱</h4>
-    </figcaption>
+			<h4>学术家谱</h4>
+		</figcaption>
 </figure>
 
 <p>笔者的博士导师是研究分子光谱，纯理论研究。
@@ -574,11 +720,10 @@ Clouthier综述中提到数据来自 Ramsay 和 Till 未发表的工作，后人
         </div>
       
         <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
+            
+  <div class="mb3 pa4 blue overflow-hidden">
     
-      <div class="f6">
-        三月 10, 2025
-      </div>
+      <time class="f6 db" datetime="2025-03-10T00:00:00Z">三月 10, 2025</time>
     
     <h1 class="f3 near-black">
       <a href="/xliu-group/zh/post/xliu_lec1/" class="link black dim">
@@ -605,112 +750,37 @@ Clouthier综述中提到数据来自 Ramsay 和 Till 未发表的工作，后人
 
         </div>
       
-        <div class="w-100 w-30-l mb4 relative bg-white">
-            <div class="mb3 pa4 blue overflow-hidden">
-    
-      <div class="f6">
-        二月 20, 2025
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/xliu-group/zh/post/xliu_davis/" class="link black dim">
-        lvpyio
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>今天尝试了 LaVision 公司的 python package，太坑了，又发现 DeepSeek 太香了。</p>
-<p>lvpyio 的网址：
-<a href="https://www.lavision.de/en/downloads/software/python_add_ons.php">https://www.lavision.de/en/downloads/software/python_add_ons.php</a></p>
-<p>之前都是把 DaVis 计算得到的速度场或者标量场结果存成文本文件，例如 B00001.txt 再用python读。下面是我写的读标量场和矢量场的函数，其中load_piv 中 size 参数非0时，会将数据 binning 降低数据数量，提高对比度。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#%% read DaVis txt file</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_piv</span>(filename, size):
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    extract PIV data
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    filename: txt file name
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    size: average size
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>    lavision <span style="color:#f92672">=</span> open(filename)
-</span></span><span style="display:flex;"><span>    step, xnum, ynum <span style="color:#f92672">=</span> lavision<span style="color:#f92672">.</span>readline()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">6</span>]
-</span></span><span style="display:flex;"><span>    lavision<span style="color:#f92672">.</span>close()
-</span></span><span style="display:flex;"><span>    step <span style="color:#f92672">=</span> int(step)
-</span></span><span style="display:flex;"><span>    xnum <span style="color:#f92672">=</span> int(xnum)
-</span></span><span style="display:flex;"><span>    ynum <span style="color:#f92672">=</span> int(ynum)
-</span></span><span style="display:flex;"><span>    size <span style="color:#f92672">=</span> int(size)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    oned <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(filename, decimal<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#39;</span>, skiprows<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
-</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">0</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
-</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">1</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
-</span></span><span style="display:flex;"><span>    U <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">2</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
-</span></span><span style="display:flex;"><span>    V <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">3</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> size <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>:
-</span></span><span style="display:flex;"><span>        X <span style="color:#f92672">=</span> X[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
-</span></span><span style="display:flex;"><span>        Y <span style="color:#f92672">=</span> Y[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
-</span></span><span style="display:flex;"><span>        U <span style="color:#f92672">=</span> U[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
-</span></span><span style="display:flex;"><span>        V <span style="color:#f92672">=</span> V[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
-</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)                                                                           
-</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> Y<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
-</span></span><span style="display:flex;"><span>    U <span style="color:#f92672">=</span> U<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
-</span></span><span style="display:flex;"><span>    V <span style="color:#f92672">=</span> V<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> step, xnum, ynum, X, Y, U, V   
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_plif</span>():
-</span></span><span style="display:flex;"><span>    plif <span style="color:#f92672">=</span> open(filename)
-</span></span><span style="display:flex;"><span>    firstline <span style="color:#f92672">=</span> plif<span style="color:#f92672">.</span>readline()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)
-</span></span><span style="display:flex;"><span>    x_num,y_num <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">5</span>]
-</span></span><span style="display:flex;"><span>    delta_x,x0 <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">6</span>:<span style="color:#ae81ff">8</span>]
-</span></span><span style="display:flex;"><span>    delta_y,y0 <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">10</span>:<span style="color:#ae81ff">12</span>]
-</span></span><span style="display:flex;"><span>    plif<span style="color:#f92672">.</span>close()
-</span></span><span style="display:flex;"><span>    x_num <span style="color:#f92672">=</span> int(x_num)
-</span></span><span style="display:flex;"><span>    y_num <span style="color:#f92672">=</span> int(y_num)
-</span></span><span style="display:flex;"><span>    x0 <span style="color:#f92672">=</span> float(x0)
-</span></span><span style="display:flex;"><span>    y0 <span style="color:#f92672">=</span> float(y0)
-</span></span><span style="display:flex;"><span>    delta_x <span style="color:#f92672">=</span> float(delta_x)
-</span></span><span style="display:flex;"><span>    delta_y <span style="color:#f92672">=</span> float(delta_y)
-</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(x0, x0<span style="color:#f92672">+</span>(x_num)<span style="color:#f92672">*</span>delta_x, delta_x)
-</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(y0, y0<span style="color:#f92672">+</span>(y_num)<span style="color:#f92672">*</span>delta_y, delta_y)   
-</span></span><span style="display:flex;"><span>    plif_txt <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(filename, decimal<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#39;</span>, skiprows<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
-</span></span><span style="display:flex;"><span>    plif <span style="color:#f92672">=</span> plif_txt<span style="color:#f92672">.</span>values
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> x_num,y_num,X,Y,plif
-</span></span></code></pre></div><p>貌似用官方的软件包可以读更多的文件格式吧。于是就开始安装了。
-首先发现不知道为什么 spyder 启动出问题了，numpy 版本不对，需要重装 numpy，就好了。</p>
-    </div>
-  <a href="/xliu-group/zh/post/xliu_davis/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
-  </div>
-
-        </div>
-      
     </section>
-    <ul class="pagination pagination-default">
-      <li class="page-item">
-        <a href="/xliu-group/zh/post/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
-      </li>
-      <li class="page-item">
-        <a href="/xliu-group/zh/post/page/4/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
-      </li>
-      <li class="page-item">
-        <a href="/xliu-group/zh/post/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
-      </li>
-      <li class="page-item">
-        <a href="/xliu-group/zh/post/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
-      </li>
-      <li class="page-item">
-        <a href="/xliu-group/zh/post/page/4/" aria-label="Page 4" class="page-link" role="button">4</a>
-      </li>
-      <li class="page-item active">
-        <a aria-current="page" aria-label="Page 5" class="page-link" role="button">5</a>
-      </li>
-      <li class="page-item">
-        <a href="/xliu-group/zh/post/page/6/" aria-label="Page 6" class="page-link" role="button">6</a>
-      </li>
-      <li class="page-item">
-        <a href="/xliu-group/zh/post/page/6/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
-      </li>
-      <li class="page-item">
-        <a href="/xliu-group/zh/post/page/6/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
-      </li>
-    </ul></article>
+    
+		<ul class="pagination pagination-default">
+			<li class="page-item">
+				<a href="/xliu-group/zh/post/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+			</li>
+		<li class="page-item">
+			<a href="/xliu-group/zh/post/page/4/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+		</li>
+			<li class="page-item">
+				<a href="/xliu-group/zh/post/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
+			</li>
+			<li class="page-item">
+				<a href="/xliu-group/zh/post/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
+			</li>
+			<li class="page-item">
+				<a href="/xliu-group/zh/post/page/4/" aria-label="Page 4" class="page-link" role="button">4</a>
+			</li>
+			<li class="page-item active">
+				<a aria-current="page" aria-label="Page 5" class="page-link" role="button">5</a>
+			</li>
+			<li class="page-item">
+				<a href="/xliu-group/zh/post/page/6/" aria-label="Page 6" class="page-link" role="button">6</a>
+			</li>
+		<li class="page-item">
+			<a href="/xliu-group/zh/post/page/6/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+		</li>
+			<li class="page-item">
+				<a href="/xliu-group/zh/post/page/6/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+			</li>
+		</ul></article>
 
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
