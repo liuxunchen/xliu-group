@@ -1,0 +1,38 @@
+import cantera as ct
+import numpy as np
+
+class GasCompositionSimulator:
+    def __init__(self, mech_file='gri30.yaml'):
+        try:
+            self.gas = ct.Solution(mech_file)
+        except Exception as e:
+            print(f"Warning: Could not load {mech_file}. Error: {e}")
+            self.gas = None
+
+    def calculate_equilibrium(self, fuel, oxidizer, phi, T_init, p_init):
+        """计算给定当量比下的化学平衡组分"""
+        if self.gas is None:
+            return {}
+
+        try:
+            # 设置初始状态
+            reactants = f'{fuel}:{phi}, {oxidizer}:1.0'
+            self.gas.TPX = T_init, p_init * ct.one_atm, reactants
+            
+            # 恒压绝热平衡 (HP)
+            ct.equilibrate(self.gas, 'HP')
+            
+            # 提取目标分子的摩尔分数
+            target_species = ['H2O', 'CO2', 'CO', 'NO', 'N2O', 'NO2', 'O2', 'N2']
+            composition = {}
+            for sp in target_species:
+                if sp in self.gas.species_names:
+                    idx = self.gas.species_index(sp)
+                    composition[sp] = self.gas.X[idx]
+            
+            composition['T_eq'] = self.gas.T
+            composition['p_eq'] = self.gas.P / ct.one_atm
+            return composition
+        except Exception as e:
+            print(f"Equilibrium calculation failed: {e}")
+            return {}

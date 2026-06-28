@@ -1,230 +1,181 @@
 # apps/hitran_gui.py
-# 
-import sys
-import os
-# 将项目根目录添加到 Python 路径
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import sys
 import os
+
+# ================= 【关键修复 1】解决 ModuleNotFoundError =================
+# 获取当前文件所在目录 (apps/)，并获取其上一级目录 (项目根目录)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.dirname(current_dir) 
+
+# 将项目根目录插入到 Python 模块搜索路径的最前面
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+# =======================================================================
+
 import numpy as np
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
                              QPushButton, QLabel, QLineEdit, QGroupBox, QFileDialog,
-                             QMessageBox, QTextEdit, QCheckBox, QDoubleSpinBox,
-                             QProgressBar, QSplitter)
+                             QMessageBox, QTextEdit, QDoubleSpinBox,
+                             QProgressBar, QSplitter, QTableWidget, QTableWidgetItem,
+                             QAbstractItemView, QHeaderView, QFormLayout, QInputDialog)
 from PyQt6.QtCore import Qt
-from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 
-
-import matplotlib.pyplot as plt
-
-import matplotlib.pyplot as plt
-
-# Reset to Matplotlib's default, universally supported fonts
-plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'Arial', 'Helvetica', 'sans-serif']
-plt.rcParams['axes.unicode_minus'] = False # Still keeps minus signs rendering correctly
-plt.rcParams['text.usetex'] = True
-
-
-from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-
-# 导入重构后的模块
-from core.hitran_spectrum import HitranSpectrum
-#from gui.components import MplCanvas, CalculationThread
-from gui.components import SpectrumCanvas, CalculationThread
-
-# Import the new reusable plotter
+# 导入分离后的组件
+from gui.components import CalculationThread
 from gui.spectrum_plotter import SpectrumCanvas
 
-class HitranGUI(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.hitran = None
-        self.current_results = None
-        self.calculation_thread = None
-        self.init_ui()
+# 导入核心引擎
+from core.hitran_spectrum import HitranSpectrum
 
-    def init_ui(self):
-        self.setWindowTitle('HITRAN 光谱仿真工具 (重构版)')
+class HitranGUI(QMainWindow):
+    def __init__(self, initial_T=300.0, initial_P=1.0, db_path="", cantera_species=None, q_folder=None):
+        super().__init__()
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        project_root = os.path.dirname(current_dir)
+        self.db_path = db_path if db_path else os.path.join(project_root, 'hitran_database')
+        if not os.path.exists(self.db_path):
+            os.makedirs(self.db_path, exist_ok=True)
+        
+        self.cantera_species = cantera_species if cantera_species else {}
+        self.global_min_wn = float('inf')
+        self.global_max_wn = 0.0
+        self.calc_thread = None
+
+        # 1. 先确定 Q 文件夹路径，但不设置控件
+        if q_folder:
+            self.q_folder = q_folder
+        else:
+            self.q_folder = os.path.join(self.db_path, 'Q')
+            if not os.path.exists(self.q_folder):
+                self.q_folder = self.db_path
+
+        # 2. 构建界面（此时所有控件被创建）
+        self.init_ui(initial_T, initial_P)
+
+        # 3. 界面就绪后再初始化引擎和设置控件文本
+        self.hitran_engine = HitranSpectrum(q_folder=self.q_folder)
+        self.q_folder_edit.setText(self.q_folder)  # 现在可以安全调用
+
+
+        
+    def init_ui(self, T, P):
+        self.setWindowTitle('HITRAN 混合气体光谱仿真工具 刘训臣')
         self.setGeometry(100, 100, 1400, 900)
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
         main_layout = QHBoxLayout()
         central_widget.setLayout(main_layout)
+        main_layout.addWidget(self.create_control_panel(T, P), 1)
+        main_layout.addWidget(self.create_right_panel(), 2)
 
-        # 左侧控制面板
-        control_panel = self.create_control_panel()
-        main_layout.addWidget(control_panel, 1)
-
-        # 右侧图形和统计
-        right_panel = self.create_right_panel()
-        main_layout.addWidget(right_panel, 2)
-
-    def create_control_panel(self):
+    def create_control_panel(self, T, P):
         panel = QWidget()
         layout = QVBoxLayout()
         panel.setLayout(layout)
 
-        # ---- 文件选择 ----
-        file_group = QGroupBox("文件选择")
+        # ---- 多文件表格 (文件名 + 浓度) ----
+        file_group = QGroupBox("HITRAN 文件列表 (浓度可调)")
         file_layout = QVBoxLayout()
-        h_layout = QHBoxLayout()
-        self.par_file_edit = QLineEdit()
-        self.par_file_edit.setPlaceholderText("选择 .par 文件")
-        btn_par = QPushButton("浏览")
-        btn_par.clicked.connect(self.select_par_file)
-        h_layout.addWidget(QLabel("HITRAN文件:"))
-        h_layout.addWidget(self.par_file_edit)
-        h_layout.addWidget(btn_par)
-        file_layout.addLayout(h_layout)
+        self.file_table = QTableWidget()
+        self.file_table.setColumnCount(2)
+        self.file_table.setHorizontalHeaderLabels(["PAR 文件", "浓度 (ppm)"])
+        self.file_table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
+        self.file_table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
+        self.file_table.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
+        self.file_table.setEditTriggers(QAbstractItemView.EditTrigger.DoubleClicked | 
+                                        QAbstractItemView.EditTrigger.EditKeyPressed)
+        file_layout.addWidget(self.file_table)
 
-        h_layout2 = QHBoxLayout()
-        self.q_folder_edit = QLineEdit()
-        self.q_folder_edit.setPlaceholderText("选择配分函数文件夹 (含 q*.txt)")
-        btn_q = QPushButton("浏览")
-        btn_q.clicked.connect(self.select_q_folder)
-        h_layout2.addWidget(QLabel("Q文件夹:"))
-        h_layout2.addWidget(self.q_folder_edit)
-        h_layout2.addWidget(btn_q)
-        file_layout.addLayout(h_layout2)
+        btn_layout = QHBoxLayout()
+        self.btn_add_par = QPushButton("添加 .par 文件")
+        self.btn_add_par.clicked.connect(self.add_par_files)
+        btn_layout.addWidget(self.btn_add_par)
+        self.btn_remove_par = QPushButton("移除选中行")
+        self.btn_remove_par.clicked.connect(self.remove_selected_rows)
+        btn_layout.addWidget(self.btn_remove_par)
+        self.btn_set_conc = QPushButton("设置浓度 (选中行)")
+        self.btn_set_conc.clicked.connect(self.set_concentration_for_selected)
+        btn_layout.addWidget(self.btn_set_conc)
+        file_layout.addLayout(btn_layout)
         file_group.setLayout(file_layout)
         layout.addWidget(file_group)
 
-        # ---- 分子信息 ----
-        info_group = QGroupBox("分子信息 (自动识别)")
-        info_layout = QVBoxLayout()
-        h_mol = QHBoxLayout()
-        h_mol.addWidget(QLabel("分子:"))
-        self.molecule_label = QLabel("未识别")
-        h_mol.addWidget(self.molecule_label)
-        info_layout.addLayout(h_mol)
+        # ---- 配分函数文件夹 ----
+        q_group = QGroupBox("配分函数 (Q) 文件夹")
+        q_layout = QHBoxLayout()
+        default_q_path = self.q_folder   # 之前是 os.path.join(self.db_path, 'Q') 等，现在直接使用 self.q_folder
+        self.q_folder_edit = QLineEdit(default_q_path)
+        btn_q = QPushButton("浏览")
+        btn_q.clicked.connect(self.select_q_folder)
+        q_layout.addWidget(self.q_folder_edit)
+        q_layout.addWidget(btn_q)
+        q_group.setLayout(q_layout)
+        layout.addWidget(q_group)
 
-        h_id = QHBoxLayout()
-        h_id.addWidget(QLabel("分子ID:"))
-        self.molecule_id_label = QLabel("--")
-        h_id.addWidget(self.molecule_id_label)
-        h_id.addWidget(QLabel("同位素ID:"))
-        self.isotope_id_label = QLabel("--")
-        h_id.addWidget(self.isotope_id_label)
-        info_layout.addLayout(h_id)
-
-        h_mass = QHBoxLayout()
-        h_mass.addWidget(QLabel("分子质量:"))
-        self.mass_label = QLabel("未识别")
-        h_mass.addWidget(self.mass_label)
-        info_layout.addLayout(h_mass)
-        info_group.setLayout(info_layout)
-        layout.addWidget(info_group)
-
-        # ---- 计算参数 ----
-        param_group = QGroupBox("计算参数")
-        param_layout = QVBoxLayout()
-        h_temp = QHBoxLayout()
-        h_temp.addWidget(QLabel("温度 (K):"))
+        # ---- 全局参数 ----
+        param_group = QGroupBox("全局计算参数")
+        param_layout = QFormLayout()
         self.temp_spin = QDoubleSpinBox()
         self.temp_spin.setRange(100, 5000)
-        self.temp_spin.setValue(600)
-        h_temp.addWidget(self.temp_spin)
-        param_layout.addLayout(h_temp)
-
-        h_press = QHBoxLayout()
-        h_press.addWidget(QLabel("压力 (atm):"))
+        self.temp_spin.setValue(T)
+        param_layout.addRow("温度 (K):", self.temp_spin)
         self.pressure_spin = QDoubleSpinBox()
         self.pressure_spin.setRange(0.001, 100)
-        self.pressure_spin.setValue(1.0)
-        h_press.addWidget(self.pressure_spin)
-        param_layout.addLayout(h_press)
-
-        h_conc = QHBoxLayout()
-        h_conc.addWidget(QLabel("浓度 (ppm):"))
-        self.conc_spin = QDoubleSpinBox()
-        self.conc_spin.setRange(0.001, 1e6)
-        self.conc_spin.setValue(10)
-        self.conc_spin.setDecimals(3)
-        h_conc.addWidget(self.conc_spin)
-        param_layout.addLayout(h_conc)
-
-        h_path = QHBoxLayout()
-        h_path.addWidget(QLabel("光程 (cm):"))
+        self.pressure_spin.setValue(P)
+        param_layout.addRow("压力 (atm):", self.pressure_spin)
         self.path_spin = QDoubleSpinBox()
         self.path_spin.setRange(0.1, 10000)
         self.path_spin.setValue(100.0)
-        h_path.addWidget(self.path_spin)
-        param_layout.addLayout(h_path)
+        param_layout.addRow("光程 (cm):", self.path_spin)
+        self.omega_wing_spin = QDoubleSpinBox()
+        self.omega_wing_spin.setRange(0.1, 500.0)
+        self.omega_wing_spin.setValue(25.0)
+        self.omega_wing_spin.setDecimals(1)
+        param_layout.addRow("Omega Wing ($cm^{-1}$):", self.omega_wing_spin)
         param_group.setLayout(param_layout)
         layout.addWidget(param_group)
 
         # ---- 波数范围 ----
-        wn_group = QGroupBox("波数范围")
-        wn_layout = QVBoxLayout()
-        self.use_default_check = QCheckBox("使用数据库默认范围")
-        self.use_default_check.setChecked(True)
-        self.use_default_check.toggled.connect(self.on_use_default_toggled)
-        wn_layout.addWidget(self.use_default_check)
-
-        h_range = QHBoxLayout()
-        h_range.addWidget(QLabel("起始:"))
+        wn_group = QGroupBox("波数范围 (自动识别)")
+        wn_layout = QFormLayout()
         self.start_spin = QDoubleSpinBox()
         self.start_spin.setRange(0, 100000)
-        self.start_spin.setValue(1870)
+        self.start_spin.setValue(1000)
         self.start_spin.setDecimals(4)
-        h_range.addWidget(self.start_spin)
-        h_range.addWidget(QLabel("结束:"))
+        wn_layout.addRow("起始 ($cm^{-1}$):", self.start_spin)
         self.end_spin = QDoubleSpinBox()
         self.end_spin.setRange(0, 100000)
-        self.end_spin.setValue(2310)
+        self.end_spin.setValue(5000)
         self.end_spin.setDecimals(4)
-        h_range.addWidget(self.end_spin)
-        h_range.addWidget(QLabel("分辨率:"))
+        wn_layout.addRow("结束 ($cm^{-1}$):", self.end_spin)
         self.resolution_spin = QDoubleSpinBox()
         self.resolution_spin.setRange(0.0001, 1.0)
-        self.resolution_spin.setValue(0.001)
+        self.resolution_spin.setValue(0.01)
         self.resolution_spin.setDecimals(4)
-        h_range.addWidget(self.resolution_spin)
-        wn_layout.addLayout(h_range)
-
-        h_wing = QHBoxLayout()
-        h_wing.addWidget(QLabel("谱线计算域倍数:"))
-        self.omega_wing_spin = QDoubleSpinBox()
-        self.omega_wing_spin.setRange(1, 100)
-        self.omega_wing_spin.setValue(10)
-        h_wing.addWidget(self.omega_wing_spin)
-        wn_layout.addLayout(h_wing)
+        wn_layout.addRow("分辨率 ($cm^{-1}$):", self.resolution_spin)
         wn_group.setLayout(wn_layout)
         layout.addWidget(wn_group)
 
-        # ---- 进度条 ----
         self.progress_bar = QProgressBar()
+        self.progress_bar.setRange(0, 0)
         self.progress_bar.setVisible(False)
         layout.addWidget(self.progress_bar)
 
-        # ---- 按钮 ----
-        btn_layout = QHBoxLayout()
-        self.load_btn = QPushButton("加载数据")
-        self.load_btn.clicked.connect(self.load_data)
-        btn_layout.addWidget(self.load_btn)
-
-        self.calc_btn = QPushButton("开始计算")
-        self.calc_btn.clicked.connect(self.calculate)
-        self.calc_btn.setEnabled(False)
-        btn_layout.addWidget(self.calc_btn)
-
+        btn_calc_layout = QHBoxLayout()
+        self.calc_btn = QPushButton("开始计算混合光谱")
+        self.calc_btn.setStyleSheet("background-color: #2196F3; color: white; font-weight: bold; padding: 8px;")
+        self.calc_btn.clicked.connect(self.start_calculation)
+        btn_calc_layout.addWidget(self.calc_btn)
         self.clear_btn = QPushButton("清除图形")
         self.clear_btn.clicked.connect(self.clear_plot)
-        btn_layout.addWidget(self.clear_btn)
+        btn_calc_layout.addWidget(self.clear_btn)
+        layout.addLayout(btn_calc_layout)
 
-        self.save_btn = QPushButton("保存吸收系数")
-        self.save_btn.clicked.connect(self.save_coefficients)
-        self.save_btn.setEnabled(False)
-        btn_layout.addWidget(self.save_btn)
-        layout.addLayout(btn_layout)
-
-        # ---- 数据库信息 ----
-        info_db = QGroupBox("数据库信息")
+        info_db = QGroupBox("运行日志")
         info_db_layout = QVBoxLayout()
         self.info_text = QTextEdit()
-        self.info_text.setMaximumHeight(150)
+        self.info_text.setMaximumHeight(120)
         self.info_text.setReadOnly(True)
         info_db_layout.addWidget(self.info_text)
         info_db.setLayout(info_db_layout)
@@ -238,16 +189,16 @@ class HitranGUI(QMainWindow):
         layout = QVBoxLayout()
         panel.setLayout(layout)
 
-        splitter = QSplitter(Qt.Orientation.Vertical)
+        # 使用分离出的 SpectrumCanvas，它包含 Figure、Canvas 和 Toolbar
+        self.canvas = SpectrumCanvas(self, width=10, height=6, dpi=100)
 
         plot_widget = QWidget()
         plot_layout = QVBoxLayout()
-        plot_widget.setLayout(plot_layout)
-        self.canvas = SpectrumCanvas(self, width=10, height=6, dpi=100)
-        self.toolbar = NavigationToolbar(self.canvas, self)
-        plot_layout.addWidget(self.toolbar)
+        plot_layout.addWidget(self.canvas.toolbar)
         plot_layout.addWidget(self.canvas)
+        plot_widget.setLayout(plot_layout)
 
+        # 统计信息框
         stats_widget = QWidget()
         stats_layout = QVBoxLayout()
         stats_widget.setLayout(stats_layout)
@@ -255,225 +206,215 @@ class HitranGUI(QMainWindow):
         stats_title.setStyleSheet("font-weight: bold; font-size: 14px; margin: 5px;")
         stats_layout.addWidget(stats_title)
         self.stats_text = QTextEdit()
-        self.stats_text.setMaximumHeight(200)
+        self.stats_text.setMaximumHeight(150)
         self.stats_text.setReadOnly(True)
         stats_layout.addWidget(self.stats_text)
 
+        splitter = QSplitter(Qt.Orientation.Vertical)
         splitter.addWidget(plot_widget)
         splitter.addWidget(stats_widget)
-        splitter.setSizes([600, 200])
+        splitter.setSizes([600, 150])
         layout.addWidget(splitter)
         return panel
 
-    # ---------- 以下方法与原版相同，只调整了导入路径 ----------
-    def select_par_file(self):
-        filename, _ = QFileDialog.getOpenFileName(self, "选择 .par 文件", "", "PAR Files (*.par)")
-        if filename:
-            self.par_file_edit.setText(filename)
+    # ---------- 文件与浓度管理 ----------
+    def add_par_files(self):
+        filenames, _ = QFileDialog.getOpenFileNames(
+            self, "选择 HITRAN .par 文件 (可多选)", self.db_path, "PAR Files (*.par);;All Files (*)"
+        )
+        if filenames:
+            existing = [self.file_table.item(i, 0).text() for i in range(self.file_table.rowCount())]
+            row = self.file_table.rowCount()
+            for f in filenames:
+                if f not in existing:
+                    self.file_table.insertRow(row)
+                    self.file_table.setItem(row, 0, QTableWidgetItem(f))
+                    # 默认浓度：尝试从 cantera_species 获取，否则 10 ppm
+                    base = os.path.splitext(os.path.basename(f))[0].split('_')[0].upper()
+                    conc = 10.0  # ppm
+                    if self.cantera_species:
+                        for sp, frac in self.cantera_species.items():
+                            if base in sp.upper() or sp.upper() in base:
+                                conc = float(frac) * 1e6
+                                break
+                    self.file_table.setItem(row, 1, QTableWidgetItem(f"{conc:.2f}"))
+                    self.update_wn_range_from_par(f)
+                    row += 1
+            if self.global_min_wn != float('inf'):
+                self.start_spin.setValue(self.global_min_wn)
+                self.end_spin.setValue(self.global_max_wn)
+                self.log(f"自动更新波数范围: {self.global_min_wn:.2f} - {self.global_max_wn:.2f} cm^-1")
+
+    def remove_selected_rows(self):
+        for item in self.file_table.selectedItems():
+            row = item.row()
+            self.file_table.removeRow(row)
+
+    def set_concentration_for_selected(self):
+        """为选中的行设置浓度（ppm）"""
+        selected = self.file_table.selectedItems()
+        if not selected:
+            QMessageBox.information(self, "提示", "请先选中要设置浓度的行")
+            return
+        rows = set(item.row() for item in selected)
+        conc_str, ok = QInputDialog.getText(self, "设置浓度", "输入浓度 (ppm):", text="100.0")
+        if ok:
+            try:
+                conc = float(conc_str)
+                for r in rows:
+                    self.file_table.setItem(r, 1, QTableWidgetItem(f"{conc:.2f}"))
+            except ValueError:
+                QMessageBox.warning(self, "错误", "请输入有效数字")
+
+    def update_wn_range_from_par(self, par_file):
+        try:
+            with open(par_file, 'r') as f:
+                for line in f:
+                    if len(line) >= 15:
+                        try:
+                            wn = float(line[3:15].strip())
+                            if wn < self.global_min_wn:
+                                self.global_min_wn = wn
+                            if wn > self.global_max_wn:
+                                self.global_max_wn = wn
+                        except ValueError:
+                            continue
+        except Exception as e:
+            self.log(f"警告: 无法读取 {os.path.basename(par_file)} 的波数范围 ({e})")
 
     def select_q_folder(self):
-        folder = QFileDialog.getExistingDirectory(self, "选择配分函数文件夹")
+        folder = QFileDialog.getExistingDirectory(self, "选择配分函数(Q)文件夹", self.db_path)
         if folder:
             self.q_folder_edit.setText(folder)
 
-    def on_use_default_toggled(self, checked):
-        self.start_spin.setEnabled(not checked)
-        self.end_spin.setEnabled(not checked)
+    def log(self, msg):
+        self.info_text.append(msg)
 
-    def update_molecule_info(self, info):
-        if info:
-            self.molecule_label.setText(info['molecule_name'])
-            self.molecule_id_label.setText(str(info['molecule_id']))
-            self.isotope_id_label.setText(str(info['isotope_id']))
-            self.mass_label.setText(f"{info['molar_mass']:.6f} g/mol")
-        else:
-            self.molecule_label.setText("未识别")
-            self.molecule_id_label.setText("--")
-            self.isotope_id_label.setText("--")
-            self.mass_label.setText("未识别")
+    # ---------- 计算 ----------
+    def start_calculation(self):
+        if self.file_table.rowCount() == 0:
+            QMessageBox.warning(self, "警告", "请至少添加一个 .par 文件！")
+            return
 
-    def load_data(self):
-        par_file = self.par_file_edit.text()
         q_folder = self.q_folder_edit.text()
-        if not par_file or not q_folder:
-            QMessageBox.warning(self, "错误", "请选择 .par 文件和配分函数文件夹")
-            return
-        if not os.path.exists(par_file):
-            QMessageBox.warning(self, "错误", "HITRAN 文件不存在")
-            return
-        if not os.path.exists(q_folder):
-            QMessageBox.warning(self, "错误", "配分函数文件夹不存在")
-            return
-        try:
-            self.hitran = HitranSpectrum()
-            self.hitran.load_data(par_file, q_folder)
-            self.update_molecule_info(self.hitran.molecule_info)
-            if self.use_default_check.isChecked():
-                self.start_spin.setValue(self.hitran.default_start)
-                self.end_spin.setValue(self.hitran.default_end)
-            self.info_text.setText(self.hitran.get_database_info())
-            self.calc_btn.setEnabled(True)
-            QMessageBox.information(self, "成功", "数据加载成功！")
-        except Exception as e:
-            QMessageBox.critical(self, "错误", f"加载数据失败: {e}")
+        hitran_engine = HitranSpectrum(q_folder=q_folder)
+        if os.path.exists(q_folder):
+            self.log(f"配分函数文件夹: {q_folder}")
+        else:
+            self.log("警告: Q 文件夹不存在，使用简化公式")
 
-    def calculate(self):
-        if self.hitran is None:
-            QMessageBox.warning(self, "错误", "请先加载数据")
+        # 遍历表格行，添加分子
+        for row in range(self.file_table.rowCount()):
+            par_file = self.file_table.item(row, 0).text()
+            conc_item = self.file_table.item(row, 1)
+            conc_ppm = float(conc_item.text()) if conc_item else 10.0
+            mole_fraction = conc_ppm * 1e-6
+
+            base = os.path.splitext(os.path.basename(par_file))[0].split('_')[0].upper()
+            try:
+                hitran_engine.add_molecule(par_file, mole_fraction, name=base)
+                self.log(f"加载: {base} (浓度: {conc_ppm:.2f} ppm)")
+            except Exception as e:
+                self.log(f"错误: 加载 {os.path.basename(par_file)} 失败 -> {str(e)}")
+                return
+
+        if not hitran_engine.molecules:
+            QMessageBox.critical(self, "错误", "没有加载任何分子！")
             return
-        try:
-            self.calc_btn.setEnabled(False)
-            self.progress_bar.setVisible(True)
-            self.progress_bar.setRange(0, 0)
-            T = self.temp_spin.value()
-            p = self.pressure_spin.value()
-            c = self.conc_spin.value() * 1e-6
-            l = self.path_spin.value()
-            omega_wing = self.omega_wing_spin.value()
-            if self.use_default_check.isChecked():
-                start = None
-                end = None
-            else:
-                start = self.start_spin.value()
-                end = self.end_spin.value()
-            resolution = self.resolution_spin.value()
-            params = {
-                'T': T, 'p': p, 'c': c, 'l': l,
-                'start': start, 'end': end,
-                'resolution': resolution, 'omega_wing': omega_wing
-            }
-            self.calculation_thread = CalculationThread(self.hitran, params)
-            self.calculation_thread.finished.connect(self.on_calculation_finished)
-            self.calculation_thread.error.connect(self.on_calculation_error)
-            self.calculation_thread.start()
-        except Exception as e:
-            QMessageBox.critical(self, "错误", f"计算失败: {e}")
-            self.calc_btn.setEnabled(True)
-            self.progress_bar.setVisible(False)
+
+        # 收集计算参数
+        T = self.temp_spin.value()
+        p = self.pressure_spin.value()
+        L = self.path_spin.value()
+        start = self.start_spin.value()
+        end = self.end_spin.value()
+        resolution = self.resolution_spin.value()
+        omega_wing = self.omega_wing_spin.value()
+
+        self.calc_btn.setEnabled(False)
+        self.progress_bar.setVisible(True)
+        self.log("开始计算...")
+
+        # 使用分离出的 CalculationThread
+        self.calc_thread = CalculationThread(
+            hitran_engine, T, p, L, start, end, resolution, omega_wing
+        )
+        self.calc_thread.finished.connect(self.on_calculation_finished)
+        self.calc_thread.error.connect(self.on_calculation_error)
+        self.calc_thread.start()
 
     def on_calculation_finished(self, results):
-        self.current_results = results
-        self.update_plot()
-        self.update_stats_text()
-        self.calc_btn.setEnabled(True)
         self.progress_bar.setVisible(False)
-        self.save_btn.setEnabled(True)
-        QMessageBox.information(self, "完成", "计算完成！")
-
-    def on_calculation_error(self, error_msg):
-        QMessageBox.critical(self, "错误", f"计算失败: {error_msg}")
         self.calc_btn.setEnabled(True)
-        self.progress_bar.setVisible(False)
+        self.log("计算完成，绘图...")
 
-    def clear_plot(self):
-        self.canvas.axes.clear()
-        self.canvas.axes.set_xlabel('波数 (cm$^{-1}$)')
-        self.canvas.axes.set_ylabel('吸收系数 (cm$^{-1}$)')
-        self.canvas.axes.set_title('')
-        self.stats_text.clear()
-        self.canvas.draw()
-        QMessageBox.information(self, "成功", "图形已清除")
-
-    def update_plot(self):
-        if self.current_results is None:
-            return
-
-        wn = self.current_results['wavenumber']
-        coef = self.current_results['coef']
-        Tr = self.current_results['Tr']
-        params = self.current_results['params']
-
-        mol_name = self.hitran.molecule_info.get('molecule_name', 'HITRAN') if self.hitran else 'HITRAN'
-
-        # 直接调用画线函数
-        self.canvas.plot_spectrum(
-            wavenumber=wn,
-            coef=coef,
-            transmittance=Tr,
-            params=params,
-            title=f"{mol_name} Absorption & Transmittance",
-            show_abs=True,
-            show_trans=True,
+        # 直接调用画布的绘图方法
+        self.canvas.plot_mixture(
+            wavenumber=results['wavenumber'],
+            total_coef=results['total_coef'],
+            individual_coefs=results['individual_coefs'],
+            transmittance=results['Tr'],
+            params=results['params'],
+            title="Mixture Spectrum",
             grid_density='fine',
             show_wavelength=True
         )
-    
-    def update_stats_text(self):
-        if self.current_results is None:
-            return
-        params = self.current_results['params']
-        coef = self.current_results['coef']
-        OD = self.current_results['OD']
-        Tr = self.current_results['Tr']
-        Ab = self.current_results['Ab']
-        wavenumber = self.current_results['wavenumber']
 
-        max_coef_idx = np.argmax(coef)
-        max_coef_wavenumber = wavenumber[max_coef_idx]
-        min_Tr_idx = np.argmin(Tr)
-        min_Tr_wavenumber = wavenumber[min_Tr_idx]
-        max_Ab_idx = np.argmax(Ab)
-        max_Ab_wavenumber = wavenumber[max_Ab_idx]
+        # 更新统计信息
+        params = results['params']
+        T = params.get('T', '?')
+        p = params.get('p', '?')
+        L = params.get('l', '?')
+        stats = f"<b>参数:</b> T={T}K, P={p}atm, L={L}cm<br><b>分子:</b><br>"
+        for mol_name in results['individual_coefs'].keys():
+            stats += f"- {mol_name}<br>"
+        self.stats_text.setHtml(stats)
 
-        text = f"""计算参数:
-温度: {params['T']} K    压力: {params['p']} atm    浓度: {params['c']:.2e}
-光程: {params['l']} cm    分辨率: {params['resolution']} cm⁻¹
+    def on_calculation_error(self, error_msg):
+        self.progress_bar.setVisible(False)
+        self.calc_btn.setEnabled(True)
+        QMessageBox.critical(self, "计算错误", error_msg)
+        self.log(f"错误: {error_msg}")
 
-吸收系数:
-最大值: {np.max(coef):.2e} cm⁻¹ (位于 {max_coef_wavenumber:.4f} cm⁻¹)
-最小值: {np.min(coef):.2e} cm⁻¹
-平均值: {np.mean(coef):.2e} cm⁻¹
+    def clear_plot(self):
+        self.canvas.clear_all()
+        self.canvas.draw()
+        self.stats_text.clear()
 
-透射率:
-最小值: {np.min(Tr):.6f} (位于 {min_Tr_wavenumber:.4f} cm⁻¹)
-最大值: {np.max(Tr):.6f}
-平均值: {np.mean(Tr):.6f}
+    def auto_load_molecules(self, molecule_dict):
+        """
+        自动批量添加分子并设置浓度，无需用户手动浏览文件。
+        molecule_dict: {分子名: (par_file_path, mole_fraction)}
+        """
+        for mol_name, (par_file, conc) in molecule_dict.items():
+            if not os.path.exists(par_file):
+                self.log(f"跳过 {mol_name}：文件不存在 ({par_file})")
+                continue
 
-光学深度:
-最大值: {np.max(OD):.6f}
-最小值: {np.min(OD):.6f}
-
-吸收率:
-最大值: {np.max(Ab):.6f} (位于 {max_Ab_wavenumber:.4f} cm⁻¹)
-最小值: {np.min(Ab):.6f}
-
-数据点数: {len(wavenumber)}
-"""
-        self.stats_text.setText(text)
-
-    def save_coefficients(self):
-        if self.current_results is None:
-            QMessageBox.warning(self, "错误", "没有可保存的结果")
-            return
-        default_name = "absorption_coefficients.txt"
-        if self.hitran and self.hitran.molecule_info:
-            mol_name = self.hitran.molecule_info['molecule_name'].replace('(', '').replace(')', '')
-            default_name = f"{mol_name}_absorption_coefficients.txt"
-        filename, _ = QFileDialog.getSaveFileName(self, "保存吸收系数数据", default_name, "Text Files (*.txt)")
-        if filename:
+            # 添加分子到引擎（如果引擎尚未初始化，此处会出错，因此 __init__ 中已提前创建）
             try:
-                data = np.column_stack((self.current_results['wavenumber'], self.current_results['coef']))
-                header = f"""# HITRAN吸收系数数据
-# 分子: {self.hitran.molecule_info['molecule_name'] if self.hitran else 'Unknown'}
-# 温度: {self.current_results['params']['T']} K
-# 压力: {self.current_results['params']['p']} atm
-# 浓度: {self.current_results['params']['c']:.2e}
-# 光程: {self.current_results['params']['l']} cm
-# 波数范围: {self.current_results['wavenumber'][0]:.4f} - {self.current_results['wavenumber'][-1]:.4f} cm⁻¹
-# 分辨率: {self.current_results['params']['resolution']} cm⁻¹
-#
-# Wavenumber(cm-1)    Absorption_Coefficient(cm-1)
-"""
-                np.savetxt(filename, data, delimiter='\t', header=header, fmt='%.6e', comments='')
-                QMessageBox.information(self, "成功", f"数据已保存到: {filename}")
+                self.hitran_engine.add_molecule(par_file, conc, name=mol_name)
             except Exception as e:
-                QMessageBox.critical(self, "错误", f"保存失败: {e}")
+                self.log(f"加载 {mol_name} 失败: {e}")
+                continue
 
-def main():
+            # 更新文件表格（与 add_par_files 中的逻辑一致）
+            row = self.file_table.rowCount()
+            self.file_table.insertRow(row)
+            self.file_table.setItem(row, 0, QTableWidgetItem(par_file))
+            ppm = conc * 1e6
+            self.file_table.setItem(row, 1, QTableWidgetItem(f"{ppm:.2f}"))
+            self.update_wn_range_from_par(par_file)
+            self.log(f"自动加载: {mol_name} ({os.path.basename(par_file)}) 浓度: {ppm:.2f} ppm")
+
+        # 最后统一更新波数范围控件
+        if self.global_min_wn != float('inf'):
+            self.start_spin.setValue(self.global_min_wn)
+            self.end_spin.setValue(self.global_max_wn)        
+
+if __name__ == '__main__':
     app = QApplication(sys.argv)
-    window = HitranGUI()
+    test_species = {'H2O': 0.15, 'CO2': 0.08, 'CO': 0.005}
+    window = HitranGUI(initial_T=1500.0, initial_P=1.0, cantera_species=test_species)
     window.show()
     sys.exit(app.exec())
-
-if __name__ == "__main__":
-    main()

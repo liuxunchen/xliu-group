@@ -1,4 +1,4 @@
-# flame_spectrum.py
+# combined_gas_spectrum_gui.py
 import sys
 import os
 import numpy as np
@@ -7,7 +7,7 @@ from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, QH
                              QPushButton, QLabel, QLineEdit, QTextEdit, QDoubleSpinBox,
                              QGroupBox, QMessageBox, QTableWidget, QTableWidgetItem,
                              QHeaderView, QSplitter, QComboBox, QTabWidget, QCheckBox,
-                             QProgressBar, QFileDialog, QFrame, QScrollArea, QDialog)
+                             QProgressBar, QFileDialog, QFrame, QScrollArea, QDialog)  # 添加QScrollArea和QDialog
 from PyQt6.QtCore import Qt, QThread, pyqtSignal
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
@@ -19,12 +19,17 @@ from matplotlib.figure import Figure
 sys.path.insert(0, 'voigt_simulation')
 from hitran_spectrum_dual import HitranSpectrum
 
+# 强制使用思源黑体
 # 强制使用系统自带中文字体（Windows 微软雅黑）
+rcParams['font.family'] = 'sans-serif'
+rcParams['font.sans-serif'] = ['Microsoft YaHei']  # 替换为微软雅黑（Windows 自带）
+rcParams['axes.unicode_minus'] = False  # 解决负号显示问题
+rcParams['text.usetex'] = False
+rcParams['mathtext.fontset'] = 'stix'
+# 重复配置确保生效（可选，防止覆盖）
 rcParams['font.family'] = 'sans-serif'
 rcParams['font.sans-serif'] = ['Microsoft YaHei']
 rcParams['axes.unicode_minus'] = False
-rcParams['text.usetex'] = False
-rcParams['mathtext.fontset'] = 'stix'
 
 
 class GasCompositionSimulator:
@@ -236,13 +241,12 @@ class SpectrumCalculationThread(QThread):
     finished = pyqtSignal(dict)
     error = pyqtSignal(str)
     progress = pyqtSignal(int)
-    info = pyqtSignal(str)  # 用于发送信息消息
+    info = pyqtSignal(str)  # 新增：用于发送信息消息
 
-    def __init__(self, hitran, params, concentrations):
+    def __init__(self, hitran, params):
         super().__init__()
         self.hitran = hitran
         self.params = params
-        self.concentrations = concentrations  # 新增：存储浓度信息
 
     def run(self):
         try:
@@ -262,25 +266,20 @@ class SpectrumCalculationThread(QThread):
                     resolution=self.params['resolution'], omega_wing=self.params['omega_wing']
                 )
 
-                # 计算各分子的单独透射率
-                individual_Trs = {}
-                for molecule_name, od in individual_ODs.items():
-                    individual_Trs[molecule_name] = np.exp(-od)
-
-                # 计算对应的波长（单位：微米）
-                wavelength_micron = 10000.0 / wavenumber  # 波数(cm⁻¹)转波长(微米)
+            # 不再发送捕获的输出信息
+            # if captured_output:
+            #     for line in captured_output.split('\n'):
+            #         if line.strip():
+            #             self.info.emit(line.strip())
 
             results = {
                 'wavenumber': wavenumber,
-                'wavelength_micron': wavelength_micron,  # 波长数据
                 'total_coef': total_coef,
                 'OD': OD,
                 'Ab': Ab,
                 'Tr': Tr,
                 'individual_ODs': individual_ODs,
-                'individual_Trs': individual_Trs,  # 存储各分子透射率
-                'params': self.params,
-                'concentrations': self.concentrations  # 新增：保存浓度信息
+                'params': self.params
             }
 
             self.finished.emit(results)
@@ -406,110 +405,36 @@ class CombinedGasSpectrumGUI(QMainWindow):
                     par_files.append(file)
         return sorted(par_files)
 
-    def detect_par_file_format(self, file_path):
-        """检测PAR文件格式"""
-        try:
-            with open(file_path, 'r') as f:
-                first_line = f.readline().strip()
-
-            if not first_line:
-                return "unknown"
-
-            # 分析格式特征
-            parts = first_line.split()
-
-            if len(parts) >= 2:
-                # 检查波数特征
-                wavenumber_str = parts[1]
-
-                # 判断是否是科学计数法或非常小的数（压缩格式）
-                if 'E' in wavenumber_str.upper() or float(wavenumber_str) < 10:
-                    return "compressed"  # 压缩格式（如H2O文件）
-                else:
-                    return "standard"  # 标准格式（如CO2文件）
-
-            return "unknown"
-
-        except Exception as e:
-            print(f"检测文件格式失败: {e}")
-            return "unknown"
-
     def parse_par_file_range(self, par_file_path):
-        """解析par文件的波数范围 - 自动检测格式"""
+        """解析par文件的波数范围"""
         try:
-            # 首先检测文件格式
-            file_format = self.detect_par_file_format(par_file_path)
-            print(f"检测到文件格式: {file_format}")
-
             min_wavenumber = float('inf')
             max_wavenumber = float('-inf')
             line_count = 0
 
             with open(par_file_path, 'r') as f:
-                for line_num, line in enumerate(f, 1):
-                    line = line.strip()
-                    if len(line) == 0:
-                        continue
-
-                    # 跳过注释行
-                    if line.startswith('#') or line.startswith('!'):
-                        continue
-
-                    wavenumber = None
-
-                    if file_format == "compressed":
-                        # H2O压缩格式：波数在第2-8列
-                        if len(line) >= 8:
+                for line in f:
+                    if len(line.strip()) > 0:
+                        # HITRAN格式：波数在第3-15列
+                        wavenumber_str = line[2:15].strip()
+                        if wavenumber_str:
                             try:
-                                wavenumber_str = line[1:8].strip()
-                                if wavenumber_str:
-                                    wavenumber = float(wavenumber_str)
-                            except ValueError:
-                                pass
-
-                    elif file_format == "standard":
-                        # CO2标准格式：波数在第2个字段
-                        parts = line.split()
-                        if len(parts) >= 2:
-                            try:
-                                wavenumber_str = parts[1]
                                 wavenumber = float(wavenumber_str)
+                                min_wavenumber = min(min_wavenumber, wavenumber)
+                                max_wavenumber = max(max_wavenumber, wavenumber)
+                                line_count += 1
                             except ValueError:
-                                pass
+                                continue
 
-                    else:
-                        # 未知格式，尝试多种方法
-                        parts = line.split()
-                        if len(parts) >= 2:
-                            for part in parts[1:3]:  # 尝试第2和第3个字段
-                                try:
-                                    wavenumber = float(part)
-                                    if 0 <= wavenumber <= 10000:
-                                        break
-                                except ValueError:
-                                    continue
-
-                    # 验证并记录波数
-                    if wavenumber is not None and 0 <= wavenumber <= 10000:
-                        min_wavenumber = min(min_wavenumber, wavenumber)
-                        max_wavenumber = max(max_wavenumber, wavenumber)
-                        line_count += 1
-
-                        # 调试：显示前几行
-                        if line_count <= 3:
-                            print(f"行{line_num}: 格式={file_format}, 波数={wavenumber}")
-
-            print(f"解析完成: {line_count}行，范围: {min_wavenumber} - {max_wavenumber} cm⁻¹")
-
+            # 如果成功读取到数据，返回范围
             if line_count > 0 and min_wavenumber != float('inf') and max_wavenumber != float('-inf'):
                 return min_wavenumber, max_wavenumber
             else:
+                print(f"解析par文件失败: 未找到有效数据行，共读取 {line_count} 行")
                 return None
 
         except Exception as e:
             print(f"解析par文件范围失败: {e}")
-            import traceback
-            traceback.print_exc()
             return None
 
     def init_ui(self):
@@ -844,42 +769,36 @@ class CombinedGasSpectrumGUI(QMainWindow):
         path_layout = QHBoxLayout()
         path_layout.addWidget(QLabel("光程 (cm):"))
         self.path_spin = QDoubleSpinBox()
-        self.path_spin.setRange(0.01, 10000)
+        self.path_spin.setRange(0.1, 10000)
         self.path_spin.setValue(10.0)
         self.path_spin.setSingleStep(10)
         path_layout.addWidget(self.path_spin)
         layout.addLayout(path_layout)
 
-        # 波数范围组（网格细化）
-        wavenumber_group = QGroupBox("波数范围与网格设置")
+        # 波数范围组
+        wavenumber_group = QGroupBox("波数范围")
         wavenumber_layout = QVBoxLayout()
 
         range_layout = QHBoxLayout()
         range_layout.addWidget(QLabel("起始:"))
         self.start_spin = QDoubleSpinBox()
-        self.start_spin.setRange(400, 5000)
-        self.start_spin.setValue(2000)
-        self.start_spin.setDecimals(1)
-        self.start_spin.setSingleStep(10)
-        self.start_spin.setSuffix(" cm⁻¹")
+        self.start_spin.setRange(0, 100000)
+        self.start_spin.setValue(4650)
+        self.start_spin.setDecimals(4)
         range_layout.addWidget(self.start_spin)
 
         range_layout.addWidget(QLabel("结束:"))
         self.end_spin = QDoubleSpinBox()
-        self.end_spin.setRange(400, 5000)
-        self.end_spin.setValue(2300)
-        self.end_spin.setDecimals(1)
-        self.end_spin.setSingleStep(10)
-        self.end_spin.setSuffix(" cm⁻¹")
+        self.end_spin.setRange(0, 100000)
+        self.end_spin.setValue(5410)
+        self.end_spin.setDecimals(4)
         range_layout.addWidget(self.end_spin)
 
         range_layout.addWidget(QLabel("分辨率:"))
         self.resolution_spin = QDoubleSpinBox()
-        self.resolution_spin.setRange(0.001, 1.0)
-        self.resolution_spin.setValue(0.1)
-        self.resolution_spin.setDecimals(3)
-        self.resolution_spin.setSingleStep(0.01)
-        self.resolution_spin.setSuffix(" cm⁻¹")
+        self.resolution_spin.setRange(0.0001, 1.0)
+        self.resolution_spin.setValue(0.01)
+        self.resolution_spin.setDecimals(4)
         range_layout.addWidget(self.resolution_spin)
 
         wavenumber_layout.addLayout(range_layout)
@@ -888,89 +807,14 @@ class CombinedGasSpectrumGUI(QMainWindow):
         wing_layout = QHBoxLayout()
         wing_layout.addWidget(QLabel("谱线计算域倍数:"))
         self.omega_wing_spin = QDoubleSpinBox()
-        self.omega_wing_spin.setRange(5, 200)
-        self.omega_wing_spin.setValue(30)
-        self.omega_wing_spin.setSingleStep(5)
+        self.omega_wing_spin.setRange(1, 100)
+        self.omega_wing_spin.setValue(10)
+        self.omega_wing_spin.setSingleStep(1)
         wing_layout.addWidget(self.omega_wing_spin)
         wavenumber_layout.addLayout(wing_layout)
 
-        # 波长显示设置
-        wavelength_layout = QHBoxLayout()
-        wavelength_layout.addWidget(QLabel("波长显示:"))
-        self.wavelength_check = QCheckBox("在图形顶部显示波长")
-        self.wavelength_check.setChecked(True)
-        wavelength_layout.addWidget(self.wavelength_check)
-        wavenumber_layout.addLayout(wavelength_layout)
-
-        # 添加重置按钮
-        reset_layout = QHBoxLayout()
-        self.reset_wavenumber_btn = QPushButton("重置为默认值")
-        self.reset_wavenumber_btn.clicked.connect(self.reset_wavenumber_defaults)
-        reset_layout.addWidget(self.reset_wavenumber_btn)
-        reset_layout.addStretch()
-        wavenumber_layout.addLayout(reset_layout)
-
-        # 网格细化说明
-        warning_label = QLabel(
-            "注意：更小的分辨率和更大的计算域倍数会显著增加计算时间")
-        warning_label.setStyleSheet(
-            "color: #d35400; font-size: 10px; padding: 5px; background-color: #fff3cd; border-radius: 3px;")
-        wavenumber_layout.addWidget(warning_label)
-
         wavenumber_group.setLayout(wavenumber_layout)
         layout.addWidget(wavenumber_group)
-
-        # 透射率显示选择
-        transmittance_group = QGroupBox("透射率显示设置")
-        transmittance_layout = QVBoxLayout()
-
-        # 透射率类型选择
-        trans_type_layout = QHBoxLayout()
-        trans_type_layout.addWidget(QLabel("透射率类型:"))
-        self.transmittance_combo = QComboBox()
-        self.transmittance_combo.addItems(
-            ["总透射率", "H2O透射率", "CO2透射率", "CO透射率", "NO透射率", "N2O透射率", "NO2透射率"])
-        trans_type_layout.addWidget(self.transmittance_combo)
-        transmittance_layout.addLayout(trans_type_layout)
-
-        # 显示选项
-        self.show_abs_check = QCheckBox("显示吸收系数")
-        self.show_abs_check.setChecked(True)
-        transmittance_layout.addWidget(self.show_abs_check)
-
-        self.show_trans_check = QCheckBox("显示透射率")
-        self.show_trans_check.setChecked(True)
-        transmittance_layout.addWidget(self.show_trans_check)
-
-        transmittance_group.setLayout(transmittance_layout)
-        layout.addWidget(transmittance_group)
-
-        # 图形显示设置
-        plot_settings_group = QGroupBox("图形显示设置")
-        plot_settings_layout = QVBoxLayout()
-
-        # 图形网格设置
-        grid_layout = QHBoxLayout()
-        grid_layout.addWidget(QLabel("图形网格密度:"))
-        self.grid_density_combo = QComboBox()
-        self.grid_density_combo.addItems(["精细", "中等", "稀疏"])
-        self.grid_density_combo.setCurrentText("精细")
-        self.grid_density_combo.currentTextChanged.connect(self.on_grid_density_changed)
-        grid_layout.addWidget(self.grid_density_combo)
-        plot_settings_layout.addLayout(grid_layout)
-
-        # 图形尺寸设置
-        figsize_layout = QHBoxLayout()
-        figsize_layout.addWidget(QLabel("图形尺寸:"))
-        self.figsize_combo = QComboBox()
-        self.figsize_combo.addItems(["大(12x8)", "中(10x6)", "小(8x5)"])
-        self.figsize_combo.setCurrentText("中(10x6)")
-        self.figsize_combo.currentTextChanged.connect(self.on_figsize_changed)
-        figsize_layout.addWidget(self.figsize_combo)
-        plot_settings_layout.addLayout(figsize_layout)
-
-        plot_settings_group.setLayout(plot_settings_layout)
-        layout.addWidget(plot_settings_group)
 
         # 进度条
         self.progress_bar = QProgressBar()
@@ -1009,16 +853,6 @@ class CombinedGasSpectrumGUI(QMainWindow):
         layout.addStretch()
 
         return panel
-
-    def reset_wavenumber_defaults(self):
-        """重置波数设置为默认值"""
-        self.start_spin.setValue(4650)
-        self.end_spin.setValue(5410)
-        self.resolution_spin.setValue(0.01)
-        self.omega_wing_spin.setValue(30)
-
-        QMessageBox.information(self, "重置", "波数设置已重置为默认值")
-
     def create_spectrum_result_panel(self):
         """创建光谱结果面板"""
         panel = QWidget()
@@ -1051,14 +885,14 @@ class CombinedGasSpectrumGUI(QMainWindow):
 
         # 结果统计文本
         self.stats_text = QTextEdit()
-        self.stats_text.setMaximumHeight(300)
+        self.stats_text.setMaximumHeight(300)  # 增加高度以容纳更多信息
         self.stats_text.setReadOnly(True)
         stats_layout.addWidget(self.stats_text)
 
-        # 设置分割器
+        # 设置分割器（只显示图形和统计结果）
         splitter.addWidget(plot_widget)
         splitter.addWidget(stats_widget)
-        splitter.setSizes([600, 400])
+        splitter.setSizes([600, 400])  # 设置初始大小比例
 
         layout.addWidget(splitter)
 
@@ -1123,10 +957,10 @@ class CombinedGasSpectrumGUI(QMainWindow):
         manual_pressure_layout.addWidget(self.manual_pressure_spin)
         self.manual_layout.addLayout(manual_pressure_layout)
 
-        # 存储手动浓度控件的字典（单位：ppm）
+        # 存储手动浓度控件的字典
         self.manual_conc_spins = {}
 
-        # 初始为选中的分子创建浓度输入框（单位：ppm）
+        # 初始为选中的分子创建浓度输入框
         for molecule in self.selected_molecules:
             self.add_manual_concentration_spin(molecule, self.manual_layout)
 
@@ -1185,17 +1019,14 @@ class CombinedGasSpectrumGUI(QMainWindow):
                             break
 
     def add_manual_concentration_spin(self, molecule_name, parent_layout):
-        """为手动组添加浓度输入框（单位：ppm）"""
+        """为手动组添加浓度输入框"""
         if molecule_name not in self.manual_conc_spins:
             conc_layout = QHBoxLayout()
-            conc_layout.addWidget(QLabel(f"{molecule_name}浓度 (ppm):"))
+            conc_layout.addWidget(QLabel(f"{molecule_name}浓度:"))
             spin = QDoubleSpinBox()
-            spin.setRange(0, 1000000)
-            spin.setValue(100000)
-            spin.setDecimals(2)
-            spin.setSuffix(" ppm")
-            spin.setSingleStep(1000)
-            spin.setToolTip(f"{molecule_name}浓度，单位：ppm（百万分之一）")
+            spin.setRange(0, 1.0)
+            spin.setValue(0.1)
+            spin.setDecimals(6)
             self.manual_conc_spins[molecule_name] = spin
             conc_layout.addWidget(spin)
             parent_layout.addLayout(conc_layout)
@@ -1267,14 +1098,11 @@ class CombinedGasSpectrumGUI(QMainWindow):
             # 为导入组添加浓度下拉框
             self.add_import_concentration_combo(molecule_name, self.import_group.layout())
 
-            # 为手动组添加浓度输入框（单位：ppm）
+            # 为手动组添加浓度输入框
             self.add_manual_concentration_spin(molecule_name, self.manual_layout)
 
             # 启用删除按钮
             self.remove_molecule_btn.setEnabled(len(self.selected_molecules) > 1)
-
-            # 更新透射率选择框
-            self.update_transmittance_combo()
 
             if dialog:
                 dialog.accept()
@@ -1331,52 +1159,11 @@ class CombinedGasSpectrumGUI(QMainWindow):
             # 更新删除按钮状态
             self.remove_molecule_btn.setEnabled(len(self.selected_molecules) > 1)
 
-            # 更新透射率选择框
-            self.update_transmittance_combo()
-
             if dialog:
                 dialog.accept()
 
             # 更新信息显示
             self.spectrum_info_text.append(f"已删除分子: {molecule_name}")
-
-    def update_transmittance_combo(self):
-        """更新透射率选择框"""
-        current_text = self.transmittance_combo.currentText()
-        self.transmittance_combo.clear()
-
-        # 添加总透射率选项
-        self.transmittance_combo.addItem("总透射率")
-
-        # 添加当前选中的分子的透射率选项
-        for molecule in self.selected_molecules:
-            self.transmittance_combo.addItem(f"{molecule}透射率")
-
-        # 恢复之前的选项（如果还存在）
-        for i in range(self.transmittance_combo.count()):
-            if self.transmittance_combo.itemText(i) == current_text:
-                self.transmittance_combo.setCurrentIndex(i)
-                break
-
-    def on_grid_density_changed(self, density):
-        """图形网格密度改变"""
-        if self.current_spectrum_results is not None:
-            self.update_spectrum_plot()
-
-    def on_figsize_changed(self, size_text):
-        """图形尺寸改变"""
-        sizes = {
-            "大(12x8)": (12, 8),
-            "中(10x6)": (10, 6),
-            "小(8x5)": (8, 5)
-        }
-
-        if size_text in sizes:
-            width, height = sizes[size_text]
-            self.canvas.fig.set_size_inches(width, height)
-            if self.current_spectrum_results is not None:
-                self.update_spectrum_plot()
-            self.canvas.draw()
 
     def on_molecule_file_changed(self, molecule_name, text):
         """分子文件选择变化"""
@@ -1384,9 +1171,10 @@ class CombinedGasSpectrumGUI(QMainWindow):
             self.spectrum_info_text.append(f"{molecule_name}文件已选择: {text}")
 
     def auto_set_wavenumber_range(self):
-        """自动设置波数范围 - 处理混合格式文件"""
-        ranges = []  # 存储各分子的波数范围
-        molecule_info = []  # 存储分子信息
+        """自动设置波数范围"""
+        min_start = float('inf')
+        max_end = float('-inf')
+        files_processed = 0
 
         # 检查所有选中的分子文件
         for molecule_name in self.selected_molecules:
@@ -1395,105 +1183,33 @@ class CombinedGasSpectrumGUI(QMainWindow):
                 file_path = widget.file_combo.currentData()
 
                 if file_path and os.path.exists(file_path):
-                    self.spectrum_info_text.append(f"解析 {molecule_name} 文件...")
-
-                    # 检测文件格式
-                    file_format = self.detect_par_file_format(file_path)
-
-                    # 解析波数范围
                     file_range = self.parse_par_file_range(file_path)
-
                     if file_range:
                         start, end = file_range
-                        ranges.append((start, end))
-                        molecule_info.append({
-                            'name': molecule_name,
-                            'format': file_format,
-                            'start': start,
-                            'end': end
-                        })
-
+                        min_start = min(min_start, start)
+                        max_end = max(max_end, end)
+                        files_processed += 1
                         self.spectrum_info_text.append(
-                            f"{molecule_name} ({file_format}格式): {start:.6f} - {end:.6f} cm⁻¹"
+                            f"{molecule_name}文件范围: {start:.2f} - {end:.2f} cm⁻¹"
                         )
-                    else:
-                        self.spectrum_info_text.append(f"警告：无法解析 {molecule_name} 文件范围")
 
-        # 如果没有解析到任何范围，设置默认值
-        if not ranges:
-            self.set_default_wavenumber_range()
-            return False
+        # 设置波数范围
+        if files_processed > 0 and min_start != float('inf') and max_end != float('-inf'):
+            if min_start < max_end:
+                range_extension = (max_end - min_start) * 0.05
+                start_range = max(0, min_start - range_extension)
+                end_range = max_end + range_extension
 
-        # 分析所有分子的波数范围
-        self.spectrum_info_text.append("\n=== 波数范围分析 ===")
+                self.start_spin.setValue(round(start_range, 2))
+                self.end_spin.setValue(round(end_range, 2))
 
-        # 显示各分子的详细范围
-        for info in molecule_info:
-            self.spectrum_info_text.append(
-                f"{info['name']}: {info['start']:.6f} - {info['end']:.6f} cm⁻¹ (格式: {info['format']})"
-            )
-
-        # 计算整体范围
-        all_starts = [r[0] for r in ranges]
-        all_ends = [r[1] for r in ranges]
-
-        overall_min = min(all_starts)
-        overall_max = max(all_ends)
-
-        self.spectrum_info_text.append(f"\n总体范围: {overall_min:.6f} - {overall_max:.6f} cm⁻¹")
-
-        # 检查是否有远红外数据（< 10 cm⁻¹）
-        has_far_ir = any(r[0] < 10 for r in ranges)
-
-        if has_far_ir:
-            self.spectrum_info_text.append("检测到远红外数据（< 10 cm⁻¹）")
-
-            # 如果有远红外数据，可能需要分情况处理
-            # 方案1：如果同时有中红外数据，优先考虑中红外
-            mid_ir_ranges = [r for r in ranges if r[0] > 100]
-
-            if mid_ir_ranges:
-                self.spectrum_info_text.append("同时检测到中红外数据，优先使用中红外范围")
-                mid_ir_starts = [r[0] for r in mid_ir_ranges]
-                mid_ir_ends = [r[1] for r in mid_ir_ranges]
-                start_range = min(mid_ir_starts)
-                end_range = max(mid_ir_ends)
-            else:
-                # 只有远红外数据
-                self.spectrum_info_text.append("只有远红外数据，使用远红外范围")
-                start_range = max(1, overall_min)  # 至少从1 cm⁻¹开始
-                end_range = min(1000, overall_max)  # 限制到1000 cm⁻¹
-        else:
-            # 只有中红外数据
-            start_range = overall_min
-            end_range = overall_max
-
-        # 增加边界
-        range_width = end_range - start_range
-        if range_width > 0:
-            extension = range_width * 0.1  # 10%边界
-            start_range = max(1, start_range - extension)
-            end_range = end_range + extension
-        else:
-            # 如果范围太小，设置合理的最小宽度
-            end_range = start_range + 100
-
-        # 限制最大范围
-        if end_range - start_range > 5000:
-            end_range = start_range + 5000
-            self.spectrum_info_text.append("范围太大，限制到5000 cm⁻¹宽度")
-
-        # 设置UI控件
-        self.start_spin.setValue(round(start_range, 2))
-        self.end_spin.setValue(round(end_range, 2))
-
-        self.spectrum_info_text.append(f"\n最终设置范围: {start_range:.2f} - {end_range:.2f} cm⁻¹")
-
-        return True
+                self.spectrum_info_text.append(
+                    f"自动设置波数范围: {round(start_range, 2)} - {round(end_range, 2)} cm⁻¹"
+                )
+                return True
 
         self.spectrum_info_text.append("警告：无法自动设置波数范围，请手动设置")
         return False
-
     # 气体模拟相关方法
     def on_method_changed(self, method):
         """输入方式改变"""
@@ -1641,71 +1357,25 @@ class CombinedGasSpectrumGUI(QMainWindow):
 
                 if options:
                     for species, fraction in options:
-                        # 显示分数和ppm两种单位
-                        ppm_value = fraction * 1000000
-                        combo.addItem(f"{species}: {fraction:.6f} ({ppm_value:.2f} ppm)", fraction)
+                        combo.addItem(f"{species}: {fraction:.6f}", fraction)
                     combo.setCurrentIndex(0)
                 else:
                     combo.addItem(f"未找到{molecule_name}", 0.0)
 
-                # 同时更新手动组的ppm输入框（如果有该分子）
-                if molecule_name in self.manual_conc_spins:
-                    ppm_value = 0.0
-                    if options:
-                        # 取第一个匹配的浓度
-                        ppm_value = options[0][1] * 1000000
-                    self.manual_conc_spins[molecule_name].setValue(ppm_value)
-
         # 切换到光谱模拟标签页
         self.tab_widget.setCurrentIndex(1)
         QMessageBox.information(self, "成功", "气体平衡结果已传输到光谱模拟")
-
-    # ==================== 新增：辅助方法 ====================
-
-    def get_molecule_concentration(self, molecule_name):
-        """获取指定分子的浓度（体积分数）"""
-        if self.import_gas_check.isChecked():
-            # 从导入的浓度获取
-            if molecule_name in self.import_conc_combos:
-                conc = self.import_conc_combos[molecule_name].currentData()
-                return conc if conc is not None else 0.0
-        else:
-            # 从手动输入获取（ppm转分数）
-            if molecule_name in self.manual_conc_spins:
-                ppm_value = self.manual_conc_spins[molecule_name].value()
-                return ppm_value / 1000000.0
-
-        return 0.0
-
-    def get_all_concentrations(self):
-        """获取所有选中分子的浓度（字典形式）"""
-        concentrations = {}
-        for molecule_name in self.selected_molecules:
-            concentrations[molecule_name] = self.get_molecule_concentration(molecule_name)
-        return concentrations
-
-    def calculate_absorption_coefficient(self, od, molecule_name):
-        """计算吸收系数（单位：cm⁻¹）"""
-        if self.current_spectrum_results is None:
-            return np.zeros_like(od)
-
-        params = self.current_spectrum_results['params']
-        l = params['l']  # 光程 (cm)
-
-        # 关键：OD 已经包含了浓度影响，所以吸收系数应该是：
-        # α = OD / l
-        absorption_coef = od / l
-
-        return absorption_coef
 
     # 光谱模拟相关方法
     def on_import_gas_toggled(self, checked):
         """导入气体平衡结果复选框状态改变"""
         self.manual_temp_spin.setEnabled(not checked)
         self.manual_pressure_spin.setEnabled(not checked)
-        for spin in self.manual_conc_spins.values():
-            spin.setEnabled(not checked)
-
+        self.manual_h2o_spin.setEnabled(not checked)
+        self.manual_co2_spin.setEnabled(not checked)
+        self.manual_co_spin.setEnabled(not checked)
+        self.manual_no_spin.setEnabled(not checked)
+        self.manual_no2_spin.setEnabled(not checked)
     def load_spectrum_data(self):
         """加载光谱数据"""
         q_folder = self.q_folder_combo.currentText()
@@ -1741,16 +1411,15 @@ class CombinedGasSpectrumGUI(QMainWindow):
                 file_path = molecule_files[molecule_name]
 
                 if self.import_gas_check.isChecked():
-                    # 从导入的浓度下拉框获取浓度（保持为分数）
+                    # 从导入的浓度下拉框获取浓度
                     if molecule_name in self.import_conc_combos:
                         conc = self.import_conc_combos[molecule_name].currentData()
                     else:
                         conc = 0.0
                 else:
-                    # 从手动输入框获取浓度，将ppm转换为分数
+                    # 从手动输入框获取浓度
                     if molecule_name in self.manual_conc_spins:
-                        ppm_value = self.manual_conc_spins[molecule_name].value()
-                        conc = ppm_value / 1000000.0  # 转换为分数
+                        conc = self.manual_conc_spins[molecule_name].value()
                     else:
                         conc = 0.1
 
@@ -1761,22 +1430,16 @@ class CombinedGasSpectrumGUI(QMainWindow):
             # 显示分子信息
             self.spectrum_info_text.setText(self.spectrum_simulator.get_molecule_info())
 
-            # 移除自动设置波数范围的调用
-            # self.spectrum_info_text.append("正在自动设置波数范围...")
-            # success = self.auto_set_wavenumber_range()
-            # if success:
-            #     self.spectrum_info_text.append("波数范围自动设置成功！")
-            # else:
-            #     self.spectrum_info_text.append("警告：无法自动设置波数范围，请手动设置")
-
-            # 改为显示当前波数设置
-            current_start = self.start_spin.value()
-            current_end = self.end_spin.value()
-            self.spectrum_info_text.append(f"\n当前波数设置: {current_start} - {current_end} cm⁻¹")
-            self.spectrum_info_text.append("提示：请手动设置波数范围后开始计算")
+            # 自动设置波数范围
+            self.spectrum_info_text.append("正在自动设置波数范围...")
+            success = self.auto_set_wavenumber_range()
+            if success:
+                self.spectrum_info_text.append("波数范围自动设置成功！")
+            else:
+                self.spectrum_info_text.append("警告：无法自动设置波数范围，请手动设置")
 
             self.calculate_spectrum_btn.setEnabled(True)
-            QMessageBox.information(self, "成功", "分子数据加载成功！\n请手动设置波数范围后开始计算。")
+            QMessageBox.information(self, "成功", "分子数据加载成功！")
 
         except Exception as e:
             QMessageBox.critical(self, "错误", f"加载分子数据失败: {e}")
@@ -1813,15 +1476,11 @@ class CombinedGasSpectrumGUI(QMainWindow):
                 'resolution': resolution, 'omega_wing': omega_wing
             }
 
-            # 获取当前所有分子的浓度
-            concentrations = self.get_all_concentrations()
-
-            # 在单独的线程中执行计算，传入浓度信息
-            self.calculation_thread = SpectrumCalculationThread(
-                self.spectrum_simulator, params, concentrations
-            )
+            # 在单独的线程中执行计算
+            self.calculation_thread = SpectrumCalculationThread(self.spectrum_simulator, params)
             self.calculation_thread.finished.connect(self.on_spectrum_calculation_finished)
             self.calculation_thread.error.connect(self.on_spectrum_calculation_error)
+            # 不再连接info信号，不显示程序输出信息
             self.calculation_thread.start()
 
         except Exception as e:
@@ -1833,12 +1492,6 @@ class CombinedGasSpectrumGUI(QMainWindow):
         """光谱计算完成"""
         self.current_spectrum_results = results
 
-        # 确保透射率计算正确：Tr = exp(-OD)
-        results['Tr'] = np.exp(-results['OD'])
-
-        # 计算各分子的单独透射率
-        for molecule_name, od in results['individual_ODs'].items():
-            results['individual_Trs'][molecule_name] = np.exp(-od)
         # 更新图形
         self.update_spectrum_plot()
 
@@ -1892,246 +1545,98 @@ class CombinedGasSpectrumGUI(QMainWindow):
         QMessageBox.information(self, "成功", "光谱结果已清除")
 
     def update_spectrum_plot(self):
-        """更新光谱图形 - 改为柱状图显示"""
+        """更新光谱图形 - 显示H2O、CO2、NO的吸收系数，以及叠加的透射率光谱"""
         if self.current_spectrum_results is None:
             return
 
         # 清除图形
         self.canvas.axes.clear()
 
-        # 获取结果数据
-        params = self.current_spectrum_results['params']
         wavenumber = self.current_spectrum_results['wavenumber']
-        wavelength_micron = self.current_spectrum_results['wavelength_micron']
         individual_ODs = self.current_spectrum_results['individual_ODs']
-        individual_Trs = self.current_spectrum_results['individual_Trs']
-        Tr_total = self.current_spectrum_results['Tr']
+        Tr = self.current_spectrum_results['Tr']
 
-        # 获取选择的透射率类型
-        selected_transmittance = self.transmittance_combo.currentText()
-
-        # 确定要显示的透射率数据
-        if selected_transmittance == "总透射率":
-            transmittance_data = Tr_total
-            transmittance_label = "总透射率"
-        else:
-            transmittance_data = Tr_total
-            transmittance_label = "总透射率"
-            for molecule in self.selected_molecules:
-                if selected_transmittance.startswith(molecule):
-                    if molecule in individual_Trs:
-                        transmittance_data = individual_Trs[molecule]
-                        transmittance_label = f"{molecule}透射率"
-                    break
-
-        lines = []
-
-        # 计算各分子的吸收系数（单位：cm⁻¹）
+        # 计算各分子的吸收系数
         individual_coefs = {}
         for molecule_name, od in individual_ODs.items():
-            # 吸收系数 = OD / 光程
-            absorption_coef = od / params['l']
-            individual_coefs[molecule_name] = absorption_coef
+            coef_single = od / (self.current_spectrum_results['params']['p'] * 101325 /
+                              (1.380649e-23 * self.current_spectrum_results['params']['T']) *
+                              self.current_spectrum_results['params']['l'])
+            individual_coefs[molecule_name] = coef_single
 
-        # 设置图形网格密度
-        grid_density = self.grid_density_combo.currentText()
-        if grid_density == "精细":
-            grid_alpha = 0.2
-            grid_linestyle = ':'
-            grid_linewidth = 0.5
-        elif grid_density == "中等":
-            grid_alpha = 0.3
-            grid_linestyle = '--'
-            grid_linewidth = 0.7
-        else:
-            grid_alpha = 0.4
-            grid_linestyle = '-'
-            grid_linewidth = 0.8
+        # 绘制各分子的吸收系数（分别显示）
+        colors = {'H2O': 'tab:blue', 'CO2': 'tab:green', 'NO': 'tab:purple', 'CO': 'tab:red','N2O': 'tab:pink', 'NO2': 'tab:brown'}
+        lines = []
 
-        # 显示吸收系数（柱状图）
-        if self.show_abs_check.isChecked():
-            colors = {'H2O': 'tab:blue', 'CO2': 'tab:green', 'CO': 'tab:red',
-                      'NO': 'tab:purple', 'N2O': 'tab:pink', 'NO2': 'tab:brown'}
+        # 绘制H2O吸收系数
+        if 'H2O' in individual_coefs:
+            line_h2o = self.canvas.axes.plot(wavenumber, individual_coefs['H2O'],
+                                             color=colors['H2O'], linewidth=1, label='H2O吸收系数')[0]
+            lines.append(line_h2o)
 
-            # 计算柱状图宽度
-            if len(wavenumber) > 1:
-                # 根据数据点间隔确定柱宽
-                wavenumber_diff = np.diff(wavenumber)
-                avg_diff = np.mean(wavenumber_diff)
-                bar_width = avg_diff * 0.8  # 柱宽为平均间隔的80%
-            else:
-                bar_width = 0.1  # 默认值
+        # 绘制CO2吸收系数
+        if 'CO2' in individual_coefs:
+            line_co2 = self.canvas.axes.plot(wavenumber, individual_coefs['CO2'],
+                                             color=colors['CO2'], linewidth=1, label='CO2吸收系数')[0]
+            lines.append(line_co2)
 
-            for molecule_name, coef in individual_coefs.items():
-                if molecule_name in colors and np.max(np.abs(coef)) > 1e-10:
-                    # 使用柱状图代替曲线图
-                    bars = self.canvas.axes.bar(
-                        wavenumber, coef,
-                        width=bar_width,
-                        color=colors[molecule_name],
-                        alpha=0.7,
-                        edgecolor=colors[molecule_name],
-                        linewidth=0.5,
-                        label=f'{molecule_name}吸收系数'
-                    )
-                    # 存储第一个柱状作为图例项
-                    if bars:
-                        lines.append(bars[0])
+        # 绘制CO吸收系数
+        if 'CO' in individual_coefs:
+            line_co = self.canvas.axes.plot(wavenumber, individual_coefs['CO'],
+                                             color=colors['CO'], linewidth=1, label='CO吸收系数')[0]
+            lines.append(line_co)
 
-        # 设置x轴标签（底部：波数，顶部：波长）
-        if self.wavelength_check.isChecked():
-            ax_top = self.canvas.axes.twiny()
-            self.canvas.axes.set_xlabel('波数 (cm$^{-1}$)', fontsize=11, labelpad=12)
-            ax_top.set_xlabel('波长 ($\mu$m)', fontsize=11, labelpad=12)
-            ax_top.set_xlim(self.canvas.axes.get_xlim())  # 修正这里！
+        # 绘制NO吸收系数
+        if 'NO' in individual_coefs:
+            line_no = self.canvas.axes.plot(wavenumber, individual_coefs['NO'],
+                                            color=colors['NO'], linewidth=1, label='NO吸收系数')[0]
+            lines.append(line_no)
 
-            # 设置顶部x轴的刻度
-            wavenumber_ticks = self.canvas.axes.get_xticks()
-            wavenumber_ticks = wavenumber_ticks[(wavenumber_ticks >= wavenumber.min()) &
-                                                (wavenumber_ticks <= wavenumber.max())]
-            wavelength_ticks = 10000.0 / wavenumber_ticks
-            ax_top.set_xticks(wavenumber_ticks)
-            ax_top.set_xticklabels([f'{w:.4f}' for w in wavelength_ticks], fontsize=10)
-            ax_top.tick_params(axis='x', which='major', size=6, width=1.5, direction='in', top=True)
-            ax_top.tick_params(axis='x', which='minor', size=3, width=1, direction='in', top=True)
-            ax_top.grid(True, alpha=grid_alpha * 0.7, linestyle=':', linewidth=0.3)
-        else:
-            self.canvas.axes.set_xlabel('波数 (cm$^{-1}$)', fontsize=11)
+        # 绘制N2O吸收系数
+        if 'N2O' in individual_coefs:
+            line_n2o = self.canvas.axes.plot(wavenumber, individual_coefs['N2O'],
+                                            color=colors['N2O'], linewidth=1, label='N2O吸收系数')[0]
+            lines.append(line_n2o)
 
-        # 设置y轴标签
-        if self.show_abs_check.isChecked():
-            self.canvas.axes.set_ylabel('吸收系数 (cm$^{-1}$)', color='black', fontsize=11)
-            self.canvas.axes.tick_params(axis='y', labelcolor='black', labelsize=10)
-        else:
-            self.canvas.axes.set_ylabel('透射率', color='tab:orange', fontsize=11)
-            self.canvas.axes.tick_params(axis='y', labelcolor='tab:orange', labelsize=10)
+        # 绘制NO吸收系数
+        if 'NO2' in individual_coefs:
+            line_no2 = self.canvas.axes.plot(wavenumber, individual_coefs['NO2'],
+                                            color=colors['NO2'], linewidth=1, label='NO2吸收系数')[0]
+            lines.append(line_no2)
 
-        # 显示透射率（柱状图）
-        if self.show_trans_check.isChecked():
-            if self.show_abs_check.isChecked():
-                ax2 = self.canvas.axes.twinx()
-                color = 'tab:orange'
-                ax2.set_ylabel('透射率', color=color, fontsize=11)
 
-                # 计算柱宽
-                if len(wavenumber) > 1:
-                    wavenumber_diff = np.diff(wavenumber)
-                    avg_diff = np.mean(wavenumber_diff)
-                    bar_width = avg_diff * 0.8
-                else:
-                    bar_width = 0.1
+        # 设置左轴标签
+        self.canvas.axes.set_xlabel('波数 (cm$^{-1}$)')
+        self.canvas.axes.set_ylabel('吸收系数 (cm$^{-1}$)', color='black')
+        self.canvas.axes.tick_params(axis='y', labelcolor='black')
 
-                # 使用柱状图显示透射率
-                bars_tr = ax2.bar(
-                    wavenumber, transmittance_data,
-                    width=bar_width,
-                    color=color,
-                    alpha=0.5,
-                    edgecolor=color,
-                    linewidth=0.5,
-                    label=transmittance_label
-                )
-                if bars_tr:
-                    lines.append(bars_tr[0])
-
-                ax2.tick_params(axis='y', labelcolor=color, labelsize=10)
-                ax2.set_ylim(0, 1)
-            else:
-                color = 'tab:orange'
-
-                # 计算柱宽
-                if len(wavenumber) > 1:
-                    wavenumber_diff = np.diff(wavenumber)
-                    avg_diff = np.mean(wavenumber_diff)
-                    bar_width = avg_diff * 0.8
-                else:
-                    bar_width = 0.1
-
-                # 使用柱状图显示透射率
-                bars_tr = self.canvas.axes.bar(
-                    wavenumber, transmittance_data,
-                    width=bar_width,
-                    color=color,
-                    alpha=0.5,
-                    edgecolor=color,
-                    linewidth=0.5,
-                    label=transmittance_label
-                )
-                if bars_tr:
-                    lines.append(bars_tr[0])
-
-                self.canvas.axes.set_ylim(0, 1)
+        # 创建右轴绘制透射率（叠加显示）
+        ax2 = self.canvas.axes.twinx()
+        color = 'tab:orange'
+        ax2.set_ylabel('透射率', color=color)
+        line_tr = ax2.plot(wavenumber, Tr, color=color, linestyle='-',
+                           linewidth=1, alpha=0.8, label='总透射率')[0]
+        ax2.tick_params(axis='y', labelcolor=color)
+        ax2.set_ylim(0, 1)  # 确保透射率范围正确
+        lines.append(line_tr)
 
         # 添加图例
-        if lines:
-            labels = [line.get_label() for line in lines]
-            legend = self.canvas.axes.legend(
-                lines, labels,
-                loc='upper right',
-                fontsize=10,
-                framealpha=0.9
-            )
-            legend.get_frame().set_edgecolor('black')
-            legend.get_frame().set_linewidth(0.5)
+        labels = [line.get_label() for line in lines]
+        self.canvas.axes.legend(lines, labels, loc='upper right')
 
-        # 添加标题（包含浓度信息）
-        conc_info = []
-        for molecule_name in self.selected_molecules:
-            conc = self.get_molecule_concentration(molecule_name)
-            if conc > 1e-6:  # 只显示浓度较大的分子
-                ppm_value = conc * 1000000
-                conc_info.append(f"{molecule_name}: {ppm_value:.1f}ppm")
-
-        conc_str = ", ".join(conc_info)
-
-        title = f'混合气体吸收光谱（柱状图）\nT={params["T"]}K, p={params["p"]}atm, l={params["l"]}cm'
-        if conc_str:
-            title += f'\n浓度: {conc_str}'
-
-        if self.wavelength_check.isChecked():
-            wavelength_min = 10000.0 / wavenumber.max()
-            wavelength_max = 10000.0 / wavenumber.min()
-            title += f'\n波长范围: {wavelength_min:.4f} - {wavelength_max:.4f} μm'
-
-        self.canvas.axes.set_title(title, fontsize=12, fontweight='bold', pad=20)
+        # 添加标题
+        params = self.current_spectrum_results['params']
+        self.canvas.axes.set_title(f'混合气体吸收光谱\n'
+                                   f'T={params["T"]}K, p={params["p"]}atm, l={params["l"]}cm')
 
         # 添加网格
-        self.canvas.axes.grid(True, alpha=grid_alpha, linestyle=grid_linestyle,
-                              linewidth=grid_linewidth, zorder=0)
+        self.canvas.axes.grid(True, alpha=0.3)
 
-        # 设置x轴刻度
-        x_min, x_max = wavenumber.min(), wavenumber.max()
-        x_range = x_max - x_min
-        if x_range > 0:
-            if x_range < 100:
-                major_ticks = np.arange(np.floor(x_min / 5) * 5, np.ceil(x_max / 5) * 5, 5)
-                minor_ticks = np.arange(x_min, x_max, 1)
-            elif x_range < 500:
-                major_ticks = np.arange(np.floor(x_min / 20) * 20, np.ceil(x_max / 20) * 20, 20)
-                minor_ticks = np.arange(x_min, x_max, 5)
-            else:
-                major_ticks = np.arange(np.floor(x_min / 50) * 50, np.ceil(x_max / 50) * 50, 50)
-                minor_ticks = np.arange(x_min, x_max, 10)
-
-            self.canvas.axes.set_xticks(major_ticks)
-            self.canvas.axes.set_xticks(minor_ticks, minor=True)
-            self.canvas.axes.xaxis.set_tick_params(which='major', size=6, width=1.5)
-            self.canvas.axes.xaxis.set_tick_params(which='minor', size=3, width=1)
-
-        # 设置y轴刻度
-        self.canvas.axes.yaxis.set_tick_params(which='major', size=6, width=1.5)
-        self.canvas.axes.yaxis.set_tick_params(which='minor', size=3, width=1)
-
-        # 设置背景色
-        self.canvas.axes.set_facecolor('#f8f9fa')
-        self.canvas.fig.set_facecolor('#f1f3f4')
-
-        # 调整布局
-        self.canvas.fig.tight_layout(pad=3.0)
+        self.canvas.fig.tight_layout()
         self.canvas.draw()
 
     def update_spectrum_stats_text(self):
-        """更新光谱结果统计文本（修复吸收系数计算）"""
+        """更新光谱结果统计文本"""
         if self.current_spectrum_results is None:
             return
 
@@ -2140,80 +1645,41 @@ class CombinedGasSpectrumGUI(QMainWindow):
         Tr = self.current_spectrum_results['Tr']
         Ab = self.current_spectrum_results['Ab']
         individual_ODs = self.current_spectrum_results['individual_ODs']
-        individual_Trs = self.current_spectrum_results['individual_Trs']
-
-        # 获取波数范围信息
-        wavenumber = self.current_spectrum_results['wavenumber']
-
-        # 获取浓度信息
-        conc_info = []
-        for molecule_name in self.selected_molecules:
-            conc = self.get_molecule_concentration(molecule_name)
-            if conc > 1e-6:
-                ppm_value = conc * 1000000
-                conc_info.append(f"{molecule_name}: {ppm_value:.1f}ppm")
-
-        conc_str = "，".join(conc_info)
 
         # 计算各分子的吸收系数
         individual_coefs = {}
         for molecule_name, od in individual_ODs.items():
-            # 直接使用 od / l 作为吸收系数
-            absorption_coef = od / params['l']
-            individual_coefs[molecule_name] = absorption_coef
-        # 构建统计文本
+            coef_single = od / (self.current_spectrum_results['params']['p'] * 101325 /
+                                (1.380649e-23 * self.current_spectrum_results['params']['T']) *
+                                self.current_spectrum_results['params']['l'])
+            individual_coefs[molecule_name] = coef_single
+
+        # 找到透射率最小的位置
+        min_Tr_idx = np.argmin(Tr)
+        min_Tr_wavenumber = self.current_spectrum_results['wavenumber'][min_Tr_idx]
+
         text = f"""计算参数:
 温度: {params['T']} K    压力: {params['p']} atm    光程: {params['l']} cm
-波数范围: {params['start']:.2f} - {params['end']:.2f} cm⁻¹
-对应波长范围: {10000.0 / params['end']:.4f} - {10000.0 / params['start']:.4f} μm
-分辨率: {params['resolution']} cm⁻¹
-谱线计算域倍数: {params['omega_wing']}
-浓度: {conc_str if conc_info else '未设置浓度'}
+波数范围: {params['start']} - {params['end']} cm⁻¹    分辨率: {params['resolution']} cm⁻¹
 
 """
 
         # 添加各分子的吸收系数统计
         for molecule_name, coef in individual_coefs.items():
-            if len(coef) > 0 and np.max(np.abs(coef)) > 1e-10:
+            if len(coef) > 0:
                 max_coef_mol = np.max(coef)
-                min_coef_mol = np.min(coef[coef > 0]) if np.any(coef > 0) else 0
-                mean_coef_mol = np.mean(coef[coef > 0]) if np.any(coef > 0) else 0
+                min_coef_mol = np.min(coef)
+                mean_coef_mol = np.mean(coef)
+                max_coef_idx = np.argmax(coef)
+                max_coef_wavenumber = self.current_spectrum_results['wavenumber'][max_coef_idx]
 
-                if max_coef_mol > 0:
-                    max_coef_idx = np.argmax(coef)
-                    max_coef_wavenumber = wavenumber[max_coef_idx]
-                    max_coef_wavelength = 10000.0 / max_coef_wavenumber
+                text += f"{molecule_name}吸收系数:\n"
+                text += f"最大值: {max_coef_mol:.2e} cm⁻¹ (位于 {max_coef_wavenumber:.4f} cm⁻¹)\n"
+                text += f"最小值: {min_coef_mol:.2e} cm⁻¹\n"
+                text += f"平均值: {mean_coef_mol:.2e} cm⁻¹\n\n"
 
-                    text += f"{molecule_name}吸收系数:\n"
-                    text += f"  最大值: {max_coef_mol:.2e} cm⁻¹ (位于 {max_coef_wavenumber:.4f} cm⁻¹ / {max_coef_wavelength:.4f} μm)\n"
-                    text += f"  最小值: {min_coef_mol:.2e} cm⁻¹\n"
-                    text += f"  平均值: {mean_coef_mol:.2e} cm⁻¹\n"
-
-                    # 添加透射率统计
-                    if molecule_name in individual_Trs:
-                        tr_mol = individual_Trs[molecule_name]
-                        min_tr_mol = np.min(tr_mol)
-                        max_tr_mol = np.max(tr_mol)
-                        mean_tr_mol = np.mean(tr_mol)
-                        min_tr_idx = np.argmin(tr_mol)
-                        min_tr_wavenumber = wavenumber[min_tr_idx]
-                        min_tr_wavelength = 10000.0 / min_tr_wavenumber
-
-                        text += f"{molecule_name}透射率:\n"
-                        text += f"  最小值: {min_tr_mol:.6f} (位于 {min_tr_wavenumber:.4f} cm⁻¹ / {min_tr_wavelength:.4f} μm)\n"
-                        text += f"  最大值: {max_tr_mol:.6f}\n"
-                        text += f"  平均值: {mean_tr_mol:.6f}\n\n"
-                    else:
-                        text += "\n"
-
-        # 总透射率统计
-        if len(Tr) > 0:
-            min_tr_idx = np.argmin(Tr)
-            min_tr_wavenumber = wavenumber[min_tr_idx]
-            min_tr_wavelength = 10000.0 / min_tr_wavenumber
-
-            text += f"""总透射率:
-最小值: {np.min(Tr):.6f} (位于 {min_tr_wavenumber:.4f} cm⁻¹ / {min_tr_wavelength:.4f} μm)
+        text += f"""透射率:
+最小值: {np.min(Tr):.6f} (位于 {min_Tr_wavenumber:.4f} cm⁻¹)
 最大值: {np.max(Tr):.6f}
 平均值: {np.mean(Tr):.6f}
 
@@ -2225,17 +1691,14 @@ class CombinedGasSpectrumGUI(QMainWindow):
 最大值: {np.max(Ab):.6f}
 最小值: {np.min(Ab):.6f}
 
-数据点数: {len(wavenumber)}
-波数步长: {wavenumber[1] - wavenumber[0]:.6f} cm⁻¹
+数据点数: {len(self.current_spectrum_results['wavenumber'])}
 """
-
         self.stats_text.setText(text)
-
 
 def main():
     app = QApplication(sys.argv)
 
-    # 设置应用程序信息
+        # 设置应用程序信息
     app.setApplicationName("气体化学平衡与光谱联合模拟")
     app.setApplicationVersion("1.0")
 
@@ -2243,7 +1706,6 @@ def main():
     window.show()
 
     sys.exit(app.exec())
-
 
 if __name__ == '__main__':
     main()

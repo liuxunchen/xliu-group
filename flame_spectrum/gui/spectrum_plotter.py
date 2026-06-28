@@ -1,176 +1,112 @@
+# gui/spectrum_plotter.py
 import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
-
-# Compatible Qt backend import (Supports PyQt5, PyQt6, PySide2, PySide6)
-try:
-    from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
-    from matplotlib.backends.backend_qtagg import NavigationToolbar2QT as NavigationToolbar
-except ImportError:
-    from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-    from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
-
-# Set universal, safe fonts to avoid missing CJK font warnings
-plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'Arial', 'Helvetica', 'sans-serif']
-plt.rcParams['axes.unicode_minus'] = False
+from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.backends.backend_qtagg import NavigationToolbar2QT as NavigationToolbar
 
 class SpectrumCanvas(FigureCanvas):
-    """
-    A reusable Matplotlib canvas for plotting HITRAN/Flame spectra (Qt compatible).
-    Optimized for high-resolution line plots with dual Y-axes and dual X-axes.
-    """
-    
     def __init__(self, parent=None, width=10, height=6, dpi=100):
         self.fig = Figure(figsize=(width, height), dpi=dpi)
         self.axes = self.fig.add_subplot(111)
         super().__init__(self.fig)
-        
-        # Clean default style
+        self.toolbar = NavigationToolbar(self, parent)   # 工具栏
         self.axes.set_facecolor('#fcfcfc')
-        self.fig.set_facecolor('#ffffff')
 
     def clear_all(self):
-        """Clear all axes and reset the canvas."""
         self.fig.clear()
         self.axes = self.fig.add_subplot(111)
         self.axes.set_facecolor('#fcfcfc')
 
-    def plot_spectrum(self, wavenumber, coef, transmittance, 
-                      params=None, title="Spectrum",
-                      show_abs=True, show_trans=True,
-                      grid_density='fine', show_wavelength=True):
+    def plot_mixture(self, wavenumber, total_coef, individual_coefs, transmittance,
+                     params=None, title="Mixture Spectrum",
+                     grid_density='fine', show_wavelength=True):
         """
-        Plot the spectrum using high-performance line plots.
-        
-        Parameters:
-        -----------
-        wavenumber : np.ndarray
-            Wavenumber array (cm⁻¹)
-        coef : np.ndarray
-            Absorption coefficient array (cm⁻¹)
-        transmittance : np.ndarray
-            Transmittance/Absorptance array (0 to 1)
-        params : dict, optional
-            Calculation parameters (T, p, l, c) for the title
-        title : str
-            Main title of the plot
-        show_abs : bool
-            Whether to show absorption coefficient
-        show_trans : bool
-            Whether to show transmittance
-        grid_density : str
-            'fine', 'medium', or 'coarse'
-        show_wavelength : bool
-            Whether to show the secondary top x-axis (Wavelength in µm)
+        绘制混合光谱：总吸收系数、各分子分量、透射率
         """
         self.clear_all()
-        
         if len(wavenumber) == 0:
             self.draw()
             return
 
-        # Grid styling
-        grid_styles = {
-            'fine':   {'alpha': 0.3, 'ls': ':',  'lw': 0.5},
-            'medium': {'alpha': 0.4, 'ls': '--', 'lw': 0.7},
-            'coarse': {'alpha': 0.5, 'ls': '-',  'lw': 0.8}
-        }
-        grid_cfg = grid_styles.get(grid_density, grid_styles['fine'])
+        # 下采样（避免 UI 卡顿）
+        step = max(1, len(wavenumber) // 50000)
+        wn = wavenumber[::step]
 
-        ax_main = self.axes
+        # 颜色方案
+        colors = ['orange', 'green', 'purple', 'brown', 'pink', 'cyan']
+        # 分子列表按名称排序，保证颜色一致
+        mol_names = sorted(individual_coefs.keys())
+
+        # ---- 左轴：吸收系数 ----
+        ax_left = self.axes
         lines = []
         labels = []
 
-        # --- 1. Plot Absorption Coefficient (Left Y-Axis) ---
-        if show_abs:
-            color_abs = '#1f77b4'  # Matplotlib default blue
-            
-            # Downsample if data points are too massive (>500k) to keep UI responsive
-            step = max(1, len(wavenumber) // 500000)
-            wn_plot = wavenumber[::step]
-            coef_plot = coef[::step]
-            
-            line_abs, = ax_main.plot(wn_plot, coef_plot, color=color_abs, 
-                                     linewidth=0.8, linestyle='-', 
-                                     label='Absorption Coefficient')
-            lines.append(line_abs)
-            labels.append('Absorption Coefficient (cm⁻¹)')
-                
-            ax_main.set_ylabel('Absorption Coefficient (cm⁻¹)', color=color_abs, fontsize=11)
-            ax_main.tick_params(axis='y', labelcolor=color_abs, labelsize=10)
+        # 各分子分量（虚线）
+        for i, name in enumerate(mol_names):
+            coef = individual_coefs[name][::step]
+            if np.max(np.abs(coef)) > 1e-12:
+                line, = ax_left.plot(wn, coef, linestyle='--', color=colors[i % len(colors)],
+                                     linewidth=1.0, alpha=0.7, label=f'{name}')
+                lines.append(line)
+                labels.append(f'Abs. Coeff ({name})')
 
-        # --- 2. Plot Transmittance / Absorptance (Right Y-Axis) ---
-        if show_trans:
-            color_trans = '#ff7f0e'  # Matplotlib default orange
-            if show_abs:
-                ax_trans = ax_main.twinx()
-            else:
-                ax_trans = ax_main
-                
-            step = max(1, len(wavenumber) // 500000)
-            wn_plot = wavenumber[::step]
-            trans_plot = transmittance[::step]
-                
-            line_trans, = ax_trans.plot(wn_plot, trans_plot, color=color_trans, 
-                                        linewidth=0.8, linestyle='-', alpha=0.9,
-                                        label='Transmittance')
-            lines.append(line_trans)
-            labels.append('Transmittance')
-            
-            ax_trans.set_ylim(-0.05, 1.05) 
-            ax_trans.set_ylabel('Transmittance', color=color_trans, fontsize=11)
-            ax_trans.tick_params(axis='y', labelcolor=color_trans, labelsize=10)
+        # 总吸收系数（实线）
+        if np.max(np.abs(total_coef)) > 1e-12:
+            line_total, = ax_left.plot(wn, total_coef[::step], color='red',
+                                       linewidth=1.5, alpha=0.8, label='Total Abs. Coeff')
+            lines.append(line_total)
+            labels.append('Total Abs. Coeff')
 
-        # --- 3. Dual X-Axis (Bottom: Wavenumber, Top: Wavelength) ---
-        ax_main.set_xlabel('Wavenumber (cm⁻¹)', fontsize=11, labelpad=10)
-        ax_main.tick_params(axis='x', labelsize=10)
-        
+        ax_left.set_xlabel('Wavenumber (cm$^{-1}$)', fontsize=11)
+        ax_left.set_ylabel('Absorption Coefficient (cm$^{-1}$)', color='red', fontsize=11)
+        ax_left.tick_params(axis='y', labelcolor='red')
+
+        # ---- 右轴：透射率 ----
+        ax_right = ax_left.twinx()
+        line_tr, = ax_right.plot(wn, transmittance[::step], color='blue',
+                                 linewidth=1.5, alpha=0.9, label='Transmittance')
+        lines.append(line_tr)
+        labels.append('Transmittance')
+        ax_right.set_ylabel('Transmittance', color='blue', fontsize=11)
+        ax_right.tick_params(axis='y', labelcolor='blue')
+        ax_right.set_ylim(-0.05, 1.05)
+
+        # ---- 双 X 轴：波长 ----
         if show_wavelength:
-            ax_top = ax_main.twiny()
-            ax_top.set_xlabel('Wavelength (µm)', fontsize=11, labelpad=10)
-            
-            # Sync limits
-            x_min, x_max = ax_main.get_xlim()
-            ax_top.set_xlim(x_min, x_max)
-            
-            # Generate smart ticks for wavelength
-            x_ticks = ax_main.get_xticks()
-            x_ticks = x_ticks[(x_ticks >= wavenumber.min()) & (x_ticks <= wavenumber.max())]
-            
-            # Limit number of ticks to avoid crowding
-            if len(x_ticks) > 10:
-                step = max(1, len(x_ticks) // 8)
-                x_ticks = x_ticks[::step]
-                
-            x_ticks = x_ticks[x_ticks > 0] # Avoid division by zero
-            
-            if len(x_ticks) > 0:
-                wavelength_ticks = 10000.0 / x_ticks
-                ax_top.set_xticks(x_ticks)
-                ax_top.set_xticklabels([f'{w:.3f}' for w in wavelength_ticks], fontsize=10)
-            
+            ax_top = ax_left.twiny()
+            ax_top.set_xlim(ax_left.get_xlim())
+            ax_top.set_xlabel('Wavelength (µm)', fontsize=11)
+            ticks = ax_left.get_xticks()
+            ticks = ticks[(ticks > 0) & (ticks >= wavenumber.min()) & (ticks <= wavenumber.max())]
+            if len(ticks) > 10:
+                ticks = np.linspace(wavenumber.min(), wavenumber.max(), 8)
+            ax_top.set_xticks(ticks)
+            ax_top.set_xticklabels([f'{10000/t:.3f}' for t in ticks])
             ax_top.tick_params(axis='x', direction='in', pad=10)
 
-        # --- 4. Title and Legend ---
+        # ---- 标题 ----
         final_title = title
         if params:
             T = params.get('T', '?')
             p = params.get('p', '?')
             l = params.get('l', '?')
-            final_title += f"\n(T={T} K, p={p} atm, L={l} cm)"
-                
-        ax_main.set_title(final_title, fontsize=12, fontweight='bold', pad=20)
+            final_title += f" (T={T} K, p={p} atm, L={l} cm)"
+        ax_left.set_title(final_title, fontsize=12, fontweight='bold')
 
+        # ---- 图例 ----
         if lines:
-            # Place legend in the main axis
-            legend = ax_main.legend(lines, labels, loc='upper right', fontsize=10, framealpha=0.9)
+            legend = ax_left.legend(lines, labels, loc='upper right', fontsize=9,
+                                    framealpha=0.9)
             legend.get_frame().set_edgecolor('gray')
-            legend.get_frame().set_linewidth(0.5)
 
-        # --- 5. Grid and Layout ---
-        ax_main.grid(True, alpha=grid_cfg['alpha'], linestyle=grid_cfg['ls'], 
-                     linewidth=grid_cfg['lw'], zorder=0)
-        
+        # ---- 网格 ----
+        grid_styles = {'fine': {'alpha':0.3, 'ls':':', 'lw':0.5},
+                       'medium': {'alpha':0.4, 'ls':'--', 'lw':0.7},
+                       'coarse': {'alpha':0.5, 'ls':'-', 'lw':0.8}}
+        gs = grid_styles.get(grid_density, grid_styles['fine'])
+        ax_left.grid(True, alpha=gs['alpha'], linestyle=gs['ls'], linewidth=gs['lw'])
+
         self.fig.tight_layout(pad=3.0)
         self.draw()

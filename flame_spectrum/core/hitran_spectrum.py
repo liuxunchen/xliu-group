@@ -1,52 +1,46 @@
 # hitran_spectrum.py
 import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib import rcParams
-
-
-# 设置跨平台中文字体
-rcParams['font.family'] = 'sans-serif'
-rcParams['font.sans-serif'] = ['Microsoft YaHei', 'Noto Sans CJK SC', 'WenQuanYi Zen Hei', 'Source Han Sans CN']
-rcParams['axes.unicode_minus'] = False
-rcParams['text.usetex'] = False
-rcParams['mathtext.fontset'] = 'stix'
-
+from scipy import special, constants
 import math
-from scipy import special
-from scipy import constants
-import pathlib
 import os
+import matplotlib.pyplot as plt
 
 class HitranSpectrum:
     """
-    HITRAN光谱仿真类
-    用于读取HITRAN数据库并计算吸收光谱
+    HITRAN 光谱仿真类（支持多分子混合）
+    自动识别分子、同位素，读取配分函数，计算吸收截面与光谱
     """
-    
-    # HITRAN 160位格式定义
-    HITRAN_FORMAT_160 = {
-        'M':          {'pos': 1,   'len': 2,  'format': '%2d'},   # 分子ID
-        'I':          {'pos': 3,   'len': 1,  'format': '%1d'},   # 同位素ID
-        'nu':         {'pos': 4,   'len': 12, 'format': '%12f'},  # 波数
-        'S':          {'pos': 16,  'len': 10, 'format': '%10f'},  # 线强
-        'A':          {'pos': 26,  'len': 10, 'format': '%10f'},  # 爱因斯坦A系数
-        'gamma_air':  {'pos': 36,  'len': 5,  'format': '%5f'},   # 空气加宽半宽
-        'gamma_self': {'pos': 41,  'len': 5,  'format': '%5f'},   # 自加宽半宽
-        'E':          {'pos': 46,  'len': 10, 'format': '%10f'},  # 低态能量
-        'n_air':      {'pos': 56,  'len': 4,  'format': '%4f'},   # 温度依赖系数
-        'delta_air':  {'pos': 60,  'len': 8,  'format': '%8f'},   # 压力位移
-        'V':          {'pos': 68,  'len': 15, 'format': '%15s'},  # 空位
-        'V_':         {'pos': 83,  'len': 15, 'format': '%15s'},  # 空位
-        'Q':          {'pos': 98,  'len': 15, 'format': '%15s'},  # 空位
-        'Q_':         {'pos': 113, 'len': 15, 'format': '%15s'},  # 空位
-        'Ierr':       {'pos': 128, 'len': 6,  'format': '%6s'},   # 空位
-        'Iref':       {'pos': 134, 'len': 12, 'format': '%12s'},  # 空位
-        'flag':       {'pos': 146, 'len': 1,  'format': '%1s'},   # 空位
-        'g':          {'pos': 147, 'len': 7,  'format': '%7f'},   # 空位
-        'g_':         {'pos': 154, 'len': 7,  'format': '%7f'}    # 空位
+
+    # ---------- 物理常数 (CGS) ----------
+    T_ref = 296.0
+    cBolts = constants.Boltzmann * 1e7          # erg/K
+    cc = constants.speed_of_light * 1e2         # cm/s
+    cNA = constants.N_A
+    c2 = constants.physical_constants['second radiation constant'][0] * 100   # cm·K
+    cP = constants.physical_constants['standard atmosphere'][0] * 10          # 1 atm in Ba (CGS)
+
+    # 多普勒宽度系数 √(2 N_A k_B ln2) / c
+    cGammaD = math.sqrt(2.0 * cBolts * cNA * math.log(2.0)) / cc
+
+    # ---------- HITRAN 160 位字段定义 ----------
+    HITRAN_FMT = {
+        'M':         (1, 2, int),
+        'I':         (3, 1, int),
+        'nu':        (4, 12, float),
+        'S':         (16, 10, float),
+        'A':         (26, 10, float),
+        'gamma_air': (36, 5, float),
+        'gamma_self':(41, 5, float),
+        'E':         (46, 10, float),
+        'n_air':     (56, 4, float),
+        'delta_air': (60, 8, float),
     }
+
+    # ---------- 分子质量字典 (来自 HITRAN ISO 表) ----------
     
     # ISO字典定义 
+    # 格式: (mol_id, iso_id): (global_id, formula, abundance, mass_g_per_mol, name)
+
     ISO = {
         (  1,  1 ):    [      1,  'H2(16O)',                 9.973173E-01,  1.801056E+01,  'H2O'         ], 
         (  1,  2 ):    [      2,  'H2(18O)',                 1.999827E-03,  2.001481E+01,  'H2O'         ], 
@@ -194,395 +188,223 @@ class HitranSpectrum:
         ( 54,  1 ):    [    145,  '(12C)H3(127I)',           9.884280E-01,  1.419279E+02,  'CH3I'        ], 
         ( 55,  1 ):    [    136,  '(14N)(19F)3',             9.963370E-01,  7.099829E+01,  'NF3'         ], 
     }
-    
-    # 物理常数
-    T_ref = 296.0
-    cBolts = constants.Boltzmann * 1E7  # CGS Boltzmann常数，单位erg/K
-    cc = constants.speed_of_light * 1E2  # CGS，cm/s
-    cNA = constants.N_A
-    c2 = constants.physical_constants['second radiation constant'][0] * 100  # CGS cm K
-    cP = constants.physical_constants['standard atmosphere'][0] * 10  # 压力单位转换为CGS的Ba
-    cGammaD = math.sqrt(2 * cBolts * cNA * math.log(2)) / cc  # 多普勒展宽常数
-    
-    def __init__(self, par_file=None, q_folder=None):
-        """
-        初始化HitranSpectrum类
-        
-        参数:
-        par_file: HITRAN数据库文件路径
-        q_folder: 配分函数文件夹路径
-        """
-        self.par_file = par_file
+
+    def __init__(self, q_folder=None):
         self.q_folder = q_folder
-        self.database = None
-        self.partition_function = None
-        self.molecule_info = None
-        
-        if par_file and q_folder:
-            self.load_data(par_file, q_folder)
-    
-    def load_data(self, par_file, q_folder):
-        """
-        加载数据文件
-        """
-        self.par_file = par_file
-        self.q_folder = q_folder
-        
-        # 读取数据库
-        self.database, self.molecule_info = self.read_hitran_par(par_file)
-        
-        if self.molecule_info is None:
-            raise ValueError("无法从par文件中识别分子信息")
-        
-        # 自动获取分子质量
-        molecule_id = self.molecule_info['molecule_id']
-        isotope_id = self.molecule_info['isotope_id']
-        mass = self.get_molar_mass(molecule_id, isotope_id)
-        
-        if mass is None:
-            raise ValueError(f"无法找到分子ID {molecule_id} 同位素ID {isotope_id} 的质量")
-        
-        self.Mass = mass
-        self.molecule_info['molar_mass'] = mass
-        self.molecule_info['molecule_name'] = self.get_molecule_name(molecule_id, isotope_id)
-        
-        # 自动读取配分函数文件
-        q_file = os.path.join(q_folder, f'q{molecule_id}.txt')
-        
+        self.molecules = {}          # name -> data dict
+        self.molecule_order = []     # 保持顺序
+
+    # ---------- 分子管理 ----------
+    def add_molecule(self, par_file, concentration=1.0, name=None):
+        """添加一个分子，concentration 为体积分数（摩尔分数）"""
+        if self.q_folder is None:
+            raise ValueError("请先设置配分函数文件夹")
+
+        # 读取谱线数据
+        db, info = self._read_par(par_file)
+        if db is None or len(db) == 0:
+            raise ValueError(f"文件 {par_file} 无有效数据")
+
+        mol_id = info['molecule_id']
+        iso_id = info['isotope_id']
+
+        # 获取分子质量 (g/mol)
+        mass_gmol = self._get_mass(mol_id, iso_id)
+        if mass_gmol is None:
+            raise ValueError(f"无法获取分子 {mol_id}-{iso_id} 的质量")
+
+        # 分子名称
+        mol_name = name or self._get_name(mol_id, iso_id)
+
+        # 读取配分函数
+        q_file = os.path.join(self.q_folder, f'q{mol_id}.txt')
         if not os.path.exists(q_file):
-            # 尝试其他可能的文件名格式
-            q_file_alt = os.path.join(q_folder, f'Q{molecule_id}.txt')
-            if os.path.exists(q_file_alt):
-                q_file = q_file_alt
-            else:
-                raise FileNotFoundError(f"找不到配分函数文件: {q_file}")
-        
-        self.partition_function_data = self.read_partition_function(q_file)
-        self.molecule_info['q_file'] = q_file
-        
-        # 设置默认的波数范围
-        if len(self.database) > 0:
-            self.default_start = np.min(self.database[:, 0])
-            self.default_end = np.max(self.database[:, 0])
-        else:
-            self.default_start = 0
-            self.default_end = 0
-            
-        print(f"成功读取 {len(self.database)} 条谱线")
-        print(f"分子: {self.molecule_info['molecule_name']}, 同位素: {isotope_id}, 质量: {mass:.6f} g/mol")
-        print(f"波数范围: {self.default_start:.4f} - {self.default_end:.4f} cm⁻¹")
-        print(f"配分函数文件: {q_file}")
-        print(f"配分函数温度范围: {self.partition_function_data['temperatures'][0]} - {self.partition_function_data['temperatures'][-1]} K")
-    
-    def get_molar_mass(self, molecule_id, isotope_id):
-        """根据分子ID和同位素ID获取分子质量"""
-        key = (molecule_id, isotope_id)
-        if key in self.ISO:
-            return self.ISO[key][3]  # 第4列是质量
-        print(f"警告: 未找到分子ID {molecule_id} 同位素ID {isotope_id} 的质量信息")
-        return None
-    
-    def get_molecule_name(self, molecule_id, isotope_id):
-        """根据分子ID和同位素ID获取分子名称"""
-        key = (molecule_id, isotope_id)
-        if key in self.ISO:
-            return self.ISO[key][4]  # 第5列是分子名称
-        return f"未知分子 ({molecule_id})"
-    
-    def read_hitran_par(self, filename):
+            q_file = os.path.join(self.q_folder, f'Q{mol_id}.txt')
+        if not os.path.exists(q_file):
+            raise FileNotFoundError(f"配分函数文件 {q_file} 不存在")
+        q_data = self._read_q(q_file)
+
+        # 存储
+        self.molecules[mol_name] = {
+            'db': db,
+            'conc': concentration,
+            'mass_gmol': mass_gmol,
+            'q_data': q_data,
+            'mol_id': mol_id,
+            'iso_id': iso_id,
+            'par_file': par_file,
+        }
+        self.molecule_order.append(mol_name)
+        print(f"加载 {mol_name}: {len(db)} 条谱线, 浓度 {concentration}")
+
+    # ---------- 光谱计算 ----------
+    def cross_section(self, mol_name, T, p, wavenumber, wing=10.0):
         """
-        读取HITRAN 160位格式的par文件，自动识别分子和同位素
-        
-        返回:
-        database: 数据库数组
-        molecule_info: 分子信息字典
+        计算单个分子的吸收截面 σ(ν) [cm²/molecule]
+        参数:
+            T: 温度 (K)
+            p: 总压 (atm)
+            wavenumber: 波数网格
+            wing: 线翼截断倍数
         """
-        database = []
-        molecule_ids = set()
-        isotope_ids = set()
-        
+        mol = self.molecules[mol_name]
+        db = mol['db']
+        mass_gmol = mol['mass_gmol']
+        Q_T = self._interp_q(mol['q_data'], T)
+        Q_ref = self._interp_q(mol['q_data'], self.T_ref)
+
+        # 单分子质量 (g)
+        m_molecule = mass_gmol / self.cNA
+
+        sigma_arr = np.zeros_like(wavenumber)
+
+        for line in db:
+            nu = line[0]
+            # 线翼截断
+            gamma_D = self.cGammaD * math.sqrt(T / mass_gmol) * nu   # HWHM
+            gamma_p = line[3] * p * (self.T_ref / T) ** line[6]      # 忽略自加宽
+            wing_width = wing * (gamma_D + gamma_p)
+            if nu < wavenumber[0] - wing_width or nu > wavenumber[-1] + wing_width:
+                continue
+
+            # 线强温度修正
+            S = line[1]
+            E = line[4]
+            ratio = (Q_ref / Q_T) * math.exp(-self.c2 * E * (1.0/T - 1.0/self.T_ref))
+            stim = (1.0 - math.exp(-self.c2 * nu / T)) / (1.0 - math.exp(-self.c2 * nu / self.T_ref))
+            intensity = S * ratio * stim
+
+            # Voigt 线型
+            profile = self._voigt(nu, wavenumber, line[3], line[6], p, T, mass_gmol)
+            sigma_arr += intensity * profile
+
+        return sigma_arr
+
+    def coef_mixture(self, T, p, wavenumber, wing=10.0):
+        """
+        计算混合气体总吸收系数 k(ν) [cm⁻¹]
+        k = Σ N_i * σ_i
+        """
+        total_k = np.zeros_like(wavenumber)
+        individual_k = {}
+        for name in self.molecule_order:
+            mol = self.molecules[name]
+            sigma = self.cross_section(name, T, p, wavenumber, wing)
+            # 数密度 N_i = (p * conc_i * cP) / (kB * T)   [分子/cm³]
+            N_i = p * mol['conc'] * self.cP / (self.cBolts * T)
+            k_i = sigma * N_i
+            individual_k[name] = k_i
+            total_k += k_i
+        return total_k, wavenumber, individual_k
+
+    def OD_mixture(self, T, p, L, wavenumber=None, start=None, end=None,
+                   resolution=0.01, wing=10.0):
+        """计算混合气体光学深度、透射率和吸收率"""
+        if wavenumber is None:
+            if start is None or end is None:
+                # 自动范围
+                starts = [self.molecules[n]['db'][:,0].min() for n in self.molecule_order]
+                ends   = [self.molecules[n]['db'][:,0].max() for n in self.molecule_order]
+                start, end = min(starts), max(ends)
+            wavenumber = np.arange(start, end, resolution)
+
+        total_k, wavenumber, ind_k = self.coef_mixture(T, p, wavenumber, wing)
+        OD = total_k * L
+        Tr = np.exp(-OD)
+        Ab = 1.0 - Tr
+        return OD, Ab, Tr, wavenumber, total_k, ind_k
+
+    # ---------- 内部工具 ----------
+    def _read_par(self, filename):
+        db = []
+        mol_ids = set()
+        iso_ids = set()
         with open(filename, 'r') as f:
-            for line_num, line in enumerate(f, 1):
+            for line in f:
                 line = line.rstrip('\n')
                 if len(line) < 160:
-                    print(f"警告: 第 {line_num} 行长度不足160字符，已跳过")
                     continue
-                    
                 try:
-                    # 使用HITRAN格式定义解析各个字段
-                    fields = {}
-                    
-                    # 解析每个字段
-                    for field_name, field_info in self.HITRAN_FORMAT_160.items():
-                        start_pos = field_info['pos'] - 1  # 转换为0-based索引
-                        end_pos = start_pos + field_info['len']
-                        field_str = line[start_pos:end_pos].strip()
-                        
-                        if field_str:  # 只处理非空字段
-                            if field_info['format'].endswith('d'):
-                                fields[field_name] = int(field_str)
-                            elif field_info['format'].endswith('f'):
-                                fields[field_name] = float(field_str)
-                            else:
-                                fields[field_name] = field_str
-                    
-                    # 提取主要字段
-                    molec_id = fields.get('M')
-                    local_iso_id = fields.get('I')
-                    nu = fields.get('nu')
-                    S = fields.get('S')
-                    A = fields.get('A')
-                    gamma_air = fields.get('gamma_air')
-                    gamma_self = fields.get('gamma_self')
-                    E = fields.get('E')
-                    n_air = fields.get('n_air')
-                    delta_air = fields.get('delta_air')
-                    
-                    # 验证必需字段
-                    if None in [molec_id, local_iso_id, nu, S, A, gamma_air, gamma_self, E, n_air, delta_air]:
-                        print(f"警告: 第 {line_num} 行缺少必需字段，已跳过")
-                        continue
-                    
-                    molecule_ids.add(molec_id)
-                    isotope_ids.add(local_iso_id)
-                    
-                    database.append([nu, S, A, gamma_air, gamma_self, E, n_air, delta_air])
-                    
-                except (ValueError, IndexError) as e:
-                    print(f"解析第 {line_num} 行时出错: {repr(line)}")
-                    print(f"错误信息: {e}")
+                    M = int(line[0:2])
+                    I = int(line[2:3]) if line[2:3].strip() else 1
+                    if I == 0: I = 1
+                    nu = float(line[3:15])
+                    S  = float(line[15:25])
+                    # A 字段不使用
+                    gamma_air = float(line[35:40])
+                    gamma_self= float(line[40:45])
+                    E  = float(line[45:55])
+                    n_air = float(line[55:59])
+                    delta  = float(line[59:67])
+                    mol_ids.add(M)
+                    iso_ids.add(I)
+                    db.append([nu, S, 0.0, gamma_air, gamma_self, E, n_air, delta])
+                except (ValueError, IndexError):
                     continue
-        
-        if len(molecule_ids) == 0:
-            raise ValueError("未找到有效的分子ID")
-        
-        # 获取主要分子ID（假设文件中只有一个分子）
-        main_molecule_id = list(molecule_ids)[0]
-        main_isotope_id = list(isotope_ids)[0] if isotope_ids else 1
-        
-        molecule_info = {
-            'molecule_id': main_molecule_id,
-            'isotope_id': main_isotope_id,
-            'all_molecules': list(molecule_ids),
-            'all_isotopes': list(isotope_ids)
-        }
-        
-        print(f"识别到分子ID: {main_molecule_id}, 同位素ID: {main_isotope_id}")
-        
-        return np.array(database), molecule_info
-    
-    def read_partition_function(self, filename):
-        """
-        读取配分函数文件
-        返回: 字典，包含温度数组和配分函数值数组
-        """
-        try:
-            data = np.loadtxt(filename)
-            print(f"配分函数文件数据形状: {data.shape}")  # 调试信息
-            print(f"温度范围: {data[:, 0].min()} - {data[:, 0].max()}")  # 调试信息
-            
-            if data.ndim == 2 and data.shape[1] >= 2:
-                temperatures = data[:, 0]  # 第一列是温度，保持为浮点数
-                q_values = data[:, 1]  # 第二列是配分函数值
-                
-                return {
-                    'temperatures': temperatures,
-                    'values': q_values
-                }
-            else:
-                raise ValueError("配分函数文件格式不正确，应该是两列数据")
-        except Exception as e:
-            print(f"读取配分函数文件错误: {e}")
-            print(f"文件路径: {filename}")
-            raise
+        if not db:
+            return None, None
+        main_mol = max(mol_ids, key=lambda x: sum(1 for d in db if d[0]==x)) if mol_ids else None
+        main_iso = max(iso_ids, key=lambda x: sum(1 for d in db if d[1]==x)) if iso_ids else 1
+        info = {'molecule_id': main_mol, 'isotope_id': main_iso}
+        return np.array(db), info
 
-    def get_partition_function(self, T):
-        """
-        获取指定温度下的配分函数值
-        使用线性插值
-        """
-        if self.partition_function_data is None:
-            raise ValueError("配分函数数据未加载")
-        
-        temperatures = self.partition_function_data['temperatures']
-        q_values = self.partition_function_data['values']
-        
-        # 直接使用线性插值
-        return np.interp(T, temperatures, q_values)    
-    
-    def profile_voigt(self, nu, gamma_air, gamma_self, n_air, delta_air, T, p, c, wavenumber):
-        """
-        使用Faddeeva函数计算Voigt线型
-        """
-        # 计算压力展宽
-        gamma = gamma_air * p * (1 - c) * ((self.T_ref / T) ** n_air) + \
-                gamma_self * p * c * ((self.T_ref / T) ** n_air)
-        
-        # 计算多普勒展宽
-        GammaD = self.cGammaD * math.sqrt(T / self.Mass) * nu
-        sigma = GammaD / (math.sqrt(2 * math.log(2)))
-        
-        # 计算Voigt线型
-        variable = (wavenumber - nu - delta_air * p + gamma * 1j) / (sigma * math.sqrt(2))
-        voigt = (special.wofz(variable)).real / (sigma * math.sqrt(2 * constants.pi))
-        
-        return voigt
-    
-    def coef(self, T, p, c, wavenumber=None, start=None, end=None, resolution=0.001, omega_wing=10):
-        """
-        计算吸收系数
-        """
-        if self.database is None:
-            raise ValueError("请先加载数据库文件")
-            
-        # 确定波数范围
-        if wavenumber is None:
-            if start is None:
-                start = self.default_start
-            if end is None:
-                end = self.default_end
-            wavenumber = np.arange(start, end, resolution)
-        
-        coef_array = np.zeros(len(wavenumber))
-        
-        # 获取当前温度和参考温度的配分函数值
-        q_T = self.get_partition_function(int(T))
-        q_T_ref = self.get_partition_function(int(self.T_ref))
-        
-        for line in self.database:
-            nu = line[0]
-            S = line[1]
-            gamma_air = line[3]
-            gamma_self = line[4]
-            E = line[5]
-            n_air = line[6]
-            delta_air = line[7]
-            
-            # 计算多普勒展宽和压力展宽
-            GammaD = self.cGammaD * math.sqrt(T / self.Mass) * nu
-            gamma_total = gamma_air * p * (1 - c) * ((self.T_ref / T) ** n_air) + \
-                         gamma_self * p * c * ((self.T_ref / T) ** n_air)
-            
-            # 确定每条谱线的计算域
-            wing_width = omega_wing * (GammaD + gamma_total)
-            line_start = nu - wing_width
-            line_end = nu + wing_width
-            
-            # 找到在全局波数范围内的索引
-            indices = np.where((wavenumber >= line_start) & (wavenumber <= line_end))[0]
-            
-            if len(indices) == 0:
-                continue
-                
-            # 计算该谱线在局部范围内的线型
-            local_wavenumber = wavenumber[indices]
-            profile = self.profile_voigt(nu, gamma_air, gamma_self, n_air, delta_air, 
-                                       T, p, c, local_wavenumber)
-            
-            # 计算线强 - 使用插值后的配分函数值
-            intensity = S * q_T_ref / q_T * \
-                       math.exp(-self.c2 * E / T) / math.exp(-self.c2 * E / self.T_ref) * \
-                       (1 - math.exp(-self.c2 * nu / T)) / (1 - math.exp(-self.c2 * nu / self.T_ref))
-            
-            # 累加到吸收系数
-            coef_array[indices] += profile * intensity
-        
-        return coef_array, wavenumber
-    
-    def OD(self, T, p, c, l, wavenumber=None, start=None, end=None, resolution=0.001, omega_wing=10):
-        """
-        计算光学深度、吸收率和透射率
-        """
-        # 计算吸收系数
-        coef_array, wavenumber = self.coef(T, p, c, wavenumber, start, end, resolution, omega_wing)
-        
-        # 计算体积密度
-        density = p * c * self.cP / (self.cBolts) / T  # 体积密度 /cm^3，来自 p/kT
-        
-        # 计算光学深度、透射率和吸收率
-        OD = coef_array * density * l
-        Tr = np.exp(-OD)
-        Ab = 1 - Tr
-        
-        return OD, Ab, Tr, wavenumber, coef_array
+    def _read_q(self, filename):
+        data = np.loadtxt(filename)
+        return {'T': data[:, 0], 'Q': data[:, 1]}
 
-    def get_database_info(self):
-        """
-        获取数据库基本信息
-        """
-        if self.database is None:
-            return "未加载数据库"
-        
-        info = f"分子: {self.molecule_info['molecule_name']}\n"
-        info += f"分子ID: {self.molecule_info['molecule_id']}\n"
-        info += f"同位素ID: {self.molecule_info['isotope_id']}\n"
-        info += f"分子质量: {self.molecule_info['molar_mass']:.6f} g/mol\n"
-        info += f"谱线数量: {len(self.database)}\n"
-        info += f"波数范围: {self.default_start:.4f} - {self.default_end:.4f} cm⁻¹\n"
-        info += f"配分函数文件: {self.molecule_info['q_file']}\n"
-        
-        if self.partition_function_data is not None:
-            temps = self.partition_function_data['temperatures']
-            info += f"配分函数温度范围: {temps[0]} - {temps[-1]} K\n"
-        
-        if len(self.database) > 0:
-            info += f"线强范围: {np.min(self.database[:,1]):.2e} - {np.max(self.database[:,1]):.2e} cm⁻¹/(molecule·cm⁻²)"
-        
-        return info
+    def _interp_q(self, q_data, T):
+        return np.interp(T, q_data['T'], q_data['Q'])
 
-def main():
-    """
-    使用示例
-    """
-    # 初始化HitranSpectrum类
-    hitran = HitranSpectrum('../hitran_database/05_CO/CO_1416.par', '../hitran_database/Q/')
-    
-    # 显示一些基本信息
-    if len(hitran.database) > 0:
-        print(f"前5条谱线数据:")
-        for i in range(min(5, len(hitran.database))):
-            print(f"  波数: {hitran.database[i, 0]:.6f}, 线强: {hitran.database[i, 1]:.2e}")
-    
-    # 设置计算参数
-    T = 600
-    p = 1
-    c = 0.25
-    l = 10
-    omega_wing = 10  # 谱线计算域的倍数
-    
-    # 方法1: 使用默认波数范围（数据库的首末谱线位置）
-    print("使用默认波数范围计算...")
-    od1, ab1, tr1, wavenumber1, coef1 = hitran.OD(T, p, c, l, omega_wing=omega_wing)
-    
-    # 方法2: 设置确定的波数范围
-    print("使用指定波数范围计算...")
-    start = 1800
-    end = 2400
-    resolution = 0.01
-    od2, ab2, tr2, wavenumber2, coef2 = hitran.OD(T, p, c, l, start=start, end=end, 
-                                          resolution=resolution, omega_wing=omega_wing)
-    
-    # 绘图比较
-    plt.figure(figsize=(12, 8))
-    
-    plt.subplot(2, 1, 1)
-    plt.plot(wavenumber1, ab1, label='database range')
-    plt.xlim(hitran.default_start, hitran.default_end)
-    plt.legend()
-    plt.ylabel('absorbance')
-    plt.title('HITRAN simulation')
-    
-    plt.subplot(2, 1, 2)
-    plt.plot(wavenumber2, ab2, label='fix range', color='orange')
-    plt.xlim(start, end)
-    plt.legend()
-    plt.xlabel('wavenumber (cm$^{-1}$)')
-    plt.ylabel('absorbance')
-    plt.title('HITRAN simulation')
-    
-    plt.tight_layout()
-    plt.show()
+    def _get_mass(self, mol_id, iso_id):
+        key = (mol_id, iso_id)
+        if key in self.ISO:
+            return self.ISO[key][3]   # g/mol
+        # 回退到主要同位素
+        for (mid, iid), val in self.ISO.items():
+            if mid == mol_id and iid == 1:
+                print(f"警告: 未找到 ({mol_id},{iso_id})，使用 ({mol_id},1) 质量")
+                return val[3]
+        return None
 
+    def _get_name(self, mol_id, iso_id):
+        key = (mol_id, iso_id)
+        if key in self.ISO:
+            return self.ISO[key][4]
+        return f"Mol_{mol_id}"
 
+    def _voigt(self, nu0, wn_grid, gamma_air, n_air, p, T, mass_gmol):
+        """计算归一化 Voigt 线型（面积=1）"""
+        gamma_p = gamma_air * p * (self.T_ref / T) ** n_air   # 洛伦兹半宽
+        # 多普勒标准差 σ = sqrt(kT/m) * ν0/c
+        # 使用单分子质量 m = mass_gmol / NA  (g)
+        m = mass_gmol / self.cNA
+        sigma = (nu0 / self.cc) * math.sqrt(self.cBolts * T / m)   # CGS 单位一致
+        z = (wn_grid - nu0 + 1j * gamma_p) / (sigma * math.sqrt(2.0))
+        return np.real(special.wofz(z)) / (sigma * math.sqrt(2.0 * math.pi))
+
+    # ---------- 信息输出 ----------
+    def info(self):
+        lines = []
+        for name in self.molecule_order:
+            mol = self.molecules[name]
+            lines.append(f"{name}: ID={mol['mol_id']}, 浓度={mol['conc']}, 谱线={len(mol['db'])}, "
+                         f"质量={mol['mass_gmol']:.2f} g/mol")
+        return "\n".join(lines)
+
+            
+# ---------- 示例 ----------
 if __name__ == "__main__":
-    main()
+    # 初始化，指定 Q 文件夹路径
+    hitran = HitranSpectrum(q_folder='../hitran_database/Q')
+    hitran.add_molecule('CO_1416.par', concentration=0.01, name='CO')
+    hitran.add_molecule('HITRAN_2073-2074.par', concentration=0.02, name='all')
+
+    T, p, L = 600.0, 1.0, 10.0
+    OD, Ab, Tr, wn, total_k, ind_k = hitran.OD_mixture(
+        T, p, L, start=2000, end=2200, resolution=0.01, wing=10
+    )
+
+    plt.plot(wn, Tr)
+    plt.xlabel('Wavenumber (cm$^{-1}$)')
+    plt.ylabel('Transmittance')
+    plt.show()

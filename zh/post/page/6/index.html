@@ -228,6 +228,85 @@ script.async = true;
             
   <div class="mb3 pa4 blue overflow-hidden">
     
+      <time class="f6 db" datetime="2025-02-20T00:00:00Z">二月 20, 2025</time>
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/xliu_davis/" class="link black dim">
+        lvpyio
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>今天尝试了 LaVision 公司的 python package，太坑了，又发现 DeepSeek 太香了。</p>
+<p>lvpyio 的网址：
+<a href="https://www.lavision.de/en/downloads/software/python_add_ons.php">https://www.lavision.de/en/downloads/software/python_add_ons.php</a></p>
+<p>之前都是把 DaVis 计算得到的速度场或者标量场结果存成文本文件，例如 B00001.txt 再用python读。下面是我写的读标量场和矢量场的函数，其中load_piv 中 size 参数非0时，会将数据 binning 降低数据数量，提高对比度。</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#%% read DaVis txt file</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_piv</span>(filename, size):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    extract PIV data
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    filename: txt file name
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    size: average size
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    lavision <span style="color:#f92672">=</span> open(filename)
+</span></span><span style="display:flex;"><span>    step, xnum, ynum <span style="color:#f92672">=</span> lavision<span style="color:#f92672">.</span>readline()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">6</span>]
+</span></span><span style="display:flex;"><span>    lavision<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>    step <span style="color:#f92672">=</span> int(step)
+</span></span><span style="display:flex;"><span>    xnum <span style="color:#f92672">=</span> int(xnum)
+</span></span><span style="display:flex;"><span>    ynum <span style="color:#f92672">=</span> int(ynum)
+</span></span><span style="display:flex;"><span>    size <span style="color:#f92672">=</span> int(size)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    oned <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(filename, decimal<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#39;</span>, skiprows<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">0</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
+</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">1</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
+</span></span><span style="display:flex;"><span>    U <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">2</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
+</span></span><span style="display:flex;"><span>    V <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(oned<span style="color:#f92672">.</span>values[:, <span style="color:#ae81ff">3</span>], (xnum, ynum), <span style="color:#e6db74">&#39;C&#39;</span>)<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float64&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> size <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        X <span style="color:#f92672">=</span> X[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        Y <span style="color:#f92672">=</span> Y[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        U <span style="color:#f92672">=</span> U[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        V <span style="color:#f92672">=</span> V[:int(xnum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size, :int(ynum <span style="color:#f92672">//</span> size) <span style="color:#f92672">*</span> size]<span style="color:#f92672">.</span>reshape(int(xnum <span style="color:#f92672">//</span> size), size, int(ynum <span style="color:#f92672">//</span> size),size)<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)                                                                           
+</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> Y<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+</span></span><span style="display:flex;"><span>    U <span style="color:#f92672">=</span> U<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+</span></span><span style="display:flex;"><span>    V <span style="color:#f92672">=</span> V<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;float32&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> step, xnum, ynum, X, Y, U, V   
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_plif</span>():
+</span></span><span style="display:flex;"><span>    plif <span style="color:#f92672">=</span> open(filename)
+</span></span><span style="display:flex;"><span>    firstline <span style="color:#f92672">=</span> plif<span style="color:#f92672">.</span>readline()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)
+</span></span><span style="display:flex;"><span>    x_num,y_num <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>    delta_x,x0 <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">6</span>:<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>    delta_y,y0 <span style="color:#f92672">=</span> firstline[<span style="color:#ae81ff">10</span>:<span style="color:#ae81ff">12</span>]
+</span></span><span style="display:flex;"><span>    plif<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>    x_num <span style="color:#f92672">=</span> int(x_num)
+</span></span><span style="display:flex;"><span>    y_num <span style="color:#f92672">=</span> int(y_num)
+</span></span><span style="display:flex;"><span>    x0 <span style="color:#f92672">=</span> float(x0)
+</span></span><span style="display:flex;"><span>    y0 <span style="color:#f92672">=</span> float(y0)
+</span></span><span style="display:flex;"><span>    delta_x <span style="color:#f92672">=</span> float(delta_x)
+</span></span><span style="display:flex;"><span>    delta_y <span style="color:#f92672">=</span> float(delta_y)
+</span></span><span style="display:flex;"><span>    X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(x0, x0<span style="color:#f92672">+</span>(x_num)<span style="color:#f92672">*</span>delta_x, delta_x)
+</span></span><span style="display:flex;"><span>    Y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(y0, y0<span style="color:#f92672">+</span>(y_num)<span style="color:#f92672">*</span>delta_y, delta_y)   
+</span></span><span style="display:flex;"><span>    plif_txt <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(filename, decimal<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#39;</span>, skiprows<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, header<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span>    plif <span style="color:#f92672">=</span> plif_txt<span style="color:#f92672">.</span>values
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> x_num,y_num,X,Y,plif</span></span></code></pre></div>
+  </div><p>貌似用官方的软件包可以读更多的文件格式吧。于是就开始安装了。
+首先发现不知道为什么 spyder 启动出问题了，numpy 版本不对，需要重装 numpy，就好了。</p>
+    </div>
+  <a href="/xliu-group/zh/post/xliu_davis/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            
+  <div class="mb3 pa4 blue overflow-hidden">
+    
       <time class="f6 db" datetime="2024-11-08T21:22:03+08:00">十一月 8, 2024</time>
     
     <h1 class="f3 near-black">
@@ -367,6 +446,43 @@ TDLAS 方法在大气研究中有成功的应用，比如用吸收池抽气进�
 <p>首先是基于双色法的初步计算：利用相邻波长的光谱辐射强度比值，结合普朗克定律初步计算目标波段内火焰的温度和黑度随波长的分布。紧接着进行温度修正与平均温度计算。去除碱金属特征谱线处波动剧烈的温度值，计算计算波段内的平均温度（同一火焰对象的温度与波长无关，仅存在一个恒定温度）。将平均温度代入辐射强度与黑度的关系式，重新计算火焰黑度随波长的分布，消除温度波动对黑度的影响。最后进行灰性验证与结果确认灰性判断标准：根据式$\sigma_T = \dfrac{ \sqrt{ \dfrac{1}{m-1} \sum_{i=1}^{m} (T_i - T_a)^2 } }{ T_a }$，通过计算波段内温度、黑度的相对均方误差验证灰性。</p>
     </div>
   <a href="/xliu-group/zh/post/zhangjiayi1_coal/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+  </div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+            
+  <div class="mb3 pa4 blue overflow-hidden">
+    
+    <h1 class="f3 near-black">
+      <a href="/xliu-group/zh/post/xliu_flame_spectrum/" class="link black dim">
+        反应流体光谱仿真程序 flame spectrum
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="设计思路">设计思路</h1>
+<p>传统的光谱仿真需要用户手动查找数据库文件、输入各分子的浓度，这个过程繁琐且容易出错。我们的火焰–光谱联动工具将 <strong>Cantera 化学平衡计算</strong> 与 <strong>多分子 HITRAN 光谱仿真</strong> 无缝衔接，实现了“一键式”从燃烧条件到光谱预测的自动化流程。该程序作为 <code>apps/flame_spectrum_apps.py</code> 独立入口，内部调用已有的 <code>HitranGUI</code> 窗口完成光谱显示，完全复用了<a href="/xliu-group/zh/post/xliu_hitran/">HITRAN 数据库用法</a>之前开发的模块。</p>
+<h2 id="自动分子识别与浓度注入">自动分子识别与浓度注入</h2>
+<p>联动工具最核心的改进在于<strong>无需手动选择 par 文件</strong>。它利用 <code>HitranSpectrum.ISO</code> 字典中内置的 55 种分子信息，将 Cantera 输出的物种名称（如 <code>CO</code>, <code>H2O</code>）自动映射到对应的分子 ID，并根据目录命名规则（<code>01_H2O/</code>, <code>05_CO/</code> 等）定位到相应的 <code>.par</code> 谱线文件。同时，勾选的物种摩尔分数直接从火焰结果中读取，自动填入光谱仿真界面，浓度单位转换为 ppm 显示。整个过程对用户完全透明。</p>
+<p><strong>实现的关键步骤</strong>：</p>
+<ol>
+<li>在 <code>FlameSpectrumApp</code> 初始化时，从 <code>HitranSpectrum.ISO</code> 构建 <code>名称 → 分子ID</code> 的映射。</li>
+<li>当用户点击“Launch HITRAN Spectrum Tool”时，遍历勾选的物种，根据分子 ID 和名称拼接文件夹路径，选取其中第一个 <code>.par</code> 文件。</li>
+<li>将文件路径和摩尔分数组装成字典，调用 <code>HitranGUI</code> 新增的 <code>auto_load_molecules()</code> 方法批量加载。</li>
+<li><code>auto_load_molecules()</code> 在后台填充文件表格和浓度控件，并自动更新波数范围。</li>
+</ol>
+<h1 id="使用流程">使用流程</h1>
+<p>化学平衡仿真部分，气体的组分浓度/温度/压力，由化学平衡计算，用Cantera 开源程序计算。输入初始条件，例如温度压力组分，选择化学平衡的约束条件。得到平衡后的热力学状态，比如火焰温度。</p>
+<ol>
+<li>
+<p><strong>设定燃烧条件</strong><br>
+打开 <code>flame_spectrum_apps.py</code>，在左侧面板选择燃料（如 CH₄）、氧化剂（空气、纯氧或自定义比例），设置当量比、初始温度和压力。</p>
+</li>
+<li>
+<p><strong>计算化学平衡</strong><br>
+点击 <strong>Calculate Equilibrium</strong>，Cantera 执行恒压绝热燃烧计算，右侧表格列出所有满足阈值（可调）的产物物种及其摩尔分数、ppm 值。</p>
+    </div>
+  <a href="/xliu-group/zh/post/xliu_flame_spectrum/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
   </div>
 
         </div>
