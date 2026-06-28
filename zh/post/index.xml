@@ -1,6 +1,75 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Post on 刘训臣燃烧诊断实验室主页</title><link>https://liuxunchen.github.io/xliu-group/zh/post/</link><description>Recent content in Post on 刘训臣燃烧诊断实验室主页</description><generator>Hugo</generator><language>zh</language><lastBuildDate>Sat, 20 Jun 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://liuxunchen.github.io/xliu-group/zh/post/index.xml" rel="self" type="application/rss+xml"/><item><title>山东科技大学学位论文 LaTeX 模板 SDUST_Thesis</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_sdust_thesis/</link><pubDate>Sat, 20 Jun 2026 18:01:22 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_sdust_thesis/</guid><description>`山东科技大学学位论文 LaTeX 模板，符合学校撰写规范，支持硕士/博士/学士，使用 XeLaTeX 编译。</description></item><item><title>胶州调研汇报PPT</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_2026_jiaozhou/</link><pubDate>Fri, 05 Jun 2026 18:12:42 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_2026_jiaozhou/</guid><description>reveal.js 版本slides</description></item><item><title>火焰探测器原理及使用</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/</link><pubDate>Thu, 07 May 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/</guid><description>介绍购买的紫外火焰探测器工作原理</description></item><item><title>光谱模拟</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-tdlas-2/</link><pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-tdlas-2/</guid><description>&lt;p&gt;基于本实验室之前发布的对于测量燃烧气体的吸收率以及光谱透射率的界面，我在其基础上再次做出了相应的更新：
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Post on 刘训臣燃烧诊断实验室主页</title><link>https://liuxunchen.github.io/xliu-group/zh/post/</link><description>Recent content in Post on 刘训臣燃烧诊断实验室主页</description><generator>Hugo</generator><language>zh</language><lastBuildDate>Sat, 20 Jun 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://liuxunchen.github.io/xliu-group/zh/post/index.xml" rel="self" type="application/rss+xml"/><item><title>山东科技大学学位论文 LaTeX 模板 SDUST_Thesis</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_sdust_thesis/</link><pubDate>Sat, 20 Jun 2026 18:01:22 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_sdust_thesis/</guid><description>`山东科技大学学位论文 LaTeX 模板，符合学校撰写规范，支持硕士/博士/学士，使用 XeLaTeX 编译。</description></item><item><title>胶州调研汇报PPT</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_2026_jiaozhou/</link><pubDate>Fri, 05 Jun 2026 18:12:42 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_2026_jiaozhou/</guid><description>reveal.js 版本slides</description></item><item><title>火焰探测器原理及使用</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/</link><pubDate>Thu, 07 May 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/</guid><description>&lt;p&gt;为了更好的观察火焰的吹熄，购买了型号为YJH-1E的紫外火焰探测器，如图。
+&lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/%E6%8E%A2%E6%B5%8B%E5%99%A8.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;紫外火焰探测器分为传感器和检测器两部分。&lt;/p&gt;
+&lt;p&gt;传感器核心是紫外光电管，这是一种特殊的气体放电管。其外壳采用紫外透射玻璃，仅允许200-290nm波长的紫外线通过，同时阻挡可见光和大部分红外线，具备“日盲”特性。
+电极系统由阴极和阳极组成：阴极为碲化铯（Cs-Te）材料，这是一种化合物半导体光电发射材料，具有低逸出功且对可见光不敏感的特性，受紫外光子照射时易发射光电子；阳极为金属丝结构，工作时施加约350V高压偏置，在阴阳两极间形成强电场吸引电子。管内填充低压惰性气体（如氖气、氩气或其混合物），气压在几毫巴到数十毫巴量级，低压条件使气体分子更容易被加速电子撞击而发生电离。
+当火焰发出的紫外光穿过玻璃窗照射到阴极表面时，紫外光子能量打出阴极表面的光电子。光电子在强电场中被高速加速，获得足够动能后撞击气体分子，使其电离释放出更多电子和新离子；新生电子继续被电场加速并撞击更多气体分子，形成链式倍增——这一过程像“雪崩”一样迅速放大，称为气体倍增效应。当电子数量累积到一定程度时，管内发生瞬态放电，瞬间有较大电流通过阴阳两极。此时，探测器内部的淬灭电路会快速降低阳极电压，使放电立即终止，管子“复位”准备探测下一个光子。每次雪崩放电与随后的淬灭动作，就在外部负载电阻上完成一个完整的“探测-复位”循环，并形成一个微弱的电流脉冲。此时，光电管本身输出的微弱电流脉冲无法被普通采集设备直接读取，因此传感器模块内部设有负载电阻，在输出端产生一个可被读取的电压脉冲——这个电压脉冲即为进入检测器的原始信号。
+传感器通过两根引线与探测器连接：棕线和蓝线。其中棕线通常接阳极（正极），蓝线接阴极（负极）。这两根线承担双重功能——探测器通过它们向传感器提供工作高压，同时也通过它们接收传感器输出的脉冲信号。
+检测器的作用是给传感器供电提供偏置电压，并将传感器传来的脉冲电压信号进行电路处理，进而转化为4-20mA电流信号。检测器上设有&amp;quot;DC24V+激励电压输入&amp;quot;端子，内部设有DC-DC升压电路，将24V升压至约350V，再通过棕线和蓝线施加在紫外光电管的两端，形成强电场。电路处理则是对传来的信号进行脉冲整形与单片机计数，最终经PWM驱动输出为4-20mA标准电流信号。
+将火焰探测器连接4-20mA转rs485采集模块并通过usb用电脑读数。设备接线如图。
+&lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/%E6%8E%A5%E7%BA%BF%E5%9B%BE.png" alt=""&gt;
+刚开始采集模块数据的读存是用其配套的软件来完成。进行实验后发现，自带的软件仅支持一秒五次的数据读储，无法很好的捕捉吹熄的细节。
+实验过后，发现它的采集频率为30Hz，即采集模块的硬件是可以支持更高频的读存的，但是自带软件却无法完成，通过python写一段串口读存程序，可以提高读存的数量。&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;button class="code-copy" type="button" hidden aria-label="Copy code to clipboard"&gt;
+ &lt;span class="code-copy-label" aria-hidden="true"&gt;Copy&lt;/span&gt;
+ &lt;/button&gt;
+ &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# ================== 串口初始化 ==================&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;instrument &lt;span style="color:#f92672"&gt;=&lt;/span&gt; minimalmodbus&lt;span style="color:#f92672"&gt;.&lt;/span&gt;Instrument(PORT, SLAVE_ADDRESS)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;instrument&lt;span style="color:#f92672"&gt;.&lt;/span&gt;serial&lt;span style="color:#f92672"&gt;.&lt;/span&gt;baudrate &lt;span style="color:#f92672"&gt;=&lt;/span&gt; BAUDRATE
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;instrument&lt;span style="color:#f92672"&gt;.&lt;/span&gt;serial&lt;span style="color:#f92672"&gt;.&lt;/span&gt;timeout &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0.8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;instrument&lt;span style="color:#f92672"&gt;.&lt;/span&gt;serial&lt;span style="color:#f92672"&gt;.&lt;/span&gt;write_timeout &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0.8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;instrument&lt;span style="color:#f92672"&gt;.&lt;/span&gt;serial&lt;span style="color:#f92672"&gt;.&lt;/span&gt;parity &lt;span style="color:#f92672"&gt;=&lt;/span&gt; minimalmodbus&lt;span style="color:#f92672"&gt;.&lt;/span&gt;serial&lt;span style="color:#f92672"&gt;.&lt;/span&gt;PARITY_NONE
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;instrument&lt;span style="color:#f92672"&gt;.&lt;/span&gt;serial&lt;span style="color:#f92672"&gt;.&lt;/span&gt;stopbits &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;instrument&lt;span style="color:#f92672"&gt;.&lt;/span&gt;serial&lt;span style="color:#f92672"&gt;.&lt;/span&gt;bytesize &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;instrument&lt;span style="color:#f92672"&gt;.&lt;/span&gt;mode &lt;span style="color:#f92672"&gt;=&lt;/span&gt; minimalmodbus&lt;span style="color:#f92672"&gt;.&lt;/span&gt;MODE_RTU
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;instrument&lt;span style="color:#f92672"&gt;.&lt;/span&gt;clear_buffers_before_each_transaction &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 解析函数&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;get_ma&lt;/span&gt;(raw):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; s &lt;span style="color:#f92672"&gt;=&lt;/span&gt; str(raw)&lt;span style="color:#f92672"&gt;.&lt;/span&gt;zfill(&lt;span style="color:#ae81ff"&gt;5&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; leading &lt;span style="color:#f92672"&gt;=&lt;/span&gt; int(s[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; mantissa &lt;span style="color:#f92672"&gt;=&lt;/span&gt; int(s[&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;:])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; voltage &lt;span style="color:#f92672"&gt;=&lt;/span&gt; mantissa &lt;span style="color:#f92672"&gt;*&lt;/span&gt; (&lt;span style="color:#ae81ff"&gt;10&lt;/span&gt; &lt;span style="color:#f92672"&gt;**&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&lt;/span&gt;leading)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; round(voltage &lt;span style="color:#f92672"&gt;/&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;249&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1000&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# ================== 读取函数 ==================&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;read_safe&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; _ &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;try&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; instrument&lt;span style="color:#f92672"&gt;.&lt;/span&gt;read_register(CHOSEN_CHANNEL, functioncode&lt;span style="color:#f92672"&gt;=&lt;/span&gt;FUNCTION_CODE, signed&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;False&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;except&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; time&lt;span style="color:#f92672"&gt;.&lt;/span&gt;sleep(&lt;span style="color:#ae81ff"&gt;0.002&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# ================== 主采集循环 ==================&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;target_time &lt;span style="color:#f92672"&gt;=&lt;/span&gt; start_time &lt;span style="color:#f92672"&gt;+&lt;/span&gt; sample_count &lt;span style="color:#f92672"&gt;*&lt;/span&gt; SAMPLE_INTERVAL
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; time&lt;span style="color:#f92672"&gt;.&lt;/span&gt;perf_counter() &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; target_time:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;pass&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sample_count &lt;span style="color:#f92672"&gt;+=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;raw &lt;span style="color:#f92672"&gt;=&lt;/span&gt; read_safe()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; raw &lt;span style="color:#f92672"&gt;is&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;continue&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ma &lt;span style="color:#f92672"&gt;=&lt;/span&gt; get_ma(raw)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;timestamp_str &lt;span style="color:#f92672"&gt;=&lt;/span&gt; datetime&lt;span style="color:#f92672"&gt;.&lt;/span&gt;now()&lt;span style="color:#f92672"&gt;.&lt;/span&gt;strftime(&lt;span style="color:#e6db74"&gt;&amp;#39;%Y-%m-&lt;/span&gt;&lt;span style="color:#e6db74"&gt;%d&lt;/span&gt;&lt;span style="color:#e6db74"&gt; %H:%M:%S.&lt;/span&gt;&lt;span style="color:#e6db74"&gt;%f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#39;&lt;/span&gt;)[:&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;data_batch&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append({
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;时间&amp;#39;&lt;/span&gt;: timestamp_str,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;通道3_mA&amp;#39;&lt;/span&gt;: ma,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;raw&amp;#39;&lt;/span&gt;: raw
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;})&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+ &lt;/div&gt;&lt;!-- 分隔符 --&gt;通过代码可以实现差不多每秒20次的读存。如图。
+&lt;p&gt;&lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/%E8%AF%BB%E5%AD%98%E4%BF%A1%E5%8F%B7%E5%9B%BE.png" alt=""&gt;
+图中可以看出火焰稳定存在，在一定的数值范围内波动，波动是因为火焰本身就不是一个稳定的光源，它的紫外辐射强度也在时刻变化。
+但这个频率还是不够，后续会购买高速电流采集卡，将读存数放大一个数量级。
+为了能用现有高速读取信号，我将探测器串联了一个250欧电阻，将电流信号转化为1-5v电压。如图。
+&lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/%E4%BF%A1%E5%8F%B7%E8%BD%AC%E5%8C%96%E5%9B%BE.png" alt=""&gt;
+接采集卡之前先用万用表测电阻两端电压，避免损坏采集卡。万用表如图，无火时为1v，有火时电压发生变化，电压范围大于1，小于5。如图，
+&lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/%E4%B8%87%E7%94%A8%E8%A1%A8.png" alt=""&gt;。&lt;/p&gt;</description></item><item><title>光谱模拟</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-tdlas-2/</link><pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-tdlas-2/</guid><description>&lt;p&gt;基于本实验室之前发布的对于测量燃烧气体的吸收率以及光谱透射率的界面，我在其基础上再次做出了相应的更新：
 如有需要请下载下方新的压缩包
-&lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-tdlas-2/flame_spectrum.zip"&gt;flame_spectrum.zip&lt;/a&gt;&lt;/p&gt;
+&lt;a href="./flame_spectrum.zip"&gt;flame_spectrum.zip&lt;/a&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;气体测量时浓度的设定之前不是很精确，因此更新出用浓度定量来设定气体含量，采用ppm，更加精确。&lt;/li&gt;
 &lt;li&gt;对于透射率的设定，有些时候我们仅需要某种气体透射率或者不需要透射率，只看透射系数，我们也可设定某气体的或者不看透射率，只看吸收系数。&lt;/li&gt;
@@ -252,7 +321,7 @@ t为冷端温度，单位（℃）
 &lt;li&gt;现在界面可以自主选择使用哪个气体，如果不需要某种气体，可任意删除，如果需要哪种气体，也可自主添加。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;压缩包如下，请自行打包下载使用。
-&lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-tdlas-1/flame_spectrum.zip"&gt;flame_spectrum.zip&lt;/a&gt;&lt;/p&gt;
+&lt;a href="./flame_spectrum.zip"&gt;flame_spectrum.zip&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;接下来我会详细的说明一下该界面如何使用:
 首先，需要在终端中运行py文件，建议是在anaconda的运行终端中运行运行出来的界面如下图所示。&lt;/p&gt;
 &lt;figure&gt;&lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-tdlas-1/%E5%B9%B3%E8%A1%A1%E7%95%8C%E9%9D%A2.png"&gt;&lt;figcaption&gt;
@@ -283,58 +352,7 @@ t为冷端温度，单位（℃）
 		&lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;p&gt;最后我们也可以删除不需要的气体浓度，总之该方法能为从事气体光谱模拟检测研究工作的研究者提供一定便利，我们会继续改进，后续如有问题欢迎留言。&lt;/p&gt;</description></item><item><title>反应流体光谱仿真程序 flame spectrum</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/</link><pubDate>Tue, 09 Dec 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/</guid><description>&lt;p&gt;我们的反应流体光谱仿真程序分两步。&lt;/p&gt;
-&lt;p&gt;第一步，气体的化学平衡计算，用Cantera 计算。输入温度压力组分，选择化学平衡的约束条件。得到平衡后的热力学状态，比如火焰温度。
-&lt;figure&gt;&lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/Screenshot202511092320%E6%B0%94%E4%BD%93%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1%E4%B8%8E%E5%85%89%E8%B0%B1%E8%81%94%E5%90%88%E6%A8%A1%E6%8B%9F%20-%20%E5%B1%B1%E4%B8%9C%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6.png"&gt;&lt;figcaption&gt;
-			&lt;h4&gt;化学平衡计算截图&lt;/h4&gt;
-		&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;/p&gt;
-&lt;p&gt;第二步，光谱仿真，用HITRAN计算。化学平衡后得到的温度压力主要组分浓度参数，用来做光谱仿真。主要组分是H2O和CO2 。&lt;/p&gt;
-&lt;p&gt;当然也可以直接在这个光谱仿真页面输入组分浓度和温度压力参数，直接仿真光谱。&lt;/p&gt;
-&lt;p&gt;下面图是2um附近仿真，可以看到水的吸收比较强，大概比CO2高了一个数量级。
-&lt;figure&gt;&lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/Screenshot202511100003%E6%B0%94%E4%BD%93%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1%E4%B8%8E%E5%85%89%E8%B0%B1%E8%81%94%E5%90%88%E6%A8%A1%E6%8B%9F%20-%20%E5%B1%B1%E4%B8%9C%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6.png"&gt;&lt;figcaption&gt;
-			&lt;h4&gt;2um附近水、二氧化碳混合气体光谱仿真截图&lt;/h4&gt;
-		&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;/p&gt;
-&lt;p&gt;下面图是我们之前4um激光测同轴扩散火焰的仿真。可见此处二氧化碳吸收强，而且没有水的干扰。
-&lt;figure&gt;&lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/Screenshot202511100107%E6%B0%94%E4%BD%93%E5%8C%96%E5%AD%A6%E5%B9%B3%E8%A1%A1%E4%B8%8E%E5%85%89%E8%B0%B1%E8%81%94%E5%90%88%E6%A8%A1%E6%8B%9F%20-%20%E5%B1%B1%E4%B8%9C%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6.png"&gt;&lt;figcaption&gt;
-			&lt;h4&gt;4.2um附近水、二氧化碳混合气体光谱仿真截图&lt;/h4&gt;
-		&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;/p&gt;
-&lt;p&gt;这个软件框架很灵活，只需要选择不同的数据库就可以模拟不同波段的光谱。&lt;/p&gt;
-&lt;p&gt;请打包下载几个 py 文件和示例中的par 文件。
-flame_spectrum.py 调用了 voigt_simulation 文件夹中 hitran_spectrum_dual.py （可以单独运行对H2O和CO2混合气体仿真）。&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/flame_spectrum.zip"&gt;flame_spectrum.zip&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;有问题和建议，请随时留言或者发邮件咨询。&lt;/p&gt;
-&lt;p&gt;未来新版本软件将包含更多的分子，特别是HITRAN数据库中没有的分子或者波段。比如紫外波段很多自由基还没有高分辨率光谱工作以支持HITRAN数据库条目。完全可以用 NASA JPL数据库 产生HITRAN数据来做。&lt;/p&gt;
-&lt;p&gt;第一部分反应流体的仿真用Cantera 就可以了，准备主要把第二部分做丰富。
-燃烧仿真，湍流燃烧还是很难算的，Fluent 可以大概算算。用 Cantera 和 Chemkin 算一般的反应动力学计算，比如火焰温度。
-分子光谱仿真就很小众了，图形化的有 pgophor，最全的应该是 SPFIT/SPCAT 。LIFbase是专门的几个双原子分子的LIF光谱数据库仿真。
-几何光学仿真用 zemax，但感觉一般也不需要。&lt;/p&gt;
-&lt;p&gt;通过一段时间的积累，我们的程序就可以自动化仿真出不同火焰的不同波段光谱了。
-Gaydon 在 《The Spectroscopy of Flames》中就给出了很多不同火焰的光谱plate。
-希望我们能有一天可以给出这些光谱的仿真，达到对火焰比较好的理解。&lt;/p&gt;</description></item><item><title>HITRAN 数据库用法</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran/</link><pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran/</guid><description>&lt;p&gt;在上一篇 &lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/xliu_absorption/"&gt;吸收光谱简介&lt;/a&gt; ，我们介绍了分子吸收光谱的基本知识。
-常见的分子光谱的数据库有：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;HITRAN, USA Harvard-Smithsonian Center for Astrophysics Molecular Data&lt;/li&gt;
-&lt;li&gt;NASA JPL Molecular Spectroscopy, USA&lt;/li&gt;
-&lt;li&gt;The Cologne Database for Molecular Spectroscopy, CDMS, Germany&lt;/li&gt;
-&lt;li&gt;GEISA Spectroscopic Database, France&lt;/li&gt;
-&lt;li&gt;Pacific Northwest National Labs Spectral Database, USA&lt;/li&gt;
-&lt;li&gt;Ames Research Center Infrared Spectral Database of PAH, USA&lt;/li&gt;
-&lt;li&gt;MPI-Mainz-UV-VIS Spectral Atlas of Gaseous Molecules, Germany&lt;/li&gt;
-&lt;li&gt;surface types: US Geological Society Digital Spectral Laboratory, USA&lt;/li&gt;
-&lt;li&gt;NIST Chemistry WebBook, USA&lt;/li&gt;
-&lt;li&gt;AIST Integrated Spectral Data Base System for Organic Compounds, Japan&lt;/li&gt;
-&lt;li&gt;Bremen, Institute of Environmental Physics, Germany&lt;/li&gt;
-&lt;li&gt;LISA database (SCOOP), France&lt;/li&gt;
-&lt;li&gt;Institute of Atmospheric Optics (CO2 O3), Tomsk, Russia&lt;/li&gt;
-&lt;li&gt;Instituto Superior Tecnico SPATRAN, Gas and Plasma Radiation Database, Italy&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;HITRAN数据库是我们最常用的分子光谱谱线的数据库。NASA JPL 数据库中有很多星际分子的谱线，另外JPL数据库用的 SPCAT/SPFIT 软件也是功能非常强大。未来我们会尝试用 SPCAT 模拟高温反应流体的分子光谱。Tomsk 有很好的CO2的光谱数据库。&lt;/p&gt;</description></item><item><title>吸收光谱简介</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_absorption/</link><pubDate>Fri, 03 Oct 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_absorption/</guid><description>&lt;h2 id="简介"&gt;简介&lt;/h2&gt;
+&lt;p&gt;最后我们也可以删除不需要的气体浓度，总之该方法能为从事气体光谱模拟检测研究工作的研究者提供一定便利，我们会继续改进，后续如有问题欢迎留言。&lt;/p&gt;</description></item><item><title>吸收光谱简介</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_absorption/</link><pubDate>Fri, 03 Oct 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_absorption/</guid><description>&lt;h2 id="简介"&gt;简介&lt;/h2&gt;
 &lt;p&gt;在燃烧诊断中，吸收光谱的测量方法从光源上分非激光和激光两大类。
 传统的非激光的吸收光谱测量，最早从 Hertzberg 那时侯开始，多采用宽频的非相干光源如闪光灯和红外热幅射光源，结合光栅、滤片或者干涉仪进行分光，通过测量不同波长电磁波的透射光强被火焰吸收减弱得到吸收光谱定量信息，就可以获得燃烧体系中分子浓度、温度、压力和速度的信息，能得到很多对火焰结构的测量结果和深刻理解。
 比如Gaydon的书《Flames，Their Structure, Radiation, and Temperature》&lt;/p&gt;

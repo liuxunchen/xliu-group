@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Research on 刘训臣燃烧诊断实验室主页</title><link>https://liuxunchen.github.io/xliu-group/zh/research/</link><description>Recent content in Research on 刘训臣燃烧诊断实验室主页</description><generator>Hugo</generator><language>zh</language><lastBuildDate>Mon, 30 Jun 2025 01:26:06 +0800</lastBuildDate><atom:link href="https://liuxunchen.github.io/xliu-group/zh/research/index.xml" rel="self" type="application/rss+xml"/><item><title>Diagnostic</title><link>https://liuxunchen.github.io/xliu-group/zh/research/xliu_diagnostic/</link><pubDate>Mon, 30 Jun 2025 01:26:06 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/research/xliu_diagnostic/</guid><description>&lt;p&gt;激光燃烧诊断技术通过测量激光与燃烧场中物质的吸收、发射、散射相互作用，可以得到原位定量的火焰温度、组分浓度和流场密度、压力、速度等信息，具有极高的时空分辨率、灵敏度与选择性，是最主要的非接触燃烧实验方法。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Research on 刘训臣燃烧诊断实验室主页</title><link>https://liuxunchen.github.io/xliu-group/zh/research/</link><description>Recent content in Research on 刘训臣燃烧诊断实验室主页</description><generator>Hugo</generator><language>zh</language><lastBuildDate>Sat, 08 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://liuxunchen.github.io/xliu-group/zh/research/index.xml" rel="self" type="application/rss+xml"/><item><title>HITRAN 数据库用法</title><link>https://liuxunchen.github.io/xliu-group/zh/research/xliu_hitran/</link><pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/research/xliu_hitran/</guid><description>HITRAN 数据库 line by line 计算代码和GUI</description></item><item><title>Diagnostic</title><link>https://liuxunchen.github.io/xliu-group/zh/research/xliu_diagnostic/</link><pubDate>Mon, 30 Jun 2025 01:26:06 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/research/xliu_diagnostic/</guid><description>&lt;p&gt;激光燃烧诊断技术通过测量激光与燃烧场中物质的吸收、发射、散射相互作用，可以得到原位定量的火焰温度、组分浓度和流场密度、压力、速度等信息，具有极高的时空分辨率、灵敏度与选择性，是最主要的非接触燃烧实验方法。
 常见的激光与燃烧场介质相互作用包括激光吸收光谱（红外波段TDLAS）、自发光、平面激光诱导荧光（PLIF）、米散射（PIV）、瑞利散射（Rayleigh）、拉曼散射（Raman）、和多普勒效应等过程，这几种测试方法各有优缺点、互为补充，总的发展趋势是从线平均测量到场分辨测量，从低频稳态测量到高频动态测量。&lt;/p&gt;
 &lt;p&gt;激光燃烧诊断的核心设备是激光光源。
 采用激光的测量方法具有极高的空间、时间和光子频率的精度。
@@ -71,9 +71,9 @@
 &lt;h1 id="tdlas基本知识"&gt;TDLAS基本知识&lt;/h1&gt;
 &lt;p&gt;&lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/xliu_absorption/"&gt;吸收光谱简介&lt;/a&gt;
 TDLAS中用到的模型和定量关系。爱因斯坦系数，HITRAN数据库中线强单位，双色测温原理等。&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran/"&gt;HITRAN数据库用法&lt;/a&gt;
+&lt;p&gt;&lt;a href="https://liuxunchen.github.io/xliu-group/zh/research/xliu_hitran/"&gt;HITRAN数据库用法&lt;/a&gt;
 介绍一个比官方hapi简化的voigt线形、光谱仿真程序。包含了图形界面。&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/"&gt;反应流体光谱仿真程序&lt;/a&gt;
+&lt;p&gt;&lt;a href="https://liuxunchen.github.io/xliu-group/zh/research/xliu_flame_spectrum/"&gt;反应流体光谱仿真程序&lt;/a&gt;
 包含 cantera 和 HITRAN 仿真的反应流体仿真程序。
 &lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-tdlas-1/"&gt;版本更新1&lt;/a&gt;
 &lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-tdlas-2/"&gt;版本更新2&lt;/a&gt;&lt;/p&gt;
@@ -81,7 +81,48 @@ TDLAS中用到的模型和定量关系。爱因斯坦系数，HITRAN数据库中
 &lt;p&gt;&lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/xliu_tdlas_biomass/"&gt;空间分辨率问题&lt;/a&gt;从两个不大成功的TDLAS实验说起，讨论了TDLAS方法用于燃烧测量的空间分辨率问题。&lt;/p&gt;
 &lt;p&gt;最近，&lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/2026w10/"&gt;读文献&lt;/a&gt;中也发现了这个问题。
 比较成功的例子是在火焰中测高温的CO2吸收峰，我们用这种很简单的方法在扩散火焰和旋流预混火焰中都测的很好。因为只有火焰中才有高温的CO2，没有背景。&lt;/p&gt;
-&lt;p&gt;只有火焰燃烧才产生N2O，用N2O的吸收光谱去测火焰，这也没有问题，但是不能加腔体。或者因为压力环境的要求，要加腔体，那就要吹扫。但吹扫就要避免对气体火焰有影响。&lt;/p&gt;</description></item><item><title>燃烧器</title><link>https://liuxunchen.github.io/xliu-group/zh/research/burner/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/research/burner/</guid><description>&lt;p&gt;我们的研究对象是各种燃烧器。包括：&lt;/p&gt;
+&lt;p&gt;只有火焰燃烧才产生N2O，用N2O的吸收光谱去测火焰，这也没有问题，但是不能加腔体。或者因为压力环境的要求，要加腔体，那就要吹扫。但吹扫就要避免对气体火焰有影响。&lt;/p&gt;</description></item><item><title>反应流体光谱仿真程序 flame spectrum</title><link>https://liuxunchen.github.io/xliu-group/zh/research/xliu_flame_spectrum/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/research/xliu_flame_spectrum/</guid><description>&lt;h1 id="v0"&gt;v0&lt;/h1&gt;
+&lt;p&gt;2025-12-09&lt;/p&gt;
+&lt;h2 id="使用流程"&gt;使用流程&lt;/h2&gt;
+&lt;p&gt;第一步，气体组分/温度/压力，由化学平衡计算，用Cantera 开源程序计算。输入温度压力组分，选择化学平衡的约束条件。得到平衡后的热力学状态，比如火焰温度。
+&lt;figure&gt;&lt;img src="https://liuxunchen.github.io/xliu-group/zh/research/xliu_flame_spectrum/v0-1.png"&gt;&lt;figcaption&gt;
+			&lt;h4&gt;化学平衡计算截图&lt;/h4&gt;
+		&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;第二步，光谱仿真。第一步得到化学平衡后得到的温度/压力/主要组分浓度参数（主要组分是H2O和CO2），用来做光谱仿真。
+当然也可以直接在这个光谱仿真页面输入组分浓度和温度压力参数，直接仿真光谱。&lt;/p&gt;
+&lt;h2 id="数据库和计算模型"&gt;数据库和计算模型&lt;/h2&gt;
+&lt;p&gt;我的计算模型完全按照 &lt;a href="https://liuxunchen.github.io/xliu-group/zh/research/xliu_hitran/"&gt;HITRAN数据库用法&lt;/a&gt; 中介绍的公式。&lt;/p&gt;
+&lt;p&gt;现在大部分数据直接用HITRAN数据库计算，未来我们也会上传新的HITRAN格式的数据库。&lt;/p&gt;
+&lt;h2 id="典型结果"&gt;典型结果&lt;/h2&gt;
+&lt;p&gt;下面图是2um附近仿真，可以看到水的吸收比较强，大概比CO2高了一个数量级。
+&lt;figure&gt;&lt;img src="https://liuxunchen.github.io/xliu-group/zh/research/xliu_flame_spectrum/v0-2.png"&gt;&lt;figcaption&gt;
+			&lt;h4&gt;2um附近水、二氧化碳混合气体光谱仿真截图&lt;/h4&gt;
+		&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;下面图是我们之前4um激光测同轴扩散火焰的仿真。可见此处二氧化碳吸收强，而且没有水的干扰。
+&lt;figure&gt;&lt;img src="https://liuxunchen.github.io/xliu-group/zh/research/xliu_flame_spectrum/v0-3.png"&gt;&lt;figcaption&gt;
+			&lt;h4&gt;4.2um附近水、二氧化碳混合气体光谱仿真截图&lt;/h4&gt;
+		&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;这个软件框架很灵活，只需要选择不同的数据库就可以模拟不同波段的光谱。&lt;/p&gt;
+&lt;p&gt;请打包下载几个 py 文件和示例中的par 文件。
+flame_spectrum.py 调用了 voigt_simulation 文件夹中 hitran_spectrum_dual.py （可以单独运行对H2O和CO2混合气体仿真）。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://liuxunchen.github.io/xliu-group/flame_spectrum/flame_spectrum_v0.zip"&gt;flame_spectrum.zip&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;有问题和建议，请随时留言或者发邮件咨询。&lt;/p&gt;
+&lt;p&gt;未来新版本软件将包含更多的分子，特别是HITRAN数据库中没有的分子或者波段。比如紫外波段很多自由基还没有高分辨率光谱工作以支持HITRAN数据库条目。完全可以用 NASA JPL数据库 产生HITRAN数据来做。&lt;/p&gt;
+&lt;p&gt;第一部分反应流体的仿真用Cantera 就可以了，准备主要把第二部分做丰富。
+燃烧仿真，湍流燃烧还是很难算的，Fluent 可以大概算算。用 Cantera 和 Chemkin 算一般的反应动力学计算，比如火焰温度。
+分子光谱仿真就很小众了，图形化的有 pgophor，最全的应该是 SPFIT/SPCAT 。LIFbase是专门的几个双原子分子的LIF光谱数据库仿真。
+几何光学仿真用 zemax，但感觉一般也不需要。&lt;/p&gt;
+&lt;p&gt;通过一段时间的积累，我们的程序就可以自动化仿真出不同火焰的不同波段光谱了。
+Gaydon 在 《The Spectroscopy of Flames》中就给出了很多不同火焰的光谱plate。
+希望我们能有一天可以给出这些光谱的仿真，达到对火焰比较好的理解。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-tdlas-1/"&gt;v1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://liuxunchen.github.io/xliu-group/flame_spectrum/flame_spectrum_v0.zip"&gt;flame_spectrum.zip&lt;/a&gt;&lt;/p&gt;</description></item><item><title>燃烧器</title><link>https://liuxunchen.github.io/xliu-group/zh/research/burner/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/research/burner/</guid><description>&lt;p&gt;我们的研究对象是各种燃烧器。包括：&lt;/p&gt;
 &lt;p&gt;平面燃烧器
 &lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/huihao2/"&gt;2025年氢氧火头&lt;/a&gt;
 &lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/huihao6/"&gt;2026年氢氧火头&lt;/a&gt;&lt;/p&gt;

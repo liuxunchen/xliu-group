@@ -23,19 +23,19 @@ $$
 K_p(T) = \frac{\xi}{(2-\xi)\sqrt{1-\xi/2}} \cdot \sqrt{3 - \frac{\xi}{2}}
 $$
 （压力比 $P/P_0$ 取 1）。
-现在改变求解顺序：先扫描反应进度 $\xi$，再求温度 $T$，最后检验化学平衡。具体步骤为：
+与常规思路不同，这里先扫描反应进度 $\xi$，再求温度 $T$，最后检验化学平衡。具体步骤为：
 
-假设一个反应进度 $\xi$（例如 1.0, 1.1, …, 2.0），根据上述组分关系确定各物质的量；
+假设一个反应进度 $\xi$，确定各物质的量；
 利用热力学第一定律，令产物总焓等于反应物总焓（以 298.15 K 的单质为零点，反应物总焓 $H_{\mathrm{react}} = 0$）：
 
 $$
    H_{\mathrm{prod}}(T) = \xi H_{\mathrm{H_2O}}(T) &#43; (2-\xi) H_{\mathrm{H_2}}(T) &#43; \left(1-\frac{\xi}{2}\right) H_{\mathrm{O_2}}(T) = 0
    $$
-其中 $H_i(T) = \Delta H_i(T) &#43; \Delta_f H_i^\circ$，单质生成焓为零。由于 $H_{\mathrm{prod}}(T)$ 随温度单调增加，该方程可解出唯一的绝热温度 $T(\xi)$；
-得到温度 $T(\xi)$ 后，由 JANAF 数据计算该温度下的标准反应吉布斯自由能 $\Delta_r G^\circ(T) = \Delta_f G^\circ_{\mathrm{H_2O}}(T)$，进而得到平衡常数 $K_p(T) = \exp[-\Delta_r G^\circ(T)/(RT)]$；
-将 $K_p(T)$ 代入平衡常数表达式，反解出对应的平衡进度 $\xi_{\mathrm{eq}}(T)$，并与初始假设的 $\xi$ 比较。若 $\xi_{\mathrm{eq}}(T) = \xi$，则该组 $(\xi, T)$ 同时满足焓守恒与化学平衡，即为真实解；否则调整 $\xi$ 重复上述过程。
+其中 $H_i(T) = \Delta H_i(T) &#43; \Delta_f H_i^\circ$，单质生成焓为零。该方程可解出唯一的绝热温度 $T(\xi)$；
+由 JANAF 数据计算该温度下的 $\Delta_r G^\circ(T) = \Delta_f G^\circ_{\mathrm{H_2O}}(T)$，得 $K_p(T) = \exp[-\Delta_r G^\circ(T)/(RT)]$；
+将 $K_p(T)$ 代入平衡常数表达式，反解出对应的平衡进度 $\xi_{\mathrm{eq}}(T)$，并与初始假设的 $\xi$ 比较。若 $\xi_{\mathrm{eq}}(T) = \xi$，则该组 $(\xi, T)$ 同时满足焓守恒与化学平衡，即为真实解；否则调整 $\xi$ 重复。
 
-实际操作中，只需扫描一系列 $\xi$，记录 $\xi_{\mathrm{eq}}$ 与 $\xi$ 的差值，寻找过零点。表 1 给出若干扫描点的计算结果。">
+实际操作中只需扫描一系列 $\xi$，寻找 $\xi_{\mathrm{eq}} - \xi$ 的过零点。表 1 给出若干扫描点的计算结果。">
     <meta name="generator" content="Hugo 0.162.1">
     
     
@@ -136,9 +136,9 @@ $$
 $$\mathrm{H_2 &#43; \tfrac{1}{2}O_2 \rightleftharpoons H_2O}$$ 其平衡常数 $K_p(T)$ 可由 JANAF 表中各组分的生成吉布斯自由能求得。对于 2 mol $\mathrm{H_2}$ 和 1 mol $\mathrm{O_2}$ 的初始混合物，设反应进度为 $\xi$（$0 \le \xi \le 2$），平衡时各物质的量为
 $$n_{\mathrm{H_2O}} = \xi,\quad n_{\mathrm{H_2}} = 2 - \xi,\quad n_{\mathrm{O_2}} = 1 - \frac{\xi}{2}$$ 总物质的量 $n_{\text{total}} = 3 - \xi/2$。平衡常数与组分的关系为
 $$K_p(T) = \frac{\xi}{(2-\xi)\sqrt{1-\xi/2}} \cdot \sqrt{3 - \frac{\xi}{2}}$$ （压力比 $P/P_0$ 取 1）。
-现在改变求解顺序：先扫描反应进度 $\xi$，再求温度 $T$，最后检验化学平衡。具体步骤为：
-假设一个反应进度 $\xi$（例如 1.0, 1.1, …, 2.0），根据上述组分关系确定各物质的量； 利用热力学第一定律，令产物总焓等于反应物总焓（以 298.15 K 的单质为零点，反应物总焓 $H_{\mathrm{react}} = 0$）：
-$$H_{\mathrm{prod}}(T) = \xi H_{\mathrm{H_2O}}(T) &#43; (2-\xi) H_{\mathrm{H_2}}(T) &#43; \left(1-\frac{\xi}{2}\right) H_{\mathrm{O_2}}(T) = 0$$ 其中 $H_i(T) = \Delta H_i(T) &#43; \Delta_f H_i^\circ$，单质生成焓为零。由于 $H_{\mathrm{prod}}(T)$ 随温度单调增加，该方程可解出唯一的绝热温度 $T(\xi)$； 得到温度 $T(\xi)$ 后，由 JANAF 数据计算该温度下的标准反应吉布斯自由能 $\Delta_r G^\circ(T) = \Delta_f G^\circ_{\mathrm{H_2O}}(T)$，进而得到平衡常数 $K_p(T) = \exp[-\Delta_r G^\circ(T)/(RT)]$； 将 $K_p(T)$ 代入平衡常数表达式，反解出对应的平衡进度 $\xi_{\mathrm{eq}}(T)$，并与初始假设的 $\xi$ 比较。若 $\xi_{\mathrm{eq}}(T) = \xi$，则该组 $(\xi, T)$ 同时满足焓守恒与化学平衡，即为真实解；否则调整 $\xi$ 重复上述过程。 实际操作中，只需扫描一系列 $\xi$，记录 $\xi_{\mathrm{eq}}$ 与 $\xi$ 的差值，寻找过零点。表 1 给出若干扫描点的计算结果。">
+与常规思路不同，这里先扫描反应进度 $\xi$，再求温度 $T$，最后检验化学平衡。具体步骤为：
+假设一个反应进度 $\xi$，确定各物质的量； 利用热力学第一定律，令产物总焓等于反应物总焓（以 298.15 K 的单质为零点，反应物总焓 $H_{\mathrm{react}} = 0$）：
+$$H_{\mathrm{prod}}(T) = \xi H_{\mathrm{H_2O}}(T) &#43; (2-\xi) H_{\mathrm{H_2}}(T) &#43; \left(1-\frac{\xi}{2}\right) H_{\mathrm{O_2}}(T) = 0$$ 其中 $H_i(T) = \Delta H_i(T) &#43; \Delta_f H_i^\circ$，单质生成焓为零。该方程可解出唯一的绝热温度 $T(\xi)$； 由 JANAF 数据计算该温度下的 $\Delta_r G^\circ(T) = \Delta_f G^\circ_{\mathrm{H_2O}}(T)$，得 $K_p(T) = \exp[-\Delta_r G^\circ(T)/(RT)]$； 将 $K_p(T)$ 代入平衡常数表达式，反解出对应的平衡进度 $\xi_{\mathrm{eq}}(T)$，并与初始假设的 $\xi$ 比较。若 $\xi_{\mathrm{eq}}(T) = \xi$，则该组 $(\xi, T)$ 同时满足焓守恒与化学平衡，即为真实解；否则调整 $\xi$ 重复。 实际操作中只需扫描一系列 $\xi$，寻找 $\xi_{\mathrm{eq}} - \xi$ 的过零点。表 1 给出若干扫描点的计算结果。">
 	<meta property="og:locale" content="zh">
 	<meta property="og:type" content="article">
 		<meta property="article:section" content="post">
@@ -150,21 +150,21 @@ $$H_{\mathrm{prod}}(T) = \xi H_{\mathrm{H_2O}}(T) &#43; (2-\xi) H_{\mathrm{H_2}
 $$\mathrm{H_2 &#43; \tfrac{1}{2}O_2 \rightleftharpoons H_2O}$$ 其平衡常数 $K_p(T)$ 可由 JANAF 表中各组分的生成吉布斯自由能求得。对于 2 mol $\mathrm{H_2}$ 和 1 mol $\mathrm{O_2}$ 的初始混合物，设反应进度为 $\xi$（$0 \le \xi \le 2$），平衡时各物质的量为
 $$n_{\mathrm{H_2O}} = \xi,\quad n_{\mathrm{H_2}} = 2 - \xi,\quad n_{\mathrm{O_2}} = 1 - \frac{\xi}{2}$$ 总物质的量 $n_{\text{total}} = 3 - \xi/2$。平衡常数与组分的关系为
 $$K_p(T) = \frac{\xi}{(2-\xi)\sqrt{1-\xi/2}} \cdot \sqrt{3 - \frac{\xi}{2}}$$ （压力比 $P/P_0$ 取 1）。
-现在改变求解顺序：先扫描反应进度 $\xi$，再求温度 $T$，最后检验化学平衡。具体步骤为：
-假设一个反应进度 $\xi$（例如 1.0, 1.1, …, 2.0），根据上述组分关系确定各物质的量； 利用热力学第一定律，令产物总焓等于反应物总焓（以 298.15 K 的单质为零点，反应物总焓 $H_{\mathrm{react}} = 0$）：
-$$H_{\mathrm{prod}}(T) = \xi H_{\mathrm{H_2O}}(T) &#43; (2-\xi) H_{\mathrm{H_2}}(T) &#43; \left(1-\frac{\xi}{2}\right) H_{\mathrm{O_2}}(T) = 0$$ 其中 $H_i(T) = \Delta H_i(T) &#43; \Delta_f H_i^\circ$，单质生成焓为零。由于 $H_{\mathrm{prod}}(T)$ 随温度单调增加，该方程可解出唯一的绝热温度 $T(\xi)$； 得到温度 $T(\xi)$ 后，由 JANAF 数据计算该温度下的标准反应吉布斯自由能 $\Delta_r G^\circ(T) = \Delta_f G^\circ_{\mathrm{H_2O}}(T)$，进而得到平衡常数 $K_p(T) = \exp[-\Delta_r G^\circ(T)/(RT)]$； 将 $K_p(T)$ 代入平衡常数表达式，反解出对应的平衡进度 $\xi_{\mathrm{eq}}(T)$，并与初始假设的 $\xi$ 比较。若 $\xi_{\mathrm{eq}}(T) = \xi$，则该组 $(\xi, T)$ 同时满足焓守恒与化学平衡，即为真实解；否则调整 $\xi$ 重复上述过程。 实际操作中，只需扫描一系列 $\xi$，记录 $\xi_{\mathrm{eq}}$ 与 $\xi$ 的差值，寻找过零点。表 1 给出若干扫描点的计算结果。">
+与常规思路不同，这里先扫描反应进度 $\xi$，再求温度 $T$，最后检验化学平衡。具体步骤为：
+假设一个反应进度 $\xi$，确定各物质的量； 利用热力学第一定律，令产物总焓等于反应物总焓（以 298.15 K 的单质为零点，反应物总焓 $H_{\mathrm{react}} = 0$）：
+$$H_{\mathrm{prod}}(T) = \xi H_{\mathrm{H_2O}}(T) &#43; (2-\xi) H_{\mathrm{H_2}}(T) &#43; \left(1-\frac{\xi}{2}\right) H_{\mathrm{O_2}}(T) = 0$$ 其中 $H_i(T) = \Delta H_i(T) &#43; \Delta_f H_i^\circ$，单质生成焓为零。该方程可解出唯一的绝热温度 $T(\xi)$； 由 JANAF 数据计算该温度下的 $\Delta_r G^\circ(T) = \Delta_f G^\circ_{\mathrm{H_2O}}(T)$，得 $K_p(T) = \exp[-\Delta_r G^\circ(T)/(RT)]$； 将 $K_p(T)$ 代入平衡常数表达式，反解出对应的平衡进度 $\xi_{\mathrm{eq}}(T)$，并与初始假设的 $\xi$ 比较。若 $\xi_{\mathrm{eq}}(T) = \xi$，则该组 $(\xi, T)$ 同时满足焓守恒与化学平衡，即为真实解；否则调整 $\xi$ 重复。 实际操作中只需扫描一系列 $\xi$，寻找 $\xi_{\mathrm{eq}} - \xi$ 的过零点。表 1 给出若干扫描点的计算结果。">
 	<meta itemprop="datePublished" content="2025-08-15T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2025-08-15T00:00:00+00:00">
-	<meta itemprop="wordCount" content="589">
+	<meta itemprop="wordCount" content="667">
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="利用JANAF表估算氢氧火焰温度">
 	<meta name="twitter:description" content="一、扫描反应进度：由焓守恒与化学平衡自洽求解 若仅考虑产物中的 $\mathrm{H_2O}$、$\mathrm{H_2}$、$\mathrm{O_2}$ 三种物种，系统的化学过程就是简单的燃烧反应
 $$\mathrm{H_2 &#43; \tfrac{1}{2}O_2 \rightleftharpoons H_2O}$$ 其平衡常数 $K_p(T)$ 可由 JANAF 表中各组分的生成吉布斯自由能求得。对于 2 mol $\mathrm{H_2}$ 和 1 mol $\mathrm{O_2}$ 的初始混合物，设反应进度为 $\xi$（$0 \le \xi \le 2$），平衡时各物质的量为
 $$n_{\mathrm{H_2O}} = \xi,\quad n_{\mathrm{H_2}} = 2 - \xi,\quad n_{\mathrm{O_2}} = 1 - \frac{\xi}{2}$$ 总物质的量 $n_{\text{total}} = 3 - \xi/2$。平衡常数与组分的关系为
 $$K_p(T) = \frac{\xi}{(2-\xi)\sqrt{1-\xi/2}} \cdot \sqrt{3 - \frac{\xi}{2}}$$ （压力比 $P/P_0$ 取 1）。
-现在改变求解顺序：先扫描反应进度 $\xi$，再求温度 $T$，最后检验化学平衡。具体步骤为：
-假设一个反应进度 $\xi$（例如 1.0, 1.1, …, 2.0），根据上述组分关系确定各物质的量； 利用热力学第一定律，令产物总焓等于反应物总焓（以 298.15 K 的单质为零点，反应物总焓 $H_{\mathrm{react}} = 0$）：
-$$H_{\mathrm{prod}}(T) = \xi H_{\mathrm{H_2O}}(T) &#43; (2-\xi) H_{\mathrm{H_2}}(T) &#43; \left(1-\frac{\xi}{2}\right) H_{\mathrm{O_2}}(T) = 0$$ 其中 $H_i(T) = \Delta H_i(T) &#43; \Delta_f H_i^\circ$，单质生成焓为零。由于 $H_{\mathrm{prod}}(T)$ 随温度单调增加，该方程可解出唯一的绝热温度 $T(\xi)$； 得到温度 $T(\xi)$ 后，由 JANAF 数据计算该温度下的标准反应吉布斯自由能 $\Delta_r G^\circ(T) = \Delta_f G^\circ_{\mathrm{H_2O}}(T)$，进而得到平衡常数 $K_p(T) = \exp[-\Delta_r G^\circ(T)/(RT)]$； 将 $K_p(T)$ 代入平衡常数表达式，反解出对应的平衡进度 $\xi_{\mathrm{eq}}(T)$，并与初始假设的 $\xi$ 比较。若 $\xi_{\mathrm{eq}}(T) = \xi$，则该组 $(\xi, T)$ 同时满足焓守恒与化学平衡，即为真实解；否则调整 $\xi$ 重复上述过程。 实际操作中，只需扫描一系列 $\xi$，记录 $\xi_{\mathrm{eq}}$ 与 $\xi$ 的差值，寻找过零点。表 1 给出若干扫描点的计算结果。">
+与常规思路不同，这里先扫描反应进度 $\xi$，再求温度 $T$，最后检验化学平衡。具体步骤为：
+假设一个反应进度 $\xi$，确定各物质的量； 利用热力学第一定律，令产物总焓等于反应物总焓（以 298.15 K 的单质为零点，反应物总焓 $H_{\mathrm{react}} = 0$）：
+$$H_{\mathrm{prod}}(T) = \xi H_{\mathrm{H_2O}}(T) &#43; (2-\xi) H_{\mathrm{H_2}}(T) &#43; \left(1-\frac{\xi}{2}\right) H_{\mathrm{O_2}}(T) = 0$$ 其中 $H_i(T) = \Delta H_i(T) &#43; \Delta_f H_i^\circ$，单质生成焓为零。该方程可解出唯一的绝热温度 $T(\xi)$； 由 JANAF 数据计算该温度下的 $\Delta_r G^\circ(T) = \Delta_f G^\circ_{\mathrm{H_2O}}(T)$，得 $K_p(T) = \exp[-\Delta_r G^\circ(T)/(RT)]$； 将 $K_p(T)$ 代入平衡常数表达式，反解出对应的平衡进度 $\xi_{\mathrm{eq}}(T)$，并与初始假设的 $\xi$ 比较。若 $\xi_{\mathrm{eq}}(T) = \xi$，则该组 $(\xi, T)$ 同时满足焓守恒与化学平衡，即为真实解；否则调整 $\xi$ 重复。 实际操作中只需扫描一系列 $\xi$，寻找 $\xi_{\mathrm{eq}} - \xi$ 的过零点。表 1 给出若干扫描点的计算结果。">
 
 	
 	
@@ -306,19 +306,19 @@ $$
 K_p(T) = \frac{\xi}{(2-\xi)\sqrt{1-\xi/2}} \cdot \sqrt{3 - \frac{\xi}{2}}
 $$<p>
 （压力比 $P/P_0$ 取 1）。</p>
-<p>现在改变求解顺序：<strong>先扫描反应进度 $\xi$，再求温度 $T$，最后检验化学平衡</strong>。具体步骤为：</p>
+<p>与常规思路不同，这里<strong>先扫描反应进度 $\xi$，再求温度 $T$，最后检验化学平衡</strong>。具体步骤为：</p>
 <ol>
-<li>假设一个反应进度 $\xi$（例如 1.0, 1.1, …, 2.0），根据上述组分关系确定各物质的量；</li>
+<li>假设一个反应进度 $\xi$，确定各物质的量；</li>
 <li>利用热力学第一定律，令产物总焓等于反应物总焓（以 298.15 K 的单质为零点，反应物总焓 $H_{\mathrm{react}} = 0$）：<br>
 
 $$
    H_{\mathrm{prod}}(T) = \xi H_{\mathrm{H_2O}}(T) + (2-\xi) H_{\mathrm{H_2}}(T) + \left(1-\frac{\xi}{2}\right) H_{\mathrm{O_2}}(T) = 0
    $$
-其中 $H_i(T) = \Delta H_i(T) + \Delta_f H_i^\circ$，单质生成焓为零。由于 $H_{\mathrm{prod}}(T)$ 随温度单调增加，该方程可解出唯一的绝热温度 $T(\xi)$；</li>
-<li>得到温度 $T(\xi)$ 后，由 JANAF 数据计算该温度下的标准反应吉布斯自由能 $\Delta_r G^\circ(T) = \Delta_f G^\circ_{\mathrm{H_2O}}(T)$，进而得到平衡常数 $K_p(T) = \exp[-\Delta_r G^\circ(T)/(RT)]$；</li>
-<li>将 $K_p(T)$ 代入平衡常数表达式，反解出对应的平衡进度 $\xi_{\mathrm{eq}}(T)$，并与初始假设的 $\xi$ 比较。若 $\xi_{\mathrm{eq}}(T) = \xi$，则该组 $(\xi, T)$ 同时满足焓守恒与化学平衡，即为真实解；否则调整 $\xi$ 重复上述过程。</li>
+其中 $H_i(T) = \Delta H_i(T) + \Delta_f H_i^\circ$，单质生成焓为零。该方程可解出唯一的绝热温度 $T(\xi)$；</li>
+<li>由 JANAF 数据计算该温度下的 $\Delta_r G^\circ(T) = \Delta_f G^\circ_{\mathrm{H_2O}}(T)$，得 $K_p(T) = \exp[-\Delta_r G^\circ(T)/(RT)]$；</li>
+<li>将 $K_p(T)$ 代入平衡常数表达式，反解出对应的平衡进度 $\xi_{\mathrm{eq}}(T)$，并与初始假设的 $\xi$ 比较。若 $\xi_{\mathrm{eq}}(T) = \xi$，则该组 $(\xi, T)$ 同时满足焓守恒与化学平衡，即为真实解；否则调整 $\xi$ 重复。</li>
 </ol>
-<p>实际操作中，只需扫描一系列 $\xi$，记录 $\xi_{\mathrm{eq}}$ 与 $\xi$ 的差值，寻找过零点。表 1 给出若干扫描点的计算结果。</p>
+<p>实际操作中只需扫描一系列 $\xi$，寻找 $\xi_{\mathrm{eq}} - \xi$ 的过零点。表 1 给出若干扫描点的计算结果。</p>
 <table>
 	<thead>
 			<tr>
@@ -365,81 +365,95 @@ $$
 					<td style="text-align: center">1.27</td>
 					<td style="text-align: center">+0.02</td>
 			</tr>
-			<tr>
-					<td style="text-align: center">1.20</td>
-					<td style="text-align: center">3730</td>
-					<td style="text-align: center">0.42</td>
-					<td style="text-align: center">1.24</td>
-					<td style="text-align: center">+0.04</td>
-			</tr>
 	</tbody>
 </table>
-<p>由表可见，随着假设的 $\xi$ 从 1.50 降至 1.20，$\xi_{\mathrm{eq}} - \xi$ 由负值逐渐变正，在 $\xi \approx 1.278$ 时差值过零。此时绝热温度 $T \approx 3554$ K，平衡组成 $n_{\mathrm{H_2O}} = 1.278$ mol，$n_{\mathrm{H_2}} = 0.722$ mol，$n_{\mathrm{O_2}} = 0.361$ mol。</p>
-<p>这一结果与先前通过“扫描温度求平衡组成再检验焓”的做法（即对每个温度求化学平衡，再看总焓是否为零）完全等价，只是迭代变量从温度换成了反应进度。从操作上看，扫描反应进度更为直接：每一步只需解一个单变量焓守恒方程，再代入平衡常数验证，避免了在每个温度下求解化学平衡方程的麻烦。</p>
-<p>此处得到的约 3550 K 已远低于最初纯 $\mathrm{H_2O}$ 假设计算的约 5000 K，原因是<strong>反应在高温下并不完全</strong>——一部分 $\mathrm{H_2O}$ 分解为 $\mathrm{H_2}$ 和 $\mathrm{O_2}$，吸收了大量能量。如果再引入 $\mathrm{H}$、$\mathrm{OH}$ 等自由基解离，温度还会进一步下降。</p>
-<h2 id="二hp-约束的热力学本质及无分解极端情况">二、HP 约束的热力学本质及无分解极端情况</h2>
-<p>在恒焓、恒压（HP）条件下，燃烧系统的平衡态是由热力学第二定律规定的：在满足元素守恒与总焓不变的前提下，系统的<strong>熵达到最大值</strong>。设系统有 $N$ 种组分 $n_i$，温度 $T$ 为未知量，压力 $P$ 固定，初始总焓为 $H_0$。引入拉格朗日乘子 $\lambda_j$ 对应元素守恒 $\sum_i a_{ij} n_i = b_j$，以及乘子 $\mu$ 对应焓守恒 $\sum_i n_i h_i(T) = H_0$，构造拉格朗日函数<br>
+<p>当 $\xi \approx 1.278$ 时差值过零，对应绝热温度 $T \approx 3554$ K，平衡组成为 $n_{\mathrm{H_2O}} = 1.278$ mol，$n_{\mathrm{H_2}} = 0.722$ mol，$n_{\mathrm{O_2}} = 0.361$ mol。这一温度已远低于纯 $\mathrm{H_2O}$ 假设计算的约 5000 K，原因是<strong>高温下反应并不完全</strong>——部分 $\mathrm{H_2O}$ 分解为 $\mathrm{H_2}$ 和 $\mathrm{O_2}$ 吸收了热量。这种扫描反应进度的方法直观地给出了仅含三种分子时的氢氧火焰温度。</p>
+<h2 id="二hp-约束的热力学原理与直接求解水的反应平衡温度">二、HP 约束的热力学原理与直接求解水的反应平衡温度</h2>
+<p>在恒焓、恒压（HP）条件下，燃烧系统最终达到的平衡态由热力学第二定律严格决定：在满足元素原子守恒和总焓不变的约束下，系统的<strong>熵取极大值</strong>。这是 HP 方法的核心原理，不同于恒温恒压系统常用的吉布斯自由能最小判据，但两者可通过拉格朗日乘子法建立内在联系。</p>
+<p>设系统包含 $N$ 种可能组分，物质的量为 $n_i$，温度 $T$ 为未知量，压力 $P$ 恒定，初始总焓为 $H_0$。系统状态需满足：</p>
+<ul>
+<li>元素守恒：$\displaystyle\sum_i a_{ij} n_i = b_j$，其中 $a_{ij}$ 为组分 $i$ 中元素 $j$ 的原子数，$b_j$ 为初始总原子数；</li>
+<li>焓守恒：$\displaystyle\sum_i n_i h_i(T) = H_0$。</li>
+</ul>
+<p>在此约束下，平衡时熵 $S = \sum_i n_i s_i(T,P)$ 为最大。为处理有约束极值问题，引入拉格朗日乘子 $\lambda_j$ 对应元素守恒，乘子 $\mu$ 对应焓守恒，构造拉格朗日函数：
 </p>
 $$
 \mathcal{L} = \sum_i n_i s_i(T) - \sum_j \lambda_j \Bigl( \sum_i a_{ij} n_i - b_j \Bigr) - \mu \Bigl( \sum_i n_i h_i(T) - H_0 \Bigr)
 $$<p>
-对 $n_i$ 和 $T$ 求导并利用 $\mathrm{d}s_i/\mathrm{d}T = c_{p,i}/T$、$\mathrm{d}h_i/\mathrm{d}T = c_{p,i}$，可得 $\mu = 1/T$，且平衡时<br>
+对 $n_i$ 和 $T$ 求偏导并令其为零：
+</p>
+$$
+\frac{\partial \mathcal{L}}{\partial n_i} = s_i(T) - \sum_j \lambda_j a_{ij} - \mu\, h_i(T) = 0
+$$<p>
+</p>
+$$
+\frac{\partial \mathcal{L}}{\partial T} = \sum_i n_i \frac{\mathrm{d}s_i}{\mathrm{d}T} - \mu \sum_i n_i \frac{\mathrm{d}h_i}{\mathrm{d}T} = 0
+$$<p>
+利用热力学基本关系 $\mathrm{d}s_i/\mathrm{d}T = c_{p,i}/T$ 和 $\mathrm{d}h_i/\mathrm{d}T = c_{p,i}$，第二式简化为：
+</p>
+$$
+\sum_i n_i \frac{c_{p,i}}{T} - \mu \sum_i n_i c_{p,i} = 0 \quad\Longrightarrow\quad \mu = \frac{1}{T}
+$$<p>
+将其代回第一式并利用 $g_i = h_i - T s_i$，整理得：
 </p>
 $$
 \frac{g_i(T)}{T} = -\sum_j \lambda_j a_{ij}
 $$<p>
-这表明在固定温度 $T$ 下，平衡组成恰好使体系的总吉布斯自由能 $G = \sum_i n_i g_i$ 在元素守恒约束下取极小值。因此，HP 问题常转化为双层迭代：外层调整温度直至总焓守恒，内层在当前温度下通过最小化 $G$ 求解化学平衡。这也解释了为什么第一部分的扫描——在扫描反应进度的同时，用焓守恒求温度、再以平衡常数检验自洽性——在原理上是完全自洽的：它本质上就是在寻找那个使吉布斯自由能最小且总焓为零的状态。</p>
-<p>如果<strong>极端假设体系不发生任何解离</strong>，即无论温度多高，产物只有 $\mathrm{H_2O}$ 且 $\xi=2$，那么组分自由度丧失。此时吉布斯自由能最小化已经无意义，状态完全由焓守恒决定：<br>
+该式表明，在给定温度 $T$ 和相应的拉格朗日乘子下，平衡组分需使各物种的摩尔吉布斯自由能满足上述线性关系。重要的是，在<strong>固定的 $T$</strong> 下，该条件恰好等价于系统的总吉布斯自由能
 </p>
 $$
-2 \cdot H_{\mathrm{H_2O}}(T) = 0 \quad \Longrightarrow \quad \Delta H_{\mathrm{H_2O}}(T) = 241.826\ \mathrm{kJ\cdot mol^{-1}}
+G = \sum_i n_i g_i(T) + RT \sum_i n_i \ln\frac{n_i P}{n_{\text{total}}P_0}
 $$<p>
-查显焓表直接得到 $T \approx 5000$–$5100\ \mathrm{K}$。然而，在如此高的温度下，$\Delta_f G^\circ(\mathrm{H_2O})$ 已为正值（5000 K 时约 +41 kJ·mol⁻¹），表明 $\mathrm{H_2O}$ 相对于 $\mathrm{H_2}+\tfrac{1}{2}\mathrm{O_2}$ 已不稳定，必然自发分解。若只将分解产物限定为 $\mathrm{H_2}$ 和 $\mathrm{O_2}$（如第一部分扫描所示），则平衡温度已降至约 3550 K；若再纳入原子和自由基，温度还会继续下降。由此可见，HP 约束下的平衡态必须在足够丰富的组分空间中寻找，无分解假设给出的 5000 K 只是一个远离真实的数学外推。</p>
-<h2 id="三加入分解反应的手算h-和-oh-的计入">三、加入分解反应的手算：H 和 OH 的计入</h2>
-<p>氢氧火焰中，除 $\mathrm{H_2O} \rightleftharpoons \mathrm{H_2} + \tfrac{1}{2}\mathrm{O_2}$ 外，更重要的解离通道是<br>
+在元素守恒约束下取极小值。因此，HP 问题可以分解为双层迭代：<strong>内层</strong>在当前温度 $T$ 下，通过最小化 $G$（即求解化学平衡）得到平衡组成 ${n_i(T)}$；<strong>外层</strong>则根据焓守恒 $H(T) = \sum_i n_i(T) h_i(T)$ 与目标焓 $H_0$ 的偏差来修正温度，直至收敛。外层修正可采用牛顿迭代：
+</p>
+$$
+T_{\text{new}} = T - \frac{H(T) - H_0}{C_p(T)}, \qquad C_p(T) = \sum_i n_i(T)\, c_{p,i}(T)
+$$<p>
+此即 HP 方法求解绝热火焰温度的标准算法框架。</p>
+<p>将这一框架应用到仅含 $\mathrm{H_2O}$、$\mathrm{H_2}$、$\mathrm{O_2}$ 的体系，即求解氢氧反应的标准火焰温度。反应物为 2 mol $\mathrm{H_2}$ + 1 mol $\mathrm{O_2}$（298.15 K），取总焓零点 $H_0 = 0$。内层化学平衡直接通过反应 $\mathrm{H_2 + \frac{1}{2}O_2 \rightleftharpoons H_2O}$ 的平衡常数与反应进度关系式求解，外层则利用焓偏差修正温度。给定初始温度猜测，数步迭代即可收敛至 $T \approx 3554$ K，平衡进度 $\xi = 1.278$，与第一部分扫描所得结果完全一致。</p>
+<p>从原理上看，HP 方法从熵最大出发，自然导出化学平衡与能量守恒的双重约束。无分解假设（$\xi \equiv 2$）相当于强行忽略化学平衡的自由度，直接由焓守恒推出 $T \approx 5000$ K，违背了热力学第二定律对组分分布的要求，因此结果严重偏离真实。即便仅放开 $\mathrm{H_2}$ 和 $\mathrm{O_2}$ 的生成，平衡温度即下降近 1500 K，充分体现了化学平衡在火焰温度计算中的决定性作用。若要进一步提高精度，则必须引入 $\mathrm{H}$、$\mathrm{OH}$ 等自由基的分解平衡。</p>
+<h2 id="三引入-oh-和-h-的分解平衡手算求解">三、引入 OH 和 H 的分解平衡——手算求解</h2>
+<p>在高温下，$\mathrm{H_2O}$ 除了分解为 $\mathrm{H_2}$ 和 $\mathrm{O_2}$ 外，更重要的解离通道是<br>
 </p>
 $$
 \mathrm{H_2O} \rightleftharpoons \mathrm{H} + \mathrm{OH}
 $$<p>
-这两种路径在高温下强烈吸热，是降温的主因。为抓住核心效应，可将反应系统看作下列两组独立分解的叠加（基准：生成 1 mol $\mathrm{H_2O}$）：</p>
+该反应强烈吸热，会进一步拉低火焰温度。将两种分解路径视作并联，以生成 1 mol $\mathrm{H_2O}$ 为基准：</p>
 <ul>
 <li><strong>路径1</strong> $\mathrm{H_2O} \to a_1\mathrm{H_2O} + (1-a_1)\mathrm{H} + (1-a_1)\mathrm{OH}$，平衡常数 $K_1 = (1-a_1)^2/a_1$</li>
-<li><strong>路径2</strong> $\mathrm{H_2O} \to a_2\mathrm{H_2O} + (1-a_2)\mathrm{H_2} + \frac{1}{2}(1-a_2)\mathrm{O_2}$，平衡常数 $K_2 = \frac{(1-a_2)\sqrt{(1-a_2)/2}}{a_2}$</li>
+<li><strong>路径2</strong> $\mathrm{H_2O} \to a_2\mathrm{H_2O} + (1-a_2)\mathrm{H_2} + \tfrac{1}{2}(1-a_2)\mathrm{O_2}$，平衡常数 $K_2 = \frac{(1-a_2)\sqrt{(1-a_2)/2}}{a_2}$</li>
 </ul>
-<p>两路径处理为并联，剩余 $\mathrm{H_2O}$ 物质的量为 $a_1 + a_2 - 1$（需保证不大于 1）。反应物总焓仍取零点。</p>
-<p>分别尝试两个温度：</p>
-<p><strong>3100 K</strong><br>
-从 JANAF 表查得：</p>
+<p>剩余 $\mathrm{H_2O}$ 量为 $a_1 + a_2 - 1$。反应物总焓仍取零点，通过试凑温度使产物总焓为零。</p>
+<p><strong>3100 K 试算</strong><br>
+查 JANAF 表：</p>
 <ul>
 <li>$\Delta_f G^\circ(\mathrm{H_2O}) = -71298\ \mathrm{J\cdot mol^{-1}}$，$\Delta_f G^\circ(\mathrm{H}) = 39877\ \mathrm{J\cdot mol^{-1}}$，$\Delta_f G^\circ(\mathrm{OH}) = -5552\ \mathrm{J\cdot mol^{-1}}$</li>
 <li>$\Delta G_1 = 105623\ \mathrm{J\cdot mol^{-1}}$，$K_1 = 0.0166 \ \Rightarrow\ a_1 = 0.879$（0.121 mol 分解为 H+OH）</li>
 <li>$\Delta G_2 = 71298\ \mathrm{J\cdot mol^{-1}}$，$K_2 = 0.0629 \ \Rightarrow\ a_2 = 0.825$（0.175 mol 分解为 H₂+½O₂）</li>
 </ul>
-<p>剩余 $\mathrm{H_2O} = 0.704$ mol。计算焓平衡（基准 1 mol $\mathrm{H_2O}$ 对应 2 mol H₂+1 mol O₂ 反应）：<br>
+<p>剩余 $\mathrm{H_2O} = 0.704$ mol。焓平衡（基准对应 2 mol H₂+1 mol O₂ 反应）：<br>
 </p>
 $$
 \begin{aligned}
-H_{\mathrm{prod}} = &\; 0.704[\Delta_f H^\circ(\mathrm{H_2O}) + \Delta H_{\mathrm{H_2O}}(3100)] \\
-&+ 0.121[\Delta_f H^\circ(\mathrm{H}) + \Delta H_{\mathrm{H}}(3100)] \\
-&+ 0.121[\Delta_f H^\circ(\mathrm{OH}) + \Delta H_{\mathrm{OH}}(3100)] \\
-&+ 0.175\Delta H_{\mathrm{H_2}}(3100) + 0.0875\Delta H_{\mathrm{O_2}}(3100)
+H_{\mathrm{prod}} = &\; 0.704[\Delta_f H^\circ(\mathrm{H_2O}) + \Delta H_{\mathrm{H_2O}}] \\
+&+ 0.121[\Delta_f H^\circ(\mathrm{H}) + \Delta H_{\mathrm{H}}] \\
+&+ 0.121[\Delta_f H^\circ(\mathrm{OH}) + \Delta H_{\mathrm{OH}}] \\
+&+ 0.175\Delta H_{\mathrm{H_2}} + 0.0875\Delta H_{\mathrm{O_2}} \approx -2688\ \mathrm{J}
 \end{aligned}
 $$<p>
-代入相应显焓后，得 $H_{\mathrm{prod}} \approx -2688\ \mathrm{J}$，仍略小于零，说明温度偏低。</p>
-<p><strong>3200 K</strong><br>
-类似查得：</p>
+产物焓略低于零，温度偏低。</p>
+<p><strong>3200 K 试算</strong></p>
 <ul>
-<li>$\Delta G_1 = 92313\ \mathrm{J\cdot mol^{-1}}$，$K_1 = 0.0311$，$a_1=0.8385$（0.1615 mol 分解）</li>
-<li>$\Delta G_2 = 65430\ \mathrm{J\cdot mol^{-1}}$，$K_2 = 0.0855$，$a_2=0.79$（0.21 mol 分解）</li>
+<li>$\Delta G_1 = 92313\ \mathrm{J\cdot mol^{-1}}$，$K_1 = 0.0311$，$a_1 = 0.8385$（0.1615 mol 分解）</li>
+<li>$\Delta G_2 = 65430\ \mathrm{J\cdot mol^{-1}}$，$K_2 = 0.0855$，$a_2 = 0.79$（0.21 mol 分解）</li>
 </ul>
-<p>焓平衡计算得 $H_{\mathrm{prod}} \approx +32831\ \mathrm{J}$，产物焓已高于零点，温度偏高。</p>
+<p>焓平衡计算得 $H_{\mathrm{prod}} \approx +32831\ \mathrm{J}$，温度偏高。</p>
 <p><strong>线性插值</strong><br>
-两温度下焓值符号相反，插值求 $H_{\mathrm{prod}} = 0$ 的温度：<br>
+由两温度下焓值异号，插值求零焓点：<br>
 </p>
 $$
 T = 3100 + \frac{0 - (-2688)}{32831 - (-2688)} \times 100 \approx 3107\ \text{K}
-$$<p>利用 Cantera 在相同条件下进行 HP 平衡计算，结果为 3093 K。手算与之相差仅十余度，误差来自忽略的 $\mathrm{HO_2}$、$\mathrm{H_2O_2}$ 等微量组分。<br>
-至此，我们清晰地看到：从最初忽略一切解离的 ≈5000 K，到仅允许 $\mathrm{H_2O} \rightleftharpoons \mathrm{H_2} + \tfrac{1}{2}\mathrm{O_2}$ 平衡的 ≈3550 K，再到进一步计入 $\mathrm{H}$ 和 $\mathrm{OH}$ 的 ≈3100 K，每一步都使火焰温度向真实值大幅靠近。整个过程充分展示了在 JANAF 表数据支持下，通过逐步丰富组分、严格遵循 HP 约束的化学平衡，能够以简洁的手算获得工程上令人满意的氢氧火焰温度估算结果。</p>
+$$<p>使用 Cantera 在相同 HP 约束下计算，得到绝热火焰温度 3093 K，手算值与之相差仅约 14 K，误差主要源于忽略了 $\mathrm{HO_2}$、$\mathrm{H_2O_2}$ 等微量组分。从忽略一切解离的 ≈5000 K，到仅允许 $\mathrm{H_2O} \rightleftharpoons \mathrm{H_2} + \tfrac{1}{2}\mathrm{O_2}$ 的 ≈3550 K，再到计入 $\mathrm{H}$ 和 $\mathrm{OH}$ 的 ≈3100 K，每一步都使温度向真实值大幅靠近。整个过程充分说明，基于 JANAF 表数据并严格遵循 HP 化学平衡原则，即使是手算也能获得足够准确的氢氧火焰温度。</p>
 <p>希望我的论文顺利见刊。</p>
 <ul class="pa0">
   
