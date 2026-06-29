@@ -1,0 +1,77 @@
+<!doctype html><html lang=zh><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>PIV/PLIF Liutex 分析工具 – 基于 PyQt6 的流场涡识别与频谱分析软件 | 刘训臣燃烧诊断实验室主页</title><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=description content="引言
+在实验流体力学中，粒子图像测速（PIV） 与 平面激光诱导荧光（PLIF） 是两种广泛使用的光学测量技术。前者能获得瞬时速度场，后者可捕捉标量（如浓度、温度）的空间分布。如何从大量实验数据中高效提取有物理意义的信息，尤其是分离出真实的涡结构，一直是个挑战。
+近年来，Liutex 涡识别方法提供了一种严格、无阈值的旋转分解，能够从速度梯度张量中剥离出刚性旋转强度，避免传统判据（如 Q、λ₂）将剪切误判为涡的缺点。
+Liutex 方法简介
+我们基于此理论，开发了一款跨平台、模块化的 GUI 软件，集成 PIV/PLIF 数据加载、Liutex 计算、多物理量可视化、动画播放以及单点频谱分析等功能。
+软件主要功能
+1. 多格式数据加载
+
+PIV：支持 DaVis 输出的标准 .txt 文件（包括 #DaVis 头格式）以及 TECPLOT 风格的 .dat 文件。自动识别格式，无需手动指定。
+PLIF：读取 TIFF 图像序列，并提供边缘保持滤波、阈值掩膜、模糊增强等预处理选项，便于与速度场叠加显示。
+Bin 平均：可自定义下采样倍数，降低数据量并过滤高频噪声。
+原点平移：支持坐标系平移，方便与其它测量系统对齐。
+
+2. 流场物理量计算
+基于速度场 (u, v) 自动计算：
+
+基础量：合速度、涡量、散度、速度梯度分量 $ |\nabla u|, |\nabla v| $
+Liutex：严格遵循刘超群教授的公式，输出纯旋转强度 \(R\)、剪切贡献 \(S\) 以及局部旋转角速度 $\lambda_{ci}$
+
+计算核心完全与界面分离，可单独调用，便于批处理或嵌入其它脚本。
+3. 可视化与交互
+
+使用 Matplotlib 嵌入 PyQt6 界面，利用 轮廓填色（contourf） 显示标量场，并可叠加 速度矢量（quiver） 和 流线（streamline）。
+PLIF 叠加：将处理后的 PLIF 标量场以半透明形式覆盖在速度场之上，直观显示标量与流动结构的耦合。
+实时动画：支持播放/暂停、拖动滑块浏览序列帧。
+交互工具栏：Matplotlib 内置导航工具栏，支持缩放、平移、保存图片等操作。
+可随时将当前显示的标量场数据导出为 .npy 文件，便于后续分析。
+
+
+			 PIV PLIF Liutex 画图工具界面
+		
+
+
+
+			 PIV PLIF Liutex 画图工具界面
+		
+
+
+4. 单点 FFT 分析
+在流场图上点击任意位置，软件自动提取该点所有时间步的物理量（如 Liutex、涡量）序列，并进行 FFT 变换，绘制单边幅值谱。这对于识别流动中的周期性特征（如尾涡脱落频率）非常实用。
+
+			 PIV PLIF Liutex 画图工具界面
+		
+
+"><meta name=generator content="Hugo 0.162.1"><meta name=robots content="index, follow"><meta name=author content="刘训臣"><link rel=stylesheet href=/xliu-group/ananke/css/main.02a37ad6c4e155c542d276915a0e3f83f5c7c5fec443350f6e60753f1679b7a7.css integrity="sha256-AqN61sThVcVC0naRWg4/g/XHxf7EQzUPbmB1PxZ5t6c=" crossorigin=anonymous><script>(function(){"use strict";function t(){for(var t=document.querySelectorAll(".code-block .code-copy[hidden]"),e=0;e<t.length;e++)t[e].hidden=!1}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",t):t();function e(e){var t=e.querySelector(".code-copy-label"),n=t?t.textContent:null;e.classList.add("is-copied"),t&&(t.textContent="Copied"),window.setTimeout(function(){e.classList.remove("is-copied"),t&&n!==null&&(t.textContent=n)},2e3)}function n(e){var n,t=document.createElement("textarea");t.value=e,t.setAttribute("readonly",""),t.style.position="absolute",t.style.left="-9999px",document.body.appendChild(t),t.select(),n=!1;try{n=document.execCommand("copy")}catch{n=!1}return document.body.removeChild(t),n}function s(t){var s,o,a,i=t.closest(".code-block");if(!i)return;if(s=i.querySelector("pre"),!s)return;a=s.querySelector("code")||s,o=a.innerText,navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(o).then(function(){e(t)},function(){n(o)&&e(t)}):n(o)&&e(t)}document.addEventListener("click",function(e){var t=e.target.closest(".code-copy");t&&s(t)})})()</script><link rel=canonical href=https://liuxunchen.github.io/xliu-group/zh/post/xliu_piv_plif_loader/><meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/xliu_piv_plif_loader/"><meta property="og:site_name" content="刘训臣燃烧诊断实验室主页"><meta property="og:title" content="PIV/PLIF Liutex 分析工具 – 基于 PyQt6 的流场涡识别与频谱分析软件"><meta property="og:description" content="引言 在实验流体力学中，粒子图像测速（PIV） 与 平面激光诱导荧光（PLIF） 是两种广泛使用的光学测量技术。前者能获得瞬时速度场，后者可捕捉标量（如浓度、温度）的空间分布。如何从大量实验数据中高效提取有物理意义的信息，尤其是分离出真实的涡结构，一直是个挑战。
+近年来，Liutex 涡识别方法提供了一种严格、无阈值的旋转分解，能够从速度梯度张量中剥离出刚性旋转强度，避免传统判据（如 Q、λ₂）将剪切误判为涡的缺点。
+Liutex 方法简介
+我们基于此理论，开发了一款跨平台、模块化的 GUI 软件，集成 PIV/PLIF 数据加载、Liutex 计算、多物理量可视化、动画播放以及单点频谱分析等功能。
+软件主要功能 1. 多格式数据加载 PIV：支持 DaVis 输出的标准 .txt 文件（包括 #DaVis 头格式）以及 TECPLOT 风格的 .dat 文件。自动识别格式，无需手动指定。 PLIF：读取 TIFF 图像序列，并提供边缘保持滤波、阈值掩膜、模糊增强等预处理选项，便于与速度场叠加显示。 Bin 平均：可自定义下采样倍数，降低数据量并过滤高频噪声。 原点平移：支持坐标系平移，方便与其它测量系统对齐。 2. 流场物理量计算 基于速度场 (u, v) 自动计算：
+基础量：合速度、涡量、散度、速度梯度分量 $ |\nabla u|, |\nabla v| $ Liutex：严格遵循刘超群教授的公式，输出纯旋转强度 \(R\)、剪切贡献 \(S\) 以及局部旋转角速度 $\lambda_{ci}$ 计算核心完全与界面分离，可单独调用，便于批处理或嵌入其它脚本。
+3. 可视化与交互 使用 Matplotlib 嵌入 PyQt6 界面，利用 轮廓填色（contourf） 显示标量场，并可叠加 速度矢量（quiver） 和 流线（streamline）。 PLIF 叠加：将处理后的 PLIF 标量场以半透明形式覆盖在速度场之上，直观显示标量与流动结构的耦合。 实时动画：支持播放/暂停、拖动滑块浏览序列帧。 交互工具栏：Matplotlib 内置导航工具栏，支持缩放、平移、保存图片等操作。 可随时将当前显示的标量场数据导出为 .npy 文件，便于后续分析。 PIV PLIF Liutex 画图工具界面 PIV PLIF Liutex 画图工具界面 4. 单点 FFT 分析 在流场图上点击任意位置，软件自动提取该点所有时间步的物理量（如 Liutex、涡量）序列，并进行 FFT 变换，绘制单边幅值谱。这对于识别流动中的周期性特征（如尾涡脱落频率）非常实用。 PIV PLIF Liutex 画图工具界面"><meta property="og:locale" content="zh"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2026-06-29T19:00:02+08:00"><meta property="article:modified_time" content="2026-06-29T19:00:02+08:00"><meta property="article:tag" content="PIV"><meta property="article:tag" content="PLIF"><meta itemprop=name content="PIV/PLIF Liutex 分析工具 – 基于 PyQt6 的流场涡识别与频谱分析软件"><meta itemprop=description content="引言 在实验流体力学中，粒子图像测速（PIV） 与 平面激光诱导荧光（PLIF） 是两种广泛使用的光学测量技术。前者能获得瞬时速度场，后者可捕捉标量（如浓度、温度）的空间分布。如何从大量实验数据中高效提取有物理意义的信息，尤其是分离出真实的涡结构，一直是个挑战。
+近年来，Liutex 涡识别方法提供了一种严格、无阈值的旋转分解，能够从速度梯度张量中剥离出刚性旋转强度，避免传统判据（如 Q、λ₂）将剪切误判为涡的缺点。
+Liutex 方法简介
+我们基于此理论，开发了一款跨平台、模块化的 GUI 软件，集成 PIV/PLIF 数据加载、Liutex 计算、多物理量可视化、动画播放以及单点频谱分析等功能。
+软件主要功能 1. 多格式数据加载 PIV：支持 DaVis 输出的标准 .txt 文件（包括 #DaVis 头格式）以及 TECPLOT 风格的 .dat 文件。自动识别格式，无需手动指定。 PLIF：读取 TIFF 图像序列，并提供边缘保持滤波、阈值掩膜、模糊增强等预处理选项，便于与速度场叠加显示。 Bin 平均：可自定义下采样倍数，降低数据量并过滤高频噪声。 原点平移：支持坐标系平移，方便与其它测量系统对齐。 2. 流场物理量计算 基于速度场 (u, v) 自动计算：
+基础量：合速度、涡量、散度、速度梯度分量 $ |\nabla u|, |\nabla v| $ Liutex：严格遵循刘超群教授的公式，输出纯旋转强度 \(R\)、剪切贡献 \(S\) 以及局部旋转角速度 $\lambda_{ci}$ 计算核心完全与界面分离，可单独调用，便于批处理或嵌入其它脚本。
+3. 可视化与交互 使用 Matplotlib 嵌入 PyQt6 界面，利用 轮廓填色（contourf） 显示标量场，并可叠加 速度矢量（quiver） 和 流线（streamline）。 PLIF 叠加：将处理后的 PLIF 标量场以半透明形式覆盖在速度场之上，直观显示标量与流动结构的耦合。 实时动画：支持播放/暂停、拖动滑块浏览序列帧。 交互工具栏：Matplotlib 内置导航工具栏，支持缩放、平移、保存图片等操作。 可随时将当前显示的标量场数据导出为 .npy 文件，便于后续分析。 PIV PLIF Liutex 画图工具界面 PIV PLIF Liutex 画图工具界面 4. 单点 FFT 分析 在流场图上点击任意位置，软件自动提取该点所有时间步的物理量（如 Liutex、涡量）序列，并进行 FFT 变换，绘制单边幅值谱。这对于识别流动中的周期性特征（如尾涡脱落频率）非常实用。 PIV PLIF Liutex 画图工具界面"><meta itemprop=datePublished content="2026-06-29T19:00:02+08:00"><meta itemprop=dateModified content="2026-06-29T19:00:02+08:00"><meta itemprop=wordCount content="275"><meta itemprop=keywords content="PIV,PLIF"><meta name=twitter:card content="summary"><meta name=twitter:title content="PIV/PLIF Liutex 分析工具 – 基于 PyQt6 的流场涡识别与频谱分析软件"><meta name=twitter:description content="引言 在实验流体力学中，粒子图像测速（PIV） 与 平面激光诱导荧光（PLIF） 是两种广泛使用的光学测量技术。前者能获得瞬时速度场，后者可捕捉标量（如浓度、温度）的空间分布。如何从大量实验数据中高效提取有物理意义的信息，尤其是分离出真实的涡结构，一直是个挑战。
+近年来，Liutex 涡识别方法提供了一种严格、无阈值的旋转分解，能够从速度梯度张量中剥离出刚性旋转强度，避免传统判据（如 Q、λ₂）将剪切误判为涡的缺点。
+Liutex 方法简介
+我们基于此理论，开发了一款跨平台、模块化的 GUI 软件，集成 PIV/PLIF 数据加载、Liutex 计算、多物理量可视化、动画播放以及单点频谱分析等功能。
+软件主要功能 1. 多格式数据加载 PIV：支持 DaVis 输出的标准 .txt 文件（包括 #DaVis 头格式）以及 TECPLOT 风格的 .dat 文件。自动识别格式，无需手动指定。 PLIF：读取 TIFF 图像序列，并提供边缘保持滤波、阈值掩膜、模糊增强等预处理选项，便于与速度场叠加显示。 Bin 平均：可自定义下采样倍数，降低数据量并过滤高频噪声。 原点平移：支持坐标系平移，方便与其它测量系统对齐。 2. 流场物理量计算 基于速度场 (u, v) 自动计算：
+基础量：合速度、涡量、散度、速度梯度分量 $ |\nabla u|, |\nabla v| $ Liutex：严格遵循刘超群教授的公式，输出纯旋转强度 \(R\)、剪切贡献 \(S\) 以及局部旋转角速度 $\lambda_{ci}$ 计算核心完全与界面分离，可单独调用，便于批处理或嵌入其它脚本。
+3. 可视化与交互 使用 Matplotlib 嵌入 PyQt6 界面，利用 轮廓填色（contourf） 显示标量场，并可叠加 速度矢量（quiver） 和 流线（streamline）。 PLIF 叠加：将处理后的 PLIF 标量场以半透明形式覆盖在速度场之上，直观显示标量与流动结构的耦合。 实时动画：支持播放/暂停、拖动滑块浏览序列帧。 交互工具栏：Matplotlib 内置导航工具栏，支持缩放、平移、保存图片等操作。 可随时将当前显示的标量场数据导出为 .npy 文件，便于后续分析。 PIV PLIF Liutex 画图工具界面 PIV PLIF Liutex 画图工具界面 4. 单点 FFT 分析 在流场图上点击任意位置，软件自动提取该点所有时间步的物理量（如 Liutex、涡量）序列，并进行 FFT 变换，绘制单边幅值谱。这对于识别流动中的周期性特征（如尾涡脱落频率）非常实用。 PIV PLIF Liutex 画图工具界面"><script>if(typeof MathJax=="undefined"){window.MathJax={tex:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]]}};const e=document.createElement("script");e.src="https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js",e.async=!0,e.crossOrigin="anonymous",document.head.appendChild(e),console.log("MathJax initialized")}</script></head><body class="ma0 avenir bg-near-white production"><header class="cover bg-center" style=background-image:url(https://liuxunchen.github.io/xliu-group/images/sdust.jpg)><div class=bg-black-60><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l center items-center justify-between"><a href=/xliu-group/zh/ class="f3 fw2 hover-white white-90 dib no-underline">刘训臣燃烧诊断实验室主页</a><div class="flex-l items-center"><ul class="pl0 mr3"><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/people/ title="People 页">People</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/post/ title="Post 页">Post</a></li></ul><div class=ananke-socials></div></div></div></nav><div class="tc-l pv6 ph3 ph4-ns"><div class="f2 f1-l fw2 white-90 mb0 lh-title">PIV/PLIF Liutex 分析工具 – 基于 PyQt6 的流场涡识别与频谱分析软件</div></div></div></header><main class=pb7 role=main><article class="page-xliu_piv_plif_loader flex-l mw7 center ph3 flex-wrap justify-between"><header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu"><a class="link dim" href=https://liuxunchen.github.io/xliu-group/zh/post/>Post</a></aside><div id=sharing class="mt3 ananke-socials"></div><h1 class="f1 athelas mt3 mb1">PIV/PLIF Liutex 分析工具 – 基于 PyQt6 的流场涡识别与频谱分析软件</h1><p class=tracked><strong>刘训臣</strong></p><time class="f6 mv4 dib tracked" datetime=2026-06-29T19:00:02+08:00>六月 29, 2026</time></header><div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-100-l"><h2 id=引言>引言</h2><p>在实验流体力学中，<strong>粒子图像测速（PIV）</strong> 与 <strong>平面激光诱导荧光（PLIF）</strong> 是两种广泛使用的光学测量技术。前者能获得瞬时速度场，后者可捕捉标量（如浓度、温度）的空间分布。如何从大量实验数据中高效提取有物理意义的信息，尤其是分离出真实的涡结构，一直是个挑战。</p><p>近年来，<strong>Liutex 涡识别方法</strong>提供了一种严格、无阈值的旋转分解，能够从速度梯度张量中剥离出刚性旋转强度，避免传统判据（如 Q、λ₂）将剪切误判为涡的缺点。</p><p><a href>Liutex 方法简介</a></p><p>我们基于此理论，开发了一款<strong>跨平台、模块化的 GUI 软件</strong>，集成 PIV/PLIF 数据加载、Liutex 计算、多物理量可视化、动画播放以及单点频谱分析等功能。</p><h2 id=软件主要功能>软件主要功能</h2><h3 id=1-多格式数据加载>1. 多格式数据加载</h3><ul><li><strong>PIV</strong>：支持 DaVis 输出的标准 <code>.txt</code> 文件（包括 <code>#DaVis</code> 头格式）以及 TECPLOT 风格的 <code>.dat</code> 文件。自动识别格式，无需手动指定。</li><li><strong>PLIF</strong>：读取 TIFF 图像序列，并提供<strong>边缘保持滤波</strong>、<strong>阈值掩膜</strong>、<strong>模糊增强</strong>等预处理选项，便于与速度场叠加显示。</li><li><strong>Bin 平均</strong>：可自定义下采样倍数，降低数据量并过滤高频噪声。</li><li><strong>原点平移</strong>：支持坐标系平移，方便与其它测量系统对齐。</li></ul><h3 id=2-流场物理量计算>2. 流场物理量计算</h3><p>基于速度场 (u, v) 自动计算：</p><ul><li><strong>基础量</strong>：合速度、涡量、散度、速度梯度分量 $ |\nabla u|, |\nabla v| $</li><li><strong>Liutex</strong>：严格遵循刘超群教授的公式，输出纯旋转强度 \(R\)、剪切贡献 \(S\) 以及局部旋转角速度 $\lambda_{ci}$</li></ul><p>计算核心完全与界面分离，可单独调用，便于批处理或嵌入其它脚本。</p><h3 id=3-可视化与交互>3. 可视化与交互</h3><ul><li>使用 Matplotlib 嵌入 PyQt6 界面，利用 <strong>轮廓填色（contourf）</strong> 显示标量场，并可叠加 <strong>速度矢量（quiver）</strong> 和 <strong>流线（streamline）</strong>。</li><li><strong>PLIF 叠加</strong>：将处理后的 PLIF 标量场以半透明形式覆盖在速度场之上，直观显示标量与流动结构的耦合。</li><li><strong>实时动画</strong>：支持播放/暂停、拖动滑块浏览序列帧。</li><li><strong>交互工具栏</strong>：Matplotlib 内置导航工具栏，支持缩放、平移、保存图片等操作。</li><li>可随时将当前显示的标量场数据导出为 <code>.npy</code> 文件，便于后续分析。</li></ul><figure><img src=/xliu-group/zh/post/xliu_piv_plif_loader/piv_plif_loader_1.png><figcaption><h4>PIV PLIF Liutex 画图工具界面</h4></figcaption></figure><figure><img src=/xliu-group/zh/post/xliu_piv_plif_loader/piv_plif_loader_2.png><figcaption><h4>PIV PLIF Liutex 画图工具界面</h4></figcaption></figure><h3 id=4-单点-fft-分析>4. 单点 FFT 分析</h3><p>在流场图上点击任意位置，软件自动提取该点所有时间步的物理量（如 Liutex、涡量）序列，并进行 FFT 变换，绘制单边幅值谱。这对于识别流动中的周期性特征（如尾涡脱落频率）非常实用。<figure><img src=/xliu-group/zh/post/xliu_piv_plif_loader/piv_plif_loader_3.png><figcaption><h4>PIV PLIF Liutex 画图工具界面</h4></figcaption></figure></p><h2 id=软件架构>软件架构</h2><p>项目遵循 <strong>核心逻辑与 GUI 分离</strong> 的设计原则：</p><div class=code-block><button class=code-copy type=button hidden aria-label="Copy code to clipboard">
+<span class=code-copy-label aria-hidden=true>Copy</span></button><pre tabindex=0><code>piv_plif_loader/
+├── app.py # 程序入口
+├── core/ # 核心算法包（不依赖 Qt）
+│ ├── piv_loader.py # PIV 数据加载器
+│ ├── plif_loader.py # PLIF 数据加载与增强
+│ ├── liutex.py # Liutex 计算
+│ ├── field_calculations.py # 其他物理量计算
+│ └── fft_analyzer.py # FFT 分析
+├── gui/ # 界面包
+│ ├── canvas.py # Matplotlib 画布与工具栏
+│ ├── controls.py # 控制面板
+│ ├── dialogs.py # FFT 结果对话框
+│ └── main_window.py # 主窗口（整合信号与槽）
+└── requirements.txt</code></pre></div><p>核心模块可独立测试、复用；GUI 模块通过信号/槽机制响应控件变化，更新图形。该架构保证了代码的可维护性与可扩展性。</p><h2 id=关键技术点>关键技术点</h2><ul><li><strong>Liutex 求解精度</strong>：在梯度计算中对速度场进行了 NaN/Inf 过滤，并采用中心差分；对坐标间距使用了高精度浮点，避免因 <code>float32</code> 舍入导致网格不等距。</li><li><strong>坐标兼容性</strong>：自动识别并转置 PIV 输出格式，确保与 Matplotlib 的 <code>contourf</code>、<code>streamplot</code> 期望一致；流线绘制前使用 <code>linspace</code> 强制生成绝对等距坐标，避免因浮点误差导致的 <code>'x' values must be equally spaced</code> 错误。</li><li><strong>内存优化</strong>：所有数组均以 <code>float32</code> 存储，数百帧数据仍可流畅操作。</li></ul><h2 id=运行环境与依赖>运行环境与依赖</h2><ul><li>Python ≥ 3.9</li><li>PyQt6</li><li>Matplotlib</li><li>NumPy, Pandas, SciPy</li><li>OpenCV (用于 PLIF 增强)</li><li>可选：imageio（制作 GIF 动画）</li></ul><p>可通过 <code>pip install -r requirements.txt</code> 一键安装依赖。软件已在 Linux (Fedora) 下测试通过，Windows/macOS 理论上也可运行。</p><h2 id=快速上手>快速上手</h2><ol><li>下载压缩包 <a href=/xliu-group/piv_plif_loader.zip>piv_plif_loader</a></li><li>运行 <code>python app.py</code></li><li>点击 <strong>“加载 PIV 序列”</strong> 选择 DaVis 导出的 <code>.txt</code> 或 <code>.dat</code> 文件（支持多选）</li><li>可选：<strong>“加载 PLIF 序列”</strong> 选择 TIFF 图像</li><li>在下拉框中选择要显示的物理量（涡量、散度、Liutex 等）</li><li>勾选 <code>quiver</code> 或 <code>streamline</code> 叠加矢量或流线</li><li>使用工具栏缩放/平移图像，或将数据保存为 <code>.npy</code></li><li>点击 <strong>“在流场上选点”</strong> 后在图像上单击，即可查看该点的 FFT 频谱</li></ol><h2 id=未来计划>未来计划</h2><ul><li>支持三维速度场及三维 Liutex 向量计算</li><li>集成更多涡识别判据（Q、λ₂、Ω）</li><li>增加流线种子点交互选取功能</li><li>提供批量导出报告的功能</li></ul><h2 id=结语>结语</h2><p>本工具旨在为实验流体力学研究者提供一个<strong>轻量、直观且理论严谨</strong>的流场后处理平台。它特别适合处理高速 PIV/PLIF 时序数据，能有效分离出真实涡结构并分析其频谱特性。欢迎大家提出改进建议或贡献代码。</p><p><em>项目地址：<a href=https://github.com/yourname/piv_plif_loader>https://github.com/yourname/piv_plif_loader</a></em> （请替换为实际地址）</p><ul class=pa0></ul><ul class=pa0><li class="list di"><a href=/xliu-group/zh/tags/piv/ class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">PIV</a></li><li class="list di"><a href=/xliu-group/zh/tags/plif/ class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">PLIF</a></li></ul></div></article></main><footer class="bg-black bottom-0 w-100 pa3" role=contentinfo><div class="flex justify-between"><a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href=https://liuxunchen.github.io/xliu-group/zh/>&copy; 刘训臣燃烧诊断实验室主页 2026</a><div><div class=ananke-socials></div></div></div></footer></body></html>
