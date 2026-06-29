@@ -1,4 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>山东科技大学 机械电子工程学院 燃烧诊断实验室 on 刘训臣燃烧诊断实验室主页</title><link>https://liuxunchen.github.io/xliu-group/zh/</link><description>Recent content in 山东科技大学 机械电子工程学院 燃烧诊断实验室 on 刘训臣燃烧诊断实验室主页</description><generator>Hugo</generator><language>zh</language><lastBuildDate>Sat, 20 Jun 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://liuxunchen.github.io/xliu-group/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>山东科技大学学位论文 LaTeX 模板 SDUST_Thesis</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_sdust_thesis/</link><pubDate>Sat, 20 Jun 2026 18:01:22 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_sdust_thesis/</guid><description>`山东科技大学学位论文 LaTeX 模板，符合学校撰写规范，支持硕士/博士/学士，使用 XeLaTeX 编译。</description></item><item><title>胶州调研汇报PPT</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_2026_jiaozhou/</link><pubDate>Fri, 05 Jun 2026 18:12:42 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_2026_jiaozhou/</guid><description>reveal.js 版本slides</description></item><item><title>火焰探测器原理及使用</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/</link><pubDate>Thu, 07 May 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/</guid><description>&lt;p&gt;为了更好的观察火焰的吹熄，购买了型号为YJH-1E的紫外火焰探测器，如图。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>山东科技大学 机械电子工程学院 燃烧诊断实验室 on 刘训臣燃烧诊断实验室主页</title><link>https://liuxunchen.github.io/xliu-group/zh/</link><description>Recent content in 山东科技大学 机械电子工程学院 燃烧诊断实验室 on 刘训臣燃烧诊断实验室主页</description><generator>Hugo</generator><language>zh</language><lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://liuxunchen.github.io/xliu-group/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>反应流体光谱仿真程序 flame spectrum</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/</link><pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/</guid><description>&lt;h1 id="设计思路"&gt;设计思路&lt;/h1&gt;
+&lt;p&gt;传统的光谱仿真需要用户手动查找数据库文件、输入各分子的浓度，这个过程繁琐且容易出错。我们的火焰–光谱联动工具将 &lt;strong&gt;Cantera 化学平衡计算&lt;/strong&gt; 与 &lt;strong&gt;多分子 HITRAN 光谱仿真&lt;/strong&gt; 无缝衔接，实现了“一键式”从燃烧条件到光谱预测的自动化流程。该程序作为 &lt;code&gt;apps/flame_spectrum_apps.py&lt;/code&gt; 独立入口，内部调用已有的 &lt;code&gt;HitranGUI&lt;/code&gt; 窗口完成光谱显示，完全复用了&lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran/"&gt;HITRAN 数据库用法&lt;/a&gt;之前开发的模块。&lt;/p&gt;
+&lt;h2 id="自动分子识别与浓度注入"&gt;自动分子识别与浓度注入&lt;/h2&gt;
+&lt;p&gt;联动工具最核心的改进在于&lt;strong&gt;无需手动选择 par 文件&lt;/strong&gt;。它利用 &lt;code&gt;HitranSpectrum.ISO&lt;/code&gt; 字典中内置的 55 种分子信息，将 Cantera 输出的物种名称（如 &lt;code&gt;CO&lt;/code&gt;, &lt;code&gt;H2O&lt;/code&gt;）自动映射到对应的分子 ID，并根据目录命名规则（&lt;code&gt;01_H2O/&lt;/code&gt;, &lt;code&gt;05_CO/&lt;/code&gt; 等）定位到相应的 &lt;code&gt;.par&lt;/code&gt; 谱线文件。同时，勾选的物种摩尔分数直接从火焰结果中读取，自动填入光谱仿真界面，浓度单位转换为 ppm 显示。整个过程对用户完全透明。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;实现的关键步骤&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在 &lt;code&gt;FlameSpectrumApp&lt;/code&gt; 初始化时，从 &lt;code&gt;HitranSpectrum.ISO&lt;/code&gt; 构建 &lt;code&gt;名称 → 分子ID&lt;/code&gt; 的映射。&lt;/li&gt;
+&lt;li&gt;当用户点击“Launch HITRAN Spectrum Tool”时，遍历勾选的物种，根据分子 ID 和名称拼接文件夹路径，选取其中第一个 &lt;code&gt;.par&lt;/code&gt; 文件。&lt;/li&gt;
+&lt;li&gt;将文件路径和摩尔分数组装成字典，调用 &lt;code&gt;HitranGUI&lt;/code&gt; 新增的 &lt;code&gt;auto_load_molecules()&lt;/code&gt; 方法批量加载。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;auto_load_molecules()&lt;/code&gt; 在后台填充文件表格和浓度控件，并自动更新波数范围。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id="使用流程"&gt;使用流程&lt;/h1&gt;
+&lt;p&gt;化学平衡仿真部分，气体的组分浓度/温度/压力，由化学平衡计算，用Cantera 开源程序计算。输入初始条件，例如温度压力组分，选择化学平衡的约束条件。得到平衡后的热力学状态，比如火焰温度。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;设定燃烧条件&lt;/strong&gt;&lt;br&gt;
+打开 &lt;code&gt;flame_spectrum_apps.py&lt;/code&gt;，在左侧面板选择燃料（如 CH₄）、氧化剂（空气、纯氧或自定义比例），设置当量比、初始温度和压力。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;计算化学平衡&lt;/strong&gt;&lt;br&gt;
+点击 &lt;strong&gt;Calculate Equilibrium&lt;/strong&gt;，Cantera 执行恒压绝热燃烧计算，右侧表格列出所有满足阈值（可调）的产物物种及其摩尔分数、ppm 值。&lt;/p&gt;</description></item><item><title>山东科技大学学位论文 LaTeX 模板 SDUST_Thesis</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_sdust_thesis/</link><pubDate>Sat, 20 Jun 2026 18:01:22 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_sdust_thesis/</guid><description>`山东科技大学学位论文 LaTeX 模板，符合学校撰写规范，支持硕士/博士/学士，使用 XeLaTeX 编译。</description></item><item><title>胶州调研汇报PPT</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_2026_jiaozhou/</link><pubDate>Fri, 05 Jun 2026 18:12:42 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_2026_jiaozhou/</guid><description>reveal.js 版本slides</description></item><item><title>火焰探测器原理及使用</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/</link><pubDate>Thu, 07 May 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/</guid><description>&lt;p&gt;为了更好的观察火焰的吹熄，购买了型号为YJH-1E的紫外火焰探测器，如图。
 &lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/%E6%8E%A2%E6%B5%8B%E5%99%A8.png" alt=""&gt;&lt;/p&gt;
 &lt;p&gt;紫外火焰探测器分为传感器和检测器两部分。&lt;/p&gt;
 &lt;p&gt;传感器核心是紫外光电管，这是一种特殊的气体放电管。其外壳采用紫外透射玻璃，仅允许200-290nm波长的紫外线通过，同时阻挡可见光和大部分红外线，具备“日盲”特性。
@@ -1424,27 +1444,7 @@ TDLAS中用到的模型和定量关系。爱因斯坦系数，HITRAN数据库中
 &lt;p&gt;&lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/xliu_tdlas_biomass/"&gt;空间分辨率问题&lt;/a&gt;从两个不大成功的TDLAS实验说起，讨论了TDLAS方法用于燃烧测量的空间分辨率问题。&lt;/p&gt;
 &lt;p&gt;最近，&lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/2026w10/"&gt;读文献&lt;/a&gt;中也发现了这个问题。
 比较成功的例子是在火焰中测高温的CO2吸收峰，我们用这种很简单的方法在扩散火焰和旋流预混火焰中都测的很好。因为只有火焰中才有高温的CO2，没有背景。&lt;/p&gt;
-&lt;p&gt;只有火焰燃烧才产生N2O，用N2O的吸收光谱去测火焰，这也没有问题，但是不能加腔体。或者因为压力环境的要求，要加腔体，那就要吹扫。但吹扫就要避免对气体火焰有影响。&lt;/p&gt;</description></item><item><title>反应流体光谱仿真程序 flame spectrum</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/</guid><description>&lt;h1 id="设计思路"&gt;设计思路&lt;/h1&gt;
-&lt;p&gt;传统的光谱仿真需要用户手动查找数据库文件、输入各分子的浓度，这个过程繁琐且容易出错。我们的火焰–光谱联动工具将 &lt;strong&gt;Cantera 化学平衡计算&lt;/strong&gt; 与 &lt;strong&gt;多分子 HITRAN 光谱仿真&lt;/strong&gt; 无缝衔接，实现了“一键式”从燃烧条件到光谱预测的自动化流程。该程序作为 &lt;code&gt;apps/flame_spectrum_apps.py&lt;/code&gt; 独立入口，内部调用已有的 &lt;code&gt;HitranGUI&lt;/code&gt; 窗口完成光谱显示，完全复用了&lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran/"&gt;HITRAN 数据库用法&lt;/a&gt;之前开发的模块。&lt;/p&gt;
-&lt;h2 id="自动分子识别与浓度注入"&gt;自动分子识别与浓度注入&lt;/h2&gt;
-&lt;p&gt;联动工具最核心的改进在于&lt;strong&gt;无需手动选择 par 文件&lt;/strong&gt;。它利用 &lt;code&gt;HitranSpectrum.ISO&lt;/code&gt; 字典中内置的 55 种分子信息，将 Cantera 输出的物种名称（如 &lt;code&gt;CO&lt;/code&gt;, &lt;code&gt;H2O&lt;/code&gt;）自动映射到对应的分子 ID，并根据目录命名规则（&lt;code&gt;01_H2O/&lt;/code&gt;, &lt;code&gt;05_CO/&lt;/code&gt; 等）定位到相应的 &lt;code&gt;.par&lt;/code&gt; 谱线文件。同时，勾选的物种摩尔分数直接从火焰结果中读取，自动填入光谱仿真界面，浓度单位转换为 ppm 显示。整个过程对用户完全透明。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;实现的关键步骤&lt;/strong&gt;：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;在 &lt;code&gt;FlameSpectrumApp&lt;/code&gt; 初始化时，从 &lt;code&gt;HitranSpectrum.ISO&lt;/code&gt; 构建 &lt;code&gt;名称 → 分子ID&lt;/code&gt; 的映射。&lt;/li&gt;
-&lt;li&gt;当用户点击“Launch HITRAN Spectrum Tool”时，遍历勾选的物种，根据分子 ID 和名称拼接文件夹路径，选取其中第一个 &lt;code&gt;.par&lt;/code&gt; 文件。&lt;/li&gt;
-&lt;li&gt;将文件路径和摩尔分数组装成字典，调用 &lt;code&gt;HitranGUI&lt;/code&gt; 新增的 &lt;code&gt;auto_load_molecules()&lt;/code&gt; 方法批量加载。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;auto_load_molecules()&lt;/code&gt; 在后台填充文件表格和浓度控件，并自动更新波数范围。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id="使用流程"&gt;使用流程&lt;/h1&gt;
-&lt;p&gt;化学平衡仿真部分，气体的组分浓度/温度/压力，由化学平衡计算，用Cantera 开源程序计算。输入初始条件，例如温度压力组分，选择化学平衡的约束条件。得到平衡后的热力学状态，比如火焰温度。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;设定燃烧条件&lt;/strong&gt;&lt;br&gt;
-打开 &lt;code&gt;flame_spectrum_apps.py&lt;/code&gt;，在左侧面板选择燃料（如 CH₄）、氧化剂（空气、纯氧或自定义比例），设置当量比、初始温度和压力。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;计算化学平衡&lt;/strong&gt;&lt;br&gt;
-点击 &lt;strong&gt;Calculate Equilibrium&lt;/strong&gt;，Cantera 执行恒压绝热燃烧计算，右侧表格列出所有满足阈值（可调）的产物物种及其摩尔分数、ppm 值。&lt;/p&gt;</description></item><item><title>燃烧器</title><link>https://liuxunchen.github.io/xliu-group/zh/research/burner/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/research/burner/</guid><description>&lt;p&gt;我们的研究对象是各种燃烧器。包括：&lt;/p&gt;
+&lt;p&gt;只有火焰燃烧才产生N2O，用N2O的吸收光谱去测火焰，这也没有问题，但是不能加腔体。或者因为压力环境的要求，要加腔体，那就要吹扫。但吹扫就要避免对气体火焰有影响。&lt;/p&gt;</description></item><item><title>燃烧器</title><link>https://liuxunchen.github.io/xliu-group/zh/research/burner/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/research/burner/</guid><description>&lt;p&gt;我们的研究对象是各种燃烧器。包括：&lt;/p&gt;
 &lt;p&gt;平面燃烧器
 &lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/huihao2/"&gt;2025年氢氧火头&lt;/a&gt;
 &lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/huihao6/"&gt;2026年氢氧火头&lt;/a&gt;&lt;/p&gt;
