@@ -1,24 +1,56 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Post on 刘训臣燃烧诊断实验室主页</title><link>https://liuxunchen.github.io/xliu-group/zh/post/</link><description>Recent content in Post on 刘训臣燃烧诊断实验室主页</description><generator>Hugo</generator><language>zh</language><lastBuildDate>Sun, 28 Jun 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://liuxunchen.github.io/xliu-group/zh/post/index.xml" rel="self" type="application/rss+xml"/><item><title>反应流体光谱仿真程序 flame spectrum</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/</link><pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/</guid><description>&lt;h1 id="设计思路"&gt;设计思路&lt;/h1&gt;
-&lt;p&gt;传统的光谱仿真需要用户手动查找数据库文件、输入各分子的浓度，这个过程繁琐且容易出错。我们的火焰–光谱联动工具将 &lt;strong&gt;Cantera 化学平衡计算&lt;/strong&gt; 与 &lt;strong&gt;多分子 HITRAN 光谱仿真&lt;/strong&gt; 无缝衔接，实现了“一键式”从燃烧条件到光谱预测的自动化流程。该程序作为 &lt;code&gt;apps/flame_spectrum_apps.py&lt;/code&gt; 独立入口，内部调用已有的 &lt;code&gt;HitranGUI&lt;/code&gt; 窗口完成光谱显示，完全复用了&lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran/"&gt;HITRAN 数据库用法&lt;/a&gt;之前开发的模块。&lt;/p&gt;
-&lt;h2 id="自动分子识别与浓度注入"&gt;自动分子识别与浓度注入&lt;/h2&gt;
-&lt;p&gt;联动工具最核心的改进在于&lt;strong&gt;无需手动选择 par 文件&lt;/strong&gt;。它利用 &lt;code&gt;HitranSpectrum.ISO&lt;/code&gt; 字典中内置的 55 种分子信息，将 Cantera 输出的物种名称（如 &lt;code&gt;CO&lt;/code&gt;, &lt;code&gt;H2O&lt;/code&gt;）自动映射到对应的分子 ID，并根据目录命名规则（&lt;code&gt;01_H2O/&lt;/code&gt;, &lt;code&gt;05_CO/&lt;/code&gt; 等）定位到相应的 &lt;code&gt;.par&lt;/code&gt; 谱线文件。同时，勾选的物种摩尔分数直接从火焰结果中读取，自动填入光谱仿真界面，浓度单位转换为 ppm 显示。整个过程对用户完全透明。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;实现的关键步骤&lt;/strong&gt;：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;在 &lt;code&gt;FlameSpectrumApp&lt;/code&gt; 初始化时，从 &lt;code&gt;HitranSpectrum.ISO&lt;/code&gt; 构建 &lt;code&gt;名称 → 分子ID&lt;/code&gt; 的映射。&lt;/li&gt;
-&lt;li&gt;当用户点击“Launch HITRAN Spectrum Tool”时，遍历勾选的物种，根据分子 ID 和名称拼接文件夹路径，选取其中第一个 &lt;code&gt;.par&lt;/code&gt; 文件。&lt;/li&gt;
-&lt;li&gt;将文件路径和摩尔分数组装成字典，调用 &lt;code&gt;HitranGUI&lt;/code&gt; 新增的 &lt;code&gt;auto_load_molecules()&lt;/code&gt; 方法批量加载。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;auto_load_molecules()&lt;/code&gt; 在后台填充文件表格和浓度控件，并自动更新波数范围。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id="使用流程"&gt;使用流程&lt;/h1&gt;
-&lt;p&gt;化学平衡仿真部分，气体的组分浓度/温度/压力，由化学平衡计算，用Cantera 开源程序计算。输入初始条件，例如温度压力组分，选择化学平衡的约束条件。得到平衡后的热力学状态，比如火焰温度。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;设定燃烧条件&lt;/strong&gt;&lt;br&gt;
-打开 &lt;code&gt;flame_spectrum_apps.py&lt;/code&gt;，在左侧面板选择燃料（如 CH₄）、氧化剂（空气、纯氧或自定义比例），设置当量比、初始温度和压力。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;计算化学平衡&lt;/strong&gt;&lt;br&gt;
-点击 &lt;strong&gt;Calculate Equilibrium&lt;/strong&gt;，Cantera 执行恒压绝热燃烧计算，右侧表格列出所有满足阈值（可调）的产物物种及其摩尔分数、ppm 值。&lt;/p&gt;</description></item><item><title>山东科技大学学位论文 LaTeX 模板 SDUST_Thesis</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_sdust_thesis/</link><pubDate>Sat, 20 Jun 2026 18:01:22 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_sdust_thesis/</guid><description>`山东科技大学学位论文 LaTeX 模板，符合学校撰写规范，支持硕士/博士/学士，使用 XeLaTeX 编译。</description></item><item><title>胶州调研汇报PPT</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_2026_jiaozhou/</link><pubDate>Fri, 05 Jun 2026 18:12:42 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_2026_jiaozhou/</guid><description>reveal.js 版本slides</description></item><item><title>火焰探测器原理及使用</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/</link><pubDate>Thu, 07 May 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/</guid><description>&lt;p&gt;为了更好的观察火焰的吹熄，购买了型号为YJH-1E的紫外火焰探测器，如图。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Post on 刘训臣燃烧诊断实验室主页</title><link>https://liuxunchen.github.io/xliu-group/zh/post/</link><description>Recent content in Post on 刘训臣燃烧诊断实验室主页</description><generator>Hugo</generator><language>zh</language><lastBuildDate>Mon, 29 Jun 2026 09:13:01 +0800</lastBuildDate><atom:link href="https://liuxunchen.github.io/xliu-group/zh/post/index.xml" rel="self" type="application/rss+xml"/><item><title>HITRAN 仿真图形界面</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran_gui/</link><pubDate>Mon, 29 Jun 2026 09:13:01 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran_gui/</guid><description>HITRAN 数据库仿真 GUI</description></item><item><title>PIV</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_piv/</link><pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_piv/</guid><description>PIV 方法</description></item><item><title>TDLAS 的仿真和局限</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_tdlas/</link><pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_tdlas/</guid><description>TDLAS 简单总结</description></item><item><title>反应流体光谱仿真程序 flame spectrum</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/</link><pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/</guid><description>Cantera 反应流体仿真联动HITRAN光谱仿真程序GUI</description></item><item><title>山东科技大学学位论文 LaTeX 模板 SDUST_Thesis</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_sdust_thesis/</link><pubDate>Sat, 20 Jun 2026 18:01:22 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_sdust_thesis/</guid><description>山东科技大学学位论文 LaTeX 模板，符合学校撰写规范，支持硕士/博士/学士，使用 XeLaTeX 编译。</description></item><item><title>气泡雾化喷嘴实验</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao3_nozzle_expt/</link><pubDate>Wed, 17 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao3_nozzle_expt/</guid><description>&lt;h1 id="气泡雾化喷嘴通气不通气对比实验"&gt;气泡雾化喷嘴通气/不通气对比实验&lt;/h1&gt;
+&lt;h2 id="一为什么要做这个对比实验"&gt;一、为什么要做这个对比实验？&lt;/h2&gt;
+&lt;p&gt;在之前的组会汇报和博客里，我们反复讨论过气泡雾化喷嘴的核心原理——雾化的动力不是液体的高压，而是气泡在喷口处的爆破。
+这个概念用文字说一百遍，不如两张对比图来得直观。所以，我用简化后的三通+金属泡沫喷嘴原型，做了一组简单的“不通气 vs 通气”对比实验，用同一套供液条件，直观展示气体在气泡雾化中扮演的关键角色。&lt;/p&gt;
+&lt;h2 id="二实验设置"&gt;二、实验设置&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;喷嘴：三通 + 金属泡沫 + 螺帽（排放孔 φ1.0mm）简化原型&lt;/li&gt;
+&lt;li&gt;液体：水&lt;/li&gt;
+&lt;li&gt;供液：齿轮泵（后续已计划更换为柱塞泵）&lt;/li&gt;
+&lt;li&gt;供气：氮气瓶 + 减压阀，气体压力略高于液体压力&lt;/li&gt;
+&lt;li&gt;拍摄：手机高速摄影模式
+两组对照条件：
+| 工况 | 液体压力 | 气体供给 | 备注 |
+| 不通气 | 泵正常供液 | 关闭气体阀门 | 纯压力雾化模式 |
+| 通气 | 泵正常供液 | 打开气体阀门（低压，~0.4 MPa） | 气泡雾化模式 |&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="三实验结果"&gt;三、实验结果&lt;/h2&gt;
+&lt;h3 id="31-不通气状态"&gt;3.1 不通气状态&lt;/h3&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img src="%E4%B8%8D%E9%80%9A%E6%B0%94.png"&gt;&lt;figcaption&gt;
+			&lt;h4&gt;不通气实验图&lt;/h4&gt;
+		&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+在关闭气体阀门后，液体仅依靠齿轮泵的压力通过喷嘴。可以看到：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;液体呈连续液柱或粗大液丝流出，几乎看不到雾化效果。&lt;/li&gt;
+&lt;li&gt;液体在离开喷口后，靠自身重力和初始动量下落，表面张力使其保持完整。&lt;/li&gt;
+&lt;li&gt;喷口附近没有任何“爆破”或分散的迹象。
+一句话总结：没有气体，这就是个“滋水枪”，不是“喷雾器”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="32-通气状态"&gt;3.2 通气状态&lt;/h3&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img src="%E9%80%9A%E6%B0%941.png"&gt;&lt;figcaption&gt;
+			&lt;h4&gt;通气实验图1&lt;/h4&gt;
+		&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure&gt;&lt;img src="%E9%80%9A%E6%B0%942.png"&gt;&lt;figcaption&gt;
+			&lt;h4&gt;通气实验图2&lt;/h4&gt;
+		&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+打开气体阀门后，压缩氮气通过金属泡沫微孔注入液体，形成气液两相泡状流。可以看到：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;喷口处立刻形成明显的雾化锥，液体被分散成大量细小液滴。&lt;/li&gt;
+&lt;li&gt;喷雾呈扇形向外扩散，肉眼可见的液滴群代替了原先的连续液柱。&lt;/li&gt;
+&lt;li&gt;即便液体压力和流量没有改变，雾化效果发生了质的变化。
+一句话总结：气体一打开，水柱变雾锥——这就是气泡爆破的力量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="四现象背后的原理"&gt;四、现象背后的原理&lt;/h2&gt;
+&lt;p&gt;这组对比实验完美诠释了气泡雾化的核心机制：
+1.不通气时（纯压力雾化）：液体雾化依赖高压力产生的剪切力。齿轮泵提供的压力远不足以让水在1.0mm小孔中达到雾化所需的速度，所以只能形成液柱。
+2.通气时（气泡雾化）：气体在混合室（三通 + 金属泡沫）内与液体混合，形成大量被液膜包裹的微小气泡。当这些气泡随液体一起从排放孔喷出时，外部压力骤降，气泡急剧膨胀并爆破，把包裹它的液膜“炸”成微小液滴。这个过程的驱动力是气泡的内外压差，与液体压力大小关系不大。
+这也正是金如山老师在文献笔记里反复强调的——“气泡雾化不依赖液体高压，靠气泡爆破”。&lt;/p&gt;</description></item><item><title>胶州调研汇报PPT</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_2026_jiaozhou/</link><pubDate>Fri, 05 Jun 2026 18:12:42 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_2026_jiaozhou/</guid><description>reveal.js 版本slides</description></item><item><title>火焰探测器原理及使用</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/</link><pubDate>Thu, 07 May 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/</guid><description>&lt;p&gt;为了更好的观察火焰的吹熄，购买了型号为YJH-1E的紫外火焰探测器，如图。
 &lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/%E6%8E%A2%E6%B5%8B%E5%99%A8.png" alt=""&gt;&lt;/p&gt;
 &lt;p&gt;紫外火焰探测器分为传感器和检测器两部分。&lt;/p&gt;
 &lt;p&gt;传感器核心是紫外光电管，这是一种特殊的气体放电管。其外壳采用紫外透射玻璃，仅允许200-290nm波长的紫外线通过，同时阻挡可见光和大部分红外线，具备“日盲”特性。
@@ -219,7 +251,8 @@
 &lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin5_qtf/image2.png" alt="晶振的接线示意图"&gt;&lt;/p&gt;
 &lt;p&gt;接好线后可以使用信号发生器输出一个与晶振频率相同的正弦波，通过滤波后即可通过六位半电压表测量出它的电压强度，信号发生器输出正弦信号，振幅2v，从32760记录至32768HZ，在未采集到明显峰时步长设置0.1HZ，在电压显著变化处步长设置为0.05HZ，每步步长间隔时间至少10s，等基本不存在较大变化后开始采样，每个频率采样100次求算平均值以消除噪声的干扰，同理在扫描后再反扫，所得结果记录如下图所示可以绘制频率和滤波电压结果如下图所示
 &lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin5_qtf/image3.png" alt="实验结果"&gt;
-可以确定晶体振荡器在电信号频率为32763.15Hz的时候，电压响应接近最大值，实际实验中需要先以此为指导，确定实验中使用的最佳相应频率是多少&lt;/p&gt;</description></item><item><title>Hencken炉的最新进展</title><link>https://liuxunchen.github.io/xliu-group/zh/post/huihao6/</link><pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/huihao6/</guid><description>&lt;p&gt;自2025年6月12日在连云港实验过第一次设计的Hencken炉后，出现了一些问题，后面又进行了改进，现在再更新一次最新的进展。&lt;/p&gt;
+可以确定晶体振荡器在电信号频率为32763.15Hz的时候，电压响应接近最大值，实际实验中需要先以此为指导，确定实验中使用的最佳相应频率是多少&lt;/p&gt;</description></item><item><title>Hencken炉的最新进展</title><link>https://liuxunchen.github.io/xliu-group/zh/post/huihao6/</link><pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/huihao6/</guid><description>&lt;p&gt;平面燃烧器有良好的空间均匀性和时间稳定性。可以用于各种激光诊断方法的标定。可以烧氢氧火焰，温度达到3000K。&lt;/p&gt;
+&lt;p&gt;自2025年6月12日在连云港实验过第一次设计的Hencken炉后，出现了一些问题，后面又进行了改进，现在再更新一次最新的进展。&lt;/p&gt;
 &lt;p&gt;在连云港实验过程中发现的主要问题：由于氢氧燃料口排布间距过远，导致氢氧气的混合不均匀，没有达到理想的温度；进气腔没有做一个类似于静压室的结构导致气体流速在不同燃料口不均匀，进而导致燃烧不均匀不稳定。
 当时主要的实验条件：氢气流量：50slm-500slm、氧气流量：25slm-150slm；前面几组是在当量比为1的条件下进行试验，之后进行大流量时，将氢气调大。燃烧情况如图：
 &lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/huihao6/image1.png" alt="氢氧流量分别为200-100时的燃烧情况"&gt;
@@ -372,7 +405,7 @@ t为冷端温度，单位（℃）
 		&lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;p&gt;最后我们也可以删除不需要的气体浓度，总之该方法能为从事气体光谱模拟检测研究工作的研究者提供一定便利，我们会继续改进，后续如有问题欢迎留言。&lt;/p&gt;</description></item><item><title>HITRAN 数据库用法</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran/</link><pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran/</guid><description>HITRAN 数据库 line by line 计算代码和GUI</description></item><item><title>吸收光谱简介</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_absorption/</link><pubDate>Fri, 03 Oct 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_absorption/</guid><description>&lt;h2 id="简介"&gt;简介&lt;/h2&gt;
+&lt;p&gt;最后我们也可以删除不需要的气体浓度，总之该方法能为从事气体光谱模拟检测研究工作的研究者提供一定便利，我们会继续改进，后续如有问题欢迎留言。&lt;/p&gt;</description></item><item><title>HITRAN 数据库用法</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran/</link><pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran/</guid><description>HITRAN 数据库 line by line 计算代码</description></item><item><title>吸收光谱简介</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_absorption/</link><pubDate>Fri, 03 Oct 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_absorption/</guid><description>&lt;h2 id="简介"&gt;简介&lt;/h2&gt;
 &lt;p&gt;在燃烧诊断中，吸收光谱的测量方法从光源上分非激光和激光两大类。
 传统的非激光的吸收光谱测量，最早从 Hertzberg 那时侯开始，多采用宽频的非相干光源如闪光灯和红外热幅射光源，结合光栅、滤片或者干涉仪进行分光，通过测量不同波长电磁波的透射光强被火焰吸收减弱得到吸收光谱定量信息，就可以获得燃烧体系中分子浓度、温度、压力和速度的信息，能得到很多对火焰结构的测量结果和深刻理解。
 比如Gaydon的书《Flames，Their Structure, Radiation, and Temperature》&lt;/p&gt;
@@ -495,7 +528,69 @@ C 点，吹熄完全由燃料射流本身产生的应变效应引起的。
 &lt;p&gt;而不能反过来，不能因为灯泡去盖一个房子。
 但这样往往比较容易申请到“大项目”，可以下一步争取到“大帽子”，名利双收。
 这种科研上的盲目扩张和恒大爆雷没有本质区别。
-趋之若鹜，其实是浪费资源，也浪费了自己宝贵的科研时间。&lt;/p&gt;</description></item><item><title>低空经济会议</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_dikong/</link><pubDate>Sun, 29 Jun 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_dikong/</guid><description>&lt;p&gt;2025年6月28日我们学院组织了一个低空经济为主题的会。并且有一个低空经济现代产业学院的揭牌仪式。欢迎大家来参会！感谢来做报告的专家！&lt;/p&gt;
+趋之若鹜，其实是浪费资源，也浪费了自己宝贵的科研时间。&lt;/p&gt;</description></item><item><title>Diagnostic</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_diagnostic/</link><pubDate>Mon, 30 Jun 2025 01:26:06 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_diagnostic/</guid><description>&lt;p&gt;激光燃烧诊断技术通过测量激光与燃烧场中物质的吸收、发射、散射相互作用，可以得到原位定量的火焰温度、组分浓度和流场密度、压力、速度等信息，具有极高的时空分辨率、灵敏度与选择性，是最主要的非接触燃烧实验方法。
+常见的激光与燃烧场介质相互作用包括激光吸收光谱（红外波段TDLAS）、自发光、平面激光诱导荧光（PLIF）、米散射（PIV）、瑞利散射（Rayleigh）、拉曼散射（Raman）、和多普勒效应等过程，这几种测试方法各有优缺点、互为补充，总的发展趋势是从线平均测量到场分辨测量，从低频稳态测量到高频动态测量。&lt;/p&gt;
+&lt;p&gt;激光燃烧诊断的核心设备是激光光源。
+采用激光的测量方法具有极高的空间、时间和光子频率的精度。
+通过在不同波段扫描激光波长得到光谱，激光测量的能量精度，可以精确测量物质的能级结构。
+激光的相干性，使其可以在空间上精确控制。
+而在时间上，纳秒、皮秒、飞秒、甚至阿秒激光脉冲可以用于测量湍流、激波、分子内部原子核与电子的运动。&lt;/p&gt;
+&lt;p&gt;“一代激光器,一代测试方法”。&lt;/p&gt;
+&lt;p&gt;近年来，使用超短脉冲激光、高频脉冲串激光、高功率光纤激光等先进激光的新一代燃烧流场测试技术迅速发展，其特点为高重复频率、高脉冲能量、高可靠性。先进燃烧诊断方法逐渐从实验室基础研究方法，发展为可以用于复杂恶劣环境的发动机实验台实用测试工具，成为世界各航天强国工程应用的主要方法和关注热点。&lt;/p&gt;
+&lt;p&gt;光测诊断方法的优点是对火焰无干扰&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;。
+火焰中的分子或者颗粒作为“探针”，通过考察分子和光（通常是激光）的相互作用，获得难以测量的流体（特别是反应流体）的温度、压力、速度、浓度等信息。
+用非接触方法测量反应流体，不会影响要测的流体，也不会烧坏探针。&lt;/p&gt;
+&lt;p&gt;从激光与物质的相互作用区分，可以分为吸收（TDLAS）、吸收发射(LIF)、散射(Rayleigh Raman)三大类。
+更多简介，请看笔者写的一个光谱诊断方法的简介文件。
+&lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/xliu_diagnostic/%E5%85%89%E8%B0%B1%E8%AF%8A%E6%96%AD.pdf"&gt;光谱诊断方法简介&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;从测量方法分，光测方法主要分为两类：&lt;/p&gt;
+&lt;p&gt;一、测光谱。这里包括吸收光谱、荧光、散射等光谱。光谱方法的优点是得到分子本身的信息多，可以得到定量的信息。
+二、成像拍照。包括PIV PLIF Rayleigh Raman等成像。成像方法可以提供较高的空间分辨率，采用恰当的数据处理方法，目标是直接通过图像能够准确地区分不同组分，并精确地测量温度、不同组分的浓度。&lt;/p&gt;
+&lt;p&gt;下面是常用的几种激光诊断方法的示意图。
+&lt;figure&gt;&lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/xliu_diagnostic/method.png"&gt;&lt;figcaption&gt;
+			&lt;h4&gt;常见的激光诊断方法 [Wolfrum](https://pubs.rsc.org/en/content/articlelanding/2002/fd/b107878j).&lt;/h4&gt;
+		&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;从测量得到的信息区分：&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style="text-align: center"&gt;&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;温度&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;浓度&lt;/th&gt;
+					&lt;th&gt;速度&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;点&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;CARS&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;&lt;/td&gt;
+					&lt;td&gt;LDA&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;线&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;TDLAS&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;TDLAS&lt;/td&gt;
+					&lt;td&gt;TDLAS（Doppler）&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;面&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;PLIF/Rayleigh（分布）&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;PLIF（分布）&lt;/td&gt;
+					&lt;td&gt;Rayleigh PIV&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class="footnotes" role="doc-endnotes"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;激光能量相对于火焰不是太大，但在LII中有激光能量加热soot的问题。&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink"&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description></item><item><title>低空经济会议</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_dikong/</link><pubDate>Sun, 29 Jun 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_dikong/</guid><description>&lt;p&gt;2025年6月28日我们学院组织了一个低空经济为主题的会。并且有一个低空经济现代产业学院的揭牌仪式。欢迎大家来参会！感谢来做报告的专家！&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://cmee.sdust.edu.cn/info/1002/6607.htm"&gt;2025低空技术与装备研讨会在青岛召开&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://cmee.sdust.edu.cn/info/1002/6608.htm"&gt;机电学院举办低空技术与装备专业建设论坛&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/xliu_dikong/1.png" alt="1"&gt;
