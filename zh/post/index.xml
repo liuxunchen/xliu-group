@@ -1,48 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Post on 刘训臣燃烧诊断实验室主页</title><link>https://liuxunchen.github.io/xliu-group/zh/post/</link><description>Recent content in Post on 刘训臣燃烧诊断实验室主页</description><generator>Hugo</generator><language>zh</language><lastBuildDate>Mon, 29 Jun 2026 19:00:02 +0800</lastBuildDate><atom:link href="https://liuxunchen.github.io/xliu-group/zh/post/index.xml" rel="self" type="application/rss+xml"/><item><title>PIV/PLIF Liutex 分析工具 – 基于 PyQt6 的流场涡识别与频谱分析软件</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_piv_plif_loader/</link><pubDate>Mon, 29 Jun 2026 19:00:02 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_piv_plif_loader/</guid><description>&lt;h2 id="引言"&gt;引言&lt;/h2&gt;
-&lt;p&gt;在实验流体力学中，&lt;strong&gt;粒子图像测速（PIV）&lt;/strong&gt; 与 &lt;strong&gt;平面激光诱导荧光（PLIF）&lt;/strong&gt; 是两种广泛使用的光学测量技术。前者能获得瞬时速度场，后者可捕捉标量（如浓度、温度）的空间分布。如何从大量实验数据中高效提取有物理意义的信息，尤其是分离出真实的涡结构，一直是个挑战。&lt;/p&gt;
-&lt;p&gt;近年来，&lt;strong&gt;Liutex 涡识别方法&lt;/strong&gt;提供了一种严格、无阈值的旋转分解，能够从速度梯度张量中剥离出刚性旋转强度，避免传统判据（如 Q、λ₂）将剪切误判为涡的缺点。&lt;/p&gt;
-&lt;p&gt;&lt;a href=""&gt;Liutex 方法简介&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;我们基于此理论，开发了一款&lt;strong&gt;跨平台、模块化的 GUI 软件&lt;/strong&gt;，集成 PIV/PLIF 数据加载、Liutex 计算、多物理量可视化、动画播放以及单点频谱分析等功能。&lt;/p&gt;
-&lt;h2 id="软件主要功能"&gt;软件主要功能&lt;/h2&gt;
-&lt;h3 id="1-多格式数据加载"&gt;1. 多格式数据加载&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;PIV&lt;/strong&gt;：支持 DaVis 输出的标准 &lt;code&gt;.txt&lt;/code&gt; 文件（包括 &lt;code&gt;#DaVis&lt;/code&gt; 头格式）以及 TECPLOT 风格的 &lt;code&gt;.dat&lt;/code&gt; 文件。自动识别格式，无需手动指定。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;PLIF&lt;/strong&gt;：读取 TIFF 图像序列，并提供&lt;strong&gt;边缘保持滤波&lt;/strong&gt;、&lt;strong&gt;阈值掩膜&lt;/strong&gt;、&lt;strong&gt;模糊增强&lt;/strong&gt;等预处理选项，便于与速度场叠加显示。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Bin 平均&lt;/strong&gt;：可自定义下采样倍数，降低数据量并过滤高频噪声。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;原点平移&lt;/strong&gt;：支持坐标系平移，方便与其它测量系统对齐。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id="2-流场物理量计算"&gt;2. 流场物理量计算&lt;/h3&gt;
-&lt;p&gt;基于速度场 (u, v) 自动计算：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;基础量&lt;/strong&gt;：合速度、涡量、散度、速度梯度分量 $ |\nabla u|, |\nabla v| $&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Liutex&lt;/strong&gt;：严格遵循刘超群教授的公式，输出纯旋转强度 \(R\)、剪切贡献 \(S\) 以及局部旋转角速度 $\lambda_{ci}$&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;计算核心完全与界面分离，可单独调用，便于批处理或嵌入其它脚本。&lt;/p&gt;
-&lt;h3 id="3-可视化与交互"&gt;3. 可视化与交互&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;使用 Matplotlib 嵌入 PyQt6 界面，利用 &lt;strong&gt;轮廓填色（contourf）&lt;/strong&gt; 显示标量场，并可叠加 &lt;strong&gt;速度矢量（quiver）&lt;/strong&gt; 和 &lt;strong&gt;流线（streamline）&lt;/strong&gt;。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;PLIF 叠加&lt;/strong&gt;：将处理后的 PLIF 标量场以半透明形式覆盖在速度场之上，直观显示标量与流动结构的耦合。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;实时动画&lt;/strong&gt;：支持播放/暂停、拖动滑块浏览序列帧。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;交互工具栏&lt;/strong&gt;：Matplotlib 内置导航工具栏，支持缩放、平移、保存图片等操作。&lt;/li&gt;
-&lt;li&gt;可随时将当前显示的标量场数据导出为 &lt;code&gt;.npy&lt;/code&gt; 文件，便于后续分析。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure&gt;&lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/xliu_piv_plif_loader/piv_plif_loader_1.png"&gt;&lt;figcaption&gt;
-			&lt;h4&gt; PIV PLIF Liutex 画图工具界面&lt;/h4&gt;
-		&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;figure&gt;&lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/xliu_piv_plif_loader/piv_plif_loader_2.png"&gt;&lt;figcaption&gt;
-			&lt;h4&gt; PIV PLIF Liutex 画图工具界面&lt;/h4&gt;
-		&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;h3 id="4-单点-fft-分析"&gt;4. 单点 FFT 分析&lt;/h3&gt;
-&lt;p&gt;在流场图上点击任意位置，软件自动提取该点所有时间步的物理量（如 Liutex、涡量）序列，并进行 FFT 变换，绘制单边幅值谱。这对于识别流动中的周期性特征（如尾涡脱落频率）非常实用。
-&lt;figure&gt;&lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/xliu_piv_plif_loader/piv_plif_loader_3.png"&gt;&lt;figcaption&gt;
-			&lt;h4&gt; PIV PLIF Liutex 画图工具界面&lt;/h4&gt;
-		&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;/p&gt;</description></item><item><title>HITRAN 仿真图形界面</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran_gui/</link><pubDate>Mon, 29 Jun 2026 09:13:01 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran_gui/</guid><description>HITRAN 数据库仿真 GUI</description></item><item><title>PIV</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_piv/</link><pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_piv/</guid><description>PIV 方法</description></item><item><title>TDLAS 的仿真和局限</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_tdlas/</link><pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_tdlas/</guid><description>TDLAS 简单总结</description></item><item><title>反应流体光谱仿真程序 flame spectrum</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/</link><pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/</guid><description>Cantera 反应流体仿真联动HITRAN光谱仿真程序GUI</description></item><item><title>山东科技大学学位论文 LaTeX 模板 SDUST_Thesis</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_sdust_thesis/</link><pubDate>Sat, 20 Jun 2026 18:01:22 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_sdust_thesis/</guid><description>山东科技大学学位论文 LaTeX 模板，符合学校撰写规范，支持硕士/博士/学士，使用 XeLaTeX 编译。</description></item><item><title>气泡雾化喷嘴实验</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao3_nozzle_expt/</link><pubDate>Wed, 17 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao3_nozzle_expt/</guid><description>&lt;h1 id="气泡雾化喷嘴通气不通气对比实验"&gt;气泡雾化喷嘴通气/不通气对比实验&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Post on 刘训臣燃烧诊断实验室主页</title><link>https://liuxunchen.github.io/xliu-group/zh/post/</link><description>Recent content in Post on 刘训臣燃烧诊断实验室主页</description><generator>Hugo</generator><language>zh</language><lastBuildDate>Mon, 29 Jun 2026 19:00:02 +0800</lastBuildDate><atom:link href="https://liuxunchen.github.io/xliu-group/zh/post/index.xml" rel="self" type="application/rss+xml"/><item><title>PIV/PLIF Liutex 分析工具 – 基于 PyQt6 的流场涡识别与频谱分析软件</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_piv_plif_loader/</link><pubDate>Mon, 29 Jun 2026 19:00:02 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_piv_plif_loader/</guid><description>读取PIV PLIF 数据画图，并计算Liutex等各种标量场的图形界面</description></item><item><title>HITRAN 仿真图形界面</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran_gui/</link><pubDate>Mon, 29 Jun 2026 09:13:01 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran_gui/</guid><description>HITRAN 数据库仿真 GUI</description></item><item><title>PIV</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_piv/</link><pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_piv/</guid><description>PIV 方法</description></item><item><title>TDLAS 的仿真和局限</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_tdlas/</link><pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_tdlas/</guid><description>TDLAS 简单总结</description></item><item><title>反应流体光谱仿真程序 flame spectrum</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/</link><pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_flame_spectrum/</guid><description>Cantera 反应流体仿真联动HITRAN光谱仿真程序GUI</description></item><item><title>山东科技大学学位论文 LaTeX 模板 SDUST_Thesis</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_sdust_thesis/</link><pubDate>Sat, 20 Jun 2026 18:01:22 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_sdust_thesis/</guid><description>山东科技大学学位论文 LaTeX 模板，符合学校撰写规范，支持硕士/博士/学士，使用 XeLaTeX 编译。</description></item><item><title>气泡雾化喷嘴实验</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao3_nozzle_expt/</link><pubDate>Wed, 17 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao3_nozzle_expt/</guid><description>&lt;h1 id="气泡雾化喷嘴通气不通气对比实验"&gt;气泡雾化喷嘴通气/不通气对比实验&lt;/h1&gt;
 &lt;h2 id="一为什么要做这个对比实验"&gt;一、为什么要做这个对比实验？&lt;/h2&gt;
 &lt;p&gt;在之前的组会汇报和博客里，我们反复讨论过气泡雾化喷嘴的核心原理——雾化的动力不是液体的高压，而是气泡在喷口处的爆破。
 这个概念用文字说一百遍，不如两张对比图来得直观。所以，我用简化后的三通+金属泡沫喷嘴原型，做了一组简单的“不通气 vs 通气”对比实验，用同一套供液条件，直观展示气体在气泡雾化中扮演的关键角色。&lt;/p&gt;
@@ -449,7 +405,27 @@ t为冷端温度，单位（℃）
 		&lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;p&gt;最后我们也可以删除不需要的气体浓度，总之该方法能为从事气体光谱模拟检测研究工作的研究者提供一定便利，我们会继续改进，后续如有问题欢迎留言。&lt;/p&gt;</description></item><item><title>HITRAN 数据库用法</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran/</link><pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran/</guid><description>HITRAN 数据库 line by line 计算代码</description></item><item><title>吸收光谱简介</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_absorption/</link><pubDate>Fri, 03 Oct 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_absorption/</guid><description>&lt;h2 id="简介"&gt;简介&lt;/h2&gt;
+&lt;p&gt;最后我们也可以删除不需要的气体浓度，总之该方法能为从事气体光谱模拟检测研究工作的研究者提供一定便利，我们会继续改进，后续如有问题欢迎留言。&lt;/p&gt;</description></item><item><title>liutex在二维流场的应用</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo5/</link><pubDate>Tue, 11 Nov 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo5/</guid><description>&lt;p&gt;近期阅读了刘超群教授发表于《空气动力学学报》2020年第38卷第3期的论文，标题为《Liutex—涡定义和第三代涡识别方法》。liutex是一个数学定义，涡是自然现象，liutex代表流体旋转。就像温度是物理量，冷热是自然现象，温度高低可以代表冷热一样，liutex这一物理量用于代表流体旋转转动的快慢。刘教授的&lt;/p&gt;
+&lt;p&gt;多篇论文，讨论涡识别方法。&lt;/p&gt;
+&lt;p&gt;【举例，冷流、热流中例子，用涡量识别的局限性。不能区分拉伸。】&lt;/p&gt;
+&lt;p&gt;liutex方法是为三维流场设计的，它的求解包含三维速度梯度张量分解、RS 分解等步骤，理论的核心逻辑可概括为三点：1.从速度梯度张量中提取旋转相关的共轭复特征值；2.通过数学运算剥离剪切、拉伸等非旋转成分；3.最终得到仅反映刚性旋转的 Liutex 向量（大小 + 方向），根据这个核心逻辑，可以针对性简化，用于求解二维流场的liutex，处理二维流场的数据。&lt;/p&gt;
+&lt;p&gt;二维流场中，通过np.gradient计算速度梯度张量的 4 个偏导数，&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;button class="code-copy" type="button" hidden aria-label="Copy code to clipboard"&gt;
+ &lt;span class="code-copy-label" aria-hidden="true"&gt;Copy&lt;/span&gt;
+ &lt;/button&gt;
+ &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; dUdY &lt;span style="color:#f92672"&gt;=&lt;/span&gt; np&lt;span style="color:#f92672"&gt;.&lt;/span&gt;gradient(U, Y[:, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;], axis&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, edge_order&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; dVdX &lt;span style="color:#f92672"&gt;=&lt;/span&gt; np&lt;span style="color:#f92672"&gt;.&lt;/span&gt;gradient(V, X[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, :], axis&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, edge_order&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; dUdX &lt;span style="color:#f92672"&gt;=&lt;/span&gt; np&lt;span style="color:#f92672"&gt;.&lt;/span&gt;gradient(U, X[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, :], axis&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, edge_order&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; dVdY &lt;span style="color:#f92672"&gt;=&lt;/span&gt; np&lt;span style="color:#f92672"&gt;.&lt;/span&gt;gradient(V, Y[:, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;], axis&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, edge_order&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; grad_tensor &lt;span style="color:#f92672"&gt;=&lt;/span&gt; np&lt;span style="color:#f92672"&gt;.&lt;/span&gt;zeros((U&lt;span style="color:#f92672"&gt;.&lt;/span&gt;shape[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;], U&lt;span style="color:#f92672"&gt;.&lt;/span&gt;shape[&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;], &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;), dtype&lt;span style="color:#f92672"&gt;=&lt;/span&gt;np&lt;span style="color:#f92672"&gt;.&lt;/span&gt;float32)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; grad_tensor[:, :, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; dUdX
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; grad_tensor[:, :, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; dUdY
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; grad_tensor[:, :, &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; dVdX
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; grad_tensor[:, :, &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; dVdY&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+ &lt;/div&gt;&lt;p&gt;组装为 2×2 矩阵：
+&lt;/p&gt;
+$$\nabla \vec{v} = \begin{bmatrix} \frac{\partial U}{\partial X} &amp; \frac{\partial U}{\partial Y} \\ \frac{\partial V}{\partial X} &amp; \frac{\partial V}{\partial Y} \end{bmatrix}$$&lt;p&gt;三维流场中，Liutex 是向量，其方向为速度梯度张量的实特征向量。二维流场中旋转轴固定，用涡量的符号来表征旋转方向（当vor＞0是逆时针旋转，值为正，相反vor＜0是顺时针旋转，值为负）&lt;/p&gt;</description></item><item><title>HITRAN 数据库用法</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran/</link><pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_hitran/</guid><description>HITRAN 数据库 line by line 计算代码</description></item><item><title>吸收光谱简介</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu_absorption/</link><pubDate>Fri, 03 Oct 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu_absorption/</guid><description>&lt;h2 id="简介"&gt;简介&lt;/h2&gt;
 &lt;p&gt;在燃烧诊断中，吸收光谱的测量方法从光源上分非激光和激光两大类。
 传统的非激光的吸收光谱测量，最早从 Hertzberg 那时侯开始，多采用宽频的非相干光源如闪光灯和红外热幅射光源，结合光栅、滤片或者干涉仪进行分光，通过测量不同波长电磁波的透射光强被火焰吸收减弱得到吸收光谱定量信息，就可以获得燃烧体系中分子浓度、温度、压力和速度的信息，能得到很多对火焰结构的测量结果和深刻理解。
 比如Gaydon的书《Flames，Their Structure, Radiation, and Temperature》&lt;/p&gt;
