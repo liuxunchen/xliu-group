@@ -1,7 +1,7 @@
 from PyQt6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QPushButton,
     QSlider, QLabel, QComboBox, QCheckBox, QGroupBox,
-    QSpinBox, QFormLayout
+    QSpinBox, QDoubleSpinBox, QFormLayout
 )
 from PyQt6.QtCore import Qt
 
@@ -20,6 +20,8 @@ class ControlPanel(QWidget):
         self.btn_load_plif = QPushButton("加载 PLIF 序列 (可选)")
         load_layout.addWidget(self.btn_load_piv)
         load_layout.addWidget(self.btn_load_plif)
+        self.btn_load_plif_raw = QPushButton("加载 PLIF 原始文件夹")
+        load_layout.addWidget(self.btn_load_plif_raw)
 
         bin_layout = QHBoxLayout()
         bin_layout.addWidget(QLabel("Bin 大小:"))
@@ -67,40 +69,20 @@ class ControlPanel(QWidget):
 
         self.cb_quiver = QCheckBox("显示速度矢量 (quiver)")
         self.cb_streamline = QCheckBox("显示流线 (streamline)")
-        self.cb_plif_overlay = QCheckBox("叠加 PLIF")
-        self.cb_plif_overlay.setEnabled(False)
         display_layout.addWidget(self.cb_quiver)
         display_layout.addWidget(self.cb_streamline)
-        display_layout.addWidget(self.cb_plif_overlay)
 
         # Quiver 箭头缩放
-        quiver_layout = QHBoxLayout()
-        quiver_layout.addWidget(QLabel("箭头缩放:"))
-        self.quiver_scale = QSlider(Qt.Orientation.Horizontal)
-        self.quiver_scale.setRange(1, 200)
-        self.quiver_scale.setValue(50)
-        quiver_layout.addWidget(self.quiver_scale)
-        display_layout.addLayout(quiver_layout)
+        quiver_scale_layout = QHBoxLayout()
+        quiver_scale_layout.addWidget(QLabel("箭头缩放:"))
+        self.quiver_scale = QDoubleSpinBox()
+        self.quiver_scale.setRange(0.01, 1000.0)
+        self.quiver_scale.setValue(50.0)
+        self.quiver_scale.setSingleStep(5.0)
+        self.quiver_scale.setDecimals(1)
+        quiver_scale_layout.addWidget(self.quiver_scale)
+        display_layout.addLayout(quiver_scale_layout)
 
-        # PLIF 参数（折叠在显示设置内）
-        plif_param_layout = QFormLayout()
-        self.spin_sigma_s = QSpinBox()
-        self.spin_sigma_s.setRange(1, 50)
-        self.spin_sigma_s.setValue(10)
-        self.spin_sigma_r = QSpinBox()
-        self.spin_sigma_r.setRange(1, 50)
-        self.spin_sigma_r.setValue(10)
-        self.spin_threshold = QSpinBox()
-        self.spin_threshold.setRange(0, 255)
-        self.spin_threshold.setValue(30)
-        self.spin_blur = QSpinBox()
-        self.spin_blur.setRange(1, 30)
-        self.spin_blur.setValue(15)
-        plif_param_layout.addRow("sigma_s", self.spin_sigma_s)
-        plif_param_layout.addRow("sigma_r", self.spin_sigma_r)
-        plif_param_layout.addRow("阈值", self.spin_threshold)
-        plif_param_layout.addRow("模糊", self.spin_blur)
-        display_layout.addLayout(plif_param_layout)
 
         display_group.setLayout(display_layout)
         layout.addWidget(display_group)
@@ -110,6 +92,8 @@ class ControlPanel(QWidget):
         fft_layout = QVBoxLayout()
         self.btn_pick_point = QPushButton("在流场上选点")
         fft_layout.addWidget(self.btn_pick_point)
+        self.btn_overlay = QPushButton("图像叠加")
+        fft_layout.addWidget(self.btn_overlay)
         fft_group.setLayout(fft_layout)
         layout.addWidget(fft_group)
 

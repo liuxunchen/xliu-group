@@ -4,15 +4,16 @@ import numpy as np
 from PyQt6.QtWidgets import (
     QMainWindow, QApplication, QFileDialog,
     QHBoxLayout, QVBoxLayout, QWidget, QMessageBox,
-    QPushButton, QLabel
+    QPushButton, QLabel, QDialog
 )
 from PyQt6.QtCore import Qt, QTimer
 
 from gui.canvas import MplCanvas, NavigationToolbar
 from gui.controls import ControlPanel
-from gui.dialogs import FFTDialog
+from gui.dialogs import FFTDialog, PLIFCalibrationDialog, ImageOverlayDialog
+from gui.plif_raw_viewer import PlifRawViewerDialog
 from core.piv_loader import load_piv_batch, load_piv
-from core.plif_loader import load_plif_batch, load_plif, align_plif_to_piv, enhance_plif
+from core.plif_loader import load_plif_batch
 from core.liutex import liutex_2d
 from core.field_calculations import compute_all_fields
 from core.fft_analyzer import point_fft
@@ -24,22 +25,19 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("PIV/PLIF Liutex 分析工具")
         self.resize(1200, 800)
 
-        # 数据容器
-        self.piv_data_list = []          # 每帧的字典
-        self.plif_data_list = []         # 可能为空
-        self.liutex_R = []               # Liutex 每帧
-        self.derived_fields = []         # 派生场每帧
+        self.piv_data_list = []
+        self.plif_data_list = []
+        self.liutex_R = []
+        self.derived_fields = []
         self.current_frame = 0
 
-        # 定时器
         self.timer = QTimer()
         self.timer.timeout.connect(self.next_frame)
         self.playing = False
 
-        # 选点状态
         self.pick_mode = False
+        self._pick_connection = None
 
-        # colorbar 引用
         self.cbar = None
 
         self.init_ui()
@@ -49,43 +47,33 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(central)
         main_layout = QHBoxLayout()
 
-        # ---- 左侧：画布 + 工具栏 + 保存按钮 ----
         left_widget = QWidget()
         left_layout = QVBoxLayout()
 
-        # 画布
         self.canvas_flow = MplCanvas(self)
-        # 工具栏（parent 设为 None 避免被父对象重设）
         self.toolbar_flow = NavigationToolbar(self.canvas_flow, None)
         left_layout.addWidget(self.toolbar_flow)
         left_layout.addWidget(self.canvas_flow)
 
-        # 保存标量场数据按钮
         self.btn_save_scalar = QPushButton("保存当前标量场数据")
         self.btn_save_scalar.clicked.connect(self.save_scalar_data)
         left_layout.addWidget(self.btn_save_scalar)
 
-
         left_widget.setLayout(left_layout)
 
-        # ---- 右侧控制面板 ----
         self.controls = ControlPanel()
 
-        # 信号连接
         self.controls.btn_load_piv.clicked.connect(self.load_piv_data)
+        self.controls.btn_load_plif_raw.clicked.connect(self.open_plif_raw_viewer)
         self.controls.btn_load_plif.clicked.connect(self.load_plif_data)
         self.controls.btn_play.clicked.connect(self.start_play)
         self.controls.btn_stop.clicked.connect(self.stop_play)
         self.controls.slider.valueChanged.connect(self.set_frame)
         self.controls.btn_pick_point.clicked.connect(self.enter_pick_mode)
+        self.controls.btn_overlay.clicked.connect(self.open_overlay_dialog)
         self.controls.combo_quantity.currentTextChanged.connect(self.update_plot)
         self.controls.cb_quiver.stateChanged.connect(self.update_plot)
         self.controls.cb_streamline.stateChanged.connect(self.update_plot)
-        self.controls.cb_plif_overlay.stateChanged.connect(self.update_plot)
-        self.controls.spin_sigma_s.valueChanged.connect(self.update_plot)
-        self.controls.spin_sigma_r.valueChanged.connect(self.update_plot)
-        self.controls.spin_threshold.valueChanged.connect(self.update_plot)
-        self.controls.spin_blur.valueChanged.connect(self.update_plot)
         self.controls.quiver_scale.valueChanged.connect(self.update_plot)
 
         main_layout.addWidget(left_widget, 3)
@@ -98,7 +86,6 @@ class MainWindow(QMainWindow):
             self, "选择 PIV 文件", "", "文本文件 (*.txt *.dat);;所有文件 (*)")
         if not files:
             return
-        # 自动判断格式
         try:
             with open(files[0], 'r') as f:
                 first_line = f.readline()
@@ -119,46 +106,68 @@ class MainWindow(QMainWindow):
             QMessageBox.critical(self, "加载失败", str(e))
             return
 
-        # 预计算 Liutex 与派生场
         self.precompute_fields()
 
         self.controls.slider.setMaximum(len(self.piv_data_list) - 1)
         self.controls.slider.setValue(0)
         self.controls.lbl_frame.setText(f"帧: 0 / {len(self.piv_data_list)-1}")
-        self.controls.cb_plif_overlay.setEnabled(bool(self.plif_data_list))
         self.update_plot()
+
+    def open_overlay_dialog(self):
+        """打开独立的双图叠加对话框。"""
+        dlg = ImageOverlayDialog(self)
+        dlg.exec()
+
+    def open_plif_raw_viewer(self):
+        """打开独立的 PLIF 原始图像浏览对话框"""
+        if not hasattr(self, '_plif_viewer') or self._plif_viewer is None:
+            self._plif_viewer = PlifRawViewerDialog(self)
+        self._plif_viewer.show()
+        self._plif_viewer.raise_()
 
     def load_plif_data(self):
         files, _ = QFileDialog.getOpenFileNames(
             self, "选择 PLIF 文件", "", "TIFF 文件 (*.tif *.tiff);;所有文件 (*)")
         if not files:
             return
-        # PLIF 使用默认物理坐标（可根据需要调整）
+
+        dlg = PLIFCalibrationDialog(self)
+        if dlg.exec() != QDialog.DialogCode.Accepted:
+            return
+        params = dlg.get_params()
+
         try:
-            self.plif_data_list = load_plif_batch(files, size=1, verbose=True)
+            self.plif_data_list = load_plif_batch(
+                files,
+                size=params['size'],
+                x0=params['x0'],
+                y0=params['y0'],
+                dx=params['dx'],
+                dy=params['dy'],
+                verbose=True
+            )
+            if not self.plif_data_list:
+                raise RuntimeError("所有 PLIF 文件加载失败")
         except Exception as e:
             QMessageBox.critical(self, "PLIF 加载失败", str(e))
             return
-        self.controls.cb_plif_overlay.setEnabled(True)
         self.update_plot()
 
     def precompute_fields(self):
-        """计算所有帧的 Liutex 及派生场，并确保坐标方向正确"""
         self.liutex_R = []
         self.derived_fields = []
         for piv in self.piv_data_list:
             X, Y = piv['X'], piv['Y']
             U, V = piv['U'], piv['V']
 
-            # 转置为 (ny, nx) 以便梯度计算
-            if X.shape[1] > 0 and np.allclose(X[0, :], X[0, 0]):
+            if X.shape[1] > 1 and np.allclose(X[0, :], X[0, 0]):
                 X = X.T; Y = Y.T; U = U.T; V = V.T
                 piv['X'], piv['Y'] = X, Y
                 piv['U'], piv['V'] = U, V
                 piv['xnum'], piv['ynum'] = piv['ynum'], piv['xnum']
 
-            dx = X[0, 1] - X[0, 0] if X.shape[1] > 1 else 1.0
-            dy = Y[1, 0] - Y[0, 0] if Y.shape[0] > 1 else 1.0
+            dx = float(X[0, 1] - X[0, 0]) if X.shape[1] > 1 else 1.0
+            dy = float(Y[1, 0] - Y[0, 0]) if Y.shape[0] > 1 else 1.0
 
             R, _, _, _ = liutex_2d(U, V, dx, dy, signed=True)
             self.liutex_R.append(R)
@@ -205,7 +214,6 @@ class MainWindow(QMainWindow):
 
         ax = self.canvas_flow.ax
 
-        # 移除旧 colorbar
         if self.cbar is not None:
             self.cbar.remove()
             self.cbar = None
@@ -214,15 +222,13 @@ class MainWindow(QMainWindow):
         cf = ax.contourf(X, Y, scalar, levels=50, cmap='jet')
         self.cbar = self.canvas_flow.fig.colorbar(cf, ax=ax)
 
-        # Quiver
         if self.controls.cb_quiver.isChecked():
             skip = max(1, X.shape[0] // 20)
-            scale = self.controls.quiver_scale.value()
+            scale = float(self.controls.quiver_scale.value())
             ax.quiver(X[::skip, ::skip], Y[::skip, ::skip],
                       U[::skip, ::skip], V[::skip, ::skip],
                       scale=scale, alpha=0.7)
 
-        # Streamplot
         if self.controls.cb_streamline.isChecked():
             x_1d = X[0, :].astype('float64')
             y_1d = Y[:, 0].astype('float64')
@@ -235,18 +241,6 @@ class MainWindow(QMainWindow):
             speed = np.sqrt(U**2 + V**2)
             ax.streamplot(x_1d, y_1d, U, V, color=speed, linewidth=1, cmap='gray')
 
-        # PLIF 叠加
-        if self.controls.cb_plif_overlay.isChecked() and self.plif_data_list:
-            plif_idx = min(idx, len(self.plif_data_list) - 1)
-            aligned = align_plif_to_piv(self.plif_data_list[plif_idx], piv)
-            enhanced = enhance_plif(aligned,
-                                    sigma_s=self.controls.spin_sigma_s.value(),
-                                    sigma_r=self.controls.spin_sigma_r.value(),
-                                    thres_hold=self.controls.spin_threshold.value(),
-                                    blur_size=self.controls.spin_blur.value())
-            ax.contourf(X, Y, enhanced, alpha=0.5, cmap='Reds',
-                        levels=np.linspace(1, 110, 10))
-
         ax.set_aspect('equal')
         ax.set_title(quantity)
         self.canvas_flow.draw()
@@ -257,23 +251,31 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, "警告", "请先加载数据")
             return
         self.pick_mode = True
-        self.canvas_flow.mpl_connect('button_press_event', self.on_pick)
+        self._pick_connection = self.canvas_flow.mpl_connect(
+            'button_press_event', self.on_pick)
 
     def on_pick(self, event):
         if not self.pick_mode or event.inaxes != self.canvas_flow.ax:
             return
         self.pick_mode = False
+        if self._pick_connection is not None:
+            self.canvas_flow.mpl_disconnect(self._pick_connection)
+            self._pick_connection = None
+
         x_click, y_click = event.xdata, event.ydata
 
         X = self.piv_data_list[0]['X']
         Y = self.piv_data_list[0]['Y']
         dist = np.sqrt((X - x_click)**2 + (Y - y_click)**2)
         iy, ix = np.unravel_index(np.argmin(dist), X.shape)
-        print(f"选中点: ({X[iy,ix]:.3f}, {Y[iy,ix]:.3f})")
 
+        quantity = self.controls.combo_quantity.currentText()
         signal = []
         for frame in range(len(self.piv_data_list)):
-            signal.append(self.liutex_R[frame][iy, ix])
+            if quantity == 'Liutex':
+                signal.append(self.liutex_R[frame][iy, ix])
+            else:
+                signal.append(self.derived_fields[frame].get(quantity, 0.0)[iy, ix])
 
         freqs, amp = point_fft(np.array(signal), dt=1.0)
         dlg = FFTDialog(freqs, amp, title=f"FFT at ({X[iy,ix]:.2f}, {Y[iy,ix]:.2f})")

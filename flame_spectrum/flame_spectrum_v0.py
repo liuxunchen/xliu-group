@@ -1,4 +1,7 @@
 # combined_gas_spectrum_gui.py
+"""已弃用 (deprecated): 此文件已被重构为模块化结构。
+    请使用 apps/flame_spectrum_apps.py (火焰+光谱联动) 或 apps/hitran_gui.py (光谱仿真独立GUI)。
+    核心计算引擎位于 core/hitran_spectrum.py 和 core/flame_simulator.py。"""
 import sys
 import os
 import numpy as np
@@ -16,8 +19,11 @@ from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as Navigatio
 from matplotlib.figure import Figure
 
 # 导入HitranSpectrum类（多分子版本）
-sys.path.insert(0, 'voigt_simulation')
-from hitran_spectrum_dual import HitranSpectrum
+# 注意: 此文件为旧版本，`hitran_spectrum_dual` 模块已不再存在。
+# 请使用 core/hitran_spectrum.py 中的 HitranSpectrum 类。
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'core'))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__))))
+from core.hitran_spectrum import HitranSpectrum
 
 # 强制使用思源黑体
 rcParams['font.family'] = 'sans-serif'
@@ -352,9 +358,11 @@ class CombinedGasSpectrumGUI(QMainWindow):
             
             with open(par_file_path, 'r') as f:
                 for line in f:
-                    if len(line.strip()) > 0:
-                        # HITRAN格式：波数在第3-15列
-                        wavenumber_str = line[2:15].strip()
+                    line = line.rstrip('\n')
+                    if len(line) < 15:
+                        continue
+                    # HITRAN 160格式：波数在第4-15列 (0-indexed: 3:15)
+                    wavenumber_str = line[3:15].strip()
                         if wavenumber_str:
                             try:
                                 wavenumber = float(wavenumber_str)

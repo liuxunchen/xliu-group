@@ -14,6 +14,9 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.dirname(current_dir)
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
+# 将 apps/ 目录也加入路径，确保 `from hitran_gui` 等导入在任何调用方式下都能工作
+if current_dir not in sys.path:
+    sys.path.insert(0, current_dir)
 
 from core.flame_simulator import GasCompositionSimulator
 from hitran_gui import HitranGUI 
@@ -228,7 +231,7 @@ class FlameSpectrumApp(QMainWindow):
             self.current_results = self.simulator.results
             # 【修复】强制转换为 Python 原生 float，防止 PyQt6 报错
             T_eq = float(self.current_results['temperature'])
-            p_eq = float(self.current_results['pressure'] / 101325.0)
+            p_eq = float(self.current_results['pressure'] / ct.one_atm)
             
             warning_msg = ""
             if T_eq > 3000:
@@ -312,7 +315,7 @@ class FlameSpectrumApp(QMainWindow):
             return
 
         T_eq = float(self.current_results['temperature'])
-        p_eq = float(self.current_results['pressure'] / 101325.0)
+        p_eq = float(self.current_results['pressure'] / ct.one_atm)
         selected = self.get_selected_species()
 
         # 使用 HitranSpectrum.ISO 字典构建 name -> mol_id 映射（可缓存在 self 中）

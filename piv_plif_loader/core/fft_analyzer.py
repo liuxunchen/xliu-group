@@ -22,5 +22,6 @@ def point_fft(signal, dt=1.0):
     fft_vals = np.fft.fft(signal)
     freqs = np.fft.fftfreq(n, d=dt)
     half = n // 2
-    amplitude = np.abs(fft_vals[:half]) * 2.0 / n
-    return freqs[:half], amplitude
+    # 跳过 0 Hz (DC 分量)
+    amplitude = np.abs(fft_vals[1:half]) * 2.0 / n
+    return freqs[1:half], amplitude
