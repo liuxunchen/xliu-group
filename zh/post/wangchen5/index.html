@@ -1,74 +1,4 @@
-<!doctype html><html lang=zh><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>利用OpenCV初步实现张正友标定法对棋盘格进行标定并校正图片 | 刘训臣燃烧诊断实验室主页</title><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=description content="进行张正友标定法需要拍摄照片，既然说到拍摄，那就离不开相机。在计算机视觉和机器人领域中，我们需要将现实世界的三维物体“翻译”成相机捕获的二维图像。相机坐标系是这个过程中的核心桥梁，它帮助我们建立起“三维空间”与”二维像素“之间的数学映射关系。
-首先为大家介绍一下相机模型中的四个坐标系，分别是：像素坐标系、图像坐标系、相机坐标系和世界坐标系。
-像素坐标系
-如图1所示，像素坐标系u-v的原点为O0，横坐标u和纵坐标v分别是图像所在的行和列，在视觉处理库OpenCV中，u对应x，v对应y。
-图像坐标系
-如图1所示，像素坐标系x-y的原点为O1，为像素坐标系的中点。
-
-			图像坐标系与像素坐标系关系图
-		
-
-
-从上图可知，O1在u-v坐标系下的坐标，假设dx和dy分别表示每个像素在横轴x和纵轴y的物理尺寸，单位为毫米/像素，O1在图像坐标系和在像素坐标系的坐标的关系是：
-$$
-u = \frac{x}{d_x} + u_0
-$$$$
-v = \frac{y}{d_y} + v_0
-$$利用线性代数的知识把方程用矩阵表示出来：
-$$
-\left[ 
-\begin{array}{c}
-u \\ 
-v \\ 
-1
-\end{array}
-\right] =
-\left[ 
-\begin{array}{ccc}
-\frac{1}{d_x} & 0 & u_0 \\ 
-0 & \frac{1}{d_y} & v_0 \\ 
-0 & 0 & 1
-\end{array}
-\right]
-\left[ 
-\begin{array}{c}
-x \\ 
-y \\ 
-1
-\end{array}
-\right]
-$$相机坐标系
-相机坐标系与图像坐标系的关系如下图：
-
-			相机坐标系与图像坐标系关系图
-		
-
-
-通过三角形相似我们可知：
-$$
-\frac{AB}{c\mathrm{O}} = \frac{X_c}{x}, \quad \frac{AO_c}{c\mathrm{O}_c} = \frac{Z_c}{f}, \quad \frac{PB}{c\mathrm{O}} = \frac{Y_c}{y}
-$$将上述式子与图像坐标系的两个式子联立可得："><meta name=generator content="Hugo 0.162.1"><meta name=robots content="index, follow"><meta name=author content="王晨"><link rel=stylesheet href=/xliu-group/ananke/css/main.02a37ad6c4e155c542d276915a0e3f83f5c7c5fec443350f6e60753f1679b7a7.css integrity="sha256-AqN61sThVcVC0naRWg4/g/XHxf7EQzUPbmB1PxZ5t6c=" crossorigin=anonymous><script>(function(){"use strict";function t(){for(var t=document.querySelectorAll(".code-block .code-copy[hidden]"),e=0;e<t.length;e++)t[e].hidden=!1}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",t):t();function e(e){var t=e.querySelector(".code-copy-label"),n=t?t.textContent:null;e.classList.add("is-copied"),t&&(t.textContent="Copied"),window.setTimeout(function(){e.classList.remove("is-copied"),t&&n!==null&&(t.textContent=n)},2e3)}function n(e){var n,t=document.createElement("textarea");t.value=e,t.setAttribute("readonly",""),t.style.position="absolute",t.style.left="-9999px",document.body.appendChild(t),t.select(),n=!1;try{n=document.execCommand("copy")}catch{n=!1}return document.body.removeChild(t),n}function s(t){var s,o,a,i=t.closest(".code-block");if(!i)return;if(s=i.querySelector("pre"),!s)return;a=s.querySelector("code")||s,o=a.innerText,navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(o).then(function(){e(t)},function(){n(o)&&e(t)}):n(o)&&e(t)}document.addEventListener("click",function(e){var t=e.target.closest(".code-copy");t&&s(t)})})()</script><link rel=canonical href=https://liuxunchen.github.io/xliu-group/zh/post/wangchen5/><meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/wangchen5/"><meta property="og:site_name" content="刘训臣燃烧诊断实验室主页"><meta property="og:title" content="利用OpenCV初步实现张正友标定法对棋盘格进行标定并校正图片"><meta property="og:description" content="进行张正友标定法需要拍摄照片，既然说到拍摄，那就离不开相机。在计算机视觉和机器人领域中，我们需要将现实世界的三维物体“翻译”成相机捕获的二维图像。相机坐标系是这个过程中的核心桥梁，它帮助我们建立起“三维空间”与”二维像素“之间的数学映射关系。 首先为大家介绍一下相机模型中的四个坐标系，分别是：像素坐标系、图像坐标系、相机坐标系和世界坐标系。
-像素坐标系 如图1所示，像素坐标系u-v的原点为O0，横坐标u和纵坐标v分别是图像所在的行和列，在视觉处理库OpenCV中，u对应x，v对应y。
-图像坐标系 如图1所示，像素坐标系x-y的原点为O1，为像素坐标系的中点。
-图像坐标系与像素坐标系关系图 从上图可知，O1在u-v坐标系下的坐标，假设dx和dy分别表示每个像素在横轴x和纵轴y的物理尺寸，单位为毫米/像素，O1在图像坐标系和在像素坐标系的坐标的关系是：
-$$u = \frac{x}{d_x} + u_0$$$$v = \frac{y}{d_y} + v_0$$利用线性代数的知识把方程用矩阵表示出来：
-$$\left[ \begin{array}{c}u \\ v \\ 1\end{array}\right] =\left[ \begin{array}{ccc}\frac{1}{d_x} & 0 & u_0 \\ 0 & \frac{1}{d_y} & v_0 \\ 0 & 0 & 1\end{array}\right]\left[ \begin{array}{c}x \\ y \\ 1\end{array}\right]$$相机坐标系 相机坐标系与图像坐标系的关系如下图：
-相机坐标系与图像坐标系关系图 通过三角形相似我们可知：
-$$\frac{AB}{c\mathrm{O}} = \frac{X_c}{x}, \quad \frac{AO_c}{c\mathrm{O}_c} = \frac{Z_c}{f}, \quad \frac{PB}{c\mathrm{O}} = \frac{Y_c}{y}$$将上述式子与图像坐标系的两个式子联立可得："><meta property="og:locale" content="zh"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2025-05-08T00:00:00+00:00"><meta property="article:modified_time" content="2025-05-08T00:00:00+00:00"><meta itemprop=name content="利用OpenCV初步实现张正友标定法对棋盘格进行标定并校正图片"><meta itemprop=description content="进行张正友标定法需要拍摄照片，既然说到拍摄，那就离不开相机。在计算机视觉和机器人领域中，我们需要将现实世界的三维物体“翻译”成相机捕获的二维图像。相机坐标系是这个过程中的核心桥梁，它帮助我们建立起“三维空间”与”二维像素“之间的数学映射关系。 首先为大家介绍一下相机模型中的四个坐标系，分别是：像素坐标系、图像坐标系、相机坐标系和世界坐标系。
-像素坐标系 如图1所示，像素坐标系u-v的原点为O0，横坐标u和纵坐标v分别是图像所在的行和列，在视觉处理库OpenCV中，u对应x，v对应y。
-图像坐标系 如图1所示，像素坐标系x-y的原点为O1，为像素坐标系的中点。
-图像坐标系与像素坐标系关系图 从上图可知，O1在u-v坐标系下的坐标，假设dx和dy分别表示每个像素在横轴x和纵轴y的物理尺寸，单位为毫米/像素，O1在图像坐标系和在像素坐标系的坐标的关系是：
-$$u = \frac{x}{d_x} + u_0$$$$v = \frac{y}{d_y} + v_0$$利用线性代数的知识把方程用矩阵表示出来：
-$$\left[ \begin{array}{c}u \\ v \\ 1\end{array}\right] =\left[ \begin{array}{ccc}\frac{1}{d_x} & 0 & u_0 \\ 0 & \frac{1}{d_y} & v_0 \\ 0 & 0 & 1\end{array}\right]\left[ \begin{array}{c}x \\ y \\ 1\end{array}\right]$$相机坐标系 相机坐标系与图像坐标系的关系如下图：
-相机坐标系与图像坐标系关系图 通过三角形相似我们可知：
-$$\frac{AB}{c\mathrm{O}} = \frac{X_c}{x}, \quad \frac{AO_c}{c\mathrm{O}_c} = \frac{Z_c}{f}, \quad \frac{PB}{c\mathrm{O}} = \frac{Y_c}{y}$$将上述式子与图像坐标系的两个式子联立可得："><meta itemprop=datePublished content="2025-05-08T00:00:00+00:00"><meta itemprop=dateModified content="2025-05-08T00:00:00+00:00"><meta itemprop=wordCount content="177"><meta name=twitter:card content="summary"><meta name=twitter:title content="利用OpenCV初步实现张正友标定法对棋盘格进行标定并校正图片"><meta name=twitter:description content="进行张正友标定法需要拍摄照片，既然说到拍摄，那就离不开相机。在计算机视觉和机器人领域中，我们需要将现实世界的三维物体“翻译”成相机捕获的二维图像。相机坐标系是这个过程中的核心桥梁，它帮助我们建立起“三维空间”与”二维像素“之间的数学映射关系。 首先为大家介绍一下相机模型中的四个坐标系，分别是：像素坐标系、图像坐标系、相机坐标系和世界坐标系。
-像素坐标系 如图1所示，像素坐标系u-v的原点为O0，横坐标u和纵坐标v分别是图像所在的行和列，在视觉处理库OpenCV中，u对应x，v对应y。
-图像坐标系 如图1所示，像素坐标系x-y的原点为O1，为像素坐标系的中点。
-图像坐标系与像素坐标系关系图 从上图可知，O1在u-v坐标系下的坐标，假设dx和dy分别表示每个像素在横轴x和纵轴y的物理尺寸，单位为毫米/像素，O1在图像坐标系和在像素坐标系的坐标的关系是：
-$$u = \frac{x}{d_x} + u_0$$$$v = \frac{y}{d_y} + v_0$$利用线性代数的知识把方程用矩阵表示出来：
-$$\left[ \begin{array}{c}u \\ v \\ 1\end{array}\right] =\left[ \begin{array}{ccc}\frac{1}{d_x} & 0 & u_0 \\ 0 & \frac{1}{d_y} & v_0 \\ 0 & 0 & 1\end{array}\right]\left[ \begin{array}{c}x \\ y \\ 1\end{array}\right]$$相机坐标系 相机坐标系与图像坐标系的关系如下图：
-相机坐标系与图像坐标系关系图 通过三角形相似我们可知：
-$$\frac{AB}{c\mathrm{O}} = \frac{X_c}{x}, \quad \frac{AO_c}{c\mathrm{O}_c} = \frac{Z_c}{f}, \quad \frac{PB}{c\mathrm{O}} = \frac{Y_c}{y}$$将上述式子与图像坐标系的两个式子联立可得："><script>if(typeof MathJax=="undefined"){window.MathJax={tex:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]]}};const e=document.createElement("script");e.src="https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js",e.async=!0,e.crossOrigin="anonymous",document.head.appendChild(e),console.log("MathJax initialized")}</script></head><body class="ma0 avenir bg-near-white production"><header class="cover bg-center" style=background-image:url(https://liuxunchen.github.io/xliu-group/images/sdust.jpg)><div class=bg-black-60><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l center items-center justify-between"><a href=/xliu-group/zh/ class="f3 fw2 hover-white white-90 dib no-underline">刘训臣燃烧诊断实验室主页</a><div class="flex-l items-center"><ul class="pl0 mr3"><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/people/ title="People 页">People</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/post/ title="Post 页">Post</a></li></ul><div class=ananke-socials></div></div></div></nav><div class="tc-l pv6 ph3 ph4-ns"><div class="f2 f1-l fw2 white-90 mb0 lh-title">利用OpenCV初步实现张正友标定法对棋盘格进行标定并校正图片</div></div></div></header><main class=pb7 role=main><article class="page-wangchen5 flex-l mw7 center ph3 flex-wrap justify-between"><header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu"><a class="link dim" href=https://liuxunchen.github.io/xliu-group/zh/post/>Post</a></aside><div id=sharing class="mt3 ananke-socials"></div><h1 class="f1 athelas mt3 mb1">利用OpenCV初步实现张正友标定法对棋盘格进行标定并校正图片</h1><p class=tracked><strong>王晨</strong></p><time class="f6 mv4 dib tracked" datetime=2025-05-08T00:00:00Z>五月 8, 2025</time></header><div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-100-l"><p>进行张正友标定法需要拍摄照片，既然说到拍摄，那就离不开相机。在计算机视觉和机器人领域中，我们需要将现实世界的三维物体“翻译”成相机捕获的二维图像。相机坐标系是这个过程中的核心桥梁，它帮助我们建立起“三维空间”与”二维像素“之间的数学映射关系。
+<!doctype html><html lang=zh><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>利用OpenCV初步实现张正友标定法对棋盘格进行标定并校正图片 | 刘训臣燃烧诊断实验室主页</title><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=description content="利用OpenCV实现张正友标定法对棋盘格进行相机标定与图像校正"><meta name=generator content="Hugo 0.162.1"><meta name=robots content="index, follow"><meta name=author content="王晨"><link rel=stylesheet href=/xliu-group/ananke/css/main.02a37ad6c4e155c542d276915a0e3f83f5c7c5fec443350f6e60753f1679b7a7.css integrity="sha256-AqN61sThVcVC0naRWg4/g/XHxf7EQzUPbmB1PxZ5t6c=" crossorigin=anonymous><script>(function(){"use strict";function t(){for(var t=document.querySelectorAll(".code-block .code-copy[hidden]"),e=0;e<t.length;e++)t[e].hidden=!1}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",t):t();function e(e){var t=e.querySelector(".code-copy-label"),n=t?t.textContent:null;e.classList.add("is-copied"),t&&(t.textContent="Copied"),window.setTimeout(function(){e.classList.remove("is-copied"),t&&n!==null&&(t.textContent=n)},2e3)}function n(e){var n,t=document.createElement("textarea");t.value=e,t.setAttribute("readonly",""),t.style.position="absolute",t.style.left="-9999px",document.body.appendChild(t),t.select(),n=!1;try{n=document.execCommand("copy")}catch{n=!1}return document.body.removeChild(t),n}function s(t){var s,o,a,i=t.closest(".code-block");if(!i)return;if(s=i.querySelector("pre"),!s)return;a=s.querySelector("code")||s,o=a.innerText,navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(o).then(function(){e(t)},function(){n(o)&&e(t)}):n(o)&&e(t)}document.addEventListener("click",function(e){var t=e.target.closest(".code-copy");t&&s(t)})})()</script><link rel=canonical href=https://liuxunchen.github.io/xliu-group/zh/post/wangchen5/><meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/wangchen5/"><meta property="og:site_name" content="刘训臣燃烧诊断实验室主页"><meta property="og:title" content="利用OpenCV初步实现张正友标定法对棋盘格进行标定并校正图片"><meta property="og:description" content="利用OpenCV实现张正友标定法对棋盘格进行相机标定与图像校正"><meta property="og:locale" content="zh"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2025-05-08T00:00:00+00:00"><meta property="article:modified_time" content="2025-05-08T00:00:00+00:00"><meta itemprop=name content="利用OpenCV初步实现张正友标定法对棋盘格进行标定并校正图片"><meta itemprop=description content="利用OpenCV实现张正友标定法对棋盘格进行相机标定与图像校正"><meta itemprop=datePublished content="2025-05-08T00:00:00+00:00"><meta itemprop=dateModified content="2025-05-08T00:00:00+00:00"><meta itemprop=wordCount content="177"><meta name=twitter:card content="summary"><meta name=twitter:title content="利用OpenCV初步实现张正友标定法对棋盘格进行标定并校正图片"><meta name=twitter:description content="利用OpenCV实现张正友标定法对棋盘格进行相机标定与图像校正"><script>if(typeof MathJax=="undefined"){window.MathJax={tex:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]]}};const e=document.createElement("script");e.src="https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js",e.async=!0,e.crossOrigin="anonymous",document.head.appendChild(e),console.log("MathJax initialized")}</script></head><body class="ma0 avenir bg-near-white production"><header class="cover bg-center" style=background-image:url(https://liuxunchen.github.io/xliu-group/images/sdust.jpg)><div class=bg-black-60><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l center items-center justify-between"><a href=/xliu-group/zh/ class="f3 fw2 hover-white white-90 dib no-underline">刘训臣燃烧诊断实验室主页</a><div class="flex-l items-center"><ul class="pl0 mr3"><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/people/ title="People 页">People</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/post/ title="Post 页">Post</a></li></ul><div class=ananke-socials></div></div></div></nav><div class="tc-l pv6 ph3 ph4-ns"><div class="f2 f1-l fw2 white-90 mb0 lh-title">利用OpenCV初步实现张正友标定法对棋盘格进行标定并校正图片</div></div></div></header><main class=pb7 role=main><article class="page-wangchen5 flex-l mw7 center ph3 flex-wrap justify-between"><header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu"><a class="link dim" href=https://liuxunchen.github.io/xliu-group/zh/post/>Post</a></aside><div id=sharing class="mt3 ananke-socials"></div><h1 class="f1 athelas mt3 mb1">利用OpenCV初步实现张正友标定法对棋盘格进行标定并校正图片</h1><p class=tracked><strong>王晨</strong></p><time class="f6 mv4 dib tracked" datetime=2025-05-08T00:00:00Z>五月 8, 2025</time></header><div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-100-l"><p>进行张正友标定法需要拍摄照片，既然说到拍摄，那就离不开相机。在计算机视觉和机器人领域中，我们需要将现实世界的三维物体“翻译”成相机捕获的二维图像。相机坐标系是这个过程中的核心桥梁，它帮助我们建立起“三维空间”与”二维像素“之间的数学映射关系。
 首先为大家介绍一下相机模型中的四个坐标系，分别是：像素坐标系、图像坐标系、相机坐标系和世界坐标系。</p><h2 id=像素坐标系>像素坐标系</h2><p>如图1所示，像素坐标系u-v的原点为O<sub>0</sub>，横坐标u和纵坐标v分别是图像所在的行和列，在视觉处理库OpenCV中，u对应x，v对应y。</p><h2 id=图像坐标系>图像坐标系</h2><p>如图1所示，像素坐标系x-y的原点为O<sub>1</sub>，为像素坐标系的中点。</p><figure><img src=/xliu-group/zh/post/wangchen5/image1.png><figcaption><h4>图像坐标系与像素坐标系关系图</h4></figcaption></figure><p>从上图可知，O<sub>1</sub>在u-v坐标系下的坐标，假设d<sub>x</sub>和d<sub>y</sub>分别表示每个像素在横轴x和纵轴y的物理尺寸，单位为毫米/像素，O<sub>1</sub>在图像坐标系和在像素坐标系的坐标的关系是：</p>$$
 u = \frac{x}{d_x} + u_0
 $$$$
