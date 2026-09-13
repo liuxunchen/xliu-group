@@ -1,0 +1,24 @@
+% !TEX root = ../main.tex
+
+\begin{abstract}[zh]
+火焰温度的精准测量与标定是燃烧过程精细化控制的关键前提。本文针对当前非预混平面绝热火焰炉在高温极端工况下结构易烧蚀、标定范围受限（$<$2300K）的问题，设计了一种带环形水冷夹层的一体式打孔新型炉体结构，并搭建了一套基于1.4$\mu$m可调谐二极管激光吸收光谱（TDLAS）的高频（10 kHz）扫描测量系统。
+
+在硬件方面，通过Star-CCM+冷态仿真优化了微孔阵列参数，预期可将出口流速不均匀度控制在3\%以内。TDLAS系统采用法布里-珀罗标准具（FSR）结合碘池绝对锁定的双轨标定方案，配合跨阻放大器（带宽~1 MHz），实现了10 kHz高速扫描下的稳定信号采集。
+
+在算法方面，开发了完整的Python数据处理流水线，包括：FSR干涉峰检测与分段线性插值波数转换、基于LMFIT的双峰Voigt拟合（含二次多项式基线）、以及基于玻尔兹曼公式的双线温度反演模块。合成光谱验证表明，在信噪比20 dB条件下，温度反演误差$<$2\%。
+
+初步实验结果表明，甲烷/空气平面炉火焰（当量比1.0，空气流量50 SLM）的TDLAS吸收光谱信噪比优于20 dB，成功分辨出7153.75 cm$^{-1}$和7154.35 cm$^{-1}$双线。二维温度场重建初步显示火焰面中心区域温度均匀性良好。
+
+
+\end{abstract}
+
+\begin{abstract}[en]
+  Accurate measurement and calibration of flame temperature are critical prerequisites for the refined control of combustion processes. This paper addresses the issues of structural ablation under extreme high-temperature conditions and limited calibration range (<2300 K) that currently afflict non-premixed adiabatic flat-flame burners (Hencken burners). To overcome these challenges, we design a novel integrated perforated burner structure featuring an annular water-cooling jacket, and develop a high-frequency (10 kHz) scanning measurement system based on tunable diode laser absorption spectroscopy (TDLAS) at 1.4 µm (1397.824 nm).
+  
+  On the hardware side, cold-flow simulations using Star-CCM+ are conducted to optimize the micropore array parameters, with the expectation of controlling the outlet velocity non-uniformity within 3%. The TDLAS system employs a dual‑track calibration scheme combining a Fabry–Pérot etalon (FSR) with absolute locking via an iodine cell, together with a transimpedance amplifier (bandwidth ~1 MHz), enabling stable signal acquisition under 10 kHz high-speed scanning.
+  
+  On the algorithmic side, a complete Python data processing pipeline is developed, including: FSR interference peak detection and piecewise linear interpolation for wavenumber conversion, dual‑peak Voigt fitting (with quadratic polynomial baseline) based on LMFIT, and a two‑line temperature inversion module based on the Boltzmann formula. Validation with synthetic spectra demonstrates that the temperature retrieval error is <2% under a signal‑to‑noise ratio of 20 dB.
+  
+  Preliminary experimental results show that for a methane/air flat‑flame burner (equivalence ratio 1.0, air flow rate 50 SLM), the TDLAS absorption spectra achieve a signal‑to‑noise ratio exceeding 20 dB, and the two targeted lines at 7153.75 cm⁻¹ and 7154.35 cm⁻¹ are successfully resolved. Two‑dimensional temperature field reconstruction preliminarily indicates good temperature uniformity in the central region of the flame front.
+  
+\end{abstract}
