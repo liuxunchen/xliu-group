@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>智能制造系统设计 · 课程概览</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#5a5a5a; --line:#d8d8d8; --accent:#0b5fa5; --bg:#fafafa; }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:32px 20px 64px; background:var(--bg); color:var(--fg);
+         font-family:-apple-system,"Segoe UI","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+         line-height:1.7; }
+  .wrap { max-width:900px; margin:0 auto; }
+  h1 { font-size:26px; margin:0 0 6px; letter-spacing:.5px; }
+  .sub { color:var(--muted); font-size:14px; margin-bottom:28px; }
+  h2 { font-size:19px; margin:34px 0 12px; padding-left:10px; border-left:4px solid var(--accent); }
+  h3 { font-size:16px; margin:22px 0 8px; color:var(--accent); }
+  table { width:100%; border-collapse:collapse; margin:10px 0 18px; font-size:14px; background:#fff; }
+  th,td { border:1px solid var(--line); padding:6px 9px; text-align:left; vertical-align:top; }
+  th { background:#eef4fa; font-weight:600; }
+  td.c,th.c { text-align:center; white-space:nowrap; }
+  ul { margin:8px 0 8px 4px; padding-left:20px; }
+  li { margin:3px 0; }
+  .kv { font-size:14px; }
+  .kv td:first-child { width:110px; color:var(--muted); background:#fff; white-space:nowrap; }
+  .note { font-size:13px; color:var(--muted); background:#fff; border:1px dashed var(--line);
+          border-radius:6px; padding:10px 14px; margin:14px 0; }
+  .tag { display:inline-block; font-size:12px; background:#eef4fa; color:var(--accent);
+         border-radius:4px; padding:1px 7px; margin-right:6px; }
+  footer { margin-top:44px; padding-top:14px; border-top:1px solid var(--line);
+           font-size:12.5px; color:var(--muted); }
+  @media print { body{background:#fff;padding:0;} h2{page-break-after:avoid;} table{page-break-inside:avoid;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>智能制造系统设计 · 课程概览</h1>
+  <div class="sub">山东科技大学 机械电子工程学院 ｜ 李勇 教授 ｜ 总学时 40</div>
+
+  <h2>一、课程基本信息</h2>
+  <table class="kv">
+    <tr><td>课程名称</td><td>智能制造系统设计</td></tr>
+    <tr><td>授课教师</td><td>李勇 教授（15020082616）</td></tr>
+    <tr><td>适用专业</td><td>智能制造工程本科（智造 2020 / 2021 级已开）</td></tr>
+    <tr><td>总学时</td><td>40 学时（每次课 2 学时）</td></tr>
+    <tr><td>课程定位</td><td>立足机械、赋能实体；以图论为智能制造的数学基石，按「理论基础 → 设计基础 → 系统模块 → 深度学习 → 设计过程」展开</td></tr>
+    <tr><td>考核方式</td><td>考试 <b>3 次，每次 100 分</b>；每次课交 <b>3 分钟 PPT 报告</b>（计入考核）</td></tr>
+  </table>
+
+  <h3>三次汇报题目</h3>
+  <ul>
+    <li>① 图论在各人研究中的应用（写成矩阵）</li>
+    <li>② 手动计算神经网络</li>
+    <li>③ 8D 报告</li>
+  </ul>
+
+  <h2>二、学时分配总表</h2>
+  <table>
+    <thead><tr><th>模块</th><th>内容</th><th class="c">学时</th></tr></thead>
+    <tbody>
+      <tr><td>1. 绪论</td><td>思政与方向（中国制造 2025、新工科、新质生产力）</td><td class="c">2</td></tr>
+      <tr><td rowspan="6">2. 理论基础</td><td>2.1 智能制造数学：<b>图论 6</b> · 复杂网络 2 · 数值分析 2 · 运筹学 6 · 实验 2</td><td class="c">18</td></tr>
+      <tr><td>2.2 力学简介</td><td class="c">2</td></tr>
+      <tr><td>2.3 振动与噪声</td><td class="c">2</td></tr>
+      <tr><td>2.4 图像处理</td><td class="c">4</td></tr>
+      <tr><td colspan="2" style="color:#5a5a5a">小计 26</td></tr>
+      <tr><td colspan="2"></td></tr>
+      <tr><td rowspan="2">3. 设计基础</td><td>质量工程 2 · 工业工程 2 · 安全工程 1 · 环保工程 1 · 成本管理 1 · 人力资源 1 · 实验 2</td><td class="c">10</td></tr>
+      <tr><td colspan="2"></td></tr>
+      <tr><td>4. 智能制造模块</td><td>ERP · MES · PLM · WMS · CRM · APS</td><td class="c">4</td></tr>
+      <tr><td>5. 深度学习</td><td>简介 · 算法 · PyTorch · 图神经网络 · 实验</td><td class="c">6</td></tr>
+      <tr><td>6. 设计过程</td><td>调研 · 蓝图 · 实施 · 上线优化 · 持续改进 · 实验</td><td class="c">4</td></tr>
+      <tr><td colspan="2"><b>合计</b>（含实验 8 学时）</td><td class="c"><b>40</b></td></tr>
+    </tbody>
+  </table>
+
+  <h2>三、教学进度 · 逐次课</h2>
+  <table>
+    <thead><tr><th class="c">次</th><th>模块</th><th>主题</th><th class="c">学时</th></tr></thead>
+    <tbody>
+      <tr><td class="c">1</td><td>1 绪论</td><td>方向—立足机械赋能实体；思维—关系与规则；图论—智能制造的基石；内容—课程框架</td><td class="c">2</td></tr>
+      <tr><td class="c">2</td><td>2.1.1 图论</td><td>图论基本概念（图、度、路径、连通性、树）</td><td class="c">2</td></tr>
+      <tr><td class="c">3</td><td>2.1.1 图论</td><td>图的矩阵表示（邻接矩阵、拉普拉斯矩阵）、度中心性、图的遍历</td><td class="c">2</td></tr>
+      <tr><td class="c">4</td><td>2.1.1 图论</td><td>树与网络优化（最小生成树、最短路径）</td><td class="c">2</td></tr>
+      <tr><td class="c">5</td><td>2.1.2 复杂网络</td><td>复杂网络性质（自组织、自相似、小世界、无标度）；网络鲁棒性</td><td class="c">2</td></tr>
+      <tr><td class="c">6</td><td>2.1.3 数值分析</td><td>插值与拟合、数值积分与微分、误差分析</td><td class="c">2</td></tr>
+      <tr><td class="c">7</td><td>2.1.4 运筹学</td><td>线性规划（建模、单纯形法、linprog 求解）</td><td class="c">2</td></tr>
+      <tr><td class="c">8</td><td>2.1.4 运筹学</td><td>整数规划与网络优化、排队论</td><td class="c">2</td></tr>
+      <tr><td class="c">9</td><td>2.1.4 运筹学</td><td>运筹学在制造系统中的应用（排产、调度）</td><td class="c">2</td></tr>
+      <tr><td class="c">10</td><td>2.1.5 实验</td><td>图论／运筹学上机实验（network.py、linprog.py、空手道网络）</td><td class="c">2</td></tr>
+      <tr><td class="c">11</td><td>2.2 力学简介</td><td>力学基础（静力学、材料力学要点）</td><td class="c">2</td></tr>
+      <tr><td class="c">12</td><td>2.3 振动与噪声</td><td>振动与噪声基础及其在智能制造中的应用</td><td class="c">2</td></tr>
+      <tr><td class="c">13</td><td>2.4 图像处理</td><td>数字图像处理基础（卷积核：算术平均／高斯／LoG／Sobel、滤波、边缘检测）</td><td class="c">2</td></tr>
+      <tr><td class="c">14</td><td>2.4 图像处理</td><td>图像处理应用（机器视觉检测、羊检测算法）</td><td class="c">2</td></tr>
+      <tr><td class="c">15</td><td>3.1 质量工程</td><td>质量管理基础、质量体系五大工具（APQP／SPC／FMEA／MSA／PPAP）、CPK 过程能力指数</td><td class="c">2</td></tr>
+      <tr><td class="c">16</td><td>3.2 工业工程</td><td>ECRS／ESCRI 改善原则、4W1H、人机料法环、鱼骨图、8D 报告</td><td class="c">2</td></tr>
+      <tr><td class="c">17</td><td>3.3 + 3.4</td><td>安全工程（事故树分析、布尔化简）+ 环保工程</td><td class="c">2</td></tr>
+      <tr><td class="c">18</td><td>3.5 + 3.6 + 3.7</td><td>成本管理（静态投资回收期、现金流量）+ 人力资源 + 设计基础实验</td><td class="c">2</td></tr>
+      <tr><td class="c">19</td><td>4 智能制造模块</td><td>ERP（企业资源计划）、CRM（客户关系管理）、PLM（产品生命周期管理）</td><td class="c">2</td></tr>
+      <tr><td class="c">20</td><td>4 智能制造模块</td><td>MES（制造执行系统）、WMS（仓库管理）、APS（高级计划与排程）</td><td class="c">2</td></tr>
+      <tr><td class="c">21</td><td>5 深度学习</td><td>机器学习概述与经典算法</td><td class="c">2</td></tr>
+      <tr><td class="c">22</td><td>5 深度学习</td><td>深度学习算法（CNN／RNN／GAN／Transformer）、PyTorch 入门</td><td class="c">2</td></tr>
+      <tr><td class="c">23</td><td>5 深度学习</td><td>图神经网络（GNN）；深度运筹学</td><td class="c">2</td></tr>
+      <tr><td class="c">24</td><td>5 深度学习</td><td>深度学习实验（含「手动计算神经网络」报告）</td><td class="c">2</td></tr>
+      <tr><td class="c">25</td><td>6 设计过程</td><td>调研 + 蓝图（系统设计方法、需求分析）</td><td class="c">2</td></tr>
+      <tr><td class="c">26</td><td>6 设计过程</td><td>实施 + 上线优化 + 持续改进（8D 报告）</td><td class="c">2</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <b>排课说明</b>：框架表细项合计为 42 学时（设计基础含实验 2），与总表 40 学时差 2 学时。
+    上表逐次课为便于按次备课而展开，实际排课可按需压缩或合并第 3、8、9、14、18 次课。
+  </div>
+
+  <h2>四、重点与考点</h2>
+  <p style="font-size:14px;margin:4px 0 10px">
+    试卷结构（智造 2021 A 卷）：<span class="tag">单选 30 分</span><span class="tag">分析简答 30 分</span><span class="tag">论述／计算 40 分</span>
+  </p>
+  <ul>
+    <li>复杂网络性质（自组织、自相似、吸引子）、节点度、邻接矩阵、拉普拉斯矩阵、度中心性</li>
+    <li>工业工程：ECRS／ESCRI 原则、人机料法环、鱼骨图</li>
+    <li>质量工程：质量体系五大工具、CPK 判读、8D 步骤</li>
+    <li>图像处理：卷积核类型辨识</li>
+    <li>公司法人责任形式、MES 目标、深度学习平台（PyTorch）</li>
+    <li>智能制造系统组成（如 APS）、深度学习算法列举与优缺点</li>
+    <li>事故树布尔化简与等效图、静态投资回收期计算</li>
+  </ul>
+
+  <h2>五、课件与素材</h2>
+  <table>
+    <thead><tr><th>模块</th><th>课件文件（智能制造/课件PPT/，共 80 个）</th></tr></thead>
+    <tbody>
+      <tr><td>绪论与框架</td><td>智能制造系统设计-绪论20240310.pptx（含学时分配表）、智能制造系统课程设计20230829.pptx</td></tr>
+      <tr><td>2.1 数学</td><td>数学简介、图论（课程介绍／第一章基本概念／第二章道路与回路／第三章-树）、复杂网络理论和应用研究、数值分析第1章插值、运筹学（赵文浩／清华大学版本）；实验：linprog.py、network.py、soc-karate.mtx</td></tr>
+      <tr><td>2.2~2.4</td><td>aaa力学简介、振动与噪声（殷杰／20230920）、数字图像处理（王佳辰／20240402）</td></tr>
+      <tr><td>3 设计基础</td><td>质量工程（20231009／张腾文／质量管理基础知识）、工业工程（20230513／张连彪）、安全工程（20231015／王佳辰）、成本管理-崔振、财务基本知识、环保工程20230529、设计过程—8D报告</td></tr>
+      <tr><td>4 系统模块</td><td>ERP、CRM、PLM-王浩、MES简介、MES-精益生产8大浪费、APS高级计划与排程、仓库管理系统（WMS）</td></tr>
+      <tr><td>5 深度学习</td><td>机器学习概述与经典算法、图神经网络-张腾文、深度运筹学、PyTorch 安装、机器学习经典算法</td></tr>
+      <tr><td>6 设计过程</td><td>软件开发流程、智能制造系统课程设计</td></tr>
+      <tr><td>7 应用案例</td><td>智能制造_视觉、智能设计应用-图神经网络预测裂纹、振源智能识别及优化、羊检测算法</td></tr>
+      <tr><td>试卷与复习</td><td>智能制造系统（智造2020）试卷 A／B、智能制造系统（智造2021）试卷 A／B、重点.pdf</td></tr>
+    </tbody>
+  </table>
+
+  <footer>
+    本页为课程概览（教学计划），与 <code>智能制造/教学计划.txt</code> 同源，每学期相同。<br>
+    整理：2026-09-14 ｜ 框架与学时数据源：李勇教授《智能制造系统设计·绪论》PPT 的课程框架表。
+  </footer>
+
+</div>
+</body>
+</html>
