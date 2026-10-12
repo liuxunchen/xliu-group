@@ -1,0 +1,51 @@
+/* 表格加框（2026-10-12 导师要求：所有 md 渲染的表格加边框，看清楚）
+   站点自 2026-10-12 起经 hugo.toml 的 [params.ananke] custom_css 引入本文件。
+   作用范围：main 内所有 <table>（post / teaching / paper / people 等全部页面）。 */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2em 0;
+  font-size: 0.95em;
+  line-height: 1.45;
+}
+
+table th,
+table td {
+  border: 1px solid #b7c0cb;
+  padding: 6px 10px;
+  vertical-align: top;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+table thead th {
+  background: #eef2f6;
+  font-weight: 600;
+  border-bottom: 2px solid #9aa7b5;
+}
+
+/* 无 thead 的表格（多数 md 表格首行即表头）：加粗首行 + 底色 */
+table tr:first-child th {
+  background: #eef2f6;
+  font-weight: 600;
+}
+
+table tbody tr:nth-child(even) {
+  background: #fafbfc;
+}
+
+/* 表格内代码不撑破边框 */
+table code {
+  word-break: break-word;
+}
+
+@media (max-width: 640px) {
+  table {
+    font-size: 0.85em;
+  }
+  table th,
+  table td {
+    padding: 4px 6px;
+  }
+}
