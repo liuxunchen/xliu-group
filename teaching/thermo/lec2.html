@@ -1377,6 +1377,9 @@ display: block;
 margin-left: auto;
 margin-right: 0; }
 </style>
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({ extensions: ["TeX/color.js"] });
+  </script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -1554,7 +1557,7 @@ display:block!important;
 <section id="状态方程与气体常数三个形式" class="slide level2">
 <h2>状态方程与气体常数：三个形式</h2>
 <p><strong>理想气体状态方程</strong>（克拉贝龙方程，教材第 3 章第一节）：</p>
-<p><span class="math display">\[\boxed{\textcolor{#1565c0}{p}\textcolor{#2e7d32}{v}=R_g\textcolor{#c62828}{T}},\qquad \textcolor{#1565c0}{p}\textcolor{#2e7d32}{V}=mR_g\textcolor{#c62828}{T},\qquad \textcolor{#1565c0}{p}\textcolor{#2e7d32}{V}=\textcolor{#455a64}{n}R\textcolor{#c62828}{T},\qquad R=MR_g\]</span></p>
+<p><span class="math display">\[\boxed{{\color{#1565c0}p}{\color{#2e7d32}v}=R_g{\color{#c62828}T}},\qquad {\color{#1565c0}p}{\color{#2e7d32}V}=mR_g{\color{#c62828}T},\qquad {\color{#1565c0}p}{\color{#2e7d32}V}={\color{#455a64}n}R{\color{#c62828}T},\qquad R=MR_g\]</span></p>
 <ul>
 <li><span class="math inline">\(R_g\)</span>：<strong>气体常数</strong>，J/(kg·K)，<strong>随气体种类而变</strong>（<span class="math inline">\(R_g=R/M\)</span>）</li>
 <li><span class="math inline">\(R\)</span>：<strong>通用气体常数</strong>，<span class="math inline">\(R=8.314\ \text{J/(mol·K)}=8314.3\ \text{J/(kmol·K)}\)</span>，<strong>与种类无关</strong>（真题考点）</li>
@@ -2283,7 +2286,7 @@ display:block!important;
 <section id="内能与焓公式与工程用法" class="slide level2">
 <h2>内能与焓：公式与工程用法</h2>
 <p><strong>微观结果与工程公式完全一致</strong>：</p>
-<p><span class="math display">\[\boxed{\Delta \textcolor{#ef6c00}{u}=c_v\Delta \textcolor{#c62828}{T},\qquad \Delta \textcolor{#795548}{h}=c_p\Delta \textcolor{#c62828}{T}}\qquad\text{(ideal gas)}\]</span></p>
+<p><span class="math display">\[\boxed{\Delta {\color{#ef6c00}u}=c_v\Delta {\color{#c62828}T},\qquad \Delta {\color{#795548}h}=c_p\Delta {\color{#c62828}T}}\qquad\text{(ideal gas)}\]</span></p>
 <ul>
 <li><span class="math inline">\(u=u(T)\)</span>：无相互作用，只剩动能；<span class="math inline">\(h=u+pv=u(T)+R_gT\)</span> ⇒ <span class="math inline">\(h=h(T)\)</span>——两者都只依赖温度</li>
 <li>两者之差 <span class="math inline">\(pv=R_gT\)</span> ⇒ <strong>迈耶公式</strong>：<span class="math inline">\(c_p-c_v=R_g\)</span>（摩尔量：<span class="math inline">\(c_{p,m}-c_{v,m}=R\)</span>）</li>
@@ -2358,7 +2361,7 @@ display:block!important;
 <p>等温、绝热、多变过程的 <span class="math inline">\(\Delta s\)</span> 均由 <span class="math inline">\(S\)</span> 求差（或对 <span class="math inline">\(dS\)</span> 积分）得到。</p>
 </blockquote>
 <p><strong>由 <span class="math inline">\(Q\)</span> 求 <span class="math inline">\(S\)</span></strong>：把 <span class="math inline">\(Q=q^N/N!\)</span> 与 <span class="math inline">\(U=\frac32Nk_BT\)</span> 代入 <span class="math inline">\(S=k_B\ln Q+\dfrac{U}{T}\)</span>：</p>
-<p><span class="math display">\[\boxed{\frac{\textcolor{#6a1b9a}{S}}{N}=k_B\left(\ln q_{V/N}+\frac52\right)=k_B\ln\frac{e^{5/2}k_B\textcolor{#c62828}{T}}{\textcolor{#1565c0}{p}\Lambda^3}},
+<p><span class="math display">\[\boxed{\frac{{\color{#6a1b9a}S}}{N}=k_B\left(\ln q_{V/N}+\frac52\right)=k_B\ln\frac{e^{5/2}k_B{\color{#c62828}T}}{{\color{#1565c0}p}\Lambda^3}},
 \qquad q_{V/N}=\frac{k_BT}{p\Lambda^3}\]</span></p>
 <ul>
 <li><span class="math inline">\(q_{V/N}\)</span> 是”平均每个粒子分到的体积”对应的配分函数</li>
@@ -2426,7 +2429,7 @@ display:block!important;
 <li>只用了 <span class="math inline">\(m\)</span>、<span class="math inline">\(h\)</span>、<span class="math inline">\(k_B\)</span> 三个常数，没有任何可调参数</li>
 </ul>
 <div class="keybox">
-<p><strong>结论</strong>：Sackur–Tetrode 熵与热化学表<strong>定量吻合</strong>（Ar：<span class="math inline">\(\textcolor{#6a1b9a}{\bar S}=154.8\)</span> J/(mol·K)）——只用了 <span class="math inline">\(m\)</span>、<span class="math inline">\(h\)</span>、<span class="math inline">\(k_B\)</span>，<strong>零可调参数</strong>。</p>
+<p><strong>结论</strong>：Sackur–Tetrode 熵与热化学表<strong>定量吻合</strong>（Ar：<span class="math inline">\({\color{#6a1b9a}\bar S}=154.8\)</span> J/(mol·K)）——只用了 <span class="math inline">\(m\)</span>、<span class="math inline">\(h\)</span>、<span class="math inline">\(k_B\)</span>，<strong>零可调参数</strong>。</p>
 </div>
 </section>
 <section id="标准态熵一标准态形式" class="slide level2">
@@ -2700,7 +2703,7 @@ display:block!important;
 <li>⇒ <span class="math inline">\(\mathrm{d}h=0\)</span>，即 <span class="math inline">\(h_1=h_2\)</span></li>
 </ul>
 <div class="keybox">
-<p><strong>守恒</strong>：绝热节流前后<strong>焓不变</strong>（<span class="math inline">\(\textcolor{#795548}{h_1}=\textcolor{#795548}{h_2}\)</span>）——<span class="math inline">\(\delta \textcolor{#ad1457}{q}=0\)</span>、<span class="math inline">\(\delta \textcolor{#37474f}{w_s}=0\)</span>、进出口动能差与位能差可忽略 ⇒ <span class="math inline">\(\mathrm{d}\textcolor{#795548}{h}=0\)</span>。</p>
+<p><strong>守恒</strong>：绝热节流前后<strong>焓不变</strong>（<span class="math inline">\({\color{#795548}h_1}={\color{#795548}h_2}\)</span>）——<span class="math inline">\(\delta {\color{#ad1457}q}=0\)</span>、<span class="math inline">\(\delta {\color{#37474f}w_s}=0\)</span>、进出口动能差与位能差可忽略 ⇒ <span class="math inline">\(\mathrm{d}{\color{#795548}h}=0\)</span>。</p>
 </div>
 </section>
 <section id="绝热节流二等焓但不等熵" class="slide level2">
@@ -2829,7 +2832,7 @@ display:block!important;
 <h2>控制方程（一）：理想气体状态方程</h2>
 <p>本讲全部过程计算的出发点——三条控制方程，其余结论都是它们的推论。</p>
 <p><strong>（1）理想气体状态方程</strong></p>
-<p><span class="math display">\[\boxed{\textcolor{#1565c0}{p}\textcolor{#2e7d32}{v}=R_g\textcolor{#c62828}{T}},\qquad \textcolor{#1565c0}{p}\textcolor{#2e7d32}{V}=mR_g\textcolor{#c62828}{T},\qquad \textcolor{#1565c0}{p}\textcolor{#2e7d32}{V}=\textcolor{#455a64}{n}R\textcolor{#c62828}{T},\qquad R=MR_g\]</span></p>
+<p><span class="math display">\[\boxed{{\color{#1565c0}p}{\color{#2e7d32}v}=R_g{\color{#c62828}T}},\qquad {\color{#1565c0}p}{\color{#2e7d32}V}=mR_g{\color{#c62828}T},\qquad {\color{#1565c0}p}{\color{#2e7d32}V}={\color{#455a64}n}R{\color{#c62828}T},\qquad R=MR_g\]</span></p>
 <ul>
 <li>三个口径：单位质量（<span class="math inline">\(R_g\)</span>）、质量（<span class="math inline">\(mR_g\)</span>）、摩尔（<span class="math inline">\(nR\)</span>）；<span class="math inline">\(R=8.314\)</span> J/(mol·K) 与种类无关，<span class="math inline">\(R_g=R/M\)</span> 随种类而变</li>
 <li><strong>约束</strong>：<span class="math inline">\((p,v,T)\)</span> 只有两个独立——任给两个量，第三个由状态方程定出（后面每个过程的”状态点”都由它算出）</li>
@@ -2852,11 +2855,11 @@ display:block!important;
 <section id="控制方程二热力学第一定律" class="slide level2">
 <h2>控制方程（二）：热力学第一定律</h2>
 <p><strong>（2）热力学第一定律</strong></p>
-<p><span class="math display">\[\boxed{\delta \textcolor{#ad1457}{q}=\mathrm{d}\textcolor{#ef6c00}{u}+\delta \textcolor{#37474f}{w},\qquad \textcolor{#ad1457}{q}=\Delta \textcolor{#ef6c00}{u}+\textcolor{#37474f}{w}}\]</span></p>
+<p><span class="math display">\[\boxed{\delta {\color{#ad1457}q}=\mathrm{d}{\color{#ef6c00}u}+\delta {\color{#37474f}w},\qquad {\color{#ad1457}q}=\Delta {\color{#ef6c00}u}+{\color{#37474f}w}}\]</span></p>
 <ul>
 <li>微分形式逐微元记账，积分形式用于整段过程；对<strong>循环</strong>一周 <span class="math inline">\(\oint\mathrm{d}u=0\)</span> ⇒ <span class="math inline">\(\oint\delta q=\oint\delta w\)</span></li>
-<li><strong>过程功</strong>（可逆）：<span class="math inline">\(\delta \textcolor{#37474f}{w}=\textcolor{#1565c0}{p}\,\mathrm{d}v\)</span> ⇒ <span class="math inline">\(p\)</span>-<span class="math inline">\(v\)</span> 图上过程线<strong>下方面积</strong>即功</li>
-<li><strong>技术功</strong>（可逆）：<span class="math inline">\(\delta \textcolor{#37474f}{w_t}=-v\,\mathrm{d}\textcolor{#1565c0}{p}\)</span> ⇒ 开口系稳态流动装置（汽轮机、压气机、喷管）用它</li>
+<li><strong>过程功</strong>（可逆）：<span class="math inline">\(\delta {\color{#37474f}w}={\color{#1565c0}p}\,\mathrm{d}v\)</span> ⇒ <span class="math inline">\(p\)</span>-<span class="math inline">\(v\)</span> 图上过程线<strong>下方面积</strong>即功</li>
+<li><strong>技术功</strong>（可逆）：<span class="math inline">\(\delta {\color{#37474f}w_t}=-v\,\mathrm{d}{\color{#1565c0}p}\)</span> ⇒ 开口系稳态流动装置（汽轮机、压气机、喷管）用它</li>
 <li>符号约定：<span class="math inline">\(q&gt;0\)</span> 吸热、<span class="math inline">\(w&gt;0\)</span> 对外做功；<span class="math inline">\(q\)</span>、<span class="math inline">\(w\)</span> 是<strong>过程量</strong>，与路径有关</li>
 </ul>
 <aside class="notes">
@@ -2876,14 +2879,14 @@ display:block!important;
 <section id="控制方程三第二定律与熵变" class="slide level2">
 <h2>控制方程（三）：第二定律与熵变</h2>
 <p><strong>（3）第二定律：熵变由可逆路径计算</strong></p>
-<p><span class="math display">\[\boxed{\Delta \textcolor{#6a1b9a}{s}=\int_1^2\frac{\delta \textcolor{#ad1457}{q}_{\rm rev}}{\textcolor{#c62828}{T}}},\qquad \mathrm{d}\textcolor{#6a1b9a}{s}=\frac{\delta \textcolor{#ad1457}{q}_{\rm rev}}{\textcolor{#c62828}{T}}+\delta \textcolor{#6a1b9a}{s}_{\rm gen},\qquad \delta \textcolor{#6a1b9a}{s}_{\rm gen}\ge0\]</span></p>
+<p><span class="math display">\[\boxed{\Delta {\color{#6a1b9a}s}=\int_1^2\frac{\delta {\color{#ad1457}q}_{\rm rev}}{{\color{#c62828}T}}},\qquad \mathrm{d}{\color{#6a1b9a}s}=\frac{\delta {\color{#ad1457}q}_{\rm rev}}{{\color{#c62828}T}}+\delta {\color{#6a1b9a}s}_{\rm gen},\qquad \delta {\color{#6a1b9a}s}_{\rm gen}\ge0\]</span></p>
 <ul>
 <li>熵是<strong>状态函数</strong>：<span class="math inline">\(\Delta s\)</span> 只由始末态决定 ⇒ 不可逆过程也能算——换成连接同样始末态的<strong>可逆路径</strong>即可</li>
 <li><strong>可逆绝热</strong>（等熵）：<span class="math inline">\(\delta q_{\rm rev}=0\)</span> ⇒ <span class="math inline">\(\Delta s=0\)</span>；<strong>不可逆绝热</strong>：<span class="math inline">\(\delta q=0\)</span> 但 <span class="math inline">\(\delta s_{\rm gen}&gt;0\)</span> ⇒ <span class="math inline">\(\Delta s&gt;0\)</span></li>
 <li>熵增原理：孤立系 <span class="math inline">\(\Delta s\ge0\)</span>，等号当且仅当过程全部可逆</li>
 </ul>
 <div class="keybox">
-<p><strong>守恒</strong>：本讲两类守恒——<strong>能量守恒</strong>（第一定律，<span class="math inline">\(\oint\delta \textcolor{#ad1457}{q}=\oint\delta \textcolor{#37474f}{w}\)</span>）与<strong>可逆绝热过程的熵守恒</strong>（<span class="math inline">\(\Delta \textcolor{#6a1b9a}{s}=0\)</span>，即等熵）。</p>
+<p><strong>守恒</strong>：本讲两类守恒——<strong>能量守恒</strong>（第一定律，<span class="math inline">\(\oint\delta {\color{#ad1457}q}=\oint\delta {\color{#37474f}w}\)</span>）与<strong>可逆绝热过程的熵守恒</strong>（<span class="math inline">\(\Delta {\color{#6a1b9a}s}=0\)</span>，即等熵）。</p>
 </div>
 <aside class="notes">
 控制方程（三）给出熵变的算法：状态函数（路径无关）+ 可逆路径（可算）。 【强调】“定熵”这个名称来自”可逆 + 绝热”两个条件；不可逆绝热过程熵增，不能叫等熵。
@@ -3038,7 +3041,7 @@ display:block!important;
 </tbody>
 </table>
 </div>
-<p><span class="math display">\[\boxed{v=C:\qquad \textcolor{#37474f}{w}=0,\qquad \textcolor{#ad1457}{q}=\Delta \textcolor{#ef6c00}{u}=c_v\Delta T,\qquad \Delta \textcolor{#6a1b9a}{s}=c_v\ln\frac{T_2}{T_1}}\]</span></p>
+<p><span class="math display">\[\boxed{v=C:\qquad {\color{#37474f}w}=0,\qquad {\color{#ad1457}q}=\Delta {\color{#ef6c00}u}=c_v\Delta T,\qquad \Delta {\color{#6a1b9a}s}=c_v\ln\frac{T_2}{T_1}}\]</span></p>
 </section>
 <section id="定压过程p-v-与-t-s-大图" class="slide level2 nostretch">
 <h2>定压过程：p-v 与 T-s 大图</h2>
@@ -3127,7 +3130,7 @@ display:block!important;
 </tbody>
 </table>
 </div>
-<p><span class="math display">\[\boxed{p=C:\qquad \textcolor{#37474f}{w}=p\,(v_2-v_1),\qquad \textcolor{#ad1457}{q}=\Delta \textcolor{#795548}{h}=c_p\Delta T,\qquad \Delta \textcolor{#6a1b9a}{s}=c_p\ln\frac{T_2}{T_1}}\]</span></p>
+<p><span class="math display">\[\boxed{p=C:\qquad {\color{#37474f}w}=p\,(v_2-v_1),\qquad {\color{#ad1457}q}=\Delta {\color{#795548}h}=c_p\Delta T,\qquad \Delta {\color{#6a1b9a}s}=c_p\ln\frac{T_2}{T_1}}\]</span></p>
 </section>
 <section id="定温过程p-v-与-t-s-大图" class="slide level2 nostretch">
 <h2>定温过程：p-v 与 T-s 大图</h2>
@@ -3213,7 +3216,7 @@ display:block!important;
 </tbody>
 </table>
 </div>
-<p><span class="math display">\[\boxed{T=C:\qquad \textcolor{#37474f}{w}=\textcolor{#ad1457}{q}=R_gT\ln\frac{v_2}{v_1}=R_gT\ln\frac{p_1}{p_2},\qquad w_t=w,\qquad \Delta \textcolor{#6a1b9a}{s}=R_g\ln\frac{v_2}{v_1}}\]</span></p>
+<p><span class="math display">\[\boxed{T=C:\qquad {\color{#37474f}w}={\color{#ad1457}q}=R_gT\ln\frac{v_2}{v_1}=R_gT\ln\frac{p_1}{p_2},\qquad w_t=w,\qquad \Delta {\color{#6a1b9a}s}=R_g\ln\frac{v_2}{v_1}}\]</span></p>
 </section>
 <section id="等温过程功热与熵变" class="slide level2">
 <h2>等温过程：功、热与熵变</h2>
@@ -3314,7 +3317,7 @@ display:block!important;
 </tbody>
 </table>
 </div>
-<p><span class="math display">\[\boxed{pv^{\gamma}=C:\qquad \textcolor{#37474f}{w}=-\Delta \textcolor{#ef6c00}{u}=c_v(T_1-T_2),\qquad \textcolor{#37474f}{w_t}=-\Delta \textcolor{#795548}{h}=\gamma \textcolor{#37474f}{w},\qquad \Delta \textcolor{#6a1b9a}{s}=0}\]</span></p>
+<p><span class="math display">\[\boxed{pv^{\gamma}=C:\qquad {\color{#37474f}w}=-\Delta {\color{#ef6c00}u}=c_v(T_1-T_2),\qquad {\color{#37474f}w_t}=-\Delta {\color{#795548}h}=\gamma {\color{#37474f}w},\qquad \Delta {\color{#6a1b9a}s}=0}\]</span></p>
 </section>
 <section id="多变过程p-v-与-t-s-大图" class="slide level2 nostretch">
 <h2>多变过程：p-v 与 T-s 大图</h2>
@@ -3404,7 +3407,7 @@ display:block!important;
 </tbody>
 </table>
 </div>
-<p><span class="math display">\[\boxed{pv^{n}=C:\qquad \textcolor{#37474f}{w}=-\frac{R_g}{n-1}(T_2-T_1),\qquad \textcolor{#37474f}{w_t}=n \textcolor{#37474f}{w},\qquad \textcolor{#ad1457}{q}=c_n(T_2-T_1),\qquad \Delta \textcolor{#6a1b9a}{s}=c_v\ln\frac{T_2}{T_1}+R_g\ln\frac{v_2}{v_1}}\]</span></p>
+<p><span class="math display">\[\boxed{pv^{n}=C:\qquad {\color{#37474f}w}=-\frac{R_g}{n-1}(T_2-T_1),\qquad {\color{#37474f}w_t}=n {\color{#37474f}w},\qquad {\color{#ad1457}q}=c_n(T_2-T_1),\qquad \Delta {\color{#6a1b9a}s}=c_v\ln\frac{T_2}{T_1}+R_g\ln\frac{v_2}{v_1}}\]</span></p>
 </section>
 <section id="多变过程一一张表覆盖四种基本过程" class="slide level2">
 <h2>多变过程（一）：一张表覆盖四种基本过程</h2>
@@ -3721,7 +3724,7 @@ display:block!important;
 <li><strong>斜率比较</strong>：<span class="math inline">\(p\)</span>-<span class="math inline">\(v\)</span> 图过一点的线斜率 <span class="math inline">\(\mathrm{d}p/\mathrm{d}v=-np/v\)</span>——<span class="math inline">\(n\)</span> 越大线越陡：定压 0 ＜ 定温 ＜ 多变 ＜ 定熵 ＜ 定容 ∞；<span class="math inline">\(T\)</span>-<span class="math inline">\(s\)</span> 图斜率 <span class="math inline">\(\mathrm{d}T/\mathrm{d}s=T/c_n\)</span>，定温水平、定熵竖直</li>
 <li><strong>膨胀做功</strong>：定温 141.9 ＞ 多变 96.4 ＞ 定熵 87.0 kJ/kg——等温膨胀做功最大但全靠吸热；定熵不用换热但降温最多</li>
 </ul>
-<p><span class="math display">\[\boxed{\left(\frac{\partial \textcolor{#1565c0}{p}}{\partial \textcolor{#2e7d32}{v}}\right)_{n}=-n\frac{\textcolor{#1565c0}{p}}{\textcolor{#2e7d32}{v}}:\qquad n=0&lt;1&lt;1.3&lt;\gamma&lt;\infty,\qquad \textcolor{#37474f}{w}_{n=1}&gt;\textcolor{#37474f}{w}_{n=1.3}&gt;\textcolor{#37474f}{w}_{n=\gamma}}\]</span></p>
+<p><span class="math display">\[\boxed{\left(\frac{\partial {\color{#1565c0}p}}{\partial {\color{#2e7d32}v}}\right)_{n}=-n\frac{{\color{#1565c0}p}}{{\color{#2e7d32}v}}:\qquad n=0&lt;1&lt;1.3&lt;\gamma&lt;\infty,\qquad {\color{#37474f}w}_{n=1}&gt;{\color{#37474f}w}_{n=1.3}&gt;{\color{#37474f}w}_{n=\gamma}}\]</span></p>
 <aside class="notes">
 三条读图要点：交点看”同一起点、不同约束”，斜率看 <span class="math inline">\(n\)</span>，做功看”热量从哪里来”。 【提问】“为什么等温膨胀做功最大？”——膨胀中压力维持得最高（全靠吸热补充内能）。
 <style type="text/css">
@@ -3766,14 +3769,14 @@ display:block!important;
 <p>分解 1 用 <span class="math inline">\(V\)</span> 变量、分解 2 用 <span class="math inline">\(p\)</span> 变量——同一个 <span class="math inline">\(dS\)</span> 的两种写法；中间点不同，结果相同。</p>
 </blockquote>
 <div class="keybox">
-<p><strong>守恒</strong>：熵是<strong>状态函数</strong>——两条不同路径给出同一个 <span class="math inline">\(\Delta \textcolor{#6a1b9a}{s}\)</span>；路径无关性正是”换一条可逆路径算不可逆过程熵变”的依据。</p>
+<p><strong>守恒</strong>：熵是<strong>状态函数</strong>——两条不同路径给出同一个 <span class="math inline">\(\Delta {\color{#6a1b9a}s}\)</span>；路径无关性正是”换一条可逆路径算不可逆过程熵变”的依据。</p>
 </div>
 </section>
 <section id="熵变的统一形式与绝热过程" class="slide level2">
 <h2>熵变的统一形式与绝热过程</h2>
 <p><strong>两条路径等价</strong>（约去 <span class="math inline">\(\dfrac{dT}{T}\)</span> 项后的统一形式）：</p>
-<p><span class="math display">\[\boxed{\Delta \textcolor{#6a1b9a}{S} = C_V\ln\frac{\textcolor{#1565c0}{p_f}}{\textcolor{#1565c0}{p_i}} + C_p\ln\frac{\textcolor{#2e7d32}{V_f}}{\textcolor{#2e7d32}{V_i}}},\qquad
-d\textcolor{#6a1b9a}{S} = C_V\frac{d\textcolor{#1565c0}{p}}{\textcolor{#1565c0}{p}} + C_p\frac{d\textcolor{#2e7d32}{V}}{\textcolor{#2e7d32}{V}}\]</span></p>
+<p><span class="math display">\[\boxed{\Delta {\color{#6a1b9a}S} = C_V\ln\frac{{\color{#1565c0}p_f}}{{\color{#1565c0}p_i}} + C_p\ln\frac{{\color{#2e7d32}V_f}}{{\color{#2e7d32}V_i}}},\qquad
+d{\color{#6a1b9a}S} = C_V\frac{d{\color{#1565c0}p}}{{\color{#1565c0}p}} + C_p\frac{d{\color{#2e7d32}V}}{{\color{#2e7d32}V}}\]</span></p>
 <p><strong>绝热（等熵）过程</strong> <span class="math inline">\(\Delta S = 0\)</span>：</p>
 <p><span class="math display">\[\frac{dp}{p} = -\gamma\frac{dV}{V}, \qquad pV^\gamma = \text{const}, \qquad \gamma = \frac{C_p}{C_V}\]</span></p>
 <ul>
@@ -3783,7 +3786,7 @@ d\textcolor{#6a1b9a}{S} = C_V\frac{d\textcolor{#1565c0}{p}}{\textcolor{#1565c0}{
 <section id="绝热等熵过程的三个关系式" class="slide level2">
 <h2>绝热（等熵）过程的三个关系式</h2>
 <p>由 <span class="math inline">\(\Delta S=0\)</span>（可逆绝热）出发，代入 <span class="math inline">\(C_V\ln\frac{T_2}{T_1}+Nk_B\ln\frac{V_2}{V_1}=0\)</span> 与 <span class="math inline">\(\gamma=C_p/C_V\)</span>：</p>
-<p><span class="math display">\[\boxed{\textcolor{#c62828}{T}\textcolor{#2e7d32}{V}^{\gamma-1}=\text{const},\qquad \textcolor{#1565c0}{p}\textcolor{#2e7d32}{V}^{\gamma}=\text{const},\qquad \textcolor{#c62828}{T}\textcolor{#1565c0}{p}^{\frac{1-\gamma}{\gamma}}=\text{const}}\]</span></p>
+<p><span class="math display">\[\boxed{{\color{#c62828}T}{\color{#2e7d32}V}^{\gamma-1}=\text{const},\qquad {\color{#1565c0}p}{\color{#2e7d32}V}^{\gamma}=\text{const},\qquad {\color{#c62828}T}{\color{#1565c0}p}^{\frac{1-\gamma}{\gamma}}=\text{const}}\]</span></p>
 <p><strong>三个推论</strong>：</p>
 <ul>
 <li>绝热膨胀：<span class="math inline">\(V\uparrow\)</span> ⇒ <span class="math inline">\(T\downarrow\)</span>（气体对外做功，内能减少）——<strong>喷雾降温、气瓶结霜的原理</strong></li>
@@ -4041,7 +4044,7 @@ display:block!important;
 <section id="循环-第一定律二净功-净热" class="slide level2">
 <h2>循环 × 第一定律（二）：净功 = 净热</h2>
 <p><strong>第二步 · 两式相加，<span class="math inline">\(\Delta u\)</span> 相消</strong>：</p>
-<p><span class="math display">\[\boxed{\oint\delta \textcolor{#ad1457}{q}=\oint\delta \textcolor{#37474f}{w}\;\Longrightarrow\; \textcolor{#37474f}{w}_{\rm net}=\textcolor{#ad1457}{q}_{\rm net}}\]</span></p>
+<p><span class="math display">\[\boxed{\oint\delta {\color{#ad1457}q}=\oint\delta {\color{#37474f}w}\;\Longrightarrow\; {\color{#37474f}w}_{\rm net}={\color{#ad1457}q}_{\rm net}}\]</span></p>
 <ul>
 <li>能相消，缘于<strong>内能是状态函数</strong>：<span class="math inline">\(\Delta u_{12}\)</span> 只由状态点 1、2 决定，与路径无关；回程自然取负号</li>
 <li>于是“<span class="math inline">\(p\)</span>-<span class="math inline">\(v\)</span> 图面积 = 净功”与“<span class="math inline">\(T\)</span>-<span class="math inline">\(s\)</span> 图面积 = 净热量”是<strong>同一条第一定律</strong></li>
@@ -4050,7 +4053,7 @@ display:block!important;
 <p><strong>第一定律对循环的全部说明</strong>：内能是状态量，循环一周净变化为零 ⇒ <strong>净功只能来自净热</strong>。 第一定律只保证能量收支平衡，<strong>不禁止 <span class="math inline">\(\eta=1\)</span></strong>——“不能把热全部变成功”是第二定律的结论。</p>
 </blockquote>
 <div class="keybox">
-<p><strong>守恒</strong>：循环一周内能（状态函数）净变化为零 <span class="math inline">\(\oint\mathrm{d}\textcolor{#ef6c00}{u}=0\)</span> ⇒ <strong>净功只能来自净热</strong>：<span class="math inline">\(\oint\delta \textcolor{#ad1457}{q}=\oint\delta \textcolor{#37474f}{w}\)</span>；方向由 <span class="math inline">\(\textcolor{#37474f}{w}_{\rm net}\)</span> 的正负决定（正循环热机、逆循环制冷机）。</p>
+<p><strong>守恒</strong>：循环一周内能（状态函数）净变化为零 <span class="math inline">\(\oint\mathrm{d}{\color{#ef6c00}u}=0\)</span> ⇒ <strong>净功只能来自净热</strong>：<span class="math inline">\(\oint\delta {\color{#ad1457}q}=\oint\delta {\color{#37474f}w}\)</span>；方向由 <span class="math inline">\({\color{#37474f}w}_{\rm net}\)</span> 的正负决定（正循环热机、逆循环制冷机）。</p>
 </div>
 <aside class="notes">
 本页是”为什么 <span class="math inline">\(w_{\rm net}=q_{\rm net}\)</span>“的一般论证，不依赖任何具体循环（数值例在下页）。 关键一步是第二步：<span class="math inline">\(\Delta u\)</span> 相消靠”状态函数与路径无关”，不是巧合——这是第一定律 + 内能状态性的联合产物。 【提问】“如果两条路径完全重合会怎样？”（不围成面积，<span class="math inline">\(w_{\rm net}=q_{\rm net}=0\)</span>，过程可逆。）
@@ -4430,7 +4433,7 @@ display:block!important;
 </tbody>
 </table>
 <p><strong>两条绝热线的功相互抵消</strong>（因为 <span class="math inline">\(T_2=T_1\)</span>、<span class="math inline">\(T_4=T_3\)</span>，两段绝热的 <span class="math inline">\(\Delta u\)</span> 大小相等、符号相反）：</p>
-<p><span class="math display">\[\boxed{\textcolor{#37474f}{w}_{\rm net}=Nk_B(\textcolor{#c62828}{T_1}-\textcolor{#c62828}{T_3})\ln\frac{\textcolor{#2e7d32}{V_2}}{\textcolor{#2e7d32}{V_1}}&gt;0}\]</span></p>
+<p><span class="math display">\[\boxed{{\color{#37474f}w}_{\rm net}=Nk_B({\color{#c62828}T_1}-{\color{#c62828}T_3})\ln\frac{{\color{#2e7d32}V_2}}{{\color{#2e7d32}V_1}}&gt;0}\]</span></p>
 </section>
 <section id="算例-carnot-循环高温端-t_1600-k低温端-t_3300-k" class="slide level2">
 <h2>算例 · Carnot 循环（高温端 <span class="math inline">\(T_1=600\)</span> K、低温端 <span class="math inline">\(T_3=300\)</span> K）</h2>
@@ -4515,7 +4518,7 @@ display:block!important;
 <p>两条等温线的吸/放热：<span class="math inline">\(q_1=Nk_BT_1\ln\dfrac{V_2}{V_1}\)</span>、<span class="math inline">\(q_3=Nk_BT_3\ln\dfrac{V_3}{V_4}\)</span>：</p>
 <p><span class="math display">\[\eta=1-\frac{q_3}{q_1}=1-\frac{T_3\ln(V_3/V_4)}{T_1\ln(V_2/V_1)}\]</span></p>
 <p><strong>两条绝热线</strong> <span class="math inline">\(TV^{\gamma-1}=\)</span> const 给出 <span class="math inline">\(V_1/V_4=V_2/V_3\)</span> ⇒ <span class="math inline">\(\dfrac{V_2}{V_1}=\dfrac{V_3}{V_4}\)</span>，两个对数项<strong>完全约掉</strong>：</p>
-<p><span class="math display">\[\boxed{\eta=1-\frac{\textcolor{#c62828}{T_3}}{\textcolor{#c62828}{T_1}}}\]</span></p>
+<p><span class="math display">\[\boxed{\eta=1-\frac{{\color{#c62828}T_3}}{{\color{#c62828}T_1}}}\]</span></p>
 <blockquote>
 <p>另一种推导：由净功 <span class="math inline">\(\eta=\dfrac{w_{\rm net}}{q_1}=\dfrac{Nk_B(T_1-T_3)\ln(V_2/V_1)}{Nk_BT_1\ln(V_2/V_1)}\)</span>，对数项同样约掉。 <strong>只与两个热源的温度有关</strong>，与工质种类、循环大小无关——这是“热力学温标”的基础。</p>
 </blockquote>
@@ -4600,14 +4603,14 @@ display:block!important;
 <section id="热机效率从定义到-carnot-上限" class="slide level2">
 <h2>热机效率：从定义到 Carnot 上限</h2>
 <p><strong>一条完整逻辑链</strong>（本课时的结论）：</p>
-<p><span class="math display">\[\underbrace{\eta=\frac{\textcolor{#37474f}{w}_{\rm net}}{\textcolor{#ad1457}{q_1}}}_{\text{def}}\ \le\ \underbrace{1-\frac{\textcolor{#c62828}{T_3}}{\textcolor{#c62828}{T_1}}}_{\text{Carnot limit}}\]</span></p>
+<p><span class="math display">\[\underbrace{\eta=\frac{{\color{#37474f}w}_{\rm net}}{{\color{#ad1457}q_1}}}_{\text{def}}\ \le\ \underbrace{1-\frac{{\color{#c62828}T_3}}{{\color{#c62828}T_1}}}_{\text{Carnot limit}}\]</span></p>
 <ol type="1">
 <li><strong>定义</strong>：<span class="math inline">\(\eta=w_{\rm net}/q_1\)</span>，对任何循环都成立（含不可逆）</li>
 <li><strong>上限</strong>：一切工作在两热源间的热机，<span class="math inline">\(\eta\le1-T_3/T_1\)</span>；等号当且仅当<strong>可逆</strong></li>
 <li><strong>不可逆的代价</strong>：摩擦、传热温差、节流、混合都会产生<strong>熵产</strong>，把一部分可用功变成”废热”</li>
 </ol>
 <div class="keybox">
-<p><strong>结论</strong>：<span class="math inline">\(\eta=\dfrac{\textcolor{#37474f}{w}_{\rm net}}{\textcolor{#ad1457}{q_1}}\le 1-\dfrac{\textcolor{#c62828}{T_3}}{\textcolor{#c62828}{T_1}}\)</span>——上限只由两热源温度决定，与工质、装置结构无关；等号当且仅当过程全部<strong>可逆</strong>（第二类永动机不可能）。</p>
+<p><strong>结论</strong>：<span class="math inline">\(\eta=\dfrac{{\color{#37474f}w}_{\rm net}}{{\color{#ad1457}q_1}}\le 1-\dfrac{{\color{#c62828}T_3}}{{\color{#c62828}T_1}}\)</span>——上限只由两热源温度决定，与工质、装置结构无关；等号当且仅当过程全部<strong>可逆</strong>（第二类永动机不可能）。</p>
 </div>
 </section>
 <section id="图carnot-引擎示意图blundell-fig-13.3" class="slide level2 nostretch">
@@ -5053,9 +5056,9 @@ display:block!important;
 <h2>本讲小结（二）：守恒与结论</h2>
 <ul>
 <li><strong>能量守恒</strong>：第一定律 <span class="math inline">\(\delta q=\mathrm{d}u+\delta w\)</span>；循环一周 <span class="math inline">\(\oint\delta q=\oint\delta w\)</span>——净功只能来自净热</li>
-<li><strong>熵守恒</strong>：可逆绝热（等熵）<span class="math inline">\(\Delta \textcolor{#6a1b9a}{s}=0\)</span>；熵是状态函数，<span class="math inline">\(\Delta \textcolor{#6a1b9a}{s}\)</span> 与路径无关</li>
-<li><strong>状态量</strong>：理想气体 <span class="math inline">\(\textcolor{#ef6c00}{u}=\textcolor{#ef6c00}{u}(\textcolor{#c62828}{T})\)</span>、<span class="math inline">\(\textcolor{#795548}{h}=\textcolor{#795548}{h}(\textcolor{#c62828}{T})\)</span>——<span class="math inline">\(\Delta u\)</span>、<span class="math inline">\(\Delta h\)</span> 只看温差</li>
-<li><strong>上限</strong>：<span class="math inline">\(\eta\le1-\textcolor{#c62828}{T_3}/\textcolor{#c62828}{T_1}\)</span>（Carnot 上限），只依赖两个热源温度</li>
+<li><strong>熵守恒</strong>：可逆绝热（等熵）<span class="math inline">\(\Delta {\color{#6a1b9a}s}=0\)</span>；熵是状态函数，<span class="math inline">\(\Delta {\color{#6a1b9a}s}\)</span> 与路径无关</li>
+<li><strong>状态量</strong>：理想气体 <span class="math inline">\({\color{#ef6c00}u}={\color{#ef6c00}u}({\color{#c62828}T})\)</span>、<span class="math inline">\({\color{#795548}h}={\color{#795548}h}({\color{#c62828}T})\)</span>——<span class="math inline">\(\Delta u\)</span>、<span class="math inline">\(\Delta h\)</span> 只看温差</li>
+<li><strong>上限</strong>：<span class="math inline">\(\eta\le1-{\color{#c62828}T_3}/{\color{#c62828}T_1}\)</span>（Carnot 上限），只依赖两个热源温度</li>
 </ul>
 <div class="keybox">
 <p><strong>结论</strong>：控制方程（状态方程 + 第一定律 + 第二定律）→ 推导 → 黑框公式 → 守恒，这条主线贯穿全讲。</p>

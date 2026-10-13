@@ -1377,6 +1377,9 @@ display: block;
 margin-left: auto;
 margin-right: 0; }
 </style>
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({ extensions: ["TeX/color.js"] });
+  </script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -1556,11 +1559,11 @@ display:block!important;
 <h2>控制方程：本讲的出发点</h2>
 <p>本讲的四个出发点（后面各部分的结论都是它们的推论）：</p>
 <p><strong>（1）质量守恒</strong>（稳定流动，一维）</p>
-<p><span class="math display">\[\dot m=\textcolor{#2e7d32}{\rho}_1 c_1A_1=\textcolor{#2e7d32}{\rho}_2c_2A_2=\text{const}\]</span></p>
+<p><span class="math display">\[\dot m={\color{#2e7d32}\rho}_1 c_1A_1={\color{#2e7d32}\rho}_2c_2A_2=\text{const}\]</span></p>
 <p><strong>（2）能量守恒</strong>（开口系稳定流动能量方程；循环则 <span class="math inline">\(\oint\delta q=\oint\delta w\)</span>）</p>
-<p><span class="math display">\[q=\Delta h+\frac{\Delta c^2}{2}+g\Delta z+w_s,\qquad \oint\delta \textcolor{#ad1457}{q}=\oint\delta \textcolor{#37474f}{w}\]</span></p>
+<p><span class="math display">\[q=\Delta h+\frac{\Delta c^2}{2}+g\Delta z+w_s,\qquad \oint\delta {\color{#ad1457}q}=\oint\delta {\color{#37474f}w}\]</span></p>
 <p><strong>（3）化学平衡判据</strong>（TP 约束；JANAF 表给出 <span class="math inline">\(\Delta G^\circ\)</span>）</p>
-<p><span class="math display">\[\mathrm{d}\textcolor{#795548}{G}\le 0,\qquad \Delta G^\circ=-RT\ln K\]</span></p>
+<p><span class="math display">\[\mathrm{d}{\color{#795548}G}\le 0,\qquad \Delta G^\circ=-RT\ln K\]</span></p>
 <p><strong>（4）循环效率定义</strong>（正向循环与逆向循环）</p>
 <p><span class="math display">\[\eta=\frac{w_{\rm net}}{q_1},\qquad \varepsilon=\frac{q_2}{|w_{\rm net}|}\]</span></p>
 <aside class="notes">
@@ -1858,7 +1861,7 @@ display:block!important;
 &amp; - 0.5[H_{\text{O}_2}(T)-H_{\text{O}_2}(T_r)] + \Delta_fH^\circ(\text{H}_2\text{O},T_r)
 \end{aligned}\]</span></p>
 <p>同理，分子的标准化学势（生成 Gibbs 自由能）写成无量纲的平衡常数：</p>
-<p><span class="math display">\[\boxed{-\frac{\mu^\circ}{R\textcolor{#c62828}{T}} = \ln K_f}\]</span></p>
+<p><span class="math display">\[\boxed{-\frac{\mu^\circ}{R{\color{#c62828}T}} = \ln K_f}\]</span></p>
 <ul>
 <li>JANAF 每行的 <span class="math inline">\(\Delta_fG^\circ\)</span>（<span class="math inline">\(=\mu^\circ\)</span>）与 <span class="math inline">\(K_f\)</span> 对应特定温度、压力下的反应自由能与平衡常数</li>
 <li>任意反应的总平衡常数：<span class="math inline">\(K = \prod_i (K_f)^{c_i}\)</span></li>
@@ -1880,7 +1883,7 @@ display:block!important;
 <section id="反应-gibbs-自由能" class="slide level2">
 <h2>反应 Gibbs 自由能</h2>
 <p>各组分分压为 <span class="math inline">\(p_i\)</span> 时：</p>
-<p><span class="math display">\[\boxed{\Delta G_r = \sum_i c_i\mu_i^\circ + R\textcolor{#c62828}{T}\ln\left[\prod_i\left(\frac{\textcolor{#1565c0}{p}_i}{p^\circ}\right)^{c_i}\right] = R\textcolor{#c62828}{T}\ln\frac{Q}{K}}\]</span></p>
+<p><span class="math display">\[\boxed{\Delta G_r = \sum_i c_i\mu_i^\circ + R{\color{#c62828}T}\ln\left[\prod_i\left(\frac{{\color{#1565c0}p}_i}{p^\circ}\right)^{c_i}\right] = R{\color{#c62828}T}\ln\frac{Q}{K}}\]</span></p>
 <p>其中</p>
 <p><span class="math display">\[Q = \prod_i\left(\frac{p_i}{p^\circ}\right)^{c_i},\qquad K = \prod_i (K_f)^{c_i}\]</span></p>
 <aside class="notes">
@@ -1910,7 +1913,7 @@ display:block!important;
 </ul></li>
 </ul>
 <div class="keybox">
-<p><strong>结论</strong>：<span class="math inline">\(\Delta G_r=R\textcolor{#c62828}{T}\ln(Q/K)\)</span>——比较 <span class="math inline">\(Q\)</span> 与 <span class="math inline">\(K\)</span> 就判方向：<span class="math inline">\(Q&lt;K\)</span> 正向自发、<span class="math inline">\(Q&gt;K\)</span> 逆向、<span class="math inline">\(Q=K\)</span> 平衡（<span class="math inline">\(T,p\)</span> 一定时 <span class="math inline">\(\textcolor{#795548}{G}\)</span> 最小）；等温时 <span class="math inline">\(\textcolor{#6a1b9a}{S}\)</span> 最大与 <span class="math inline">\(G\)</span> 最小等价，这就是燃烧（HP）不能用 <span class="math inline">\(G\)</span> 判据的原因。</p>
+<p><strong>结论</strong>：<span class="math inline">\(\Delta G_r=R{\color{#c62828}T}\ln(Q/K)\)</span>——比较 <span class="math inline">\(Q\)</span> 与 <span class="math inline">\(K\)</span> 就判方向：<span class="math inline">\(Q&lt;K\)</span> 正向自发、<span class="math inline">\(Q&gt;K\)</span> 逆向、<span class="math inline">\(Q=K\)</span> 平衡（<span class="math inline">\(T,p\)</span> 一定时 <span class="math inline">\({\color{#795548}G}\)</span> 最小）；等温时 <span class="math inline">\({\color{#6a1b9a}S}\)</span> 最大与 <span class="math inline">\(G\)</span> 最小等价，这就是燃烧（HP）不能用 <span class="math inline">\(G\)</span> 判据的原因。</p>
 </div>
 <aside class="notes">
 这是 Le Chatelier 原理的热力学表述：改变浓度/分压相当于改变 <span class="math inline">\(Q\)</span>，系统自发地让 <span class="math inline">\(Q\)</span> 回到 <span class="math inline">\(K\)</span>。例：增加反应物分压使 <span class="math inline">\(Q\)</span> 变小（<span class="math inline">\(Q&lt;K\)</span>），反应正移消耗反应物。可让学生用 <span class="math inline">\(2H_2+O_2\rightleftharpoons 2H_2O\)</span> 写一下 <span class="math inline">\(Q\)</span> 的具体形式并判断方向，强化“比较 <span class="math inline">\(Q\)</span> 与 <span class="math inline">\(K\)</span>”这个动作。
@@ -1929,7 +1932,7 @@ display:block!important;
 <section id="vant-hoff-关系" class="slide level2">
 <h2>van’t Hoff 关系</h2>
 <p>温度对平衡常数的影响：</p>
-<p><span class="math display">\[\boxed{\frac{\partial \ln K_f}{\partial (1/\textcolor{#c62828}{T})} = -\frac{\Delta_f \textcolor{#795548}{H}^\circ}{R}}\]</span></p>
+<p><span class="math display">\[\boxed{\frac{\partial \ln K_f}{\partial (1/{\color{#c62828}T})} = -\frac{\Delta_f {\color{#795548}H}^\circ}{R}}\]</span></p>
 <ul>
 <li>放热反应（<span class="math inline">\(\Delta_f H^\circ &lt; 0\)</span>）：升温使平衡常数下降</li>
 <li>吸热反应（<span class="math inline">\(\Delta_f H^\circ &gt; 0\)</span>）：升温使平衡常数上升</li>
@@ -2135,7 +2138,7 @@ display:block!important;
 <ol start="2" type="1">
 <li><strong>焓守恒（HP 的 H）</strong>：产物绝对焓 = 反应物绝对焓 = 0</li>
 </ol>
-<p><span class="math display">\[\boxed{\sum_i n_i\left[\Delta_f \textcolor{#795548}{H}_i^\circ(298.15\ \text{K})+\Delta \textcolor{#795548}{H}_i(\textcolor{#c62828}{T_c})\right]=0}\]</span></p>
+<p><span class="math display">\[\boxed{\sum_i n_i\left[\Delta_f {\color{#795548}H}_i^\circ(298.15\ \text{K})+\Delta {\color{#795548}H}_i({\color{#c62828}T_c})\right]=0}\]</span></p>
 <ol start="3" type="1">
 <li><strong>平衡约束（两个独立反应）</strong>：H₂O ⇌ H + OH（<span class="math inline">\(K_1\)</span>）、H₂O ⇌ H₂ + ½O₂（<span class="math inline">\(K_2\)</span>）</li>
 </ol>
@@ -2594,7 +2597,7 @@ display:block!important;
 <li>同温限 Carnot 上限 <span class="math inline">\(1-T_1/T_3=1-300/1033.8=71.0\%\)</span> ⇒ <span class="math inline">\(56.5\%&lt;71.0\%\)</span> ✓</li>
 </ul>
 <div class="keybox">
-<p><strong>守恒</strong>：<span class="math inline">\(\oint\mathrm{d}\textcolor{#ef6c00}{u}=0\;\Rightarrow\;\oint\delta \textcolor{#ad1457}{q}=\oint\delta \textcolor{#37474f}{w}=w_{\rm net}=q_{\rm net}\)</span>——净功只能来自净热，<span class="math inline">\(q_2&gt;0\)</span> 不可免（熵产 <span class="math inline">\(\Delta \textcolor{#6a1b9a}{s}_{\rm gen}\ge0\)</span>）；上限由第二定律定。</p>
+<p><strong>守恒</strong>：<span class="math inline">\(\oint\mathrm{d}{\color{#ef6c00}u}=0\;\Rightarrow\;\oint\delta {\color{#ad1457}q}=\oint\delta {\color{#37474f}w}=w_{\rm net}=q_{\rm net}\)</span>——净功只能来自净热，<span class="math inline">\(q_2&gt;0\)</span> 不可免（熵产 <span class="math inline">\(\Delta {\color{#6a1b9a}s}_{\rm gen}\ge0\)</span>）；上限由第二定律定。</p>
 </div>
 <blockquote>
 <p><strong>为什么 Otto 达不到 Carnot？</strong> 2→3 定容加热时温度从 689 K 升至 1034 K，吸热不在单一温度下进行， <strong>平均吸热温度低于最高温</strong>；Carnot 在 <span class="math inline">\(T_3\)</span> 等温吸热，吸热温度即最高温。</p>
@@ -2652,7 +2655,7 @@ display:block!important;
 <li><strong>放热</strong>（定容 4→1）：<span class="math inline">\(q_{41}=c_v(T_1-T_4)=0.7175\times(-492)=-352.8\)</span> kJ/kg</li>
 <li><strong>净功与效率</strong>：<span class="math inline">\(w_{\rm net}=q_{23}+q_{41}=604.8\)</span> kJ/kg；<span class="math inline">\(\eta=604.8/957.6=63.2\%\)</span></li>
 </ol>
-<p><span class="math display">\[\boxed{\eta_{\rm Diesel}=1-\frac{1}{r^{k-1}}\cdot\frac{\textcolor{#2e7d32}{\rho}^k-1}{k(\textcolor{#2e7d32}{\rho}-1)}}\]</span></p>
+<p><span class="math display">\[\boxed{\eta_{\rm Diesel}=1-\frac{1}{r^{k-1}}\cdot\frac{{\color{#2e7d32}\rho}^k-1}{k({\color{#2e7d32}\rho}-1)}}\]</span></p>
 <blockquote>
 <p><strong>效率公式</strong>：<span class="math inline">\(\eta=1-\dfrac{1}{r^{k-1}}\cdot\dfrac{\rho^k-1}{k(\rho-1)}=1-\dfrac{1}{18^{0.4}}\times\dfrac{2^{1.4}-1}{1.4\times1}=63.2\%\)</span> ✓ 同压缩比下 Otto 是 <span class="math inline">\(1-18^{-0.4}=68.5\%\)</span>，Diesel 略低（定压加热的平均吸热温度较低）； 但柴油机实际压缩比高得多（18 vs 8），所以<strong>实际效率反而更高</strong>。</p>
 </blockquote>
@@ -4043,7 +4046,7 @@ display:block!important;
 <section id="clausius-clapeyron-关系" class="slide level2">
 <h2>Clausius-Clapeyron 关系</h2>
 <p>相平衡时（由 Maxwell 关系 <span class="math inline">\((\partial S/\partial V)_T = (\partial p/\partial T)_V\)</span> 出发）：</p>
-<p><span class="math display">\[\boxed{\left(\frac{d\textcolor{#1565c0}{p}}{d\textcolor{#c62828}{T}}\right)_e = \frac{\Delta \textcolor{#795548}{H}_e}{\textcolor{#c62828}{T_e}\,\Delta \textcolor{#2e7d32}{V}} = \frac{\Delta \textcolor{#795548}{h}_e}{\textcolor{#c62828}{T_e}}\,\frac{\textcolor{#1565c0}{p}_e}{k_B \textcolor{#c62828}{T_e}}}\]</span></p>
+<p><span class="math display">\[\boxed{\left(\frac{d{\color{#1565c0}p}}{d{\color{#c62828}T}}\right)_e = \frac{\Delta {\color{#795548}H}_e}{{\color{#c62828}T_e}\,\Delta {\color{#2e7d32}V}} = \frac{\Delta {\color{#795548}h}_e}{{\color{#c62828}T_e}}\,\frac{{\color{#1565c0}p}_e}{k_B {\color{#c62828}T_e}}}\]</span></p>
 <p><span class="math display">\[d\ln p_e = -\frac{\Delta h_e}{k_B}\,d\left(\frac{1}{T_e}\right)\]</span></p>
 <ul>
 <li>物理含义：<strong>相变潜热</strong>与<strong>体积变化</strong>决定了相界线（汽化线）的斜率</li>
@@ -4068,7 +4071,7 @@ display:block!important;
 <section id="饱和蒸气压公式" class="slide level2">
 <h2>饱和蒸气压公式</h2>
 <p>积分 Clausius-Clapeyron（假设 <span class="math inline">\(\Delta h_e\)</span> 近似常数）：</p>
-<p><span class="math display">\[\boxed{\ln \textcolor{#1565c0}{p}_e = A - \frac{\Delta \textcolor{#795548}{h}_e}{k_B\textcolor{#c62828}{T_e}}}\]</span></p>
+<p><span class="math display">\[\boxed{\ln {\color{#1565c0}p}_e = A - \frac{\Delta {\color{#795548}h}_e}{k_B{\color{#c62828}T_e}}}\]</span></p>
 <ul>
 <li>饱和蒸气压随温度近似<strong>指数变化</strong>：温度越高，<span class="math inline">\(p_e\)</span> 上升越快</li>
 <li>工程上常用 <strong>Antoine 方程</strong>（三段经验式）：<span class="math inline">\(\lg p = A - \dfrac{B}{C+t}\)</span>，<span class="math inline">\(p\)</span> 单位 mmHg、<span class="math inline">\(t\)</span> 单位 ℃</li>
@@ -4184,7 +4187,7 @@ display:block!important;
 <li>汽化潜热 <span class="math inline">\(r = h&#39;&#39;-h&#39;\)</span>：1 atm 下 <span class="math inline">\(r = 2257\)</span> kJ/kg——这一段的加热<strong>只相变、不升温</strong></li>
 <li>湿蒸汽参数按干度线性插值：<span class="math inline">\(h_x = h&#39; + x(h&#39;&#39;-h&#39;)\)</span>（同式可用于 <span class="math inline">\(v\)</span>、<span class="math inline">\(s\)</span>）</li>
 </ul>
-<p><span class="math display">\[\boxed{\textcolor{#795548}{h}_x=\textcolor{#795548}{h}&#39;+x(\textcolor{#795548}{h}&#39;&#39;-\textcolor{#795548}{h}&#39;)}\]</span></p>
+<p><span class="math display">\[\boxed{{\color{#795548}h}_x={\color{#795548}h}&#39;+x({\color{#795548}h}&#39;&#39;-{\color{#795548}h}&#39;)}\]</span></p>
 <aside class="notes">
 本页是整个水蒸气部分的地基：为什么两相区 T、p 不独立（Gibbs 相律：单组分两相 ⇒ 自由度 1）。 【提问】“加热为什么不升温？”——热量用于打断分子间作用力（潜热），不是提高分子动能。
 <style type="text/css">
@@ -4326,7 +4329,7 @@ display:block!important;
 <li>空调”除湿”= 冷却去湿：先冷到露点以下，把水析出，再加热回舒适温度（所以吹出的风是干的）</li>
 <li>干燥过程 = 绝热（等焓）加湿：热空气把水分带走，温度下降——粮食烘干、喷雾干燥都按这条线走</li>
 </ul>
-<p><span class="math display">\[\boxed{d=0.622\,\frac{\textcolor{#1565c0}{p}_v}{p-\textcolor{#1565c0}{p}_v},\qquad \textcolor{#795548}{h}=1.005\,t+d\,(2501+1.86\,t)}\]</span></p>
+<p><span class="math display">\[\boxed{d=0.622\,\frac{{\color{#1565c0}p}_v}{p-{\color{#1565c0}p}_v},\qquad {\color{#795548}h}=1.005\,t+d\,(2501+1.86\,t)}\]</span></p>
 <aside class="notes">
 把空调与干燥这两件日常事对应到图上两条线，学生就记住了。 【提问】“为什么冬天室内开暖气会觉得干？”——等湿加热：d 不变但饱和蒸气压随 T 升高，故 φ 下降。
 <style type="text/css">
@@ -4504,7 +4507,7 @@ display:block!important;
 <li><strong>吸热</strong>（锅炉）：<span class="math inline">\(q_1=h_1-h_4=3206.3-8.1=3198.2\)</span> kJ/kg</li>
 <li><strong>效率</strong>：<span class="math inline">\(\eta=(w_t-w_p)/q_1=1260.5/3198.2=39.4\%\)</span></li>
 </ol>
-<p><span class="math display">\[\boxed{\eta_{\rm Rankine}=\frac{(\textcolor{#795548}{h}_1-\textcolor{#795548}{h}_2)-w_p}{\textcolor{#795548}{h}_1-\textcolor{#795548}{h}_4}\approx\frac{\textcolor{#795548}{h}_1-\textcolor{#795548}{h}_2}{\textcolor{#795548}{h}_1-\textcolor{#795548}{h}_3}}\]</span></p>
+<p><span class="math display">\[\boxed{\eta_{\rm Rankine}=\frac{({\color{#795548}h}_1-{\color{#795548}h}_2)-w_p}{{\color{#795548}h}_1-{\color{#795548}h}_4}\approx\frac{{\color{#795548}h}_1-{\color{#795548}h}_2}{{\color{#795548}h}_1-{\color{#795548}h}_3}}\]</span></p>
 <blockquote>
 <p><strong>实际电厂</strong>：加<strong>再热</strong>（2 排汽回锅炉再热后二次膨胀，防叶片冲蚀）与<strong>回热</strong>（抽汽加热给水）， 效率到 45% 左右；超超临界（<span class="math inline">\(p&gt;25\)</span> MPa、<span class="math inline">\(t&gt;600\)</span> °C）接近 48%。</p>
 </blockquote>
@@ -4651,7 +4654,7 @@ display:block!important;
 <li>工质越“像理想气体 + 定比热”，逐段计算越准——Rankine 必须用真实水蒸气数据</li>
 </ul>
 <div class="keybox">
-<p><strong>结论</strong>：同温限下 <strong>Carnot 最高</strong>（第 2 讲定理）——表中四个理想值都低于它，差在不可逆与温差传热（<span class="math inline">\(\Delta \textcolor{#6a1b9a}{s}_{\rm gen}&gt;0\)</span>）。比较循环先看参数：Diesel 63.2%（<span class="math inline">\(r=18\)</span>）高于 Otto 56.5%（<span class="math inline">\(r=8\)</span>），靠的是压缩比而不是循环本身。</p>
+<p><strong>结论</strong>：同温限下 <strong>Carnot 最高</strong>（第 2 讲定理）——表中四个理想值都低于它，差在不可逆与温差传热（<span class="math inline">\(\Delta {\color{#6a1b9a}s}_{\rm gen}&gt;0\)</span>）。比较循环先看参数：Diesel 63.2%（<span class="math inline">\(r=18\)</span>）高于 Otto 56.5%（<span class="math inline">\(r=8\)</span>），靠的是压缩比而不是循环本身。</p>
 </div>
 <aside class="notes">
 【收口】四种热机全部按“图 → 推导 → 公式”讲完；这张表是考试默写对象。制冷循环的对比在第五部分末尾单独总结。 【提问】“哪个循环效率最高？”——陷阱题：要看各自的参数；同温限下 Carnot 最高（第 2 讲定理）。
@@ -4699,7 +4702,7 @@ display:block!important;
 <li>该例 <span class="math inline">\(w\)</span>=24.9、<span class="math inline">\(q_2\)</span>=137.5 kJ/kg ⇒ <span class="math inline">\(\varepsilon\)</span>=<strong>5.5</strong>（逆 Carnot 上限 6.95，实际机器 3~4）</li>
 <li>提高 <span class="math inline">\(\varepsilon\)</span>：降冷凝温度、提蒸发温度、<strong>过冷</strong>；工程计算用 <strong>log <span class="math inline">\(p\)</span>-<span class="math inline">\(h\)</span> 图</strong>（焓差直读）</li>
 </ul>
-<p><span class="math display">\[\boxed{\varepsilon=\frac{q_2}{w}=\frac{\textcolor{#795548}{h}_1-\textcolor{#795548}{h}_4}{\textcolor{#795548}{h}_2-\textcolor{#795548}{h}_1}}\]</span></p>
+<p><span class="math display">\[\boxed{\varepsilon=\frac{q_2}{w}=\frac{{\color{#795548}h}_1-{\color{#795548}h}_4}{{\color{#795548}h}_2-{\color{#795548}h}_1}}\]</span></p>
 <aside class="notes">
 制冷循环与动力循环是一对：动力循环顺时针、制冷循环逆时针，节流阀代替了膨胀机（不可逆但便宜）。 【提问】“为什么节流阀代替膨胀机？”——省下昂贵机械，代价是少回收一点功。
 <style type="text/css">
@@ -5011,7 +5014,7 @@ display:block!important;
 <li>蒸气压缩 <span class="math inline">\(\varepsilon\)</span> 高靠<strong>相变（潜热等温吸放热）</strong>，空气压缩只有显热所以 <span class="math inline">\(\varepsilon\)</span> 低；吸收式用“热”替代“电”做补偿；选型逻辑：家用/商用要 <span class="math inline">\(\varepsilon\)</span> 高 → 蒸气压缩；飞机要轻 → 空气压缩；有余热 → 吸收式</li>
 </ul>
 <div class="keybox">
-<p><strong>守恒</strong>：逆循环同样是 <span class="math inline">\(\oint\delta \textcolor{#ad1457}{q}=\oint\delta \textcolor{#37474f}{w}\)</span>，只是目的从 <span class="math inline">\(w_{\rm net}\)</span> 换成 <span class="math inline">\(q_2\)</span>：<span class="math inline">\(q_1=q_2+|w_{\rm net}|\)</span>，<span class="math inline">\(\varepsilon=q_2/|w_{\rm net}|\)</span>；热泵 <span class="math inline">\(\varepsilon&#39;=\varepsilon+1\)</span>——同一台机器换个用途。</p>
+<p><strong>守恒</strong>：逆循环同样是 <span class="math inline">\(\oint\delta {\color{#ad1457}q}=\oint\delta {\color{#37474f}w}\)</span>，只是目的从 <span class="math inline">\(w_{\rm net}\)</span> 换成 <span class="math inline">\(q_2\)</span>：<span class="math inline">\(q_1=q_2+|w_{\rm net}|\)</span>，<span class="math inline">\(\varepsilon=q_2/|w_{\rm net}|\)</span>；热泵 <span class="math inline">\(\varepsilon&#39;=\varepsilon+1\)</span>——同一台机器换个用途。</p>
 </div>
 <aside class="notes">
 【收口】第五部分三种制冷方式 + 热泵一张表收束；与第四部分末尾的四循环效率汇总对照：正向四个循环、逆向四种方式。 【提问】“为什么没有 5 号电池驱动的冰箱？”（压缩机耗功 vs 电池能量密度——工程选型的量级感。）
@@ -5262,7 +5265,7 @@ display:block!important;
 <p>一句话：<strong>平衡判据用于组分反应与相变，各种热机逐一分析，HP 火箭题作为贯通算例。</strong></p>
 </blockquote>
 <div class="keybox">
-<p><strong>守恒</strong>：动力循环 <span class="math inline">\(\oint\delta \textcolor{#ad1457}{q}=\oint\delta \textcolor{#37474f}{w}\)</span>（净功只能来自净热），逆向循环看 <span class="math inline">\(\varepsilon=q_2/|w_{\rm net}|\)</span>；平衡由 <span class="math inline">\(\mathrm{d}\textcolor{#795548}{G}\le0\)</span>（TP）或 <span class="math inline">\(S\)</span> 最大（HP）判定；一切不可逆都表现为 <span class="math inline">\(\Delta \textcolor{#6a1b9a}{s}_{\rm gen}\ge0\)</span>——理想效率必低于同温限 Carnot。</p>
+<p><strong>守恒</strong>：动力循环 <span class="math inline">\(\oint\delta {\color{#ad1457}q}=\oint\delta {\color{#37474f}w}\)</span>（净功只能来自净热），逆向循环看 <span class="math inline">\(\varepsilon=q_2/|w_{\rm net}|\)</span>；平衡由 <span class="math inline">\(\mathrm{d}{\color{#795548}G}\le0\)</span>（TP）或 <span class="math inline">\(S\)</span> 最大（HP）判定；一切不可逆都表现为 <span class="math inline">\(\Delta {\color{#6a1b9a}s}_{\rm gen}\ge0\)</span>——理想效率必低于同温限 Carnot。</p>
 </div>
 <aside class="notes">
 <p>收束本讲：四条主线各自的一句话结论——混合物看分压、化学看 K_f、水蒸气看干度、热机看效率公式。 【抽查】随机点学生：四种热机效率公式各写一个；HP 问题的“给什么求什么”。 【预告】第 4 讲继续同一道火箭题：喷管里是 SP 过程（喉道 3398 K）。</p>

@@ -1377,6 +1377,9 @@ display: block;
 margin-left: auto;
 margin-right: 0; }
 </style>
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({ extensions: ["TeX/color.js"] });
+  </script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -1410,7 +1413,7 @@ margin-right: 0; }
 <div class="keybox">
 <ul>
 <li><strong>守恒</strong>：能量守恒（<span class="math inline">\(U=\sum_i p_iE_i\)</span>）、粒子数守恒（<span class="math inline">\(\sum_i p_i=1\)</span>）、熵增原理（<span class="math inline">\(\Delta S\ge0\)</span>）</li>
-<li><strong>重要公式</strong>：<span class="math inline">\(S=k_B\ln\Omega\)</span>；<span class="math inline">\(d\textcolor{#ef6c00}{U}=\textcolor{#c62828}{T}d\textcolor{#6a1b9a}{S}-\textcolor{#1565c0}{p}dV+\mu dN\)</span>；<span class="math inline">\(F,H,G,\Omega\)</span>（Legendre 变换）</li>
+<li><strong>重要公式</strong>：<span class="math inline">\(S=k_B\ln\Omega\)</span>；<span class="math inline">\(d{\color{#ef6c00}U}={\color{#c62828}T}d{\color{#6a1b9a}S}-{\color{#1565c0}p}dV+\mu dN\)</span>；<span class="math inline">\(F,H,G,\Omega\)</span>（Legendre 变换）</li>
 </ul>
 </div>
 <aside class="notes">
@@ -2119,7 +2122,7 @@ display:block!important;
 <p><span class="math inline">\(\Omega\)</span>：约束 <span class="math inline">\((U,V,N)\)</span> 下的微观态总数</p>
 <p><strong>熵的定义</strong>（由假设 ① 等概率原理引出）：</p>
 <p><strong>（2）熵的定义（Boltzmann）</strong></p>
-<p><span class="math display">\[\boxed{\ \textcolor{#6a1b9a}{S} = k_B\ln\Omega\ } \qquad\Longleftrightarrow\qquad \textcolor{#6a1b9a}{S} = -k_B\sum_i p_i\ln p_i\]</span></p>
+<p><span class="math display">\[\boxed{\ {\color{#6a1b9a}S} = k_B\ln\Omega\ } \qquad\Longleftrightarrow\qquad {\color{#6a1b9a}S} = -k_B\sum_i p_i\ln p_i\]</span></p>
 <blockquote>
 <p><strong>为什么必须写两个式子</strong>：<span class="math inline">\(\Omega\)</span> 只对<strong>孤立系</strong>（固定 <span class="math inline">\((U,V,N)\)</span>）好定义——数态数；而 <span class="math inline">\(S=-k_B\sum_i p_i\ln p_i\)</span> 对<strong>任何平衡系综</strong>都成立。主线里的<strong>第一个 <span class="math inline">\(S\)</span>（广义熵）就是后者</strong>；约束固定 <span class="math inline">\((U,V,N)\)</span> 之后它才退化为微正则的 <span class="math inline">\(S=k_B\ln\Omega\)</span>。</p>
 </blockquote>
@@ -2244,7 +2247,7 @@ display:block!important;
 <h2>2.3 二能级系统（一）：内能、态数与熵</h2>
 <p>只保留两个能级：<span class="math inline">\(E_0=0\)</span>、<span class="math inline">\(E_1=\varepsilon\)</span>；<span class="math inline">\(N\)</span> 个粒子中 <span class="math inline">\(n_0,n_1\)</span> 个分别占据两能级，<span class="math inline">\(p_i=n_i/N\)</span>。</p>
 <p><strong>结论</strong>（内能、态数、熵）</p>
-<p><span class="math display">\[\textcolor{#ef6c00}{U}=\sum_i p_iE_i=p_1\varepsilon, \qquad \Omega=\frac{N!}{n_0!\,n_1!}, \qquad \boxed{\ \textcolor{#6a1b9a}{S}=k_B\ln\Omega=-Nk_B\sum_i p_i\ln p_i\ }\]</span></p>
+<p><span class="math display">\[{\color{#ef6c00}U}=\sum_i p_iE_i=p_1\varepsilon, \qquad \Omega=\frac{N!}{n_0!\,n_1!}, \qquad \boxed{\ {\color{#6a1b9a}S}=k_B\ln\Omega=-Nk_B\sum_i p_i\ln p_i\ }\]</span></p>
 <ul>
 <li>熵是<strong>广延量</strong>：<span class="math inline">\(S\propto N\)</span>（第四部分推 Euler 关系的前提）</li>
 <li>这个模型是本讲的“最小完整例子”：内能、熵、分布三件事都能手算完</li>
@@ -2338,7 +2341,7 @@ display:block!important;
 <p><strong>（3）Boltzmann 分布</strong></p>
 <p><span class="math display">\[\boxed{\ P_i=\frac{g_i\,e^{-\beta E_i}}{Q}\ }\]</span></p>
 <p><strong>（4）配分函数</strong></p>
-<p><span class="math display">\[\boxed{\ Q=\sum_i g_i\,e^{-\beta E_i}\ }, \qquad \beta=\frac{1}{k_B\textcolor{#c62828}{T}}\]</span></p>
+<p><span class="math display">\[\boxed{\ Q=\sum_i g_i\,e^{-\beta E_i}\ }, \qquad \beta=\frac{1}{k_B{\color{#c62828}T}}\]</span></p>
 <p><strong>物理图像</strong>（一句话）</p>
 <blockquote>
 <p>体系与恒温热浴接触、总能量固定：体系占据高能级 ⇒ 热浴可用的微观态数变少 ⇒ <strong>概率正比于热浴的态数</strong> <span class="math inline">\(P_i \propto \Omega_{E-E_i}\)</span></p>
@@ -2504,7 +2507,7 @@ display:block!important;
 </ul>
 <div class="keybox">
 <ul>
-<li><strong>统一公式</strong>：<span class="math inline">\(p_i=e^{-f_i}/Q\)</span>、<span class="math inline">\(Q=\sum_i e^{-f_i}\)</span> ⇒ 热力学势 <span class="math inline">\(\Phi=-k_B\textcolor{#c62828}{T}\ln Q\)</span></li>
+<li><strong>统一公式</strong>：<span class="math inline">\(p_i=e^{-f_i}/Q\)</span>、<span class="math inline">\(Q=\sum_i e^{-f_i}\)</span> ⇒ 热力学势 <span class="math inline">\(\Phi=-k_B{\color{#c62828}T}\ln Q\)</span></li>
 <li><strong>结论</strong>：换系综 ＝ 换约束 ＝ 换 <span class="math inline">\(f_i\)</span>；统计力学只剩“算配分函数”一件事</li>
 </ul>
 </div>
@@ -2528,7 +2531,7 @@ display:block!important;
 <p><strong>（5）统一的分布与配分函数</strong></p>
 <p><span class="math display">\[p_i=\frac{e^{-f_i}}{Q}, \qquad Q=\sum_i e^{-f_i}\]</span></p>
 <p><strong>（6）热力学势（Massieu 函数）</strong></p>
-<p><span class="math display">\[\boxed{\ \Phi=-k_B\textcolor{#c62828}{T}\ln Q\ }\]</span></p>
+<p><span class="math display">\[\boxed{\ \Phi=-k_B{\color{#c62828}T}\ln Q\ }\]</span></p>
 <p>（<span class="math inline">\(\Phi\)</span> 即该系综对应的<strong>热力学势</strong>：正则给 <span class="math inline">\(F\)</span>、巨正则给 <span class="math inline">\(\Omega\)</span>、等压给 <span class="math inline">\(G\)</span>，见表）</p>
 <p><strong>换系综 = 换约束 = 换 <span class="math inline">\(f_i\)</span></strong>，配分函数与热力学势随之改变：</p>
 <div class="t17">
@@ -3264,19 +3267,19 @@ display:block!important;
 <td>内能 <span class="math inline">\(U\)</span></td>
 <td><span class="math inline">\(U_1+U_2=U\)</span></td>
 <td><span class="math inline">\(\left(\dfrac{\partial S_1}{\partial U_1}\right)_{V,N}=\left(\dfrac{\partial S_2}{\partial U_2}\right)_{V,N}\)</span></td>
-<td><span class="math inline">\(\boxed{\dfrac{1}{\textcolor{#c62828}{T}}\equiv\left(\dfrac{\partial \textcolor{#6a1b9a}{S}}{\partial U}\right)_{V,N}}\)</span></td>
+<td><span class="math inline">\(\boxed{\dfrac{1}{{\color{#c62828}T}}\equiv\left(\dfrac{\partial {\color{#6a1b9a}S}}{\partial U}\right)_{V,N}}\)</span></td>
 </tr>
 <tr class="even">
 <td>体积 <span class="math inline">\(V\)</span></td>
 <td><span class="math inline">\(V_1+V_2=V\)</span></td>
 <td><span class="math inline">\(\left(\dfrac{\partial S_1}{\partial V_1}\right)_{U,N}=\left(\dfrac{\partial S_2}{\partial V_2}\right)_{U,N}\)</span></td>
-<td><span class="math inline">\(\boxed{\dfrac{\textcolor{#1565c0}{p}}{\textcolor{#c62828}{T}}\equiv\left(\dfrac{\partial \textcolor{#6a1b9a}{S}}{\partial \textcolor{#2e7d32}{V}}\right)_{U,N}}\)</span></td>
+<td><span class="math inline">\(\boxed{\dfrac{{\color{#1565c0}p}}{{\color{#c62828}T}}\equiv\left(\dfrac{\partial {\color{#6a1b9a}S}}{\partial {\color{#2e7d32}V}}\right)_{U,N}}\)</span></td>
 </tr>
 <tr class="odd">
 <td>粒子数 <span class="math inline">\(N\)</span></td>
 <td><span class="math inline">\(N_1+N_2=N\)</span></td>
 <td><span class="math inline">\(\left(\dfrac{\partial S_1}{\partial N_1}\right)_{U,V}=\left(\dfrac{\partial S_2}{\partial N_2}\right)_{U,V}\)</span></td>
-<td><span class="math inline">\(\boxed{-\dfrac{\mu}{\textcolor{#c62828}{T}}\equiv\left(\dfrac{\partial \textcolor{#6a1b9a}{S}}{\partial N}\right)_{U,V}}\)</span></td>
+<td><span class="math inline">\(\boxed{-\dfrac{\mu}{{\color{#c62828}T}}\equiv\left(\dfrac{\partial {\color{#6a1b9a}S}}{\partial N}\right)_{U,V}}\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -3317,7 +3320,7 @@ display:block!important;
 <p><strong>第一步：只写熵</strong>——此刻<strong>还不需要”温度”这个概念</strong>：</p>
 <p><span class="math display">\[S_{\rm tot}(U_1)=S_1(U_1)+S_2(U-U_1)\]</span></p>
 <p><strong>第二步：熵最大 ⇒ 对 <span class="math inline">\(U_1\)</span> 的偏导数为零</strong>：</p>
-<p><span class="math display">\[\frac{d\textcolor{#6a1b9a}{S}_{\rm tot}}{d\textcolor{#ef6c00}{U}_1}=\frac{\partial \textcolor{#6a1b9a}{S}_1}{\partial \textcolor{#ef6c00}{U}_1}-\frac{\partial \textcolor{#6a1b9a}{S}_2}{\partial \textcolor{#ef6c00}{U}_2}=0 \qquad\Longrightarrow\qquad \boxed{\ \left(\frac{\partial \textcolor{#6a1b9a}{S}_1}{\partial \textcolor{#ef6c00}{U}_1}\right)_{V,N}=\left(\frac{\partial \textcolor{#6a1b9a}{S}_2}{\partial \textcolor{#ef6c00}{U}_2}\right)_{V,N}\ }\]</span></p>
+<p><span class="math display">\[\frac{d{\color{#6a1b9a}S}_{\rm tot}}{d{\color{#ef6c00}U}_1}=\frac{\partial {\color{#6a1b9a}S}_1}{\partial {\color{#ef6c00}U}_1}-\frac{\partial {\color{#6a1b9a}S}_2}{\partial {\color{#ef6c00}U}_2}=0 \qquad\Longrightarrow\qquad \boxed{\ \left(\frac{\partial {\color{#6a1b9a}S}_1}{\partial {\color{#ef6c00}U}_1}\right)_{V,N}=\left(\frac{\partial {\color{#6a1b9a}S}_2}{\partial {\color{#ef6c00}U}_2}\right)_{V,N}\ }\]</span></p>
 <ul>
 <li>平衡判据是<strong>这两个偏导数相等</strong>——注意此刻<strong>它还没有名字</strong>；二阶条件（<span class="math inline">\(S\)</span> 下凹）保证这是极大而非极小（见 5.9）</li>
 </ul>
@@ -3438,13 +3441,13 @@ display:block!important;
 <h2>3.10 基本方程（一）：<span class="math inline">\(dS\)</span> 与 <span class="math inline">\(dU\)</span></h2>
 <p>把三个定义代回 <span class="math inline">\(S(U,V,N)\)</span> 的全微分，得<strong>熵表示</strong>；解出 <span class="math inline">\(dU\)</span> 即<strong>能量表示</strong>（Gibbs 基本方程）：</p>
 <p><strong>（基本方程）<span class="math inline">\(dS\)</span> 与 <span class="math inline">\(dU\)</span></strong></p>
-<p><span class="math display">\[d\textcolor{#6a1b9a}{S}=\frac{1}{\textcolor{#c62828}{T}}\,d\textcolor{#ef6c00}{U}+\frac{\textcolor{#1565c0}{p}}{\textcolor{#c62828}{T}}\,dV-\frac{\mu}{\textcolor{#c62828}{T}}\,dN \qquad\Longleftrightarrow\qquad \boxed{\ d\textcolor{#ef6c00}{U}=\textcolor{#c62828}{T}\,d\textcolor{#6a1b9a}{S}-\textcolor{#1565c0}{p}\,dV+\mu\,dN\ }\]</span></p>
+<p><span class="math display">\[d{\color{#6a1b9a}S}=\frac{1}{{\color{#c62828}T}}\,d{\color{#ef6c00}U}+\frac{{\color{#1565c0}p}}{{\color{#c62828}T}}\,dV-\frac{\mu}{{\color{#c62828}T}}\,dN \qquad\Longleftrightarrow\qquad \boxed{\ d{\color{#ef6c00}U}={\color{#c62828}T}\,d{\color{#6a1b9a}S}-{\color{#1565c0}p}\,dV+\mu\,dN\ }\]</span></p>
 <ul>
 <li>三个强度量<strong>正是 <span class="math inline">\(dS\)</span> 的三个系数</strong>（这就是 3.7 给出的定义）</li>
 <li>能量表示三项各有物理含义：<span class="math inline">\(T\,dS\)</span> 传热、<span class="math inline">\(-p\,dV\)</span> 容积功、<span class="math inline">\(\mu\,dN\)</span> 传质</li>
 </ul>
 <div class="keybox">
-<p><strong>结论</strong>：<span class="math inline">\(d\textcolor{#ef6c00}{U}=\textcolor{#c62828}{T}d\textcolor{#6a1b9a}{S}-\textcolor{#1565c0}{p}dV+\mu dN\)</span> 是<strong>能量守恒的微分形式</strong>——三项分别对应传热、容积功、传质，也是全讲的中心方程。</p>
+<p><strong>结论</strong>：<span class="math inline">\(d{\color{#ef6c00}U}={\color{#c62828}T}d{\color{#6a1b9a}S}-{\color{#1565c0}p}dV+\mu dN\)</span> 是<strong>能量守恒的微分形式</strong>——三项分别对应传热、容积功、传质，也是全讲的中心方程。</p>
 </div>
 <ul>
 <li>微分形式与 Euler 积分形式互为表里（4.1–4.3）</li>
@@ -3640,8 +3643,8 @@ display:block!important;
 <h2>4.1 Euler 关系（一）：结论与来源</h2>
 <p><strong>结论</strong>（Euler 关系）</p>
 <p><strong>（1）Euler 关系（积分形式）</strong></p>
-<p><span class="math display">\[\boxed{\ \textcolor{#ef6c00}{U} = \textcolor{#c62828}{T}\textcolor{#6a1b9a}{S} - \textcolor{#1565c0}{p}V + \mu N\ }\]</span></p>
-<p>多组分推广（<span class="math inline">\(r\)</span> 个组分）：<span class="math inline">\(\textcolor{#ef6c00}{U} = \textcolor{#c62828}{T}\textcolor{#6a1b9a}{S}-\textcolor{#1565c0}{p}V+\sum_i\mu_iN_i\)</span></p>
+<p><span class="math display">\[\boxed{\ {\color{#ef6c00}U} = {\color{#c62828}T}{\color{#6a1b9a}S} - {\color{#1565c0}p}V + \mu N\ }\]</span></p>
+<p>多组分推广（<span class="math inline">\(r\)</span> 个组分）：<span class="math inline">\({\color{#ef6c00}U} = {\color{#c62828}T}{\color{#6a1b9a}S}-{\color{#1565c0}p}V+\sum_i\mu_iN_i\)</span></p>
 <p><strong>来源</strong>：公理 III 的<strong>广延性</strong>就是“一次齐次”——<span class="math inline">\(S(\lambda U,\lambda V,\lambda N)=\lambda\,S\)</span>（整体放大 <span class="math inline">\(\lambda\)</span> 倍，熵也放大 <span class="math inline">\(\lambda\)</span> 倍）， 由齐次函数的 <strong>Euler 定理</strong> <span class="math inline">\(n f=\sum_i x_i\dfrac{\partial f}{\partial x_i}\)</span> 直接得到上式。</p>
 <blockquote>
 <p>前提是粒子间相互作用<strong>短程</strong>（长程力如引力会破坏广延性，自引力星团因此出现负热容）。</p>
@@ -3677,7 +3680,7 @@ display:block!important;
 <h2>4.2 Gibbs–Duhem 关系（核心推导 ③）</h2>
 <p><strong>结论</strong>（Gibbs–Duhem 关系）</p>
 <p><strong>（2）Gibbs–Duhem 关系（纯强度量约束）</strong></p>
-<p><span class="math display">\[\boxed{\ \textcolor{#6a1b9a}{S}\,d\textcolor{#c62828}{T} - \textcolor{#2e7d32}{V}\,d\textcolor{#1565c0}{p} + N\,d\mu = 0\ }\]</span></p>
+<p><span class="math display">\[\boxed{\ {\color{#6a1b9a}S}\,d{\color{#c62828}T} - {\color{#2e7d32}V}\,d{\color{#1565c0}p} + N\,d\mu = 0\ }\]</span></p>
 <p><strong>含义</strong>：<span class="math inline">\(r+2\)</span> 个强度量（<span class="math inline">\(T,p,\mu_1,\dots,\mu_r\)</span>；<span class="math inline">\(r\)</span> 为独立组分数）<strong>并不独立</strong>，只有 <span class="math inline">\(r+1\)</span> 个独立 —— 一个强度量由其余强度量决定。</p>
 <ul>
 <li>例：纯物质给定 <span class="math inline">\(T\)</span> 和 <span class="math inline">\(p\)</span>，<span class="math inline">\(\mu\)</span> 就确定了</li>
@@ -3908,7 +3911,7 @@ display:block!important;
 <p><strong>第一定律本体</strong>（普遍成立）：<span class="math inline">\(\delta Q=dU+\delta W\)</span>（闭口系 <span class="math inline">\(Q=\Delta U+W\)</span>）</p>
 <p><strong>可逆且只做容积功</strong>时，<span class="math inline">\(\delta Q_{\rm rev}=T\,dS\)</span>、<span class="math inline">\(\delta W_{\rm rev}=p\,dV\)</span>，与基本方程一致：</p>
 <p><strong>（3）热力学第一定律（能量守恒）</strong></p>
-<p><span class="math display">\[d\textcolor{#ef6c00}{U}=\textcolor{#c62828}{T}\,d\textcolor{#6a1b9a}{S}-p\,dV=\delta \textcolor{#ad1457}{Q}_{\rm rev}-\delta W_{\rm rev}\]</span></p>
+<p><span class="math display">\[d{\color{#ef6c00}U}={\color{#c62828}T}\,d{\color{#6a1b9a}S}-p\,dV=\delta {\color{#ad1457}Q}_{\rm rev}-\delta W_{\rm rev}\]</span></p>
 <blockquote>
 <p><strong>不可逆时 <span class="math inline">\(\delta Q&lt;T\,dS\)</span></strong>（差值即<strong>熵产</strong>：如自由膨胀 <span class="math inline">\(\delta Q=0\)</span> 而 <span class="math inline">\(T\,dS&gt;0\)</span>）。传热与做功是改变内能的<strong>两种不同方式</strong>，<span class="math inline">\(\delta Q,\delta W\)</span> 都是过程量。</p>
 </blockquote>
@@ -3936,8 +3939,8 @@ display:block!important;
 </ul>
 <div class="keybox">
 <ul>
-<li><strong>守恒</strong>：传热只挪动“分布”（<span class="math inline">\(\textcolor{#6a1b9a}{S}\)</span> 变）、做功只挪动“能级”（<span class="math inline">\(\textcolor{#6a1b9a}{S}\)</span> 不变）</li>
-<li><strong>结论</strong>：<span class="math inline">\(\delta \textcolor{#ad1457}{q}=0\)</span> 不保证等熵——有耗散时熵照样增加</li>
+<li><strong>守恒</strong>：传热只挪动“分布”（<span class="math inline">\({\color{#6a1b9a}S}\)</span> 变）、做功只挪动“能级”（<span class="math inline">\({\color{#6a1b9a}S}\)</span> 不变）</li>
+<li><strong>结论</strong>：<span class="math inline">\(\delta {\color{#ad1457}q}=0\)</span> 不保证等熵——有耗散时熵照样增加</li>
 </ul>
 </div>
 <aside class="notes">
@@ -4272,8 +4275,8 @@ display:block!important;
 <h2>5.4 Helmholtz 自由能：<span class="math inline">\(F = U - TS\)</span></h2>
 <p><strong>结论</strong>（把 <span class="math inline">\(S\)</span> 换成 <span class="math inline">\(T\)</span>）</p>
 <p><strong>（势 1）Helmholtz 自由能</strong>（自然变量 <span class="math inline">\((T,V,N)\)</span>）</p>
-<p><span class="math display">\[\boxed{\ F = \textcolor{#ef6c00}{U} - \textcolor{#c62828}{T}\textcolor{#6a1b9a}{S}\ }\]</span></p>
-<p><span class="math display">\[\boxed{\ dF = -\textcolor{#6a1b9a}{S}\,d\textcolor{#c62828}{T} - p\,d\textcolor{#2e7d32}{V} + \mu\,dN\ }\]</span></p>
+<p><span class="math display">\[\boxed{\ F = {\color{#ef6c00}U} - {\color{#c62828}T}{\color{#6a1b9a}S}\ }\]</span></p>
+<p><span class="math display">\[\boxed{\ dF = -{\color{#6a1b9a}S}\,d{\color{#c62828}T} - p\,d{\color{#2e7d32}V} + \mu\,dN\ }\]</span></p>
 <ul>
 <li><p>直接读出：<span class="math inline">\(S=-\dfrac{\partial F}{\partial T}\Big|_{V,N}\)</span>，<span class="math inline">\(p=-\dfrac{\partial F}{\partial V}\Big|_{T,N}\)</span>，<span class="math inline">\(\mu=\dfrac{\partial F}{\partial N}\Big|_{T,V}\)</span></p></li>
 <li><p><strong>物理意义（“自由能”名字的来历）</strong>：<strong>等温、可逆</strong>过程中体系能对外做的<strong>最大功</strong> <span class="math inline">\(W_{\max}=-\Delta F\)</span></p>
@@ -4298,8 +4301,8 @@ display:block!important;
 <h2>5.5 焓：<span class="math inline">\(H = U + pV\)</span></h2>
 <p><strong>结论</strong>（把 <span class="math inline">\(V\)</span> 换成 <span class="math inline">\(p\)</span>）</p>
 <p><strong>（势 2）焓</strong>（自然变量 <span class="math inline">\((S,p,N)\)</span>）</p>
-<p><span class="math display">\[\boxed{\ \textcolor{#795548}{H} = U + \textcolor{#1565c0}{p}V\ }\]</span></p>
-<p><span class="math display">\[\boxed{\ d\textcolor{#795548}{H} = \textcolor{#c62828}{T}\,d\textcolor{#6a1b9a}{S} + V\,d\textcolor{#1565c0}{p} + \mu\,dN\ }\]</span></p>
+<p><span class="math display">\[\boxed{\ {\color{#795548}H} = U + {\color{#1565c0}p}V\ }\]</span></p>
+<p><span class="math display">\[\boxed{\ d{\color{#795548}H} = {\color{#c62828}T}\,d{\color{#6a1b9a}S} + V\,d{\color{#1565c0}p} + \mu\,dN\ }\]</span></p>
 <ul>
 <li>读出：<span class="math inline">\(T=\dfrac{\partial H}{\partial S}\Big|_{p,N}\)</span>，<span class="math inline">\(V=\dfrac{\partial H}{\partial p}\Big|_{S,N}\)</span>，<span class="math inline">\(\mu=\dfrac{\partial H}{\partial N}\Big|_{S,p}\)</span></li>
 <li>物理含义：<span class="math inline">\(pV\)</span> 即<strong>流动功</strong>，所以开口系（稳定流动）能量方程里天然出现焓</li>
@@ -4324,8 +4327,8 @@ display:block!important;
 <h2>5.6 Gibbs 自由能（一）：等温等压最大非容积功</h2>
 <p><strong>结论</strong>（再换掉 <span class="math inline">\(S\)</span> 与 <span class="math inline">\(N\)</span>）</p>
 <p><strong>（势 3）Gibbs 自由能</strong></p>
-<p><span class="math display">\[\boxed{\ \textcolor{#795548}{G} = U-\textcolor{#c62828}{T}\textcolor{#6a1b9a}{S}+\textcolor{#1565c0}{p}V = H-\textcolor{#c62828}{T}\textcolor{#6a1b9a}{S} = F+\textcolor{#1565c0}{p}V\ }, \qquad (T,p,N)\]</span></p>
-<p><span class="math display">\[\boxed{\ d\textcolor{#795548}{G}=-\textcolor{#6a1b9a}{S}\,d\textcolor{#c62828}{T}+V\,d\textcolor{#1565c0}{p}+\mu\,dN\ }\]</span></p>
+<p><span class="math display">\[\boxed{\ {\color{#795548}G} = U-{\color{#c62828}T}{\color{#6a1b9a}S}+{\color{#1565c0}p}V = H-{\color{#c62828}T}{\color{#6a1b9a}S} = F+{\color{#1565c0}p}V\ }, \qquad (T,p,N)\]</span></p>
+<p><span class="math display">\[\boxed{\ d{\color{#795548}G}=-{\color{#6a1b9a}S}\,d{\color{#c62828}T}+V\,d{\color{#1565c0}p}+\mu\,dN\ }\]</span></p>
 <ul>
 <li><strong>物理意义</strong>：<strong>等温等压</strong>过程中体系能对外做的<strong>最大非容积功</strong>（化学热力学的主角）</li>
 </ul>
@@ -4336,8 +4339,8 @@ display:block!important;
 <section id="大势-omega二开放体系的势" class="slide level2">
 <h2>5.6 大势 <span class="math inline">\(\Omega\)</span>（二）：开放体系的势</h2>
 <p><strong>（势 4）大势（grand potential）</strong></p>
-<p><span class="math display">\[\boxed{\ \Omega = \textcolor{#ef6c00}{U}-\textcolor{#c62828}{T}\textcolor{#6a1b9a}{S}-\mu\textcolor{#455a64}{N}\ }, \qquad (T,V,\mu)\]</span></p>
-<p><span class="math display">\[\boxed{\ d\Omega=-\textcolor{#6a1b9a}{S}\,d\textcolor{#c62828}{T}-p\,dV-\textcolor{#455a64}{N}\,d\mu\ }\]</span></p>
+<p><span class="math display">\[\boxed{\ \Omega = {\color{#ef6c00}U}-{\color{#c62828}T}{\color{#6a1b9a}S}-\mu{\color{#455a64}N}\ }, \qquad (T,V,\mu)\]</span></p>
+<p><span class="math display">\[\boxed{\ d\Omega=-{\color{#6a1b9a}S}\,d{\color{#c62828}T}-p\,dV-{\color{#455a64}N}\,d\mu\ }\]</span></p>
 <ul>
 <li>大势 <span class="math inline">\(\Omega\)</span>：开放体系（粒子数可变）最自然的势，统计力学里 <span class="math inline">\(\Omega=-k_BT\ln\Xi\)</span></li>
 <li>由 Euler 关系得 <span class="math inline">\(\Omega=U-TS-\sum_i\mu_iN_i=-pV\)</span>（<strong>对任意组分数都成立</strong>）</li>
@@ -4758,7 +4761,7 @@ display:block!important;
 <section id="稳定性一二阶条件-c_v0" class="slide level2">
 <h2>5.9 稳定性（一）：二阶条件 ⇒ <span class="math inline">\(C_V&gt;0\)</span></h2>
 <p><strong>结论</strong>（熵极大的二阶条件给出物性符号）</p>
-<p><span class="math display">\[\frac{\partial^2\textcolor{#6a1b9a}{S}}{\partial \textcolor{#ef6c00}{U}^2}\Bigg|_{V,N}=\frac{\partial}{\partial \textcolor{#ef6c00}{U}}\Big(\frac{1}{\textcolor{#c62828}{T}}\Big)_V=-\frac{1}{\textcolor{#c62828}{T}^2C_V}&lt;0 \qquad\Longrightarrow\qquad \boxed{\ C_V=\Big(\frac{\partial \textcolor{#ef6c00}{U}}{\partial \textcolor{#c62828}{T}}\Big)_V&gt;0\ } \ (\textcolor{#c62828}{T}&gt;0)\]</span></p>
+<p><span class="math display">\[\frac{\partial^2{\color{#6a1b9a}S}}{\partial {\color{#ef6c00}U}^2}\Bigg|_{V,N}=\frac{\partial}{\partial {\color{#ef6c00}U}}\Big(\frac{1}{{\color{#c62828}T}}\Big)_V=-\frac{1}{{\color{#c62828}T}^2C_V}&lt;0 \qquad\Longrightarrow\qquad \boxed{\ C_V=\Big(\frac{\partial {\color{#ef6c00}U}}{\partial {\color{#c62828}T}}\Big)_V&gt;0\ } \ ({\color{#c62828}T}&gt;0)\]</span></p>
 </section>
 <section id="稳定性二c_v0-的物理意义" class="slide level2">
 <h2>5.9 稳定性（二）：<span class="math inline">\(C_V&gt;0\)</span> 的物理意义</h2>
@@ -4774,7 +4777,7 @@ display:block!important;
 </ul>
 <div class="keybox">
 <ul>
-<li><strong>守恒/结论</strong>：二阶条件 ⇒ <span class="math inline">\(C_V=(\partial \textcolor{#ef6c00}{U}/\partial \textcolor{#c62828}{T})_V&gt;0\)</span>、<span class="math inline">\(\kappa_T&gt;0\)</span>——体系不会自发走向“越加热温度越低”（负温度 ≠ 负热容）</li>
+<li><strong>守恒/结论</strong>：二阶条件 ⇒ <span class="math inline">\(C_V=(\partial {\color{#ef6c00}U}/\partial {\color{#c62828}T})_V&gt;0\)</span>、<span class="math inline">\(\kappa_T&gt;0\)</span>——体系不会自发走向“越加热温度越低”（负温度 ≠ 负热容）</li>
 </ul>
 </div>
 <aside class="notes">
@@ -5124,7 +5127,7 @@ display:block!important;
 <h2>5.14（二）：两种表示的分工与推导练习</h2>
 <ul>
 <li>能量表示用于<strong>工程与实验</strong>（<span class="math inline">\(T,p\)</span> 好控制）；熵表示用于<strong>统计力学</strong>（配分函数直接给 <span class="math inline">\(\ln Q\)</span>）</li>
-<li><strong>全部换完的“零势”</strong>：<span class="math inline">\(\boxed{\textcolor{#ef6c00}{U}[T,p,\mu]=\textcolor{#ef6c00}{U}-\textcolor{#c62828}{T}\textcolor{#6a1b9a}{S}+\textcolor{#1565c0}{p}V-\sum_i\mu_iN_i\equiv0}\)</span> —— <strong>恒等于零</strong>！这正是 4.2 的 <strong>Gibbs–Duhem 关系</strong>：强度量不独立</li>
+<li><strong>全部换完的“零势”</strong>：<span class="math inline">\(\boxed{{\color{#ef6c00}U}[T,p,\mu]={\color{#ef6c00}U}-{\color{#c62828}T}{\color{#6a1b9a}S}+{\color{#1565c0}p}V-\sum_i\mu_iN_i\equiv0}\)</span> —— <strong>恒等于零</strong>！这正是 4.2 的 <strong>Gibbs–Duhem 关系</strong>：强度量不独立</li>
 <li>两者的信息完全相同——<strong>换表示不换物理，只换自变量</strong></li>
 </ul>
 <p><strong>推导留给 AI</strong>：</p>
@@ -5171,7 +5174,7 @@ display:block!important;
 <div class="keybox">
 <ul>
 <li><strong>结论</strong>：四个核心推导同一手法——约束 ＋ 求极值 ＋ 命名强度量（<span class="math inline">\(T\)</span>、Euler、Gibbs–Duhem、<span class="math inline">\(C_V&gt;0\)</span>）</li>
-<li><strong>守恒</strong>：能量与粒子数守恒贯穿全部推导；低温极限 <span class="math inline">\(\textcolor{#6a1b9a}{S}\to0\)</span> 是算出来的，不是外加假设</li>
+<li><strong>守恒</strong>：能量与粒子数守恒贯穿全部推导；低温极限 <span class="math inline">\({\color{#6a1b9a}S}\to0\)</span> 是算出来的，不是外加假设</li>
 </ul>
 </div>
 </section>
@@ -5179,7 +5182,7 @@ display:block!important;
 <h2>6.1 例 1：二能级系统</h2>
 <p><strong>结论</strong>（配分函数路径的全部热力学量）　<strong>控制方程（1）二能级配分函数</strong></p>
 <p><span class="math display">\[E_0=0,\ E_1=\varepsilon \quad\Longrightarrow\quad Q=1+e^{-\beta\varepsilon}\]</span></p>
-<p><span class="math display">\[\boxed{\ \textcolor{#ef6c00}{U}=-\frac{\partial\ln Q}{\partial\beta}=\frac{\varepsilon}{e^{\beta\varepsilon}+1}\ }, \qquad F=-k_B\textcolor{#c62828}{T}\ln\left(1+e^{-\beta\varepsilon}\right), \qquad \boxed{\ \textcolor{#6a1b9a}{S}=\frac{\textcolor{#ef6c00}{U}-F}{\textcolor{#c62828}{T}}\ }\]</span></p>
+<p><span class="math display">\[\boxed{\ {\color{#ef6c00}U}=-\frac{\partial\ln Q}{\partial\beta}=\frac{\varepsilon}{e^{\beta\varepsilon}+1}\ }, \qquad F=-k_B{\color{#c62828}T}\ln\left(1+e^{-\beta\varepsilon}\right), \qquad \boxed{\ {\color{#6a1b9a}S}=\frac{{\color{#ef6c00}U}-F}{{\color{#c62828}T}}\ }\]</span></p>
 <div class="t12">
 <table class="caption-top">
 <colgroup>
