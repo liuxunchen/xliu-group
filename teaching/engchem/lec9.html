@@ -442,7 +442,7 @@
   <meta name="generator" content="quarto-1.10.8">
 
   <meta name="author" content="刘训臣">
-  <title>工程化学 · 原子结构与电子排布 · 分子结构</title>
+  <title>工程化学 · 原子结构与分子结构</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -987,7 +987,7 @@ margin-right: 0; }
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">工程化学 · 原子结构与电子排布 · 分子结构</h1>
+  <h1 class="title">工程化学 · 原子结构与分子结构</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -1006,18 +1006,19 @@ margin-right: 0; }
 <ul>
 <li>电子的运动特征</li>
 <li>四个量子数</li>
-<li>电子排布三原则</li>
+<li>原子轨道与电子云</li>
+<li>多电子原子能级与电子排布</li>
 <li>元素周期律</li>
 </ul>
 </section>
 
-<section id="电子的运动特征" class="title-slide slide level1 center">
-<h1>电子的运动特征</h1>
+<section id="从原子观点看电子" class="title-slide slide level1 center">
+<h1>从原子观点看电子</h1>
 <ul>
-<li><strong>波粒二象性</strong>：电子既是粒子又是波</li>
-<li>不确定关系：<span class="math inline">\(\Delta x\cdot\Delta p \geq \hbar/2\)</span></li>
-<li>玻尔模型：能级量子化（<span class="math inline">\(E_n \propto -1/n^2\)</span>）解释了氢原子光谱，但需量子力学修正</li>
-<li>核外电子用<strong>波函数</strong>（原子轨道）描述，没有经典轨道</li>
+<li>原子核（质子 + 中子）+ 核外电子</li>
+<li>电子质量小、速度快，具有<strong>波粒二象性</strong></li>
+<li>不能像行星绕太阳那样”轨道”运动——用<strong>概率</strong>描述（电子云）</li>
+<li>微观世界能量量子化（与第 2 讲一致）</li>
 </ul>
 </section>
 
@@ -1029,7 +1030,7 @@ margin-right: 0; }
 <th>量子数</th>
 <th>符号</th>
 <th>取值</th>
-<th>意义</th>
+<th>含义</th>
 </tr>
 </thead>
 <tbody>
@@ -1037,61 +1038,112 @@ margin-right: 0; }
 <td>主量子数</td>
 <td><span class="math inline">\(n\)</span></td>
 <td>1,2,3,…</td>
-<td>能层、能量</td>
+<td>电子层（能量主级）</td>
 </tr>
 <tr class="even">
 <td>角量子数</td>
 <td><span class="math inline">\(l\)</span></td>
-<td>0,1,…,n-1</td>
-<td>轨道类型（s,p,d,f）</td>
+<td>0…<span class="math inline">\(n-1\)</span></td>
+<td>亚层 s、p、d、f</td>
 </tr>
 <tr class="odd">
 <td>磁量子数</td>
-<td><span class="math inline">\(m\)</span></td>
-<td>-l,…,0,…,+l</td>
-<td>轨道取向</td>
+<td><span class="math inline">\(m_l\)</span></td>
+<td><span class="math inline">\(-l\)</span>…+<span class="math inline">\(l\)</span></td>
+<td>空间取向（轨道）</td>
 </tr>
 <tr class="even">
 <td>自旋量子数</td>
 <td><span class="math inline">\(m_s\)</span></td>
-<td>+½, −½</td>
+<td><span class="math inline">\(\pm\frac12\)</span></td>
 <td>自旋方向</td>
 </tr>
 </tbody>
 </table>
+<ul>
+<li>一个原子轨道由 <span class="math inline">\(n,l,m_l\)</span> 确定；每个轨道最多容纳 2 个电子（自旋相反）</li>
+</ul>
+</section>
+
+<section id="原子轨道与电子云" class="title-slide slide level1 center">
+<h1>原子轨道与电子云</h1>
+<ul>
+<li>s 轨道：球形；p 轨道：哑铃形（三个方向 <span class="math inline">\(p_x,p_y,p_z\)</span>）</li>
+<li>d 轨道：五个取向（花瓣形）</li>
+<li>电子云：概率密度分布（<span class="math inline">\(|\psi|^2\)</span>）</li>
+<li>电子云”边界”不是硬边界——是概率意义上的</li>
+</ul>
+</section>
+
+<section id="多电子原子能级" class="title-slide slide level1 center">
+<h1>多电子原子能级</h1>
+<ul>
+<li>多电子原子中电子间排斥使能级分裂</li>
+<li>能级顺序（近似）：<span class="math inline">\(1s&lt;2s&lt;2p&lt;3s&lt;3p&lt;4s&lt;3d&lt;4p&lt;5s&lt;4d&lt;5p\)</span></li>
+<li><strong>能级交错</strong>：<span class="math inline">\(4s\)</span> 低于 <span class="math inline">\(3d\)</span>（K、Ca 先填 4s）</li>
+<li>屏蔽效应与有效核电荷（定性）</li>
+</ul>
 </section>
 
 <section id="电子排布三原则" class="title-slide slide level1 center">
 <h1>电子排布三原则</h1>
 <ol type="1">
-<li><strong>泡利不相容原理</strong>：同一原子中无四个量子数完全相同的电子</li>
-<li><strong>构造原理</strong>：电子按能量由低到高填充（1s,2s,2p,3s,3p,4s,3d,…）</li>
-<li><strong>洪特规则</strong>：等价轨道先分占，自旋平行</li>
+<li><strong>能量最低原理</strong>：先填低能级</li>
+<li><strong>Pauli 不相容原理</strong>：每个轨道最多 2 个电子（自旋相反）</li>
+<li><strong>Hund 规则</strong>：同一亚层各轨道先单独占、自旋平行</li>
 </ol>
-<p><span class="math display">\[\text{Fe}: 1s^22s^22p^63s^23p^63d^64s^2\]</span></p>
+<ul>
+<li>例：N：<span class="math inline">\(1s^22s^22p^3\)</span>（2p 三个轨道各 1 个电子）</li>
+<li>例：O：<span class="math inline">\(1s^22s^22p^4\)</span>（一个轨道成对）</li>
+</ul>
+</section>
+
+<section id="电子排布例题" class="title-slide slide level1 center">
+<h1>电子排布例题</h1>
+<p>写出 Fe（Z=26）的电子排布：</p>
+<p><span class="math display">\[1s^22s^22p^63s^23p^63d^64s^2\]</span></p>
+<ul>
+<li>或简写：<span class="math inline">\([\mathrm{Ar}]3d^64s^2\)</span></li>
+<li>注意：失去电子时先失 4s（如 <span class="math inline">\(\mathrm{Fe^{2+}}\)</span>：<span class="math inline">\(3d^6\)</span>）</li>
+<li>例：Cu（Z=29）：<span class="math inline">\([\mathrm{Ar}]3d^{10}4s^1\)</span>（特例：全满更稳定）</li>
+</ul>
 </section>
 
 <section id="元素周期律" class="title-slide slide level1 center">
 <h1>元素周期律</h1>
 <ul>
-<li>周期：电子层数；族：最外层电子数</li>
-<li><strong>原子半径</strong>：同周期左大右小，同族上小下大</li>
-<li><strong>电离能</strong>：同周期左小右大</li>
-<li><strong>电负性</strong>：衡量原子吸引电子能力，F 最大</li>
+<li>周期：电子层数（<span class="math inline">\(n\)</span>）相同 → 主量子数</li>
+<li>族：价电子构型相似 → 化学性质相似</li>
+<li>原子半径：同周期从左到右减小；同族从上到下增大</li>
+<li>电离能、电负性：同周期从左到右增大</li>
+<li>金属性：左下强，非金属性：右上强</li>
 </ul>
-<aside class="notes">
-课程思政：徐光宪先生在物质结构与量子化学领域的贡献。
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
+</section>
+
+<section id="电负性与化学键倾向" class="title-slide slide level1 center">
+<h1>电负性与化学键倾向</h1>
+<ul>
+<li><strong>电负性</strong>（Pauling）：原子吸引电子的能力</li>
+<li>F 最大（4.0），O（3.44），N（3.04），C（2.55），H（2.20）</li>
+<li>电负性差大 → 离子键；差小 → 共价键</li>
+<li>例：NaCl（2.1）离子键；CH₄（0.35）共价键</li>
+</ul>
+</section>
+
+<section id="原子轨道能级图与周期表分区" class="title-slide slide level1 center">
+<h1>原子轨道能级图与周期表分区</h1>
+<ul>
+<li>能级图：<span class="math inline">\(1s\)</span>、<span class="math inline">\(2s2p\)</span>、<span class="math inline">\(3s3p\)</span>、<span class="math inline">\(4s3d4p\)</span>……（按能量顺序）</li>
+<li>周期表分区：
+<ul>
+<li>s 区（IA、IIA）：价电子 <span class="math inline">\(ns^{1-2}\)</span></li>
+<li>p 区（IIIA–VIIIA）：<span class="math inline">\(ns^2np^{1-6}\)</span></li>
+<li>d 区（IIIB–VIIIB）：<span class="math inline">\((n-1)d^{1-10}ns^{1-2}\)</span></li>
+<li>ds 区（IB、IIB）：<span class="math inline">\((n-1)d^{10}ns^{1-2}\)</span></li>
+<li>f 区（镧系、锕系）</li>
+</ul></li>
+<li>价电子构型决定化学性质</li>
+</ul>
 </section>
 
 <section id="课时-2-分子结构" class="title-slide slide level1 center">
@@ -1100,72 +1152,251 @@ display:block!important;
 <li>离子键</li>
 <li>共价键：价键理论</li>
 <li>杂化轨道理论</li>
-<li>键参数</li>
+<li>键参数与分子极性</li>
 </ul>
 </section>
 
 <section id="离子键" class="title-slide slide level1 center">
 <h1>离子键</h1>
 <ul>
-<li>正负离子间静电作用：<span class="math inline">\(\text{Na}^+\text{Cl}^-\)</span></li>
-<li>无方向性、无饱和性；离子晶体熔点高</li>
+<li>电负性差大的元素之间形成（如 NaCl、MgO）</li>
+<li>靠<strong>静电引力</strong>结合，无方向性、无饱和性</li>
+<li>离子晶体：高熔点、硬、脆、熔融导电</li>
+<li>例：NaCl 晶格能大（约 787 kJ/mol）→ 熔点 801 °C</li>
 </ul>
 </section>
 
 <section id="共价键价键理论" class="title-slide slide level1 center">
 <h1>共价键：价键理论</h1>
 <ul>
-<li>成键：原子轨道重叠，共用电子对</li>
-<li><span class="math inline">\(\sigma\)</span> 键：头碰头重叠；<span class="math inline">\(\pi\)</span> 键：肩并肩重叠</li>
-<li>配位键：共用电子对由一方提供</li>
+<li>共价键：原子间<strong>共用电子对</strong>（Lewis 结构）</li>
+<li>本质：电子云重叠、降低体系能量</li>
+<li>特点：饱和性（原子可成键数有限）、方向性（轨道最大重叠）</li>
+<li>单键 σ（头碰头）、双键含 π（肩并肩）</li>
+<li>例：H₂（1s-1s）、HCl（1s-3p）、Cl₂（3p-3p）</li>
 </ul>
 </section>
 
 <section id="杂化轨道理论" class="title-slide slide level1 center">
 <h1>杂化轨道理论</h1>
+<ul>
+<li>中心原子成键前，原子轨道<strong>重新组合</strong>为杂化轨道</li>
+<li>杂化轨道数 = 参与杂化的原子轨道数</li>
+<li>目的：解释分子的空间构型与键角</li>
+</ul>
 <table class="caption-top">
 <thead>
 <tr class="header">
 <th>杂化</th>
-<th>空间构型</th>
+<th>轨道数</th>
+<th>构型</th>
+<th>键角</th>
 <th>例</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><span class="math inline">\(sp\)</span></td>
+<td>sp</td>
+<td>2</td>
 <td>直线</td>
-<td><span class="math inline">\(\text{CO}_2\)</span>、<span class="math inline">\(\text{C}_2\text{H}_2\)</span></td>
+<td>180°</td>
+<td>BeCl₂、CO₂</td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(sp^2\)</span></td>
-<td>平面三角形</td>
-<td><span class="math inline">\(\text{BF}_3\)</span>、<span class="math inline">\(\text{C}_2\text{H}_4\)</span></td>
+<td>sp²</td>
+<td>3</td>
+<td>平面三角</td>
+<td>120°</td>
+<td>BF₃、苯</td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(sp^3\)</span></td>
-<td>四面体</td>
-<td><span class="math inline">\(\text{CH}_4\)</span>、<span class="math inline">\(\text{H}_2\text{O}\)</span></td>
+<td>sp³</td>
+<td>4</td>
+<td>正四面体</td>
+<td>109°28′</td>
+<td>CH₄、NH₃、H₂O</td>
 </tr>
 </tbody>
 </table>
 </section>
 
+<section id="杂化与分子构型含孤对电子" class="title-slide slide level1 center">
+<h1>杂化与分子构型（含孤对电子）</h1>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>分子</th>
+<th>中心原子杂化</th>
+<th>孤对</th>
+<th>构型</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CH₄</td>
+<td>sp³</td>
+<td>0</td>
+<td>正四面体</td>
+</tr>
+<tr class="even">
+<td>NH₃</td>
+<td>sp³</td>
+<td>1</td>
+<td>三角锥</td>
+</tr>
+<tr class="odd">
+<td>H₂O</td>
+<td>sp³</td>
+<td>2</td>
+<td>V 形（角形）</td>
+</tr>
+<tr class="even">
+<td>CO₂</td>
+<td>sp</td>
+<td>—</td>
+<td>直线</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>孤对电子排斥力大 → 键角变小（H₂O 104.5°、NH₃ 107°）</li>
+</ul>
+</section>
+
 <section id="键参数" class="title-slide slide level1 center">
 <h1>键参数</h1>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>含义</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>键能</td>
+<td>断开 1 mol 键所需能量</td>
+<td>H–H 436 kJ/mol</td>
+</tr>
+<tr class="even">
+<td>键长</td>
+<td>两核间距离</td>
+<td>H–H 74 pm</td>
+</tr>
+<tr class="odd">
+<td>键角</td>
+<td>键与键的夹角</td>
+<td>H₂O 104.5°</td>
+</tr>
+<tr class="even">
+<td>键的极性</td>
+<td>电子云偏移程度</td>
+<td>HCl 极性键</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>键能、键长、键角</li>
-<li>决定分子的稳定性与空间构型</li>
+<li>键能越大、键长越短 → 键越强（第 2 讲键能计算基础）</li>
+</ul>
+</section>
+
+<section id="分子的极性与偶极矩" class="title-slide slide level1 center">
+<h1>分子的极性与偶极矩</h1>
+<ul>
+<li>极性分子：正负电荷中心不重合（HCl、H₂O、NH₃）</li>
+<li>非极性分子：重合（H₂、CO₂、CH₄、CCl₄）</li>
+<li><strong>偶极矩</strong> <span class="math inline">\(\mu=q\cdot d\)</span>（单位 Debye）</li>
+<li>分子极性影响溶解度、分子间力、沸点（第 10 讲）</li>
+</ul>
+</section>
+
+<section id="分子轨道理论简介" class="title-slide slide level1 center">
+<h1>分子轨道理论（简介）</h1>
+<ul>
+<li>原子轨道线性组合成<strong>分子轨道</strong>（成键/反键）</li>
+<li>电子填充分子轨道（能量低者先填）</li>
+<li>例：O₂ 有两个未成对电子（顺磁性）——价键理论难解释</li>
+<li>应用：解释双原子分子、电子光谱（工程中了解即可）</li>
+</ul>
+</section>
+
+<section id="分子形状与极性判断" class="title-slide slide level1 center">
+<h1>分子形状与极性判断</h1>
+<ul>
+<li>步骤：价电子对 → 电子对构型 → 分子构型（看孤对）→ 极性</li>
+<li>例：<span class="math inline">\(CO_2\)</span> 直线、非极性；<span class="math inline">\(SO_2\)</span> V 形、极性；<span class="math inline">\(CCl_4\)</span> 四面体、非极性</li>
+<li>例：<span class="math inline">\(NH_3\)</span> 三角锥、极性；<span class="math inline">\(BF_3\)</span> 平面三角、非极性</li>
+<li>应用：判断溶剂极性、溶解性、分子间力（第 10 讲）</li>
+</ul>
+</section>
+
+<section id="配位键与配合物衔接第-6-讲" class="title-slide slide level1 center">
+<h1>配位键与配合物（衔接第 6 讲）</h1>
+<ul>
+<li>配位键：一方提供孤对电子、一方提供空轨道</li>
+<li>例：<span class="math inline">\(\mathrm{[Cu(NH_3)_4]^{2+}}\)</span>、<span class="math inline">\(\mathrm{[Fe(CN)_6]^{4-}}\)</span></li>
+<li>配位数与构型：2 直线、4 四面体/平面正方形、6 八面体</li>
+<li>第 6 讲详细讲配合物命名、稳定常数与平衡</li>
+</ul>
+</section>
+
+<section id="晶体场理论简介" class="title-slide slide level1 center">
+<h1>晶体场理论（简介）</h1>
+<ul>
+<li>过渡金属配合物中，配体电场使 d 轨道能级分裂</li>
+<li>分裂能 <span class="math inline">\(\Delta\)</span> 决定颜色、磁性、稳定性</li>
+<li>强场配体（CN⁻）vs 弱场配体（H₂O、Cl⁻）</li>
+<li>例：<span class="math inline">\(\mathrm{[Fe(CN)_6]^{3-}}\)</span> 与 <span class="math inline">\(\mathrm{[Fe(H_2O)_6]^{3+}}\)</span> 颜色不同</li>
+<li>工程：功能材料、催化剂、颜料（了解即可）</li>
+</ul>
+</section>
+
+<section id="键型判断例题" class="title-slide slide level1 center">
+<h1>键型判断例题</h1>
+<ul>
+<li>例：判断下列物质的键型：NaCl、HCl、Cl₂、MgO
+<ul>
+<li>NaCl：离子键（Δχ=2.1）</li>
+<li>HCl：极性共价键（Δχ=0.96）</li>
+<li>Cl₂：非极性共价键（Δχ=0）</li>
+<li>MgO：离子键（Δχ=2.1）</li>
+</ul></li>
+<li>经验：Δχ&gt;1.7 离子键为主；&lt;1.7 共价键（有例外）</li>
+<li>键型影响：熔点、导电性、溶解性（第 10 讲）</li>
+</ul>
+</section>
+
+<section id="分子间力与分子形状综合" class="title-slide slide level1 center">
+<h1>分子间力与分子形状综合</h1>
+<ul>
+<li>例：比较沸点：<span class="math inline">\(CO_2\)</span>（−78 °C 升华）vs <span class="math inline">\(H_2O\)</span>（100 °C）
+<ul>
+<li>分子量相近，但 H₂O 有氢键</li>
+</ul></li>
+<li>例：<span class="math inline">\(CCl_4\)</span>（76.7 °C）vs <span class="math inline">\(CH_4\)</span>（−161 °C）——色散力随分子增大</li>
+<li>结论：分子间力（+氢键）决定沸点、溶解度、粘度</li>
 </ul>
 </section>
 
 <section id="本讲小结" class="title-slide slide level1 center">
 <h1>本讲小结</h1>
 <ul>
-<li>四个量子数 + 排布三原则 + 周期律</li>
-<li>离子键 / 共价键 / 杂化轨道 → 分子空间构型</li>
-<li>下一讲：分子间力、晶体结构与材料</li>
+<li>原子结构：量子数、电子云、电子排布三原则、周期律</li>
+<li>分子结构：离子键、共价键（价键理论）、杂化轨道、键参数、极性</li>
+<li>为第 10 讲（分子间力与晶体）和第 11 讲（材料）打基础</li>
+<li>下讲：分子间力、晶体结构与材料</li>
 </ul>
+</section>
+
+<section id="作业" class="title-slide slide level1 center">
+<h1>作业</h1>
+<ol type="1">
+<li>写出 Mg（Z=12）、Cl（Z=17）、Fe³⁺（Z=26）的电子排布</li>
+<li>判断 CO₂、H₂O、BF₃、CH₄ 的中心原子杂化与分子构型</li>
+<li>比较 HCl 与 H₂ 的分子极性，说明与分子间力的关系</li>
+<li>为什么 O₂ 具有顺磁性？（用分子轨道理论定性说明）</li>
+</ol>
 
 </section>
     </div>

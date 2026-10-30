@@ -442,7 +442,7 @@
   <meta name="generator" content="quarto-1.10.8">
 
   <meta name="author" content="刘训臣">
-  <title>工程化学 · 电解 · 金属腐蚀与化学电源</title>
+  <title>工程化学 · 电解、金属腐蚀与化学电源</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -987,7 +987,7 @@ margin-right: 0; }
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">工程化学 · 电解 · 金属腐蚀与化学电源</h1>
+  <h1 class="title">工程化学 · 电解、金属腐蚀与化学电源</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -1004,109 +1004,396 @@ margin-right: 0; }
 <section id="课时-1-电解" class="title-slide slide level1 center">
 <h1>课时 1 · 电解</h1>
 <ul>
-<li>电解的基本原理</li>
+<li>电解池的组成</li>
+<li>阴阳极与放电顺序</li>
+<li>分解电压与超电势</li>
+<li>法拉第定律与电解计算</li>
 <li>电解的应用</li>
-<li>法拉第定律</li>
 </ul>
 </section>
 
-<section id="电解的基本原理" class="title-slide slide level1 center">
-<h1>电解的基本原理</h1>
-<p>电能 → 化学能，外加电压使非自发反应进行：</p>
+<section id="本讲主线" class="title-slide slide level1 center">
+<h1>本讲主线</h1>
+<p><strong>课时 1</strong>：电解——用外加电源让”非自发”的氧化还原发生</p>
+<p><strong>课时 2</strong>：金属腐蚀（电化学腐蚀）与化学电源（一次/二次/燃料电池）</p>
+<blockquote>
+<p>与第 7 讲的关系：原电池是自发反应产生电；电解是电能驱动反应</p>
+</blockquote>
+</section>
+
+<section id="电解池的组成" class="title-slide slide level1 center">
+<h1>电解池的组成</h1>
 <ul>
-<li><strong>阳极</strong>：氧化（接电源正极）</li>
-<li><strong>阴极</strong>：还原（接电源负极）</li>
-<li>分解电压：使电解持续进行的最小外加电压</li>
-<li><strong>超电势</strong>：实际所需电压高于理论分解电压（电极极化）</li>
-<li>析出规律：阳离子按电极电势由大到小在阴极析出</li>
+<li><strong>电解池</strong>：把电能转化为化学能的装置</li>
+<li>组成：直流电源、两个电极、电解质溶液（或熔融盐）</li>
+<li>与电源<strong>负极</strong>相连的电极：<strong>阴极</strong>（发生还原）</li>
+<li>与电源<strong>正极</strong>相连的电极：<strong>阳极</strong>（发生氧化）</li>
 </ul>
 </section>
 
-<section id="电解的应用" class="title-slide slide level1 center">
-<h1>电解的应用</h1>
+<section id="电解与原电池的对比" class="title-slide slide level1 center">
+<h1>电解与原电池的对比</h1>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>项目</th>
+<th>原电池</th>
+<th>电解池</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>能量转化</td>
+<td>化学能 → 电能</td>
+<td>电能 → 化学能</td>
+</tr>
+<tr class="even">
+<td>负极/正极</td>
+<td>负极氧化、正极还原</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>阴极/阳极</td>
+<td>阴极（正极）还原、阳极（负极）氧化</td>
+<td><strong>阴极</strong>（接电源负极）还原、<strong>阳极</strong>（接电源正极）氧化</td>
+</tr>
+<tr class="even">
+<td>反应自发性</td>
+<td>自发</td>
+<td>非自发（外加电压驱动）</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>电解水制氢：<span class="math inline">\(2\text{H}_2\text{O} \rightarrow 2\text{H}_2 + \text{O}_2\)</span></li>
-<li>氯碱工业：电解食盐水制 <span class="math inline">\(\text{NaOH}\)</span>、<span class="math inline">\(\text{Cl}_2\)</span></li>
-<li>电镀（镀锌、镀铬）、电解精炼铜</li>
-<li>铝电解冶炼（Hall-Héroult 法）</li>
+<li>记忆：<strong>阴还得还</strong>（阴极发生还原）；原电池”正极”= 阴极</li>
+</ul>
+</section>
+
+<section id="电极反应示例电解水" class="title-slide slide level1 center">
+<h1>电极反应示例：电解水</h1>
+<ul>
+<li>阴极（还原）：<span class="math inline">\(\mathrm{2H_2O+2e^-\rightarrow H_2\uparrow+2OH^-}\)</span></li>
+<li>阳极（氧化）：<span class="math inline">\(\mathrm{2H_2O\rightarrow O_2\uparrow+4H^++4e^-}\)</span></li>
+<li>总反应：<span class="math inline">\(\mathrm{2H_2O\xrightarrow{电解}2H_2\uparrow+O_2\uparrow}\)</span></li>
+<li>阴极体积 : 阳极体积 = 2 : 1（理论）</li>
+</ul>
+</section>
+
+<section id="离子放电顺序惰性电极" class="title-slide slide level1 center">
+<h1>离子放电顺序（惰性电极）</h1>
+<ul>
+<li><strong>阴极</strong>：阳离子得电子能力——按电极电势从高到低：
+<ul>
+<li><span class="math inline">\(\mathrm{Ag^+&gt;Cu^{2+}&gt;H^+&gt;Pb^{2+}&gt;Fe^{2+}&gt;Zn^{2+}&gt;Al^{3+}&gt;Na^+}\)</span></li>
+</ul></li>
+<li><strong>阳极</strong>：阴离子失电子能力——<span class="math inline">\(\mathrm{S^{2-}&gt;I^-&gt;Br^-&gt;Cl^-&gt;OH^-&gt;SO_4^{2-}&gt;F^-}\)</span></li>
+<li>活性阳极（如 Cu、Ag）优先溶解，不析出 <span class="math inline">\(\mathrm{O_2}\)</span></li>
+<li>例：电解 <span class="math inline">\(\mathrm{CuSO_4}\)</span> 溶液（Pt 电极）→ 阴极析 Cu，阳极析 <span class="math inline">\(\mathrm{O_2}\)</span></li>
+</ul>
+</section>
+
+<section id="分解电压" class="title-slide slide level1 center">
+<h1>分解电压</h1>
+<ul>
+<li><strong>分解电压</strong>：使电解持续进行所需的最小外加电压</li>
+<li>理论值：<span class="math inline">\(E_{\text{分解}}^0=E_{\text{阳极}}^0-E_{\text{阴极}}^0\)</span>（可逆电动势）</li>
+<li>实际需要更大电压——<strong>超电势</strong>（过电位）： <span class="math display">\[E_{\text{实际}}=E_{\text{分解}}+E_{\text{超}}\]</span></li>
+<li>超电势来源：电极极化（浓差极化 + 电化学极化），与电极材料、电流密度有关</li>
+</ul>
+</section>
+
+<section id="超电势的工程意义" class="title-slide slide level1 center">
+<h1>超电势的工程意义</h1>
+<ul>
+<li>电解水制氢：阴极 H₂ 的超电势较大（铁/镍电极约 0.2–0.4 V），是能耗关键</li>
+<li>氯碱工业：阳极析氯与析氧竞争，超电势决定产物选择</li>
+<li>电池中：超电势造成”充电电压 &gt; 放电电压”（能量损失）</li>
+<li>减小超电势：选合适电极材料、催化剂、增大电极面积</li>
 </ul>
 </section>
 
 <section id="法拉第定律" class="title-slide slide level1 center">
 <h1>法拉第定律</h1>
-<p><span class="math display">\[m = \frac{M}{nF}It\]</span></p>
+<p><span class="math display">\[m=\frac{M}{n}\cdot\frac{It}{F}\]</span></p>
 <ul>
-<li>通过的电量与析出物质的量成正比</li>
+<li><span class="math inline">\(m\)</span>：析出/溶解物质的质量（g）；<span class="math inline">\(M\)</span>：摩尔质量；<span class="math inline">\(n\)</span>：电子转移数</li>
+<li><span class="math inline">\(I\)</span>：电流（A）；<span class="math inline">\(t\)</span>：时间（s）；<span class="math inline">\(F=96485\,\mathrm{C/mol}\)</span></li>
+<li>或：<span class="math inline">\(n_{\text{物质}}=\dfrac{It}{nF}\)</span>（mol）</li>
+<li>电流效率：实际产量/理论产量（副反应、气体损失）</li>
+</ul>
+</section>
+
+<section id="法拉第定律例题" class="title-slide slide level1 center">
+<h1>法拉第定律例题</h1>
+<p>电解 <span class="math inline">\(\mathrm{CuSO_4}\)</span> 溶液，电流 <span class="math inline">\(2.0\,\mathrm{A}\)</span>、通电 <span class="math inline">\(1.0\,\mathrm{h}\)</span>，求阴极析出铜的质量（<span class="math inline">\(M_{\mathrm{Cu}}=63.5\)</span>，<span class="math inline">\(n=2\)</span>）。</p>
+<p><span class="math display">\[m=\frac{63.5}{2}\times\frac{2.0\times3600}{96485}=\frac{63.5}{2}\times0.0746\approx2.37\,\mathrm{g}\]</span></p>
+<ul>
+<li>若实际只得到 2.0 g，电流效率 = 2.0/2.37 ≈ 84%</li>
+</ul>
+</section>
+
+<section id="电解产物判断例题" class="title-slide slide level1 center">
+<h1>电解产物判断例题</h1>
+<p>电解饱和 NaCl 溶液（惰性电极）：</p>
+<ul>
+<li>阴极：2H(_2)O + 2e<span class="math inline">\(^-\)</span> → H(_2)↑ + 2OH<span class="math inline">\(^-\)</span>（H<span class="math inline">\(^+\)</span> 放电）</li>
+<li>阳极：2Cl<span class="math inline">\(^-\)</span> → Cl(_2)↑ + 2e<span class="math inline">\(^-\)</span>（Cl<span class="math inline">\(^-\)</span> 浓度高，优先于 OH<span class="math inline">\(^-\)</span>）</li>
+<li>总反应：2NaCl + 2H(_2)O <span class="math inline">\(\xrightarrow{\text{电解}}\)</span> 2NaOH + Cl(_2)↑ + H(_2)↑（氯碱工业）</li>
+</ul>
+<blockquote>
+<p>判断口诀：先看电极材料（活性阳极优先溶解），再看离子放电顺序</p>
+</blockquote>
+</section>
+
+<section id="电解的应用" class="title-slide slide level1 center">
+<h1>电解的应用</h1>
+<ul>
+<li><strong>电解精炼</strong>：粗铜作阳极、纯铜作阴极，<span class="math inline">\(\mathrm{CuSO_4}\)</span> 电解液——阳极溶解、阴极沉积，杂质（Au、Ag）沉入阳极泥</li>
+<li><strong>电镀</strong>：镀件作阴极，镀层金属作阳极，配离子电解液控制沉积质量</li>
+<li><strong>电解水</strong>：制氢、制氧</li>
+<li><strong>氯碱工业</strong>：电解饱和食盐水制 <span class="math inline">\(\mathrm{NaOH}\)</span>、<span class="math inline">\(\mathrm{Cl_2}\)</span>、<span class="math inline">\(\mathrm{H_2}\)</span></li>
+<li><strong>电化学加工</strong>：电解抛光、电解刻蚀（机械工程中的表面加工）</li>
 </ul>
 </section>
 
 <section id="课时-2-金属腐蚀与化学电源" class="title-slide slide level1 center">
 <h1>课时 2 · 金属腐蚀与化学电源</h1>
 <ul>
-<li>金属的腐蚀</li>
-<li>电化学腐蚀</li>
+<li>金属的腐蚀（化学腐蚀 / 电化学腐蚀）</li>
+<li>析氢腐蚀与吸氧腐蚀</li>
+<li>腐蚀电池与差异充气腐蚀</li>
 <li>金属的防护</li>
-<li>化学电源</li>
+<li>化学电源（一次、二次、燃料电池）</li>
 </ul>
 </section>
 
 <section id="金属的腐蚀" class="title-slide slide level1 center">
 <h1>金属的腐蚀</h1>
 <ul>
-<li><strong>化学腐蚀</strong>：金属与干燥气体或非电解质直接反应</li>
-<li><strong>电化学腐蚀</strong>：形成微电池——更普遍、更严重</li>
+<li><strong>化学腐蚀</strong>：金属与介质直接发生氧化还原反应（高温氧化、非电解质腐蚀）</li>
+<li><strong>电化学腐蚀</strong>：金属在电解质溶液中形成<strong>腐蚀电池</strong>，电化学过程导致的破坏</li>
+<li>电化学腐蚀更普遍、更严重（桥梁、管道、船舶、机械零件）</li>
+<li>本质：金属（阳极）失电子被氧化</li>
 </ul>
 </section>
 
-<section id="电化学腐蚀" class="title-slide slide level1 center">
-<h1>电化学腐蚀</h1>
-<p>钢铁在潮湿空气中：</p>
+<section id="析氢腐蚀" class="title-slide slide level1 center">
+<h1>析氢腐蚀</h1>
 <ul>
-<li>阳极（铁）：<span class="math inline">\(\text{Fe} \rightarrow \text{Fe}^{2+} + 2e^-\)</span></li>
-<li>阴极：析氢腐蚀 <span class="math inline">\(2\text{H}^+ + 2e^- \rightarrow \text{H}_2\)</span>（酸性）</li>
-<li>阴极：吸氧腐蚀 <span class="math inline">\(\text{O}_2 + 2\text{H}_2\text{O} + 4e^- \rightarrow 4\text{OH}^-\)</span>（中性）</li>
+<li>条件：酸性介质（<span class="math inline">\(\mathrm{pH}&lt;4\)</span> 左右）</li>
+<li>阳极（Fe）：<span class="math inline">\(\mathrm{Fe\rightarrow Fe^{2+}+2e^-}\)</span></li>
+<li>阴极：<span class="math inline">\(\mathrm{2H^++2e^-\rightarrow H_2\uparrow}\)</span></li>
+<li>总反应：<span class="math inline">\(\mathrm{Fe+2H^+\rightarrow Fe^{2+}+H_2\uparrow}\)</span></li>
+<li>例：钢铁在酸性土壤、酸洗液中腐蚀</li>
+</ul>
+</section>
+
+<section id="吸氧腐蚀" class="title-slide slide level1 center">
+<h1>吸氧腐蚀</h1>
+<ul>
+<li>条件：中性或弱碱性、有氧环境（大气、土壤、水）</li>
+<li>阳极（Fe）：<span class="math inline">\(\mathrm{Fe\rightarrow Fe^{2+}+2e^-}\)</span></li>
+<li>阴极：<span class="math inline">\(\mathrm{O_2+2H_2O+4e^-\rightarrow 4OH^-}\)</span></li>
+<li>总反应：<span class="math inline">\(\mathrm{2Fe+O_2+2H_2O\rightarrow 2Fe(OH)_2}\)</span></li>
+<li>后续氧化：<span class="math inline">\(\mathrm{4Fe(OH)_2+O_2+2H_2O\rightarrow 4Fe(OH)_3}\)</span> → 脱水成铁锈 <span class="math inline">\(\mathrm{Fe_2O_3\cdot xH_2O}\)</span></li>
+<li>大气腐蚀主要是吸氧腐蚀</li>
+</ul>
+</section>
+
+<section id="腐蚀电池与差异充气腐蚀" class="title-slide slide level1 center">
+<h1>腐蚀电池与差异充气腐蚀</h1>
+<ul>
+<li>腐蚀电池：金属表面不同区域电势不同，形成微电池
+<ul>
+<li>不同金属接触（Cu-Fe）→ 活泼金属为阳极</li>
+<li>同一金属不同组织/应力</li>
+</ul></li>
+<li><strong>差异充气腐蚀</strong>：氧浓度不同 → 富氧区为阴极、贫氧区为阳极
+<ul>
+<li>例：铁钉在含氧水中，钉头（富氧）为阴极、缝隙（贫氧）为阳极</li>
+<li>工程上注意：缝隙、沉积物下、水线附近易腐蚀</li>
+</ul></li>
 </ul>
 </section>
 
 <section id="金属的防护" class="title-slide slide level1 center">
 <h1>金属的防护</h1>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>方法</th>
+<th>原理</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>覆盖层</td>
+<td>隔绝介质</td>
+<td>油漆、镀层（镀 Zn、镀 Cr）、搪瓷</td>
+</tr>
+<tr class="even">
+<td>牺牲阳极</td>
+<td>用更活泼金属作阳极</td>
+<td>船体挂锌块、管道接镁合金</td>
+</tr>
+<tr class="odd">
+<td>外加电流</td>
+<td>强制阴极极化</td>
+<td>地下管道、储罐</td>
+</tr>
+<tr class="even">
+<td>缓蚀剂</td>
+<td>抑制电极反应</td>
+<td>水处理中的铬酸盐、有机胺</td>
+</tr>
+<tr class="odd">
+<td>介质处理</td>
+<td>除氧、调 pH</td>
+<td>锅炉除氧、中和酸性介质</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>涂层隔离（油漆、镀层、阳极氧化）</li>
-<li><strong>牺牲阳极</strong>：连接更活泼金属（如锌块保护船体）</li>
-<li><strong>阴极保护</strong>：外加电流使被保护金属作阴极</li>
-<li>缓蚀剂与合金化（不锈钢）</li>
+<li>镀锌铁（白铁皮）：Zn 先腐蚀保护 Fe（牺牲阳极）</li>
+<li>镀锡铁（马口铁）：Sn 破损后 Fe 作阳极，反而加速腐蚀</li>
 </ul>
 </section>
 
-<section id="化学电源" class="title-slide slide level1 center">
-<h1>化学电源</h1>
+<section id="化学电源一次电池" class="title-slide slide level1 center">
+<h1>化学电源：一次电池</h1>
 <ul>
-<li><strong>燃料电池</strong>：燃料化学能直接转化为电能（氢氧燃料电池）</li>
-<li><strong>蓄电池</strong>：铅酸电池、镍氢、锂离子电池</li>
-<li>评价指标：比能量、比功率、寿命、安全性</li>
+<li><strong>锌锰干电池</strong>：
+<ul>
+<li>负极 Zn：<span class="math inline">\(\mathrm{Zn\rightarrow Zn^{2+}+2e^-}\)</span></li>
+<li>正极 <span class="math inline">\(\mathrm{MnO_2}\)</span>：<span class="math inline">\(\mathrm{2MnO_2+2H^++2e^-\rightarrow 2MnOOH}\)</span></li>
+<li>优点：便宜、方便；缺点：不可充电、电压下降</li>
+</ul></li>
+<li><strong>碱性锌锰电池</strong>：电解液 KOH，容量更大</li>
+<li><strong>锌银电池</strong>：纽扣电池，电压稳定</li>
 </ul>
-<aside class="notes">
-课程思政：新能源电池（比亚迪、宁德时代）与“双碳”战略。
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
+</section>
+
+<section id="化学电源二次电池" class="title-slide slide level1 center">
+<h1>化学电源：二次电池</h1>
+<ul>
+<li><strong>铅酸蓄电池</strong>：
+<ul>
+<li>负极 Pb、正极 <span class="math inline">\(\mathrm{PbO_2}\)</span>、电解液 <span class="math inline">\(\mathrm{H_2SO_4}\)</span></li>
+<li>放电总反应：<span class="math inline">\(\mathrm{Pb+PbO_2+2H_2SO_4\rightarrow 2PbSO_4+2H_2O}\)</span></li>
+<li>优点：技术成熟、大电流；缺点：重、铅污染</li>
+</ul></li>
+<li><strong>锂离子电池</strong>：
+<ul>
+<li>正极 <span class="math inline">\(\mathrm{LiCoO_2}\)</span>（或磷酸铁锂）、负极石墨</li>
+<li><span class="math inline">\(\mathrm{Li^+}\)</span> 在正负极间嵌入/脱出（摇椅式）</li>
+<li>优点：能量密度高、无记忆；缺点：需保护电路；应用：电动车、手机</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="化学电源燃料电池" class="title-slide slide level1 center">
+<h1>化学电源：燃料电池</h1>
+<ul>
+<li><strong>燃料电池</strong>：燃料（H₂、CH₄、甲醇）与氧化剂（O₂）持续通入，直接发电</li>
+<li>氢氧燃料电池（碱性）：
+<ul>
+<li>阳极：<span class="math inline">\(\mathrm{H_2+2OH^-\rightarrow 2H_2O+2e^-}\)</span></li>
+<li>阴极：<span class="math inline">\(\mathrm{O_2+2H_2O+4e^-\rightarrow 4OH^-}\)</span></li>
+<li>总反应：<span class="math inline">\(\mathrm{2H_2+O_2\rightarrow 2H_2O}\)</span></li>
+</ul></li>
+<li>优点：效率高（不受卡诺循环限制）、零排放；缺点：成本、储氢</li>
+<li>应用：航天、氢能汽车、分布式发电</li>
+</ul>
+</section>
+
+<section id="化学电源性能对比" class="title-slide slide level1 center">
+<h1>化学电源性能对比</h1>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>类型</th>
+<th>能量密度</th>
+<th>特点</th>
+<th>典型应用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>锌锰干电池</td>
+<td>低</td>
+<td>便宜、一次性</td>
+<td>遥控器、玩具</td>
+</tr>
+<tr class="even">
+<td>铅酸蓄电池</td>
+<td>较低</td>
+<td>大电流、便宜、重</td>
+<td>汽车启动、储能</td>
+</tr>
+<tr class="odd">
+<td>锂离子电池</td>
+<td>高</td>
+<td>轻、循环寿命长</td>
+<td>手机、电动车</td>
+</tr>
+<tr class="even">
+<td>燃料电池</td>
+<td>高（持续）</td>
+<td>效率高、需燃料供给</td>
+<td>航天、氢能汽车</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>工程选型：能量密度、功率、成本、寿命、安全性综合权衡</li>
+</ul>
+</section>
+
+<section id="腐蚀与电源同一原理的两个方向" class="title-slide slide level1 center">
+<h1>腐蚀与电源：同一原理的两个方向</h1>
+<ul>
+<li>腐蚀 = 自发的”原电池”在工作（金属被消耗）</li>
+<li>电源 = 可控的原电池在工作（输出电能）</li>
+<li>防护 = 阻止/减缓自发的电化学过程</li>
+<li>工程意义：机械零件的寿命、压力容器安全、能源效率</li>
+</ul>
+</section>
+
+<section id="例题判断腐蚀与防护" class="title-slide slide level1 center">
+<h1>例题：判断腐蚀与防护</h1>
+<p>铁制管道埋在潮湿土壤中，土壤含氧不均（A 处富氧、B 处贫氧）。</p>
+<ol type="1">
+<li>哪处是阳极？答：贫氧处 B（阳极，Fe 溶解）</li>
+<li>如何防护？答：涂层隔离、牺牲阳极（镁合金）、外加电流阴极保护</li>
+<li>若镀锌层破损，铁是否腐蚀？答：Zn 作阳极优先腐蚀，Fe 被保护</li>
+</ol>
 </section>
 
 <section id="本讲小结" class="title-slide slide level1 center">
 <h1>本讲小结</h1>
 <ul>
-<li>电解 = 电能驱动非自发反应；法拉第定律定量计算</li>
-<li>电化学腐蚀是金属失效主因；牺牲阳极与阴极保护是核心手段</li>
-<li>下一讲：物质结构——原子、分子</li>
+<li><strong>电解</strong>：阴极还原、阳极氧化；放电顺序、分解电压与超电势、法拉第定律</li>
+<li><strong>腐蚀</strong>：析氢腐蚀（酸性）、吸氧腐蚀（中性/碱性）、差异充气腐蚀</li>
+<li><strong>防护</strong>：覆盖层、牺牲阳极、外加电流、缓蚀剂</li>
+<li><strong>化学电源</strong>：一次电池、二次电池、燃料电池</li>
+<li>下一讲：原子结构与分子结构</li>
 </ul>
+</section>
+
+<section id="作业" class="title-slide slide level1 center">
+<h1>作业</h1>
+<ol type="1">
+<li>电解 <span class="math inline">\(\mathrm{ZnSO_4}\)</span> 溶液，电流 <span class="math inline">\(3.0\,\mathrm{A}\)</span>、90 min，求阴极析锌质量（<span class="math inline">\(M_{\mathrm{Zn}}=65.4\)</span>，<span class="math inline">\(n=2\)</span>）</li>
+<li>写出钢铁在中性水中的吸氧腐蚀电极反应与总反应</li>
+<li>比较镀锌铁与镀锡铁的防护原理，为什么镀锡铁破损后腐蚀更快？</li>
+<li>简述氢氧燃料电池的电极反应和主要优点</li>
+</ol>
 
 </section>
     </div>

@@ -442,7 +442,7 @@
   <meta name="generator" content="quarto-1.10.8">
 
   <meta name="author" content="刘训臣">
-  <title>工程化学 · 弱电解质的解离平衡 · 沉淀溶解平衡</title>
+  <title>工程化学 · 解离平衡与沉淀溶解平衡</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -987,7 +987,7 @@ margin-right: 0; }
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">工程化学 · 弱电解质的解离平衡 · 沉淀溶解平衡</h1>
+  <h1 class="title">工程化学 · 解离平衡与沉淀溶解平衡</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -1006,6 +1006,7 @@ margin-right: 0; }
 <ul>
 <li>水的解离平衡</li>
 <li>一元弱酸/弱碱的解离平衡</li>
+<li>多元弱酸的解离</li>
 <li>同离子效应</li>
 <li>缓冲溶液</li>
 </ul>
@@ -1013,81 +1014,261 @@ margin-right: 0; }
 
 <section id="水的解离平衡" class="title-slide slide level1 center">
 <h1>水的解离平衡</h1>
-<p><span class="math display">\[\text{H}_2\text{O} \rightleftharpoons \text{H}^+ + \text{OH}^-, \qquad K_w = [\text{H}^+][\text{OH}^-] = 1.0\times10^{-14}\ (25\,^\circ\text{C})\]</span></p>
-<p><span class="math display">\[pH = -\lg[\text{H}^+], \qquad pH + pOH = 14\]</span></p>
+<p><span class="math display">\[\mathrm{H_2O\rightleftharpoons H^++OH^-},\qquad K_w=1.0\times10^{-14}\ (25\,^\circ\mathrm{C})\]</span></p>
+<ul>
+<li>纯水：<span class="math inline">\([\mathrm{H^+}]=[\mathrm{OH^-}]=10^{-7}\,\mathrm{mol/L}\)</span>，pH=7</li>
+<li>加酸：<span class="math inline">\([\mathrm{H^+}]\)</span> 增大、<span class="math inline">\([\mathrm{OH^-}]\)</span> 减小（<span class="math inline">\(K_w\)</span> 不变）</li>
+<li>加碱：反之</li>
+<li>温度影响：<span class="math inline">\(K_w\)</span> 随温度升高增大</li>
+</ul>
 </section>
 
 <section id="一元弱酸弱碱的解离平衡" class="title-slide slide level1 center">
 <h1>一元弱酸/弱碱的解离平衡</h1>
-<p><span class="math display">\[\text{HA} \rightleftharpoons \text{H}^+ + \text{A}^-, \qquad K_a = \frac{[\text{H}^+][\text{A}^-]}{[\text{HA}]}\]</span></p>
-<p>近似计算（<span class="math inline">\(c/K_a \geq 400\)</span>）：</p>
-<p><span class="math display">\[[\text{H}^+] \approx \sqrt{K_a c}, \qquad [\text{OH}^-] \approx \sqrt{K_b c}\]</span></p>
+<p><span class="math display">\[\mathrm{HA\rightleftharpoons H^++A^-},\qquad K_a=\frac{[\mathrm{H^+}][\mathrm{A^-}]}{[\mathrm{HA}]}\]</span></p>
+<p><span class="math display">\[\mathrm{B+H_2O\rightleftharpoons BH^++OH^-},\qquad K_b=\frac{[\mathrm{BH^+}][\mathrm{OH^-}]}{[\mathrm{B}]}\]</span></p>
+<ul>
+<li>解离度 <span class="math inline">\(\alpha=\dfrac{\text{已解离浓度}}{\text{初始浓度}}\)</span>；稀释定律 <span class="math inline">\(K_a\approx c\alpha^2\)</span></li>
+<li>例：<span class="math inline">\(0.10\,\mathrm{mol/L}\)</span> HAc（<span class="math inline">\(K_a=1.8\times10^{-5}\)</span>）：<span class="math inline">\(\alpha\approx1.3\%\)</span></li>
+</ul>
+</section>
+
+<section id="多元弱酸的解离" class="title-slide slide level1 center">
+<h1>多元弱酸的解离</h1>
+<ul>
+<li>分级解离：<span class="math inline">\(\mathrm{H_2S\rightleftharpoons H^++HS^-}\)</span>（<span class="math inline">\(K_{a1}\)</span>）、<span class="math inline">\(\mathrm{HS^-\rightleftharpoons H^++S^{2-}}\)</span>（<span class="math inline">\(K_{a2}\)</span>）</li>
+<li>一般 <span class="math inline">\(K_{a1}\gg K_{a2}\)</span>：第一步主导 <span class="math inline">\([\mathrm{H^+}]\)</span></li>
+<li>例：<span class="math inline">\(\mathrm{H_2CO_3}\)</span>：<span class="math inline">\(K_{a1}=4.3\times10^{-7}\)</span>、<span class="math inline">\(K_{a2}=5.6\times10^{-11}\)</span></li>
+<li>应用：缓冲体系（碳酸盐）、金属沉淀（硫化物分级沉淀，第 6 讲）</li>
+</ul>
 </section>
 
 <section id="同离子效应" class="title-slide slide level1 center">
 <h1>同离子效应</h1>
-<p>在弱电解质溶液中加入含相同离子的强电解质，解离度降低：</p>
 <ul>
-<li><span class="math inline">\(\text{HAc}\)</span> 溶液中加 <span class="math inline">\(\text{NaAc}\)</span> → <span class="math inline">\([\text{H}^+]\)</span> 下降</li>
-<li>是缓冲溶液的原理基础</li>
+<li>加入同离子（如向 HAc 中加 NaAc），使解离平衡左移</li>
+<li>解离度显著降低，pH 升高</li>
+</ul>
+<p><span class="math display">\[\mathrm{HAc\rightleftharpoons H^++Ac^-}\]</span></p>
+<ul>
+<li>例：<span class="math inline">\(0.10\,\mathrm{mol/L}\)</span> HAc + <span class="math inline">\(0.10\,\mathrm{mol/L}\)</span> NaAc： <span class="math display">\[K_a=\frac{[\mathrm{H^+}]\times0.10}{0.10}\Rightarrow[\mathrm{H^+}]=K_a=1.8\times10^{-5},\ \mathrm{pH}=4.74\]</span></li>
+<li>同离子效应是缓冲溶液的原理</li>
 </ul>
 </section>
 
 <section id="缓冲溶液" class="title-slide slide level1 center">
 <h1>缓冲溶液</h1>
-<p>弱酸 + 共轭碱（或弱碱 + 共轭酸）：</p>
-<p><span class="math display">\[pH = pK_a + \lg\frac{[\text{A}^-]}{[\text{HA}]}\]</span></p>
 <ul>
-<li>应用：血液缓冲、化学分析、生物培养</li>
+<li>组成：弱酸 + 共轭碱（或弱碱 + 共轭酸）</li>
+<li>缓冲能力：抗外加少量强酸/强碱，pH 基本不变</li>
+<li>Henderson–Hasselbalch 方程：</li>
 </ul>
+<p><span class="math display">\[\mathrm{pH}=\mathrm{p}K_a+\lg\frac{c_{\text{共轭碱}}}{c_{\text{弱酸}}}\]</span></p>
+<ul>
+<li>例：<span class="math inline">\(\mathrm{HAc/NaAc}\)</span>（1:1）→ pH = 4.74；<span class="math inline">\(\mathrm{NH_3/NH_4Cl}\)</span> → <span class="math inline">\(\mathrm{pH}=9.26\)</span></li>
+<li>缓冲范围：<span class="math inline">\(\mathrm{p}K_a\pm1\)</span></li>
+</ul>
+</section>
+
+<section id="缓冲溶液例题" class="title-slide slide level1 center">
+<h1>缓冲溶液例题</h1>
+<ul>
+<li>例：配 <span class="math inline">\(500\,\mathrm{mL}\)</span> pH=5.00 的 HAc/NaAc 缓冲液，需多少 mol NaAc（<span class="math inline">\(K_a=1.8\times10^{-5}\)</span>）？</li>
+</ul>
+<p><span class="math display">\[\mathrm{pH}=\mathrm{p}K_a+\lg\frac{[\mathrm{Ac^-}]}{[\mathrm{HAc}]}\]</span> <span class="math display">\[5.00=4.74+\lg\frac{[\mathrm{Ac^-}]}{[\mathrm{HAc}]}\Rightarrow\frac{[\mathrm{Ac^-}]}{[\mathrm{HAc}]}=1.82\]</span> - 若 <span class="math inline">\([\mathrm{HAc}]=0.10\,\mathrm{mol/L}\)</span>，则 <span class="math inline">\([\mathrm{Ac^-}]=0.182\,\mathrm{mol/L}\)</span> → 需 0.091 mol NaAc - 应用：电镀液、血液、生化实验</p>
 </section>
 
 <section id="课时-2-沉淀溶解平衡" class="title-slide slide level1 center">
 <h1>课时 2 · 沉淀溶解平衡</h1>
 <ul>
-<li>溶度积</li>
-<li>分步沉淀与沉淀转化</li>
+<li>溶度积常数</li>
+<li>溶解度与溶度积</li>
+<li>溶度积规则</li>
+<li>同离子效应与分步沉淀</li>
+<li>沉淀的溶解与转化</li>
 </ul>
 </section>
 
-<section id="溶度积" class="title-slide slide level1 center">
-<h1>溶度积</h1>
-<p><span class="math display">\[\text{AgCl(s)} \rightleftharpoons \text{Ag}^+ + \text{Cl}^-, \qquad K_{sp} = [\text{Ag}^+][\text{Cl}^-]\]</span></p>
+<section id="溶度积常数" class="title-slide slide level1 center">
+<h1>溶度积常数</h1>
+<p><span class="math display">\[\mathrm{AgCl(s)\rightleftharpoons Ag^++Cl^-},\qquad K_{sp}=[\mathrm{Ag^+}][\mathrm{Cl^-}]\]</span></p>
 <ul>
-<li>溶解度与 <span class="math inline">\(K_{sp}\)</span> 的关系取决于化学式类型</li>
-<li><strong>溶度积规则</strong>：<span class="math inline">\(Q &gt; K_{sp}\)</span> 沉淀；<span class="math inline">\(Q = K_{sp}\)</span> 饱和；<span class="math inline">\(Q &lt; K_{sp}\)</span> 溶解</li>
+<li><span class="math inline">\(K_{sp}\)</span>：难溶电解质饱和溶液中离子浓度之积（活度）</li>
+<li>例：<span class="math inline">\(K_{sp}(\mathrm{AgCl})=1.8\times10^{-10}\)</span>；<span class="math inline">\(K_{sp}(\mathrm{BaSO_4})=1.1\times10^{-10}\)</span></li>
+<li>只与温度有关；同类型（1:1）比较 <span class="math inline">\(K_{sp}\)</span> 大小即比较溶解度</li>
+<li>不同类型需换算（如 <span class="math inline">\(\mathrm{Ag_2CrO_4}\)</span>：<span class="math inline">\(K_{sp}=[\mathrm{Ag^+}]^2[\mathrm{CrO_4^{2-}}]\)</span>）</li>
 </ul>
 </section>
 
-<section id="分步沉淀与沉淀转化" class="title-slide slide level1 center">
-<h1>分步沉淀与沉淀转化</h1>
+<section id="溶解度与溶度积" class="title-slide slide level1 center">
+<h1>溶解度与溶度积</h1>
 <ul>
-<li>多种离子共存时，先达到 <span class="math inline">\(K_{sp}\)</span> 的先沉淀</li>
-<li>例：<span class="math inline">\(\text{AgCl}\)</span>、<span class="math inline">\(\text{AgBr}\)</span>、<span class="math inline">\(\text{AgI}\)</span> 依 <span class="math inline">\(K_{sp}\)</span> 依次沉淀</li>
-<li>沉淀的溶解与转化：加酸、配合、氧化还原</li>
+<li>例：AgCl 饱和溶液：<span class="math inline">\(s=[\mathrm{Ag^+}]=[\mathrm{Cl^-}]=\sqrt{K_{sp}}=1.34\times10^{-5}\,\mathrm{mol/L}\)</span></li>
+<li>例：<span class="math inline">\(\mathrm{Ag_2CrO_4}\)</span>：<span class="math inline">\(s=\sqrt[3]{K_{sp}/4}\)</span></li>
+<li>同离子效应：加入 Cl⁻ → AgCl 溶解度降低（沉淀更完全）</li>
+<li>应用：沉淀洗涤（用稀盐酸洗 AgCl 减少损失）</li>
 </ul>
-<aside class="notes">
-课程思政：共沉淀分离法在分析化学与废水处理中的应用。
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
+</section>
+
+<section id="溶度积规则" class="title-slide slide level1 center">
+<h1>溶度积规则</h1>
+<p>用反应商 <span class="math inline">\(Q\)</span> 与 <span class="math inline">\(K_{sp}\)</span> 比较：</p>
+<ul>
+<li><p><span class="math inline">\(Q&lt;K_{sp}\)</span>：不饱和，沉淀溶解</p></li>
+<li><p><span class="math inline">\(Q=K_{sp}\)</span>：饱和平衡</p></li>
+<li><p><span class="math inline">\(Q&gt;K_{sp}\)</span>：过饱和，<strong>生成沉淀</strong></p></li>
+<li><p>例：<span class="math inline">\(0.010\,\mathrm{mol/L}\)</span> Ag⁺ 与 <span class="math inline">\(0.010\,\mathrm{mol/L}\)</span> Cl⁻ 混合：<span class="math inline">\(Q=10^{-4}&gt;1.8\times10^{-10}\)</span> → 沉淀</p></li>
+<li><p>工程：水处理加沉淀剂、金属回收、分析化学</p></li>
+</ul>
+</section>
+
+<section id="分步沉淀" class="title-slide slide level1 center">
+<h1>分步沉淀</h1>
+<ul>
+<li>混合离子体系中，<span class="math inline">\(Q\)</span> 先达到 <span class="math inline">\(K_{sp}\)</span> 的先沉淀</li>
+<li>例：含 Cl⁻ 和 I⁻ 的溶液加 Ag⁺：<span class="math inline">\(K_{sp}(\mathrm{AgI})=8.5\times10^{-17}\ll K_{sp}(\mathrm{AgCl})\)</span> → AgI 先沉淀</li>
+<li>控制条件（pH、配位剂）实现选择性沉淀</li>
+<li>应用：金属离子的分离与提纯</li>
+</ul>
+</section>
+
+<section id="分步沉淀例题" class="title-slide slide level1 center">
+<h1>分步沉淀例题</h1>
+<ul>
+<li>例：<span class="math inline">\(\mathrm{Cl^-}\)</span> 与 <span class="math inline">\(\mathrm{I^-}\)</span> 均为 <span class="math inline">\(0.10\,\mathrm{mol/L}\)</span>，逐滴加 AgNO₃，谁先沉淀？</li>
+</ul>
+<p><span class="math display">\[[\mathrm{Ag^+}]_{\text{AgCl}}=\frac{1.8\times10^{-10}}{0.10}=1.8\times10^{-9}\,\mathrm{mol/L}\]</span> <span class="math display">\[[\mathrm{Ag^+}]_{\text{AgI}}=\frac{8.5\times10^{-17}}{0.10}=8.5\times10^{-16}\,\mathrm{mol/L}\]</span> - 需更小 <span class="math inline">\([\mathrm{Ag^+}]\)</span> 的先沉淀 → <strong>AgI 先沉淀</strong></p>
+</section>
+
+<section id="沉淀的溶解与转化" class="title-slide slide level1 center">
+<h1>沉淀的溶解与转化</h1>
+<ul>
+<li><strong>溶解</strong>：降低离子浓度使 <span class="math inline">\(Q&lt;K_{sp}\)</span>
+<ul>
+<li>加酸（碳酸盐、氢氧化物）</li>
+<li>加配位剂（<span class="math inline">\(\mathrm{AgCl}\)</span> 溶于氨水，第 6 讲）</li>
+<li>加氧化还原剂</li>
+</ul></li>
+<li><strong>转化</strong>：<span class="math inline">\(K_{sp}\)</span> 大的沉淀转化为 <span class="math inline">\(K_{sp}\)</span> 小的
+<ul>
+<li>例：<span class="math inline">\(\mathrm{AgCl}\)</span>（<span class="math inline">\(1.8\times10^{-10}\)</span>）→ <span class="math inline">\(\mathrm{AgI}\)</span>（<span class="math inline">\(8.5\times10^{-17}\)</span>）</li>
+</ul></li>
+<li>应用：沉淀提纯、离子分离</li>
+</ul>
+</section>
+
+<section id="金属氢氧化物沉淀与-ph" class="title-slide slide level1 center">
+<h1>金属氢氧化物沉淀与 pH</h1>
+<ul>
+<li>金属氢氧化物：<span class="math inline">\(\mathrm{M(OH)}_n\)</span>，<span class="math inline">\(K_{sp}=[\mathrm{M^{n+}}][\mathrm{OH^-}]^n\)</span></li>
+<li>控制 pH 可实现金属离子分离
+<ul>
+<li>例：<span class="math inline">\(\mathrm{Fe(OH)_3}\)</span>（<span class="math inline">\(K_{sp}\sim10^{-38}\)</span>）在 pH&gt;3 即沉淀</li>
+<li><span class="math inline">\(\mathrm{Ni(OH)_2}\)</span>（<span class="math inline">\(K_{sp}\sim10^{-16}\)</span>）需 pH&gt;8</li>
+</ul></li>
+<li>工程：废水重金属处理（调 pH 沉淀）、电镀液净化</li>
+</ul>
+</section>
+
+<section id="沉淀滴定与重量分析" class="title-slide slide level1 center">
+<h1>沉淀滴定与重量分析</h1>
+<ul>
+<li><strong>沉淀滴定</strong>：以沉淀反应为基础的滴定（如莫尔法，AgNO₃ 滴定 Cl⁻）</li>
+<li><strong>重量分析</strong>：生成沉淀→过滤→洗涤→灼烧→称重</li>
+<li>要求：沉淀完全（<span class="math inline">\(K_{sp}\)</span> 小）、纯净、易过滤</li>
+<li>工程：水质 Cl⁻ 测定、合金成分分析</li>
+</ul>
+</section>
+
+<section id="水解与沉淀的联合应用" class="title-slide slide level1 center">
+<h1>水解与沉淀的联合应用</h1>
+<ul>
+<li>例：分离 <span class="math inline">\(\mathrm{Fe^{3+}}\)</span> 与 <span class="math inline">\(\mathrm{Al^{3+}}\)</span>：调 pH 使 <span class="math inline">\(\mathrm{Fe(OH)_3}\)</span> 先沉淀</li>
+<li>例：<span class="math inline">\(\mathrm{Mg^{2+}}\)</span> 与 <span class="math inline">\(\mathrm{Fe^{3+}}\)</span> 分离（pH 控制）</li>
+<li>例：碳酸盐沉淀（<span class="math inline">\(\mathrm{CaCO_3}\)</span>）与酸溶解</li>
+<li>工程：湿法冶金、废水处理、材料提纯</li>
+</ul>
+</section>
+
+<section id="沉淀与配位的竞争" class="title-slide slide level1 center">
+<h1>沉淀与配位的竞争</h1>
+<ul>
+<li>沉淀可被配位剂溶解（<span class="math inline">\(K_{sp}\)</span> 与 <span class="math inline">\(K_f\)</span> 竞争）</li>
+<li>例：<span class="math inline">\(\mathrm{AgCl(s)+2NH_3\rightleftharpoons[Ag(NH_3)_2]^+ + Cl^-}\)</span></li>
+<li>平衡常数 <span class="math inline">\(K=K_{sp}\cdot K_f\)</span>（数量级判断溶解可行性）</li>
+<li>应用：银回收、电镀、分析化学（第 6 讲配位）</li>
+</ul>
+</section>
+
+<section id="弱酸与弱碱混合体系" class="title-slide slide level1 center">
+<h1>弱酸与弱碱混合体系</h1>
+<ul>
+<li>例：HAc + NH₃·H₂O 混合——两者都弱，产物为盐</li>
+<li>例：缓冲溶液 + 外加少量强酸/强碱的计算</li>
+<li>例：<span class="math inline">\(0.10\,\mathrm{mol/L}\)</span> HAc + <span class="math inline">\(0.10\,\mathrm{mol/L}\)</span> NaAc 加 <span class="math inline">\(0.01\,\mathrm{mol/L}\)</span> HCl 后 pH 变化（缓冲能力）</li>
+<li>缓冲容量：浓度越大、比例越接近 1:1，容量越大</li>
+</ul>
+</section>
+
+<section id="缓冲溶液的配制" class="title-slide slide level1 center">
+<h1>缓冲溶液的配制</h1>
+<ul>
+<li>选择缓冲对：<span class="math inline">\(\mathrm{p}K_a\)</span> 接近目标 pH（±1）</li>
+<li>例：配 pH=5 缓冲 → 选 <span class="math inline">\(\mathrm{HAc/NaAc}\)</span>（<span class="math inline">\(\mathrm{p}K_a=4.74\)</span>）</li>
+<li>例：配 pH=9 缓冲 → 选 <span class="math inline">\(\mathrm{NH_3/NH_4Cl}\)</span>（<span class="math inline">\(\mathrm{p}K_a=9.26\)</span>）</li>
+<li>按 Henderson–Hasselbalch 计算浓度比，再配体积</li>
+</ul>
+</section>
+
+<section id="ph-与溶解度的关系" class="title-slide slide level1 center">
+<h1>pH 与溶解度的关系</h1>
+<ul>
+<li>难溶氢氧化物/碳酸盐溶解度随 pH 变化</li>
+<li>例：<span class="math inline">\(\mathrm{Mg(OH)_2}\)</span> 在酸性中溶解（中和 OH⁻）</li>
+<li>例：<span class="math inline">\(\mathrm{CaCO_3}\)</span> 在酸性中溶解（CO₂ 逸出）</li>
+<li>例：<span class="math inline">\(\mathrm{AgCl}\)</span> 不溶于酸（Cl⁻ 不与 H⁺ 反应）</li>
+<li>工程：酸洗除垢、废水调 pH 沉淀金属</li>
+</ul>
+</section>
+
+<section id="沉淀的完全程度" class="title-slide slide level1 center">
+<h1>沉淀的完全程度</h1>
+<ul>
+<li>沉淀完全判据：[离子] &lt; <span class="math inline">\(10^{-5}\,\mathrm{mol/L}\)</span></li>
+<li>同离子效应使沉淀更完全（例：加过量沉淀剂）</li>
+<li>但过量沉淀剂可能引起配位溶解（如过量 Cl⁻ 溶解 AgCl）</li>
+<li>工程：称量分析要求沉淀完全、纯净、易过滤</li>
+</ul>
+</section>
+
+<section id="水处理中的沉淀应用" class="title-slide slide level1 center">
+<h1>水处理中的沉淀应用</h1>
+<ul>
+<li>重金属废水：调 pH 沉淀 <span class="math inline">\(\mathrm{M(OH)_n}\)</span> 或硫化物</li>
+<li>软化水：加石灰/纯碱沉淀 Ca²⁺、Mg²⁺</li>
+<li>除磷：加铝盐/铁盐生成磷酸盐沉淀</li>
+<li>工程：加药量、pH 控制、污泥处理</li>
+</ul>
 </section>
 
 <section id="本讲小结" class="title-slide slide level1 center">
 <h1>本讲小结</h1>
 <ul>
-<li>解离平衡：<span class="math inline">\([\text{H}^+] \approx \sqrt{K_a c}\)</span>；缓冲溶液 pH</li>
-<li>沉淀：<span class="math inline">\(K_{sp}\)</span> 规则判断沉淀/溶解/转化</li>
-<li>下一讲：配位化合物、氧化还原与原电池</li>
+<li>弱电解质：<span class="math inline">\(K_a\)</span>、<span class="math inline">\(K_b\)</span>、同离子效应、缓冲溶液（Henderson–Hasselbalch）</li>
+<li>沉淀平衡：<span class="math inline">\(K_{sp}\)</span>、溶度积规则、同离子效应、分步沉淀、溶解与转化</li>
+<li>应用：水处理、分离提纯、缓冲体系设计</li>
+<li>下讲：配位化合物与氧化还原原电池</li>
 </ul>
+</section>
+
+<section id="作业" class="title-slide slide level1 center">
+<h1>作业</h1>
+<ol type="1">
+<li><span class="math inline">\(0.10\,\mathrm{mol/L}\)</span> NH₃（<span class="math inline">\(K_b=1.8\times10^{-5}\)</span>）溶液的 pH 与解离度</li>
+<li>配 pH=9.26 的 <span class="math inline">\(\mathrm{NH_3/NH_4Cl}\)</span> 缓冲液，两者浓度比</li>
+<li><span class="math inline">\(K_{sp}(\mathrm{BaSO_4})=1.1\times10^{-10}\)</span>，求其饱和溶液中的 <span class="math inline">\([\mathrm{Ba^{2+}}]\)</span></li>
+<li>判断 <span class="math inline">\(0.001\,\mathrm{mol/L}\)</span> <span class="math inline">\(\mathrm{Ag^+}\)</span> 与 <span class="math inline">\(0.001\,\mathrm{mol/L}\)</span> <span class="math inline">\(\mathrm{Cl^-}\)</span> 混合是否生成沉淀（<span class="math inline">\(K_{sp}=1.8\times10^{-10}\)</span>）</li>
+</ol>
 
 </section>
     </div>

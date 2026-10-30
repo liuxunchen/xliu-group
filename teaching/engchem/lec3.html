@@ -1004,103 +1004,314 @@ margin-right: 0; }
 <section id="课时-1-化学平衡" class="title-slide slide level1 center">
 <h1>课时 1 · 化学平衡</h1>
 <ul>
+<li>可逆反应与化学平衡</li>
 <li>标准平衡常数</li>
 <li>反应商与反应方向</li>
-<li>平衡的移动：勒夏特列原理</li>
+<li>平衡的移动（Le Chatelier 原理）</li>
+<li>平衡计算例题</li>
+</ul>
+</section>
+
+<section id="可逆反应与化学平衡" class="title-slide slide level1 center">
+<h1>可逆反应与化学平衡</h1>
+<ul>
+<li><strong>可逆反应</strong>：正、逆反应同时进行（用 <span class="math inline">\(\rightleftharpoons\)</span> 表示）</li>
+<li><strong>化学平衡</strong>：正逆反应速率相等、各物质浓度不再变化的<strong>动态平衡</strong></li>
+<li>平衡是有条件的、相对的：温度、压力、浓度改变 → 平衡移动</li>
 </ul>
 </section>
 
 <section id="标准平衡常数" class="title-slide slide level1 center">
 <h1>标准平衡常数</h1>
-<p><span class="math display">\[aA + bB \rightleftharpoons cC + dD, \qquad K^\circ = \frac{(p_C/p^\circ)^c(p_D/p^\circ)^d}{(p_A/p^\circ)^a(p_B/p^\circ)^b}\]</span></p>
+<p>对一般反应 <span class="math inline">\(a\mathrm{A}+b\mathrm{B}\rightleftharpoons c\mathrm{C}+d\mathrm{D}\)</span>（气体）：</p>
+<p><span class="math display">\[K^\circ=\frac{(p_{\mathrm{C}}/p^\circ)^c(p_{\mathrm{D}}/p^\circ)^d}{(p_{\mathrm{A}}/p^\circ)^a(p_{\mathrm{B}}/p^\circ)^b}\]</span></p>
 <ul>
-<li><span class="math inline">\(K^\circ\)</span> 只与温度有关</li>
-<li>与标准摩尔吉布斯函数变的关系：</li>
+<li><span class="math inline">\(p^\circ=1\,\mathrm{bar}\)</span>；纯固体/纯液体不写入</li>
+<li>溶液中：用 <span class="math inline">\(c/c^\circ\)</span>（<span class="math inline">\(c^\circ=1\,\mathrm{mol/L}\)</span>）</li>
+<li><span class="math inline">\(K^\circ\)</span> 只与<strong>温度</strong>有关（与浓度、压力、催化剂无关）</li>
 </ul>
-<p><span class="math display">\[\Delta_rG^\circ = -RT\ln K^\circ\]</span></p>
 </section>
 
-<section id="反应商与反应方向" class="title-slide slide level1 center">
-<h1>反应商与反应方向</h1>
-<p><span class="math display">\[Q &lt; K^\circ：\text{正向进行}, \qquad Q = K^\circ：\text{平衡}, \qquad Q &gt; K^\circ：\text{逆向进行}\]</span></p>
+<section id="k_pk_c-与-kcirc" class="title-slide slide level1 center">
+<h1><span class="math inline">\(K_p\)</span>、<span class="math inline">\(K_c\)</span> 与 <span class="math inline">\(K^\circ\)</span></h1>
+<p><span class="math display">\[K_p=\frac{p_{\mathrm{C}}^c p_{\mathrm{D}}^d}{p_{\mathrm{A}}^a p_{\mathrm{B}}^b},\qquad
+K_c=\frac{c_{\mathrm{C}}^c c_{\mathrm{D}}^d}{c_{\mathrm{A}}^a c_{\mathrm{B}}^b}\]</span></p>
+<ul>
+<li>对理想气体：<span class="math inline">\(K_p=K_c(RT)^{\Delta n}\)</span>（<span class="math inline">\(\Delta n\)</span> = 生成物与反应物气体分子数之差）</li>
+<li><span class="math inline">\(K^\circ\)</span> 用 <span class="math inline">\(p/p^\circ\)</span> 无量纲；数值上等于 <span class="math inline">\(K_p\)</span>（<span class="math inline">\(p^\circ=1\)</span> bar 时）</li>
+</ul>
 </section>
 
-<section id="平衡的移动勒夏特列原理" class="title-slide slide level1 center">
-<h1>平衡的移动：勒夏特列原理</h1>
-<p>改变平衡系统的一个条件，平衡向减弱该改变的方向移动：</p>
+<section id="平衡常数与反应方向" class="title-slide slide level1 center">
+<h1>平衡常数与反应方向</h1>
 <ul>
-<li><strong>浓度</strong>：增加反应物浓度 → 正向移动</li>
-<li><strong>压力</strong>：增大压力 → 向气体分子数减少方向移动</li>
-<li><strong>温度</strong>：升温 → 向吸热方向移动</li>
-<li>催化剂不改变平衡位置，只加快到达平衡</li>
+<li>反应商 <span class="math inline">\(Q\)</span>：用<strong>当前</strong>浓度/分压代入 <span class="math inline">\(K^\circ\)</span> 表达式</li>
+<li><span class="math inline">\(Q&lt;K^\circ\)</span>：正向自发（向产物方向）</li>
+<li><span class="math inline">\(Q&gt;K^\circ\)</span>：逆向自发</li>
+<li><span class="math inline">\(Q=K^\circ\)</span>：平衡</li>
+<li>与热力学联系：<span class="math inline">\(\Delta_rG^\circ=-RT\ln K^\circ\)</span>（第 2 讲已引入）</li>
 </ul>
-<aside class="notes">
-课程思政：勒夏特列生平——平衡思想在工程与社会系统中的普适性。
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
+</section>
+
+<section id="平衡的移动le-chatelier-原理" class="title-slide slide level1 center">
+<h1>平衡的移动：Le Chatelier 原理</h1>
+<ul>
+<li>改变条件使平衡向<strong>减弱</strong>该改变的方向移动</li>
+<li><strong>浓度</strong>：增加反应物（或减小产物）→ 正向移动</li>
+<li><strong>压力</strong>：增大总压 → 向气体分子数减少的方向移动</li>
+<li><strong>温度</strong>：升温 → 向吸热方向移动；降温 → 向放热方向移动</li>
+<li>催化剂：只改变速率、不移动平衡（缩短到达平衡时间）</li>
+</ul>
+</section>
+
+<section id="平衡移动的工程应用合成氨" class="title-slide slide level1 center">
+<h1>平衡移动的工程应用：合成氨</h1>
+<p><span class="math display">\[\mathrm{N_2+3H_2\rightleftharpoons 2NH_3},\quad \Delta_rH^\circ=-91.8\,\mathrm{kJ/mol}\]</span></p>
+<ul>
+<li>放热、气体分子数减少（4→2）</li>
+<li>提高产率：<strong>低温、高压</strong>（Le Chatelier）</li>
+<li>但低温速率慢 → 工业折中：400–500 °C、20–30 MPa、铁催化剂</li>
+<li>温度对平衡与速率的权衡是化工设计的核心</li>
+</ul>
+</section>
+
+<section id="平衡计算例题一" class="title-slide slide level1 center">
+<h1>平衡计算例题（一）</h1>
+<p>反应 <span class="math inline">\(\mathrm{H_2+I_2\rightleftharpoons 2HI}\)</span>，<span class="math inline">\(500\,\mathrm{K}\)</span> 时 <span class="math inline">\(K^\circ=54.3\)</span>。初始 <span class="math inline">\([\mathrm{H_2}]=[\mathrm{I_2}]=1.0\,\mathrm{mol/L}\)</span>，求平衡浓度。</p>
+<ul>
+<li>设转化 <span class="math inline">\(x\)</span>：平衡时 <span class="math inline">\([\mathrm{H_2}]=[\mathrm{I_2}]=1.0-x\)</span>，<span class="math inline">\([\mathrm{HI}]=2x\)</span></li>
+<li><span class="math inline">\(54.3=\frac{(2x)^2}{(1.0-x)^2}\)</span> → <span class="math inline">\(\frac{2x}{1.0-x}=7.37\)</span> → <span class="math inline">\(x=0.787\)</span></li>
+<li><span class="math inline">\([\mathrm{HI}]=1.57\)</span>，<span class="math inline">\([\mathrm{H_2}]=[\mathrm{I_2}]=0.213\,\mathrm{mol/L}\)</span></li>
+</ul>
+</section>
+
+<section id="平衡计算例题二压力变化" class="title-slide slide level1 center">
+<h1>平衡计算例题（二）：压力变化</h1>
+<ul>
+<li>反应 <span class="math inline">\(\mathrm{N_2O_4\rightleftharpoons 2NO_2}\)</span>（<span class="math inline">\(\Delta n=+1\)</span>）</li>
+<li>增大总压 → 向分子数减少方向（N₂O₄）移动 → 颜色变浅</li>
+<li>减小总压 → 向 NO₂ 方向 → 颜色加深</li>
+<li>计算：<span class="math inline">\(K_p=p_{\mathrm{NO_2}}^2/p_{\mathrm{N_2O_4}}\)</span>，用分压与总压关系代入</li>
+</ul>
+</section>
+
+<section id="平衡常数与-δg-的关系例题" class="title-slide slide level1 center">
+<h1>平衡常数与 ΔG° 的关系（例题）</h1>
+<p><span class="math display">\[\Delta_rG^\circ=-RT\ln K^\circ\]</span></p>
+<ul>
+<li>例：<span class="math inline">\(298\,\mathrm{K}\)</span> 时某反应 <span class="math inline">\(K^\circ=1.0\times10^5\)</span>，求 <span class="math inline">\(\Delta_rG^\circ\)</span> <span class="math display">\[\Delta_rG^\circ=-8.314\times298\times\ln(10^5)=-28.5\,\mathrm{kJ/mol}\]</span></li>
+<li>负值：标准状态下反应自发；<span class="math inline">\(K^\circ\)</span> 越大，反应越彻底</li>
+</ul>
+</section>
+
+<section id="多重平衡规则" class="title-slide slide level1 center">
+<h1>多重平衡规则</h1>
+<ul>
+<li>若反应可分解为几个反应之和，则总 <span class="math inline">\(K\)</span> 为各 <span class="math inline">\(K\)</span> 之积</li>
+<li>例：<span class="math inline">\(\mathrm{A\rightleftharpoons B}\)</span>（<span class="math inline">\(K_1\)</span>）、<span class="math inline">\(\mathrm{B\rightleftharpoons C}\)</span>（<span class="math inline">\(K_2\)</span>）</li>
+<li>总反应 <span class="math inline">\(\mathrm{A\rightleftharpoons C}\)</span>：<span class="math inline">\(K=K_1K_2\)</span></li>
+<li>逆反应：<span class="math inline">\(K&#39;=1/K\)</span>；系数乘 2：<span class="math inline">\(K&#39;&#39;=K^2\)</span></li>
+<li>应用：由已知平衡常数求难测反应的 <span class="math inline">\(K\)</span></li>
+</ul>
+</section>
+
+<section id="速率测定方法" class="title-slide slide level1 center">
+<h1>速率测定方法</h1>
+<ul>
+<li><strong>浓度-时间法</strong>：取样分析（滴定、光谱）</li>
+<li><strong>光谱法</strong>：吸收/发射强度随时间变化（在线、快速）</li>
+<li><strong>压力法</strong>：气体反应总压变化</li>
+<li><strong>量热法</strong>：反应热速率</li>
+<li>工程：在线监测（红外、紫外、质谱）保证反应器安全与效率</li>
+</ul>
+</section>
+
+<section id="复杂反应与链反应" class="title-slide slide level1 center">
+<h1>复杂反应与链反应</h1>
+<ul>
+<li><strong>链反应</strong>：链引发—链传递—链终止（燃烧、聚合）</li>
+<li>例：<span class="math inline">\(\mathrm{H_2+O_2}\)</span> 燃烧的自由基链反应（爆炸极限）</li>
+<li><strong>酶催化</strong>：Michaelis-Menten 动力学（生物体系）</li>
+<li>工程意义：燃烧稳定性、聚合反应控制、爆炸安全</li>
+</ul>
+</section>
+
+<section id="反应器类型工程概念" class="title-slide slide level1 center">
+<h1>反应器类型（工程概念）</h1>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>类型</th>
+<th>特点</th>
+<th>应用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>间歇反应器</td>
+<td>一次投料、搅拌</td>
+<td>小批量、精细化工</td>
+</tr>
+<tr class="even">
+<td>连续搅拌釜（CSTR）</td>
+<td>连续进出、浓度均匀</td>
+<td>大规模液相反应</td>
+</tr>
+<tr class="odd">
+<td>平推流反应器（PFR）</td>
+<td>沿程浓度梯度</td>
+<td>气相反应、管式炉</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>选择反应器需综合动力学、热效应、混合与安全</li>
+</ul>
 </section>
 
 <section id="课时-2-化学反应速率" class="title-slide slide level1 center">
 <h1>课时 2 · 化学反应速率</h1>
 <ul>
-<li>反应速率与速率方程</li>
-<li>温度影响：Arrhenius 公式</li>
-<li>反应速率理论简介</li>
-<li>催化剂</li>
+<li>反应速率的定义</li>
+<li>速率方程与反应级数</li>
+<li>元反应与复杂反应</li>
+<li>温度影响：Arrhenius 方程</li>
+<li>催化剂与速率理论</li>
 </ul>
 </section>
 
-<section id="反应速率与速率方程" class="title-slide slide level1 center">
-<h1>反应速率与速率方程</h1>
-<p><span class="math display">\[v = k[A]^m[B]^n\]</span></p>
+<section id="反应速率的定义" class="title-slide slide level1 center">
+<h1>反应速率的定义</h1>
 <ul>
-<li><span class="math inline">\(k\)</span>：速率常数（与温度有关）</li>
-<li><span class="math inline">\(m\)</span>、<span class="math inline">\(n\)</span>：反应级数，由实验确定</li>
+<li>单位时间内反应物浓度的减少（或产物增加）：</li>
+</ul>
+<p><span class="math display">\[v=-\frac{1}{a}\frac{\mathrm{d}c_{\mathrm{A}}}{\mathrm{d}t}=\frac{1}{c}\frac{\mathrm{d}c_{\mathrm{C}}}{\mathrm{d}t}\]</span></p>
+<ul>
+<li>单位：<span class="math inline">\(\mathrm{mol/(L\cdot s)}\)</span></li>
+<li>平均速率 vs 瞬时速率（浓度-时间曲线斜率）</li>
 </ul>
 </section>
 
-<section id="温度影响arrhenius-公式" class="title-slide slide level1 center">
-<h1>温度影响：Arrhenius 公式</h1>
-<p><span class="math display">\[k = Ae^{-E_a/RT}, \qquad \ln k = \ln A - \frac{E_a}{RT}\]</span></p>
+<section id="速率方程与反应级数" class="title-slide slide level1 center">
+<h1>速率方程与反应级数</h1>
+<p><span class="math display">\[v=k\,c_{\mathrm{A}}^{\alpha}c_{\mathrm{B}}^{\beta}\]</span></p>
 <ul>
-<li><span class="math inline">\(E_a\)</span>：活化能；<span class="math inline">\(\ln k\)</span> 对 <span class="math inline">\(1/T\)</span> 作图得直线</li>
+<li><span class="math inline">\(k\)</span>：速率常数（与温度、催化剂有关）</li>
+<li><span class="math inline">\(\alpha+\beta\)</span>：总反应级数（由实验确定，不能由方程式直接写）</li>
+<li>例：<span class="math inline">\(v=k\,c_{\mathrm{A}}\)</span>（一级）、<span class="math inline">\(v=k\,c_{\mathrm{A}}^2\)</span>（二级）、<span class="math inline">\(v=k\)</span>（零级）</li>
+<li>半衰期：一级反应 <span class="math inline">\(t_{1/2}=\ln2/k\)</span>（与初始浓度无关）</li>
 </ul>
 </section>
 
-<section id="反应速率理论简介" class="title-slide slide level1 center">
-<h1>反应速率理论简介</h1>
+<section id="速率方程例题" class="title-slide slide level1 center">
+<h1>速率方程例题</h1>
+<p>实验测得 <span class="math inline">\(2\mathrm{NO}+\mathrm{O_2}\rightarrow2\mathrm{NO_2}\)</span> 的速率数据：</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">实验</th>
+<th style="text-align: center;"><span class="math inline">\(c_{\mathrm{NO}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(c_{\mathrm{O_2}}\)</span></th>
+<th style="text-align: center;">初始速率</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;"><span class="math inline">\(3.0\times10^{-3}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.20</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;"><span class="math inline">\(1.2\times10^{-2}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0.20</td>
+<td style="text-align: center;">0.20</td>
+<td style="text-align: center;"><span class="math inline">\(2.4\times10^{-2}\)</span></td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><strong>碰撞理论</strong>：有效碰撞需达到活化能并取向合适</li>
-<li><strong>过渡态理论</strong>：反应物 → 活化络合物 → 产物</li>
-<li>活化能越低，反应越快</li>
+<li>由 1→2：NO 加倍速率×4 → 对 NO 二级</li>
+<li>由 2→3：O₂ 加倍速率×2 → 对 O₂ 一级</li>
+<li><span class="math inline">\(v=k\,c_{\mathrm{NO}}^2\,c_{\mathrm{O_2}}\)</span>（三级）</li>
 </ul>
 </section>
 
-<section id="催化剂" class="title-slide slide level1 center">
-<h1>催化剂</h1>
+<section id="元反应与复杂反应" class="title-slide slide level1 center">
+<h1>元反应与复杂反应</h1>
 <ul>
-<li>改变反应路径，<strong>降低活化能</strong></li>
-<li>不改变反应热与平衡常数，只加快速率</li>
-<li>例：汽车尾气三效催化、合成氨铁催化剂</li>
+<li><strong>元反应</strong>：一步完成的反应（反应级数 = 化学计量数）</li>
+<li><strong>复杂反应</strong>：多步（级数由最慢步骤或实验决定）</li>
+<li>例：<span class="math inline">\(2\mathrm{NO}+\mathrm{O_2}\)</span> 是复杂反应（三级，非元反应）</li>
+<li>反应机理：慢步骤（决速步）控制总速率</li>
+</ul>
+</section>
+
+<section id="温度影响arrhenius-方程" class="title-slide slide level1 center">
+<h1>温度影响：Arrhenius 方程</h1>
+<p><span class="math display">\[k=A\,e^{-E_a/(RT)}\]</span></p>
+<ul>
+<li><span class="math inline">\(A\)</span>：指前因子；<span class="math inline">\(E_a\)</span>：活化能（J/mol）</li>
+<li>升温 → <span class="math inline">\(k\)</span> 增大（指数关系）；<span class="math inline">\(E_a\)</span> 越大，温度越敏感</li>
+<li>对数形式：</li>
+</ul>
+<p><span class="math display">\[\ln k=-\frac{E_a}{R}\frac{1}{T}+\ln A\]</span></p>
+<ul>
+<li>由两个温度的 <span class="math inline">\(k\)</span> 求 <span class="math inline">\(E_a\)</span>：</li>
+</ul>
+<p><span class="math display">\[\ln\frac{k_2}{k_1}=-\frac{E_a}{R}\left(\frac{1}{T_2}-\frac{1}{T_1}\right)\]</span></p>
+</section>
+
+<section id="arrhenius-例题" class="title-slide slide level1 center">
+<h1>Arrhenius 例题</h1>
+<p>某反应 <span class="math inline">\(300\,\mathrm{K}\)</span> 时 <span class="math inline">\(k=1.0\times10^{-3}\,\mathrm{s^{-1}}\)</span>，<span class="math inline">\(320\,\mathrm{K}\)</span> 时 <span class="math inline">\(k=4.0\times10^{-3}\,\mathrm{s^{-1}}\)</span>，求 <span class="math inline">\(E_a\)</span>。</p>
+<p><span class="math display">\[\ln4=\frac{E_a}{8.314}\left(\frac{1}{300}-\frac{1}{320}\right)\]</span> <span class="math display">\[1.386=\frac{E_a}{8.314}\times2.083\times10^{-4}\Rightarrow E_a=5.5\times10^4\,\mathrm{J/mol}=55\,\mathrm{kJ/mol}\]</span></p>
+</section>
+
+<section id="催化剂与速率理论" class="title-slide slide level1 center">
+<h1>催化剂与速率理论</h1>
+<ul>
+<li><strong>催化剂</strong>：改变反应途径、降低 <span class="math inline">\(E_a\)</span>、提高速率，自身不被消耗</li>
+<li>催化剂不改变 <span class="math inline">\(\Delta H\)</span>、<span class="math inline">\(\Delta G\)</span>、平衡常数——只加快到达平衡</li>
+<li><strong>碰撞理论</strong>：分子需有效碰撞（能量足够、取向合适）</li>
+<li><strong>过渡态理论</strong>：反应经过高能量的过渡态（能垒 = 活化能）</li>
+</ul>
+</section>
+
+<section id="速率与工程燃烧与催化" class="title-slide slide level1 center">
+<h1>速率与工程：燃烧与催化</h1>
+<ul>
+<li>内燃机燃烧：点火、火焰传播速率决定动力性能</li>
+<li>汽车尾气催化转化器：Pt/Pd/Rh 催化 CO、NOx、HC 转化</li>
+<li>化工生产：合成氨铁催化剂、硫酸 V₂O₅ 催化剂</li>
+<li>材料保护：缓蚀剂（减慢腐蚀速率，第 8 讲）</li>
 </ul>
 </section>
 
 <section id="本讲小结" class="title-slide slide level1 center">
 <h1>本讲小结</h1>
 <ul>
-<li>限度：<span class="math inline">\(K^\circ\)</span> 与 <span class="math inline">\(\Delta_rG^\circ = -RT\ln K^\circ\)</span>；勒夏特列原理</li>
-<li>速率：<span class="math inline">\(v = k[A]^m[B]^n\)</span>，<span class="math inline">\(k = Ae^{-E_a/RT}\)</span></li>
-<li>下一讲：稀溶液的依数性与酸碱理论</li>
+<li>化学平衡：<span class="math inline">\(K^\circ\)</span>、<span class="math inline">\(Q\)</span>、Le Chatelier 移动、平衡计算</li>
+<li>反应速率：速率方程、级数、Arrhenius、催化剂</li>
+<li>平衡与速率的权衡是化工与工程的核心</li>
+<li>下讲：稀溶液依数性与酸碱理论</li>
 </ul>
+</section>
+
+<section id="作业" class="title-slide slide level1 center">
+<h1>作业</h1>
+<ol type="1">
+<li><span class="math inline">\(2\mathrm{H_2+O_2\rightleftharpoons 2H_2O}\)</span>，写出 <span class="math inline">\(K^\circ\)</span> 表达式（气体分压）</li>
+<li>用 <span class="math inline">\(K^\circ=54.3\)</span> 计算：初始 <span class="math inline">\([\mathrm{H_2}]=[\mathrm{I_2}]=0.50\)</span>、<span class="math inline">\([\mathrm{HI}]=2.0\)</span>，判断反应方向</li>
+<li>某反应 <span class="math inline">\(E_a=80\,\mathrm{kJ/mol}\)</span>，温度从 <span class="math inline">\(300\,\mathrm{K}\)</span> 升到 <span class="math inline">\(310\,\mathrm{K}\)</span>，<span class="math inline">\(k\)</span> 增大多少倍？</li>
+<li>简述合成氨为什么要”低温高压”、实际为什么不用更低温度</li>
+</ol>
 
 </section>
     </div>
