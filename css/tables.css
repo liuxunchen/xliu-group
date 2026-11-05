@@ -1,0 +1,130 @@
+/* 表格加框（2026-10-12 导师要求：所有 md 渲染的表格加边框，看清楚）
+   站点自 2026-10-12 起经 hugo.toml 的 [params.ananke] custom_css 引入本文件。
+   作用范围：main 内所有 <table>（post / teaching / paper / people 等全部页面）。 */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2em 0;
+  font-size: 0.95em;
+  line-height: 1.45;
+}
+
+table th,
+table td {
+  border: 1px solid #b7c0cb;
+  padding: 6px 10px;
+  vertical-align: top;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+table thead th {
+  background: #eef2f6;
+  font-weight: 600;
+  border-bottom: 2px solid #9aa7b5;
+}
+
+/* 无 thead 的表格（多数 md 表格首行即表头）：加粗首行 + 底色 */
+table tr:first-child th {
+  background: #eef2f6;
+  font-weight: 600;
+}
+
+table tbody tr:nth-child(even) {
+  background: #fafbfc;
+}
+
+/* 表格内代码不撑破边框 */
+table code {
+  word-break: break-word;
+}
+
+@media (max-width: 640px) {
+  table {
+    font-size: 0.85em;
+  }
+  table th,
+  table td {
+    padding: 4px 6px;
+  }
+}
+
+/* ===== 学位报告 post 专用版式（.report-page，2026-11-05 导师定）===== */
+.report-page {
+  max-width: 54rem;
+}
+.report-page .report-meta {
+  color: #8a8a8a;
+}
+.report-page .report-body {
+  line-height: 1.95;
+}
+.report-page .report-body p {
+  text-indent: 2em;
+  margin: 0.85em 0;
+  text-align: justify;
+}
+.report-page .report-body h2 {
+  color: #111;
+  font-size: 1.55rem;
+  border-bottom: 2px solid #333;
+  padding-bottom: 0.25em;
+  margin-top: 2.2em;
+}
+.report-page .report-body h3 {
+  color: #222;
+  font-size: 1.25rem;
+  margin-top: 1.6em;
+}
+.report-page .report-body h4 {
+  color: #333;
+  font-size: 1.1rem;
+  margin-top: 1.3em;
+}
+.report-page .report-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.2em auto;
+}
+.report-page .report-body figure {
+  margin: 1.4em auto;
+  text-align: center;
+}
+.report-page .report-body figcaption {
+  text-align: center;
+  font-size: 0.88em;
+  color: #666;
+  margin-top: 0.5em;
+}
+.report-page .report-body table {
+  margin: 1.2em auto;
+  border-collapse: collapse;
+}
+.report-page .report-body table th,
+.report-page .report-body table td {
+  border: 1px solid #999;
+  padding: 0.3em 0.6em;
+  vertical-align: top;
+}
+.report-page .report-body .report-download {
+  text-indent: 0;
+  font-size: 0.85em;
+  color: #777;
+  border-top: 1px dashed #ccc;
+  padding-top: 0.8em;
+  margin-top: 2.5em;
+}
+.report-page .report-body ul,
+.report-page .report-body ol {
+  margin: 0.8em 0;
+}
+
+/* 参考文献条目（学位报告正文） */
+.report-page .report-body .report-ref {
+  text-indent: 0;
+  margin: 0.3em 0;
+  font-size: 0.92em;
+  line-height: 1.6;
+}

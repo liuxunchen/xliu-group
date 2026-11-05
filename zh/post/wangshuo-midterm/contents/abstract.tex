@@ -1,0 +1,23 @@
+% !TEX root = ../main.tex
+
+\begin{abstract}[zh]
+  轴向分级燃烧技术是先进燃气轮机实现低排放和高效燃烧的关键技术路径之一，其二级燃烧区以横向射流形式注入燃料，火焰稳定性直接关系到整机运行安全。在实际燃气轮机中，燃烧室下游与涡轮之间的过渡流道普遍采用收缩设计，这一几何特征可能通过改变主流速度、压力梯度和剪切层强度影响上游横向射流火焰的熄火边界。然而，现有研究多在直通道或恒定截面横流条件下开展，对下游收缩流道在热流工况下的影响关注不足。此外，现有商用紫外火焰探测器响应速度慢、输出信号经内部平均处理，难以捕捉吹熄前的高频瞬态特征，限制了火焰稳定性的精细测量。
+  
+  本文重点开展了三方面实验研究工作：一是探索了基于日盲紫外光电管C7027A的高频脉冲信号采集方案，以突破商用探测器在响应速度与信息维度上的局限；二是建立了热流工况下横向射流火焰吹熄的定量判据，将火焰稳定性从主观观察转化为可量化指标；三是考察了下游收缩流道对熄火边界的定量影响及不同收缩高度的调控趋势。
+  
+  主要工作与成果包括：搭建了轴向分级燃烧实验平台，独立完成了五次曲线和Witoszynski曲线两种型线、三种收缩体的设计、建模与加工。针对商用探测器的局限性，设计了基于C7027A的高压偏置与脉冲提取电路，利用打火机进行原理验证，成功观测到幅度约2~3~V、频率约6~kHz的原始脉冲信号，验证了方案的技术可行性。通过多轮筛选确定了12个同温工况（温度约1342$\pm$5~K），覆盖从稳定燃烧到接近吹熄的完整速度范围；将二级燃料从甲烷更换为乙烯以改善火焰可见度；通过Python高频串口读取将探测器有效采样频率从5~Hz提升至20~Hz，并建立了基于占空比的四级吹熄判据体系，实现了火焰稳定性的量化评价。
+  
+  初步实验结果表明，在820~SLM同温工况下，无收缩段构型占空比为0.14，60~mm五次曲线收缩段构型占空比为0.24，占空比提升约71\%。在实验涉及的两种收缩高度中，35~mm收缩段占空比（0.628）优于60~mm收缩段（0.233），初步表明存在一个最优收缩比范围：适度的主流加速有利于增强剪切层混合和火焰稳定，而过强的加速则可能产生负面效应。
+  
+\end{abstract}
+
+\begin{abstract}[en]
+  Axially staged combustion is one of the key technological pathways for achieving low emissions and high efficiency in advanced gas turbines, where fuel is injected as a transverse jet in the secondary combustion zone. The flame stability of the transverse jet directly affects the operational safety of the entire engine. In practical gas turbines, the transition duct between the combustor outlet and the turbine inlet commonly adopts a converging design, which may influence the blowout limit of the upstream transverse jet flame by altering the mainstream velocity, pressure gradient, and shear layer intensity. However, most existing studies have been conducted in straight or constant-cross-section channels, with insufficient attention paid to the effects of downstream converging ducts under thermal flow conditions. In addition, commercial ultraviolet flame detectors suffer from slow response times and internally averaged signal outputs, making it difficult to capture high-frequency transient features prior to blowout and limiting the precision of flame stability measurements.
+ 
+ This thesis focuses on three aspects of experimental research: first, the exploration of a high-frequency pulse signal acquisition scheme based on the solar-blind ultraviolet phototube C7027A, to overcome the limitations of commercial detectors in response speed and information dimensionality; second, the establishment of a quantitative blowout criterion for transverse jet flames under thermal flow conditions, transforming flame stability from subjective observation into quantifiable metrics; and third, the investigation of the quantitative effects of downstream converging ducts on blowout limits and the regulatory trends of different contraction heights.
+ 
+ The main work and achievements include: the construction of an axially staged combustion experimental platform, and the independent design, modeling, and manufacturing of three converging sections with two profile types (quintic curve and Witoszynski curve). To address the limitations of commercial detectors, a high-voltage biasing and pulse extraction circuit based on the C7027A phototube was designed. Proof-of-principle validation using a lighter successfully captured raw pulse signals with amplitudes of approximately 2~--~3~V and frequencies of approximately 6~kHz, confirming the technical feasibility of the scheme. Through multiple rounds of screening, twelve isothermal operating conditions were identified (temperature approximately 1342$\pm$5~K), covering the entire velocity range from stable combustion to near blowout. The secondary fuel was switched from methane to ethylene to improve flame visibility. Through Python-based high-speed serial data acquisition, the effective sampling frequency of the detector was increased from 5~Hz to 20~Hz, and a four-level blowout criterion based on duty cycle was established, enabling quantitative evaluation of flame stability.
+ 
+ Preliminary experimental results show that under the 820~SLM isothermal condition, the duty cycle of the configuration without a converging section is 0.14, while that of the 60~mm quintic-curve converging section is 0.24, representing an improvement of approximately 71\%. Among the two contraction heights tested, the 35~mm converging section (duty cycle of 0.628) outperforms the 60~mm section (0.233), preliminarily suggesting the existence of an optimal contraction ratio range: moderate mainstream acceleration enhances shear-layer mixing and flame stability, whereas excessive acceleration may produce adverse effects.
+ 
+\end{abstract}

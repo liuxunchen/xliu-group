@@ -1,0 +1,132 @@
+% !TeX encoding = UTF-8
+% !TeX program = xelatex
+% !TeX TXS-program:compile = txs:///xelatex
+% !TeX bibtex-program = biber
+%
+% ============================================================================
+%  山东科技大学硕士研究生学位论文开题报告（正文部分）
+%  基于 SDUST_Thesis 模板（XeLaTeX + biber 编译）
+%  封面 / 评分表 / 评审意见表见 cover.tex（单独编译后与正文合并）
+% ============================================================================
+%  编译命令（终端）：
+%       xelatex main.tex
+%       biber main
+%       xelatex main.tex
+%       xelatex main.tex
+% ============================================================================
+
+\documentclass[master]{sdustthesis}  % 选项: master, doctor, bachelor; 可加 review 盲审
+
+\sdustsetup{
+  zh/title = {面向发动机燃烧场多组分浓度与关键自由基二维分布同步诊断的激光光谱方法研究},
+  en/title = {Laser Spectroscopic Method for Simultaneous Diagnostics of Multi-Component Concentrations and Key Radical Two-Dimensional Distributions in Engine Combustion Fields},
+  zh/author = {张洪民},
+  en/author = {Hongmin Zhang},
+  zh/supervisor = {刘训臣},
+  en/supervisor = {Xunchen Liu},
+  zh/major = {机械},
+  en/major = {Mechanical Engineering},
+  zh/department = {机械电子工程学院},
+  zh/keywords = {激光燃烧诊断；中红外吸收光谱；平面激光诱导荧光；一氧化氮；同步诊断},
+  en/keywords = {Laser combustion diagnostics; Mid-infrared absorption spectroscopy; Planar laser-induced fluorescence; Nitric oxide; Simultaneous diagnostics},
+  id = {2024xxxx},
+  enrollment = {2024年9月},
+  defense = {2027年5月},
+  secretlevel = {公开},
+  ccode = {TB532},
+  udc = {621},
+  degreetype = {专业学位},
+  degreelevel = {硕士},
+  researchfield = {燃烧激光光谱诊断},
+  eduduration = {三年},
+  graduyear = {2027},
+  submitdate = {2027年6月},
+  supertitle = {教授},
+  reviewers = {匿名评审},
+  defensechair = {待定},
+  defensecommittee = {待定},
+  totalpages = {0},
+  fund = {},
+  zh/display-date = {二〇二七年六月},
+}
+
+% -------- 导言区：自定义宏包和环境（尽量集中管理） ----------
+% 代码块环境（基于 listings）
+% 注：listings 已在 cls 中加载，无需重复
+\lstdefinestyle{mycode}{
+  basicstyle   = \ttfamily\small,
+  commentstyle = \itshape\color{gray},
+  keywordstyle = \bfseries\color{blue},
+  stringstyle  = \color{red},
+  frame        = single,
+  breaklines   = true,
+  tabsize      = 4,
+  numbers      = left,
+  numberstyle  = \tiny\color{gray},
+}
+\lstnewenvironment{codeblock}[1][]{
+  \lstset{style=mycode, #1}
+}{}
+
+% 参考文献（使用 biblatex）
+\usepackage[backend=biber,style=gb7714-2015,sorting=none]{biblatex}
+\renewcommand{\bibfont}{\zihao{5}\setlength{\baselineskip}{16bp}}
+\setlength{\bibitemsep}{3bp plus 1pt}
+\addbibresource{refs.bib}
+
+% 常用宏包（合并去重）
+\usepackage{siunitx}               % 单位
+\usepackage{graphicx}
+\usepackage{float}                % 图片就地排版 [H]：保证“说明文字→图→图后说明”顺序与 Word 一致
+\usepackage{booktabs, multirow, longtable}
+\usepackage{bm}                    % 粗体数学符号
+\usepackage{amsmath, amssymb}
+\usepackage{threeparttable}        % 表格脚注（轻量替代 threeparttablex）
+\usepackage{hologo}                % 排版 logo
+
+% 开题报告版式：章/节标题编号与 Word 原文一致（编号写在标题文字里，如"一、立论依据""（1）课题来源…"）
+\ctexset{
+  chapter = {
+    format      = {\centering\zihao{-2}\heiti\bfseries},
+    name        = {},
+    number      = {},
+    beforeskip  = 24pt,
+    afterskip   = 24pt,
+    fixskip     = true,
+  },
+  section      = {number = {}},
+  subsection   = {number = {}},
+  subsubsection= {number = {}},
+}
+
+% 页眉：开题报告标题
+\RequirePackage{fancyhdr}
+\fancypagestyle{sdust@headings}{%
+  \fancyhf{}%
+  \fancyhead[L]{\zihao{5}\songti 山东科技大学硕士研究生学位论文开题报告}%
+  \fancyhead[R]{\zihao{5}\songti \thepage}%
+  \renewcommand{\headrulewidth}{0.4pt}%
+}
+
+% 图/表编号：全文连续编号（图1、图2…，与开题报告习惯一致）
+% 注：ctexbook 默认 figure/table 随章重置，这里撤销重置保证全文连续
+\makeatletter
+\@removefromreset{figure}{chapter}
+\@removefromreset{table}{chapter}
+\makeatother
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
+
+\begin{document}
+
+% -------- 开题报告正文（封面/评分表单独编译，合并时在前）---------
+\mainmatter
+
+% 各章内容
+\input{contents/chapter1}          % 第1章 立论依据
+\input{contents/chapter2}          % 第2章 文献综述（含"所阅文献的查阅范围及手段；参考资料"节内参考文献列表）
+\input{contents/chapter3}          % 第3章 研究内容、技术路线、创新点
+\input{contents/chapter4}          % 第4章 前期基础工作
+\input{contents/chapter5}          % 第5章 工作计划
+
+\end{document}

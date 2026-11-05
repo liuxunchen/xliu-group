@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>王晨中期报告 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="双色示踪粒子图像测速与声激励横向射流熄火边界研究（中期报告正文）">
+    <meta name="generator" content="Hugo 0.162.1">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="王晨">
+    
+
+    <link rel="stylesheet" href="/xliu-group/ananke/css/main.css"><link rel="stylesheet" href="/xliu-group/css/tables.css">
+    <script>
+  (function () {
+    "use strict";
+
+    
+    
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
+
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/wangchen-midterm/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/wangchen-midterm/">
+	<meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+	<meta property="og:title" content="王晨中期报告">
+	<meta property="og:description" content="双色示踪粒子图像测速与声激励横向射流熄火边界研究（中期报告正文）">
+	<meta property="og:locale" content="zh">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2026-11-05T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T00:00:00+00:00">
+		<meta property="article:tag" content="Thesis">
+
+	<meta itemprop="name" content="王晨中期报告">
+	<meta itemprop="description" content="双色示踪粒子图像测速与声激励横向射流熄火边界研究（中期报告正文）">
+	<meta itemprop="datePublished" content="2026-11-05T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T00:00:00+00:00">
+	<meta itemprop="wordCount" content="4">
+	<meta itemprop="keywords" content="Thesis">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="王晨中期报告">
+	<meta name="twitter:description" content="双色示踪粒子图像测速与声激励横向射流熄火边界研究（中期报告正文）">
+
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+
+<header>
+  <div class="pb3-m pb6-l bg-black">
+    <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        <img src="/xliu-group/images/logo2.jpg" class="w100 mw5-ns" alt="刘训臣燃烧诊断实验室主页" />
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/teaching/" title="Teaching 页">
+              Teaching
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/paper/" title="Paper 页">
+              Paper
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/news/" title="News 页">
+              News
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+  </div>
+</header>
+
+    <main class="pb7" role="main">
+      
+<article class="report-page center ph3 mw8-l">
+  <header class="mt4 mb4">
+    <h1 class="f2 athelas mt3 mb2">王晨中期报告</h1>
+    <p class="report-meta f6 tracked gray mb4">2026-11-05</p>
+  </header>
+  <div class="report-body nested-copy-line-height lh-copy serif f4 nested-links mid-gray">
+    <h2 id="绪论">绪论</h2>
+<h3 id="研究背景与意义">研究背景与意义</h3>
+<p>本文选题紧密立足作为能源动力领域核心支撑学科的燃烧科学，所面临的普遍存在且亟待突破的核心基础性挑战——燃烧不稳定性及其诱发的<strong>熄火</strong>问题。在航空航天、能源发电等关键领域广泛应用的航空发动机、重型燃气轮机等高端动力装备的实际运行过程中，燃烧室的稳定工作边界不仅是决定装备运行安全性、长期可靠性及极限性能充分发挥的关键核心指标，更直接成为制约动力系统推重比进一步提升、燃油经济性持续优化及低排放目标高效实现的核心瓶颈。熄火作为燃烧不稳定性的极端表现形式，往往会引发装备停机、性能骤降甚至结构损坏等严重后果，其本质是流场特性、燃烧反应与外部环境扰动三者之间复杂的强耦合结果，尤其在气流波动、燃料供给扰动等外部激励作用下，火焰稳定裕度会出现显著降低，给高端动力装备的连续安全运行带来难以规避的严重安全隐患，这也使其成为燃烧领域长期以来亟待攻克、备受关注的核心科学问题。</p>
+<p>外部扰动中，<strong>声激励</strong>是工程实际中普遍存在的典型扰动形式。航空发动机、燃气轮机等动力装置在全工况运行区间内，压气机与风扇转子的旋转气动噪声、静叶与动叶的干涉噪声，以及燃烧过程中热释放脉动诱发的热声振荡等，会形成覆盖宽频率范围、幅值动态变化的复杂声学环境。这种声学扰动并非孤立存在，而是与火焰热释放过程形成显著的非线性双向耦合效应，直接调控熄火过程的萌发与扩展。Chaudhuri等人<sup>[1]</sup>的研究为该耦合效应提供了关键实验证据，其通过粒子图像测速（PIV）与平面激光诱导荧光（PLIF）技术，揭示了谐波强迫下钝体稳定预混火焰的熄火机制：当上游混合物速度受谐波强迫时，回流区内会产生受迫涡脱落现象，且当施加振荡的对流波长大于流向回流区长度时，涡脱落会直接诱发火焰熄火。</p>
+<figure><img src="figures/image1.png alt="特定扰动频率下的熄火当量比与无扰动时熄火当量比的比值与回流区长度与对流波长比值（LRZ/λ）的函数关系图<sup>[1]</sup>" /><figcaption>特定扰动频率下的熄火当量比与无扰动时熄火当量比的比值与回流区长度与对流波长比值（LRZ/λ）的函数关系图<sup>[1]</sup></figcaption></figure>
+<p>如图 <a href="#fig:1" data-reference-type="ref" data-reference="fig:1">1.1</a>所示，该图呈现了不同主流速度（$U_m=5, 10, 15$ m/s）下，归一化熄火当量比随回流区平均长度与对流波长比（$L_{RZ}^{mean}/\lambda$，$\lambda=U_m/f$为对流波长，$f$为激励频率）的变化规律。</p>
+$$
+\varphi(f) = \varnothing(f)/\varnothing_{0}
+$$<p>其中$\varnothing(f)$为受激励工况熄火当量比，$\varnothing_{0}$为无扰动工况熄火当量比。结果表明，当 $L_{RZ}^{mean}/\lambda$ 处于 0.3 1.0 区间时，归一化熄火当量比达到峰值，且该区间内火焰出现明显的褶皱与断裂现象，证明此比值范围是受迫涡脱落与火焰相互作用最强的区域，直接主导熄火极限的变化。该研究清晰阐释了声激励类谐波强迫对熄火机制的调控作用，也揭示了流动特征参数（回流区长度、对流波长）与熄火特性的定量关联，为本文聚焦声激励下横向射流火焰熄火机理的研究提供了重要理论与实验参考。</p>
+<h3 id="国内外研究现状">国内外研究现状</h3>
+<h4 id="横向射流火焰流动与燃烧特性">横向射流火焰流动与燃烧特性</h4>
+<p>在工程实践中，<strong>横向射流火焰</strong>是广泛应用于加力燃烧室、驻涡燃烧室、冲压发动机燃烧室等先进动力装置的核心火焰稳定模式，其本质是燃料射流与主流道内横向高速来流相交融形成的复杂燃烧体系。与简单构型火焰相比，横向射流火焰的流场呈现强湍流、大剪切、多尺度涡结构共存的特征，燃料射流的穿透深度、卷吸混合强度及火焰锚定位置均受主流与射流的动量比、混合特性等因素显著影响。为优化横向射流火焰的混合与稳定性能，本文采用双喷嘴构型（前喷嘴注燃料、后喷嘴注空气），该构型可实现燃料与空气的独立调控，为精准调控混合过程与燃烧模式提供了良好的实验载体。</p>
+<figure><img src="figures/image2.png alt="双喷嘴横向射流火焰的结构示意图<sup>[2]</sup>" /><figcaption>双喷嘴横向射流火焰的结构示意图<sup>[2]</sup></figcaption></figure>
+<p>如图 <a href="#fig:2" data-reference-type="ref" data-reference="fig:2">1.2</a>所示，燃料从前喷嘴注入后，先与高温主流初步混合，后与喷嘴注入的空气发生强相互作用，在反向旋转涡对的作用下形成 C 形截面火焰面<sup>[2]</sup>。这种构型的核心优势在于通过调控喷嘴间距、射流雷诺数及空气/燃料比等参数，可精准调控燃料与空气的混合历程，为研究混合物分数演化与火焰稳定性的关联提供了可控的实验平台。</p>
+<figure><img src="figures/image3.png alt="双喷嘴示意图<sup>[3]</sup>" /><figcaption>双喷嘴示意图<sup>[3]</sup></figcaption></figure>
+<p>图 <a href="#fig:3" data-reference-type="ref" data-reference="fig:3">1.3</a>进一步细化了双喷嘴横向射流的混合与自燃过程：燃料先与高温主流混合预热，再与空气耦合，通过延长混合主导的火焰稳定过程实现充分混合，最终在局部当量比与温度满足条件时发生自燃<sup>[3]</sup>。该示意图清晰呈现了横向射流火焰从燃料注入、混合预热到自燃稳定的完整物理过程，也揭示了混合物分数在空间上的梯度分布特征，这正是影响火焰熄火的关键因素。</p>
+<h4 id="混合物分数与双色piv测量技术">混合物分数与双色PIV测量技术</h4>
+<p>从燃烧本质来看，<strong>混合物分数</strong>作为基于守恒标量理论的核心参数，依托燃料与氧化剂混合过程中元素守恒的基本特性，不随化学反应进程发生改变，是定量描述局部燃料与空气混合程度及化学当量比分布的关键指标。其空间分布特征与瞬态演化规律直接决定火焰面的精准定位、燃烧热释放率的空间梯度分布及火焰稳定裕度的边界阈值，更是从燃料混合与反应动力学耦合角度解析熄火机理的核心线索。在声激励作用下，横向射流火焰的流场呈现显著的强非定常动态特性：声激励通过周期性的压力脉动，可精准调制流场中大尺度涡结构的生成起始位置、发展演化轨迹与破碎耗散速率，进而改变燃料射流对周围氧化剂的卷吸混合强度，以及混合物分数在时间与空间维度上的动态演化规律。当局部区域的混合物分数因混合失衡偏离可燃极限范围，或混合过程过快导致火焰面拉伸应变率超过临界阈值时，便会率先诱发局部熄火现象；而这些离散的局部熄火区会在非定常流场的扰动下逐步合并、扩展，最终演变为全局性熄火。因此，借助高精度测量手段精准捕捉声激励作用下混合物分数的瞬态全场分布特征，获取其时空演化的定量数据，是揭示声扰动、流场结构、火焰燃烧特性三者耦合致熄机理的核心前提。</p>
+<p>然而，在强湍流、非定常声激励耦合的横向射流火焰流场中，混合物分数的测量面临多重技术瓶颈：强湍流导致标量场时空多尺度演化，声激励诱发流场周期性波动与标量输运的强耦合，以及燃烧发光对诊断信号的干扰，均使得传统测量方法难以实现高精度、瞬态全场测量。<strong>双色示踪粒子图像测速</strong>（双色PIV）技术凭借其非侵入式、高时空分辨率的优势，为解决该瓶颈提供了有效途径：通过在燃料与空气中分别添加不同粒径或不同光学特性的示踪粒子，利用双色滤镜同步捕捉两路粒子的运动信息，可基于守恒标量输运方程反演得到混合物分数的瞬态全场分布，同时获取流场速度信息，实现流场-标量场的同步测量。这种技术能力恰好匹配本文的研究需求，能够为解析声激励下流场扰动与混合物分数演化及火焰应变率变化与熄火的关系完整物理链条提供直接实验证据。</p>
+<h4 id="横向射流流动结构与混合特性">横向射流流动结构与混合特性</h4>
+<p>在航空航天、能源动力等工程领域，横向射流燃烧技术因具有混合效率高、燃烧强度大等优势，被广泛应用于航空发动机燃烧室、燃气轮机等核心设备中。横向射流火焰的稳定燃烧直接决定了设备的运行效率与安全性，而燃烧不稳定性引发的火焰振荡、熄火等问题，尤其是贫燃条件下的吹熄现象，不仅限制了燃烧系统的贫燃减排潜力，还可能导致燃烧室热损伤甚至设备故障。上游气流的速度脉动作为燃烧系统中普遍存在的非定常扰动形式，其通过改变横向射流的穿透深度、混合特性及火焰结构，直接影响火焰的稳定燃烧状态，是诱发火焰熄火的关键因素之一。</p>
+<p>Rock等<sup>[4]</sup>指出液体燃料的近贫燃熄火伴随熄灭-复燃循环，高DCN燃料更难熄火且复燃率更高，多数复燃依赖热产物回流；Wan和Zhao<sup>[5]</sup>发现雷诺数决定支架稳定火焰的熄火模式，大雷诺数下会出现火焰夹断，小雷诺数则火焰因根部下游迁移、热量流失而熄灭；Yi等<sup>[6]</sup>揭示横流射流中非预混火焰的熄火与自燃核演化相关，迎风侧因高应变率熄火位置更靠后；Yin等<sup>[7]</sup>表明受限湍流火焰的近贫燃熄火由自持射流振荡引发，慢节奏振荡更易导致熄火-复燃循环，整体可见熄火行为普遍受燃料特性、流动参数和火焰结构的耦合影响。</p>
+<p>横向射流的流动结构由射流与主流的相互作用主导，其核心特征包括射流轨迹偏转、剪切层涡旋演化及回流区形成，这些流动特性直接决定了燃料与氧化剂的混合效率，进而影响燃烧过程的稳定性。早期研究中，Fric和Roshko<sup>[8]</sup>通过流动可视化实验，首次明确了横向射流尾迹中存在反向旋转涡对，该结构通过卷吸主流流体促进射流扩散，是调控混合过程的关键因素。后续Muppidi和Mahesh<sup>[9]</sup>基于直接数值模拟方法，建立了射流轨迹的预测模型，量化分析了射流动量比和密度比对轨迹偏转程度的影响规律，为横向射流流动特性的定量描述提供了理论基础。</p>
+<p>Zhang和Yang<sup>[10,11]</sup>通过实验与数值模拟相结合的方式，设置射流参数（射流中心速度160 m/s，横流速度40 m/s），工作介质为空气，射流直径 $d=1.27$ mm。分为a（横流无激励）、b（激励频率5 kHz，速度振荡振幅10%）、c（激励频率5 kHz，速度振荡振幅50%）三个对比案例，得到如图 <a href="#fig:4" data-reference-type="ref" data-reference="fig:4">1.4</a>所示的结果。图 <a href="#fig:4" data-reference-type="ref" data-reference="fig:4">1.4</a>展示了射流中心平面的标量浓度分布，核心反映射流与横流的混合效率、射流扩散范围及浓度均匀性，是标量输运过程的直接体现。</p>
+<figure><img src="figures/image4.png alt="射流中心平面标量浓度的时间演化<sup>[11]</sup>" /><figcaption>射流中心平面标量浓度的时间演化<sup>[11]</sup></figcaption></figure>
+<p>系统研究了横向射流近场的流动动力学与混合特性，发现射流出口处的剪切层卷起与主流剪切作用共同主导了初始涡旋的形成，而涡旋的破碎与融合过程直接影响混合的均匀性，为理解横向射流的混合机制提供了重要参考。Gevorkyan等<sup>[12]</sup>通过浓度测量实验进一步证实，横向射流的混合过程具有明显的区域差异性，近场混合主要由涡旋卷吸作用主导，远场则以湍流扩散为主，且混合效率随射流穿透深度的增加而显著提升。</p>
+<h4 id="剪切层不稳定性与流动控制">剪切层不稳定性与流动控制</h4>
+<p>剪切层不稳定性是横向射流流动演化的核心驱动力，相关研究已形成系列成果。Megerian等<sup>[13]</sup>通过线性稳定性分析，识别出横向射流剪切层中存在Kelvin-Helmholtz（K-H）不稳定性和Orr-Sommerfeld（O-S）不稳定性两种主导模式，其中K-H不稳定性主导剪切层的初始卷起，O-S不稳定性则影响涡旋的后续发展与破碎过程。DeB.Alves等<sup>[14]</sup>在此基础上通过实验验证，发现剪切层不稳定性的特征频率与射流出口速度和主流速度的比值密切相关，为通过调控流动参数抑制不稳定性提供了关键依据。针对流动控制需求，Harris等<sup>[15]</sup>研究了tabs结构对横向射流不稳定性的调控作用，结果表明合理设计的tabs能够抑制特定频率的不稳定性，延缓涡旋破碎，从而改善射流混合的均匀性与稳定性。此外，Getsinger等<sup>[16]</sup>通过PIV技术研究了受限空间内横向射流的结构与稳定性特性，发现边界约束会增强射流与主流的相互作用，导致涡旋结构更复杂，混合效率显著提升，为复杂边界条件下横向射流的应用提供了参考。</p>
+<p>横向射流火焰的燃烧稳定性与流动特性紧密耦合，旋流的引入进一步增强了这种耦合效应，同时也增加了燃烧不稳定性的复杂性。Candel等<sup>[17]</sup>在旋流火焰动力学的综述研究中指出，旋流诱导的回流区能够稳定火焰根部，为燃烧提供持续的热量与自由基，但回流区的动态演化也可能引发燃烧不稳定性，表现为压力振荡与热释放率振荡的相互耦合。Candel等<sup>[18]</sup>进一步深入研究了旋流火焰的动力学特性，发现当旋流数超过临界值时，回流区会发生涡破裂现象，导致火焰根部位置偏移，进而诱发强烈的燃烧振荡。Huang和Yang<sup>[19]</sup>针对贫燃预混旋流稳定火焰，系统分析了流动不稳定性对火焰结构的影响，证实了涡破裂引发的回流区形态变化是导致火焰不稳定的关键因素，为旋流火焰的稳定性控制提供了理论支撑。</p>
+<p>Palies等<sup>[20]</sup>通过实验与数值模拟结合，揭示了旋流器动态特性与湍流预混火焰的耦合机制，认为旋流器的非定常流动会直接导致热释放率波动，进而诱发燃烧不稳定性，该研究为旋流器结构的优化设计提供了重要参考。燃烧不稳定性的本质是热释放率振荡与声学振荡的正反馈循环，Lieuwen<sup>[21]</sup>建立了预混燃烧-声波相互作用的理论模型，量化了热释放率对声学扰动的响应特性，为燃烧不稳定性的预测与抑制提供了核心理论框架。Kim等<sup>[22]</sup>通过实验研究了火焰结构对火焰传递函数的影响，发现火焰面的拉伸和弯曲会改变热释放率的空间分布，进而影响FTF的幅值和相位，为燃烧不稳定性的定量分析提供了关键参数支持。针对液体燃料燃烧，Sim等<sup>[23]</sup>研究了声学强制下液滴燃烧的动态响应，发现声学扰动会改变液滴的蒸发速率和燃烧强度，进而影响整体热释放率，该结果为多相燃烧不稳定性的研究提供了重要参考。</p>
+<h4 id="熄火机理与上游速度脉动">熄火机理与上游速度脉动</h4>
+<p>熄火机理方面，贫燃吹熄（LBO）是横向射流火焰最常见的熄火形式，其核心是局部燃料/空气混合比偏离可燃范围或火焰温度低于临界燃烧温度，导致燃烧反应无法持续进行。Shanbhogue等<sup>[24]</sup>通过实验建立了钝体稳定火焰的LBO标度律，发现LBO极限与燃料的化学计量比、流动雷诺数及回流区长度密切相关，为LBO极限的预测提供了定量方法。Broadwell和Breidenthal<sup>[25]</sup>提出的简单混合与化学反应模型，揭示了混合时间与反应时间的匹配关系对燃烧完整性的影响，当混合时间远大于反应时间时，易发生局部熄火甚至整体吹熄，该模型为熄火机理的分析提供了基础理论支撑。Peters<sup>[26]</sup>提出的层流小火焰概念，进一步完善了湍流燃烧中混合与反应耦合的理论体系，明确了湍流脉动对火焰结构及熄灭过程的影响机制，为熄火边界的精准预测提供了重要理论依据。</p>
+<p>上游速度脉动作为燃烧室中的典型非定常扰动，其对横向射流火焰熄火的影响逐渐受到关注。Karagozian等<sup>[27]</sup>系统研究了横向射流的主动控制策略，发现上游流动扰动可通过改变射流的穿透深度和混合特性，间接影响火焰稳定性，该研究为通过调控上游流动参数改善火焰稳定性提供了新思路。Karagozian<sup>[28]</sup>在混合与反应流控制的综述中指出，上游扰动的频率和幅值是影响横向射流混合及燃烧稳定性的关键参数，但相关定量研究仍需进一步深入。Karagozian<sup>[29]</sup>在横向射流及其控制的研究中，进一步证实了上游流动调控对火焰稳定性的显著影响，为上游速度脉动相关研究奠定了重要基础。Karagozian<sup>[30]</sup>在横向射流的综述研究中，通过烟雾可视化技术，直观对比了无激励、正弦波激励和方波激励三种条件下，横流中射流的流动形态差异，核心目的是验证不同激励方式对射流穿透深度、扩散范围及涡结构形成的影响，为后续基于流动稳定性的射流控制策略提供实验依据，其实验结果如图 <a href="#fig:5" data-reference-type="ref" data-reference="fig:5">1.5</a>所示。强调了上游非定常扰动对射流火焰稳定性影响的研究缺口，指出需深入揭示其内在作用机理。孙等<sup>[31]</sup>在航空发动机燃烧不稳定性研究进展中明确指出，上游气流的非定常扰动是引发燃烧振荡和熄火的重要诱因，但目前关于其定量影响规律和内在机理的研究仍不充分，亟待进一步深入探索。</p>
+<figure><img src="figures/image5.png alt="无激励、正弦波、方波对横向射流影响<sup>[30]</sup>" /><figcaption>无激励、正弦波、方波对横向射流影响<sup>[30]</sup></figcaption></figure>
+<p>Allison等<sup>[32]</sup>率先采用PLIF技术突破传统测量局限，为火焰几何与不稳定性的关联研究提供了精准工具；在此基础上，Deng等<sup>[33]</sup>聚焦声学参数这一关键外部因素，揭示了其对燃烧污染物排放的调控规律，而Liu等<sup>[34]</sup>则进一步深入不稳定性的触发机制，明确了低频振荡的阈值特性与耦合过程。针对更复杂的燃烧系统，Bonciolini和Noiray<sup>[35]</sup>探讨了顺序燃烧器中热声模态的同步现象，凸显了熵波这一特殊驱动因素的作用。</p>
+<h4 id="混合增强与piv诊断技术">混合增强与PIV诊断技术</h4>
+<p>混合增强技术（尤其是通过射流调制实现的混合增强）一直是研究热点。Vermeulen等<sup>[36]</sup>采用扬声器驱动器，在宽激励振幅和射流雷诺数范围内，对受限横流中的射流进行激励，结果在喷射孔处产生了一系列环形涡旋，显著提高了射流的扩散范围与穿透深度，并发现当斯特劳哈尔数为0.22时，混合响应达到最优。</p>
+<p>斯特拉哈尔数定义为：
+</p>
+$$
+S_t = \frac{fd}{U_j}
+$$<p>
+其中$f$为激励频率，$d$为射流直径，$U_j$为射流速度。Gogineni等<sup>[37]</sup>通过在管道侧壁布置四个压电致动器对矩形射流进行激励，使低速尾迹区域收缩，射流穿透深度增加。Johari等<sup>[38]</sup>采用电磁阀在喷射周期的部分时段切断水流供应，发现射流的完全调制会不同程度地改变射流结构、穿透深度、稀释度和混合效果，具体依赖于脉冲持续时间与频率。Eroglu与Breidenthal<sup>[39]</sup>同样通过电磁阀产生方波激励，得出结论：在近场区域可实现最优的涡环间距与强度，从而提升射流穿透深度与混合效率。M’Closkey等<sup>[40]</sup>量化了时间强制圆形射流的驱动动力学特性，并开发了一种用于开环射流控制的射流补偿系统设计方法，观察到当方波激励频率为射流自然涡脱落频率的次谐波时，射流的穿透深度与扩散范围达到最优。方波激励是提升射流穿透和扩散的核心，正弦波激励难以形成强穿透的离散涡结构，混合增强效果微弱。其实验工况如表 <a href="#tab:1" data-reference-type="ref" data-reference="tab:1">1.1</a>所示，实验结果如图 <a href="#fig:6" data-reference-type="ref" data-reference="fig:6">1.6</a>所示。Narayanan等<sup>[41]</sup>采用开环控制，在射流斯特劳哈尔数为0.1的条件下进行激励，发现该控制方法能有效规整非定常性并增强混合。Shapiro等<sup>[42]</sup>针对多种激励频率，确定了方波激励的最优时间脉冲宽度。</p>
+<div id="tab:1">
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: center">编号</th>
+					<th style="text-align: center">a</th>
+					<th style="text-align: center">b</th>
+					<th style="text-align: center">c</th>
+					<th style="text-align: center">d</th>
+					<th style="text-align: center">e</th>
+					<th style="text-align: center">f</th>
+					<th style="text-align: center">g</th>
+					<th style="text-align: center">h</th>
+					<th style="text-align: center">i</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: center">激励类型</td>
+					<td style="text-align: center">无</td>
+					<td style="text-align: center">正弦</td>
+					<td style="text-align: center">正弦</td>
+					<td style="text-align: center">方波</td>
+					<td style="text-align: center">方波</td>
+					<td style="text-align: center">方波</td>
+					<td style="text-align: center">方波</td>
+					<td style="text-align: center">方波</td>
+					<td style="text-align: center">方波</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">激励参数</td>
+					<td style="text-align: center">无</td>
+					<td style="text-align: center">73.5Hz</td>
+					<td style="text-align: center">73.5Hz</td>
+					<td style="text-align: center">110Hz</td>
+					<td style="text-align: center">110Hz</td>
+					<td style="text-align: center">55Hz</td>
+					<td style="text-align: center">73.5Hz</td>
+					<td style="text-align: center">85Hz</td>
+					<td style="text-align: center">220Hz</td>
+			</tr>
+	</tbody>
+</table>
+<p>实验工况表<sup>[40]</sup></p>
+</div>
+<figure><img src="figures/image6.png alt="实验结果图<sup>[40]</sup>" /><figcaption>实验结果图<sup>[40]</sup></figcaption></figure>
+<p>粒子图像测速（PIV）技术作为全场流动测量的核心手段，凭借其非侵入性、高分辨率等优势，已广泛应用于横向射流和燃烧流动的研究中，为流动特性的精准表征提供了关键技术支撑。Sakakibara和Adrian<sup>[43]</sup>基于PIV技术实现了水相中温度的全场测量，通过示踪粒子的响应特性与温度的关联，建立了温度测量的定量方法，为后续燃烧流场中温度和速度的同步测量提供了重要技术参考。Kähler等<sup>[44]</sup>在第4届国际PIV挑战的总结中，系统评估了不同PIV测量方案的精度和适用性，针对复杂燃烧流场的测量难点，提出了优化策略，为PIV技术在燃烧领域的应用提供了方法学指导。</p>
+<p>Kashanj和Nobes<sup>[45]</sup>采用4D双色LIF技术研究侧向受限瑞利-贝纳德对流，优化了温度测量灵敏度，强调体积测量对准确分析传热特性的重要性。King等<sup>[46]</sup>利用双示踪剂PLIF技术，实现了湍流剪切层中分子混合程度的瞬时定量检测。Kosiwczuk等<sup>[47]</sup>开发了基于荧光成像的两相PIV技术，成功实现气液两相速度场的同时独立测量。Ulrich等<sup>[48]</sup>将双色LIF技术应用于水/乙醇混合液滴，兼顾了温度测量与成分分析，拓展了技术的工业应用场景。这些研究均围绕LIF、PLIF或PIV相关光学诊断技术展开，分别适配单相对流、湍流混合、两相流及混合液滴等不同研究场景，验证了此类技术在流场参数测量中的核心价值，为相关领域的后续研究提供了技术参考。</p>
+<p>Brübach等<sup>[49]</sup>测得多种磷光体的温度-寿命特性，其即热成像磷光体受激后，发射光的衰减寿命随温度变化的规律，其结果如图 <a href="#fig:7" data-reference-type="ref" data-reference="fig:7">1.7</a>所示。揭示不同材料在宽温域（近绝对零度至1970 K）的响应差异。结合双色示踪测速，可通过优选磷光体，利用其温度敏感发光特性，关联上游速度脉动与横向射流火焰温度场，助力熄火机理研究。</p>
+<figure><img src="figures/image7.png alt="多种热释光荧光粉的温度寿命特性<sup>[49]</sup>" /><figcaption>多种热释光荧光粉的温度寿命特性<sup>[49]</sup></figcaption></figure>
+<p>Aldén等<sup>[50]</sup>综述了热成像磷光体在燃烧等场景的测温应用，展示了多种磷光体的温度敏感性，结果如图 <a href="#fig:8" data-reference-type="ref" data-reference="fig:8">1.8</a>所示，实线为寿命-温度关系，虚线为光谱强度比-温度关系，曲线斜率反映灵敏度。结合研究得到结论，热成像磷光体可作为双色示踪粒子，其温度敏感性可助力同步获取横向射流火焰温度与速度场。适配的磷光体能在火焰环境下稳定响应，为解析速度脉动与温度场耦合对熄火的影响提供关键数据支撑，提升熄火机理研究的准确性。</p>
+<figure><img src="figures/image8.png alt="多种荧光粉的温度敏感性<sup>[50]</sup>" /><figcaption>多种荧光粉的温度敏感性<sup>[50]</sup></figcaption></figure>
+<p>Abram等<sup>[51]</sup>使用BAM:Eu$^{2+}$磷光粉末为样本，采用脉冲Nd:YAG激光的355 nm波长激发，通过光谱仪与探测器采集其室温下的激发和发射光谱，其结果如图 <a href="#fig:9" data-reference-type="ref" data-reference="fig:9">1.9</a>所示。激发光谱在 355 nm 附近呈现强吸收峰，匹配常用激光光源；发射光谱为中心 445 nm 的宽谱带。实验中同步记录激发峰与发射峰的强度及波长分布，明确其光谱响应特性：宽激发谱适配多种激光，可见区强发射便于探测器捕捉，且光谱稳定性不受流体环境影响。该表征为双色成像实验中滤镜的选择提供依据，通过分割其发射谱带获取强度比，进而实现温度测量，适配横向射流火焰的复杂工况，为速度脉动与熄火关联分析提供可靠的温度示踪基础。</p>
+<figure><img src="figures/image9.jpg alt="BAM粉末室温激发与发射光谱<sup>[51]</sup>" /><figcaption>BAM粉末室温激发与发射光谱<sup>[51]</sup></figcaption></figure>
+<p>双色示踪PIV技术作为PIV的拓展形式，通过两种不同响应特性的示踪粒子（如不同材质、不同粒径或不同荧光特性的粒子），能够实现速度与温度的同步测量，有效解决了单一测量技术难以捕捉多物理量耦合效应的问题。Oberleithner等<sup>[52]</sup>利用双色示踪技术研究了湍流涡破裂的间歇性特征，通过两种示踪粒子的速度差异和荧光强度变化，同步获取了速度场和温度场信息，展示了该技术在非定常流动测量中的独特优势。该技术能够精准捕捉流动与燃烧的耦合演化过程，为上游速度脉动下横向射流火焰熄火机理的研究提供了理想的测量手段。</p>
+<p>Polifke等<sup>[53]</sup>通过PIV技术研究了预混燃烧器的不稳定性，发现非单调压力响应是燃烧不稳定性的重要诱因，该研究证实了PIV技术在燃烧不稳定性机理分析中的有效性。Shapiro等<sup>[42]</sup>在受控横向射流的优化研究中，利用PIV技术精准测量了不同控制策略下的流场结构变化，为流动控制效果的评估提供了定量数据支撑。这些研究充分验证了PIV技术在燃烧流场研究中的可靠性，为本文采用双色示踪PIV技术开展相关研究提供了坚实的技术基础。</p>
+<h3 id="本文研究内容">本文研究内容</h3>
+<p>本文以双喷嘴横向射流火焰为研究对象，以上游速度脉动为扰动输入，以声激励为主动调控手段，系统探究上游速度脉动对横向射流火焰熄火边界的影响机理。主要研究内容包括：</p>
+<p>（1）搭建集成声激励系统的两级串联横向射流燃烧实验平台，设计加工四组不同孔径与间距的双喷嘴，建立基于双色PIV的流场-混合物分数同步测量方法；</p>
+<p>（2）完成声激励脉动系统的设计、加工与调试，实现宽频范围内正弦波与方波激励的稳定输出，并筛选一级燃烧室稳定工况，为二级实验提供可靠热来流；</p>
+<p>（3）开展双色PIV光路搭建与数据处理流程开发，实现红蓝粒子的自适应分离、速度场求解与混合物分数计算；</p>
+<p>（4）通过前置实验明确喷嘴孔径对燃烧的影响，确立小孔径双喷嘴正式实验方案；</p>
+<p>（5）采用DMD等方法对冷态流场进行分析，识别主导模态，为后续声激励实验提供基准；</p>
+<p>（6）系统开展无声激励和有声激励条件下的熄火边界测量，揭示声激励参数对熄火极限的调控规律，并从流场-混合协同诊断角度建立“速度脉动→涡结构演变→混合物分数变化→火焰响应”的物理分析框架。</p>
+<h2 id="实验系统">实验系统</h2>
+<p>本章介绍横向射流火焰实验平台、双喷嘴构型及声激励系统，以及温度测量系统。</p>
+<h3 id="横向射流火焰实验平台">横向射流火焰实验平台</h3>
+<p>本研究搭建的横向射流火焰实验台采用<strong>两级燃烧室串联</strong>设计，其原理示意图如图 <a href="#fig:10" data-reference-type="ref" data-reference="fig:10">2.1</a>所示，搭建实验台的实物图如图 <a href="#fig:11" data-reference-type="ref" data-reference="fig:11">2.2</a>所示。在该平台中，左侧通入的主流燃料与空气在第一级燃烧室内形成稳定的多重扩散火焰。其高温产物气流经过一个收缩段实现流场均匀化后，进入二级燃烧室。在此处通入次级燃料射流，高温主流即将其点燃，形成横向射流火焰。实验首先明确了包括燃料类型、横向射流速度及喷射压力在内的基础工况参数及其可调范围，并建立了基于高速摄影与温度测量的火焰宏观结构、温度分布及燃烧效率的系统化分析方法。</p>
+<p><strong>一级燃烧室</strong>：通入主流燃料（甲烷）与空气，形成稳定的多重扩散火焰，产生高温（1200-1500 K）产物气流。</p>
+<p><strong>收缩段</strong>：将高温气流均匀化，确保进入二级燃烧室的来流速度分布均匀。</p>
+<p><strong>二级燃烧室</strong>：通过底部的双喷嘴注入次级燃料与空气，高温主流将其点燃，形成横向射流火焰。燃烧室采用<strong>石英玻璃材质</strong>，便于光学诊断与高速摄影观测。</p>
+<p>实验台整体采用欧标40×40铝型材框架支撑，便于移动实验台的位置，方便进行实验图片的拍摄与光学对准。</p>
+<figure><img src="figures/image10.png alt="横向射流火焰实验台原理示意图" /><figcaption>横向射流火焰实验台原理示意图</figcaption></figure>
+<figure><img src="figures/image11.jpg alt="横向射流火焰实验台实物图" /><figcaption>横向射流火焰实验台实物图</figcaption></figure>
+<h3 id="双喷嘴设计与声激励系统">双喷嘴设计与声激励系统</h3>
+<h4 id="双喷嘴构型设计">双喷嘴构型设计</h4>
+<p>为实现燃料与空气的独立调控与精准混合，本研究采用<strong>双喷嘴构型</strong>：前喷嘴通入燃料（甲烷），后喷嘴通入空气。两种气体在到达二级燃烧室出口后才开始混合，避免预混带来的安全隐患。截至目前，已完成喷嘴加工工艺优化、多规格双喷嘴图纸绘制，均已加工完成得到实物。</p>
+<p>喷嘴加工要求提出与质量检验：针对双喷嘴的加工，采用开孔插入式焊接工艺，即开出与细管外径大小相同的孔，将细管插入后再对其进行焊接，为保证输入的气体效果不受加工工艺的影响，要求焊接处维持圆管形状、内部打磨光滑。通过多次质量检验和反馈，最终得到可以使用的双喷嘴加工件用于实验当中。</p>
+<p>双喷嘴尺寸评估与加工方案调整：根据导师意见，确认现有6 mm内径喷嘴偏大。确立了新图纸加工小喷嘴+现有喷嘴临时使用的方案，即利用现有6 mm喷嘴进行预实验和系统调试，并对工况进行相应的换算，同时加工2 mm、3 mm内径的小喷嘴用于正式实验。绘制了4组不同内径和间距的双喷嘴图纸（2 mm内径4 mm间距、2 mm内径6 mm间距、3 mm内径6 mm间距、3 mm内径9 mm间距），明确了316L不锈钢材质、外部抛光、内壁光滑、密封面粗糙度Ra≤1.6等详细加工要求，并得到可用的双喷嘴加工件。双喷嘴的参数如表 <a href="#tab:2" data-reference-type="ref" data-reference="tab:2">2.1</a>所示。</p>
+<div id="tab:2">
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: center">编号</th>
+					<th style="text-align: center">孔径$d$（mm）</th>
+					<th style="text-align: center">间距$s$</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: center">a</td>
+					<td style="text-align: center">2</td>
+					<td style="text-align: center">2d（4mm）</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">b</td>
+					<td style="text-align: center">2</td>
+					<td style="text-align: center">3d（6mm）</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">c</td>
+					<td style="text-align: center">3</td>
+					<td style="text-align: center">2d（6mm）</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">d</td>
+					<td style="text-align: center">3</td>
+					<td style="text-align: center">3d（9mm）</td>
+			</tr>
+	</tbody>
+</table>
+<p>双喷嘴参数表</p>
+</div>
+<p>图 <a href="#fig:12" data-reference-type="ref" data-reference="fig:12">2.3</a>、图 <a href="#fig:13" data-reference-type="ref" data-reference="fig:13">2.4</a>展示了2 mm和3 mm孔径双喷嘴的工程图纸，图 <a href="#fig:14" data-reference-type="ref" data-reference="fig:14">2.5</a>为加工完成的实物照片。加工采用<strong>开孔插入式焊接工艺</strong>，确保焊接处维持圆管形状、内部平滑。</p>
+<figure><img src="figures/image12.jpg alt="2 mm双喷嘴图纸" /><figcaption>2 mm双喷嘴图纸</figcaption></figure>
+<figure><img src="figures/image13.jpg alt="3 mm双喷嘴图纸" /><figcaption>3 mm双喷嘴图纸</figcaption></figure>
+<figure><img src="figures/image14.jpg alt="双喷嘴实物图" /><figcaption>双喷嘴实物图</figcaption></figure>
+<h4 id="声激励脉动系统">声激励脉动系统</h4>
+<p>为精确引入可控的上游速度脉动，本研究设计并集成了<strong>声激励脉动系统</strong>。系统以<strong>扬声器</strong>为核心声源，通过刚性腔体与细管将声能定向传导至喷嘴上游区域。</p>
+<p><strong>系统关键参数：</strong></p>
+<ul>
+<li>
+<p>频率范围：45 Hz–2.5 kHz</p>
+</li>
+<li>
+<p>波形：正弦波、方波等（其中方波被证实有更强的离散涡结构）</p>
+</li>
+<li>
+<p>幅值：可通过信号发生器进行调节</p>
+</li>
+<li>
+<p>气路设计：甲烷与空气分别独立设置声激励罐体，扬声器安装于罐体尾部，气体从侧壁引入，避免气流对扬声器膜片的冲击</p>
+</li>
+</ul>
+<p>声激励喷嘴初步设计：根据声激励脉动系统的所需功能对其总体构造进行设计，确定其由尾部法兰、内部法兰、尾部密封不锈钢板等主要部件构成，其整体结构示意图如图 <a href="#fig:15" data-reference-type="ref" data-reference="fig:15">2.6</a>所示。关键创新点在于使甲烷与空气分别进入二级燃烧室当中，使燃料在双喷嘴出口处与空气混合，避免预混导致危险情况的发生。同时确定了扬声器、1000 W电源、信号发生板等关键元器件的参数，形成了完整的采购清单。</p>
+<figure><img src="figures/image15.png alt="声激励脉动系统图纸" /><figcaption>声激励脉动系统图纸</figcaption></figure>
+<p>扬声器与电路初步测试：完成了扬声器的发声测试，验证了其在罐体内的工作性能。测试中发现了密封不严、电源隔离不足、布线混乱等问题，针对性地提出了采购4 mm厚垫片、单独配置保护电源、改用双芯线和三芯线等解决方案，并最终解决其出现的问题。</p>
+<p>扬声器安装与腔体改造：与课题组人员协作完成了扬声器、航插、气路的安装固定。通过截短喷嘴细管、焊接空气通入管，使罐体满足气路和电路连接要求。针对双喷嘴实验需求，预留了电路空间和管路接口。并对电路重新设计与布局优化，采用接线端子替换原有散线，重新规划了电路连接方案，显著改善了电路布局的整洁性和安全性，降低了电路故障风险。</p>
+<p>罐体总装与密封测试：完成了两套罐体的整体组装，分别用于甲烷和空气气路，确定了上游设置流量计、垫片密封底部的方案，利用流量计的限压作用避免罐体承压过大导致密封破坏。实物图如图 <a href="#fig:16" data-reference-type="ref" data-reference="fig:16">2.7</a>所示。</p>
+<figure><img src="figures/image16.jpg alt="声激励脉动系统实物图" /><figcaption>声激励脉动系统实物图</figcaption></figure>
+<p>经过上述工作，成功研制出两套功能完整、气密性良好的声激励罐体，其装配的结果如图 <a href="#fig:16" data-reference-type="ref" data-reference="fig:16">2.7</a>所示，形成了一套成熟的声激励系统设计、加工和调试流程。解决了密封、电源隔离、电路布局等多个工程技术难题，为后续燃烧实验提供了可靠的声激励源。</p>
+<h3 id="温度测量系统">温度测量系统</h3>
+<p>该部分的目标是建立可重复的二级燃烧室入口温度测量系统，为熄火实验提供可靠的来流温度数据。截至目前，已完成热电偶的多次改造，设计并装配了冷端水冷套，基本解决测温不准和重复性差的问题。</p>
+<p>温度采集系统改造与问题排查：针对热电偶测温不准的问题，排查发现其根本原因为热电偶丝过短，冷端受热辐射影响。采取了加长偶丝、安装热挡板、增加陶瓷保护套等措施，初步改善了测温精度。热电偶改造与标定实验通过陶瓷保护套+定位螺母+陶瓷胶的方案，实现了热电偶伸入长度的精确、可重复控制。完成了首次温度标定实验，获得了首批各工况下的入口温度数据。其采集数据结果如图 <a href="#fig:32" data-reference-type="ref" data-reference="fig:32">2.8</a>所示。</p>
+<figure><img src="figures/image32.png alt="热电偶记录温度数据" /><figcaption>热电偶记录温度数据</figcaption></figure>
+<p>由于进行燃烧实验时，热电偶丝的冷端在横向射流火焰实验台周围，容易受实验台内火焰燃烧时的热辐射影响，因此对其进行改造，增设水冷套。在冷端水冷套设计与装配方面，设计了卡套三通包裹铜管的水冷套结构，用铜管包裹热电偶冷端，外部安装卡套-三通结构通入循环水进行冷却，其结构图如图 <a href="#fig:33" data-reference-type="ref" data-reference="fig:33">2.9</a>所示，下方两端为进水口和出水口，可以对热电偶冷端提供稳定的水冷温度。</p>
+<figure><img src="figures/image33.jpg alt="热电偶水冷套装配实物图" /><figcaption>热电偶水冷套装配实物图</figcaption></figure>
+<p>该部分建立了一套较为完善的高温温度测量系统，解决了热电偶伸入长度不一致和冷端热辐射干扰等关键问题。设计的冷端水冷套结构简单、成本低廉、冷却效果好，可作为组内高温热电偶测温的标准配置。</p>
+<h2 id="双色piv测量系统">双色PIV测量系统</h2>
+<p>本章详细阐述双色PIV的测量原理、系统构成以及光路搭建细节。</p>
+<h3 id="测量原理与系统构成">测量原理与系统构成</h3>
+<p>本研究采用的双色PIV系统基于<strong>荧光示踪粒子的双色区分</strong>原理，核心技术已申请发明专利（申请号：LSBJ-25-I-91584335）。</p>
+<p><strong>系统核心构成：</strong></p>
+<ul>
+<li>
+<p>光源：365 nm紫外LED阵列，经柱面镜整形为片激光（厚度约2 mm），照射待测流场平面</p>
+</li>
+<li>
+<p>示踪粒子：采用<strong>BAM:Eu$^{2+}$</strong>磷光粉末，其在355 nm附近具有强吸收峰</p>
+</li>
+<li>
+<p>标记策略：分别用不同颜色的粒子分别标记燃料和空气，代表不同的气流</p>
+</li>
+<li>
+<p>相机：高速彩色相机，垂直片激光平面布置，同步捕捉双色粒子分布图像</p>
+</li>
+</ul>
+<p>双色粒子图像测速技术为本实验的关键诊断技术，其原理图如图 <a href="#fig:22" data-reference-type="ref" data-reference="fig:22">3.1</a>所示。该系统的核心在于利用两种具有不同荧光或磷光特性的示踪粒子，分别标记燃料射流与上游背景空气流。BAM:Eu$^{2+}$粉末激发光谱在355 nm附近呈现强吸收峰，故系统采用中心波长为365 nm的紫外LED阵列作为光源，其光谱图如图 <a href="#fig:23" data-reference-type="ref" data-reference="fig:23">3.2</a>所示，并通过一对母线方向相互垂直的平凸柱面镜，可以分别从两个方向对紫外光进行聚焦，最终形成薄片激光，用以照亮待测流场平面。当片激光照射流场时，两种示踪粒子被激发并发出不同颜色的荧光。高速相机同步拍摄这些荧光图像，再经由计算机进行互相关分析，即可分别独立解算出燃料流与空气流的瞬态二维速度场。这一独特能力使得本研究能够直接、同步地量化声激励作用下，燃料与空气在剪切层附近的相对运动、混合过程以及湍流相互作用。</p>
+<figure><img src="figures/image22.png alt="双色PIV原理示意图" /><figcaption>双色PIV原理示意图</figcaption></figure>
+<figure><img src="figures/image23.png alt="紫外LED光谱图" /><figcaption>紫外LED光谱图</figcaption></figure>
+<h3 id="piv光路搭建">PIV光路搭建</h3>
+<p>本实验采用365 nm紫外LED阵列作为光源，需配备紫外熔融石英材质的透镜以保障紫外波段的高透过率。根据光路设计需求，加工的平凸柱面镜镜片，柱面透镜用于单一方向的光束扩散，是形成片光的关键元件。加工了50 mm×100 mm的紫外熔融石英平凸柱面镜，加工镜片列表如表 <a href="#tab:3" data-reference-type="ref" data-reference="tab:3">3.1</a>所示。母线方向互相垂直。</p>
+<div id="tab:3">
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: center">型号</th>
+					<th style="text-align: center">名称</th>
+					<th style="text-align: center">数量</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: center">50（母线方向）×100×2 mm F500 mm</td>
+					<td style="text-align: center">石英平凸柱面镜</td>
+					<td style="text-align: center">2片</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">100（母线方向）×50×2 mm F1000 mm</td>
+					<td style="text-align: center">石英平凸柱面镜</td>
+					<td style="text-align: center">2片</td>
+			</tr>
+	</tbody>
+</table>
+<p>加工镜片尺寸</p>
+</div>
+<p>由于加工所得的镜片尺寸较大，市面上没有适配的镜架，需要自行设计，镜架分两块板，固定板和活动板，固定板用于安装细纹螺栓，细纹螺栓可以调节透镜倾斜角度，活动板用来放置透镜，固定板的图纸如图 <a href="#fig:17" data-reference-type="ref" data-reference="fig:17">3.3</a>所示，活动板的图纸如图 <a href="#fig:18" data-reference-type="ref" data-reference="fig:18">3.4</a>所示，装配效果如图 <a href="#fig:19" data-reference-type="ref" data-reference="fig:19">3.5</a>所示。</p>
+<figure><img src="figures/image17.png alt="固定板图纸" /><figcaption>固定板图纸</figcaption></figure>
+<figure><img src="figures/image18.png alt="活动板图纸" /><figcaption>活动板图纸</figcaption></figure>
+<figure><img src="figures/image19.png alt="镜架装配效果" /><figcaption>镜架装配效果</figcaption></figure>
+<p>紫外LED阵列的实物如图 <a href="#fig:20" data-reference-type="ref" data-reference="fig:20">3.6</a>所示。该阵列由多个小灯珠排列在铝板上，经平凸柱面镜阵列聚焦后形成片光。由于紫外LED输出的原始光束光斑较大、能量分散，使用平凸柱面镜对其聚焦，分别使用两个方向母线方向垂直的平凸柱面镜，这样可以在两个方向分别聚焦，使其最终形成片光。</p>
+<figure><img src="figures/image20.jpg alt="紫外LED阵列实物图" /><figcaption>紫外LED阵列实物图</figcaption></figure>
+<h2 id="双喷嘴横向射流火焰实验历程">双喷嘴横向射流火焰实验历程</h2>
+<p>本章介绍为获取横向射流火焰熄火边界而开展的实验探索过程，包括前置工况筛选及声激励传递特性的初步评估。</p>
+<h3 id="前置实验与工况探索">前置实验与工况探索</h3>
+<p>该部分是对正式实验的工况探索实验，目的是先对不同工况进行实验，观察不同工况下火焰的燃烧情况，挑选合适的工况进行下一步实验。截至目前，已完成多次不同工况下火焰燃烧情况的实验，对不同工况下的火焰燃烧情况进行记录。</p>
+<p>在进行对二级横向射流火焰的研究之前，需要对一级燃烧室的多重扩散火焰的工况进行确定，由于燃烧器的性质，要使一级燃烧室产生的热流经过收缩段之后，能够点燃二级燃烧室通入的气体，因此需要对一级燃烧室的火焰燃烧情况以及所产生的热流温度进行探测，对一级燃烧室的火焰进行图像采集，并用热电偶记录其温度，如图 <a href="#fig:34" data-reference-type="ref" data-reference="fig:34">4.1</a>所示为多个工况火焰燃烧的情况。本实验采用的气体为压缩空气和甲烷，当甲烷充分燃烧时，产生的火焰是淡蓝色的，图片中有黄色的火焰出现说明有燃烧不充分的现象存在，正式实验需要避免这些工况。</p>
+<figure><img src="figures/image34.png alt="不同工况下多重扩散火焰燃烧情况" /><figcaption>不同工况下多重扩散火焰燃烧情况</figcaption></figure>
+<p>针对适合用于二级横向射流火焰燃烧的一级燃烧工况进行筛选，要求是能够产生纯淡蓝色的火焰，并且能产生1200 K–1500 K左右的温度，使用这些工况去对二级燃烧室横向射流火焰进行研究。目前主要使用的工况如表 <a href="#tab:4" data-reference-type="ref" data-reference="tab:4">4.1</a>所示：</p>
+<div id="tab:4">
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: center">甲烷流量（SLM）</th>
+					<th style="text-align: center">空气流量（SLM）</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: center">44</td>
+					<td style="text-align: center">360</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">42</td>
+					<td style="text-align: center">510</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">44</td>
+					<td style="text-align: center">650</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">47</td>
+					<td style="text-align: center">820</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">51</td>
+					<td style="text-align: center">970</td>
+			</tr>
+	</tbody>
+</table>
+<p>现阶段实验工况表</p>
+</div>
+<p>由于在环境光较亮的情况下，淡蓝色火焰不易拍摄，二级燃烧室的气体先采用乙烯和空气进行现象观测，后续进行正式实验使用甲烷，图 <a href="#fig:35" data-reference-type="ref" data-reference="fig:35">4.2</a>为使用乙烯，采用单喷嘴时所拍摄的二级燃烧室横向射流火焰的图片。</p>
+<figure><img src="figures/image35.jpg alt="横向射流火焰燃烧情况（乙烯/单喷嘴）" /><figcaption>横向射流火焰燃烧情况（乙烯/单喷嘴）</figcaption></figure>
+<p>6 mm双喷嘴加工好后，采用双喷嘴进行二级燃烧室的实验，实验工况如表 <a href="#tab:5" data-reference-type="ref" data-reference="tab:5">4.2</a>所示，所得实验结果如图 <a href="#fig:36" data-reference-type="ref" data-reference="fig:36">4.3</a>、 <a href="#fig:37" data-reference-type="ref" data-reference="fig:37">4.4</a>所示。本次实验所使用的工况产生了黄色火焰居多的燃烧现象，这是燃烧不充分的表现，因此还需对二级燃烧室的实验工况进行调整，并且采用孔径更小的双喷嘴进行实验。</p>
+<div id="tab:5">
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: center">编号</th>
+					<th style="text-align: center">乙烯流量（L/min）</th>
+					<th style="text-align: center">空气流量（L/min）</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: center">1</td>
+					<td style="text-align: center">4</td>
+					<td style="text-align: center">0</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">2</td>
+					<td style="text-align: center">4</td>
+					<td style="text-align: center">25</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">3</td>
+					<td style="text-align: center">4</td>
+					<td style="text-align: center">30</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">4</td>
+					<td style="text-align: center">6</td>
+					<td style="text-align: center">35</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">5</td>
+					<td style="text-align: center">6</td>
+					<td style="text-align: center">40</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">6</td>
+					<td style="text-align: center">6</td>
+					<td style="text-align: center">50</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">7</td>
+					<td style="text-align: center">8</td>
+					<td style="text-align: center">40</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">8</td>
+					<td style="text-align: center">8</td>
+					<td style="text-align: center">50</td>
+			</tr>
+	</tbody>
+</table>
+<p>二级燃烧室横向射流火焰工况表（乙烯/空气）</p>
+</div>
+<figure><img src="figures/image36.jpg alt="横向射流火焰实验燃烧图1（6 mm双喷嘴）" /><figcaption>横向射流火焰实验燃烧图1（6 mm双喷嘴）</figcaption></figure>
+<figure><img src="figures/image21.jpg alt="横向射流火焰实验燃烧图2（6 mm双喷嘴）" /><figcaption>横向射流火焰实验燃烧图2（6 mm双喷嘴）</figcaption></figure>
+<p>该部分对一级燃烧室内的燃烧工况进行了探索，进行前置实验，并对使用工况进行筛选，并且已经完成对二级燃烧室内横向射流火焰的燃烧情况进行观察及拍照，为后续实验奠定坚实的基础，后续需改变二级燃烧室的双喷嘴的内径以及工况进行修改，进行后续实验。</p>
+<h3 id="激励传递特性初步评估">激励传递特性初步评估</h3>
+<p>由于本项目需要使用集成的声激励脉动系统对气体进行激励，因此需要对其激励效果进行评估，于是借用学院的热膜风速仪进行测试在激励情况下速度波动的幅值。美国TSI IFA300热膜风速仪的主要技术参数如表 <a href="#tab:热膜风速仪" data-reference-type="ref" data-reference="tab:热膜风速仪">4.3</a>所示。</p>
+<div id="tab:热膜风速仪">
+<table>
+<caption>美国TSI IFA300热膜风速仪主要技术参数</caption>
+<thead>
+<tr>
+<th style="text-align: center;">参数名称</th>
+<th style="text-align: center;">技术指标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">放大器输入漂移</td>
+<td style="text-align: center;">0.3 μV/℃</td>
+</tr>
+<tr>
+<td style="text-align: center;">等效放大器输入噪声</td>
+<td style="text-align: center;">1.7 mV/Hz</td>
+</tr>
+<tr>
+<td style="text-align: center;">频率响应</td>
+<td style="text-align: center;">300 kHz（无需方波试验）</td>
+</tr>
+<tr>
+<td style="text-align: center;">精度</td>
+<td style="text-align: center;">0.1% 或 0.01 Ω</td>
+</tr>
+<tr>
+<td style="text-align: center;">工作电阻</td>
+<td style="text-align: center;">2–80 Ω</td>
+</tr>
+<tr>
+<td style="text-align: center;">最大探针电流</td>
+<td style="text-align: center;">1.6 A</td>
+</tr>
+<tr>
+<td style="text-align: center;">电缆长度</td>
+<td style="text-align: center;">5 m 或 30 m</td>
+</tr>
+<tr>
+<td style="text-align: center;">输出</td>
+<td style="text-align: center;">桥电压到 11.5 V</td>
+</tr>
+<tr>
+<td style="text-align: center;">尺寸</td>
+<td style="text-align: center;">17.8 cm × 48 cm × 41 cm</td>
+</tr>
+<tr>
+<td style="text-align: center;">通道数</td>
+<td style="text-align: center;">每箱8通道，共16通道</td>
+</tr>
+<tr>
+<td style="text-align: center;">电源</td>
+<td style="text-align: center;">100/120/220/240 VAC，50–60 Hz，不需转换开关</td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: center;">信号适配器</td>
+</tr>
+<tr>
+<td style="text-align: center;">偏置</td>
+<td style="text-align: center;">0–10 V，10 mV，0.15% 精度</td>
+</tr>
+<tr>
+<td style="text-align: center;">增益</td>
+<td style="text-align: center;">1–1000（最大1M带宽），0.15% 精度</td>
+</tr>
+<tr>
+<td style="text-align: center;">低通滤波</td>
+<td style="text-align: center;">12 Hz 到 1 MHz，13档，-60 dB/倍频程</td>
+</tr>
+<tr>
+<td style="text-align: center;">高通滤波</td>
+<td style="text-align: center;">0.1，1，10 Hz，-60 dB/倍频程</td>
+</tr>
+<tr>
+<td style="text-align: center;">输出（模拟）</td>
+<td style="text-align: center;">-5 到 +5 V</td>
+</tr>
+<tr>
+<td style="text-align: center;">最高采样率</td>
+<td style="text-align: center;">1 MHz</td>
+</tr>
+<tr>
+<td style="text-align: center;">A/D板</td>
+<td style="text-align: center;">4/8通道，12 bit，-5～+5 V，每通道最高采样率：714.3 kHz / 1 MHz</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>将气管连接到声激励喷嘴之后，再从声激励喷嘴的出口处连接到热膜风速仪进行测试，通过设置流量以及调节信号发生器所设置的频率和幅值，记录示波器所显示的波形及改变输入信号时的变化。</p>
+<p>测试结果如图 <a href="#fig:39" data-reference-type="ref" data-reference="fig:39">4.5</a>所示。</p>
+<figure><img src="figures/image38.jpg alt="示波器采集界面" /><figcaption>示波器采集界面</figcaption></figure>
+<p>实验现象是，示波器无法正确显示出所设置的波形，不论如何调整信号发生器所输入的信号，示波器都无法显示出波形，只有在调整输入气体流量时，示波器上的波形会随着流量的变大变小而上下跳动。热膜风速仪无法响应高频信号，未能测得有效数据。</p>
+<p>需要对测试进行改进，计划采用双色PIV速度场数据直接计算脉动幅值，或借用高频PIV/热线风速仪重新测试。</p>
+<h2 id="数据处理方法">数据处理方法</h2>
+<p>本章详述双色PIV图像的后处理流程，包括粒子分离、速度场计算、混合物分数反演以及动态模态分解（DMD）分析。</p>
+<h3 id="图像预处理与粒子分离">图像预处理与粒子分离</h3>
+<p>基于发明专利中公开的方法，针对已有的双色PIV冷流数据，本研究的双色PIV数据处理流程如下：</p>
+<p>对原始双色图像进行去噪、灰度化与归一化处理，原始图像如图 <a href="#fig:24" data-reference-type="ref" data-reference="fig:24">5.1</a>所示。</p>
+<figure><img src="figures/image24.png alt="原始双色粒子图像" /><figcaption>原始双色粒子图像</figcaption></figure>
+<p>原始数据当中拍摄到的粒子为红蓝粒子混合的状态，要对每种粒子代表的流场分别进行分析，需要对双色粒子进行分离，通过<strong>自适应灰度阈值</strong>分离红/蓝粒子，生成二值化单色图像，分离后红蓝粒子单色图像如图 <a href="#fig:25" data-reference-type="ref" data-reference="fig:25">5.2</a>所示，分别可以使他们代表各自的流场。</p>
+<figure><img src="figures/image25.png alt="红蓝粒子分离图" /><figcaption>红蓝粒子分离图</figcaption></figure>
+<p>根据得到的分离后的粒子图，以及相机频率可以对其进行时平均操作，以此来得到粒子场的整体走向，时间平均图如图 <a href="#fig:26" data-reference-type="ref" data-reference="fig:26">5.3</a>所示。</p>
+<figure><img src="figures/image26.png alt="时均图" /><figcaption>时均图</figcaption></figure>
+<h3 id="速度场计算">速度场计算</h3>
+<p>采用质心算法实现粒子中心的亚像素定位，通过连续帧粒子匹配获取位移信息，结合拍摄时间间隔计算瞬时速度场；对多帧瞬时速度场进行时间平均，得到稳定的时均流场，可输出速度矢量图与流线图。其结果如图 <a href="#fig:29" data-reference-type="ref" data-reference="fig:29">5.4</a>所示。</p>
+<figure><img src="figures/image29.png alt="速度场流线图" /><figcaption>速度场流线图</figcaption></figure>
+<h3 id="混合物分数计算">混合物分数计算</h3>
+<p>对连续多帧同色粒子图像进行平均以消除随机噪声，经归一化处理后，可得到红/蓝粒子对应的$R_1$、$R₂$。通过专利中公式计算局部混合物分数，可以对气体的混合状态进行评判，从而从另一方面反映出火焰的燃烧情况。</p>
+$$
+f_1 = \frac{R_1}{R_1+R₂}, \quad f_2 = \frac{R₂}{R_1+R₂}
+$$<p>其中$R_1$、$R₂$分别为归一化后红/蓝单色粒子图像的强度值，得到的$f_1$、$f_2$对应的图如图 <a href="#fig:27" data-reference-type="ref" data-reference="fig:27">5.5</a>所示。</p>
+<figure><img src="figures/image27.png alt="红蓝粒子对应f图" /><figcaption>红蓝粒子对应f图</figcaption></figure>
+<p>根据所得结果，最终生成混合物分数图如图 <a href="#fig:28" data-reference-type="ref" data-reference="fig:28">5.6</a>所示，实现两种流体混合状态的量化表征。</p>
+<figure><img src="figures/image28.png alt="混合物分数图" /><figcaption>混合物分数图</figcaption></figure>
+<p><strong>粒子跟随性量化评估</strong>：引入斯托克斯数$St_k$作为示踪粒子选型的核心指标，通过计算粒子弛豫时间与流场特征时间尺度的比值，确保粒子运动真实反映流体特性，从源头保障测量精度：</p>
+$$
+St_k = \frac{\tau_p}{\tau_f} = \frac{(\rho_p d_p^2)}{(18 \mu_f)} \cdot \frac{U}{L}
+$$<p>其中$\tau_p$为粒子弛豫时间，$\tau_f$为流场特征时间，$\rho_p$、$d_p$分别为粒子密度与直径，$\mu_f$为流体动力粘度，$U$、$L$分别为流场特征速度与长度。</p>
+<h3 id="dmd分析">DMD分析</h3>
+<p>为进一步探究流场中不同尺度结构的动态演化特征，识别主导流动模式及其时空耦合关系，该部分采用动态模态分解（DMD）对前序批量计算获得的速度场序列进行后处理分析。DMD是一种数据驱动的线性系统辨识方法，其基本原理是将高维流场快照序列近似表示为低维线性算子的特征分解形式。将连续时刻的速度场矩阵按时间序列排列，构造系统状态矩阵，通过求解最优线性近似算子的特征值与特征向量，即可将原始高维复杂流场解耦为若干模态的线性叠加。</p>
+<p>图 <a href="#fig:30" data-reference-type="ref" data-reference="fig:30">5.7</a>展示了前9阶空间模态的云图分布，图中颜色深浅表征各频率成分在物理空间上的动能密度分布与作用区域。</p>
+<figure><img src="figures/image30.png alt="DMD空间模态" /><figcaption>DMD空间模态</figcaption></figure>
+<p>从空间分布特征来看，低阶模态（第1–4阶）呈现完整且尺度较大的结构，是全流场脉动能量的主要贡献者。高阶模态（第5–9阶）的空间结构主要反映局部小尺度的次级修正运动或边界层附近的精细流动结构。这一分布规律表明，流场的大尺度动力学行为在空间中具有明确的定位，能量高度集中于少数低阶模态，高阶模态则主要承担小尺度空间细节的调制作用。</p>
+<p>图 <a href="#fig:31" data-reference-type="ref" data-reference="fig:31">5.8</a>为与空间模态一一对应的时间模态折线图，纵轴表示模态幅值的归一化演化量，横轴为时间序列，反映了各空间结构在时间维度上的动态节律。</p>
+<figure><img src="figures/image31.png alt="DMD时间模态" /><figcaption>DMD时间模态</figcaption></figure>
+<p>周期振荡或单调缓变表明对应的大尺度空间结构在时间上具有持续的动态行为或稳定的演变趋势；不规则波动或幅值快速衰减对应的空间结构能量较弱、持续时间短暂，受湍流耗散效应显著，属于瞬态扰动或噪声成分。</p>
+<p>时间模态与空间模态的配对耦合表明，流场的主控动态模式同时具有明确的空间定位和稳定的时间节律，该对应关系可通过特征值的虚部进一步换算为实际物理频率，为判断流场是否存在主导振荡频率提供直接依据。</p>
+<h2 id="总结与展望">总结与展望</h2>
+<h3 id="主要完成工作">主要完成工作</h3>
+<p>本文围绕“上游速度脉动对双喷嘴横向射流火焰熄火边界的影响”这一核心问题，从实验平台搭建、声激励系统研制、双色PIV诊断方法建立到前置实验开展，完成了以下主要工作：</p>
+<p>（1）<strong>横向射流火焰实验平台搭建</strong>：完成了两级串联横向射流燃烧实验台的搭建与调试。一级燃烧室可产生温度范围为1200–1520 K的高温产物气流，经收缩段均匀化后进入二级燃烧室；二级燃烧室采用石英玻璃材质，便于光学诊断与高速摄影观测。实验台整体采用铝型材框架支撑，具备良好的移动性与光学对准便利性。</p>
+<p>（2）<strong>双喷嘴设计与加工</strong>：设计并加工了四组不同孔径（2 mm/3 mm）与间距（2$d$/3$d$）的双喷嘴，明确了316L不锈钢材质、内壁光滑度Ra≤1.6等加工要求。6 mm孔径双喷嘴已用于预实验与系统调试，2 mm与3 mm孔径双喷嘴已完成加工，将用于正式实验。</p>
+<p>（3）<strong>声激励脉动系统研制</strong>：成功研制出两套功能完整、气密性良好的声激励罐体，分别用于甲烷与空气气路的独立激励。系统可实现45 Hz–2.5 kHz频率范围内正弦波与方波激励的稳定输出，扬声器安装于罐体尾部、气体从侧壁引入的设计有效避免了气流对扬声器膜片的冲击。经密封测试与电路布局优化，系统运行稳定可靠。</p>
+<p>（4）<strong>双色PIV诊断系统建立</strong>：完成了双色PIV光路系统的搭建，采用365 nm紫外LED阵列作为光源，配合正交柱面镜组与光学狭缝，形成了厚度约1–2 mm的片光。建立了从原始双色图像到速度场与混合物分数的全流程数据处理方法，实现了红蓝粒子的自适应分离、速度场求解与混合物分数计算。核心技术已申请发明专利（申请号：LSBJ-25-I-91584335）。此外，采用DMD方法对冷态流场进行了模态分析，识别了流场的主导空间结构与时间节律，为后续声激励工况的对比分析提供了基准。</p>
+<p>（5）<strong>前置实验与工况筛选</strong>：完成了一级燃烧室多工况火焰燃烧实验，筛选出5组现阶段实验工况，出口温度覆盖1200–1500 K，为二级实验提供了可靠的热来流条件。完成了二级燃烧室横向射流火焰的预实验，采用乙烯/空气进行现象观测，验证了实验系统的基本功能。预实验发现6 mm孔径喷嘴存在燃烧不充分、观察窗熏黑的问题，明确了后续需采用2 mm/3 mm小孔径双喷嘴的改进方向。</p>
+<p>（6）<strong>激励传递特性初步评估</strong>：采用热膜风速仪对声激励脉动系统的激励效果进行了初步测试。结果表明，热膜风速仪无法有效响应高频激励信号，未能测得有效的速度脉动幅值。后续将采用高频PIV或双色PIV速度场数据直接计算脉动幅值，以获取声激励传递特性的定量数据。</p>
+<h3 id="创新点">创新点</h3>
+<p>本研究将采用双色粒子图像测速（PIV）等先进燃烧诊断技术，建立流场与火焰特性的同步测量系统。通过该系统可同步获取横向射流场的速度分布、湍流强度等流场信息，以及火焰温度分布、火焰面形态、燃烧反应区演化等火焰特性参数，基于多维度同步数据的耦合分析，实现对声激励调控火焰熄火过程机理层面的深度解析与本质洞察。</p>
+<p>本研究聚焦于单喷嘴及双喷嘴构型下横向射流火焰的熄火特性，系统探究声激励参数对火焰熄火过程的调控规律，并剖析双喷嘴布局中喷嘴间流场干涉、燃料混合及火焰相互作用的内在机理。</p>
+<p>研究核心目标在于突破传统燃烧特性研究中以现象观测为核心的局限，通过主动调控声激励的频率、振幅等关键参数，通过调节声激励脉动系统的各项参数，进而筛选并确定能够产生正效应（即显著扩展火焰熄火极限、提升燃烧稳定性）的优化声学参数区间，为燃烧系统的主动控制技术研发提供理论支撑与参数依据。</p>
+<h3 id="下一步工作计划">下一步工作计划</h3>
+<p>（1）<strong>小孔径双喷嘴正式实验</strong>：采用2 mm与3 mm孔径双喷嘴，系统开展无声激励条件下的横向射流火焰熄火边界测量。重点探究孔径与间距对熄火当量比、临界射流速度的影响规律，确定最优喷嘴构型。</p>
+<p>（2）<strong>声激励下熄火边界测量</strong>：在最优喷嘴构型基础上，施加不同频率（50–1000 Hz）、波形（正弦波/方波）与幅值的声激励，系统测量有声激励条件下的熄火边界，揭示声激励参数对熄火极限的调控规律。</p>
+<p>（3）<strong>双色PIV流场-混合协同诊断</strong>：在典型工况下（无激励、最优激励、过强激励），开展双色PIV测量，同步获取燃料流与空气流的速度场及混合物分数分布，从流场-混合耦合视角揭示声激励致熄的物理机理。</p>
+<p>（4）<strong>脉动幅值精确测量</strong>：针对热膜风速仪未能有效测量的问题，采用高频PIV或基于双色PIV速度场数据的后处理方法，获取声激励下喷嘴出口附近的速度脉动幅值与频谱特性，建立“激励信号→速度脉动”的定量关联。</p>
+<p>（5）<strong>数据整理与论文撰写</strong>：整合全部实验数据，完成速度脉动-混合物分数-火焰熄火的量化关联模型，撰写毕业论文初稿。</p>
+<h2 id="参考文献">参考文献</h2>
+<p class="report-ref">[1] CHAUDHURI S, KOSTKA S, RENFRO M W, 等. Blowoff mechanism of harmonically forced bluff body stabilized turbulent premixed flames[J]. Combustion and Flame, 2012, 159(2): 638-640.</p>
+<p class="report-ref">[2] WANG Z, WANG Y, LIU X. Experimental Study of a Novel Twin-Nozzle Configuration for Reacting Jet in Hot Crossflow[J]. Journal of Energy Resources Technology, 2022, 144(9): 092105.</p>
+<p class="report-ref">[3] WANG Z, WANG Y, LIU X. Lift-off region temperature field and planar flow field of a twin-nozzle reacting jet in hot crossflow[J]. Proceedings of the Combustion Institute, 2023, 39(1): 1269-1278.</p>
+<p class="report-ref">[4] ROCK N, EMERSON B, SEITZMAN J, 等. Near-lean blowoff dynamics in a liquid fueled combustor[J]. Combustion and Flame, 2020, 212: 53-66.</p>
+<p class="report-ref">[5] WAN J, ZHAO H. Blow-off mechanism of a holder-stabilized laminar premixed flame in a preheated mesoscale combustor[J]. Combustion and Flame, 2020, 220: 358-367.</p>
+<p class="report-ref">[6] YI T, HALLS B R, JIANG N, 等. Autoignition-controlled flame initiation and flame stabilization in a reacting jet in crossflow[J]. Proceedings of the Combustion Institute, 2019, 37(2): 2109-2116.</p>
+<p class="report-ref">[7] YIN Z, BOXX I, MEIER W. Influence of self-sustained jet oscillation on a confined turbulent flame near lean blow-out[J]. Proceedings of the Combustion Institute, 2017, 36(3): 3773-3781.</p>
+<p class="report-ref">[8] FRIC T F, ROSHKO A. Vortical structure in the wake of a transverse jet[J]. Journal of Fluid Mechanics, 1994, 279: 1-47.</p>
+<p class="report-ref">[9] MUPPIDI S, MAHESH K. Study of trajectories of jets in crossflow using direct numerical simulations[J]. Journal of Fluid Mechanics, 2005, 530: 81-100.</p>
+<p class="report-ref">[10] ZHANG L, YANG V. Flow Dynamics and Mixing of a Transverse Jet in Crossflow---Part I: Steady Crossflow[J]. Journal of Engineering for Gas Turbines and Power, 2017, 139(8): 082601.</p>
+<p class="report-ref">[11] ZHANG L, YANG V. Flow Dynamics and Mixing of a Transverse Jet in Crossflow---Part II: Oscillating Crossflow[J]. Journal of Engineering for Gas Turbines and Power, 2017, 139(8): 082602.</p>
+<p class="report-ref">[12] GEVORKYAN L, SHOJI T, GETSINGER D R, 等. Transverse jet mixing characteristics[J]. Journal of Fluid Mechanics, 2016, 790: 237-274.</p>
+<p class="report-ref">[13] MEGERIAN S, DAVITIAN J, DE B. ALVES L S, 等. Transverse-jet shear-layer instabilities. Part 1. Experimental studies[J]. Journal of Fluid Mechanics, 2007, 593: 93-129.</p>
+<p class="report-ref">[14] DE B. ALVES L S, KELLY R E, KARAGOZIAN A R. Transverse-jet shear-layer instabilities. Part 2. Linear analysis for large jet-to-crossflow velocity ratio[J]. Journal of Fluid Mechanics, 2008, 602: 383-401.</p>
+<p class="report-ref">[15] HARRIS E W, BESNARD A C, KARAGOZIAN A R. Effect of tabs on transverse jet instabilities, structure, vorticity dynamics and mixing[J]. Journal of Fluid Mechanics, 2021, 918: A8.</p>
+<p class="report-ref">[16] GETSINGER D R, GEVORKYAN L, SMITH O I, 等. Structural and stability characteristics of jets in crossflow[J]. Journal of Fluid Mechanics, 2014, 760: 342-367.</p>
+<p class="report-ref">[17] CANDEL S, DUROX D, SCHULLER T, 等. Progress and challenges in swirling flame dynamics[J]. Comptes Rendus. Mécanique, 2012, 340(11-12): 758-768.</p>
+<p class="report-ref">[18] CANDEL S, DUROX D, SCHULLER T, 等. Dynamics of Swirling Flames[J]. Annual Review of Fluid Mechanics, 2014, 46(1): 147-173.</p>
+<p class="report-ref">[19] HUANG Y, YANG V. Dynamics and stability of lean-premixed swirl-stabilized combustion[J]. Progress in Energy and Combustion Science, 2009, 35(4): 293-364.</p>
+<p class="report-ref">[20] PALIES P, DUROX D, SCHULLER T, 等. The combined dynamics of swirler and turbulent premixed swirling flames[J]. Combustion and Flame, 2010, 157(9): 1698-1717.</p>
+<p class="report-ref">[21] LIEUWEN T. Modeling Premixed Combustion-Acoustic Wave Interactions: A Review[J]. Journal of Propulsion and Power, 2003, 19(5): 765-781.</p>
+<p class="report-ref">[22] KIM D, LEE J G, QUAY B D, 等. Effect of Flame Structure on the Flame Transfer Function in a Premixed Gas Turbine Combustor[C]//Proceedings of ASME Turbo Expo. 2008: 757-765.</p>
+<p class="report-ref">[23] SIM H S, PLASCENCIA M A, VARGAS A, 等. Acoustically Forced Droplet Combustion of Liquid Fuel with Reactive Aluminum Nanoparticulates[J]. Combustion Science and Technology, 2020, 192(5): 761-785.</p>
+<p class="report-ref">[24] SHANBHOGUE S J, HUSAIN S, LIEUWEN T. Lean blowoff of bluff body stabilized flames: Scaling and dynamics[J]. Progress in Energy and Combustion Science, 2009, 35(1): 98-120.</p>
+<p class="report-ref">[25] BROADWELL J E, BREIDENTHAL R E. A simple model of mixing and chemical reaction in a turbulent shear layer[J]. Journal of Fluid Mechanics, 1982, 125: 397-410.</p>
+<p class="report-ref">[26] PETERS N. Laminar flamelet concepts in turbulent combustion[J]. Symposium (International) on Combustion, 1988, 21(1): 1231-1250.</p>
+<p class="report-ref">[27] KARAGOZIAN A R, CORTELEZZI L, SOLDATI A. Manipulation and Control of Jets in Crossflow[M]. Springer Vienna, 2003.</p>
+<p class="report-ref">[28] KARAGOZIAN A R. Control of Mixing and Reactive Flow Processes[C]//Control of Fluid Flow. 2006: 75-94.</p>
+<p class="report-ref">[29] KARAGOZIAN A R. Transverse jets and their control[J]. Progress in Energy and Combustion Science, 2010, 36(5): 531-553.</p>
+<p class="report-ref">[30] KARAGOZIAN A R. The jet in crossflow[J]. Physics of Fluids, 2014, 26(10): 101303.</p>
+<p class="report-ref">[31] 孙晓峰, 张光宇, 王晓宇, 等. 航空发动机燃烧不稳定性预测及控制研究进展[J]. 航空学报, 2023, 44(14): 6-28.</p>
+<p class="report-ref">[32] ALLISON P M, CHEN Y, IHME M, 等. Coupling of flame geometry and combustion instabilities based on kilohertz formaldehyde PLIF measurements[J]. Proceedings of the Combustion Institute, 2015, 35(3): 3255-3262.</p>
+<p class="report-ref">[33] DENG K, WANG M, SHEN Z, 等. Effect of Different Acoustic Parameters on NOx Emissions of Partially Premixed Flame[J]. Applied Sciences, 2019, 9(7): 1490.</p>
+<p class="report-ref">[34] LIU Y, YAN Y, SHANG S, 等. Acoustic Triggering of Combustion Instability in a Swirling Flame: An Experimental Study[J]. Energies, 2023, 16(14): 5568.</p>
+<p class="report-ref">[35] BONCIOLINI G, NOIRAY N. Synchronization of Thermoacoustic Modes in Sequential Combustors[J]. Journal of Engineering for Gas Turbines and Power, 2019, 141(3): 031010.</p>
+<p class="report-ref">[36] VERMEULEN P J, CHIN C F, YU W K. Mixing of an acoustically pulsed air jet with a confined crossflow[J]. Journal of Propulsion and Power, 1990, 6(6): 777-783.</p>
+<p class="report-ref">[37] GOGINENI S, GOSS L, ROQUEMORE M. Manipulation of a jet in a cross flow[J]. Experimental Thermal and Fluid Science, 1998, 16(3): 209-219.</p>
+<p class="report-ref">[38] JOHARI H, PACHECO-TOUGAS M, HERMANSON J C. Penetration and Mixing of Fully Modulated Turbulent Jets in Crossflow[J]. AIAA Journal, 1999, 37(7): 842-850.</p>
+<p class="report-ref">[39] EROGLU A, BREIDENTHAL R E. Structure, Penetration, and Mixing of Pulsed Jets in Crossflow[J]. AIAA Journal, 2001, 39(3): 417-423.</p>
+<p class="report-ref">[40] M'CLOSKEY R T, KING J M, CORTELEZZI L, 等. The actively controlled jet in crossflow[J]. Journal of Fluid Mechanics, 2002, 452: 325-335.</p>
+<p class="report-ref">[41] NARAYANAN S, BAROOAH P, COHEN J M. Dynamics and Control of an Isolated Jet in Crossflow[J]. AIAA Journal, 2003, 41(12): 2316-2330.</p>
+<p class="report-ref">[42] SHAPIRO S R, KING J M, M'CLOSKEY R T, 等. Optimization of Controlled Jets in Crossflow[J]. AIAA Journal, 2006, 44(6): 1292-1298.</p>
+<p class="report-ref">[43] SAKAKIBARA J, ADRIAN R J. Whole field measurement of temperature in water using two-color laser induced fluorescence[J]. Experiments in Fluids, 1999, 26(1-2): 7-15.</p>
+<p class="report-ref">[44] KÄHLER C J, ASTARITA T, VLACHOS P P, 等. Main results of the 4th International PIV Challenge[J]. Experiments in Fluids, 2016, 57(6): 97.</p>
+<p class="report-ref">[45] KASHANJ S, NOBES D S. Application of 4D two-colour LIF to explore the temperature field of laterally confined turbulent Rayleigh--Bénard convection[J]. Experiments in Fluids, 2023, 64(3): 46.</p>
+<p class="report-ref">[46] KING G F, LUCHT R P, DUTTON J C. Quantitative dual-tracer planar laser-induced fluorescence measurements of molecular mixing[J]. Optics Letters, 1997, 22(9): 633-635.</p>
+<p class="report-ref">[47] KOSIWCZUK W, CESSOU A, TRINITÉ M, 等. Simultaneous velocity field measurements in two-phase flows for turbulent mixing of sprays by means of two-phase PIV[J]. Experiments in Fluids, 2005, 39(5): 895-908.</p>
+<p class="report-ref">[48] ULRICH H, WEISS R, ZIGAN L. Two-dye two-color laser-induced fluorescence spectroscopy on droplets of green solvent water/ethanol mixtures for thermometry and mixture composition[J]. Experiments in Fluids, 2024, 65(9): 129.</p>
+<p class="report-ref">[49] BRÜBACH J, PFLITSCH C, DREIZLER A, 等. On surface temperature measurements with thermographic phosphors: A review[J]. Progress in Energy and Combustion Science, 2013, 39(1): 37-60.</p>
+<p class="report-ref">[50] ALDÉN M, OMRANE A, RICHTER M, 等. Thermographic phosphors for thermometry: A survey of combustion applications[J]. Progress in Energy and Combustion Science, 2011, 37(4): 422-461.</p>
+<p class="report-ref">[51] ABRAM C, FOND B, BEYRAU F. Temperature measurement techniques for gas and liquid flows using thermographic phosphor tracer particles[J]. Progress in Energy and Combustion Science, 2018, 64: 93-156.</p>
+<p class="report-ref">[52] OBERLEITHNER K, PASCHEREIT C O, SEELE R, 等. Formation of Turbulent Vortex Breakdown: Intermittency, Criticality, and Global Instability[J]. AIAA Journal, 2012, 50(7): 1437-1452.</p>
+<p class="report-ref">[53] POLIFKE W, FISCHER A, SATTELMAYER T. Instability of a Premix Burner With Nonmonotonic Pressure Drop Characteristic[J]. Journal of Engineering for Gas Turbines and Power, 2002, 125(1): 20-27.</p>
+<p class="report-download">中期报告正文（原报告 PDF：<a href="midterm.pdf">midterm.pdf</a>｜LaTeX 源：<a href="中期报告.tex">中期报告.tex</a>）</p>
+  </div>
+</article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

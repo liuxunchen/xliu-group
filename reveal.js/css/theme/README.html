@@ -1,0 +1,312 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <style>
+  body { font-family: "Noto Sans CJK SC", "Source Han Sans SC", sans-serif; max-width: 1400px; margin: 0 auto; padding: 20px; }
+  h1 { border-bottom: 2px solid #333; padding-bottom: 8px; }
+  h2 { margin-top: 1.5em; border-left: 4px solid #d33; padding-left: 8px; }
+  table { border-collapse: collapse; width: 100%; table-layout: auto; margin: 10px 0 20px; }
+  th, td { border: 1px solid #999; padding: 6px 10px; text-align: left; vertical-align: top; word-break: break-word; overflow-wrap: anywhere; }
+  th { background: #eee; }
+  tr:nth-child(even) { background: #fafafa; }
+  blockquote { border-left: 4px solid #d33; margin-left: 0; padding: 4px 12px; background: #fdf0f0; }
+  blockquote ul { margin: 0; padding-left: 22px; }
+  blockquote p { margin: 0.3em 0; }
+  /* ===== 侧边栏目录（pandoc --toc 生成的 nav#TOC）===== */
+  nav#TOC {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    overflow-y: auto;
+    background: #f7f7f7;
+    border-right: 1px solid #ddd;
+    padding: 16px 12px 24px;
+    font-size: 13px;
+    box-sizing: border-box;
+    z-index: 100;
+  }
+  nav#TOC h1#toc-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 8px;
+    padding: 0 4px 8px;
+    border-bottom: 1px solid #ccc;
+  }
+  nav#TOC ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 1em;
+  }
+  nav#TOC > ul { padding-left: 0; }
+  nav#TOC a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    padding: 3px 6px;
+    border-radius: 3px;
+    line-height: 1.4;
+  }
+  nav#TOC a:hover { background: #e8e8e8; color: #000; }
+  /* 正文让出侧边栏空间 */
+  body { margin-left: 300px; }
+  @media (max-width: 1000px) {
+    nav#TOC {
+      position: static;
+      width: auto;
+      height: auto;
+      max-height: 45vh;
+      border-right: none;
+      border-bottom: 1px solid #ddd;
+    }
+    body { margin-left: 0; }
+  }
+  </style>
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">目录</h2>
+<ul>
+<li><a href="#dependencies" id="toc-dependencies">Dependencies</a></li>
+<li><a href="#creating-a-theme" id="toc-creating-a-theme">Creating a
+Theme</a></li>
+</ul>
+</nav>
+<h2 id="dependencies">Dependencies</h2>
+<p>Themes are written using Sass to keep things modular and reduce the
+need for repeated selectors across files. Make sure that you have the
+reveal.js development environment installed before proceeding: <a
+href="https://revealjs.com/installation/#full-setup">https://revealjs.com/installation/#full-setup</a></p>
+<h2 id="creating-a-theme">Creating a Theme</h2>
+<p>To create your own theme, start by duplicating a <code>.scss</code>
+file in <a href="css/theme">css/theme</a>. It will be automatically
+compiled from Sass to CSS when you run <code>npm run build:styles</code>
+(see <a
+href="../../vite.config.styles.ts">vite.config.styles.ts</a>).</p>
+<p>Each theme file follows the same structure:</p>
+<ol type="1">
+<li><p><strong>Include <a
+href="https://github.com/hakimel/reveal.js/blob/master/css/theme/template/mixins.scss">/css/theme/template/mixins.scss</a></strong><br />
+Shared utility functions.</p></li>
+<li><p><strong>Include <a
+href="https://github.com/hakimel/reveal.js/blob/master/css/theme/template/settings.scss">/css/theme/template/settings.scss</a></strong><br />
+Declares a set of custom CSS variables that the template file (step 4)
+expects. Each of these variables can be overridden to customize the
+theme.</p></li>
+<li><p><strong>Include <a
+href="https://github.com/hakimel/reveal.js/blob/master/css/theme/template/theme.scss">/css/theme/template/theme.scss</a></strong><br />
+The template theme file which will generate final CSS output based on
+the currently defined variables.</p></li>
+<li><p><strong>Optionally add custom fonts and/or additional
+styles</strong></p></li>
+</ol>
+<style>
+/* 目录折叠（toc-folding） */
+nav#TOC li { position: relative; }
+.toc-toggle {
+  display: inline-block;
+  width: 1.1em;
+  cursor: pointer;
+  color: #888;
+  font-size: 0.85em;
+  transition: transform 0.15s ease;
+  user-select: none;
+  vertical-align: middle;
+}
+.toc-toggle:hover { color: #000; }
+.toc-toggle.open { transform: rotate(90deg); }
+</style>
+<script>
+/* 目录折叠：点击 ▸ 展开/收起子项（2026-08-21 加） */
+(function () {
+  var toc = document.querySelector('nav#TOC');
+  if (!toc) return;
+  toc.querySelectorAll('li').forEach(function (li) {
+    var sub = li.querySelector(':scope > ul');
+    if (!sub) return;
+    var a = li.querySelector(':scope > a');
+    if (!a) return;
+    var toggle = document.createElement('span');
+    toggle.className = 'toc-toggle';
+    toggle.textContent = '▸';
+    toggle.title = '展开/折叠';
+    a.parentNode.insertBefore(toggle, a);
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var hidden = sub.style.display === 'none';
+      sub.style.display = hidden ? '' : 'none';
+      toggle.classList.toggle('open', hidden);
+    });
+  });
+})();
+</script>
+</body>
+</html>

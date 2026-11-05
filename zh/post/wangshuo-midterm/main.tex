@@ -1,0 +1,255 @@
+% !TeX document-id = {53706d82-19ec-4f00-85f2-5b087b2c8ff6}
+% !TeX encoding = UTF-8
+% !TeX program = xelatex
+% !TeX TXS-program:compile = txs:///xelatex
+% !TeX bibtex-program = biber
+%
+% ============================================================================
+%  山东科技大学学位论文模板 (SDUSTThesis) 编译说明
+% ============================================================================
+%  1. 使用 XeLaTeX 编译（必须）
+%  2. 参考文献使用 biber
+%  3. 完整编译命令（终端）：
+%       xelatex main.tex
+%       biber main
+%       xelatex main.tex
+%       xelatex main.tex
+%  4. 在 Emacs (AUCTeX) 中：
+%       按 C-c C-c 选择 XeLaTeX，再按 C-c C-c 选择 Biber，再按两次 XeLaTeX
+%  5. 本地变量已设置 TeX-engine: xetex，AUCTeX 会自动识别。
+% ============================================================================
+
+\documentclass[master]{sdustthesis}  % 选项: master, doctor, bachelor; 可加 review 盲审
+
+\sdustsetup{
+  zh/title = {下游收缩流道对横向射流火焰熄火边界影响规律研究},
+  en/title = {Study on the Influence Law of Downstream Contraction Channel on Blowout Limits of Transverse Jet Flames},
+  zh/author = {王硕},
+  en/author = {Wang Shuo},
+  zh/supervisor = {刘训臣},
+  en/supervisor = {Xunchen Liu},
+  zh/major = {机械},
+  en/major = {Mechanical Engineering},
+  zh/department = {机械电子工程学院},
+  zh/keywords = {轴向分级燃烧；横向射流；下游收缩流道；吹熄极限；占空比},
+  en/keywords = {Axially staged combustion; Transverse jet; Downstream converging duct; Blowout limit; Duty cycle},
+  id = {2023830},
+  enrollment = {2024年9月},
+  defense = {2027年5月25日},
+  secretlevel = {公开},
+  ccode = {TB532},
+  udc = {621},
+  degreetype = {专业学位},
+  degreelevel = {硕士},
+  researchfield = {激光燃烧诊断},
+  eduduration = {三年},
+  graduyear = {2027},
+  submitdate = {2027年6月},
+  supertitle = {教授},
+  reviewers = {匿名评审},
+  defensechair = {待定},
+  defensecommittee = {待定},
+  totalpages = {108},
+  fund = {国家自然科学基金(No. )},
+  zh/display-date = {二〇二七年六月},
+}
+
+% -------- 导言区：自定义宏包和环境（尽量集中管理） ----------
+% 代码块环境（基于 listings） 
+% 注：listings 已在 cls 中加载，无需重复
+\lstdefinestyle{mycode}{
+  basicstyle   = \ttfamily\small,
+  commentstyle = \itshape\color{gray},
+  keywordstyle = \bfseries\color{blue},
+  stringstyle  = \color{red},
+  frame        = single,
+  breaklines   = true,
+  tabsize      = 4,
+  numbers      = left,
+  numberstyle  = \tiny\color{gray},
+}
+\lstnewenvironment{codeblock}[1][]{
+  \lstset{style=mycode, #1}
+}{}
+
+% 参考文献（使用 biblatex）
+%%\renewcommand{\bibfont}{\zihao{5}\setlength{\baselineskip}{16bp}}
+%\setlength{\bibitemsep}{3bp plus 1pt}
+%\addbibresource{refs.bib}
+
+% 常用宏包（合并去重）
+\usepackage{siunitx}               % 单位
+\usepackage{tikz}                  % 绘图
+\usetikzlibrary{arrows.meta, shapes.geometric, positioning, calc}
+\usepackage{pgfplots}              % 数据图表
+\pgfplotsset{compat=newest}
+\usepackage{subcaption}            % 子图
+\usepackage{bicaption}             % 双标题
+\usepackage{threeparttablex}       % 表格脚注（含 ThreePartTable 环境）
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e} % 算法
+\usepackage{bm}                    % 粗体数学符号
+\usepackage{hologo}                % 排版 logo
+\usepackage{amsthm}                % 定理环境
+\newtheorem{theorem}{定理}[chapter]
+\newtheorem{lemma}{引理}[chapter]
+\usepackage{dcolumn}               % 小数点对齐
+\newcolumntype{d}[1]{D{.}{.}{#1}}  % 定义 d 列类型
+
+\usepackage{graphicx}
+\graphicspath{{figures/}}   % 添加这一行，指向 figures 文件夹
+\hypersetup{hidelinks}
+\begin{document}
+
+% -------- 封面和声明页 ----------
+\maketitle
+\copyrightpage
+
+% -------- 前置部分 ----------
+\frontmatter
+
+% 中英文摘要
+\input{contents/abstract}
+
+% 目录、图清单、表清单
+\tableofcontents
+%\listoffigures
+%\listoftables
+
+% 变量注释表（可选）
+%\input{contents/variablelist}
+
+% -------- 主体部分 ----------
+\mainmatter
+
+% 各章节内容（按照您的文件顺序）
+\input{contents/intro}             % 第1章 绪论
+\input{contents/chapter2}          % 第2章
+\input{contents/math_and_citations}% 第3章
+\input{contents/floats}            % 第4章
+\input{contents/5}            % 第5章
+\input{contents/6}            % 第6章
+\input{contents/summary}           % 最后一章 总结与展望
+
+% -------- 参考文献 ----------
+% -------- 参考文献 ----------
+\begin{thebibliography}{99}
+	\addcontentsline{toc}{chapter}{参考文献}
+	
+	\bibitem{Karagozian2010} Karagozian A R. Transverse jets and their control[J]. Progress in Energy and Combustion Science, 2010, 36: 531-553.
+	
+	\bibitem{Gevorkyan2016} Gevorkyan L, Shoji T, Getsinger D R, et al. Transverse jet mixing characteristics[J]. Journal of Fluid Mechanics, 2016, 790: 237-274.
+	
+	\bibitem{Kamotani1972} Kamotani Y, Greber I. Experiments on a turbulent jet in a cross flow[J]. AIAA Journal, 1972, 10(11): 1425-1429.
+	
+	\bibitem{Hasselbrink2001a} Hasselbrink E F, Mungal M G. Transverse jets and jet flames. Part 1. Scaling laws for strong transverse jets[J]. Journal of Fluid Mechanics, 2001, 443: 1-25.
+	
+	\bibitem{Broadwell1984} Broadwell J E, Breidenthal R E. Structure and mixing of a transverse jet in incompressible flow[J]. Journal of Fluid Mechanics, 1984, 148: 405-412.
+	
+	\bibitem{Pratte1967} Pratte B D, Baines W D. Profiles of the round turbulent jet in a cross flow[J]. Journal of the Hydraulics Division, ASCE, 1967, 93(6): 53-64.
+	
+	\bibitem{Muppidi2005} Muppidi S, Mahesh K. Study of trajectories of jets in crossflow using direct numerical simulations[J]. Journal of Fluid Mechanics, 2005, 530: 81-100.
+	
+	\bibitem{Shan2006} Shan J W, Dimotakis P E. Reynolds-number effects and anisotropy in transverse-jet mixing[J]. Journal of Fluid Mechanics, 2006, 566: 47-96.
+	
+	\bibitem{Fric1994} Fric T F, Roshko A. Vortical structure in the wake of a transverse jet[J]. Journal of Fluid Mechanics, 1994, 279: 1-47.
+	
+	\bibitem{Salewski2008} Salewski M, Stankovic D, Fuchs L. Mixing in circular and non-circular jets in crossflow[J]. Flow, Turbulence and Combustion, 2008, 80(2): 255-283.
+	
+	\bibitem{Markides2005} Markides C N, Mastorakos E. An experimental study of hydrogen autoignition in a turbulent co-flow of heated air[J]. Proceedings of the Combustion Institute, 2005, 30(1): 883-891.
+	
+	\bibitem{Markides2011} Markides C N, Mastorakos E. Experimental investigation of the effects of turbulence and mixing on autoignition chemistry[J]. Flow, Turbulence and Combustion, 2011, 86(3-4): 585-608.
+	
+	\bibitem{Mastorakos2009} Mastorakos E. Ignition of turbulent non-premixed flames[J]. Progress in Energy and Combustion Science, 2009, 35(1): 57-97.
+	
+	\bibitem{Mastorakos1997a} Mastorakos E, Bariraud T A, Poinsot T J. Numerical simulations of autoignition in turbulent mixing flows[J]. Combustion and Flame, 1997, 109(1-2): 198-223.
+	
+	\bibitem{Mastorakos1997b} Mastorakos E, Cruz A P D, Bariraud T A, et al. A model for the effects of mixing on the autoignition of turbulent flows[J]. Combustion Science and Technology, 1997, 125(1-6): 243-282.
+	
+	\bibitem{Meier2000} Meier W, Barlow R S, Chen Y-L, et al. Raman/Rayleigh/LIF measurements in a turbulent CH4/H2/N2 jet diffusion flame: experimental techniques and turbulence-chemistry interaction[J]. Combustion and Flame, 2000, 123(3): 326-343.
+	
+	\bibitem{Oldenhof2010} Oldenhof E, Tummers M J, van Veen E H, et al. Ignition kernel formation and lift-off behaviour of jet-in-hot-coflow flames[J]. Combustion and Flame, 2010, 157(6): 1167-1178.
+	
+	\bibitem{Oldenhof2011} Oldenhof E, Tummers M J, van Veen E H, et al. Role of entrainment in the stabilisation of jet-in-hot-coflow flames[J]. Combustion and Flame, 2011, 158(8): 1553-1563.
+	
+	\bibitem{Oldenhof2013} Oldenhof E, Tummers M J, van Veen E H, et al. Conditional flow field statistics of jet-in-hot-coflow flames[J]. Combustion and Flame, 2013, 160(8): 1428-1440.
+	
+	\bibitem{Gordon2008} Gordon R L, Masri A R, Mastorakos E. Simultaneous Rayleigh temperature, OH- and CH2O-LIF imaging of methane jets in a vitiated coflow[J]. Combustion and Flame, 2008, 155(1-2): 181-195.
+	
+	\bibitem{Gordon2009} Gordon R L, Masri A R, Mastorakos E. Heat release rate as represented by [OH] × [CH2O] and its role in autoignition[J]. Combustion Theory and Modelling, 2009, 13(4): 645-670.
+	
+	\bibitem{Leong2000} Leong M Y, Samuelsen G S, Holdeman J D. Optimization of jet mixing into a rich, reacting crossflow[J]. Journal of Propulsion and Power, 2000, 16(5): 729-735.
+	
+	\bibitem{Holdeman2007} Holdeman J D, Chang C T. The effects of air preheat and number of orifices on flow and emissions in an RQL mixing section[J]. Journal of Fluids Engineering, 2007, 129(11): 1460.
+	
+	\bibitem{Han2003} Han D, Mungal M G. Simultaneous measurements of velocity and CH distribution. Part II: deflected jet flames[J]. Combustion and Flame, 2003, 133(1-2): 1-17.
+	
+	\bibitem{Hasselbrink2001b} Hasselbrink E F, Mungal M G. Transverse jets and jet flames. Part 2. Velocity and OH field imaging[J]. Journal of Fluid Mechanics, 2001, 443: 27-68.
+	
+	\bibitem{Pinchak2018} Pinchak M D, Shaw V G, Gutmark E J. The effects of nozzle geometry and equivalence ratio on a premixed reacting jet in vitiated cross-flow[J]. Combustion and Flame, 2018, 191: 353-367.
+	
+	\bibitem{Wagner2017a} Wagner J A, Grib S W, Dayton J W, et al. Flame stabilization analysis of a premixed reacting jet in vitiated crossflow[J]. Proceedings of the Combustion Institute, 2017, 36(3): 3763-3771.
+	
+	\bibitem{Wagner2015} Wagner J A, Grib S W, Renfro M W, et al. Flowfield measurements and flame stabilization of a premixed reacting jet in vitiated crossflow[J]. Combustion and Flame, 2015, 162(10): 3711-3727.
+	
+	\bibitem{Wagner2017b} Wagner J A, Renfro M W, Cetegen B M. Premixed jet flame behavior in a hot vitiated crossflow of lean combustion products[J]. Combustion and Flame, 2017, 176: 521-533.
+	
+	\bibitem{Delichatsios1987} Delichatsios M A, Markstein G H, Orloff L, de Ris J. [R]. Gas Research Institute, 1987.
+	
+	\bibitem{Vanquickenborne1966} Vanquickenborne L, van Tiggelen A. The stabilization mechanism of lifted diffusion flames[J]. Combustion and Flame, 1966, 10(1): 59-69.
+	
+	\bibitem{Chung2007} Chung S H. Stabilization, propagation and instability of tribrachial triple flames[J]. Proceedings of the Combustion Institute, 2007, 31(1): 877-892.
+	
+	\bibitem{Kalghatgi1981} Kalghatgi G T. Blow-out stability of gaseous jet diffusion flames Part II: Effect of cross wind[J]. Combustion Science and Technology, 1981, 26(5-6): 241-244.
+	
+	\bibitem{Broadwell1985} Broadwell J E, Dahm W J A, Mungal M G. Blowout of turbulent diffusion flames[J]. Symposium (International) on Combustion, 1985, 20(1): 303-310.
+	
+	\bibitem{Montgomery1998} Montgomery C J, Kaplan C R, Oran E S. The effect of coflow velocity on a lifted methane-air jet diffusion flame[J]. Symposium (International) on Combustion, 1998, 27(1): 1175-1182.
+	
+	\bibitem{Cha1996} Cha M S, Chung S H. Characteristics of lifted flames in nonpremixed turbulent confined jets[J]. Symposium (International) on Combustion, 1996, 26(1): 121-128.
+	
+	\bibitem{Lyons2007} Lyons K M. Toward an understanding of the stabilization mechanisms of lifted turbulent jet flames: Experiments[J]. Progress in Energy and Combustion Science, 2007, 33(2): 211-231.
+	
+	\bibitem{Tieszen1996} Tieszen S R, Stamps D W, O'Hern T J. A heuristic model of turbulent mixing applied to blowout of turbulent jet diffusion flames[J]. Combustion and Flame, 1996, 106(4): 442-466.
+	
+	\bibitem{Wang2015} Wang Q, Hu L, Yoon S H, et al. Blow-out limits of nonpremixed turbulent jet flames in a cross flow at atmospheric and sub-atmospheric pressures[J]. Combustion and Flame, 2015, 162(10): 3562-3568.
+	
+	\bibitem{Wang2023} Wang Q, Liang X, Lu A, et al. Blowout limits of inclined nonpremixed turbulent jet flames[J]. Proceedings of the Combustion Institute, 2023, 39(2): 2389-2398.
+	
+	\bibitem{Kim2025} Kim D J, Park J, Chung S H, et al. Flame dynamics of nonpremixed coflow DME jets in momentum-driven and buoyancy-momentum-driven regimes[J]. Combustion and Flame, 2025, 281: 114396.
+	
+	\bibitem{Morales2020} Morales A J, Reyes J, Joo P H, et al. Pressure gradient tailoring effects on the mechanisms of bluff-body flame extinction[J]. Combustion and Flame, 2020, 215: 224-237.
+	
+	\bibitem{Grout2011} Grout R W, Gruber A, Yoo C S, et al. Direct numerical simulation of flame stabilization downstream of a transverse fuel jet in cross-flow[J]. Proceedings of the Combustion Institute, 2011, 33(1): 1629-1637.
+	
+	\bibitem{Steinberg2013} Steinberg A M, Sadanandan R, Dem C, et al. Structure and stabilization of hydrogen jet flames in cross-flows[J]. Proceedings of the Combustion Institute, 2013, 34(1): 1499-1507.
+	
+	\bibitem{Lyra2015} Lyra S, Wilde B, Kolla H, et al. Structure of hydrogen-rich transverse jets in a vitiated turbulent flow[J]. Combustion and Flame, 2015, 162(4): 1234-1248.
+	
+	\bibitem{Kolla2012} Kolla H, Grout R W, Gruber A, et al. Mechanisms of flame stabilization and blowout in a reacting turbulent hydrogen jet in cross-flow[J]. Combustion and Flame, 2012, 159(8): 2755-2766.
+	
+	\bibitem{SolanaPerez2021} Solana-Pérez R, Schulz O, Noiray N. Simulation of the self-ignition of a cold premixed ethylene-air jet in hot vitiated crossflow[J]. Flow, Turbulence and Combustion, 2021, 106(4): 1295-1311.
+	
+\end{thebibliography}
+
+% -------- 附录 ----------
+%\appendix
+%\input{contents/app_maxwell_equations}   % 附录A
+%\input{contents/app_flow_chart}          % 附录B
+
+% -------- 结尾部分 ----------
+\backmatter
+
+% 作者简历、致谢、学位论文数据集
+\input{contents/resume}
+%\input{contents/acknowledgements}
+
+\begin{dataset}
+\end{dataset}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% TeX-engine: xetex
+%%% End:

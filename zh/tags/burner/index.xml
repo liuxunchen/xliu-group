@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Burner on 刘训臣燃烧诊断实验室主页</title>
+		<link>http://localhost:1313/xliu-group/zh/tags/burner/</link>
+		<description>Recent content in Burner on 刘训臣燃烧诊断实验室主页</description>
+		<generator>Hugo</generator>
+		<language>zh</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 30 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/xliu-group/zh/tags/burner/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>高压非预混平面火焰燃烧器设计</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-1-hp-flat-flame-burner/</link>
+				<pubDate>Thu, 30 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-1-hp-flat-flame-burner/</guid>
+				<description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;&#xA;&lt;p&gt;（待撰写）&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>连云港实验第一次</title>
+				<link>http://localhost:1313/xliu-group/zh/post/huihao2/</link>
+				<pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/huihao2/</guid>
+				<description>连云港燃烧器实验的第一次测试经历</description>
+			</item>
+			<item>
+				<title>TDLAS的空间分辨率问题</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-25-tdlas-biomass/</link>
+				<pubDate>Fri, 08 Nov 2024 21:22:03 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-25-tdlas-biomass/</guid>
+				<description>TDLAS技术在生物质燃烧诊断中的空间分辨率问题分析</description>
+			</item>
+	</channel>
+</rss>

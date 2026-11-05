@@ -1,0 +1,49 @@
+﻿% !TeX encoding = UTF-8
+% !TeX TXS-program:compile = txs:///latexmk/{-pdf} -xelatex
+\RequirePackage{etoolbox}
+\documentclass[master]{sdustthesis}
+\input{setup}
+\begin{document}
+\maketitle
+\frontmatter
+
+\begin{abstract}[zh]
+超声速射流是航空航天推进系统与高超声速风洞实验中的核心流动形态，欠膨胀射流中二氧化碳（CO$_2$）的非平衡凝结相变会显著改变流场热力学特性，给示踪诊断引入不可忽略的误差。准确获取欠膨胀射流中温度、压力、密度等热力学参数的定量分布，是理解非平衡相变机制、校准相变模型的关键前提。
+
+本文围绕三个核心问题展开：（1）如何实现超声速射流流场温度、压力、密度的全分布高精度测量？（2）欠膨胀射流的激波结构对热力学参数分布的影响规律是什么？（3）如何建立超声速射流中CO$_2$相变与流场参数的定量关联？
+
+主要研究工作和结论如下：（1）基于HITRAN数据库的line-by-line光谱仿真，确定2.7~$\mu$m（3696~cm$^{-1}$）为最佳实验波段，该波段CO$_2$吸收线强适中（$S\approx10^{-21}$~cm$^{-1}$molecule$^{-1}$cm$^2$），温度灵敏度高达2.5\%/K，且与H$_2$O干扰峰分离度大于0.5~cm$^{-1}$，谱线对低态能量差$\Delta E''\approx660$~cm$^{-1}$保障了低温区间（200--300~K）的测温精度。通过高斯解析场加噪测试，对比两点法、三点法和洋葱剥皮法，三点法在3\%噪声条件下反演误差为4.2\%且无尖峰发散，确定为实测数据核心反演算法。（2）搭建了TDLAS层析诊断系统，聚焦光路将光斑从2.5~mm缩至0.3~mm，独立接地使探测器噪声从50~mV降至10~mV（下降80\%），气密吹扫使环境CO$_2$背景吸收下降96\%，Red Pitaya自触发同步方案解决了多周期波形相位抖动问题。（3）以纯CO$_2$欠膨胀射流（0.5~MPa，1~mm喷嘴）为对象开展层析扫描实验，获取3轴向平面$\times$6径向点共18组吸收光谱，三点法Abel反演得到射流半宽约1.6~mm，边界约3.8~mm。双线强度比法反演温度，射流中心温度268~K，径向向边缘升高至305~K，与Fluent仿真（中心262~K）和Wu等（2021）瑞利散射结果（255--265~K）吻合，验证了TDLAS+Abel反演方法在超声速射流温度测量中的有效性。（4）基于准一维相变模型，以实测温压场为输入预测凝结起始位置约$z=0.8$~mm，成核峰值位于$z\approx1.5$~mm，马赫盘后团簇蒸发趋势与文献一致。本工作建立了"HITRAN光谱仿真$\to$Fluent流场仿真$\to$Abel正演投影$\to$加噪反演验证$\to$实验测量"的完整方法链。
+\end{abstract}
+
+\begin{abstract}[en]
+Supersonic jets are fundamental flow configurations in aerospace propulsion systems and hypersonic wind tunnel experiments. The non-equilibrium condensation phase change of carbon dioxide (CO$_2$) in underexpanded jets significantly alters the thermodynamic properties of the flow field, introducing non-negligible errors to tracer-based diagnostics. Accurate quantitative measurement of temperature, pressure, and density distributions in underexpanded jets is essential for understanding non-equilibrium phase transition mechanisms and calibrating phase change models.
+
+This work addresses three core questions: (1) How to achieve full-field high-precision measurements of temperature, pressure, and density in supersonic jet flow fields? (2) What are the effects of shock structures in underexpanded jets on thermodynamic parameter distributions? (3) How to establish quantitative correlations between CO$_2$ phase change and flow field parameters in supersonic jets?
+
+The main research contributions and conclusions are as follows: (1) Based on line-by-line spectral simulations using the HITRAN database, the 2.7~$\mu$m (3696~cm$^{-1}$) band is identified as the optimal experimental window, with moderate CO$_2$ line strength ($S\approx10^{-21}$~cm$^{-1}$molecule$^{-1}$cm$^2$), high temperature sensitivity of 2.5\%/K, and $>0.5$~cm$^{-1}$ separation from H$_2$O interference peaks. (2) A TDLAS tomography system is constructed: the focusing optics reduce the beam spot from 2.5~mm to 0.3~mm, independent grounding reduces detector noise from 50~mV to 10~mV (80\% reduction), gas purging reduces ambient CO$_2$ background absorption by 96\%. (3) Tomographic scanning experiments on a pure CO$_2$ underexpanded jet (0.5~MPa, 1~mm nozzle) acquire 18 absorption spectra across 3 axial planes and 6 radial positions, yielding a jet center temperature of 268~K increasing radially to 305~K. (4) Using a quasi-one-dimensional phase change model, the onset of condensation is predicted at $z\approx0.8$~mm, with peak nucleation at $z\approx1.5$~mm. This work establishes a complete methodology chain integrating spectral simulation, flow simulation, Abel inversion, and experimental measurements.
+\end{abstract}
+
+\tableofcontents
+\mainmatter
+
+\include{contents/chapter01}
+\include{contents/chapter02}
+\include{contents/chapter03}
+\include{contents/chapter04}
+\include{contents/chapter05}
+\include{contents/chapter06}
+\include{contents/chapter07}
+
+\printbibliography[heading=bibintoc]
+\backmatter
+
+\chapter*{作者简历}
+\addcontentsline{toc}{chapter}{作者简历}
+高寅斌，男。2023年9月至今，山东科技大学，硕士研究生，机械工程专业。
+
+\chapter*{致谢}
+\addcontentsline{toc}{chapter}{致谢}
+本中期报告的完成离不开导师刘训臣副教授的悉心指导和宝贵建议，在此表示衷心的感谢。
+
+\begin{dataset}\end{dataset}
+\end{document}

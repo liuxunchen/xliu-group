@@ -1,0 +1,83 @@
+% !TEX root = ../main.tex
+
+\chapter{双色PIV测量系统}
+
+本章详细阐述双色PIV的测量原理、系统构成以及光路搭建细节。
+
+\section{测量原理与系统构成}
+
+本研究采用的双色PIV系统基于\textbf{荧光示踪粒子的双色区分}原理，核心技术已申请发明专利（申请号：LSBJ-25-I-91584335）。
+
+\textbf{系统核心构成：}
+\begin{itemize}
+	\item 光源：365~nm紫外LED阵列，经柱面镜整形为片激光（厚度约2~mm），照射待测流场平面
+	\item 示踪粒子：采用\textbf{BAM:Eu$^{2+}$}磷光粉末，其在355~nm附近具有强吸收峰
+	\item 标记策略：分别用不同颜色的粒子分别标记燃料和空气，代表不同的气流
+	\item 相机：高速彩色相机，垂直片激光平面布置，同步捕捉双色粒子分布图像
+\end{itemize}
+
+双色粒子图像测速技术为本实验的关键诊断技术，其原理图如图~\ref{fig:22}所示。该系统的核心在于利用两种具有不同荧光或磷光特性的示踪粒子，分别标记燃料射流与上游背景空气流。BAM:Eu$^{2+}$粉末激发光谱在355~nm附近呈现强吸收峰，故系统采用中心波长为365~nm的紫外LED阵列作为光源，其光谱图如图~\ref{fig:23}所示，并通过一对母线方向相互垂直的平凸柱面镜，可以分别从两个方向对紫外光进行聚焦，最终形成薄片激光，用以照亮待测流场平面。当片激光照射流场时，两种示踪粒子被激发并发出不同颜色的荧光。高速相机同步拍摄这些荧光图像，再经由计算机进行互相关分析，即可分别独立解算出燃料流与空气流的瞬态二维速度场。这一独特能力使得本研究能够直接、同步地量化声激励作用下，燃料与空气在剪切层附近的相对运动、混合过程以及湍流相互作用。
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.9\textwidth]{image22.png}
+	\caption{双色PIV原理示意图}
+	\label{fig:22}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.5\textwidth]{image23.png}
+	\caption{紫外LED光谱图}
+	\label{fig:23}
+\end{figure}
+
+\section{PIV光路搭建}
+
+本实验采用365~nm紫外LED阵列作为光源，需配备紫外熔融石英材质的透镜以保障紫外波段的高透过率。根据光路设计需求，加工的平凸柱面镜镜片，柱面透镜用于单一方向的光束扩散，是形成片光的关键元件。加工了50~mm×100~mm的紫外熔融石英平凸柱面镜，加工镜片列表如表~\ref{tab:3}所示。母线方向互相垂直。
+
+\begin{table}[!htbp]
+	\centering
+	\caption{加工镜片尺寸}
+	\label{tab:3}
+	\begin{tabular}{c|c|c}
+		\hline
+		型号 & 名称 & 数量 \\
+		\hline
+		50（母线方向）×100×2~mm F500~mm & 石英平凸柱面镜 & 2片 \\
+		100（母线方向）×50×2~mm F1000~mm & 石英平凸柱面镜 & 2片 \\
+		\hline
+	\end{tabular}
+\end{table}
+
+由于加工所得的镜片尺寸较大，市面上没有适配的镜架，需要自行设计，镜架分两块板，固定板和活动板，固定板用于安装细纹螺栓，细纹螺栓可以调节透镜倾斜角度，活动板用来放置透镜，固定板的图纸如图~\ref{fig:17}所示，活动板的图纸如图~\ref{fig:18}所示，装配效果如图~\ref{fig:19}所示。
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.7\textwidth]{image17.png}
+	\caption{固定板图纸}
+	\label{fig:17}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.7\textwidth]{image18.png}
+	\caption{活动板图纸}
+	\label{fig:18}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.6\textwidth]{image19.png}
+	\caption{镜架装配效果}
+	\label{fig:19}
+\end{figure}
+
+紫外LED阵列的实物如图~\ref{fig:20}所示。该阵列由多个小灯珠排列在铝板上，经平凸柱面镜阵列聚焦后形成片光。由于紫外LED输出的原始光束光斑较大、能量分散，使用平凸柱面镜对其聚焦，分别使用两个方向母线方向垂直的平凸柱面镜，这样可以在两个方向分别聚焦，使其最终形成片光。
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.7\textwidth]{image20.jpg}
+	\caption{紫外LED阵列实物图}
+	\label{fig:20}
+\end{figure}

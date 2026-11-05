@@ -1,0 +1,430 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>AGENTS</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <style>
+  body { font-family: "Noto Sans CJK SC", "Source Han Sans SC", sans-serif; max-width: 1400px; margin: 0 auto; padding: 20px; }
+  h1 { border-bottom: 2px solid #333; padding-bottom: 8px; }
+  h2 { margin-top: 1.5em; border-left: 4px solid #d33; padding-left: 8px; }
+  table { border-collapse: collapse; width: 100%; table-layout: auto; margin: 10px 0 20px; }
+  th, td { border: 1px solid #999; padding: 6px 10px; text-align: left; vertical-align: top; word-break: break-word; overflow-wrap: anywhere; }
+  th { background: #eee; }
+  tr:nth-child(even) { background: #fafafa; }
+  blockquote { border-left: 4px solid #d33; margin-left: 0; padding: 4px 12px; background: #fdf0f0; }
+  blockquote ul { margin: 0; padding-left: 22px; }
+  blockquote p { margin: 0.3em 0; }
+  /* ===== 侧边栏目录（pandoc --toc 生成的 nav#TOC）===== */
+  nav#TOC {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    overflow-y: auto;
+    background: #f7f7f7;
+    border-right: 1px solid #ddd;
+    padding: 16px 12px 24px;
+    font-size: 13px;
+    box-sizing: border-box;
+    z-index: 100;
+  }
+  nav#TOC h1#toc-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 8px;
+    padding: 0 4px 8px;
+    border-bottom: 1px solid #ccc;
+  }
+  nav#TOC ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 1em;
+  }
+  nav#TOC > ul { padding-left: 0; }
+  nav#TOC a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    padding: 3px 6px;
+    border-radius: 3px;
+    line-height: 1.4;
+  }
+  nav#TOC a:hover { background: #e8e8e8; color: #000; }
+  /* 正文让出侧边栏空间 */
+  body { margin-left: 300px; }
+  @media (max-width: 1000px) {
+    nav#TOC {
+      position: static;
+      width: auto;
+      height: auto;
+      max-height: 45vh;
+      border-right: none;
+      border-bottom: 1px solid #ddd;
+    }
+    body { margin-left: 0; }
+  }
+  </style>
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">目录</h2>
+<ul>
+<li><a href="#react-wrapper-notes" id="toc-react-wrapper-notes">React
+Wrapper Notes</a>
+<ul>
+<li><a href="#current-layout" id="toc-current-layout">Current
+Layout</a></li>
+<li><a href="#source-of-truth" id="toc-source-of-truth">Source Of
+Truth</a></li>
+<li><a href="#deck-lifecycle-invariants"
+id="toc-deck-lifecycle-invariants">Deck Lifecycle Invariants</a></li>
+<li><a href="#sync-policy" id="toc-sync-policy">Sync Policy</a></li>
+<li><a href="#configure-policy" id="toc-configure-policy">Configure
+Policy</a></li>
+<li><a href="#component-responsibilities"
+id="toc-component-responsibilities">Component Responsibilities</a></li>
+<li><a href="#markdown-and-highlighting-notes"
+id="toc-markdown-and-highlighting-notes">Markdown And Highlighting
+Notes</a></li>
+<li><a href="#when-changing-behavior"
+id="toc-when-changing-behavior">When Changing Behavior</a></li>
+<li><a href="#validation" id="toc-validation">Validation</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="react-wrapper-notes">React Wrapper Notes</h1>
+<p>This directory contains the <code>@revealjs/react</code> wrapper.
+Keep the guidance here high level and update it when the public API,
+source layout, or Reveal/React synchronization model changes.</p>
+<h2 id="current-layout">Current Layout</h2>
+<ul>
+<li>Source lives under <code>react/src/</code>.</li>
+<li>Components live in <code>react/src/components/</code> and use
+kebab-case filenames.</li>
+<li>Shared helpers live in <code>react/src/utils/</code>.</li>
+<li>Public exports are defined in <code>react/src/index.ts</code>.</li>
+<li>Shared types live in <code>react/src/types.ts</code>.</li>
+<li>The Reveal instance context lives in
+<code>react/src/reveal-context.ts</code>.</li>
+<li>Component tests are colocated with their components as
+<code>*.test.tsx</code>.</li>
+<li>Test setup remains in
+<code>react/src/__tests__/setup.ts</code>.</li>
+<li>The demo app lives in <code>react/demo/src/</code>.</li>
+</ul>
+<h2 id="source-of-truth">Source Of Truth</h2>
+<ul>
+<li>Implementation:
+<ul>
+<li><code>react/src/components/deck.tsx</code></li>
+<li><code>react/src/components/slide.tsx</code></li>
+<li><code>react/src/components/stack.tsx</code></li>
+<li><code>react/src/components/fragment.tsx</code></li>
+<li><code>react/src/components/code.tsx</code></li>
+<li><code>react/src/components/markdown.tsx</code></li>
+</ul></li>
+<li>Shared helpers:
+<ul>
+<li><code>react/src/utils/slide-attributes.ts</code></li>
+<li><code>react/src/utils/markdown.ts</code></li>
+</ul></li>
+<li>Behavioral tests:
+<ul>
+<li><code>react/src/components/deck.test.tsx</code></li>
+<li><code>react/src/components/slide.test.tsx</code></li>
+<li><code>react/src/components/fragment.test.tsx</code></li>
+<li><code>react/src/components/code.test.tsx</code></li>
+<li><code>react/src/components/markdown.test.tsx</code></li>
+</ul></li>
+<li>Public-facing behavior summary:
+<ul>
+<li><code>react/README.md</code></li>
+</ul></li>
+</ul>
+<h2 id="deck-lifecycle-invariants">Deck Lifecycle Invariants</h2>
+<ul>
+<li><code>Deck</code> creates one <code>Reveal</code> instance on mount
+and destroys it on unmount.</li>
+<li><code>Deck</code> must remain safe under React
+<code>StrictMode</code>; do not reintroduce double initialization.</li>
+<li>Event props are wired with <code>deck.on()</code> after
+initialization and cleaned up with <code>deck.off()</code> when
+callbacks change or the component unmounts.</li>
+</ul>
+<h2 id="sync-policy">Sync Policy</h2>
+<ul>
+<li><code>Reveal.sync()</code> is expensive. Call it rarely.</li>
+<li><code>Deck</code> should only call <code>sync()</code> when the
+rendered slide structure changes.
+<ul>
+<li>Example: slides added, removed, reordered, or regrouped into or out
+of vertical stacks.</li>
+</ul></li>
+<li>Ordinary React content updates inside an existing slide must not
+trigger a full deck sync.</li>
+<li>One deck-level sync is still expected once the deck is ready.</li>
+</ul>
+<h2 id="configure-policy">Configure Policy</h2>
+<ul>
+<li><code>config</code> is shallow-compared.</li>
+<li>Recreating a config object with the same shallow values must not
+call <code>configure()</code>.</li>
+<li><code>configure()</code> should only run after the deck is
+initialized and ready.</li>
+<li><code>configure()</code> performs its own Reveal-side sync, so the
+wrapper must avoid an immediate redundant <code>sync()</code>
+afterward.</li>
+</ul>
+<h2 id="component-responsibilities">Component Responsibilities</h2>
+<ul>
+<li><code>Deck</code> owns Reveal lifecycle, config application, event
+wiring, and structure-level sync.</li>
+<li><code>Slide</code> owns slide-local attribute mapping and calls
+<code>syncSlide()</code> only when the effective slide
+<code>data-*</code> attributes change after mount.</li>
+<li><code>Markdown</code> mirrors the core Reveal Markdown plugin
+behavior in React.
+<ul>
+<li>It is responsible for markdown parsing, separator support, notes
+support, and comment-based <code>.slide:</code> and
+<code>.element:</code> attributes.</li>
+<li>It should keep markdown-specific DOM post-processing local rather
+than expanding deck-wide sync behavior.</li>
+</ul></li>
+<li><code>Code</code> owns explicit code block rendering and Reveal
+highlight integration for non-markdown code blocks.</li>
+<li><code>Stack</code> and <code>Fragment</code> should stay lightweight
+unless there is a strong reason otherwise.</li>
+</ul>
+<h2 id="markdown-and-highlighting-notes">Markdown And Highlighting
+Notes</h2>
+<ul>
+<li>Markdown behavior should stay aligned with the core Reveal Markdown
+plugin unless the React API intentionally diverges.</li>
+<li>Markdown slide parsing and comment-based attribute helpers belong in
+<code>react/src/utils/markdown.ts</code>.</li>
+<li>Markdown code highlighting should recover on rerender and after
+Reveal becomes available, without requiring a full deck sync.</li>
+</ul>
+<h2 id="when-changing-behavior">When Changing Behavior</h2>
+<ul>
+<li>If sync, configure, markdown, or highlight behavior changes, update
+the relevant colocated tests in the same change.</li>
+<li>If the public React API or documented behavior changes, update
+<code>react/README.md</code>.</li>
+<li>Prefer focused regression tests over broad snapshots.</li>
+</ul>
+<h2 id="validation">Validation</h2>
+<p>Run these after React wrapper changes:</p>
+<ul>
+<li><code>npm test --prefix react</code></li>
+<li><code>npm run build --prefix react</code></li>
+</ul>
+<style>
+/* 目录折叠（toc-folding） */
+nav#TOC li { position: relative; }
+.toc-toggle {
+  display: inline-block;
+  width: 1.1em;
+  cursor: pointer;
+  color: #888;
+  font-size: 0.85em;
+  transition: transform 0.15s ease;
+  user-select: none;
+  vertical-align: middle;
+}
+.toc-toggle:hover { color: #000; }
+.toc-toggle.open { transform: rotate(90deg); }
+</style>
+<script>
+/* 目录折叠：点击 ▸ 展开/收起子项（2026-08-21 加） */
+(function () {
+  var toc = document.querySelector('nav#TOC');
+  if (!toc) return;
+  toc.querySelectorAll('li').forEach(function (li) {
+    var sub = li.querySelector(':scope > ul');
+    if (!sub) return;
+    var a = li.querySelector(':scope > a');
+    if (!a) return;
+    var toggle = document.createElement('span');
+    toggle.className = 'toc-toggle';
+    toggle.textContent = '▸';
+    toggle.title = '展开/折叠';
+    a.parentNode.insertBefore(toggle, a);
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var hidden = sub.style.display === 'none';
+      sub.style.display = hidden ? '' : 'none';
+      toggle.classList.toggle('open', hidden);
+    });
+  });
+})();
+</script>
+</body>
+</html>

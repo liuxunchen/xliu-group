@@ -1,0 +1,109 @@
+% !TEX root = ../main.tex
+
+\chapter{数据处理方法}
+
+本章详述双色PIV图像的后处理流程，包括粒子分离、速度场计算、混合物分数反演以及动态模态分解（DMD）分析。
+
+\section{图像预处理与粒子分离}
+
+基于发明专利中公开的方法，针对已有的双色PIV冷流数据，本研究的双色PIV数据处理流程如下：
+
+对原始双色图像进行去噪、灰度化与归一化处理，原始图像如图~\ref{fig:24}所示。
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.5\textwidth]{image24.png}
+	\caption{原始双色粒子图像}
+	\label{fig:24}
+\end{figure}
+
+原始数据当中拍摄到的粒子为红蓝粒子混合的状态，要对每种粒子代表的流场分别进行分析，需要对双色粒子进行分离，通过\textbf{自适应灰度阈值}分离红/蓝粒子，生成二值化单色图像，分离后红蓝粒子单色图像如图~\ref{fig:25}所示，分别可以使他们代表各自的流场。
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.9\textwidth]{image25.png}
+	\caption{红蓝粒子分离图}
+	\label{fig:25}
+\end{figure}
+
+根据得到的分离后的粒子图，以及相机频率可以对其进行时平均操作，以此来得到粒子场的整体走向，时间平均图如图~\ref{fig:26}所示。
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.9\textwidth]{image26.png}
+	\caption{时均图}
+	\label{fig:26}
+\end{figure}
+
+\section{速度场计算}
+
+采用质心算法实现粒子中心的亚像素定位，通过连续帧粒子匹配获取位移信息，结合拍摄时间间隔计算瞬时速度场；对多帧瞬时速度场进行时间平均，得到稳定的时均流场，可输出速度矢量图与流线图。其结果如图~\ref{fig:29}所示。
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.7\textwidth]{image29.png}
+	\caption{速度场流线图}
+	\label{fig:29}
+\end{figure}
+
+\section{混合物分数计算}
+
+对连续多帧同色粒子图像进行平均以消除随机噪声，经归一化处理后，可得到红/蓝粒子对应的$R_1$、$R_2$。通过专利中公式计算局部混合物分数，可以对气体的混合状态进行评判，从而从另一方面反映出火焰的燃烧情况。
+
+\begin{equation}
+	f_1 = \frac{R_1}{R_1+R_2}, \quad f_2 = \frac{R_2}{R_1+R_2}
+\end{equation}
+
+其中$R_1$、$R_2$分别为归一化后红/蓝单色粒子图像的强度值，得到的$f_1$、$f_2$对应的图如图~\ref{fig:27}所示。
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.9\textwidth]{image27.png}
+	\caption{红蓝粒子对应$f$图}
+	\label{fig:27}
+\end{figure}
+
+根据所得结果，最终生成混合物分数图如图~\ref{fig:28}所示，实现两种流体混合状态的量化表征。
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.8\textwidth]{image28.png}
+	\caption{混合物分数图}
+	\label{fig:28}
+\end{figure}
+
+\textbf{粒子跟随性量化评估}：引入斯托克斯数$St_k$作为示踪粒子选型的核心指标，通过计算粒子弛豫时间与流场特征时间尺度的比值，确保粒子运动真实反映流体特性，从源头保障测量精度：
+
+\begin{equation}
+	St_k = \frac{\tau_p}{\tau_f} = \frac{(\rho_p d_p^2)}{(18 \mu_f)} \cdot \frac{U}{L}
+\end{equation}
+
+其中$\tau_p$为粒子弛豫时间，$\tau_f$为流场特征时间，$\rho_p$、$d_p$分别为粒子密度与直径，$\mu_f$为流体动力粘度，$U$、$L$分别为流场特征速度与长度。
+
+\section{DMD分析}
+
+为进一步探究流场中不同尺度结构的动态演化特征，识别主导流动模式及其时空耦合关系，该部分采用动态模态分解（DMD）对前序批量计算获得的速度场序列进行后处理分析。DMD是一种数据驱动的线性系统辨识方法，其基本原理是将高维流场快照序列近似表示为低维线性算子的特征分解形式。将连续时刻的速度场矩阵按时间序列排列，构造系统状态矩阵，通过求解最优线性近似算子的特征值与特征向量，即可将原始高维复杂流场解耦为若干模态的线性叠加。
+
+图~\ref{fig:30}展示了前9阶空间模态的云图分布，图中颜色深浅表征各频率成分在物理空间上的动能密度分布与作用区域。
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.8\textwidth]{image30.png}
+	\caption{DMD空间模态}
+	\label{fig:30}
+\end{figure}
+
+从空间分布特征来看，低阶模态（第1--4阶）呈现完整且尺度较大的结构，是全流场脉动能量的主要贡献者。高阶模态（第5--9阶）的空间结构主要反映局部小尺度的次级修正运动或边界层附近的精细流动结构。这一分布规律表明，流场的大尺度动力学行为在空间中具有明确的定位，能量高度集中于少数低阶模态，高阶模态则主要承担小尺度空间细节的调制作用。
+
+图~\ref{fig:31}为与空间模态一一对应的时间模态折线图，纵轴表示模态幅值的归一化演化量，横轴为时间序列，反映了各空间结构在时间维度上的动态节律。
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.8\textwidth]{image31.png}
+	\caption{DMD时间模态}
+	\label{fig:31}
+\end{figure}
+
+周期振荡或单调缓变表明对应的大尺度空间结构在时间上具有持续的动态行为或稳定的演变趋势；不规则波动或幅值快速衰减对应的空间结构能量较弱、持续时间短暂，受湍流耗散效应显著，属于瞬态扰动或噪声成分。
+
+时间模态与空间模态的配对耦合表明，流场的主控动态模式同时具有明确的空间定位和稳定的时间节律，该对应关系可通过特征值的虚部进一步换算为实际物理频率，为判断流场是否存在主导振荡频率提供直接依据。
