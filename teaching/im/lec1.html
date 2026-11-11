@@ -6094,7 +6094,7 @@ display:block!important;
 </section>
 <section id="五要素的现场应用鱼骨图五支主干" class="slide level2">
 <h2>五要素的现场应用：鱼骨图五支主干</h2>
-<p>鱼骨图是把五要素从“清单”变成“诊断工具”的那一步。</p>
+<p>鱼骨图是把五要素从一份「清单」变成一件「诊断工具」的那一步——先把结果写在鱼头，再沿五支主干逐层找原因。</p>
 
 <img role="img" aria-label="鱼骨图示例：员工、设备、原料、环境、管理五支主干指向胀包现象" src="lec1_assets/img023.png" alt="鱼骨图示例：员工、设备、原料、环境、管理五支主干指向胀包现象" style="width:82%" class="r-stretch"><ul>
 <li>鱼骨图（石川图）把“结果”放鱼头，把“原因”按五支主干逐层展开</li>
@@ -6813,50 +6813,14 @@ display:block!important;
 公式
 </div>
 <p><span class="math display">\[C_p=\frac{USL-LSL}{6\sigma},\qquad C_{pk}=\min\left(\frac{USL-\mu}{3\sigma},\ \frac{\mu-LSL}{3\sigma}\right)\]</span></p>
-<div class="t3">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: center;">Cpk</th>
-<th>判断</th>
-<th>处理</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">≥ 1.67</td>
-<td>过程能力充分（A+ 级）</td>
-<td>保持，可考虑降低成本</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">1.33 ≤ Cpk &lt; 1.67</td>
-<td>状态良好（A 级）</td>
-<td>保持并改进</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">1.00 ≤ Cpk &lt; 1.33</td>
-<td>能力不足（B 级）</td>
-<td>必须改进至 A 级</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">0.67 ≤ Cpk &lt; 1.00</td>
-<td>能力差（C 级）</td>
-<td>紧急改善</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">&lt; 0.67</td>
-<td>严重不足（D 级）</td>
-<td>停产整顿、重新设计</td>
-</tr>
-</tbody>
-</table>
-</div>
 <ul>
-<li><span class="math inline">\(C_a=\frac{|\bar X-C|}{T/2}\)</span> 量准度，<span class="math inline">\(C_p\)</span> 量精度，<span class="math inline">\(C_{pk}=C_p\,(1-|C_a|)\)</span>：先看是偏心还是太散</li>
-<li>第 2 讲：从 10 个数据完整算一遍 <span class="math inline">\(C_{pk}\)</span>，并推导 <span class="math inline">\(C_{pk}\)</span> 与缺陷率（ppm）的关系</li>
+<li><span class="math inline">\(C_p\)</span> 量精度（只看波动），<span class="math inline">\(C_{pk}\)</span> 量能力（同时看中心与波动）</li>
+<li><span class="math inline">\(C_a=\frac{|\bar X-C|}{T/2}\)</span> 量准度，<span class="math inline">\(C_{pk}=C_p\,(1-|C_a|)\)</span>：先看是偏心还是太散</li>
+<li>两道门槛：<strong>1.33</strong> 是量产及格线，<strong>1.67</strong> 是关键／安全特性线</li>
+<li>判读分级、算例与 ppm 换算见第 2 讲</li>
 </ul>
 <aside class="notes">
-这一页是“入门”，只讲几何含义与两道门槛：1.33 是量产及格线，1.67 是关键／安全特性线。公式给到 min 形式，Ca 形式作为补充分解——Cpk 同时看中心与波动，偏心最伤能力（Cp 高、Ca 差则 Cpk 低）。完整分级、计算算例与 ppm 推导都放到第 2 讲。
+这一页只讲几何含义与两道门槛：1.33 是量产及格线，1.67 是关键／安全特性线。公式给到 min 形式，Ca 形式作为补充分解——Cpk 同时看中心与波动，偏心最伤能力（Cp 高、Ca 差则 Cpk 低）。五级判读、计算算例与 ppm 换算都放到第 2 讲。
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -7041,8 +7005,7 @@ display:block!important;
 <ul>
 <li>测量系统 = 仪器 + 人 + 方法 + 环境 + 软件；输入标准件与被测零件，输出“数值 + 判定”</li>
 <li>误差五性：偏倚（准不准）、线性、稳定性、重复性、再现性</li>
-<li>判据：GR&amp;R 占公差 ≤10% 可接受，10%—30% 有条件接受，＞30% 不可接受</li>
-<li>计数型（通止规、目检）看 Kappa：＞0.75 一致性好，＜0.4 不可用</li>
+<li>三档判读（可接受／有条件接受／不可接受）是能力判读的<strong>准入证</strong></li>
 </ul>
 </div><div class="column" style="width:48%;">
 <p><img role="img" aria-label="测量系统的输入（标准、零件、仪器、人／程序、环境）与三档输出判定" src="lec1_assets/img030.png" alt="测量系统的输入（标准、零件、仪器、人／程序、环境）与三档输出判定" style="max-width:100%; max-height:34vh; display:block; margin:0 auto"></p>
@@ -7050,9 +7013,10 @@ display:block!important;
 <ul>
 <li>为什么重要：测量波动会混进过程波动，<span class="math inline">\(C_{pk}\)</span> 与判异结论都会失真</li>
 <li>一句话：<strong>先量准，再谈能力</strong>——数据不可信，越精确越误导</li>
+<li>GR&amp;R 算法与 10%／30% 判读见第 2 讲</li>
 </ul>
 <aside class="notes">
-破题用“垃圾进、垃圾出”：Cpk 再漂亮，测量系统不可信也是假的。右图是课本的测量系统模型——输入五项，输出三档判定。GR&amp;R 只讲判据 10%／30%，均值极差法算例放第 2 讲。提问：你们实验室的卡尺与三坐标，多久校准一次、谁记录？
+破题用“垃圾进、垃圾出”：Cpk 再漂亮，测量系统不可信也是假的。右图是课本的测量系统模型——输入五项，输出三档判定。这一页只保留“MSA 是判读准入证”的概念，GR&amp;R 的均值极差法算例与 10%／30% 判读都在第 2 讲。提问：你们实验室的卡尺与三坐标，多久校准一次、谁记录？
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -7071,52 +7035,14 @@ display:block!important;
 换算公式（双侧、正态、受控）
 </div>
 <p><span class="math display">\[p=2\Phi\left(-3C_{pk}\right)\times 10^{6}\]</span></p>
-<div class="columns">
-<div class="column" style="width:52%;">
-<div class="t3">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: center;">Cpk</th>
-<th>不良率</th>
-<th>直观说法</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1.00</td>
-<td>2700 ppm</td>
-<td>每百万件 2700 件</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">1.33</td>
-<td>66.1 ppm</td>
-<td>量产及格线</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">1.45</td>
-<td>13.6 ppm</td>
-<td>真题里的中上水平</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">1.67</td>
-<td>0.54 ppm</td>
-<td>关键／安全特性线</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div><div class="column" style="width:46%;">
-<p><img role="img" aria-label="Cpk 与缺陷率的对数曲线：1.33 对应 66.1 ppm、1.45 对应 13.6 ppm、1.67 对应 0.54 ppm" src="lec1_assets/img031.png" alt="Cpk 与缺陷率的对数曲线：1.33 对应 66.1 ppm、1.45 对应 13.6 ppm、1.67 对应 0.54 ppm" style="max-width:100%; max-height:34vh; display:block; margin:0 auto"></p>
-</div></div>
+<p><img role="img" aria-label="Cpk 与缺陷率的对数曲线：1.33 对应 66.1 ppm、1.45 对应 13.6 ppm、1.67 对应 0.54 ppm" src="lec1_assets/img031.png" alt="Cpk 与缺陷率的对数曲线：1.33 对应 66.1 ppm、1.45 对应 13.6 ppm、1.67 对应 0.54 ppm" style="max-width:62%; max-height:42vh; display:block; margin:0 auto"></p>
 <ul>
-<li>从 1.33 到 1.67，不良率从 66 ppm 降到 0.54 ppm：约两个数量级</li>
-<li>前提三条：过程受控、近似正态、数据独立；不满足时改用 <span class="math inline">\(P_{pk}\)</span></li>
-<li>3.4 ppm 来自 6σ 加 1.5σ 偏移后的单侧 4.5σ 尾部，不等于“<span class="math inline">\(C_{pk}=2\)</span> 且居中”</li>
-<li>一句话：<strong>换算不是查表，是把能力翻译成“每百万件几件”</strong></li>
+<li>结论：从 1.33 到 1.67，不良率从 66 ppm 降到 0.54 ppm，约两个数量级</li>
+<li>前提：过程受控、近似正态、数据独立；不满足时改用 <span class="math inline">\(P_{pk}\)</span></li>
+<li>换算表与推导见第 2 讲</li>
 </ul>
 <aside class="notes">
-先给判据再给图：Cpk 是无量纲的“能力语言”，ppm 是顾客听得懂的“件数语言”。右图纵轴是对数坐标，因此直线看着平、实际差两个数量级。强调 3.4 ppm 常被误当成“Cpk=2”，它其实是 1.5σ 偏移假设下单侧 4.5σ 的尾部。提问：把 1.45 折算成每百万件，是多少件？
+先给公式再给图：Cpk 是无量纲的“能力语言”，ppm 是顾客听得懂的“件数语言”。右图纵轴是对数坐标，因此直线看着平、实际从 1.33 到 1.67 差两个数量级。这一页只留结论与前提，换算表、推导与 3.4 ppm 的来历都在第 2 讲。提问：把 1.45 折算成每百万件，是多少件？
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -7190,11 +7116,10 @@ display:block!important;
 <div class="columns">
 <div class="column" style="width:52%;">
 <ul>
-<li>方案三要素：样本量 <span class="math inline">\(n\)</span>、接收数 <span class="math inline">\(Ac\)</span>、拒收数 <span class="math inline">\(Re\)</span>；不合格数 <span class="math inline">\(d\le Ac\)</span> 才接收</li>
-<li>OC 曲线 <span class="math inline">\(L(p)\)</span>：横轴批不合格率，纵轴接收概率；<span class="math inline">\(n\)</span> 越大曲线越陡、分辨力越强</li>
-<li>两类风险：<span class="math inline">\(\alpha\)</span> 生产者风险（好批被拒，常取 5%）、<span class="math inline">\(\beta\)</span> 消费者风险（坏批被收，常取 10%）</li>
-<li>两个锚点：AQL 对应 <span class="math inline">\(1-\alpha\)</span>，极限质量 LTPD 对应 <span class="math inline">\(\beta\)</span></li>
 <li>何时用抽检：批量大、检验成本高、破坏性检验；安全与关键特性宁可全检</li>
+<li>两类风险：<span class="math inline">\(\alpha\)</span> 生产者风险（好批被拒，常取 5%）、<span class="math inline">\(\beta\)</span> 消费者风险（坏批被收，常取 10%）</li>
+<li>OC 曲线 <span class="math inline">\(L(p)\)</span>：横轴批不合格率，纵轴接收概率；<span class="math inline">\(n\)</span> 越大曲线越陡、分辨力越强</li>
+<li>抽样方案与算例见第 2 讲</li>
 </ul>
 </div><div class="column" style="width:44%;">
 <p><img role="img" aria-label="三种抽样方案的 OC 曲线：n 越大曲线越陡，α 与 β 是两类误判概率" src="lec1_assets/img032.png" alt="三种抽样方案的 OC 曲线：n 越大曲线越陡，α 与 β 是两类误判概率" style="max-width:100%; max-height:34vh; display:block; margin:0 auto"></p>
@@ -7203,7 +7128,7 @@ display:block!important;
 <li>一句话：<strong>抽样方案买的是分辨力，付的代价是样本量与风险</strong></li>
 </ul>
 <aside class="notes">
-右图三条线分别是 n=50／100／200 的方案，可让学生看“哪条更陡”——越陡分辨力越强，代价是样本量。两条虚线就是 α 与 β：好批被拒、坏批被收，两边都在花钱。强调抽样不能消除风险，只能把风险定在可接受的数上。提问：全检就一定能保证零缺陷吗？（还会漏检与破坏）
+右图三条线分别是 n=50／100／200 的方案，让学生看“哪条更陡”——越陡分辨力越强，代价是样本量。两条虚线就是 α 与 β：好批被拒、坏批被收，两边都在花钱。这一页只讲概览，抽样方案怎么定（AQL、检验水平、n 与 Ac）与算例都在第 2 讲。提问：全检就能保证零缺陷吗？（还会漏检与破坏）
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
