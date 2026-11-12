@@ -903,6 +903,65 @@ text-align: left;
 .reveal .progress-im th:nth-child(2), .reveal .progress-im td:nth-child(2) { width: 14%; text-align: center; }
 .reveal .progress-im th:nth-child(3), .reveal .progress-im td:nth-child(3) { width: 81%; }
 </style>
+  <style type="text/css">
+
+.reveal .slides > section > section.slide {
+top: 0 !important;
+padding-top: 6px;
+padding-bottom: 6px;
+box-sizing: border-box;
+}
+
+.reveal h2 {
+border-bottom: 1px solid #e8ecf1;
+padding-bottom: 0.12em;
+margin: 0 0 0.30em;
+}
+.reveal table { border-collapse: collapse; }
+.reveal table th {
+background: #f4f6f9;
+color: #16365c;
+border: 1px solid #d8dee5;
+}
+.reveal table td { border: 1px solid #e8ecf1; }
+.reveal .keybox {
+border: 1.5px solid #16365c;
+border-radius: 0;
+background: transparent;
+}
+.reveal blockquote {
+background: #f7f9fb;
+border-left: 4px solid #16365c;
+box-shadow: none;
+}
+.reveal .ai-head {
+background: #f4f6f9;
+border-left: 4px solid #16365c;
+}
+.reveal .slide-number {
+font-size: 16px;
+color: #9aa3ac;
+background: transparent;
+}
+
+.reveal .slides > section.dense,
+.reveal .slides > section > section.dense { font-size: 27px; }
+.reveal .slides > section.dense2,
+.reveal .slides > section > section.dense2 { font-size: 25px; }
+.reveal .slides > section.dense3,
+.reveal .slides > section > section.dense3 { font-size: 23px; }
+
+.reveal .slides > section.tight p,
+.reveal .slides > section > section.tight p,
+.reveal .slides > section.tight li,
+.reveal .slides > section > section.tight li,
+.reveal .slides > section.tight td,
+.reveal .slides > section > section.tight td,
+.reveal .slides > section.tight th,
+.reveal .slides > section > section.tight th { line-height: 1.18; }
+.reveal .slides > section.tight li,
+.reveal .slides > section > section.tight li { margin-bottom: 0.08em; }
+</style>
   <style type="text/css">.reveal
 div.sourceCode
 pre
@@ -1642,7 +1701,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="本讲-90-分钟怎么安排" class="slide level2">
+<section id="本讲-90-分钟怎么安排" class="slide level2 dense">
 <h2>本讲 90 分钟怎么安排</h2>
 <blockquote>
 <p><strong>六个时间块 6＋24＋24＋22＋10＋4＝90 分钟，一分钟机动都没有。</strong></p>
@@ -1788,7 +1847,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="本讲学习目标与能力清单" class="slide level2">
+<section id="本讲学习目标与能力清单" class="slide level2 dense">
 <h2>本讲学习目标与能力清单</h2>
 <blockquote>
 <p><strong>四条能力＝四个动作：会画流程、会算库存、会写 8D、会走开发流程。</strong></p>
@@ -1955,7 +2014,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="本讲路线图与课前准备" class="slide level2">
+<section id="本讲路线图与课前准备" class="slide level2 dense2 tight">
 <h2>本讲路线图与课前准备</h2>
 <blockquote>
 <p><strong>一条主线：客户进来（CRM）→ 料备齐（WMS）→ 排上机床（APS）→ 出了问题（8D）→ 系统落地（软件流程）。</strong></p>
@@ -2128,7 +2187,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="crm-的四层框架一条主键三条模块带五条功能线" class="slide level2">
+<section id="crm-的四层框架一条主键三条模块带五条功能线" class="slide level2 dense2 tight">
 <h2>CRM 的四层框架：一条主键、三条模块带、五条功能线</h2>
 <p><img role="img" aria-label="CRM 功能框架：客户 ID 主数据 → 系统设置／主要功能／分析和报表三条模块带 → 五条功能线 → 具体单据" src="lec7_assets/img005.png" alt="CRM 功能框架：客户 ID 主数据 → 系统设置／主要功能／分析和报表三条模块带 → 五条功能线 → 具体单据" style="max-height:34vh; max-width:98%; display:block; margin:0 auto"></p>
 <ul>
@@ -2291,7 +2350,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="rfm-是什么三个维度八类客户一条前提" class="slide level2">
+<section id="rfm-是什么三个维度八类客户一条前提" class="slide level2 dense">
 <h2>RFM 是什么：三个维度、八类客户、一条前提</h2>
 <ul>
 <li><strong>是什么</strong>：R 最近购买、F 频次、M 金额；每维按阈值分高低，组合成 8 类</li>
@@ -2573,7 +2632,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="销售漏斗与转化率哪一段在漏" class="slide level2">
+<section id="销售漏斗与转化率哪一段在漏" class="slide level2 dense2 tight">
 <h2>销售漏斗与转化率：哪一段在漏</h2>
 <p><img role="img" aria-label="CRM 功能框架：客户 ID 主数据、三条模块带与五条功能线；漏斗各段状态落在客户管理与销售管理" src="lec7_assets/img006.png" alt="CRM 功能框架：客户 ID 主数据、三条模块带与五条功能线；漏斗各段状态落在客户管理与销售管理" style="max-height:34vh; max-width:98%; display:block; margin:0 auto"></p>
 <ul>
@@ -3550,7 +3609,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="数据隐私与合规字段设计就是合规" class="slide level2">
+<section id="数据隐私与合规字段设计就是合规" class="slide level2 dense">
 <h2>数据隐私与合规：字段设计就是合规</h2>
 <ul>
 <li>CRM 是个人信息最密集的系统：姓名、电话、地址、轨迹、通话记录</li>
@@ -3805,7 +3864,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="wms-的四层框架单据作业域控制层设备层" class="slide level2">
+<section id="wms-的四层框架单据作业域控制层设备层" class="slide level2 dense2 tight">
 <h2>WMS 的四层框架：单据、作业域、控制层、设备层</h2>
 <p><img role="img" aria-label="WMS 框架：ERP／MOM／CRM／SCM 下达单据 → 入库／库内／出库／统计分析四个作业域 → DCS 采集控制 → RCS／WCS／APC／EMS 设备层" src="lec7_assets/img007.png" alt="WMS 框架：ERP／MOM／CRM／SCM 下达单据 → 入库／库内／出库／统计分析四个作业域 → DCS 采集控制 → RCS／WCS／APC／EMS 设备层" style="max-height:34vh; max-width:98%; display:block; margin:0 auto"></p>
 <ul>
@@ -4043,7 +4102,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="拣货策略摘果播种分区与波次" class="slide level2">
+<section id="拣货策略摘果播种分区与波次" class="slide level2 dense">
 <h2>拣货策略：摘果、播种、分区与波次</h2>
 <div class="t7">
 <table class="caption-top" style="width:100%;">
@@ -4137,7 +4196,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="盲盘与循环盘点把账实相符做在日常" class="slide level2">
+<section id="盲盘与循环盘点把账实相符做在日常" class="slide level2 dense">
 <h2>盲盘与循环盘点：把账实相符做在日常</h2>
 <ul>
 <li>盲盘：盘点单不显示账面数，只报实物（防“照着账面填”）；有差异的条目换人复盘</li>
@@ -4248,7 +4307,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="库存周转率与呆滞料慢的才是贵的" class="slide level2">
+<section id="库存周转率与呆滞料慢的才是贵的" class="slide level2 dense2 tight">
 <h2>库存周转率与呆滞料：慢的才是贵的</h2>
 <ul>
 <li>周转率＝年销货成本÷平均库存；周转天数＝365÷周转率</li>
@@ -4330,7 +4389,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="wms-与-erpmes-的集成账与物的分工" class="slide level2">
+<section id="wms-与-erpmes-的集成账与物的分工" class="slide level2 dense">
 <h2>WMS 与 ERP／MES 的集成：账与物的分工</h2>
 <ul>
 <li>一句话分工：<strong>ERP 记账，WMS 记物</strong>——ERP 管有多少、值多少钱，WMS 管在哪里、什么状态</li>
@@ -4514,7 +4573,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="aps-的定义与目标有限产能怎么算" class="slide level2">
+<section id="aps-的定义与目标有限产能怎么算" class="slide level2 dense">
 <h2>APS 的定义与目标：有限产能怎么算</h2>
 <ul>
 <li><strong>定义</strong>：APS 整合算法、数学模型与算力，把订单排成工序级的可执行计划</li>
@@ -4569,7 +4628,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="aps-五步先承诺再计划后执行" class="slide level2">
+<section id="aps-五步先承诺再计划后执行" class="slide level2 dense2">
 <h2>APS 五步：先承诺、再计划、后执行</h2>
 <p><img role="img" aria-label="APS 主要过程：承诺→高级计划→确认订单→顺序排程→精益执行，附执行偏差回灌与时间粒度轴" src="lec7_assets/img008.png" alt="APS 主要过程：承诺→高级计划→确认订单→顺序排程→精益执行，附执行偏差回灌与时间粒度轴" style="max-height:34vh; max-width:98%; display:block; margin:0 auto"></p>
 <ul>
@@ -4765,7 +4824,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="接口五个方向事件触发才谈得上重排" class="slide level2">
+<section id="接口五个方向事件触发才谈得上重排" class="slide level2 dense">
 <h2>接口五个方向：事件触发才谈得上重排</h2>
 <ul>
 <li>上游 <strong>ERP</strong> 给订单、预测、库存、BOM、工艺路线与日历；APS 回写计划订单、交期承诺与负荷</li>
@@ -4956,7 +5015,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="甘特图与派工把排程变成现场指令" class="slide level2">
+<section id="甘特图与派工把排程变成现场指令" class="slide level2 dense2">
 <h2>甘特图与派工：把排程变成现场指令</h2>
 <p><img role="img" aria-label="APS 主要过程五步：承诺、高级计划、确认下达生成订单、顺序排程、精益执行" src="lec7_assets/img009.png" alt="APS 主要过程五步：承诺、高级计划、确认下达生成订单、顺序排程、精益执行" style="max-height:34vh; max-width:98%; display:block; margin:0 auto"></p>
 <ul>
@@ -4980,7 +5039,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="插单与重排动态调度的三条路" class="slide level2">
+<section id="插单与重排动态调度的三条路" class="slide level2 dense">
 <h2>插单与重排：动态调度的三条路</h2>
 <ul>
 <li>插单四种处理：插到队首（急单）、插进空档（填谷）、外协、拒单并重谈交期</li>
@@ -5035,7 +5094,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="产能与交期权衡atp-与-ctp" class="slide level2">
+<section id="产能与交期权衡atp-与-ctp" class="slide level2 dense">
 <h2>产能与交期权衡：ATP 与 CTP</h2>
 <ul>
 <li><strong>ATP</strong>（可承诺量）＝库存＋在途＋计划产出－已承诺，答“还能答应多少”</li>
@@ -5306,7 +5365,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="d-的起源与适用场景" class="slide level2">
+<section id="d-的起源与适用场景" class="slide level2 dense">
 <h2>8D 的起源与适用场景</h2>
 <ul>
 <li>8D（Eight Disciplines）是<strong>团队导向的八步问题解决法</strong>，由福特汽车公司在 20 世纪 80 年代开发并推行</li>
@@ -5331,7 +5390,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="八个步骤总览三个阶段与时间窗口" class="slide level2">
+<section id="八个步骤总览三个阶段与时间窗口" class="slide level2 dense2">
 <h2>八个步骤总览：三个阶段与时间窗口</h2>
 <ul>
 <li>八个步骤分三段：D0～D2 弄清“是什么”，D3～D5 追问“为什么”，D6～D8 落实“怎么做”</li>
@@ -5548,7 +5607,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="d4-根本原因鱼骨图5why-与-fta" class="slide level2">
+<section id="d4-根本原因鱼骨图5why-与-fta" class="slide level2 dense2 tight">
 <h2>D4 根本原因：鱼骨图、5Why 与 FTA</h2>
 <p><img role="img" aria-label="短装案例 5M1E 鱼骨图：人、机、料、法、测、环六支，每支两条可测疑点，鱼头为短装" src="lec7_assets/img010.png" alt="短装案例 5M1E 鱼骨图：人、机、料、法、测、环六支，每支两条可测疑点，鱼头为短装" style="max-height:34vh; max-width:98%; display:block; margin:0 auto"></p>
 <ul>
@@ -5573,7 +5632,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="why-的正确问法每一问都要有证据" class="slide level2">
+<section id="why-的正确问法每一问都要有证据" class="slide level2 dense2">
 <h2>5Why 的正确问法：每一问都要有证据</h2>
 <p>案例（示例数据）：注塑件飞边，不良率 3.2%。</p>
 <div class="t7">
@@ -5713,7 +5772,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="人机料法环查证把疑点变成数据" class="slide level2">
+<section id="人机料法环查证把疑点变成数据" class="slide level2 dense2">
 <h2>人机料法环查证：把疑点变成数据</h2>
 <p><img role="img" aria-label="D4 原因分析步骤：从明确问题、流程分析到现场实测与关键原因确认" src="lec7_assets/img011.png" alt="D4 原因分析步骤：从明确问题、流程分析到现场实测与关键原因确认" style="max-height:34vh; max-width:98%; display:block; margin:0 auto"></p>
 <ul>
@@ -5811,7 +5870,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="问题描述案例焊缝气孔投诉" class="slide level2">
+<section id="问题描述案例焊缝气孔投诉" class="slide level2 dense2 tight">
 <h2>问题描述案例：焊缝气孔投诉</h2>
 <p>教学案例（示例数据）：钢制电池托架，MIG 焊，焊缝总长 180 mm，图纸要求 100 mm 内气孔不超过 2 个。</p>
 <div class="t3">
@@ -5877,7 +5936,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="案例焊接气孔的-d1-到-d4" class="slide level2">
+<section id="案例焊接气孔的-d1-到-d4" class="slide level2 dense">
 <h2>案例：焊接气孔的 D1 到 D4</h2>
 <ul>
 <li>D1：质量经理任组长，成员含焊接工艺、设备、检验、采购与客户接口人，共 6 人</li>
@@ -5960,7 +6019,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="d-与-dmaic同构不同用途" class="slide level2">
+<section id="d-与-dmaic同构不同用途" class="slide level2 dense">
 <h2>8D 与 DMAIC：同构、不同用途</h2>
 <p><img role="img" aria-label="六西格玛 DMAIC 五阶段：定义、测量、分析、改进、控制" src="lec7_assets/img012.png" alt="六西格玛 DMAIC 五阶段：定义、测量、分析、改进、控制" style="max-height:34vh; max-width:96%; display:block; margin:0 auto"></p>
 <ul>
@@ -6540,7 +6599,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="d-与其他质量工具的关系" class="slide level2">
+<section id="d-与其他质量工具的关系" class="slide level2 dense2 tight dense3">
 <h2>8D 与其他质量工具的关系</h2>
 <ul>
 <li>8D 是骨架，FMEA、SPC、5Why、DOE 是节点工具。</li>
@@ -6596,7 +6655,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="案例开场短装不是坏了是数量对不上" class="slide level2">
+<section id="案例开场短装不是坏了是数量对不上" class="slide level2 dense">
 <h2>案例开场：短装不是坏了，是数量对不上</h2>
 <p><strong>D0 征兆紧急反应</strong></p>
 <ul>
@@ -6910,7 +6969,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="d6-验证控制图加投诉数缺一不可" class="slide level2">
+<section id="d6-验证控制图加投诉数缺一不可" class="slide level2 dense2">
 <h2>D6 验证：控制图加投诉数，缺一不可</h2>
 <p><img role="img" aria-label="8 袋实测控制图：UCL 3,235、CL 3,233.6、LCL 3,230，红色为 3,233 g 判定线，6# 越下限、7# 越上限" src="lec7_assets/img014.png" alt="8 袋实测控制图：UCL 3,235、CL 3,233.6、LCL 3,230，红色为 3,233 g 判定线，6# 越下限、7# 越上限" style="max-height:36vh; max-width:98%; display:block; margin:0 auto"></p>
 <ul>
@@ -7056,7 +7115,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="软件开发流程总览" class="slide level2">
+<section id="软件开发流程总览" class="slide level2 dense">
 <h2>软件开发流程总览</h2>
 <p><img role="img" aria-label="软件开发五阶段与三件套：每段交付物、评审点，下排对应 8D 的 D0～D8" src="lec7_assets/img015.png" alt="软件开发五阶段与三件套：每段交付物、评审点，下排对应 8D 的 D0～D8" style="max-height:34vh; max-width:98%; display:block; margin:0 auto"></p>
 <ul>
@@ -7769,7 +7828,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="历年真题本讲相关题分布" class="slide level2">
+<section id="历年真题本讲相关题分布" class="slide level2 dense">
 <h2>历年真题：本讲相关题分布</h2>
 <ul>
 <li>六卷＝2020／2021／2022 三届 A／B 卷，结构一致：单选 30＋简答 30＋论述 30＋计算 10</li>
@@ -7969,7 +8028,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="计算例题eoq-与安全库存" class="slide level2">
+<section id="计算例题eoq-与安全库存" class="slide level2 dense">
 <h2>计算例题：EOQ 与安全库存</h2>
 <p><strong>题目</strong> 年需求 24,000 件；每次订货 300 元；单价 50 元、年持有成本率 20%（H＝10 元／件·年）；周需求标准差 90 件，提前期 3 周，目标服务水平 95%</p>
 <div class="t3">
@@ -8203,7 +8262,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="例题-3给一份-8d-报告挑错" class="slide level2">
+<section id="例题-3给一份-8d-报告挑错" class="slide level2 dense">
 <h2>例题 3：给一份 8D 报告挑错</h2>
 <div class="t3">
 <table class="caption-top">
@@ -8406,7 +8465,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="课堂讨论aps-排程为什么落地难" class="slide level2">
+<section id="课堂讨论aps-排程为什么落地难" class="slide level2 dense">
 <h2>课堂讨论：APS 排程为什么落地难</h2>
 <ul>
 <li>现象：买了 APS，排出的计划车间不执行，最后仍回到 Excel 手工排产</li>
@@ -8705,7 +8764,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="关键概念清单20-个术语" class="slide level2">
+<section id="关键概念清单20-个术语" class="slide level2 dense2">
 <h2>关键概念清单：20 个术语</h2>
 <div class="t9">
 <table class="caption-top">
@@ -8831,7 +8890,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="期末复习提示8d-与软件流程简答" class="slide level2">
+<section id="期末复习提示8d-与软件流程简答" class="slide level2 dense">
 <h2>期末复习提示：8D 与软件流程简答</h2>
 <div class="t7">
 <table class="caption-top">
@@ -10112,9 +10171,9 @@ window.QuartoSupport = function () {
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1080,
 
-        height: 700,
+        height: 608,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,

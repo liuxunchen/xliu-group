@@ -903,6 +903,65 @@ text-align: left;
 .reveal .progress-im th:nth-child(2), .reveal .progress-im td:nth-child(2) { width: 14%; text-align: center; }
 .reveal .progress-im th:nth-child(3), .reveal .progress-im td:nth-child(3) { width: 81%; }
 </style>
+  <style type="text/css">
+
+.reveal .slides > section > section.slide {
+top: 0 !important;
+padding-top: 6px;
+padding-bottom: 6px;
+box-sizing: border-box;
+}
+
+.reveal h2 {
+border-bottom: 1px solid #e8ecf1;
+padding-bottom: 0.12em;
+margin: 0 0 0.30em;
+}
+.reveal table { border-collapse: collapse; }
+.reveal table th {
+background: #f4f6f9;
+color: #16365c;
+border: 1px solid #d8dee5;
+}
+.reveal table td { border: 1px solid #e8ecf1; }
+.reveal .keybox {
+border: 1.5px solid #16365c;
+border-radius: 0;
+background: transparent;
+}
+.reveal blockquote {
+background: #f7f9fb;
+border-left: 4px solid #16365c;
+box-shadow: none;
+}
+.reveal .ai-head {
+background: #f4f6f9;
+border-left: 4px solid #16365c;
+}
+.reveal .slide-number {
+font-size: 16px;
+color: #9aa3ac;
+background: transparent;
+}
+
+.reveal .slides > section.dense,
+.reveal .slides > section > section.dense { font-size: 27px; }
+.reveal .slides > section.dense2,
+.reveal .slides > section > section.dense2 { font-size: 25px; }
+.reveal .slides > section.dense3,
+.reveal .slides > section > section.dense3 { font-size: 23px; }
+
+.reveal .slides > section.tight p,
+.reveal .slides > section > section.tight p,
+.reveal .slides > section.tight li,
+.reveal .slides > section > section.tight li,
+.reveal .slides > section.tight td,
+.reveal .slides > section > section.tight td,
+.reveal .slides > section.tight th,
+.reveal .slides > section > section.tight th { line-height: 1.18; }
+.reveal .slides > section.tight li,
+.reveal .slides > section > section.tight li { margin-bottom: 0.08em; }
+</style>
   <style type="text/css">.reveal
 div.sourceCode
 pre
@@ -1886,7 +1945,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="系统软件在智能制造中的位置" class="slide level2">
+<section id="系统软件在智能制造中的位置" class="slide level2 dense">
 <h2>系统软件在智能制造中的位置</h2>
 <blockquote>
 <p><strong>硬件决定能力上限，软件决定能力用出来多少；ERP、MES、PLM 各占住计划、执行、产品定义一层。</strong></p>
@@ -2148,7 +2207,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="企业信息系统的五层从设备到协同" class="slide level2">
+<section id="企业信息系统的五层从设备到协同" class="slide level2 dense2">
 <h2>企业信息系统的五层：从设备到协同</h2>
 <p><img role="img" aria-label="五层架构：设备层、执行层、管理层、决策层、协同层及其时间尺度" src="lec6_assets/img005.png" alt="五层架构：设备层、执行层、管理层、决策层、协同层及其时间尺度" style="max-height:36vh; max-width:98%; display:block; margin:0 auto"></p>
 <ul>
@@ -2170,7 +2229,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="八个系统的分工管什么也要说清不管什么" class="slide level2">
+<section id="八个系统的分工管什么也要说清不管什么" class="slide level2 dense2">
 <h2>八个系统的分工：管什么，也要说清不管什么</h2>
 <div class="t7">
 <table class="caption-top">
@@ -2245,7 +2304,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="系统全景先读箭头再读方块" class="slide level2">
+<section id="系统全景先读箭头再读方块" class="slide level2 dense dense2">
 <h2>系统全景：先读箭头，再读方块</h2>
 <p><img role="img" aria-label="制造企业系统全景：ERP 居中，上游 CRM／SCM／PLM，执行侧 MES／WMS／TQM，左侧 OA／HR" src="lec6_assets/img006.png" alt="制造企业系统全景：ERP 居中，上游 CRM／SCM／PLM，执行侧 MES／WMS／TQM，左侧 OA／HR" style="max-height:36vh; max-width:98%; display:block; margin:0 auto"></p>
 <ul>
@@ -2409,7 +2468,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="订单的五段旅程每一步交什么数据" class="slide level2">
+<section id="订单的五段旅程每一步交什么数据" class="slide level2 dense">
 <h2>订单的五段旅程：每一步交什么数据</h2>
 <ol type="1">
 <li><strong>订单评审</strong>（CRM＋ERP）：需求、信用、价格 → 销售订单与交期承诺。</li>
@@ -2525,7 +2584,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="主数据治理五类对象一套编码一个归口" class="slide level2">
+<section id="主数据治理五类对象一套编码一个归口" class="slide level2 dense2">
 <h2>主数据治理：五类对象、一套编码、一个归口</h2>
 <div class="t7">
 <table class="caption-top">
@@ -2660,7 +2719,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="点对点与集成平台算一笔接口数量的账" class="slide level2">
+<section id="点对点与集成平台算一笔接口数量的账" class="slide level2 dense">
 <h2>点对点与集成平台：算一笔接口数量的账</h2>
 <div class="t7">
 <table class="caption-top">
@@ -2735,7 +2794,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="信息孤岛烟囱系统是怎么长出来的" class="slide level2">
+<section id="信息孤岛烟囱系统是怎么长出来的" class="slide level2 dense">
 <h2>信息孤岛：烟囱系统是怎么长出来的</h2>
 <div class="t7">
 <table class="caption-top" style="width:100%;">
@@ -2810,7 +2869,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="系统实施失败的五个原因与三个止损点" class="slide level2">
+<section id="系统实施失败的五个原因与三个止损点" class="slide level2 dense">
 <h2>系统实施失败的五个原因与三个止损点</h2>
 <div class="t7">
 <table class="caption-top">
@@ -3009,7 +3068,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="mes-与-aps一个负责排一个负责做" class="slide level2">
+<section id="mes-与-aps一个负责排一个负责做" class="slide level2 dense">
 <h2>MES 与 APS：一个负责排，一个负责做</h2>
 <div class="t7">
 <table class="caption-top" style="width:100%;">
@@ -3083,7 +3142,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="plm-到-erpebom-怎么变成-mbom" class="slide level2">
+<section id="plm-到-erpebom-怎么变成-mbom" class="slide level2 dense">
 <h2>PLM 到 ERP：EBOM 怎么变成 MBOM</h2>
 <div class="t7">
 <table class="caption-top">
@@ -3215,7 +3274,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="中小企业的系统建设路径先闭环再集成" class="slide level2">
+<section id="中小企业的系统建设路径先闭环再集成" class="slide level2 dense">
 <h2>中小企业的系统建设路径：先闭环，再集成</h2>
 <div class="t7">
 <table class="caption-top">
@@ -3284,7 +3343,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="集成的安全与权限边界身份与审计" class="slide level2">
+<section id="集成的安全与权限边界身份与审计" class="slide level2 dense">
 <h2>集成的安全与权限：边界、身份与审计</h2>
 <div class="t7">
 <table class="caption-top">
@@ -3569,7 +3628,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="erp-是什么一套账管三类资源" class="slide level2">
+<section id="erp-是什么一套账管三类资源" class="slide level2 dense">
 <h2>ERP 是什么：一套账管三类资源</h2>
 <ul>
 <li><strong>定义</strong>：ERP 把企业的物流、资金流、信息流放进一个公共数据库，用一套账统一管理</li>
@@ -3596,7 +3655,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="从-mrp-到-erpii五级演进" class="slide level2">
+<section id="从-mrp-到-erpii五级演进" class="slide level2 dense">
 <h2>从 MRP 到 ERPII：五级演进</h2>
 <div class="t7">
 <table class="caption-top">
@@ -3692,7 +3751,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="mps对象时段与可承诺量" class="slide level2">
+<section id="mps对象时段与可承诺量" class="slide level2 dense">
 <h2>MPS：对象、时段与可承诺量</h2>
 <ul>
 <li>MPS 的对象是<strong>最终产品</strong>或独立需求件，不是零件；零件由 MRP 展开</li>
@@ -3762,7 +3821,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="mrp-四进四出一张数据流图" class="slide level2">
+<section id="mrp-四进四出一张数据流图" class="slide level2 dense2">
 <h2>MRP 四进四出：一张数据流图</h2>
 <p><img role="img" aria-label="MRP 四进四出：MPS、BOM、库存状态、计划参数 → 展开 → 计划订单、建议、例外、绩效" src="lec6_assets/img007.png" alt="MRP 四进四出：MPS、BOM、库存状态、计划参数 → 展开 → 计划订单、建议、例外、绩效" style="max-height:36vh; max-width:98%; display:block; margin:0 auto"></p>
 <ul>
@@ -3849,7 +3908,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="库存状态文件mrp-的账本" class="slide level2">
+<section id="库存状态文件mrp-的账本" class="slide level2 dense2 tight">
 <h2>库存状态文件：MRP 的账本</h2>
 <ul>
 <li>八个字段：现有库存、已分配量、在途量、安全库存、提前期、批量、损耗率、低层码</li>
@@ -3908,7 +3967,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="低层码为什么必须先算-llc" class="slide level2">
+<section id="低层码为什么必须先算-llc" class="slide level2 dense">
 <h2>低层码：为什么必须先算 LLC</h2>
 <ul>
 <li><strong>低层码 LLC</strong>：同一物料在产品结构中出现的<strong>最低层号</strong></li>
@@ -3973,7 +4032,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="mrp-计算逻辑五步推出订单" class="slide level2">
+<section id="mrp-计算逻辑五步推出订单" class="slide level2 dense2 tight">
 <h2>MRP 计算逻辑：五步推出订单</h2>
 <div class="t3">
 <table class="caption-top">
@@ -4036,7 +4095,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="mrp-算例三层-bom-的两轮展开" class="slide level2">
+<section id="mrp-算例三层-bom-的两轮展开" class="slide level2 dense2 tight">
 <h2>MRP 算例：三层 BOM 的两轮展开</h2>
 <ul>
 <li>结构：P＝2A＋1B；A＝1B＋1C＋2D；B 外购。</li>
@@ -4108,7 +4167,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="累计提前期订单该提前几周下" class="slide level2">
+<section id="累计提前期订单该提前几周下" class="slide level2 dense">
 <h2>累计提前期：订单该提前几周下</h2>
 <ul>
 <li><strong>累计提前期</strong>：从最底层采购到成品完工的<strong>最长路径</strong>时间</li>
@@ -4232,7 +4291,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="mrpii-五层计划谁定管多久" class="slide level2">
+<section id="mrpii-五层计划谁定管多久" class="slide level2 dense2">
 <h2>MRPII 五层计划：谁定、管多久</h2>
 <ul>
 <li>五层：经营规划 → 销售与运作 → MPS → MRP → 车间与采购；每层回答“做多大生意 → 供需平衡 → 成品何时做 → 零件何时买 → 今天做什么”</li>
@@ -4301,7 +4360,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="模块一六条链都落在同一本账上" class="slide level2">
+<section id="模块一六条链都落在同一本账上" class="slide level2 dense2">
 <h2>模块（一）：六条链都落在同一本账上</h2>
 <p><img role="img" aria-label="ERP 六条单据链：采购、销售、生产、库存、财务、人力，都汇入统一数据库与主数据" src="lec6_assets/img008.png" alt="ERP 六条单据链：采购、销售、生产、库存、财务、人力，都汇入统一数据库与主数据" style="max-height:38vh; max-width:98%; display:block; margin:0 auto"></p>
 <ul>
@@ -4323,7 +4382,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="erp-的核心模块二扩展与协同" class="slide level2">
+<section id="erp-的核心模块二扩展与协同" class="slide level2 dense">
 <h2>ERP 的核心模块（二）：扩展与协同</h2>
 <div class="t14">
 <table class="caption-top">
@@ -4381,7 +4440,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="财务业务一体化单据变凭证" class="slide level2">
+<section id="财务业务一体化单据变凭证" class="slide level2 dense">
 <h2>财务业务一体化：单据变凭证</h2>
 <ul>
 <li>核心机制是<strong>自动记账</strong>：业务事件按记账规则生成借贷分录，不靠会计手工录入</li>
@@ -4452,7 +4511,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="报表与决策从台账到驾驶舱" class="slide level2">
+<section id="报表与决策从台账到驾驶舱" class="slide level2 dense">
 <h2>报表与决策：从台账到驾驶舱</h2>
 <ul>
 <li>三层报表：操作层（单据）、管理层（汇总）、决策层（指标）</li>
@@ -4517,7 +4576,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="erp-选型四维评分与一票否决" class="slide level2">
+<section id="erp-选型四维评分与一票否决" class="slide level2 dense2 tight">
 <h2>ERP 选型：四维评分与一票否决</h2>
 <ul>
 <li>四个维度：<strong>功能匹配、行业适配、总拥有成本、实施能力</strong></li>
@@ -4648,7 +4707,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="数据迁移主数据清洗六步" class="slide level2">
+<section id="数据迁移主数据清洗六步" class="slide level2 dense">
 <h2>数据迁移：主数据清洗六步</h2>
 <ul>
 <li>六步：盘点 → 标准化 → 去重 → 补全 → 映射 → 试导。</li>
@@ -4724,7 +4783,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="上线切换并行直接与试点" class="slide level2">
+<section id="上线切换并行直接与试点" class="slide level2 dense2 tight">
 <h2>上线切换：并行、直接与试点</h2>
 <ul>
 <li><strong>并行运行</strong>：新旧系统同时跑 1～3 个月，双份录入、双份对账，风险最低、成本最高</li>
@@ -4783,7 +4842,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="项目组织谁对-erp-成败负责" class="slide level2">
+<section id="项目组织谁对-erp-成败负责" class="slide level2 dense">
 <h2>项目组织：谁对 ERP 成败负责</h2>
 <ul>
 <li>三层组织：指导委员会、项目经理与 PMO、关键用户与顾问</li>
@@ -4848,7 +4907,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="常见失败模式范围数据培训" class="slide level2">
+<section id="常见失败模式范围数据培训" class="slide level2 dense">
 <h2>常见失败模式：范围、数据、培训</h2>
 <ul>
 <li><strong>范围失控</strong>：什么都想上、边做边加需求，结果预算与工期双超</li>
@@ -4919,7 +4978,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="erp-与精益先流程后系统" class="slide level2">
+<section id="erp-与精益先流程后系统" class="slide level2 dense">
 <h2>ERP 与精益：先流程，后系统</h2>
 <ul>
 <li>精益先问“流程该不该存在”，ERP 再问“怎么固化”</li>
@@ -4984,7 +5043,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="制造费用erp-里怎么分摊" class="slide level2">
+<section id="制造费用erp-里怎么分摊" class="slide level2 dense">
 <h2>制造费用：ERP 里怎么分摊</h2>
 <ul>
 <li>制造费用先归集到<strong>成本中心</strong>，再按动因分到工单与产品</li>
@@ -5049,7 +5108,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="mrp-与-jit-混用推拉的分界" class="slide level2">
+<section id="mrp-与-jit-混用推拉的分界" class="slide level2 dense">
 <h2>MRP 与 JIT 混用：推拉的分界</h2>
 <ul>
 <li>MRP 管计划：长周期、贵重、专用、需求离散的物料</li>
@@ -5169,7 +5228,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="云-erp-与国产化部署再平衡" class="slide level2">
+<section id="云-erp-与国产化部署再平衡" class="slide level2 dense">
 <h2>云 ERP 与国产化：部署再平衡</h2>
 <ul>
 <li>四种形态：本地、云托管、SaaS、混合；差别在运维、付费、可改性</li>
@@ -5234,7 +5293,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="案例一次-mrp-结果的解读" class="slide level2">
+<section id="案例一次-mrp-结果的解读" class="slide level2 dense">
 <h2>案例：一次 MRP 结果的解读</h2>
 <ul>
 <li>场景：铸件 X 现有 30、安全库存 20、批量 100、提前期 2 周，当前第 4 周初。</li>
@@ -5299,7 +5358,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="案例库存下降的数据逻辑" class="slide level2">
+<section id="案例库存下降的数据逻辑" class="slide level2 dense2 tight">
 <h2>案例：库存下降的数据逻辑</h2>
 <ul>
 <li>教学算例：库存分周转、安全、在途三块；平均库存＝周转＋安全</li>
@@ -5391,7 +5450,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="erp-的局限五件它做不到的事" class="slide level2">
+<section id="erp-的局限五件它做不到的事" class="slide level2 dense">
 <h2>ERP 的局限：五件它做不到的事</h2>
 <ul>
 <li><strong>无限产能</strong>：MRP 假设设备无限，计划可能做不出来，要靠 CRP 与 APS</li>
@@ -5554,7 +5613,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="mes计划与设备之间的执行层" class="slide level2">
+<section id="mes计划与设备之间的执行层" class="slide level2 dense2">
 <h2>MES：计划与设备之间的执行层</h2>
 <p><img role="img" aria-label="MES 数据走向：ERP 下达生产数据、MES 回传反馈信息；MES 向人员与设备下任务、收回实绩" src="lec6_assets/img009.png" alt="MES 数据走向：ERP 下达生产数据、MES 回传反馈信息；MES 向人员与设备下任务、收回实绩" style="max-height:36vh; max-width:98%; display:block; margin:0 auto"></p>
 <ul>
@@ -5577,7 +5636,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="mes-的发展从单功能到-mesa-与-isa-95" class="slide level2">
+<section id="mes-的发展从单功能到-mesa-与-isa-95" class="slide level2 dense dense2">
 <h2>MES 的发展：从单功能到 MESA 与 ISA-95</h2>
 <p><img role="img" aria-label="三层演进时间轴：控制层（PLC／DCS→SCADA）、执行层（单功能 MES→集成 MES）、计划层（MRP→ERP→APS／SCM）" src="lec6_assets/img010.png" alt="三层演进时间轴：控制层（PLC／DCS→SCADA）、执行层（单功能 MES→集成 MES）、计划层（MRP→ERP→APS／SCM）" style="max-height:30vh; max-width:98%; display:block; margin:0 auto"></p>
 <ul>
@@ -5602,7 +5661,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="mesa-十一功能模型一组车间问题的答案" class="slide level2">
+<section id="mesa-十一功能模型一组车间问题的答案" class="slide level2 dense2">
 <h2>MESA 十一功能模型：一组车间问题的答案</h2>
 <ul>
 <li>MESA（MESA International）在 1990 年代给出 MES 的十一项功能，后来成为选型与验收的通用清单</li>
@@ -5670,7 +5729,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="isa-95-五层模型mes-站在第三层" class="slide level2">
+<section id="isa-95-五层模型mes-站在第三层" class="slide level2 dense">
 <h2>ISA-95 五层模型：MES 站在第三层</h2>
 <ul>
 <li>ISA-95（IEC 62264）用<strong>层级</strong>划分企业信息系统，回答“哪个系统该管多细、多快”</li>
@@ -5739,7 +5798,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="mes-的目标防错改善追溯" class="slide level2">
+<section id="mes-的目标防错改善追溯" class="slide level2 dense2">
 <h2>MES 的目标：防错、改善、追溯</h2>
 <p><strong>防错（过程不要错）</strong></p>
 <ul>
@@ -5773,7 +5832,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="mes-防错六类防呆与三个层次" class="slide level2">
+<section id="mes-防错六类防呆与三个层次" class="slide level2 dense2">
 <h2>MES 防错：六类防呆与三个层次</h2>
 <ul>
 <li>防错目标不是“提醒人小心”，而是让错误<strong>做不出来、流不出去</strong>（不产生、不传递、不流出）</li>
@@ -5841,7 +5900,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="mes-改善从异常单到标准作业" class="slide level2">
+<section id="mes-改善从异常单到标准作业" class="slide level2 dense">
 <h2>MES 改善：从异常单到标准作业</h2>
 <ul>
 <li>改善闭环五步：发现异常 → 记录事实 → 分析主因 → 实施与验证 → 标准化</li>
@@ -6129,7 +6188,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="数据采集先统一时标再谈分析" class="slide level2">
+<section id="数据采集先统一时标再谈分析" class="slide level2 dense2">
 <h2>数据采集：先统一时标，再谈分析</h2>
 <p><img role="img" aria-label="MES 数据采集：设备侧与物料侧汇入采集服务器，统一时标与编码后分发到 MES、SPC、BI 与看板" src="lec6_assets/img011.png" alt="MES 数据采集：设备侧与物料侧汇入采集服务器，统一时标与编码后分发到 MES、SPC、BI 与看板" style="max-height:36vh; max-width:98%; display:block; margin:0 auto"></p>
 <ul>
@@ -6329,7 +6388,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="mes-绩效oee-算例" class="slide level2">
+<section id="mes-绩效oee-算例" class="slide level2 dense">
 <h2>MES 绩效：OEE 算例</h2>
 <p>已知：计划运行时间 480 min，停机 48 min；理论节拍 30 s/件；实际产出 720 件，其中良品 684 件。</p>
 <ul>
@@ -6528,7 +6587,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="mes-与精益生产用数据支撑现场改善" class="slide level2">
+<section id="mes-与精益生产用数据支撑现场改善" class="slide level2 dense">
 <h2>MES 与精益生产：用数据支撑现场改善</h2>
 <ul>
 <li>精益回答“应该怎样流动”，MES 回答“流动得怎么样、哪里断了”</li>
@@ -6553,7 +6612,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="数字孪生与-mes模型实时性与边界" class="slide level2">
+<section id="数字孪生与-mes模型实时性与边界" class="slide level2 dense">
 <h2>数字孪生与 MES：模型、实时性与边界</h2>
 <ul>
 <li>数字孪生＝物理对象的<strong>模型、实时数据与双向连接</strong>；MES 提供其中的执行数据与工单上下文</li>
@@ -6737,7 +6796,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="mes-复习要点六条主线与四个易错点" class="slide level2">
+<section id="mes-复习要点六条主线与四个易错点" class="slide level2 dense">
 <h2>MES 复习要点：六条主线与四个易错点</h2>
 <ul>
 <li>一句定义：MES 在计划层与控制层之间，把计划变成动作、把动作变成数据</li>
@@ -6819,7 +6878,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="本部分小结定义功能边界与判据" class="slide level2">
+<section id="本部分小结定义功能边界与判据" class="slide level2 dense2">
 <h2>本部分小结：定义、功能、边界与判据</h2>
 <ul>
 <li>一条主线：<strong>计划 → 工单 → 工序 → 采集 → 追溯 → 绩效</strong>，MES 把这条链上每一步都留下记录</li>
@@ -6897,7 +6956,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="plm-的核心单一数据源" class="slide level2">
+<section id="plm-的核心单一数据源" class="slide level2 dense">
 <h2>PLM 的核心：单一数据源</h2>
 <ul>
 <li><strong>单一数据源（SSOT）</strong>：同一对象全公司只有一条权威记录，其他系统只引用</li>
@@ -7041,7 +7100,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="四阶段销量曲线决定经营重点" class="slide level2">
+<section id="四阶段销量曲线决定经营重点" class="slide level2 dense2">
 <h2>四阶段：销量曲线决定经营重点</h2>
 <p><img role="img" aria-label="产品生命周期四阶段：引入、成长、成熟、衰退与销量曲线，以及各阶段的 PLM 动作" src="lec6_assets/img012.png" alt="产品生命周期四阶段：引入、成长、成熟、衰退与销量曲线，以及各阶段的 PLM 动作" style="max-height:30vh; max-width:98%; display:block; margin:0 auto"></p>
 <ul>
@@ -7064,7 +7123,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="bom-家族ebommbomsbom-与配置-bom" class="slide level2">
+<section id="bom-家族ebommbomsbom-与配置-bom" class="slide level2 dense">
 <h2>BOM 家族：EBOM、MBOM、SBOM 与配置 BOM</h2>
 <div class="t7">
 <table class="caption-top">
@@ -7243,7 +7302,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="项目管理与研发流程-p0p6" class="slide level2">
+<section id="项目管理与研发流程-p0p6" class="slide level2 dense">
 <h2>项目管理与研发流程 P0–P6</h2>
 <div class="t7">
 <table class="caption-top">
@@ -7306,7 +7365,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="研发到量产漏斗与阶段门" class="slide level2">
+<section id="研发到量产漏斗与阶段门" class="slide level2 dense2">
 <h2>研发到量产：漏斗与阶段门</h2>
 <p><img role="img" aria-label="漏斗式产品开发决策：八个关卡逐层筛选，未通过者放弃" src="lec6_assets/img013.png" alt="漏斗式产品开发决策：八个关卡逐层筛选，未通过者放弃" style="max-height:36vh; max-width:98%; display:block; margin:0 auto"></p>
 <ul>
@@ -7330,7 +7389,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="甘特图看关键路径与资源冲突" class="slide level2">
+<section id="甘特图看关键路径与资源冲突" class="slide level2 dense">
 <h2>甘特图：看关键路径与资源冲突</h2>
 <p><img role="img" aria-label="产品开发甘特图：准备、开发、生产三阶段的时间条，红线为关键路径，上市为里程碑" src="lec6_assets/img014.png" alt="产品开发甘特图：准备、开发、生产三阶段的时间条，红线为关键路径，上市为里程碑" style="max-height:38vh; max-width:98%; display:block; margin:0 auto"></p>
 <ul>
@@ -7628,7 +7687,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="plm-选型与实施" class="slide level2">
+<section id="plm-选型与实施" class="slide level2 dense">
 <h2>PLM 选型与实施</h2>
 <ul>
 <li>选型六维：功能覆盖、行业适配、集成能力、TCO、供应商服务、扩展性</li>
@@ -7706,7 +7765,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="制造业数据主线从需求到退役" class="slide level2">
+<section id="制造业数据主线从需求到退役" class="slide level2 dense2">
 <h2>制造业数据主线：从需求到退役</h2>
 <div class="t7">
 <table class="caption-top">
@@ -7775,7 +7834,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="系统蓝图erpmesplm-三位一体" class="slide level2">
+<section id="系统蓝图erpmesplm-三位一体" class="slide level2 dense">
 <h2>系统蓝图：ERP／MES／PLM 三位一体</h2>
 <div class="t3">
 <table class="caption-top">
@@ -7828,7 +7887,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="案例一次设计变更的系统旅程" class="slide level2">
+<section id="案例一次设计变更的系统旅程" class="slide level2 dense2 tight">
 <h2>案例：一次设计变更的系统旅程</h2>
 <div class="t7">
 <table class="caption-top">
@@ -8109,7 +8168,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="历年真题本讲相关题分布" class="slide level2">
+<section id="历年真题本讲相关题分布" class="slide level2 dense2">
 <h2>历年真题：本讲相关题分布</h2>
 <ul>
 <li>六卷指 2020／2021／2022 三届 A／B 卷，结构一致：单选 30＋简答 30＋论述 30＋计算 10</li>
@@ -8228,7 +8287,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="真题erp-核心模块与集成简答" class="slide level2">
+<section id="真题erp-核心模块与集成简答" class="slide level2 dense2 tight">
 <h2>真题：ERP 核心模块与集成简答</h2>
 <ul>
 <li>六卷未单独命题 ERP 模块；但“五个组成”题的同一模板可直接套用，答五个模块即可</li>
@@ -8291,7 +8350,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="计算例题mrp-三层展开与批量取整" class="slide level2">
+<section id="计算例题mrp-三层展开与批量取整" class="slide level2 dense">
 <h2>计算例题：MRP 三层展开与批量取整</h2>
 <p><strong>题目</strong> 产品 M 第 9 周需 500 台；1 台 M＝2 件 N＋1 件 O，1 件 N＝4 件 P。库存 M 80 台、N 120 件、O 60 件、P 300 件；批量 N 300 件、P 1,000 件，M、O 直接批量；提前期 M 1 周、N 2 周、O 1 周、P 2 周。</p>
 <div class="t9">
@@ -8473,7 +8532,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="例题-2给业务场景选系统" class="slide level2">
+<section id="例题-2给业务场景选系统" class="slide level2 dense">
 <h2>例题 2：给业务场景选系统</h2>
 <div class="t3">
 <table class="caption-top">
@@ -8550,7 +8609,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="简答模板erpmesplm-各答三段" class="slide level2">
+<section id="简答模板erpmesplm-各答三段" class="slide level2 dense">
 <h2>简答模板：ERP／MES／PLM 各答三段</h2>
 <ul>
 <li>三段式：第一段定义（是什么），第二段要素（管什么），第三段边界（与谁集成、给什么数据）</li>
@@ -9084,7 +9143,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="期末复习提示系统类简答题" class="slide level2">
+<section id="期末复习提示系统类简答题" class="slide level2 dense">
 <h2>期末复习提示：系统类简答题</h2>
 <div class="t7">
 <table class="caption-top">
@@ -9156,7 +9215,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="作业概念计算与分析100-分" class="slide level2">
+<section id="作业概念计算与分析100-分" class="slide level2 dense2">
 <h2>作业：概念、计算与分析（100 分）</h2>
 <p><strong>1. 概念题（20 分）</strong> 辨析五组：MRP／MRPII、EBOM／MBOM、防错／追溯、OEE／利用率、主数据／事务数据。</p>
 <p><strong>2. 计算题（50 分）</strong>（1）1 台 A＝2 件 B＋1 件 C，1 件 B＝3 件 D；第 8 周需 A 300 台；库存 A 40／B 150／C 100／D 600；提前期 1／1／2／1 周；批量 B 200、C 直接、D 最小 400：求净需求、计划订单、接收／下达周（20 分）。</p>
@@ -10378,9 +10437,9 @@ window.QuartoSupport = function () {
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1080,
 
-        height: 700,
+        height: 608,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
