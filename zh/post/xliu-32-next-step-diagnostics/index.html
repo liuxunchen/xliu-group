@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>激光燃烧诊断的下一步：从「能测」到「测得可信、测得有用」 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="这几年我们组的两条线——高频多场同步与 TDLAS 的机器学习反演——解决的是「能不能测、测得快不快、能不能同时测」。但越做越清楚：真正的问题正在往后移，从「在理想实验室里拿到高精度数据」转向「在真实、极端、动态的工业环境里给出可靠、多维、可解释的定量信息」。这篇把我们判断下一步要补的几件事写下来：极端条件、同步测量的不确定度、工业在线、物理可信的 AI、零碳燃料的特征组分，以及井下与工业现场这块试金石。">
+    <meta name="generator" content="Hugo 0.162.1">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="刘训臣">
+    
+
+    <link rel="stylesheet" href="/xliu-group/ananke/css/main.css"><link rel="stylesheet" href="/xliu-group/css/tables.css">
+    <script>
+  (function () {
+    "use strict";
+
+    
+    
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
+
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/xliu-32-next-step-diagnostics/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/xliu-32-next-step-diagnostics/">
+	<meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+	<meta property="og:title" content="激光燃烧诊断的下一步：从「能测」到「测得可信、测得有用」">
+	<meta property="og:description" content="这几年我们组的两条线——高频多场同步与 TDLAS 的机器学习反演——解决的是「能不能测、测得快不快、能不能同时测」。但越做越清楚：真正的问题正在往后移，从「在理想实验室里拿到高精度数据」转向「在真实、极端、动态的工业环境里给出可靠、多维、可解释的定量信息」。这篇把我们判断下一步要补的几件事写下来：极端条件、同步测量的不确定度、工业在线、物理可信的 AI、零碳燃料的特征组分，以及井下与工业现场这块试金石。">
+	<meta property="og:locale" content="zh">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2026-11-14T08:00:00+08:00">
+		<meta property="article:modified_time" content="2026-11-14T08:00:00+08:00">
+		<meta property="article:tag" content="激光诊断">
+		<meta property="article:tag" content="TDLAS">
+		<meta property="article:tag" content="PLIF">
+		<meta property="article:tag" content="PIV">
+		<meta property="article:tag" content="机器学习">
+
+	<meta itemprop="name" content="激光燃烧诊断的下一步：从「能测」到「测得可信、测得有用」">
+	<meta itemprop="description" content="这几年我们组的两条线——高频多场同步与 TDLAS 的机器学习反演——解决的是「能不能测、测得快不快、能不能同时测」。但越做越清楚：真正的问题正在往后移，从「在理想实验室里拿到高精度数据」转向「在真实、极端、动态的工业环境里给出可靠、多维、可解释的定量信息」。这篇把我们判断下一步要补的几件事写下来：极端条件、同步测量的不确定度、工业在线、物理可信的 AI、零碳燃料的特征组分，以及井下与工业现场这块试金石。">
+	<meta itemprop="datePublished" content="2026-11-14T08:00:00+08:00">
+	<meta itemprop="dateModified" content="2026-11-14T08:00:00+08:00">
+	<meta itemprop="wordCount" content="195">
+	<meta itemprop="keywords" content="激光诊断,TDLAS,PLIF,PIV,机器学习">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="激光燃烧诊断的下一步：从「能测」到「测得可信、测得有用」">
+	<meta name="twitter:description" content="这几年我们组的两条线——高频多场同步与 TDLAS 的机器学习反演——解决的是「能不能测、测得快不快、能不能同时测」。但越做越清楚：真正的问题正在往后移，从「在理想实验室里拿到高精度数据」转向「在真实、极端、动态的工业环境里给出可靠、多维、可解释的定量信息」。这篇把我们判断下一步要补的几件事写下来：极端条件、同步测量的不确定度、工业在线、物理可信的 AI、零碳燃料的特征组分，以及井下与工业现场这块试金石。">
+
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+    
+    <style>
+      .dsh-draft-banner{background:#fff3cd;border-bottom:3px solid #f0ad4e;color:#7a5c1e;
+        padding:10px 16px;text-align:center;font-size:15px;font-weight:600;line-height:1.6}
+      .dsh-draft-banner b{color:#c2410c;font-size:16px}
+    </style>
+    <div class="dsh-draft-banner" role="note">
+      <b>草稿预览 · 尚未正式上线</b>　——　本页是 draft（草稿），只在内网预览可见，公网看不到；
+      请继续修改完善，经导师确认后才会正式发布。
+    </div>
+    
+
+    
+   
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        <img src="/xliu-group/images/logo2.jpg" class="w100 mw5-ns" alt="刘训臣燃烧诊断实验室主页" />
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/teaching/" title="Teaching 页">
+              Teaching
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/paper/" title="Paper 页">
+              Paper
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/news/" title="News 页">
+              News
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">激光燃烧诊断的下一步：从「能测」到「测得可信、测得有用」</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-xliu-32-next-step-diagnostics flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">
+    <a class="link dim" href="http://localhost:1313/xliu-group/zh/post/">Post</a>
+  </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">激光燃烧诊断的下一步：从「能测」到「测得可信、测得有用」</h1>
+      
+      <p class="tracked"><strong>刘训臣</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-11-14T08:00:00+08:00">十一月 14, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>今年课题组的两条线越走越清楚。</p>
+<p>一条是<strong>高频多场同步</strong>：20 kHz 的单相机双色甲醛 PLIF 测温、高重频的 PLIF/PIV 同步、40 kHz 的 TDLAS/PLIF/PIV 三诊断同步测量剪切层动力学。另一条是<strong>TDLAS 的机器学习反演</strong>：用 U-Net 从更少的扫描数据里重建层流扩散火焰的二维温度与 CO₂ 浓度场。</p>
+<p>这两条线合起来，回答的是「<strong>能不能测、测得快不快、能不能同时测</strong>」。但越往下做，越觉得真正的问题在往后移——<strong>测得快、测得全，不等于测得可信</strong>；实验室里「精心对准」出来的漂亮场图，搬到真实燃烧室边上，未必还站得住。</p>
+<p>我们把这件事归结成一条主线：从「在理想实验室环境中获取高精度数据」，走向「在真实、极端、动态的工业环境中，提供可靠、多维、可解释的定量信息」。这条主线下面，有五个技术方向值得加强，外加一块常被低估的试验场——而它们恰好都落在我们已经打出的牌上。</p>
+<h2 id="一极端条件从实验室火源到-3500-k300-bar-的燃烧室">一、极端条件：从实验室火源到 3500 K、300 bar 的燃烧室</h2>
+<p>真实的燃烧系统——航空发动机加力与主燃、火箭发动机、重型燃气轮机——环境极为苛刻：温度可以超过 <strong>3500 K</strong>，压力从真空一直跨到 <strong>300 bar</strong> 以上，同时伴随强烈振动，光学访问常常只剩几个小窗口。</p>
+<p>现有的自发拉曼散射、PLIF 在这样的条件下会同时遇到三件事：<strong>信噪比恶化</strong>（高压下碰撞淬灭、谱线展宽与重叠）、<strong>穿透深度不足</strong>（高密度、强背景辐射）、<strong>时间分辨率受限</strong>（信号弱就得拉长曝光或累加）。</p>
+<p>所以需要重点加强的是<strong>适用于极端环境的诊断原理与系统</strong>，而不是把实验室系统原样放大。两个具体方向：</p>
+<ul>
+<li><strong>飞秒激光超短脉冲成像</strong>。飞秒脉冲的峰值功率高、脉宽远短于淬灭与解离的时间尺度，可以在 kHz 速率下对 H、O、N 等关键活性原子与分子做无干扰成像。这是「高温高压下还能拿到自由基场」的一条现实路径。</li>
+<li><strong>激光吸收光谱层析成像（LAST）的工程化</strong>。把 TDLAS 的分子特异性与断层重建结合起来，从有限条视线积分反演燃烧室内部的温度、组分与压力二维/三维场。它天生适合「只有几个窗口」的发动机环境，但代价是反演问题病态。</li>
+</ul>
+<p>我们在这条线上其实已经有了一块扎实的地基：<strong>多路 TDLAS 层析系统</strong>——32 路平行光路加旋转扫描、面向发动机喷管温度/浓度场成像；配 <strong>串脉冲（burst）激光</strong>与 <strong>MHz 级 TDLAS</strong> 提供高重频光源；再加上<strong>反射式 TDLAS</strong> 解决受限光路下的访问。三样拼起来，正是「极端条件 + 有限光学窗口」需要的组合。缺的不是原理，是把它们做成在振动、高温、长时运行下仍然靠得住的系统。</p>
+<h2 id="二多参数同步从同时看到知道有多准">二、多参数同步：从「同时看」到「知道有多准」</h2>
+<p>燃烧是流动、传热与化学反应的强耦合过程。单点、单参数的测量已经不够用，这一点国际上早就形成共识：</p>
+<ul>
+<li>CARS 与 NO-MTV 结合，在脉冲高焓流场里做 <strong>100 kHz</strong> 量级的温度、速度同步测量；</li>
+<li>扫频串脉冲滤波瑞利散射（FRS）做到 <strong>20 kHz</strong> 串脉冲、1 ms 时均，等价 <strong>1 kHz</strong> 同时测温度、压力与径向速度（Braun 等，2025）；</li>
+<li>NASA 的官方综述干脆把「瞬时多参数（含压力）测量」判定为<strong>唯一尚未解决的空白</strong>。</li>
+<li>频率扫描 PLIF（FS-PLIF）则试图从单次激发中同时提取温度、压力与速度，绕开多参数之间的耦合——思路很对，真正的难点同样落在标定与不确定度上。</li>
+</ul>
+<p>我们自己的积累也在这条线上：高重频的 PLIF/PIV 同步（声激励下抬升旋流火焰）、20 kHz 单相机双色甲醛 PLIF 测温、40 kHz 的 TDLAS/PLIF/PIV 三诊断同步，以及反射式 TDLAS 与自发光高速摄影的同步测量。这些工作解决的是「<strong>同时看</strong>」。</p>
+<p>但下一步的核心矛盾不是帧率，而是<strong>这把「同时」到底有多准</strong>。高频同步测量产生的是海量数据，而多系统之间的<strong>时空配准误差</strong>、各技术自身的<strong>系统偏差</strong>、以及有限投影角度下层析重建的<strong>病态性</strong>，会共同构成一个很少被系统量化的<strong>不确定度包络</strong>。当测量对象从稳定的旋流火焰走向强瞬态、强振荡工况时，这个包络可能直接决定结论可靠不可靠——我们看到的「精细场图」，也许只是把误差画得更漂亮了。</p>
+<p>所以我们认为要加强的是：<strong>面向多参数同步数据集的联合不确定度传播框架</strong>。让每一次高频同步测量都附带可验证的置信区间，而不是只呈现一张看起来精细的场图。</p>
+<p>这条线我们已经在动手：正在推进的面上项目里有一个子课题做<strong>石英片合束的多模态融合测量</strong>——把红外 TDLAS 与 355 nm/532 nm 片光同轴耦合到同一探测面，要求亚毫米级的空间对准与亚微秒级的时序同步，再用路径积分结果与全场结果互相标定。它表面上是个光路工程问题，实质上是<strong>把「配准误差」从隐含假设变成可测量量</strong>的一次实验。</p>
+<h2 id="三工业在线从实验装置到机匣上的模块">三、工业在线：从实验装置到机匣上的模块</h2>
+<p>实验室里的精密系统往往体积庞大、对环境要求苛刻；而工业应用——发动机健康监测、燃烧优化、排放控制——需要的是<strong>紧凑、鲁棒、抗干扰、可原位</strong>的测量方案。真实发动机的诊断环境是：有限光学窗口、强振动、背景辐射干扰、长时在线运行。</p>
+<p>这要求诊断技术在<strong>设计层面</strong>就做出改变，而不是把实验室系统「搬过去」：</p>
+<ul>
+<li><strong>固定结构的 TDLAS 传感器</strong>：通过创新的光学架构摆脱对机械扫描部件的依赖，在振动环境下保持光路稳定；</li>
+<li><strong>有限投影 LAST 的稳健反演</strong>：投影角度少、噪声大，重建的伪影与敏感性必须靠算法解决，而不是靠增加光路；</li>
+<li><strong>激光超声</strong>等在线监测手段：把诊断从「燃烧场测量」延伸到高温部件（如发动机叶片）的疲劳损伤监测，进入运维环节。</li>
+</ul>
+<p>我们已经有的那块拼图是<strong>反射式 TDLAS 与 PIV/PLIF 同步拍摄</strong>的专利思路（CN121252888B）：反射式光路把「发射—接收」压到同一侧，天然适配单侧光学访问。沿着这个思路再往前一步，就是从「需要精密对准的实验装置」变成「可以拧在机匣上的测量模块」。</p>
+<p>这既是工程问题，也会<strong>反过来驱动测量原理</strong>：当视线数被限制到个位数、投影角度只有几十度时，如何在反演层面保证鲁棒性？这个问题的答案，可能比多买几台激光器更有价值。</p>
+<h2 id="四ai从加速器到物理可信的推理引擎">四、AI：从「加速器」到「物理可信的推理引擎」</h2>
+<p>2022 年我们用 U-Net 做了层流扩散火焰的二维温度与 CO₂ 浓度场反演（<em>Fuel</em> 324: 124447），核心贡献是<strong>用更少的扫描测量数据、更高效地重建二维场</strong>，解决传统多视线扫描「系统复杂、效率不佳」的问题。这是一个正确的起点。</p>
+<p>但如果停留在这个层面，机器学习就只是一个<strong>加速器</strong>。真正需要加强的是<strong>物理一致性与泛化能力</strong>：</p>
+<ul>
+<li><strong>对象偏移</strong>：轴对称层流扩散火焰是一个相对受控的对象。模型学到的映射，在工况偏移时是否仍然成立？从层流走向湍流、从常压走向高压、从甲烷走向掺氢/掺氨——这些是还没有回答的问题。</li>
+<li><strong>物理约束</strong>：纯数据驱动的反演可能给出精度尚可、却违反守恒定律的场。需要把守恒方程、辐射传输先验嵌进网络结构或损失函数，发展 <strong>物理信息神经网络</strong>（PINNs）与物理感知的重建方法。</li>
+<li><strong>不确定度</strong>：用 <strong>贝叶斯不确定性量化</strong>（UQ）让模型不只输出场，还输出可信度分布。这是从「看起来准」到「知道哪里不准」的关键一步。</li>
+<li><strong>在线自适应</strong>：从「离线训练—固定部署」走向「在线自适应标定与迁移」，让反演在工况、燃料、光学窗口变化时具备自我修正能力。</li>
+</ul>
+<p>我们其实已经把 AI 放进了测量链的多个环节：PIV 的光流法与 AI 流场计算、DMD/SPOD 模态分解、基于火焰图像的贫燃熄火预测。下一步是把它们统一到一个框架里——<strong>输出不仅快、而且物理上可信、不确定度可量化</strong>。终点是<strong>自主传感系统</strong>：根据现场的信噪比、谱线重叠与窗口污染程度，自己决定扫描策略、激光功率与积分时间。</p>
+<h2 id="五零碳燃料抢先建立特征组分的诊断选择性">五、零碳燃料：抢先建立特征组分的诊断选择性</h2>
+<p>能源转型正在把燃烧系统推向<strong>氨、氢</strong>等零碳/低碳燃料，以及旋流、贫预混、MILD 等新燃烧模式。这些变化从根本上改变了流场动力学、温度分布与化学反应路径，对诊断技术提出了全新的选择性要求。</p>
+<p>氨燃烧诊断的核心难点不在「能不能用激光测」，而在于<strong>在强烈的 CO₂/H₂O 背景干扰下，实现对 NH、NH₂、HNO 等关键含氮中间体的选择性探测</strong>；氢燃烧则对 OH/NO 的定量、以及高温下谱线展宽与偏移的精确建模提出更高要求。</p>
+<p>我们在中红外 TDLAS 与分子光谱学上的积累是切入这个方向的天然优势——醚类燃料低温氧化过氧化物、运输替代燃料的中红外吸收光谱，这些工作练的就是「在复杂背景下挑出特征谱线」的本事。具体该做的不是泛泛地「做氨氢」，而是聚焦<strong>氨/氢火焰中现有诊断手段信噪比不足或选择性不够的特征组分</strong>：</p>
+<ul>
+<li>发展针对性的吸收/荧光谱线策略（波段选择、调制方式、背景扣除）；</li>
+<li>用飞秒 PLIF 对氨/氢混合火焰中的 NH 做高重频成像；</li>
+<li>与旋流火焰的高频成像能力结合，回答一个更本质的问题：<strong>零碳燃料的火焰结构与热释放耦合关系，是否发生了根本性改变？</strong></li>
+</ul>
+<p>诊断技术的发展需要与新型燃烧系统的研发<strong>协同演进</strong>，而不是等燃烧器定型了再跟进。</p>
+<h2 id="六井下与工业现场把最苛刻的场景当试金石">六、井下与工业现场：把最苛刻的场景当试金石</h2>
+<p>课题组还有一块不那么「燃烧」的业务：井下气体检测与工业现场检测。表面上看，这与追求高时空分辨的燃烧诊断是两条路——空间极度受限、环境恶劣、长期稳定性要求极高、常常无人值守。</p>
+<p>但如果把它当成「低端应用」，就浪费了它的战略价值。恰恰相反，它是一个<strong>约束条件下的技术验证场</strong>：在低信噪比、强干扰、无人值守的条件下给出可信读数，会逼着研究者去解决那些在实验室里可以被「精心对准」掩盖的问题——<strong>基线漂移、光学污染、温度—应力耦合误差、长期漂移</strong>。</p>
+<p>我们正在做的深部煤炭原位项目就是这样一个场景：10–25 MPa、高水蒸气/CO₂ 的活性气氛、井下空间与供电都受限，却要求原位、长时的激光诊断。</p>
+<p>建议把这一块从「应用出口」提升为「<strong>鲁棒性反哺</strong>」的支点：把在井下与工业现场锤炼出来的抗干扰算法、自校准策略、失效诊断逻辑，反向注入发动机在线诊断模块的开发，形成「<strong>严苛场景验证 → 核心诊断模块加固</strong>」的闭环。</p>
+<h2 id="七结语一个系统工程问题">七、结语：一个系统工程问题</h2>
+<p>把上面几条合起来看，激光诊断研究的加强，本质上是一个<strong>系统工程问题</strong>。它不是在单一技术指标上追求「更高、更快、更强」，而是需要同步推进四个层面：</p>
+<ul>
+<li><strong>原理层面</strong>：对极端条件的适应性（飞秒、LAST、高重频光源）；</li>
+<li><strong>系统层面</strong>：多参数集成与工程鲁棒性（单侧访问、无扫描、抗振动）；</li>
+<li><strong>数据层面</strong>：物理可信的 AI 与可量化的不确定度；</li>
+<li><strong>应用层面</strong>：与新型燃料、工业场景的深度咬合。</li>
+</ul>
+<p>这几个层面相互依存，任何一个环节的短板都会制约整体诊断能力的提升。</p>
+<p>对我们课题组而言，真正要补的是三个关键环节：<strong>给同步测量赋予可量化的不确定度</strong>、<strong>让机器学习反演获得物理可信性与泛化能力</strong>、<strong>把诊断系统从「实验装置」锻造成「在线工具」</strong>。在此基础上，以<strong>氨/氢特征组分诊断</strong>为零碳时代的切入点，以<strong>井下与工业现场</strong>为鲁棒性的试金石。</p>
+<p>这不是另起炉灶。高频多场同步与 TDLAS 机器学习反演这两张牌已经打出去了，下一步是在它们的延长线上，把「先进」做成「不可替代」。</p>
+<h2 id="进一步阅读">进一步阅读</h2>
+<ul>
+<li><a href="/xliu-group/zh/post/xliu-24-tdlas-overview/">TDLAS 的仿真和局限</a></li>
+<li><a href="/xliu-group/zh/post/xliu-25-tdlas-biomass/">TDLAS 的空间分辨率问题</a></li>
+<li><a href="/xliu-group/zh/post/xliu-5-ch2o-spectroscopy/">甲醛的光谱和 PLIF 测温</a></li>
+<li><a href="/xliu-group/zh/post/xliu-7-crossflow-tdlas/">横向射流轨迹的拟合</a></li>
+<li><a href="/xliu-group/zh/post/xliu-22-piv-plif-loader/">PIV/PLIF Liutex 分析工具</a></li>
+<li><a href="/xliu-group/zh/post/xliu-29-twin-jet-scaling-law/">双喷嘴横流射流的两篇预印本</a></li>
+<li><a href="/xliu-group/zh/post/xliu-30-slit-flame-furnace/">狭缝火焰炉</a></li>
+</ul>
+<ul class="pa0">
+  
+</ul><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/%E6%BF%80%E5%85%89%E8%AF%8A%E6%96%AD/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">激光诊断</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/tdlas/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">TDLAS</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/plif/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">PLIF</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/piv/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">PIV</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">机器学习</a>
+   </li>
+  
+</ul>
+
+      
+    </div><aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">相关內容</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-22-piv-plif-loader/">PIV/PLIF Liutex 分析工具 – 理论、实现与双喷嘴射流应用</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-17-laser-car/">激光车</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/gaoyinbin-21-nea-detection-limit/">15 ppm 到底算好还是算差：把检测限换算成 NEA 之后</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/zhaoxinhao-12-spray-droplet-tracer-classification/">怎么把喷雾图里的液滴和 PIV 示踪粒子分开：四个特征一起看</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/zhangjiayi-13-mid-ir-tomography-integration/">中红外层析成像系统光机电集成</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-29-twin-jet-scaling-law/">双喷嘴横流射流的两篇预印本：一个稀释定律、一条交换标度，与下一步的变密度实验</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-28-tdlas-intro/">TDLAS 简介</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-paper112-5-dataset/">数据集：串联双喷嘴横向射流的 40 kHz 时间分辨 PIV 速度场（velocity fields）</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-21-piv-review/">PIV</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-24-tdlas-overview/">TDLAS 的仿真和局限</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/zhaoxinhao2_droplet/">Openpiv分析</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangchen4/">声激励喷嘴的结构与参数设计</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/gaoyinbin5_qtf/">QTF滤波</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/gaoyinbin-6-supersonic-jet-tdlas/">TDLAS 测定超声速射流实验推进结果</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/huihao6/">Hencken炉的最新进展</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

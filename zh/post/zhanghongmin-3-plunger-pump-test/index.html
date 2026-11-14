@@ -1,1 +1,405 @@
-<!doctype html><html lang=zh><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>柱塞泵实验：0.7 MPa 与 1.5 MPa 工况测试 | 刘训臣燃烧诊断实验室主页</title><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=description content="柱塞泵系统组装后的初步运行测试：系统组成、操作步骤与 0.7/1.5 MPa 两工况的压力-流速记录。"><meta name=generator content="Hugo 0.162.1"><meta name=robots content="index, follow"><meta name=author content="张洪民"><link rel=stylesheet href=/xliu-group/ananke/css/main.02a37ad6c4e155c542d276915a0e3f83f5c7c5fec443350f6e60753f1679b7a7.css integrity="sha256-AqN61sThVcVC0naRWg4/g/XHxf7EQzUPbmB1PxZ5t6c=" crossorigin=anonymous><link rel=stylesheet href=/xliu-group/css/tables.css><script>(function(){"use strict";function t(){for(var t=document.querySelectorAll(".code-block .code-copy[hidden]"),e=0;e<t.length;e++)t[e].hidden=!1}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",t):t();function e(e){var t=e.querySelector(".code-copy-label"),n=t?t.textContent:null;e.classList.add("is-copied"),t&&(t.textContent="Copied"),window.setTimeout(function(){e.classList.remove("is-copied"),t&&n!==null&&(t.textContent=n)},2e3)}function n(e){var n,t=document.createElement("textarea");t.value=e,t.setAttribute("readonly",""),t.style.position="absolute",t.style.left="-9999px",document.body.appendChild(t),t.select(),n=!1;try{n=document.execCommand("copy")}catch{n=!1}return document.body.removeChild(t),n}function s(t){var s,o,a,i=t.closest(".code-block");if(!i)return;if(s=i.querySelector("pre"),!s)return;a=s.querySelector("code")||s,o=a.innerText,navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(o).then(function(){e(t)},function(){n(o)&&e(t)}):n(o)&&e(t)}document.addEventListener("click",function(e){var t=e.target.closest(".code-copy");t&&s(t)})})()</script><link rel=canonical href=https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-3-plunger-pump-test/><meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-3-plunger-pump-test/"><meta property="og:site_name" content="刘训臣燃烧诊断实验室主页"><meta property="og:title" content="柱塞泵实验：0.7 MPa 与 1.5 MPa 工况测试"><meta property="og:description" content="柱塞泵系统组装后的初步运行测试：系统组成、操作步骤与 0.7/1.5 MPa 两工况的压力-流速记录。"><meta property="og:locale" content="zh"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2026-05-02T00:00:00+00:00"><meta property="article:modified_time" content="2026-05-02T00:00:00+00:00"><meta property="article:tag" content="Experiment"><meta property="article:tag" content="Instrument"><meta property="article:tag" content="Dye-Pump"><meta itemprop=name content="柱塞泵实验：0.7 MPa 与 1.5 MPa 工况测试"><meta itemprop=description content="柱塞泵系统组装后的初步运行测试：系统组成、操作步骤与 0.7/1.5 MPa 两工况的压力-流速记录。"><meta itemprop=datePublished content="2026-05-02T00:00:00+00:00"><meta itemprop=dateModified content="2026-05-02T00:00:00+00:00"><meta itemprop=wordCount content="42"><meta itemprop=keywords content="Experiment,Instrument,Dye-Pump"><meta name=twitter:card content="summary"><meta name=twitter:title content="柱塞泵实验：0.7 MPa 与 1.5 MPa 工况测试"><meta name=twitter:description content="柱塞泵系统组装后的初步运行测试：系统组成、操作步骤与 0.7/1.5 MPa 两工况的压力-流速记录。"><script>if(typeof MathJax=="undefined"){window.MathJax={tex:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]]}};const e=document.createElement("script");e.src="https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js",e.async=!0,e.crossOrigin="anonymous",document.head.appendChild(e),console.log("MathJax initialized")}</script></head><body class="ma0 avenir bg-near-white production"><header class="cover bg-center" style=background-image:url(https://liuxunchen.github.io/xliu-group/images/sdust.jpg)><div class=bg-black-60><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l center items-center justify-between"><a href=/xliu-group/zh/ class="f3 fw2 hover-white white-90 dib no-underline"><img src=/xliu-group/images/logo2.jpg class="w100 mw5-ns" alt=刘训臣燃烧诊断实验室主页></a><div class="flex-l items-center"><ul class="pl0 mr3"><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/teaching/ title="Teaching 页">Teaching</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/paper/ title="Paper 页">Paper</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/news/ title="News 页">News</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/people/ title="People 页">People</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/post/ title="Post 页">Post</a></li></ul><div class=ananke-socials></div></div></div></nav><div class="tc-l pv6 ph3 ph4-ns"><div class="f2 f1-l fw2 white-90 mb0 lh-title">柱塞泵实验：0.7 MPa 与 1.5 MPa 工况测试</div></div></div></header><main class=pb7 role=main><article class="page-zhanghongmin-3-plunger-pump-test flex-l mw8 center ph3 flex-wrap justify-between"><header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu"><a class="link dim" href=https://liuxunchen.github.io/xliu-group/zh/post/>Post</a></aside><div id=sharing class="mt3 ananke-socials"></div><h1 class="f1 athelas mt3 mb1">柱塞泵实验：0.7 MPa 与 1.5 MPa 工况测试</h1><p class=tracked><strong>张洪民</strong></p><time class="f6 mv4 dib tracked" datetime=2026-05-02T00:00:00Z>五月 2, 2026</time></header><div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>柱塞泵是 burst 染料激光染料循环系统的"心脏"：它把染料从介质釜压入液压缸，再以设定的驱动压力送往激光器。本实验在系统组装完成后先做运行测试：确认各回路工作正常、记录不同驱动压力下的压力与流速响应，并整理一套可重复的操作规范。</p><h2 id=系统组成>系统组成</h2><p>系统由介质釜、高压气瓶与减压阀、液压缸、控压针阀、齿轮泵、观察窗和多路压力传感器组成，实物见下图。</p><p><img src=/xliu-group/zh/post/zhanghongmin-3-plunger-pump-test/%E6%9F%B1%E5%A1%9E%E6%B3%B5%E8%AE%BE%E5%A4%87%E5%9B%BE.png alt=柱塞泵系统实物图></p><p>系统流程与管路、拆装维护详见另一篇《柱塞泵拆装与管路改造》。</p><blockquote><p>本文只记实验部分：拆装与管路见《柱塞泵拆装与管路改造》；有阻尼情况下压力-流速关系的建模与仿真见《Burst dye 驱动压力-流速关系建模与验证》。</p></blockquote><h2 id=实验步骤>实验步骤</h2><ol><li>将电源航插接好，使各控制回路通电；</li><li>打开介质釜安全阀，使整个介质回路泄压至大气压；</li><li>打开高压气瓶通路，调节减压阀将液压缸活塞压至最低位置，随后打开放压阀释放系统压力，完成初始状态准备；</li><li>向介质釜中加入足量测试介质，打开球阀与单向阀，启动齿轮泵，将介质送入液压缸缸筒腔内，排出回路中的空气；</li><li>关闭放压阀，重新打开高压气瓶通路并设定初始背压（如 0.5 MPa），调节减压阀、高压球阀与控压针阀，使活塞腔压力达到设定值，压力传感器实时监测；</li><li>控制液压缸活塞匀速往复运动，同步采集驱动力与各回路压力，通过观察窗观察介质状态与密封情况；</li><li>测试结束后先关闭高压气瓶，缓慢打开放压阀泄压，关闭齿轮泵，最后切断系统电源。</li></ol><h2 id=实验结果>实验结果</h2><p><strong>0.7 MPa 工况</strong></p><p><img src=/xliu-group/zh/post/zhanghongmin-3-plunger-pump-test/0.7mpa%E5%B7%A5%E5%86%B5.png alt="0.7 MPa 工况"></p><p><strong>1.5 MPa 工况</strong></p><p><img src=/xliu-group/zh/post/zhanghongmin-3-plunger-pump-test/1.5mpa%E5%B7%A5%E5%86%B5.png alt="1.5 MPa 工况"></p><p>两工况均能建立稳定的驱动压力，并获得对应的压力与流速响应；图中记录的波形与阻尼振动模型仿真结果的对照见仿真一篇。</p><h2 id=实验结束后的操作>实验结束后的操作</h2><ol><li>按正确旋转方向关闭气瓶；</li><li>打开回路气路通道，排空气体；</li><li>关闭空压机并断开连接；</li><li>关闭配电箱空气开关，切断电路；</li><li>拔出航插。</li></ol><h2 id=小结>小结</h2><ul><li>系统在 0.7 MPa 与 1.5 MPa 两个驱动压力下均可稳定运行，操作顺序与泄压流程已固化；</li><li>实验波形为后续建模提供对照基准，模型与验证另文记录。</li></ul><ul class=pa0></ul><ul class=pa0><li class="list di"><a href=/xliu-group/zh/tags/experiment/ class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Experiment</a></li><li class="list di"><a href=/xliu-group/zh/tags/instrument/ class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Instrument</a></li><li class="list di"><a href=/xliu-group/zh/tags/dye-pump/ class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Dye-Pump</a></li></ul></div><aside class="w-30-l mt6-l"><div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links"><p class="f5 b mb3">相关內容</p><ul class="pa0 list"><li class=mb2><a href=/xliu-group/zh/post/wangshuo6/>PID实现流量控制</a></li><li class=mb2><a href=/xliu-group/zh/post/huihao-7-centera-hencken/>Centera 计算 Hencken 燃烧器燃烧参数</a></li><li class=mb2><a href=/xliu-group/zh/post/gaoyinbin5_qtf/>QTF滤波</a></li><li class=mb2><a href=/xliu-group/zh/post/gaoyinbin-6-supersonic-jet-tdlas/>TDLAS 测定超声速射流实验推进结果</a></li><li class=mb2><a href=/xliu-group/zh/post/huihao6/>Hencken炉的最新进展</a></li><li class=mb2><a href=/xliu-group/zh/post/huihao5_i2_cell/>I2-cell</a></li><li class=mb2><a href=/xliu-group/zh/post/huihao4_etalon/>干涉器制作</a></li><li class=mb2><a href=/xliu-group/zh/post/huihao-3-tdlas-system-parts/>TDLAS 实验方法简介（一）：光电探测系统的组成</a></li><li class=mb2><a href=/xliu-group/zh/post/wangshuo4/>用Witoszynski曲线设计收缩段</a></li><li class=mb2><a href=/xliu-group/zh/post/wangshuo3/>解决流量计跳数问题总结和感悟</a></li><li class=mb2><a href=/xliu-group/zh/post/wangshuo2/>Blow-out limits of nonpremixed turbulent jet flames in a cross flow at atmospheric and sub-atmospheric pressures</a></li><li class=mb2><a href=/xliu-group/zh/post/xliu-17-laser-car/>激光车</a></li><li class=mb2><a href=/xliu-group/zh/post/xliu-11-uav-experiment/>低空经济会议</a></li><li class=mb2><a href=/xliu-group/zh/post/xliu-7-crossflow-tdlas/>横向射流轨迹的拟合</a></li><li class=mb2><a href=/xliu-group/zh/post/gaoyinbin2/>腔体流量测定实验失败复盘</a></li></ul></div></aside></article></main><footer class="bg-black bottom-0 w-100 pa3" role=contentinfo><div class="flex justify-between"><a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href=https://liuxunchen.github.io/xliu-group/zh/>&copy; 刘训臣燃烧诊断实验室主页 2026</a><div><div class=ananke-socials></div></div></div></footer></body></html>
+<!DOCTYPE html>
+<html lang="zh">
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>柱塞泵实验：0.7 MPa 与 1.5 MPa 工况测试 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="柱塞泵系统组装后的初步运行测试：系统组成、操作步骤与 0.7/1.5 MPa 两工况的压力-流速记录。">
+    <meta name="generator" content="Hugo 0.162.1">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="张洪民">
+    
+
+    <link rel="stylesheet" href="/xliu-group/ananke/css/main.css"><link rel="stylesheet" href="/xliu-group/css/tables.css">
+    <script>
+  (function () {
+    "use strict";
+
+    
+    
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
+
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/zhanghongmin-3-plunger-pump-test/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/zhanghongmin-3-plunger-pump-test/">
+	<meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+	<meta property="og:title" content="柱塞泵实验：0.7 MPa 与 1.5 MPa 工况测试">
+	<meta property="og:description" content="柱塞泵系统组装后的初步运行测试：系统组成、操作步骤与 0.7/1.5 MPa 两工况的压力-流速记录。">
+	<meta property="og:locale" content="zh">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2026-05-02T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-05-02T00:00:00+00:00">
+		<meta property="article:tag" content="Experiment">
+		<meta property="article:tag" content="Instrument">
+		<meta property="article:tag" content="Dye-Pump">
+
+	<meta itemprop="name" content="柱塞泵实验：0.7 MPa 与 1.5 MPa 工况测试">
+	<meta itemprop="description" content="柱塞泵系统组装后的初步运行测试：系统组成、操作步骤与 0.7/1.5 MPa 两工况的压力-流速记录。">
+	<meta itemprop="datePublished" content="2026-05-02T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-05-02T00:00:00+00:00">
+	<meta itemprop="wordCount" content="42">
+	<meta itemprop="keywords" content="Experiment,Instrument,Dye-Pump">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="柱塞泵实验：0.7 MPa 与 1.5 MPa 工况测试">
+	<meta name="twitter:description" content="柱塞泵系统组装后的初步运行测试：系统组成、操作步骤与 0.7/1.5 MPa 两工况的压力-流速记录。">
+
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+
+    
+   
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        <img src="/xliu-group/images/logo2.jpg" class="w100 mw5-ns" alt="刘训臣燃烧诊断实验室主页" />
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/teaching/" title="Teaching 页">
+              Teaching
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/paper/" title="Paper 页">
+              Paper
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/news/" title="News 页">
+              News
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">柱塞泵实验：0.7 MPa 与 1.5 MPa 工况测试</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-zhanghongmin-3-plunger-pump-test flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">
+    <a class="link dim" href="http://localhost:1313/xliu-group/zh/post/">Post</a>
+  </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">柱塞泵实验：0.7 MPa 与 1.5 MPa 工况测试</h1>
+      
+      <p class="tracked"><strong>张洪民</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-05-02T00:00:00Z">五月 2, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>柱塞泵是 burst 染料激光染料循环系统的&quot;心脏&quot;：它把染料从介质釜压入液压缸，再以设定的驱动压力送往激光器。本实验在系统组装完成后先做运行测试：确认各回路工作正常、记录不同驱动压力下的压力与流速响应，并整理一套可重复的操作规范。</p>
+<h2 id="系统组成">系统组成</h2>
+<p>系统由介质釜、高压气瓶与减压阀、液压缸、控压针阀、齿轮泵、观察窗和多路压力传感器组成，实物见下图。</p>
+<p><img src="/xliu-group/zh/post/zhanghongmin-3-plunger-pump-test/%E6%9F%B1%E5%A1%9E%E6%B3%B5%E8%AE%BE%E5%A4%87%E5%9B%BE.png" alt="柱塞泵系统实物图"></p>
+<p>系统流程与管路、拆装维护详见另一篇《柱塞泵拆装与管路改造》。</p>
+<blockquote>
+<p>本文只记实验部分：拆装与管路见《柱塞泵拆装与管路改造》；有阻尼情况下压力-流速关系的建模与仿真见《Burst dye 驱动压力-流速关系建模与验证》。</p>
+</blockquote>
+<h2 id="实验步骤">实验步骤</h2>
+<ol>
+<li>将电源航插接好，使各控制回路通电；</li>
+<li>打开介质釜安全阀，使整个介质回路泄压至大气压；</li>
+<li>打开高压气瓶通路，调节减压阀将液压缸活塞压至最低位置，随后打开放压阀释放系统压力，完成初始状态准备；</li>
+<li>向介质釜中加入足量测试介质，打开球阀与单向阀，启动齿轮泵，将介质送入液压缸缸筒腔内，排出回路中的空气；</li>
+<li>关闭放压阀，重新打开高压气瓶通路并设定初始背压（如 0.5 MPa），调节减压阀、高压球阀与控压针阀，使活塞腔压力达到设定值，压力传感器实时监测；</li>
+<li>控制液压缸活塞匀速往复运动，同步采集驱动力与各回路压力，通过观察窗观察介质状态与密封情况；</li>
+<li>测试结束后先关闭高压气瓶，缓慢打开放压阀泄压，关闭齿轮泵，最后切断系统电源。</li>
+</ol>
+<h2 id="实验结果">实验结果</h2>
+<p><strong>0.7 MPa 工况</strong></p>
+<p><img src="/xliu-group/zh/post/zhanghongmin-3-plunger-pump-test/0.7mpa%E5%B7%A5%E5%86%B5.png" alt="0.7 MPa 工况"></p>
+<p><strong>1.5 MPa 工况</strong></p>
+<p><img src="/xliu-group/zh/post/zhanghongmin-3-plunger-pump-test/1.5mpa%E5%B7%A5%E5%86%B5.png" alt="1.5 MPa 工况"></p>
+<p>两工况均能建立稳定的驱动压力，并获得对应的压力与流速响应；图中记录的波形与阻尼振动模型仿真结果的对照见仿真一篇。</p>
+<h2 id="实验结束后的操作">实验结束后的操作</h2>
+<ol>
+<li>按正确旋转方向关闭气瓶；</li>
+<li>打开回路气路通道，排空气体；</li>
+<li>关闭空压机并断开连接；</li>
+<li>关闭配电箱空气开关，切断电路；</li>
+<li>拔出航插。</li>
+</ol>
+<h2 id="小结">小结</h2>
+<ul>
+<li>系统在 0.7 MPa 与 1.5 MPa 两个驱动压力下均可稳定运行，操作顺序与泄压流程已固化；</li>
+<li>实验波形为后续建模提供对照基准，模型与验证另文记录。</li>
+</ul>
+<ul class="pa0">
+  
+</ul><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/experiment/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Experiment</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/instrument/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Instrument</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/dye-pump/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Dye-Pump</a>
+   </li>
+  
+</ul>
+
+      
+    </div><aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">相关內容</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangshuo6/">PID实现流量控制</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/huihao-7-centera-hencken/">Centera 计算 Hencken 燃烧器燃烧参数</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/gaoyinbin5_qtf/">QTF滤波</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/gaoyinbin-6-supersonic-jet-tdlas/">TDLAS 测定超声速射流实验推进结果</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/huihao6/">Hencken炉的最新进展</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/huihao5_i2_cell/">I2-cell</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/huihao4_etalon/">干涉器制作</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/huihao-3-tdlas-system-parts/">TDLAS 实验方法简介（一）：光电探测系统的组成</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangshuo4/">用Witoszynski曲线设计收缩段</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangshuo3/"> 解决流量计跳数问题总结和感悟</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangshuo2/">Blow-out limits of nonpremixed turbulent jet flames in a cross flow at atmospheric and sub-atmospheric pressures</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-17-laser-car/">激光车</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-11-uav-experiment/">低空经济会议</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-7-crossflow-tdlas/">横向射流轨迹的拟合</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/gaoyinbin2/">腔体流量测定实验失败复盘</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

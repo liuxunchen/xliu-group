@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>15 ppm 到底算好还是算差：把检测限换算成 NEA 之后 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="起因：一个被我讲不清的概念
+上周组会我讲 He2019 那篇高 Q 音叉 LITES 的文献，导师问我：这篇报的 MDL 是 470 ppb，它的 Table 1 里还有个 NEA 列写着 2.0×10⁻⁷，什么意思？
+我当场没答上来，承认&quot;是让 AI 算的&quot;。导师的回话我记下了：你要知道怎么算、要能担责。
+这几天把这个概念从头理了一遍，顺手拿自己 211 项目的数据算了一遍，结论比我预想的有意思：用万用表直读这种极简架构，NEA 和人家锁相放大器 &#43; 10 米多程池的系统只差 1.2 倍。
+这篇把中间过程写清楚，也算给自己留个底。
+为什么要 NEA：ppm 是个不能横向比的单位
+先说清楚 ppm 这个单位为什么不能拿来比。
+同一个系统，报 15 ppm，另一个报 470 ppb，看起来差 30 倍。但这 30 倍里混了一堆不该算进去的东西：
+
+	
+			
+					混进来的因素
+					为什么让它不可比
+			
+	
+	
+			
+					吸收线不同
+					CO₂ 在 2.7 μm 的线强、CO 在 2.33 μm 的线强差很多，同样的吸收系数换算出的 ppm 完全不同
+			
+			
+					平均时间不同
+					我采 100 次读数，一次读多久？对方锁相放大器带宽 1.118 Hz——平均越久噪声越小，不说明时间就等于没说
+			
+			
+					光程不同
+					我 30 m，对方 10.1 m，同样的吸收深度除以不同光程，得到的 α 差 3 倍
+			
+			
+					激光功率不同
+					功率大信噪比就好，这跟&quot;方法好不好&quot;无关
+			
+	
+
+所以要横向比，得把这些都剥掉，只留下方法本身的本事。这就是 NEA。">
+    <meta name="generator" content="Hugo 0.162.1">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="高寅斌">
+    
+
+    <link rel="stylesheet" href="/xliu-group/ananke/css/main.css"><link rel="stylesheet" href="/xliu-group/css/tables.css">
+    <script>
+  (function () {
+    "use strict";
+
+    
+    
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
+
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/gaoyinbin-21-nea-detection-limit/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/gaoyinbin-21-nea-detection-limit/">
+	<meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+	<meta property="og:title" content="15 ppm 到底算好还是算差：把检测限换算成 NEA 之后">
+	<meta property="og:description" content="起因：一个被我讲不清的概念 上周组会我讲 He2019 那篇高 Q 音叉 LITES 的文献，导师问我：这篇报的 MDL 是 470 ppb，它的 Table 1 里还有个 NEA 列写着 2.0×10⁻⁷，什么意思？
+我当场没答上来，承认&#34;是让 AI 算的&#34;。导师的回话我记下了：你要知道怎么算、要能担责。
+这几天把这个概念从头理了一遍，顺手拿自己 211 项目的数据算了一遍，结论比我预想的有意思：用万用表直读这种极简架构，NEA 和人家锁相放大器 &#43; 10 米多程池的系统只差 1.2 倍。
+这篇把中间过程写清楚，也算给自己留个底。
+为什么要 NEA：ppm 是个不能横向比的单位 先说清楚 ppm 这个单位为什么不能拿来比。
+同一个系统，报 15 ppm，另一个报 470 ppb，看起来差 30 倍。但这 30 倍里混了一堆不该算进去的东西：
+混进来的因素 为什么让它不可比 吸收线不同 CO₂ 在 2.7 μm 的线强、CO 在 2.33 μm 的线强差很多，同样的吸收系数换算出的 ppm 完全不同 平均时间不同 我采 100 次读数，一次读多久？对方锁相放大器带宽 1.118 Hz——平均越久噪声越小，不说明时间就等于没说 光程不同 我 30 m，对方 10.1 m，同样的吸收深度除以不同光程，得到的 α 差 3 倍 激光功率不同 功率大信噪比就好，这跟&#34;方法好不好&#34;无关 所以要横向比，得把这些都剥掉，只留下方法本身的本事。这就是 NEA。">
+	<meta property="og:locale" content="zh">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2026-11-05T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T00:00:00+00:00">
+		<meta property="article:tag" content="TDLAS">
+		<meta property="article:tag" content="Spectroscopy">
+		<meta property="article:tag" content="Instrument">
+		<meta property="article:tag" content="Data-Analysis">
+
+	<meta itemprop="name" content="15 ppm 到底算好还是算差：把检测限换算成 NEA 之后">
+	<meta itemprop="description" content="起因：一个被我讲不清的概念 上周组会我讲 He2019 那篇高 Q 音叉 LITES 的文献，导师问我：这篇报的 MDL 是 470 ppb，它的 Table 1 里还有个 NEA 列写着 2.0×10⁻⁷，什么意思？
+我当场没答上来，承认&#34;是让 AI 算的&#34;。导师的回话我记下了：你要知道怎么算、要能担责。
+这几天把这个概念从头理了一遍，顺手拿自己 211 项目的数据算了一遍，结论比我预想的有意思：用万用表直读这种极简架构，NEA 和人家锁相放大器 &#43; 10 米多程池的系统只差 1.2 倍。
+这篇把中间过程写清楚，也算给自己留个底。
+为什么要 NEA：ppm 是个不能横向比的单位 先说清楚 ppm 这个单位为什么不能拿来比。
+同一个系统，报 15 ppm，另一个报 470 ppb，看起来差 30 倍。但这 30 倍里混了一堆不该算进去的东西：
+混进来的因素 为什么让它不可比 吸收线不同 CO₂ 在 2.7 μm 的线强、CO 在 2.33 μm 的线强差很多，同样的吸收系数换算出的 ppm 完全不同 平均时间不同 我采 100 次读数，一次读多久？对方锁相放大器带宽 1.118 Hz——平均越久噪声越小，不说明时间就等于没说 光程不同 我 30 m，对方 10.1 m，同样的吸收深度除以不同光程，得到的 α 差 3 倍 激光功率不同 功率大信噪比就好，这跟&#34;方法好不好&#34;无关 所以要横向比，得把这些都剥掉，只留下方法本身的本事。这就是 NEA。">
+	<meta itemprop="datePublished" content="2026-11-05T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T00:00:00+00:00">
+	<meta itemprop="wordCount" content="640">
+	<meta itemprop="keywords" content="TDLAS,Spectroscopy,Instrument,Data-Analysis">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="15 ppm 到底算好还是算差：把检测限换算成 NEA 之后">
+	<meta name="twitter:description" content="起因：一个被我讲不清的概念 上周组会我讲 He2019 那篇高 Q 音叉 LITES 的文献，导师问我：这篇报的 MDL 是 470 ppb，它的 Table 1 里还有个 NEA 列写着 2.0×10⁻⁷，什么意思？
+我当场没答上来，承认&#34;是让 AI 算的&#34;。导师的回话我记下了：你要知道怎么算、要能担责。
+这几天把这个概念从头理了一遍，顺手拿自己 211 项目的数据算了一遍，结论比我预想的有意思：用万用表直读这种极简架构，NEA 和人家锁相放大器 &#43; 10 米多程池的系统只差 1.2 倍。
+这篇把中间过程写清楚，也算给自己留个底。
+为什么要 NEA：ppm 是个不能横向比的单位 先说清楚 ppm 这个单位为什么不能拿来比。
+同一个系统，报 15 ppm，另一个报 470 ppb，看起来差 30 倍。但这 30 倍里混了一堆不该算进去的东西：
+混进来的因素 为什么让它不可比 吸收线不同 CO₂ 在 2.7 μm 的线强、CO 在 2.33 μm 的线强差很多，同样的吸收系数换算出的 ppm 完全不同 平均时间不同 我采 100 次读数，一次读多久？对方锁相放大器带宽 1.118 Hz——平均越久噪声越小，不说明时间就等于没说 光程不同 我 30 m，对方 10.1 m，同样的吸收深度除以不同光程，得到的 α 差 3 倍 激光功率不同 功率大信噪比就好，这跟&#34;方法好不好&#34;无关 所以要横向比，得把这些都剥掉，只留下方法本身的本事。这就是 NEA。">
+
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+    
+    <style>
+      .dsh-draft-banner{background:#fff3cd;border-bottom:3px solid #f0ad4e;color:#7a5c1e;
+        padding:10px 16px;text-align:center;font-size:15px;font-weight:600;line-height:1.6}
+      .dsh-draft-banner b{color:#c2410c;font-size:16px}
+    </style>
+    <div class="dsh-draft-banner" role="note">
+      <b>草稿预览 · 尚未正式上线</b>　——　本页是 draft（草稿），只在内网预览可见，公网看不到；
+      请继续修改完善，经导师确认后才会正式发布。
+    </div>
+    
+
+    
+   
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        <img src="/xliu-group/images/logo2.jpg" class="w100 mw5-ns" alt="刘训臣燃烧诊断实验室主页" />
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/teaching/" title="Teaching 页">
+              Teaching
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/paper/" title="Paper 页">
+              Paper
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/news/" title="News 页">
+              News
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">15 ppm 到底算好还是算差：把检测限换算成 NEA 之后</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-gaoyinbin-21-nea-detection-limit flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">
+    <a class="link dim" href="http://localhost:1313/xliu-group/zh/post/">Post</a>
+  </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">15 ppm 到底算好还是算差：把检测限换算成 NEA 之后</h1>
+      
+      <p class="tracked"><strong>高寅斌</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-11-05T00:00:00Z">十一月 5, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><h2 id="起因一个被我讲不清的概念">起因：一个被我讲不清的概念</h2>
+<p>上周组会我讲 He2019 那篇高 Q 音叉 LITES 的文献，导师问我：这篇报的 MDL 是 470 ppb，它的 Table 1 里还有个 NEA 列写着 2.0×10⁻⁷，什么意思？</p>
+<p>我当场没答上来，承认&quot;是让 AI 算的&quot;。导师的回话我记下了：<strong>你要知道怎么算、要能担责</strong>。</p>
+<p>这几天把这个概念从头理了一遍，顺手拿自己 211 项目的数据算了一遍，结论比我预想的有意思：<strong>用万用表直读这种极简架构，NEA 和人家锁相放大器 + 10 米多程池的系统只差 1.2 倍。</strong></p>
+<p>这篇把中间过程写清楚，也算给自己留个底。</p>
+<h2 id="为什么要-neappm-是个不能横向比的单位">为什么要 NEA：ppm 是个不能横向比的单位</h2>
+<p>先说清楚 ppm 这个单位为什么不能拿来比。</p>
+<p>同一个系统，报 15 ppm，另一个报 470 ppb，看起来差 30 倍。但这 30 倍里混了一堆不该算进去的东西：</p>
+<table>
+	<thead>
+			<tr>
+					<th>混进来的因素</th>
+					<th>为什么让它不可比</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>吸收线不同</strong></td>
+					<td>CO₂ 在 2.7 μm 的线强、CO 在 2.33 μm 的线强差很多，同样的吸收系数换算出的 ppm 完全不同</td>
+			</tr>
+			<tr>
+					<td><strong>平均时间不同</strong></td>
+					<td>我采 100 次读数，一次读多久？对方锁相放大器带宽 1.118 Hz——平均越久噪声越小，不说明时间就等于没说</td>
+			</tr>
+			<tr>
+					<td><strong>光程不同</strong></td>
+					<td>我 30 m，对方 10.1 m，同样的吸收深度除以不同光程，得到的 α 差 3 倍</td>
+			</tr>
+			<tr>
+					<td><strong>激光功率不同</strong></td>
+					<td>功率大信噪比就好，这跟&quot;方法好不好&quot;无关</td>
+			</tr>
+	</tbody>
+</table>
+<p>所以要横向比，得把这些都剥掉，只留下<strong>方法本身的本事</strong>。这就是 NEA。</p>
+<h2 id="nea-的定义和算法">NEA 的定义和算法</h2>
+<p><strong>NEA = Noise Equivalent Absorption（噪声等效吸收）</strong>，单位 <strong>cm⁻¹·Hz^(-1/2)</strong>。</p>
+<p>它的做法是两步剥离：</p>
+<p><strong>第一步：把 ppm 换成吸收系数 α。</strong></p>
+<p>浓度只是个换算结果，真正跟物理过程挂钩的是吸收系数。比尔-朗伯定律：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code>A = α · L        A = 吸光度（无量纲），L = 光程（cm），α = 吸收系数（cm⁻¹）</code></pre>
+  </div><p>所以<strong>最小可测吸光度 A_min 除以光程，就是最小可测吸收系数 α_min</strong>。</p>
+<p><strong>第二步：按噪声带宽归一。</strong></p>
+<p>白噪声条件下，平均 N 次噪声降到 1/√N，等价于带宽缩到 1/N。所以不同平均时间的系统，要乘上 √B 才能拉到同一把尺子上：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code>NEA = α_min · √B        B = 等效噪声带宽（Hz）</code></pre>
+  </div><p><strong>为什么是 √B 而不是 B</strong>：因为 Allan 方差意义上白噪声段的标准差 ∝ 1/√τ，而 B ∝ 1/τ，所以 σ ∝ √B。</p>
+<p><strong>NNEA</strong> 是再除一次激光功率（单位 cm⁻¹·W·Hz^(-1/2)），把功率差异也扣掉。这个我暂时算不了，原因见后面。</p>
+<h2 id="拿-211-的数据实算一遍">拿 211 的数据实算一遍</h2>
+<p>我 211 项目的实测参数：</p>
+<table>
+	<thead>
+			<tr>
+					<th>参数</th>
+					<th>数值</th>
+					<th>来源</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>基线噪声（1σ）</td>
+					<td><strong>1.34 mV</strong></td>
+					<td>三次 0 ppm 测量均值的标准差（run-to-run）</td>
+			</tr>
+			<tr>
+					<td>灵敏度</td>
+					<td><strong>0.2598 mV/ppm</strong></td>
+					<td>0–500 ppm 线性拟合斜率，R² = 0.9993</td>
+			</tr>
+			<tr>
+					<td>光程</td>
+					<td><strong>30 m = 3000 cm</strong></td>
+					<td>astigmatic 多通池</td>
+			</tr>
+			<tr>
+					<td>万用表读数率</td>
+					<td><strong>2 次/秒</strong></td>
+					<td>六位半表 AC 档实际设置</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>第 0 步：噪声等效浓度</strong></p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code>1.34 mV ÷ 0.2598 mV/ppm = 5.16 ppm</code></pre>
+  </div><p>这就是 1σ 的噪声等效浓度。乘 3 得 3σ 检测限 ≈ 15 ppm——论文里报的那个数。</p>
+<p><strong>第 1 步：ppm → 吸光度</strong></p>
+<p>这一步需要<strong>峰高标定的斜率</strong> dA/dC。我从 <code>09_浓度对照表.csv</code> 的峰高数据拟合（0–500 ppm）：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code>dA/dC = 1.3934×10⁻⁴ /ppm</code></pre>
+  </div><p>于是：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code>A_min = 5.16 ppm × 1.3934×10⁻⁴ /ppm = 7.19×10⁻⁴</code></pre>
+  </div><p><strong>这里做了个交叉校验</strong>：用电压标定反推 dA/dC，得到的数一模一样（1.3934×10⁻⁴）。两条独立路径对上了，说明这个斜率可信。</p>
+<p><strong>第 2 步：吸光度 → 吸收系数</strong></p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code>α_min = 7.19×10⁻⁴ ÷ 3000 cm = 2.40×10⁻⁷ cm⁻¹</code></pre>
+  </div><p><strong>第 3 步：按带宽归一</strong></p>
+<p>万用表 2 次/秒 → 采样率 fs = 2 Hz → 单次读数等效噪声带宽 B = fs/2 = <strong>1 Hz</strong>。</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code>NEA = 2.40×10⁻⁷ × √1 = 2.4×10⁻⁷ cm⁻¹·Hz^(-1/2)</code></pre>
+  </div><h2 id="结果和-he2019-同量级">结果：和 He2019 同量级</h2>
+<p>把四个数放一起（都是 1σ、B = 1 Hz 口径）：</p>
+<table>
+	<thead>
+			<tr>
+					<th>系统</th>
+					<th>NEA (cm⁻¹·Hz^(-1/2))</th>
+					<th>相对本工作</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>QEPAS（He2019）</td>
+					<td>5.4×10⁻⁶</td>
+					<td>慢 23 倍</td>
+			</tr>
+			<tr>
+					<td>常规 TDLAS（He2019）</td>
+					<td>9.3×10⁻⁷</td>
+					<td>慢 3.9 倍</td>
+			</tr>
+			<tr>
+					<td><strong>本工作 211（万用表直读）</strong></td>
+					<td><strong>2.4×10⁻⁷</strong></td>
+					<td>—</td>
+			</tr>
+			<tr>
+					<td>LITES（He2019，锁相 + 10.1 m 池）</td>
+					<td>2.0×10⁻⁷</td>
+					<td>快 1.2 倍</td>
+			</tr>
+	</tbody>
+</table>
+<p><img src="/xliu-group/zh/post/gaoyinbin-21-nea-detection-limit/nea_comparison.png" alt="NEA 横向对比"></p>
+<p>这个结果值得说一句：<strong>对方用的是 MFLI 锁相放大器（1.118 Hz 带宽）+ 10.1 m Herriott 池 + 音叉真空腔内 20 Torr 降 Q 增益；我用的是六位半万用表直读 + 30 m 池 + 常压。架构复杂度差一个量级，NEA 只差 1.2 倍。</strong></p>
+<p>这也正好印证了导师那天说的一句话：<strong>QTF 滤波本质上是牺牲带宽换灵敏度</strong>。带宽窄了（1 Hz 量级）、噪声进不来，所以用最便宜的读数设备也能达到这个水平——代价是响应慢，测不了快变过程。</p>
+<h2 id="再进一步nnea-算出来就没那么好看了">再进一步：NNEA 算出来就没那么好看了</h2>
+<p>上面那张图只归一到带宽。如果再除以激光功率（NNEA），结论会变——<strong>这一步我原以为算不了，查了激光器说明书才知道有斜率效率这个数：0.079 mW/mA</strong>。</p>
+<p><strong>先验证口径</strong>：He2019 报的 LITES NNEA = 7.4×10⁻¹⁰，它的 NEA = 2.0×10⁻⁷、激光功率 3.7 mW：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code>2.0×10⁻⁷ × 3.7×10⁻³ = 7.4×10⁻¹⁰  ✓ 对上</code></pre>
+  </div><p><strong>所以 NNEA = NEA × P</strong>（不是除——单位是 cm⁻¹·W·Hz^(-1/2)，功率越大这个数越大，越小说明&quot;用每瓦功率换来的灵敏度越高&quot;）。</p>
+<p><strong>算我的</strong>：偏置电流 110 mA（论文参数表）× 0.079 mW/mA = <strong>8.69 mW</strong>。</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <pre tabindex="0"><code>NNEA = 2.40×10⁻⁷ × 8.69×10⁻³ = 2.1×10⁻⁹ cm⁻¹·W·Hz^(-1/2)</code></pre>
+  </div><table>
+	<thead>
+			<tr>
+					<th>口径</th>
+					<th>本工作</th>
+					<th>He2019 LITES</th>
+					<th>差</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>NEA</strong>（只归带宽）</td>
+					<td>2.4×10⁻⁷</td>
+					<td>2.0×10⁻⁷</td>
+					<td><strong>1.2 倍</strong></td>
+			</tr>
+			<tr>
+					<td><strong>NNEA</strong>（再归功率）</td>
+					<td><strong>2.1×10⁻⁹</strong></td>
+					<td>7.4×10⁻¹⁰</td>
+					<td><strong>2.8 倍</strong></td>
+			</tr>
+	</tbody>
+</table>
+<p><img src="/xliu-group/zh/post/gaoyinbin-21-nea-detection-limit/nea_nnea_comparison.png" alt="NEA 与 NNEA 双口径对比"></p>
+<p><strong>两栏摆在一起，结论完全不一样</strong>：NEA 上我几乎追平（1.2 倍），NNEA 上落后 2.8 倍。原因很直白——<strong>我的激光功率是它的 2.3 倍（8.69 vs 3.7 mW），灵敏度却没跟着涨</strong>。也就是说，我这套系统&quot;用掉的功率&quot;比&quot;换来的灵敏度&quot;更贵。</p>
+<p>这个结论比单看 NEA 更诚实：<strong>NEA 好，是因为 30 m 长光程 + 窄带宽把噪声压住了；NNEA 差，是因为激光功率没用足。</strong></p>
+<h2 id="三个我没算准必须说明的地方">三个我没算准、必须说明的地方</h2>
+<p>写这篇的过程中发现三个坑，都得讲清楚，不然这个 2.4×10⁻⁷ 会被误用。</p>
+<h3 id="坑一峰高标定的-r-很差">坑一：峰高标定的 R² 很差</h3>
+<p>我用的 dA/dC = 1.3934×10⁻⁴ 是 0–500 ppm 拟合出来的，<strong>R² 只有 0.609</strong>。</p>
+<table>
+	<thead>
+			<tr>
+					<th>拟合区间</th>
+					<th>斜率 (×10⁻⁴/ppm)</th>
+					<th>R²</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0–500 ppm</td>
+					<td>1.393</td>
+					<td><strong>0.609</strong></td>
+			</tr>
+			<tr>
+					<td>100–1000 ppm</td>
+					<td>1.503</td>
+					<td>0.772</td>
+			</tr>
+			<tr>
+					<td>0–1000 ppm</td>
+					<td>1.577</td>
+					<td>0.828</td>
+			</tr>
+	</tbody>
+</table>
+<p>R² 差的原因是我前几天核查数据自洽性时找出来的：<strong>峰高在 1000 ppm 处比 900 ppm 低了 17%</strong>，这个下跌已经查清、归因于基线扣除，正文里如实写了。</p>
+<p><strong>影响</strong>：斜率取不同的值，NEA 会在 2.4×10⁻⁷ ~ 2.7×10⁻⁷ 之间浮动。所以严谨的写法应该是给区间，不是给一个数：</p>
+<blockquote>
+<p><strong>NEA = (2.4 ± 0.5)×10⁻⁷ cm⁻¹·Hz^(-1/2)</strong></p>
+</blockquote>
+<p>而不是&quot;2.4×10⁻⁷&quot;这么干净的一个数。</p>
+<h3 id="坑二带宽取-1-hz-是我的假设">坑二：带宽取 1 Hz 是我的假设</h3>
+<p>万用表 2 次/秒，我按 B = fs/2 = 1 Hz 算。但<strong>六位半表内部可能有多次采样平均</strong>，如果它内部已经是 10 次平均再输出一个数，实际带宽只有 0.1 Hz 量级，NEA 会更小（√10 ≈ 3 倍）。</p>
+<p><strong>所以 1 Hz 是保守取法</strong>——真实值只会比我算的更好，不会更差。这个方向对我有利，但我不能假装知道万用表内部干了什么。要严谨，得查表的说明书或者实测噪声谱。</p>
+<h3 id="坑三nnea-的功率是算出来的不是测出来的">坑三：NNEA 的功率是&quot;算出来的&quot;，不是&quot;测出来的&quot;</h3>
+<p>上面那个 8.69 mW 是<strong>说明书斜率 × 偏置电流</strong>推出来的，不是功率计实测。这中间有两个不确定：</p>
+<p><strong>① 阈值电流没扣。</strong> 半导体激光器的 P–I 曲线在阈值以下是零，说明书给的 0.079 mW/mA 是阈值<strong>以上</strong>的斜率。如果 110 mA 里含 20<del>50 mA 阈值电流，真实功率只有 4.7</del>7.1 mW，NNEA 会落到 1.1×10⁻⁹ ~ 1.7×10⁻⁹（对 He2019 的 1.5~2.3 倍）。图上那根误差棒就是这个区间。</p>
+<p><strong>② 到达探测器的功率更低。</strong> 8.69 mW 是激光器出口，经过 30 m 多程池几十次镜面反射、两个窗口之后还剩多少，<strong>没有实测</strong>。He2019 那篇里 3.7 mW 出光、530 μW 到音叉（透射率约 14%）——如果我的池子透射率也按这个量级，NNEA 会降到 2.9×10⁻¹⁰，反而<strong>优于</strong>它。</p>
+<p><strong>所以这个 2.8 倍要打个大问号。</strong> 严谨的说法是：</p>
+<blockquote>
+<p>NNEA = (1.1 ~ 2.1)×10⁻⁹ cm⁻¹·W·Hz^(-1/2)（按说明书斜率与偏置电流推算，阈值电流与池透射率均未实测）</p>
+</blockquote>
+<p>要把它做实，只需要做一件事：<strong>把功率计放到探测器位置读一次</strong>。这是两分钟的事，但得有场次。</p>
+<h2 id="落点">落点</h2>
+<p>这三件事都归到 211-1 论文的检测限节：</p>
+<ol>
+<li><strong>补 NEA 口径</strong>——现在只报 ppm 单位的 3σ LOD，审稿人无法和同类工作横向比较，加了 NEA 才能进 Table 那种对比表；</li>
+<li><strong>把&quot;15 ppm&quot;明确成短时 LOD</strong>——这个昨天已经改完并重编译：原文写了&quot;长时检测限应由 Allan 方差分析量化&quot;，但我这周取消了 Allan 这一步（w45 没有 211 场次，硬凑一个连续 2 小时记录性价比不划算），所以正文改成如实写&quot;只报短时、长时基线漂移未表征，长时 LOD 预期更高&quot;。<strong>不做的事不能写在 future work 里当承诺</strong>；</li>
+<li><strong>补光功率实测</strong>——现在 NNEA 用的 8.69 mW 是从说明书斜率 × 偏置电流推的，阈值电流和多程池透射率都没测，区间 (1.1~2.1)×10⁻⁹ 太宽。把功率计放到探测器位置读一次就能收窄。</li>
+</ol>
+<h2 id="一句话总结">一句话总结</h2>
+<p><strong>ppm 是换算结果，NEA 是方法的本事，NNEA 是这台仪器的性价比。</strong></p>
+<p>同一批数据，三个口径给出三个结论：</p>
+<table>
+	<thead>
+			<tr>
+					<th>口径</th>
+					<th>结论</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>报 ppm</td>
+					<td>15 ppm vs 470 ppb，看起来差 30 倍</td>
+			</tr>
+			<tr>
+					<td><strong>NEA</strong></td>
+					<td>只差 <strong>1.2 倍</strong></td>
+			</tr>
+			<tr>
+					<td><strong>NNEA</strong></td>
+					<td>落后 <strong>2.8 倍</strong>（且这个数还没做实）</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>三个数都是真的，只是每个数回答的问题不一样。</strong> 报哪个取决于你想说明什么——但如果只报对自己最有利的那个，那就是在挑数字，不是在做科研。</p>
+<p>以后再看到有人报&quot;我们做到了 X ppb&quot;，该问的是：<strong>你的带宽、光程和激光功率各是多少？</strong></p>
+<ul class="pa0">
+  
+</ul><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/tdlas/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">TDLAS</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/spectroscopy/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Spectroscopy</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/instrument/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Instrument</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/data-analysis/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Data-Analysis</a>
+   </li>
+  
+</ul>
+
+      
+    </div><aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">相关內容</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/gaoyinbin5_qtf/">QTF滤波</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/huihao-3-tdlas-system-parts/">TDLAS 实验方法简介（一）：光电探测系统的组成</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/zhangjiayi-13-mid-ir-tomography-integration/">中红外层析成像系统光机电集成</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-24-tdlas-overview/">TDLAS 的仿真和局限</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/huihao5_i2_cell/">I2-cell</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-4-tdlas-absorption-intro/">吸收光谱简介</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-28-tdlas-intro/">TDLAS 简介</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/zhanghongmin-7-piston-pump-overhaul/">柱塞泵拆装与管路改造</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-16-hitran-gui/">HITRAN 仿真图形界面</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-13-flame-spectrum/">反应流体光谱仿真程序 flame spectrum</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/zhanghongmin-5-circuit-diagnosis/">系统电路深度排查：继电器反复烧毁的根因</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangshuo7/">火焰探测器原理及使用</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/zhanghongmin-3-plunger-pump-test/">柱塞泵实验：0.7 MPa 与 1.5 MPa 工况测试</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/zhanghongmin2_tdlas/">光谱模拟</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/huihao-7-centera-hencken/">Centera 计算 Hencken 燃烧器燃烧参数</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

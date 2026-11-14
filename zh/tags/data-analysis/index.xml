@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Data-Analysis on 刘训臣燃烧诊断实验室主页</title>
+		<link>http://localhost:1313/xliu-group/zh/tags/data-analysis/</link>
+		<description>Recent content in Data-Analysis on 刘训臣燃烧诊断实验室主页</description>
+		<generator>Hugo</generator>
+		<language>zh</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/xliu-group/zh/tags/data-analysis/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>15 ppm 到底算好还是算差：把检测限换算成 NEA 之后</title>
+				<link>http://localhost:1313/xliu-group/zh/post/gaoyinbin-21-nea-detection-limit/</link>
+				<pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/gaoyinbin-21-nea-detection-limit/</guid>
+				<description>&lt;h2 id=&#34;起因一个被我讲不清的概念&#34;&gt;起因：一个被我讲不清的概念&lt;/h2&gt;&#xA;&lt;p&gt;上周组会我讲 He2019 那篇高 Q 音叉 LITES 的文献，导师问我：这篇报的 MDL 是 470 ppb，它的 Table 1 里还有个 NEA 列写着 2.0×10⁻⁷，什么意思？&lt;/p&gt;&#xA;&lt;p&gt;我当场没答上来，承认&amp;quot;是让 AI 算的&amp;quot;。导师的回话我记下了：&lt;strong&gt;你要知道怎么算、要能担责&lt;/strong&gt;。&lt;/p&gt;&#xA;&lt;p&gt;这几天把这个概念从头理了一遍，顺手拿自己 211 项目的数据算了一遍，结论比我预想的有意思：&lt;strong&gt;用万用表直读这种极简架构，NEA 和人家锁相放大器 + 10 米多程池的系统只差 1.2 倍。&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;这篇把中间过程写清楚，也算给自己留个底。&lt;/p&gt;&#xA;&lt;h2 id=&#34;为什么要-neappm-是个不能横向比的单位&#34;&gt;为什么要 NEA：ppm 是个不能横向比的单位&lt;/h2&gt;&#xA;&lt;p&gt;先说清楚 ppm 这个单位为什么不能拿来比。&lt;/p&gt;&#xA;&lt;p&gt;同一个系统，报 15 ppm，另一个报 470 ppb，看起来差 30 倍。但这 30 倍里混了一堆不该算进去的东西：&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;混进来的因素&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;为什么让它不可比&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;吸收线不同&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;CO₂ 在 2.7 μm 的线强、CO 在 2.33 μm 的线强差很多，同样的吸收系数换算出的 ppm 完全不同&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;平均时间不同&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;我采 100 次读数，一次读多久？对方锁相放大器带宽 1.118 Hz——平均越久噪声越小，不说明时间就等于没说&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;光程不同&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;我 30 m，对方 10.1 m，同样的吸收深度除以不同光程，得到的 α 差 3 倍&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;激光功率不同&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;功率大信噪比就好，这跟&amp;quot;方法好不好&amp;quot;无关&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;所以要横向比，得把这些都剥掉，只留下&lt;strong&gt;方法本身的本事&lt;/strong&gt;。这就是 NEA。&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

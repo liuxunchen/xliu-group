@@ -1,16 +1,546 @@
-<!doctype html><html lang=zh><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>高寅斌开题报告 | 刘训臣燃烧诊断实验室主页</title><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=description content="QTF 滤波 TDLAS 测温与超声速喷管应用（开题报告正文）"><meta name=generator content="Hugo 0.162.1"><meta name=robots content="index, follow"><meta name=author content="高寅斌"><link rel=stylesheet href=/xliu-group/ananke/css/main.02a37ad6c4e155c542d276915a0e3f83f5c7c5fec443350f6e60753f1679b7a7.css integrity="sha256-AqN61sThVcVC0naRWg4/g/XHxf7EQzUPbmB1PxZ5t6c=" crossorigin=anonymous><link rel=stylesheet href=/xliu-group/css/tables.css><script>(function(){"use strict";function t(){for(var t=document.querySelectorAll(".code-block .code-copy[hidden]"),e=0;e<t.length;e++)t[e].hidden=!1}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",t):t();function e(e){var t=e.querySelector(".code-copy-label"),n=t?t.textContent:null;e.classList.add("is-copied"),t&&(t.textContent="Copied"),window.setTimeout(function(){e.classList.remove("is-copied"),t&&n!==null&&(t.textContent=n)},2e3)}function n(e){var n,t=document.createElement("textarea");t.value=e,t.setAttribute("readonly",""),t.style.position="absolute",t.style.left="-9999px",document.body.appendChild(t),t.select(),n=!1;try{n=document.execCommand("copy")}catch{n=!1}return document.body.removeChild(t),n}function s(t){var s,o,a,i=t.closest(".code-block");if(!i)return;if(s=i.querySelector("pre"),!s)return;a=s.querySelector("code")||s,o=a.innerText,navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(o).then(function(){e(t)},function(){n(o)&&e(t)}):n(o)&&e(t)}document.addEventListener("click",function(e){var t=e.target.closest(".code-copy");t&&s(t)})})()</script><link rel=canonical href=https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin-proposal/><meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin-proposal/"><meta property="og:site_name" content="刘训臣燃烧诊断实验室主页"><meta property="og:title" content="高寅斌开题报告"><meta property="og:description" content="QTF 滤波 TDLAS 测温与超声速喷管应用（开题报告正文）"><meta property="og:locale" content="zh"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2026-11-05T00:00:00+00:00"><meta property="article:modified_time" content="2026-11-05T00:00:00+00:00"><meta property="article:tag" content="Thesis"><meta itemprop=name content="高寅斌开题报告"><meta itemprop=description content="QTF 滤波 TDLAS 测温与超声速喷管应用（开题报告正文）"><meta itemprop=datePublished content="2026-11-05T00:00:00+00:00"><meta itemprop=dateModified content="2026-11-05T00:00:00+00:00"><meta itemprop=wordCount content="1410"><meta itemprop=keywords content="Thesis"><meta name=twitter:card content="summary"><meta name=twitter:title content="高寅斌开题报告"><meta name=twitter:description content="QTF 滤波 TDLAS 测温与超声速喷管应用（开题报告正文）"><script>if(typeof MathJax=="undefined"){window.MathJax={tex:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]]}};const e=document.createElement("script");e.src="https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js",e.async=!0,e.crossOrigin="anonymous",document.head.appendChild(e),console.log("MathJax initialized")}</script></head><body class="ma0 avenir bg-near-white production"><header><div class="pb3-m pb6-l bg-black"><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l center items-center justify-between"><a href=/xliu-group/zh/ class="f3 fw2 hover-white white-90 dib no-underline"><img src=/xliu-group/images/logo2.jpg class="w100 mw5-ns" alt=刘训臣燃烧诊断实验室主页></a><div class="flex-l items-center"><ul class="pl0 mr3"><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/teaching/ title="Teaching 页">Teaching</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/paper/ title="Paper 页">Paper</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/news/ title="News 页">News</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/people/ title="People 页">People</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/post/ title="Post 页">Post</a></li></ul><div class=ananke-socials></div></div></div></nav></div></header><main class=pb7 role=main><article class="report-page center ph3 mw8-l"><header class="mt4 mb4"><h1 class="f2 athelas mt3 mb2">高寅斌开题报告</h1><p class="report-meta f6 tracked gray mb4">2026-11-05</p></header><div class="report-body nested-copy-line-height lh-copy serif f4 nested-links mid-gray"><h2 id=一立论依据>一、立论依据</h2><h3 id=1课题来源选题依据和立论背景>1、课题来源、选题依据和立论背景</h3><p>选题依据和立论背景</p><p>典型欠膨胀超声速射流作为喷嘴、压缩机、涡轮等动力系统核心部件内的典型流动形态，其流动特性直接决定设备的运行效率与服役寿命。其内部 CO₂的相变行为也是当前亟待厘清的关键科学问题。CO₂工质在经高速射流的的流场中，会经历强烈且快速的膨胀过程，流场内部的温度与压力在极短时间内骤降至相变阈值以下，打破原有热力学平衡状态。一方面，相变产生的液滴与团簇会加剧射流内部的流动振荡，破坏流场的稳定性，导致喷嘴出口压力波动、压缩机喘振风险提升，大幅降低系统的工作效率；另一方面，高速运动的液滴具有较强的冲击性，长期冲刷会造成喷嘴内壁、压缩机叶轮等部件的冲蚀磨损，缩短设备的服役周期，甚至引发泄漏、爆炸等安全事故。因此要精准揭示这一相变机制，首要前提是准确获取流场内部温度、压力、密度等核心热力学参数的真实分布与演化规律。然而，当前针对欠膨胀超声速射流的研究，大部分聚焦在理想气体假设之上，这一假设忽略了分子间作用力与物性变化，但实际工程中的流场的温度压力会受到激波、剪切层作用等因素的影响，此时若仍沿用理想气体假说开展流场模拟与性能预测，将严重偏离实际流动状态，无法精准捕捉流场的热力学结构，在此基础上解析 CO₂相变机制也就缺乏可靠的数据支撑。另一方面，当前主流的 CO₂相变理论多以静态或准静态环境为研究基础，难以适配欠膨胀超声速射流的高速动态的环境。在欠膨胀流场中，相变的成核、液滴生长等过程可能与流场的剪切、混合、激波反射等动态行为深度耦合，目前的大部分研究也难以解释高速流场中相变与流动的相互作用机制，导致对CO₂高速动态相变的认知存在空白。</p><p>当前针对超声速射流的非侵入式诊断技术虽已在流场动力学特性研究中获得诸多应用，如激光诱导荧光（PLIF）、粒子图像测速（PIV）、纹影法 等，但当聚焦于欠膨胀超声速射流中CO₂相变与相关的热力学参数精准测量时，这些技术均存在难以规避的局限；PLIF技术需要依赖示踪剂，PLIF 的核心原理是通过向流场中添加荧光示踪剂，利用激光激发示踪剂分子发光，再通过荧光信号的强度、分布反演流场参数。但在欠膨胀超声速射流 CO₂相变研究中，示踪剂的添加会直接破坏流场的原始热力学平衡，示踪剂分子的密度、比热容、等物性与CO₂工质存在显著差异，会改变局部流场的温压传递规律，干扰 CO₂的膨胀过程与相变触发条件，导致测量对象偏离真实场景，PIV技术需向流场中播撒微米级固体或液体粒子，通过拍摄粒子的运动轨迹反演流场速度分布。但在欠膨胀超声速射流中，这一技术应用十分受限：首先，粒子的惯性会导致其无法精准跟随高速流场的瞬时变化，粒子的响应速度会远低于流场的动态演化速度，其次，PIV 技术的核心功能是测量速度场，无法直接获取温度、压力、密度等与相变紧密耦合的热力学参数，即便通过速度场间接推导，也需依赖理想气体假设等不合理前提，进一步降低了数据的可靠性；此外，播撒的外部粒子可能与 CO₂相变产生的液滴、团簇发生碰撞、融合，不仅会干扰相变过程的自然演化，还会导致相变产物的分析出现偏差。纹影法等传统光学诊断技术虽具备无示踪剂、非侵入的优势，但无法满足热力学参数精准测量的需求。这类技术的核心原理是利用流场中密度梯度引发的光线偏折，通过图像灰度变化直观呈现激波、剪切层等流场结构的轮廓。但在对于CO₂相变研究中，其局限性主要是仅能定性观察激波的位置、形态，无法定量输出温度、压力的值，仅靠流场结构的定性观察，无法建立相变与热力学参数的量化关联，难以厘清激波结构与相变过程的相互作用机制，无法为相变热力学机制解析提供有效数据支撑。</p><p>而传统接触式测量技术（如皮托管、热电偶、压力传感器探针等）虽然可以较好的流场的温度压力分布，但由于探针的接触会直接破坏流场的完整性，超声速流场中，固体探针会引发局部激波反射、流动分离，改变原始流场的膨胀过程与温压分布，也会干扰 CO₂相变的触发与演化，导致测量结果与真实流场严重偏离。</p><p>而中红外激光光谱测量技术凭借非侵入式、高灵敏度、快速响应的特性，以及无需添加示踪剂、可直接探测 CO₂特征吸收谱线的优势，为相变研究提供了适配方案 。该技术基于分子光谱学原理，依托中红外波段 CO₂分子的特征吸收特性实现流场参数测量，原理是当激光穿透流场时，CO₂分子只会吸收和自身振动 - 转动能级匹配的激光波长，未被吸收的激光被探测器接收。因为不同转动能级的 CO₂吸收谱线，对温度的敏感程度不一样，可以选两条邻近的 CO₂特征谱线，算出两者的强度比值；这个强度比值只和温度相关，结合已知的谱线参数，就能直接反演出流场温度分布，并进一步推导压力与密度的分布，这样既不破坏流场原始状态，也不会干扰CO₂相变过程。因此，采用中红外激光光谱测量技术探究流场中的热力学结构与参数演变不仅能填补射流相变热力学机制的研究空白，还能构建起一个解决此类问题的物理模型，兼具重要的理论意义与工程应用价值</p><p>课题研究目的、理论意义和实际应用价值</p><p>2.1 课题研究目的</p><p>本课题的研究目的为探究典型欠膨胀超声速射流流场的热力学结构，准确获取流场中温度、压力、密度的分布特征；同时探究 CO₂在低温高压超声速流场中的相变凝结机制，最终明确超声速射流流场的基本特性。</p><p>2.2 课题理论意义</p><p>本课题的理论意义主要聚焦两个核心方向：一是二氧化碳超声速流场特性探究，当前描述超声速射流的经典理论大多建立在理想气体假设之上，然而实际工程中的欠膨胀超声速射流常处于非平衡态，理想气体假设难以精准刻画这些动态过程。此前的测量技术在复杂三维流场中，难以同步获取多物理量的动态演化，这使得非平衡态超声速流场的核心物理机制长期缺乏充分的实验支撑。二是 CO₂相变探究，目前主流的 CO₂相变理论多适用于静态或准静态环境，核心是在给定温度、压力条件下判断相态，但这很难完全适用对超声速射流中流场快速膨胀导致的参数骤变过程。现有相变理论因未考虑流场非均匀性和动态压力温度变化，难以精准预测凝结起始位置和团簇演化规律；在工程应用中存在明显空白，需要针对性的实验数据填补。</p><p>2.3 课题实用价值</p><p>本课题的实用价值体现在超声速流场调控与相变控制技术的产业化应用，可有效解决多领域气液分离难题，其中在天然气分离出水（脱水）领域的应用尤为典型。从实际需求来看，天然气开采后需脱除水分才能进入管道运输或后续加工，否则水汽易与天然气形成水合物堵塞管道，还会与酸性气体反应腐蚀设备、降低天然气热值，严重影响运输安全与能源利用效率。当前主流天然气脱水技术（如吸附法、吸收法、冷凝法）存在明显短板：吸附法再生能耗高，吸收法需大量循环吸收剂，传统冷凝法制冷成本高且脱水精度有限，尤其在海上平台、偏远气田等空间受限场景，现有设备难以兼顾高效与紧凑需求。</p><p>基于课题对超声速流场特性的研究成果，可优化天然气脱水工艺中的核心设备设计。通过精准调控流场参数强化气液雾化混合效果，解决传统设备在大液气比工况下雾化不均、脱水效率低的问题，大幅降低吸收剂用量与运行成本。同时，课题使用的中红外激光光谱测量全域参数测量技术，可实现脱水过程中流场温度、压力的监测，为工艺参数的动态调节提供精准数据支撑。</p><h2 id=二文献综述>二、文献综述</h2><h3 id=1国内外研究现状发展动态>1、国内外研究现状、发展动态</h3><p>本部分将基于激光测量技术 - 超声速流场的测量与相变机制研究的逻辑脉络，系统梳理相关研究进展。中红外激光光谱测量技术凭借非侵入式、高灵敏度、快速响应的特性，以及无需添加示踪剂即可直接探测气体特征吸收谱线的优势，已成为流场参数测量的重要手段。其工作原理将激光调谐至目标物种（如 H₂O、CO₂、CO）不同振转量子态的近邻跃迁，通过测量吸收光谱推断粒子数比，进而计算温度；测量至少2 条谱线，即可获取目标物种的摩尔浓度。国内外在该技术用于复杂工况（火焰燃烧、流场等）参数测量领域已积累长期且系统的成果，例如2020年Wen等人的研究<sup>[34]</sup>，该研究整合了光谱测量技术在火焰诊断中的实验方法与数据处理经验，选择CO₂在4.2μm附近的特征吸收谱线，通过光学系统优化将探测光束直径缩减至150μm，以匹配对冲扩散火焰的高轴向温度梯度特征，还提出了两种核心数据处理方法：高光谱断层扫描技术（结合Abel反演解决视线积分非均匀性误差）和多线谱拟合方法（基于Boltzmann分布模型描述参数径向分布），两种方法的交叉验证提升了测量可靠性；温度测量范围覆盖1654K至2720K且与数值模拟结果吻合良好，但CO₂浓度测量在高温火焰中误差较高，主要受拟合算法对温度的敏感性影响，瞬态测量虽通过信号滤波实现0.2毫秒时间分辨率，但原始信号噪声仍会影响结果稳定性。类似的还有2018 年 Liu 等人的研究<sup>[32]</sup>，该研究针对性地优化了光谱测量技术的核心适配方案 —— 选择 CO₂在 4.2μm 附近的 v₃基带带头区域作为探测谱段，这一区域兼具三大优势：一是几乎无环境背景 CO₂吸收，避免了远距离测量时的背景干扰；二是适配层流同轴扩散火焰的测量场景；三是高温敏感性强，高转动量子数（J）跃迁的吸收系数随温度升高而增大，大幅提升了高温区域的测量精度。实验中采用双光束吸收方案抑制激光功率波动，结合 Abel 反演与 Tikhonov 正则化方法，将视线积分的光学深度转化为空间分辨的衰减系数，成功实现了二维温度与 CO₂浓度分布的重构，且通过高低压高温校准（800–1550K）获取了精准的光谱参数，为测量结果提供了可靠支撑。2018 年 Zhang 等人的研究同样是光谱测量技术的准确应用，通过反演算法创新与实验验证，进一步提升了光谱测量技术在含噪声实际场景中的可靠性。该研究针对性解决了传统光谱测量技术在轴对称测量中的核心痛点 ——Abel 反演算法对实验噪声敏感、重建精度不足的问题。此前，其他研究虽已将洋葱剥离法、三点插值法等用于 Abel 反演，但这些方法在处理离散测量数据和噪声时，易出现误差累积，尤其在测量的中心区域精度下滑。Zhang 等人创新采用傅里叶分析 Abel 反演算法，通过将衰减系数展开为余弦函数叠加，实现了天然的低通滤波效果，无需额外预处理即可有效抑制噪声。数值模拟验证显示，在 1% 噪声条件下，该算法对温度和 CO₂浓度的重建误差仅为传统洋葱剥离法的 1/3<del>1/4，尤其在轴对称中心和边缘区域，重建结果更贴合真实分布，大幅提升了复杂场景下的测量稳定性。总体而言，总体而言，以上研究为本课题提供了可靠的红外光谱测量方法支撑：其验证的 CO₂ 4.2μm 适配谱段、优化的 Abel 反演与噪声抑制算法、成熟的温度校准方案，为解决本课题超声速射流 CO₂相变测量中抗干扰、高精度、非侵入的核心需求，精准捕捉热力学参数、解析相变机制提供了关键技术保障。国内外在轴对称自由欠膨胀射流（静止介质中）领域已积累大量系统性研究成果，相关核心研究通过实验观测、理论推导与数值模拟，从射流形成机制、结构特征、参数规律到建模方法形成了完整研究体系，Shapiro 在1953年通过可压缩流体热力学的系统性分析<sup>[32]</sup>，首次明确了欠膨胀射流的本质定义与形成的热力学基础。其研究以收敛喷嘴为核心对象，通过构建纵向压力演化模型，详细分析了流体从喷嘴内部到出口外部的压力变化规律。实验中，他通过控制流体总压与环境压力的比值，观察到两种关键流动状态：当总压比未达到临界值时，流体出口压力与环境压力平衡，流速处于亚声速；当总压比达到临界值后，喷嘴进入壅塞状态，出口流速达到声速，此时出口压力仍高于环境压力，流体无法在喷嘴内部完成压力平衡，只能在出口外部通过激波结构调整压力，进而形成欠膨胀射流。该研究还通过热力学方程推导，验证了壅塞状态是欠膨胀射流形成的前提这一核心结论，其提出的压力比临界判定逻辑，成为后续各类射流类型判定的基础框架。Zucker 与 Biblarz 在 Shapiro 研究的基础上<sup>[33]</sup>，聚焦收敛 - 扩张喷嘴的特殊性，补充了欠膨胀射流的形成条件。他们通过一系列对比实验，研究了不同喉部与出口尺寸比的收敛 - 扩张喷嘴，发现此类喷嘴的射流类型不仅依赖总压比，还与出口压比（出口压力与环境压力比）密切相关。实验中，他们控制喉部流速达到声速（壅塞状态），通过改变出口截面尺寸，观察到当出口压比大于 1 时，流体出口压力高于环境压力，形成欠膨胀射流；当出口压比小于 1 时，出口压力低于环境压力，形成过膨胀射流；仅当出口压比等于 1 时，才为理想膨胀射流。该研究还通过数值模拟验证了出口压比阈值的可靠性，其提出的双压力比判定法，完善了典型欠膨胀射流的形成条件理论，Courant 等人从超声速流动与激波理论出发<sup>[19]</sup>，深入阐释了欠膨胀射流形成的物理本质。他们通过激波动力学分析，指出流体在出口处的压力失衡是形成欠膨胀射流的核心驱动力，而外部激波的产生是流体向环境压力平衡的必然热力学过程。研究中，他们采用特征线法对超声速流动进行数值求解，模拟了激波在射流中的产生、传播与反射过程，验证了激波结构是流体压力调整的关键载体这一结论。此外，他们还通过实验观测到激波与射流边界的相互作用，明确了激波强度与压力比的正相关关系。为射流结构的研究奠定了理论基础，其提出的激波分析方法被广泛应用于超声速射流的数值模拟。Abramovich 通过大量射流实验与理论推导<sup>[13]</sup>，提出射流沿轴向分为近场、过渡、远场三区域的经典框架，该框架目前仍是射流结构分析的核心依据。其研究以空气为工作介质，采用热线风速仪、压力传感器等设备，系统测量了不同压力比下射流的速度、压力、温度分布。在近场区域，他发现核心区流体与环境流体几乎无交换，主要经历等熵膨胀与激波压缩，流速保持超声速；混合层则由湍流主导，存在明显的速度梯度，通过大尺度涡结构实现流体动量交换，且混合层中存在超声速与亚声速两个子区域，以恒定压力线为分界。过渡区域中，他观测到压力、温度等参数的变化率显著降低，射流与环境流体充分混合，压力场逐渐趋于均匀，混合层厚度持续增加并向轴线靠近。远场区域中，射流完全膨胀，流动呈现自相似性，轴向速度和温度随距离增加呈双曲线衰减，径向分布符合高斯分布特征，且该区域的流动特性与理想膨胀射流高度相似，Antsupov通过不同压力比下的对比实验<sup>[35]</sup>，系统分析了压力比对射流区域结构的影响。他采用收敛喷嘴，工作介质涵盖空气、氮气、氩气，压力比范围为 1</del>10，通过纹影法可视化射流结构，结合压力传感器测量关键截面压力。实验发现，低压力比（1<del>1.1）下，近场仅存在单一正激波，射流结构简单，过渡区与远场的划分距离较短；中压力比（1.1</del>4）下，近场形成复杂的激波胞结构，激波与膨胀波交替出现，过渡区长度显著增加；高压力比（≥7）下，激波胞数量减少，仅存单个主激波胞，马赫盘呈弯曲状，远场自相似性的建立距离大幅延长。此外，他还发现流体性质对区域结构的影响较小，而喷嘴出口几何（如喷嘴角）会改变近场激波的反射方式，进而影响区域划分。该研究量化了压力比对射流区域结构的影响规律，为不同压力比场景下的射流预测提供了实验数据支撑。Crist 等人通过大规模实验，系统研究了喷嘴下马赫盘位置的规律，实验中，他们采用轮廓喷嘴与锥形喷嘴，工作介质为空气，总压力比范围覆盖 2<del>1000，出口直径为 0.5</del>2.0 mm，通过纹影法定位马赫盘位置，结合压力传感器验证压力分布。通过对大量实验数据的拟合分析，他们提出马赫盘位置与总压力比的关联规律：总压力比越大，马赫盘距离喷嘴出口越远，且该规律在宽压力比范围内均适用，预测误差小于 10%。此外，他们还发现马赫盘位置与流体性质（如比热容比）无关，与喷嘴出口直径呈线性比例关系，提出了实用的马赫盘位置估算方法。Addy聚焦马赫盘直径的定量规律<sup>[36]</sup>，通过对比实验分析了喷嘴几何、压力比、流体性质对马赫盘直径的影响。实验中，他采用轮廓喷嘴、锥形喷嘴与孔道三种出口形式，工作介质为空气、氢气、氮气，总压力比范围为 5<del>100。低压力比（5</del>50）下，他发现轮廓喷嘴的马赫盘直径大于锥形喷嘴，且两者均随压力比增大而增大，提出了针对性的关联式；高压力比（≥50）下，马赫盘直径与马赫盘位置的比值趋于常数，收敛喷嘴的常数为 0.6，直喷或扩张喷嘴的常数为 0.4。此外，他还发现马赫盘直径与流体比热容比呈反比，氢气的马赫盘直径仅为空气的 60% 左右。该研究量化了喷嘴几何与流体性质对马赫盘直径的影响，但实验数据离散度较大究需进一步验证。Phalnikar等人<sup>[37]</sup>聚焦微喷嘴（出口内径 &lt; 1 mm）的激波胞特征，补充了微尺度下的射流规律。实验中，他们采用出口直径为 0.1<del>0.9 mm 的微喷嘴，工作介质为空气，压力比范围 5</del>20，通过显微纹影法可视化激波结构，结合微型压力传感器测量压力分布。实验发现，微尺度下超声速核心长度显著缩短，仅为宏观喷嘴的五分之一至三分之一，且激波胞的衰减速度更快；激波胞尺寸与喷嘴出口直径呈线性比例关系，微喷嘴的激波胞尺寸显著小于宏观喷嘴；粘性效应在微尺度下更为显著，导致激波胞的强度衰减更快，混合层厚度占射流直径的比例更大。Palmer 与 Hanson 早期采用特征线法进行射流建模<sup>[38]</sup>，该方法是射流核心区激波结构预测的经典数值方法。其核心原理是将复杂的可压缩流动控制方程分解为易于求解的常微分方程，沿特征线方向积分求解，能准确捕捉激波的产生与传播。研究中，他们针对振动非平衡流动场景，模拟了欠膨胀射流核心区的激波结构，验证了特征线法在非平衡流动中的适用性。结果表明，该方法能准确预测马赫盘位置、激波强度分布，误差小于 8%，适用于火箭发动机喷管出口激波结构、超声速燃烧器入口射流等场景的流场分析。但该方法存在局限：对混合层湍流效应的描述能力有限，难以准确捕捉湍流引发的复杂混合过程，且计算效率较低，不适用于全流场（近场 + 远场）的模拟。Dash 等人基于Navier-Stokes 方程开发简化数值模型，该模型通过忽略横向粘性扩散，将三维流动问题简化为二维抛物型方程，适用于射流轴向参数演化的快速预测。实验验证中，他们以空气为工作介质，压力比范围 5<del>20，模拟了射流轴向速度、压力的演化规律，与实验数据的误差小于 10%。该模型的核心优势在于计算效率高，仅为传统 Navier-Stokes 方程求解的 1/5，适用于工程初步设计、多工况参数扫描等场景。但由于简化假设的存在，该模型对径向混合效应的模拟精度有限。Khaksarfard 等人在2010年通过氢气射流模拟<sup>[37]</sup>，揭示了理想气体模型在高压场景下的局限性，强调了真实气体模型的必要性。氢气在高压下（总压力比大于 50），分子间作用力不可忽略，压缩因子偏离 1，理想气体模型预测的密度与声速误差超过 20%。研究中，他们采用范德华方程和 Peng-Robinson 方程两种真实气体模型，模拟了压力比 50</del>200 下的氢气射流热力学行为，与实验数据对比表明，修正后的密度与声速预测误差可降至 5% 以内。此外，他们还发现高压下氢气的比热容比随压力变化显著，理想气体模型假设比热容比恒定会进一步放大误差。Mohamed 与 Paraschivoiu 进一步验证了真实气体模型在超临界流体射流中的适用性<sup>[38]</sup>。超临界流体（如高压二氧化碳）的热力学行为与理想气体差异极大，理想气体模型无法描述其相变前的状态。研究中，他们以超临界二氧化碳为工作介质，压力比范围 100~400，采用 Peng-Robinson 方程模拟射流的热力学演化，实验中通过激光拉曼光谱测量密度与温度分布。结果表明，Peng-Robinson 方程能准确捕捉超临界流体从超临界到亚临界的过渡过程，密度预测误差小于 8%，而理想气体模型的误差超过 50%。该研究将真实气体模型的应用范围扩展至超临界流体，填补了超临界射流建模的空白。Otobe 等人观察到湿空气射流中的冷凝现象，揭示了相变对射流结构的影响<sup>[39]</sup>。湿空气在膨胀过程中温度和压力骤降，可能进入亚稳态引发冷凝，这一现象会改变射流的热力学性质和流动结构。实验中，他们以湿空气为工作介质，相对湿度范围 30%<del>80%，压力比范围 5</del>30，通过高速摄影技术捕捉冷凝过程，结合压力传感器测量马赫盘特征。结果发现，冷凝会导致马赫盘直径减小 10%<del>15%，且马赫盘位置出现滞后现象 —— 压力升高与降低时，马赫盘位置不同，这一现象与冷凝过程的非瞬时性密切相关。Baek 等人补充了冷凝对射流结构的定量影响<sup>[40]</sup>，进一步完善了相变射流的理论。实验中，他们以不同湿度的湿空气为工作介质，压力比范围 10</del>40，通过纹影法可视化激波结构，测量冷凝对激波胞、混合层的影响。结果表明，冷凝对射流结构的影响随湿度增大而增强：相对湿度从 30% 增至 80% 时，马赫盘直径减小幅度从 10% 增至 15%，激波胞波长缩短幅度从 12% 增至 18%；在 RESS（超临界溶液快速膨胀）过程中，固体颗粒的析出会使马赫盘位置缩短 20%，曲率增大。该研究量化了湿度与相变程度对射流结构的影响，为含水汽相变射流的精准预测提供了实验数据。类似对于典型欠膨胀射流的研究有很多，2015 年 Franquet 等人的这篇综述作为该领域的总结性文献，汇总了该领域关键实验研究的核心信息，明确了各研究的喷嘴参数、主要测量对象及核心发现，为后续近场区域特征的深入分析与交叉验证提供基础，具体内容可以参考下表<sup>[14]</sup></p><p>表 1对研究现状的简单总结</td></p></tr></tbody></table><p>所阅文献的查阅范围及手段；参考资料</p><p>杨玉,吴家荣,韩煜航,等.Laval喷管中CO2凝结特性数值模拟研究[J].电力科技与环保,2023,39(06):465-470+504.</p><p>NASA Glenn Research Center. Isentropic flow equations[EB/OL]. (2023-08-31)[2023-08-31]. <a href=https://www.grc.nasa.gov>https://www.grc.nasa.gov</a>.</p><p>Durif, O. 《Design of de Laval nozzles for gas-phase molecular studies in uniform supersonic flow》. Physics of Fluids 34, 期 1 (2022年): 013605. <a href=https://doi.org/10.1063/5.0060362>https://doi.org/10.1063/5.0060362</a>.</p><p>Canosa, André,Elena Jiménez. 《Laval Nozzles: Design, Characterization, and Applications》. Uniform Supersonic Flows in Chemical Physics, Bertrand R Rowe, André Canosa和Dwayne E Heard. WORLD SCIENTIFIC (EUROPE), 2022年. <a href=https://doi.org/10.1142/9781800610996_0002.><a href=https://doi.org/10.1142/9781800610996_0002>https://doi.org/10.1142/9781800610996_0002</a>.</a></p><p>Nagata, Tatsuya, Takumi Sakashita, Shinichiro Nakao和Yoshiaki Miyazato. 《Three-Dimensional Flow Features of Underexpanded Jets Emerging from an Elliptic Convergent Nozzle》. Experiments in Fluids 65, 期 10 (2024年): 146. <a href=https://doi.org/10.1007/s00348-024-03885-y.><a href=https://doi.org/10.1007/s00348-024-03885-y>https://doi.org/10.1007/s00348-024-03885-y</a>.</a></p><p>Wu, Yue, Boris S. Leonov和Christopher Limbach. 《Rayleigh Imaging from CO2Clusters in an Underexpanded Jet》. 收入 AIAA AVIATION 2021 FORUM. AIAA AVIATION Forum. American Institute of Aeronautics and Astronautics, 2021年. <a href=https://doi.org/10.2514/6.2021-3115.><a href=https://doi.org/10.2514/6.2021-3115>https://doi.org/10.2514/6.2021-3115</a>.</a></p><p>黄哲, 杨雯, 梁铁波, 沈昕, 欧阳华和杜朝辉. 《基于非平衡相变的超临界二氧化碳离心压缩机气动性能分析》. 工程热物理学报 45, 期 9 (2024年): 2631～39.</p><p>Aabid, Abdul, Sher Afghan Khan和Muneer Baig. 《A Critical Review of Supersonic Flow Control for High-Speed Applications》. Applied Sciences 11, 期 15 (2021年): 15. <a href=https://doi.org/10.3390/app11156899.><a href=https://doi.org/10.3390/app11156899>https://doi.org/10.3390/app11156899</a>.</a></p><p>André, Benoît, Thomas Castelain和Christophe Bailly. 《Experimental Exploration of Underexpanded Supersonic Jets》. Shock Waves 24, 期 1 (2014年): 21～32. <a href=https://doi.org/10.1007/s00193-013-0457-4.><a href=https://doi.org/10.1007/s00193-013-0457-4>https://doi.org/10.1007/s00193-013-0457-4</a>.</a></p><p>Capecelatro, Jesse, 和Justin L. Wagner. 《Gas–Particle Dynamics in High-Speed Flows》. Annual Review of Fluid Mechanics 56, 期 Volume 56, 2024 (2024年): 379～403. <a href=https://doi.org/10.1146/annurev-fluid-121021-015818.><a href=https://doi.org/10.1146/annurev-fluid-121021-015818>https://doi.org/10.1146/annurev-fluid-121021-015818</a>.</a></p><p>Chocinski, D., R. Leblanc, J.-V. Hachemin, D. Chocinski, R. Leblanc和J.-V. Hachemin. 《Experimental/computational investigation of supersonic jet in subsonic compressible crossflow》. 收入 35th Aerospace Sciences Meeting and Exhibit. American Institute of Aeronautics and Astronautics,. 见于 2025年1月5日. <a href=https://arc.aiaa.org/doi/abs/10.2514/6.1997-714.><a href=https://arc.aiaa.org/doi/abs/10.2514/6.1997-714>https://arc.aiaa.org/doi/abs/10.2514/6.1997-714</a>.</a></p><p>Abramovich, G. N. 《The Theory of Turbulent Jets》. MIT Press, Cambridge, Mass, 1963. <a href="https://gz.nstl.gov.cn/paper_detail.html?id=234be529bb5f7264a4e2367c2dd46ede">https://gz.nstl.gov.cn/paper_detail.html?id=234be529bb5f7264a4e2367c2dd46ede</a>.</p><p>Duronio, Francesco, Carlo Villante和Angelo De Vita. 《Under-Expanded Jets in Advanced Propulsion Systems—A Review of Latest Theoretical and Experimental Research Activities》. Energies 16, 期 18 (2023年): 18. <a href=https://doi.org/10.3390/en16186471.><a href=https://doi.org/10.3390/en16186471>https://doi.org/10.3390/en16186471</a>.</a></p><p>Franquet, Erwin, Vincent Perrier, Stéphane Gibout和Pascal Bruel. 《Free underexpanded jets in a quiescent medium: A review》. Progress in Aerospace Sciences 77 (2015年8月): 25～53. <a href=https://doi.org/10.1016/j.paerosci.2015.06.006.><a href=https://doi.org/10.1016/j.paerosci.2015.06.006>https://doi.org/10.1016/j.paerosci.2015.06.006</a>.</a></p><p>Fu, Debin, Yong Yu和Qinglin Niu. 《Simulation of underexpanded supersonic jet flows with chemical reactions》. Chinese Journal of Aeronautics 27, 期 3 (2014年): 505～13. <a href=https://doi.org/10.1016/j.cja.2014.04.003.><a href=https://doi.org/10.1016/j.cja.2014.04.003>https://doi.org/10.1016/j.cja.2014.04.003</a>.</a></p><p>Courant, R., 和 Friedrichs, K. O. 《Supersonic Flow and Shock Waves》. Interscience, Springer, New York, 1956 (1956 年): 1～402.</p><p>Guimarães Bucalo, Tamara, 和Lubomir Ribarov. 《Optical Diagnostics for Aerospace and Turbomachinery Applications》. 会议论文 presented 于 ASME Turbo Expo 2023: Turbomachinery Technical Conference and Exposition. American Society of Mechanical Engineers Digital Collection, 2023年9月28日. <a href=https://doi.org/10.1115/GT2023-102508.><a href=https://doi.org/10.1115/GT2023-102508>https://doi.org/10.1115/GT2023-102508</a>.</a></p><p>Kim, K. T., J. G. Lee, B. D. Quay和D. A. Santavicca. 《Spatially distributed flame transfer functions for predicting combustion dynamics in lean premixed gas turbine combustors》. Combustion and Flame 157, 期 9 (2010年): 1718～30. <a href=https://doi.org/10.1016/j.combustflame.2010.04.016.><a href=https://doi.org/10.1016/j.combustflame.2010.04.016>https://doi.org/10.1016/j.combustflame.2010.04.016</a>.</a></p><p>Liu, Yulan, Feng Xing, Liwei Su, Huijun Tan和Depeng Wang. 《A Mini-Review of Recent Developments in Plenoptic Background-Oriented Schlieren Technology for Flow Dynamics Measurement》. Aerospace 11, 期 4 (2024年): 4. <a href=https://doi.org/10.3390/aerospace11040303.><a href=https://doi.org/10.3390/aerospace11040303>https://doi.org/10.3390/aerospace11040303</a>.</a></p><p>Lv, Zheng, Jinglei Xu, Guangtao Song, Rui Li和Jianhui Ge. 《Review on the aerodynamic issues of the exhaust system for scramjet and turbine based combined cycle engine》. Progress in Aerospace Sciences, SI: Ramjet/Scramjet Aerodynamics: A Progress Review, 卷 143 (2023年11月): 100956. <a href=https://doi.org/10.1016/j.paerosci.2023.100956.><a href=https://doi.org/10.1016/j.paerosci.2023.100956>https://doi.org/10.1016/j.paerosci.2023.100956</a>.</a></p><p>Marakasov, Dimitriy A., Victor A. Banakh, Artem A. Sukharev和Ruvim Sh. Tsvyk. 《Study of the structure of turbulent underexpanded supersonic jets by laser transillumination》. Waves in Random and Complex Media 33, 期 5～6 (2023年): 1224～33. <a href=https://doi.org/10.1080/17455030.2022.2061083.><a href=https://doi.org/10.1080/17455030.2022.2061083>https://doi.org/10.1080/17455030.2022.2061083</a>.</a></p><p>Murugesan, Priyadharshini, Arjun Biju Kumar, Akhil Teja Kambhampati, 等. 《Numerical Study of Characteristics of Underexpanded Supersonic Jet》. Journal of Aerospace Technology and Management 12 (2020年10月): e4220. <a href=https://doi.org/10.5028/jatm.v12.1126.><a href=https://doi.org/10.5028/jatm.v12.1126>https://doi.org/10.5028/jatm.v12.1126</a>.</a></p><p>ORTH, RICHARD C., 和JOHN A. FUNK. 《An experimental and comparative study of jet penetration in supersonic flow.》 Journal of Spacecraft and Rockets 4, 期 9 (1967年): 1236～42. <a href=https://doi.org/10.2514/3.29058.><a href=https://doi.org/10.2514/3.29058>https://doi.org/10.2514/3.29058</a>.</a></p><p>Qiu, Haowei, Rui Zhou, Xing Li, 等. 《A review on spontaneous ignition mechanism of pressurized hydrogen released through tubes》. International Journal of Hydrogen Energy 86 (2024年10月): 613～37. <a href=https://doi.org/10.1016/j.ijhydene.2024.08.442.><u><a href=https://doi.org/10.1016/j.ijhydene.2024.08.442>https://doi.org/10.1016/j.ijhydene.2024.08.442</a>.</u></a></p><p>Scroggs, S. D., 和G. S. Settles. 《An Experimental Study of Supersonic Microjets》. Experiments in Fluids 21, 期 6 (1996年): 401～9. <a href=https://doi.org/10.1007/BF00189042.><u><a href=https://doi.org/10.1007/BF00189042>https://doi.org/10.1007/BF00189042</a>.</u></a></p><p>Zhang, Guoyong, Guoqing Wang, Yan Huang, Yizun Wang和Xunchen Liu. 《Reconstruction and simulation of temperature and CO2 concentration in an axisymmetric flame based on TDLAS》. Optik 170 (2018年10月): 166～77. <a href=https://doi.org/10.1016/j.ijleo.2018.05.123>https://doi.org/10.1016/j.ijleo.2018.05.123</a>.</p><p>Liu, Xunchen, Guoyong Zhang, Yan Huang, Yizun Wang和Fei Qi. 《Two-Dimensional Temperature and Carbon Dioxide Concentration Profiles in Atmospheric Laminar Diffusion Flames Measured by Mid-Infrared Direct Absorption Spectroscopy at 4.2 Μm》. Applied Physics B 124, 期 4 (2018年): 4. <a href=https://doi.org/10.1007/s00340-018-6930-0.><a href=https://doi.org/10.1007/s00340-018-6930-0>https://doi.org/10.1007/s00340-018-6930-0</a>.</a></p><p>Kalita A, Mrozek-McCourt M, Kaldawi T F, 等. Microstructure and crystal order during freezing of supercooled water drops [J]. Nature, 2023, 620: 557-561. <a href=https://doi.org/10.1038/s41586-023-06283-2><a href=https://doi.org/10.1038/s41586-023-06283-2>https://doi.org/10.1038/s41586-023-06283-2</a></a></p><p>WEN D, WANG Y. Spatially and temporally resolved temperature measurements in counterflow flames using a single interband cascade laser [J]. Optics Express, 2020, 28 (25): 37879. doi:10.1364/OE.411278</p><p>Shapiro A. The Dynamics and Thermodynamics of Compressible Fluid Flow, vol. 1[M]. New York: The Ronald Press Company, 1953.</p><p>Zucker, R. D., 和 O. Biblarz. 《Fundamentals of Gas Dynamics》. second edition. John Wiley & Sons, Ltd, Hoboken, New Jersey, 2002.</p><p>Antsupov, A. V. 《General properties of underexpanded and overexpanded supersonic gas jets》. Soviet Physics Technical Physics (Sov. Phys. Tech. Phys.) 19, 期 2 (1974 年): 234～238.</p><p>Addy, A. L. 《Effects of axisymmetric sonic nozzle geometry on Mach disk characteristics》. AIAA Journal 19, 期 1 (1981 年): 121～122.</p><p>Phalnikar, K. A., R. Kumar, and F. S. Alvi. 《Experiments on free and impinging supersonic microjets》. Experiments in Fluids 44, 期 5 (2008 年): 819～830.</p><p>J.L. Palmer, R.K. Hanson, 《Application of method of characteristics to underexpanded, freejet flows with vibrational nonequilibrium》, AIAA J. 36 (2) (1998)193–200.</p><p>S.M. Dash, P.D. Del Guidice, 《Analysis of three-dimensional ducted and exhaust plume flowfields》, AIAA J. 16 (1979) 823–830.</p><p>Khaksarfard, R., Kameshi, M.R., & Paraschivoiu, M. 《Numerical simulation of high pressure release and dispersion of hydrogen into air with real gas model》. Shock Waves 20, (2010): 205～216.</p><p>Mohamed, K., & Paraschivoiu, M. 《Real gas simulation of hydrogen release from a high-pressure chamber》. International Journal of Hydrogen Energy, 30(8), 2005: 903～912. <a href=https://doi.org/10.1016/j.ijhydene.2004.10.015><a href=https://doi.org/10.1016/j.ijhydene.2004.10.015>https://doi.org/10.1016/j.ijhydene.2004.10.015</a></a></p><p>Kim, H.-D., Kang, M.-S., Otobe, Y., & Setoguchi, T. 《The effect of nonequilibrium condensation on hysteresis phenomenon of under-expanded jets》. Journal of Mechanical Science and Technology, 23(3), 2009: 856～867. <a href=https://doi.org/10.1007/s12206-009-0308-5><a href=https://doi.org/10.1007/s12206-009-0308-5>https://doi.org/10.1007/s12206-009-0308-5</a></a></p><p>Baek, S.-C., Kwon, S.-B., Kim, H.-D., Setoguchi, T., & Matsuo, S. 《Study of moderately underexpanded supersonic moist air jets》. AIAA Journal, 44(7), 2006: 1624～1627.</p><h2 id=三研究内容技术路线创新点>三、研究内容、技术路线、创新点</h2><p>1．主要研究内容及拟解决的关键技术</p><p>1.1 主要研究内容</p><p>1.欠膨胀超声速射流流场的实验，测量针对轴对称欠膨胀射流流场，采用中红外激光光谱测量技术结合纹影拍摄系统开展实验测量。实现流场全域温度、压力、密度的精准测量，同时利用纹影系统直观捕捉流场核心结构特征，包括激波的位置与形态等信息。实验前先通过数值仿真手段，模拟不同喷嘴形状、工况参数下的流场特性，预设射流扫描的范围与步长，确定射流的全部区域并选择合适扫描步长，为后续数据关联分析提供基础。</p><p>2.流场实验数据处理与适配状态方程构建，基于实验测得的吸收光谱数据，结合abel反演算法系统分析热力学参数的空间分布规律，明确激波、边界层等结构对参数分布的影响机制。进一步开展数据关联分析，建立流场温度、压力、密度与空间位置、入口工况参数之间的关系。初步构建适配该欠膨胀超声速射流流场的状态方程；同时借助数值仿真验证与完善方程，通过构建与实验工况一致的仿真模型，对比仿真结果与实验数据的偏差，修正状态方程参数，提升方程对实际流场的适配性与预测精度，最终形成能准确描述流场热力学特性的状态方程。</p><p>3.CO₂相变特性机制研究，聚焦低温高压超声速流场环境中的CO₂相变行为，结合流场温压分布特征，探究 CO₂在欠膨胀环境下的相变演化规律。将高速动态流场中的相变特性与静态相变理论进行对比分析，明确两者在相变阈值等方面的差异，建立相变过程与流场温度、压力参数的定量对应关系，</p><p>1.2 拟解决的关键技术</p><p>1.二氧化碳欠膨胀射流流场的建模，本课题可以通过中红外激光光谱测量技术得到超声速射流流场的温度、压力和密度分布，以此来构建更符合工程实际应用的状态方程模型。</p><p>2.对于吸收峰的选择，通过 HITEMP 数据库与数值仿真结果相结合，确保所选谱线对在 2.7μm 波段无空气（N₂、O₂）、水汽（H₂O）的交叉吸收峰，准确规避了水会在 2.7μm 波段的吸收干扰。</p><p>2．拟采取的研究方法、技术路线、实施方案及可行性分析</p><p>2.1 研究方法</p><p>该项目研究方法以实验测量为主、仿真模拟与理论分析为辅，具体内容如下：以中红外光谱层析方法为核心，对Laval喷嘴内轴对称超声速流场进行光谱扫描，解析流场中各点温度、压力、密度等微观参数；同时以CO₂为测量介质，分析在欠膨胀射流中流场参数与相变过程存在的联系。采用纹影拍摄技术获取流场宏观结构图像，捕捉激波形态、膨胀/压缩区域等特征，与中红外光谱测量反演的微观参数分布对标，辅助验证流场结构解析的准确性。</p><p>2.2 技术路线</p><img src=media/image1.png style=width:6.27639in;height:3.70556in alt=演示文稿1><p>2.3 实施方案</p><p>本实验的实施方案如下：鉴于标准Laval喷嘴在小尺寸情况下加工难度大，由于加工精度问题实验结果最后可能难以复现，因此本实验采用小孔射流+大气膨胀的方案搭建超声速射流发生系统，以此规避小尺寸Laval喷嘴的加工缺陷，同时保障实验所需超声速流场的可重复性。该超声速射流发生系统核心包含高压CO₂气瓶、集成温度与压力传感器的混合腔体、小孔喷嘴及各类密封连接件，其中小孔喷嘴将替代传统Laval喷嘴，让气流射出后在大气环境中完成膨胀至超声速状态，其孔径尺寸将通过前期数值仿真优化确定。射流系统的搭建，先将小孔喷嘴与混合腔体对接，再通过高压三通阀实现氮气瓶、CO₂气瓶与混合腔体的支路连接，每条支路均配备独立减压阀与流量计，用来控制氮气、CO₂的混合比例与射流前的压力控制，整个射流系统通过定制支架固定后，整体安装在高精度伺服电机上。该伺服电机采用T字型安装结构，具备两个自由度的精准扫描功能，其中x轴自由度用于驱动射流系统沿水平方向移动，完成同一高度下射流截面的横向扫描，z轴自由度则用于驱动射流系统沿垂直方向升降，实现不同高度位置射流截面的分层扫描，实验前会结合前期仿真确定的射流扩散范围预设扫描行程，在流场范围内进行扫描。与射流扫描系统配套的激光测量系统采用双光路耦合设计，分为起指引作用的可见光路与核心测量的中红外激光光路，其中可见光路的核心作用是确保激光精准扫描到超声速射流，其激光经平面金镜反射后投射至混合腔体出口的硒化锌窗口片并反射，通过观察可见光斑投射位置可实时校准射流系统与测量光路的相对姿态；中红外激光光路为热力学参数测量的核心，激光器基于不同电流产生不同波长中红外激光的原理工作，因此实验选用Red Pitaya开发板作为调制模块，输出特定频率与振幅的三角波信号驱动激光器，实现激光波长的周期性调谐，调谐后的中红外激光经平面金镜反射后投射至硒化锌窗口片并透射进入射流区域，硒化锌材质既保证中红外激光的高透射率，又能保障混合腔体的高压密封。两条光路在硒化锌窗口片处实现初步同轴耦合，后续需依次穿过两个同轴布置的小孔光阑，进一步滤除杂散光并校准同轴度，同时考虑到扫描电流可能引发光斑光强的空间不规则变化，激光进入探测器前会经凸透镜聚焦处理，使激光能量集中于探测器光敏面，提升信号强度与稳定性，光路的具体布置与部件位置关系可详见示意图图1。在探测器接收到激光信号后，将先进行环境背景光谱扣除——背景光谱为实验前无CO₂射流状态下测得，用于消除空气残余气体、光学元件反射散射等干扰，从而得到仅由流场CO₂产生的特征吸收峰曲线；随后通过平滑滤波算法剔除随机噪声，选取CO₂在2.7μm波段的两条独立特征吸收峰线进行参数反演，其中温度由两条吸收峰的强度比确定，该方法无需依赖CO₂浓度与光程长度，可规避相变引发的浓度波动干扰；得到温度数据后，先计算出对应温度下的多普勒展宽理论值，由于实测吸收峰的半高宽（FWHM实测）是多普勒展宽与压力主导的洛伦兹展宽的卷积（即Voigt线型），因此通过拟合分离出洛伦兹展宽（γ_L），再通过HITEMP数据库查询该谱线的标准压力展宽系数（γ₀），利用洛伦兹展宽与压力的正比关系（γ_L = γ₀×(P/P₀)，P₀为标准大气压）解出流场压力P。CO₂的密度ρ则先结合理想气体状态方程，代入已算出的温度T和压力P初步得到，再通过Beer-Lambert定律验证——吸收峰的积分强度（峰面积）与ρ×光程长度成正比，若计算出的ρ与峰面积反映的分子数密度一致，则确认温度、压力、密度结果可靠。此外，为实现测量结果的交叉验证与激光光路的辅助指引，在与激光测量系统垂直的方向安装纹影拍摄系统，该系统可拍摄清晰的气流结构特征（如激波、剪切层边界），一方面用于与激光测量得到的温压突变区域进行对比，印证激光测量结果的准确性，另一方面可直观观察射流整体形态与扩散范围，辅助调整伺服电机的扫描行程，确保激光扫描完整覆盖相变关键区域。</p><img src=media/image2.png style=width:5.57569in;height:3.83125in><p>图 1光路排布示意图</p><p>2.3 可行性分析</p><p>已开展了一年的工作，已经搭建了完整的射流系统，同时可以测定射流前的物理量，由此利用Ansys做了对应的数值仿真指导实验，在测量方面已经使用纹影系统拍摄到了要测量的欠膨胀射流流场基本结构，并使用所需要波长2.7μm激光做了初步测量，确定了波段内所要用的吸收峰，并初步采集到了需要的吸收光谱。</p><p>3．论文的创新点</p><ol><li><p>现有超声速流场研究多依赖理想气体假设，对真实流场特性了解不充分。本课题利用喷管来将气体加速到欠膨胀超声速状态，搭建了一套利用中红外光谱层析技术的设备用来测量真实的流畅特性，结合现有的流体力学理论，实现对超声速射流流场中温度、压力、密度等关键参数的无干扰、高时空分辨率测量与解析，建立起一套完整的解决此类物理问题的模型</p></li><li><p>针对传统的相变理无法适配超声速流场的欠膨胀工况，流场参数与CO₂相变之间的关系缺乏定准确的分析，本课题可以测量分析在动态工况下CO₂的相变规律。</p></li></ol><h2 id=四研究基础>四、研究基础</h2><p>1．所需实验手段、研究条件和实验条件</p><p>所需实验手段</p><p>本研究主要探讨典型欠膨胀射流流场中，流场参数的测量与CO₂相变与流场参数的关联机制，核心技术手段包括：中红外激光光谱技术（2.7μm 波长激光）、Abel 反演算法、聚焦纹影技术，同步实现流场温度、压力、密度的全域解析与 CO₂相变状态识别。研究所需要的核心仪器设备，包括高压气源、混合腔体、小孔喷嘴、中红外激光发射与探测系统、高精度伺服电机及导轨、数据采集卡等条件，实验需要在无干扰，确保安全的情况下进行，需要先采集没有射流的数据作为背景再测量射流数据。</p><p>所需经费，包含经费来源、开支预算（工程设备、材料须填写名称、规格、数量）</p><ol start=3 type=1><li><p>前期工作基础</p><p>在实验开展前，首先借助 ANSYS Fluent 模块对小孔射流 +
-大气膨胀的超声速射流系统进行了数值仿真，为后续实验提供前期指导与参数依据：</p><p><img src=media/image3.png style=width:5.49583in;height:3in></p><p>图 2在喷嘴进口设定5atm时对应的压力云图</p></li></ol><p><img src=media/image4.png style=width:6.10069in;height:3in></p><p>图 3在喷嘴进口设定5atm时对应的温度云图</p><p>在通过 ANSYS
+<!DOCTYPE html>
+<html lang="zh">
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>高寅斌开题报告 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="QTF 滤波 TDLAS 测温与超声速喷管应用（开题报告正文）">
+    <meta name="generator" content="Hugo 0.162.1">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="高寅斌">
+    
+
+    <link rel="stylesheet" href="/xliu-group/ananke/css/main.css"><link rel="stylesheet" href="/xliu-group/css/tables.css">
+    <script>
+  (function () {
+    "use strict";
+
+    
+    
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
+
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/gaoyinbin-proposal/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/gaoyinbin-proposal/">
+	<meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+	<meta property="og:title" content="高寅斌开题报告">
+	<meta property="og:description" content="QTF 滤波 TDLAS 测温与超声速喷管应用（开题报告正文）">
+	<meta property="og:locale" content="zh">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2026-11-05T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T00:00:00+00:00">
+		<meta property="article:tag" content="Thesis">
+
+	<meta itemprop="name" content="高寅斌开题报告">
+	<meta itemprop="description" content="QTF 滤波 TDLAS 测温与超声速喷管应用（开题报告正文）">
+	<meta itemprop="datePublished" content="2026-11-05T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T00:00:00+00:00">
+	<meta itemprop="wordCount" content="1410">
+	<meta itemprop="keywords" content="Thesis">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="高寅斌开题报告">
+	<meta name="twitter:description" content="QTF 滤波 TDLAS 测温与超声速喷管应用（开题报告正文）">
+
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+
+    
+
+<header>
+  <div class="pb3-m pb6-l bg-black">
+    <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        <img src="/xliu-group/images/logo2.jpg" class="w100 mw5-ns" alt="刘训臣燃烧诊断实验室主页" />
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/teaching/" title="Teaching 页">
+              Teaching
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/paper/" title="Paper 页">
+              Paper
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/news/" title="News 页">
+              News
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+  </div>
+</header>
+
+    <main class="pb7" role="main">
+      
+<article class="report-page center ph3 mw8-l">
+  <header class="mt4 mb4">
+    <h1 class="f2 athelas mt3 mb2">高寅斌开题报告</h1>
+    <p class="report-meta f6 tracked gray mb4">2026-11-05</p>
+  </header>
+  <div class="report-body nested-copy-line-height lh-copy serif f4 nested-links mid-gray">
+    <h2 id="一立论依据">一、立论依据</h2>
+<h3 id="1课题来源选题依据和立论背景">1、课题来源、选题依据和立论背景</h3>
+<p>选题依据和立论背景</p>
+<p>典型欠膨胀超声速射流作为喷嘴、压缩机、涡轮等动力系统核心部件内的典型流动形态，其流动特性直接决定设备的运行效率与服役寿命。其内部 CO₂的相变行为也是当前亟待厘清的关键科学问题。CO₂工质在经高速射流的的流场中，会经历强烈且快速的膨胀过程，流场内部的温度与压力在极短时间内骤降至相变阈值以下，打破原有热力学平衡状态。一方面，相变产生的液滴与团簇会加剧射流内部的流动振荡，破坏流场的稳定性，导致喷嘴出口压力波动、压缩机喘振风险提升，大幅降低系统的工作效率；另一方面，高速运动的液滴具有较强的冲击性，长期冲刷会造成喷嘴内壁、压缩机叶轮等部件的冲蚀磨损，缩短设备的服役周期，甚至引发泄漏、爆炸等安全事故。因此要精准揭示这一相变机制，首要前提是准确获取流场内部温度、压力、密度等核心热力学参数的真实分布与演化规律。然而，当前针对欠膨胀超声速射流的研究，大部分聚焦在理想气体假设之上，这一假设忽略了分子间作用力与物性变化，但实际工程中的流场的温度压力会受到激波、剪切层作用等因素的影响，此时若仍沿用理想气体假说开展流场模拟与性能预测，将严重偏离实际流动状态，无法精准捕捉流场的热力学结构，在此基础上解析 CO₂相变机制也就缺乏可靠的数据支撑。另一方面，当前主流的 CO₂相变理论多以静态或准静态环境为研究基础，难以适配欠膨胀超声速射流的高速动态的环境。在欠膨胀流场中，相变的成核、液滴生长等过程可能与流场的剪切、混合、激波反射等动态行为深度耦合，目前的大部分研究也难以解释高速流场中相变与流动的相互作用机制，导致对CO₂高速动态相变的认知存在空白。</p>
+<p>当前针对超声速射流的非侵入式诊断技术虽已在流场动力学特性研究中获得诸多应用，如激光诱导荧光（PLIF）、粒子图像测速（PIV）、纹影法 等，但当聚焦于欠膨胀超声速射流中CO₂相变与相关的热力学参数精准测量时，这些技术均存在难以规避的局限；PLIF技术需要依赖示踪剂，PLIF 的核心原理是通过向流场中添加荧光示踪剂，利用激光激发示踪剂分子发光，再通过荧光信号的强度、分布反演流场参数。但在欠膨胀超声速射流 CO₂相变研究中，示踪剂的添加会直接破坏流场的原始热力学平衡，示踪剂分子的密度、比热容、等物性与CO₂工质存在显著差异，会改变局部流场的温压传递规律，干扰 CO₂的膨胀过程与相变触发条件，导致测量对象偏离真实场景，PIV技术需向流场中播撒微米级固体或液体粒子，通过拍摄粒子的运动轨迹反演流场速度分布。但在欠膨胀超声速射流中，这一技术应用十分受限：首先，粒子的惯性会导致其无法精准跟随高速流场的瞬时变化，粒子的响应速度会远低于流场的动态演化速度，其次，PIV 技术的核心功能是测量速度场，无法直接获取温度、压力、密度等与相变紧密耦合的热力学参数，即便通过速度场间接推导，也需依赖理想气体假设等不合理前提，进一步降低了数据的可靠性；此外，播撒的外部粒子可能与 CO₂相变产生的液滴、团簇发生碰撞、融合，不仅会干扰相变过程的自然演化，还会导致相变产物的分析出现偏差。纹影法等传统光学诊断技术虽具备无示踪剂、非侵入的优势，但无法满足热力学参数精准测量的需求。这类技术的核心原理是利用流场中密度梯度引发的光线偏折，通过图像灰度变化直观呈现激波、剪切层等流场结构的轮廓。但在对于CO₂相变研究中，其局限性主要是仅能定性观察激波的位置、形态，无法定量输出温度、压力的值，仅靠流场结构的定性观察，无法建立相变与热力学参数的量化关联，难以厘清激波结构与相变过程的相互作用机制，无法为相变热力学机制解析提供有效数据支撑。</p>
+<p>而传统接触式测量技术（如皮托管、热电偶、压力传感器探针等）虽然可以较好的流场的温度压力分布，但由于探针的接触会直接破坏流场的完整性，超声速流场中，固体探针会引发局部激波反射、流动分离，改变原始流场的膨胀过程与温压分布，也会干扰 CO₂相变的触发与演化，导致测量结果与真实流场严重偏离。</p>
+<p>而中红外激光光谱测量技术凭借非侵入式、高灵敏度、快速响应的特性，以及无需添加示踪剂、可直接探测 CO₂特征吸收谱线的优势，为相变研究提供了适配方案 。该技术基于分子光谱学原理，依托中红外波段 CO₂分子的特征吸收特性实现流场参数测量，原理是当激光穿透流场时，CO₂分子只会吸收和自身振动 - 转动能级匹配的激光波长，未被吸收的激光被探测器接收。因为不同转动能级的 CO₂吸收谱线，对温度的敏感程度不一样，可以选两条邻近的 CO₂特征谱线，算出两者的强度比值；这个强度比值只和温度相关，结合已知的谱线参数，就能直接反演出流场温度分布，并进一步推导压力与密度的分布，这样既不破坏流场原始状态，也不会干扰CO₂相变过程。因此，采用中红外激光光谱测量技术探究流场中的热力学结构与参数演变不仅能填补射流相变热力学机制的研究空白，还能构建起一个解决此类问题的物理模型，兼具重要的理论意义与工程应用价值</p>
+<p>课题研究目的、理论意义和实际应用价值</p>
+<p>2.1 课题研究目的</p>
+<p>本课题的研究目的为探究典型欠膨胀超声速射流流场的热力学结构，准确获取流场中温度、压力、密度的分布特征；同时探究 CO₂在低温高压超声速流场中的相变凝结机制，最终明确超声速射流流场的基本特性。</p>
+<p>2.2 课题理论意义</p>
+<p>本课题的理论意义主要聚焦两个核心方向：一是二氧化碳超声速流场特性探究，当前描述超声速射流的经典理论大多建立在理想气体假设之上，然而实际工程中的欠膨胀超声速射流常处于非平衡态，理想气体假设难以精准刻画这些动态过程。此前的测量技术在复杂三维流场中，难以同步获取多物理量的动态演化，这使得非平衡态超声速流场的核心物理机制长期缺乏充分的实验支撑。二是 CO₂相变探究，目前主流的 CO₂相变理论多适用于静态或准静态环境，核心是在给定温度、压力条件下判断相态，但这很难完全适用对超声速射流中流场快速膨胀导致的参数骤变过程。现有相变理论因未考虑流场非均匀性和动态压力温度变化，难以精准预测凝结起始位置和团簇演化规律；在工程应用中存在明显空白，需要针对性的实验数据填补。</p>
+<p>2.3 课题实用价值</p>
+<p>本课题的实用价值体现在超声速流场调控与相变控制技术的产业化应用，可有效解决多领域气液分离难题，其中在天然气分离出水（脱水）领域的应用尤为典型。从实际需求来看，天然气开采后需脱除水分才能进入管道运输或后续加工，否则水汽易与天然气形成水合物堵塞管道，还会与酸性气体反应腐蚀设备、降低天然气热值，严重影响运输安全与能源利用效率。当前主流天然气脱水技术（如吸附法、吸收法、冷凝法）存在明显短板：吸附法再生能耗高，吸收法需大量循环吸收剂，传统冷凝法制冷成本高且脱水精度有限，尤其在海上平台、偏远气田等空间受限场景，现有设备难以兼顾高效与紧凑需求。</p>
+<p>基于课题对超声速流场特性的研究成果，可优化天然气脱水工艺中的核心设备设计。通过精准调控流场参数强化气液雾化混合效果，解决传统设备在大液气比工况下雾化不均、脱水效率低的问题，大幅降低吸收剂用量与运行成本。同时，课题使用的中红外激光光谱测量全域参数测量技术，可实现脱水过程中流场温度、压力的监测，为工艺参数的动态调节提供精准数据支撑。</p>
+<h2 id="二文献综述">二、文献综述</h2>
+<h3 id="1国内外研究现状发展动态">1、国内外研究现状、发展动态</h3>
+<p>本部分将基于激光测量技术 - 超声速流场的测量与相变机制研究的逻辑脉络，系统梳理相关研究进展。中红外激光光谱测量技术凭借非侵入式、高灵敏度、快速响应的特性，以及无需添加示踪剂即可直接探测气体特征吸收谱线的优势，已成为流场参数测量的重要手段。其工作原理将激光调谐至目标物种（如 H₂O、CO₂、CO）不同振转量子态的近邻跃迁，通过测量吸收光谱推断粒子数比，进而计算温度；测量至少2 条谱线，即可获取目标物种的摩尔浓度。国内外在该技术用于复杂工况（火焰燃烧、流场等）参数测量领域已积累长期且系统的成果，例如2020年Wen等人的研究<sup>[34]</sup>，该研究整合了光谱测量技术在火焰诊断中的实验方法与数据处理经验，选择CO₂在4.2μm附近的特征吸收谱线，通过光学系统优化将探测光束直径缩减至150μm，以匹配对冲扩散火焰的高轴向温度梯度特征，还提出了两种核心数据处理方法：高光谱断层扫描技术（结合Abel反演解决视线积分非均匀性误差）和多线谱拟合方法（基于Boltzmann分布模型描述参数径向分布），两种方法的交叉验证提升了测量可靠性；温度测量范围覆盖1654K至2720K且与数值模拟结果吻合良好，但CO₂浓度测量在高温火焰中误差较高，主要受拟合算法对温度的敏感性影响，瞬态测量虽通过信号滤波实现0.2毫秒时间分辨率，但原始信号噪声仍会影响结果稳定性。类似的还有2018 年 Liu 等人的研究<sup>[32]</sup>，该研究针对性地优化了光谱测量技术的核心适配方案 —— 选择 CO₂在 4.2μm 附近的 v₃基带带头区域作为探测谱段，这一区域兼具三大优势：一是几乎无环境背景 CO₂吸收，避免了远距离测量时的背景干扰；二是适配层流同轴扩散火焰的测量场景；三是高温敏感性强，高转动量子数（J）跃迁的吸收系数随温度升高而增大，大幅提升了高温区域的测量精度。实验中采用双光束吸收方案抑制激光功率波动，结合 Abel 反演与 Tikhonov 正则化方法，将视线积分的光学深度转化为空间分辨的衰减系数，成功实现了二维温度与 CO₂浓度分布的重构，且通过高低压高温校准（800–1550K）获取了精准的光谱参数，为测量结果提供了可靠支撑。2018 年 Zhang 等人的研究同样是光谱测量技术的准确应用，通过反演算法创新与实验验证，进一步提升了光谱测量技术在含噪声实际场景中的可靠性。该研究针对性解决了传统光谱测量技术在轴对称测量中的核心痛点 ——Abel 反演算法对实验噪声敏感、重建精度不足的问题。此前，其他研究虽已将洋葱剥离法、三点插值法等用于 Abel 反演，但这些方法在处理离散测量数据和噪声时，易出现误差累积，尤其在测量的中心区域精度下滑。Zhang 等人创新采用傅里叶分析 Abel 反演算法，通过将衰减系数展开为余弦函数叠加，实现了天然的低通滤波效果，无需额外预处理即可有效抑制噪声。数值模拟验证显示，在 1% 噪声条件下，该算法对温度和 CO₂浓度的重建误差仅为传统洋葱剥离法的 1/3<del>1/4，尤其在轴对称中心和边缘区域，重建结果更贴合真实分布，大幅提升了复杂场景下的测量稳定性。总体而言，总体而言，以上研究为本课题提供了可靠的红外光谱测量方法支撑：其验证的 CO₂ 4.2μm 适配谱段、优化的 Abel 反演与噪声抑制算法、成熟的温度校准方案，为解决本课题超声速射流 CO₂相变测量中抗干扰、高精度、非侵入的核心需求，精准捕捉热力学参数、解析相变机制提供了关键技术保障。国内外在轴对称自由欠膨胀射流（静止介质中）领域已积累大量系统性研究成果，相关核心研究通过实验观测、理论推导与数值模拟，从射流形成机制、结构特征、参数规律到建模方法形成了完整研究体系，Shapiro 在1953年通过可压缩流体热力学的系统性分析<sup>[32]</sup>，首次明确了欠膨胀射流的本质定义与形成的热力学基础。其研究以收敛喷嘴为核心对象，通过构建纵向压力演化模型，详细分析了流体从喷嘴内部到出口外部的压力变化规律。实验中，他通过控制流体总压与环境压力的比值，观察到两种关键流动状态：当总压比未达到临界值时，流体出口压力与环境压力平衡，流速处于亚声速；当总压比达到临界值后，喷嘴进入壅塞状态，出口流速达到声速，此时出口压力仍高于环境压力，流体无法在喷嘴内部完成压力平衡，只能在出口外部通过激波结构调整压力，进而形成欠膨胀射流。该研究还通过热力学方程推导，验证了壅塞状态是欠膨胀射流形成的前提这一核心结论，其提出的压力比临界判定逻辑，成为后续各类射流类型判定的基础框架。Zucker 与 Biblarz 在 Shapiro 研究的基础上<sup>[33]</sup>，聚焦收敛 - 扩张喷嘴的特殊性，补充了欠膨胀射流的形成条件。他们通过一系列对比实验，研究了不同喉部与出口尺寸比的收敛 - 扩张喷嘴，发现此类喷嘴的射流类型不仅依赖总压比，还与出口压比（出口压力与环境压力比）密切相关。实验中，他们控制喉部流速达到声速（壅塞状态），通过改变出口截面尺寸，观察到当出口压比大于 1 时，流体出口压力高于环境压力，形成欠膨胀射流；当出口压比小于 1 时，出口压力低于环境压力，形成过膨胀射流；仅当出口压比等于 1 时，才为理想膨胀射流。该研究还通过数值模拟验证了出口压比阈值的可靠性，其提出的双压力比判定法，完善了典型欠膨胀射流的形成条件理论，Courant 等人从超声速流动与激波理论出发<sup>[19]</sup>，深入阐释了欠膨胀射流形成的物理本质。他们通过激波动力学分析，指出流体在出口处的压力失衡是形成欠膨胀射流的核心驱动力，而外部激波的产生是流体向环境压力平衡的必然热力学过程。研究中，他们采用特征线法对超声速流动进行数值求解，模拟了激波在射流中的产生、传播与反射过程，验证了激波结构是流体压力调整的关键载体这一结论。此外，他们还通过实验观测到激波与射流边界的相互作用，明确了激波强度与压力比的正相关关系。为射流结构的研究奠定了理论基础，其提出的激波分析方法被广泛应用于超声速射流的数值模拟。Abramovich 通过大量射流实验与理论推导<sup>[13]</sup>，提出射流沿轴向分为近场、过渡、远场三区域的经典框架，该框架目前仍是射流结构分析的核心依据。其研究以空气为工作介质，采用热线风速仪、压力传感器等设备，系统测量了不同压力比下射流的速度、压力、温度分布。在近场区域，他发现核心区流体与环境流体几乎无交换，主要经历等熵膨胀与激波压缩，流速保持超声速；混合层则由湍流主导，存在明显的速度梯度，通过大尺度涡结构实现流体动量交换，且混合层中存在超声速与亚声速两个子区域，以恒定压力线为分界。过渡区域中，他观测到压力、温度等参数的变化率显著降低，射流与环境流体充分混合，压力场逐渐趋于均匀，混合层厚度持续增加并向轴线靠近。远场区域中，射流完全膨胀，流动呈现自相似性，轴向速度和温度随距离增加呈双曲线衰减，径向分布符合高斯分布特征，且该区域的流动特性与理想膨胀射流高度相似，Antsupov通过不同压力比下的对比实验<sup>[35]</sup>，系统分析了压力比对射流区域结构的影响。他采用收敛喷嘴，工作介质涵盖空气、氮气、氩气，压力比范围为 1</del>10，通过纹影法可视化射流结构，结合压力传感器测量关键截面压力。实验发现，低压力比（1<del>1.1）下，近场仅存在单一正激波，射流结构简单，过渡区与远场的划分距离较短；中压力比（1.1</del>4）下，近场形成复杂的激波胞结构，激波与膨胀波交替出现，过渡区长度显著增加；高压力比（≥7）下，激波胞数量减少，仅存单个主激波胞，马赫盘呈弯曲状，远场自相似性的建立距离大幅延长。此外，他还发现流体性质对区域结构的影响较小，而喷嘴出口几何（如喷嘴角）会改变近场激波的反射方式，进而影响区域划分。该研究量化了压力比对射流区域结构的影响规律，为不同压力比场景下的射流预测提供了实验数据支撑。Crist 等人通过大规模实验，系统研究了喷嘴下马赫盘位置的规律，实验中，他们采用轮廓喷嘴与锥形喷嘴，工作介质为空气，总压力比范围覆盖 2<del>1000，出口直径为 0.5</del>2.0 mm，通过纹影法定位马赫盘位置，结合压力传感器验证压力分布。通过对大量实验数据的拟合分析，他们提出马赫盘位置与总压力比的关联规律：总压力比越大，马赫盘距离喷嘴出口越远，且该规律在宽压力比范围内均适用，预测误差小于 10%。此外，他们还发现马赫盘位置与流体性质（如比热容比）无关，与喷嘴出口直径呈线性比例关系，提出了实用的马赫盘位置估算方法。Addy聚焦马赫盘直径的定量规律<sup>[36]</sup>，通过对比实验分析了喷嘴几何、压力比、流体性质对马赫盘直径的影响。实验中，他采用轮廓喷嘴、锥形喷嘴与孔道三种出口形式，工作介质为空气、氢气、氮气，总压力比范围为 5<del>100。低压力比（5</del>50）下，他发现轮廓喷嘴的马赫盘直径大于锥形喷嘴，且两者均随压力比增大而增大，提出了针对性的关联式；高压力比（≥50）下，马赫盘直径与马赫盘位置的比值趋于常数，收敛喷嘴的常数为 0.6，直喷或扩张喷嘴的常数为 0.4。此外，他还发现马赫盘直径与流体比热容比呈反比，氢气的马赫盘直径仅为空气的 60% 左右。该研究量化了喷嘴几何与流体性质对马赫盘直径的影响，但实验数据离散度较大究需进一步验证。Phalnikar等人<sup>[37]</sup>聚焦微喷嘴（出口内径 &lt; 1 mm）的激波胞特征，补充了微尺度下的射流规律。实验中，他们采用出口直径为 0.1<del>0.9 mm 的微喷嘴，工作介质为空气，压力比范围 5</del>20，通过显微纹影法可视化激波结构，结合微型压力传感器测量压力分布。实验发现，微尺度下超声速核心长度显著缩短，仅为宏观喷嘴的五分之一至三分之一，且激波胞的衰减速度更快；激波胞尺寸与喷嘴出口直径呈线性比例关系，微喷嘴的激波胞尺寸显著小于宏观喷嘴；粘性效应在微尺度下更为显著，导致激波胞的强度衰减更快，混合层厚度占射流直径的比例更大。Palmer 与 Hanson 早期采用特征线法进行射流建模<sup>[38]</sup>，该方法是射流核心区激波结构预测的经典数值方法。其核心原理是将复杂的可压缩流动控制方程分解为易于求解的常微分方程，沿特征线方向积分求解，能准确捕捉激波的产生与传播。研究中，他们针对振动非平衡流动场景，模拟了欠膨胀射流核心区的激波结构，验证了特征线法在非平衡流动中的适用性。结果表明，该方法能准确预测马赫盘位置、激波强度分布，误差小于 8%，适用于火箭发动机喷管出口激波结构、超声速燃烧器入口射流等场景的流场分析。但该方法存在局限：对混合层湍流效应的描述能力有限，难以准确捕捉湍流引发的复杂混合过程，且计算效率较低，不适用于全流场（近场 + 远场）的模拟。Dash 等人基于Navier-Stokes 方程开发简化数值模型，该模型通过忽略横向粘性扩散，将三维流动问题简化为二维抛物型方程，适用于射流轴向参数演化的快速预测。实验验证中，他们以空气为工作介质，压力比范围 5<del>20，模拟了射流轴向速度、压力的演化规律，与实验数据的误差小于 10%。该模型的核心优势在于计算效率高，仅为传统 Navier-Stokes 方程求解的 1/5，适用于工程初步设计、多工况参数扫描等场景。但由于简化假设的存在，该模型对径向混合效应的模拟精度有限。Khaksarfard 等人在2010年通过氢气射流模拟<sup>[37]</sup>，揭示了理想气体模型在高压场景下的局限性，强调了真实气体模型的必要性。氢气在高压下（总压力比大于 50），分子间作用力不可忽略，压缩因子偏离 1，理想气体模型预测的密度与声速误差超过 20%。研究中，他们采用范德华方程和 Peng-Robinson 方程两种真实气体模型，模拟了压力比 50</del>200 下的氢气射流热力学行为，与实验数据对比表明，修正后的密度与声速预测误差可降至 5% 以内。此外，他们还发现高压下氢气的比热容比随压力变化显著，理想气体模型假设比热容比恒定会进一步放大误差。Mohamed 与 Paraschivoiu 进一步验证了真实气体模型在超临界流体射流中的适用性<sup>[38]</sup>。超临界流体（如高压二氧化碳）的热力学行为与理想气体差异极大，理想气体模型无法描述其相变前的状态。研究中，他们以超临界二氧化碳为工作介质，压力比范围 100~400，采用 Peng-Robinson 方程模拟射流的热力学演化，实验中通过激光拉曼光谱测量密度与温度分布。结果表明，Peng-Robinson 方程能准确捕捉超临界流体从超临界到亚临界的过渡过程，密度预测误差小于 8%，而理想气体模型的误差超过 50%。该研究将真实气体模型的应用范围扩展至超临界流体，填补了超临界射流建模的空白。Otobe 等人观察到湿空气射流中的冷凝现象，揭示了相变对射流结构的影响<sup>[39]</sup>。湿空气在膨胀过程中温度和压力骤降，可能进入亚稳态引发冷凝，这一现象会改变射流的热力学性质和流动结构。实验中，他们以湿空气为工作介质，相对湿度范围 30%<del>80%，压力比范围 5</del>30，通过高速摄影技术捕捉冷凝过程，结合压力传感器测量马赫盘特征。结果发现，冷凝会导致马赫盘直径减小 10%<del>15%，且马赫盘位置出现滞后现象 —— 压力升高与降低时，马赫盘位置不同，这一现象与冷凝过程的非瞬时性密切相关。Baek 等人补充了冷凝对射流结构的定量影响<sup>[40]</sup>，进一步完善了相变射流的理论。实验中，他们以不同湿度的湿空气为工作介质，压力比范围 10</del>40，通过纹影法可视化激波结构，测量冷凝对激波胞、混合层的影响。结果表明，冷凝对射流结构的影响随湿度增大而增强：相对湿度从 30% 增至 80% 时，马赫盘直径减小幅度从 10% 增至 15%，激波胞波长缩短幅度从 12% 增至 18%；在 RESS（超临界溶液快速膨胀）过程中，固体颗粒的析出会使马赫盘位置缩短 20%，曲率增大。该研究量化了湿度与相变程度对射流结构的影响，为含水汽相变射流的精准预测提供了实验数据。类似对于典型欠膨胀射流的研究有很多，2015 年 Franquet 等人的这篇综述作为该领域的总结性文献，汇总了该领域关键实验研究的核心信息，明确了各研究的喷嘴参数、主要测量对象及核心发现，为后续近场区域特征的深入分析与交叉验证提供基础，具体内容可以参考下表<sup>[14]</sup></p>
+<p>表 1对研究现状的简单总结</td></p>
+</tr>
+</tbody>
+</table>
+<p>所阅文献的查阅范围及手段；参考资料</p>
+<p>杨玉,吴家荣,韩煜航,等.Laval喷管中CO2凝结特性数值模拟研究[J].电力科技与环保,2023,39(06):465-470+504.</p>
+<p>NASA Glenn Research Center. Isentropic flow equations[EB/OL]. (2023-08-31)[2023-08-31]. <a href="https://www.grc.nasa.gov">https://www.grc.nasa.gov</a>.</p>
+<p>Durif, O. 《Design of de Laval nozzles for gas-phase molecular studies in uniform supersonic flow》. Physics of Fluids 34, 期 1 (2022年): 013605. <a href="https://doi.org/10.1063/5.0060362">https://doi.org/10.1063/5.0060362</a>.</p>
+<p>Canosa, André,Elena Jiménez. 《Laval Nozzles: Design, Characterization, and Applications》. Uniform Supersonic Flows in Chemical Physics, Bertrand R Rowe, André Canosa和Dwayne E Heard. WORLD SCIENTIFIC (EUROPE), 2022年. <a href="https://doi.org/10.1142/9781800610996_0002."><a href="https://doi.org/10.1142/9781800610996_0002">https://doi.org/10.1142/9781800610996_0002</a>.</a></p>
+<p>Nagata, Tatsuya, Takumi Sakashita, Shinichiro Nakao和Yoshiaki Miyazato. 《Three-Dimensional Flow Features of Underexpanded Jets Emerging from an Elliptic Convergent Nozzle》. Experiments in Fluids 65, 期 10 (2024年): 146. <a href="https://doi.org/10.1007/s00348-024-03885-y."><a href="https://doi.org/10.1007/s00348-024-03885-y">https://doi.org/10.1007/s00348-024-03885-y</a>.</a></p>
+<p>Wu, Yue, Boris S. Leonov和Christopher Limbach. 《Rayleigh Imaging from CO2Clusters in an Underexpanded Jet》. 收入 AIAA AVIATION 2021 FORUM. AIAA AVIATION Forum. American Institute of Aeronautics and Astronautics, 2021年. <a href="https://doi.org/10.2514/6.2021-3115."><a href="https://doi.org/10.2514/6.2021-3115">https://doi.org/10.2514/6.2021-3115</a>.</a></p>
+<p>黄哲, 杨雯, 梁铁波, 沈昕, 欧阳华和杜朝辉. 《基于非平衡相变的超临界二氧化碳离心压缩机气动性能分析》. 工程热物理学报 45, 期 9 (2024年): 2631～39.</p>
+<p>Aabid, Abdul, Sher Afghan Khan和Muneer Baig. 《A Critical Review of Supersonic Flow Control for High-Speed Applications》. Applied Sciences 11, 期 15 (2021年): 15. <a href="https://doi.org/10.3390/app11156899."><a href="https://doi.org/10.3390/app11156899">https://doi.org/10.3390/app11156899</a>.</a></p>
+<p>André, Benoît, Thomas Castelain和Christophe Bailly. 《Experimental Exploration of Underexpanded Supersonic Jets》. Shock Waves 24, 期 1 (2014年): 21～32. <a href="https://doi.org/10.1007/s00193-013-0457-4."><a href="https://doi.org/10.1007/s00193-013-0457-4">https://doi.org/10.1007/s00193-013-0457-4</a>.</a></p>
+<p>Capecelatro, Jesse, 和Justin L. Wagner. 《Gas–Particle Dynamics in High-Speed Flows》. Annual Review of Fluid Mechanics 56, 期 Volume 56, 2024 (2024年): 379～403. <a href="https://doi.org/10.1146/annurev-fluid-121021-015818."><a href="https://doi.org/10.1146/annurev-fluid-121021-015818">https://doi.org/10.1146/annurev-fluid-121021-015818</a>.</a></p>
+<p>Chocinski, D., R. Leblanc, J.-V. Hachemin, D. Chocinski, R. Leblanc和J.-V. Hachemin. 《Experimental/computational investigation of supersonic jet in subsonic compressible crossflow》. 收入 35th Aerospace Sciences Meeting and Exhibit. American Institute of Aeronautics and Astronautics,. 见于 2025年1月5日. <a href="https://arc.aiaa.org/doi/abs/10.2514/6.1997-714."><a href="https://arc.aiaa.org/doi/abs/10.2514/6.1997-714">https://arc.aiaa.org/doi/abs/10.2514/6.1997-714</a>.</a></p>
+<p>Abramovich, G. N. 《The Theory of Turbulent Jets》. MIT Press, Cambridge, Mass, 1963. <a href="https://gz.nstl.gov.cn/paper_detail.html?id=234be529bb5f7264a4e2367c2dd46ede">https://gz.nstl.gov.cn/paper_detail.html?id=234be529bb5f7264a4e2367c2dd46ede</a>.</p>
+<p>Duronio, Francesco, Carlo Villante和Angelo De Vita. 《Under-Expanded Jets in Advanced Propulsion Systems—A Review of Latest Theoretical and Experimental Research Activities》. Energies 16, 期 18 (2023年): 18. <a href="https://doi.org/10.3390/en16186471."><a href="https://doi.org/10.3390/en16186471">https://doi.org/10.3390/en16186471</a>.</a></p>
+<p>Franquet, Erwin, Vincent Perrier, Stéphane Gibout和Pascal Bruel. 《Free underexpanded jets in a quiescent medium: A review》. Progress in Aerospace Sciences 77 (2015年8月): 25～53. <a href="https://doi.org/10.1016/j.paerosci.2015.06.006."><a href="https://doi.org/10.1016/j.paerosci.2015.06.006">https://doi.org/10.1016/j.paerosci.2015.06.006</a>.</a></p>
+<p>Fu, Debin, Yong Yu和Qinglin Niu. 《Simulation of underexpanded supersonic jet flows with chemical reactions》. Chinese Journal of Aeronautics 27, 期 3 (2014年): 505～13. <a href="https://doi.org/10.1016/j.cja.2014.04.003."><a href="https://doi.org/10.1016/j.cja.2014.04.003">https://doi.org/10.1016/j.cja.2014.04.003</a>.</a></p>
+<p>Courant, R., 和 Friedrichs, K. O. 《Supersonic Flow and Shock Waves》. Interscience, Springer, New York, 1956 (1956 年): 1～402.</p>
+<p>Guimarães Bucalo, Tamara, 和Lubomir Ribarov. 《Optical Diagnostics for Aerospace and Turbomachinery Applications》. 会议论文 presented 于 ASME Turbo Expo 2023: Turbomachinery Technical Conference and Exposition. American Society of Mechanical Engineers Digital Collection, 2023年9月28日. <a href="https://doi.org/10.1115/GT2023-102508."><a href="https://doi.org/10.1115/GT2023-102508">https://doi.org/10.1115/GT2023-102508</a>.</a></p>
+<p>Kim, K. T., J. G. Lee, B. D. Quay和D. A. Santavicca. 《Spatially distributed flame transfer functions for predicting combustion dynamics in lean premixed gas turbine combustors》. Combustion and Flame 157, 期 9 (2010年): 1718～30. <a href="https://doi.org/10.1016/j.combustflame.2010.04.016."><a href="https://doi.org/10.1016/j.combustflame.2010.04.016">https://doi.org/10.1016/j.combustflame.2010.04.016</a>.</a></p>
+<p>Liu, Yulan, Feng Xing, Liwei Su, Huijun Tan和Depeng Wang. 《A Mini-Review of Recent Developments in Plenoptic Background-Oriented Schlieren Technology for Flow Dynamics Measurement》. Aerospace 11, 期 4 (2024年): 4. <a href="https://doi.org/10.3390/aerospace11040303."><a href="https://doi.org/10.3390/aerospace11040303">https://doi.org/10.3390/aerospace11040303</a>.</a></p>
+<p>Lv, Zheng, Jinglei Xu, Guangtao Song, Rui Li和Jianhui Ge. 《Review on the aerodynamic issues of the exhaust system for scramjet and turbine based combined cycle engine》. Progress in Aerospace Sciences, SI: Ramjet/Scramjet Aerodynamics: A Progress Review, 卷 143 (2023年11月): 100956. <a href="https://doi.org/10.1016/j.paerosci.2023.100956."><a href="https://doi.org/10.1016/j.paerosci.2023.100956">https://doi.org/10.1016/j.paerosci.2023.100956</a>.</a></p>
+<p>Marakasov, Dimitriy A., Victor A. Banakh, Artem A. Sukharev和Ruvim Sh. Tsvyk. 《Study of the structure of turbulent underexpanded supersonic jets by laser transillumination》. Waves in Random and Complex Media 33, 期 5～6 (2023年): 1224～33. <a href="https://doi.org/10.1080/17455030.2022.2061083."><a href="https://doi.org/10.1080/17455030.2022.2061083">https://doi.org/10.1080/17455030.2022.2061083</a>.</a></p>
+<p>Murugesan, Priyadharshini, Arjun Biju Kumar, Akhil Teja Kambhampati, 等. 《Numerical Study of Characteristics of Underexpanded Supersonic Jet》. Journal of Aerospace Technology and Management 12 (2020年10月): e4220. <a href="https://doi.org/10.5028/jatm.v12.1126."><a href="https://doi.org/10.5028/jatm.v12.1126">https://doi.org/10.5028/jatm.v12.1126</a>.</a></p>
+<p>ORTH, RICHARD C., 和JOHN A. FUNK. 《An experimental and comparative study of jet penetration in supersonic flow.》 Journal of Spacecraft and Rockets 4, 期 9 (1967年): 1236～42. <a href="https://doi.org/10.2514/3.29058."><a href="https://doi.org/10.2514/3.29058">https://doi.org/10.2514/3.29058</a>.</a></p>
+<p>Qiu, Haowei, Rui Zhou, Xing Li, 等. 《A review on spontaneous ignition mechanism of pressurized hydrogen released through tubes》. International Journal of Hydrogen Energy 86 (2024年10月): 613～37. <a href="https://doi.org/10.1016/j.ijhydene.2024.08.442."><u><a href="https://doi.org/10.1016/j.ijhydene.2024.08.442">https://doi.org/10.1016/j.ijhydene.2024.08.442</a>.</u></a></p>
+<p>Scroggs, S. D., 和G. S. Settles. 《An Experimental Study of Supersonic Microjets》. Experiments in Fluids 21, 期 6 (1996年): 401～9. <a href="https://doi.org/10.1007/BF00189042."><u><a href="https://doi.org/10.1007/BF00189042">https://doi.org/10.1007/BF00189042</a>.</u></a></p>
+<p>Zhang, Guoyong, Guoqing Wang, Yan Huang, Yizun Wang和Xunchen Liu. 《Reconstruction and simulation of temperature and CO2 concentration in an axisymmetric flame based on TDLAS》. Optik 170 (2018年10月): 166～77. <a href="https://doi.org/10.1016/j.ijleo.2018.05.123">https://doi.org/10.1016/j.ijleo.2018.05.123</a>.</p>
+<p>Liu, Xunchen, Guoyong Zhang, Yan Huang, Yizun Wang和Fei Qi. 《Two-Dimensional Temperature and Carbon Dioxide Concentration Profiles in Atmospheric Laminar Diffusion Flames Measured by Mid-Infrared Direct Absorption Spectroscopy at 4.2 Μm》. Applied Physics B 124, 期 4 (2018年): 4. <a href="https://doi.org/10.1007/s00340-018-6930-0."><a href="https://doi.org/10.1007/s00340-018-6930-0">https://doi.org/10.1007/s00340-018-6930-0</a>.</a></p>
+<p>Kalita A, Mrozek-McCourt M, Kaldawi T F, 等. Microstructure and crystal order during freezing of supercooled water drops [J]. Nature, 2023, 620: 557-561. <a href="https://doi.org/10.1038/s41586-023-06283-2"><a href="https://doi.org/10.1038/s41586-023-06283-2">https://doi.org/10.1038/s41586-023-06283-2</a></a></p>
+<p>WEN D, WANG Y. Spatially and temporally resolved temperature measurements in counterflow flames using a single interband cascade laser [J]. Optics Express, 2020, 28 (25): 37879. doi:10.1364/OE.411278</p>
+<p>Shapiro A. The Dynamics and Thermodynamics of Compressible Fluid Flow, vol. 1[M]. New York: The Ronald Press Company, 1953.</p>
+<p>Zucker, R. D., 和 O. Biblarz. 《Fundamentals of Gas Dynamics》. second edition. John Wiley &amp; Sons, Ltd, Hoboken, New Jersey, 2002.</p>
+<p>Antsupov, A. V. 《General properties of underexpanded and overexpanded supersonic gas jets》. Soviet Physics Technical Physics (Sov. Phys. Tech. Phys.) 19, 期 2 (1974 年): 234～238.</p>
+<p>Addy, A. L. 《Effects of axisymmetric sonic nozzle geometry on Mach disk characteristics》. AIAA Journal 19, 期 1 (1981 年): 121～122.</p>
+<p>Phalnikar, K. A., R. Kumar, and F. S. Alvi. 《Experiments on free and impinging supersonic microjets》. Experiments in Fluids 44, 期 5 (2008 年): 819～830.</p>
+<p>J.L. Palmer, R.K. Hanson, 《Application of method of characteristics to underexpanded, freejet flows with vibrational nonequilibrium》, AIAA J. 36 (2) (1998)193–200.</p>
+<p>S.M. Dash, P.D. Del Guidice, 《Analysis of three-dimensional ducted and exhaust plume flowfields》, AIAA J. 16 (1979) 823–830.</p>
+<p>Khaksarfard, R., Kameshi, M.R., &amp; Paraschivoiu, M. 《Numerical simulation of high pressure release and dispersion of hydrogen into air with real gas model》. Shock Waves 20, (2010): 205～216.</p>
+<p>Mohamed, K., &amp; Paraschivoiu, M. 《Real gas simulation of hydrogen release from a high-pressure chamber》. International Journal of Hydrogen Energy, 30(8), 2005: 903～912. <a href="https://doi.org/10.1016/j.ijhydene.2004.10.015"><a href="https://doi.org/10.1016/j.ijhydene.2004.10.015">https://doi.org/10.1016/j.ijhydene.2004.10.015</a></a></p>
+<p>Kim, H.-D., Kang, M.-S., Otobe, Y., &amp; Setoguchi, T. 《The effect of nonequilibrium condensation on hysteresis phenomenon of under-expanded jets》. Journal of Mechanical Science and Technology, 23(3), 2009: 856～867. <a href="https://doi.org/10.1007/s12206-009-0308-5"><a href="https://doi.org/10.1007/s12206-009-0308-5">https://doi.org/10.1007/s12206-009-0308-5</a></a></p>
+<p>Baek, S.-C., Kwon, S.-B., Kim, H.-D., Setoguchi, T., &amp; Matsuo, S. 《Study of moderately underexpanded supersonic moist air jets》. AIAA Journal, 44(7), 2006: 1624～1627.</p>
+<h2 id="三研究内容技术路线创新点">三、研究内容、技术路线、创新点</h2>
+<p>1．主要研究内容及拟解决的关键技术</p>
+<p>1.1 主要研究内容</p>
+<p>1.欠膨胀超声速射流流场的实验，测量针对轴对称欠膨胀射流流场，采用中红外激光光谱测量技术结合纹影拍摄系统开展实验测量。实现流场全域温度、压力、密度的精准测量，同时利用纹影系统直观捕捉流场核心结构特征，包括激波的位置与形态等信息。实验前先通过数值仿真手段，模拟不同喷嘴形状、工况参数下的流场特性，预设射流扫描的范围与步长，确定射流的全部区域并选择合适扫描步长，为后续数据关联分析提供基础。</p>
+<p>2.流场实验数据处理与适配状态方程构建，基于实验测得的吸收光谱数据，结合abel反演算法系统分析热力学参数的空间分布规律，明确激波、边界层等结构对参数分布的影响机制。进一步开展数据关联分析，建立流场温度、压力、密度与空间位置、入口工况参数之间的关系。初步构建适配该欠膨胀超声速射流流场的状态方程；同时借助数值仿真验证与完善方程，通过构建与实验工况一致的仿真模型，对比仿真结果与实验数据的偏差，修正状态方程参数，提升方程对实际流场的适配性与预测精度，最终形成能准确描述流场热力学特性的状态方程。</p>
+<p>3.CO₂相变特性机制研究，聚焦低温高压超声速流场环境中的CO₂相变行为，结合流场温压分布特征，探究 CO₂在欠膨胀环境下的相变演化规律。将高速动态流场中的相变特性与静态相变理论进行对比分析，明确两者在相变阈值等方面的差异，建立相变过程与流场温度、压力参数的定量对应关系，</p>
+<p>1.2 拟解决的关键技术</p>
+<p>1.二氧化碳欠膨胀射流流场的建模，本课题可以通过中红外激光光谱测量技术得到超声速射流流场的温度、压力和密度分布，以此来构建更符合工程实际应用的状态方程模型。</p>
+<p>2.对于吸收峰的选择，通过 HITEMP 数据库与数值仿真结果相结合，确保所选谱线对在 2.7μm 波段无空气（N₂、O₂）、水汽（H₂O）的交叉吸收峰，准确规避了水会在 2.7μm 波段的吸收干扰。</p>
+<p>2．拟采取的研究方法、技术路线、实施方案及可行性分析</p>
+<p>2.1 研究方法</p>
+<p>该项目研究方法以实验测量为主、仿真模拟与理论分析为辅，具体内容如下：以中红外光谱层析方法为核心，对Laval喷嘴内轴对称超声速流场进行光谱扫描，解析流场中各点温度、压力、密度等微观参数；同时以CO₂为测量介质，分析在欠膨胀射流中流场参数与相变过程存在的联系。采用纹影拍摄技术获取流场宏观结构图像，捕捉激波形态、膨胀/压缩区域等特征，与中红外光谱测量反演的微观参数分布对标，辅助验证流场结构解析的准确性。</p>
+<p>2.2 技术路线</p>
+<img src="media/image1.png" style="width:6.27639in;height:3.70556in" alt="演示文稿1" />
+<p>2.3 实施方案</p>
+<p>本实验的实施方案如下：鉴于标准Laval喷嘴在小尺寸情况下加工难度大，由于加工精度问题实验结果最后可能难以复现，因此本实验采用小孔射流+大气膨胀的方案搭建超声速射流发生系统，以此规避小尺寸Laval喷嘴的加工缺陷，同时保障实验所需超声速流场的可重复性。该超声速射流发生系统核心包含高压CO₂气瓶、集成温度与压力传感器的混合腔体、小孔喷嘴及各类密封连接件，其中小孔喷嘴将替代传统Laval喷嘴，让气流射出后在大气环境中完成膨胀至超声速状态，其孔径尺寸将通过前期数值仿真优化确定。射流系统的搭建，先将小孔喷嘴与混合腔体对接，再通过高压三通阀实现氮气瓶、CO₂气瓶与混合腔体的支路连接，每条支路均配备独立减压阀与流量计，用来控制氮气、CO₂的混合比例与射流前的压力控制，整个射流系统通过定制支架固定后，整体安装在高精度伺服电机上。该伺服电机采用T字型安装结构，具备两个自由度的精准扫描功能，其中x轴自由度用于驱动射流系统沿水平方向移动，完成同一高度下射流截面的横向扫描，z轴自由度则用于驱动射流系统沿垂直方向升降，实现不同高度位置射流截面的分层扫描，实验前会结合前期仿真确定的射流扩散范围预设扫描行程，在流场范围内进行扫描。与射流扫描系统配套的激光测量系统采用双光路耦合设计，分为起指引作用的可见光路与核心测量的中红外激光光路，其中可见光路的核心作用是确保激光精准扫描到超声速射流，其激光经平面金镜反射后投射至混合腔体出口的硒化锌窗口片并反射，通过观察可见光斑投射位置可实时校准射流系统与测量光路的相对姿态；中红外激光光路为热力学参数测量的核心，激光器基于不同电流产生不同波长中红外激光的原理工作，因此实验选用Red Pitaya开发板作为调制模块，输出特定频率与振幅的三角波信号驱动激光器，实现激光波长的周期性调谐，调谐后的中红外激光经平面金镜反射后投射至硒化锌窗口片并透射进入射流区域，硒化锌材质既保证中红外激光的高透射率，又能保障混合腔体的高压密封。两条光路在硒化锌窗口片处实现初步同轴耦合，后续需依次穿过两个同轴布置的小孔光阑，进一步滤除杂散光并校准同轴度，同时考虑到扫描电流可能引发光斑光强的空间不规则变化，激光进入探测器前会经凸透镜聚焦处理，使激光能量集中于探测器光敏面，提升信号强度与稳定性，光路的具体布置与部件位置关系可详见示意图图1。在探测器接收到激光信号后，将先进行环境背景光谱扣除——背景光谱为实验前无CO₂射流状态下测得，用于消除空气残余气体、光学元件反射散射等干扰，从而得到仅由流场CO₂产生的特征吸收峰曲线；随后通过平滑滤波算法剔除随机噪声，选取CO₂在2.7μm波段的两条独立特征吸收峰线进行参数反演，其中温度由两条吸收峰的强度比确定，该方法无需依赖CO₂浓度与光程长度，可规避相变引发的浓度波动干扰；得到温度数据后，先计算出对应温度下的多普勒展宽理论值，由于实测吸收峰的半高宽（FWHM实测）是多普勒展宽与压力主导的洛伦兹展宽的卷积（即Voigt线型），因此通过拟合分离出洛伦兹展宽（γ_L），再通过HITEMP数据库查询该谱线的标准压力展宽系数（γ₀），利用洛伦兹展宽与压力的正比关系（γ_L = γ₀×(P/P₀)，P₀为标准大气压）解出流场压力P。CO₂的密度ρ则先结合理想气体状态方程，代入已算出的温度T和压力P初步得到，再通过Beer-Lambert定律验证——吸收峰的积分强度（峰面积）与ρ×光程长度成正比，若计算出的ρ与峰面积反映的分子数密度一致，则确认温度、压力、密度结果可靠。此外，为实现测量结果的交叉验证与激光光路的辅助指引，在与激光测量系统垂直的方向安装纹影拍摄系统，该系统可拍摄清晰的气流结构特征（如激波、剪切层边界），一方面用于与激光测量得到的温压突变区域进行对比，印证激光测量结果的准确性，另一方面可直观观察射流整体形态与扩散范围，辅助调整伺服电机的扫描行程，确保激光扫描完整覆盖相变关键区域。</p>
+<img src="media/image2.png" style="width:5.57569in;height:3.83125in" />
+<p>图 1光路排布示意图</p>
+<p>2.3 可行性分析</p>
+<p>已开展了一年的工作，已经搭建了完整的射流系统，同时可以测定射流前的物理量，由此利用Ansys做了对应的数值仿真指导实验，在测量方面已经使用纹影系统拍摄到了要测量的欠膨胀射流流场基本结构，并使用所需要波长2.7μm激光做了初步测量，确定了波段内所要用的吸收峰，并初步采集到了需要的吸收光谱。</p>
+<p>3．论文的创新点</p>
+<ol>
+<li>
+<p>现有超声速流场研究多依赖理想气体假设，对真实流场特性了解不充分。本课题利用喷管来将气体加速到欠膨胀超声速状态，搭建了一套利用中红外光谱层析技术的设备用来测量真实的流畅特性，结合现有的流体力学理论，实现对超声速射流流场中温度、压力、密度等关键参数的无干扰、高时空分辨率测量与解析，建立起一套完整的解决此类物理问题的模型</p>
+</li>
+<li>
+<p>针对传统的相变理无法适配超声速流场的欠膨胀工况，流场参数与CO₂相变之间的关系缺乏定准确的分析，本课题可以测量分析在动态工况下CO₂的相变规律。</p>
+</li>
+</ol>
+<h2 id="四研究基础">四、研究基础</h2>
+<p>1．所需实验手段、研究条件和实验条件</p>
+<p>所需实验手段</p>
+<p>本研究主要探讨典型欠膨胀射流流场中，流场参数的测量与CO₂相变与流场参数的关联机制，核心技术手段包括：中红外激光光谱技术（2.7μm 波长激光）、Abel 反演算法、聚焦纹影技术，同步实现流场温度、压力、密度的全域解析与 CO₂相变状态识别。研究所需要的核心仪器设备，包括高压气源、混合腔体、小孔喷嘴、中红外激光发射与探测系统、高精度伺服电机及导轨、数据采集卡等条件，实验需要在无干扰，确保安全的情况下进行，需要先采集没有射流的数据作为背景再测量射流数据。</p>
+<p>所需经费，包含经费来源、开支预算（工程设备、材料须填写名称、规格、数量）</p>
+<ol start="3" type="1">
+<li><p>前期工作基础</p>
+<p>在实验开展前，首先借助 ANSYS Fluent 模块对小孔射流 +
+大气膨胀的超声速射流系统进行了数值仿真，为后续实验提供前期指导与参数依据：</p>
+<p><img src="media/image3.png"
+style="width:5.49583in;height:3in" /></p>
+<p>图 2在喷嘴进口设定5atm时对应的压力云图</p></li>
+</ol>
+<p><img src="media/image4.png"
+style="width:6.10069in;height:3in" /></p>
+<p>图 3在喷嘴进口设定5atm时对应的温度云图</p>
+<p>在通过 ANSYS
 仿真得到射流不同区域（近场、激波区、相变潜在区）的温度、压力及
 CO₂气相浓度分布后，进一步借助
 HITRAN分子光谱数据库开展提前光谱模拟，准备实验的激光波段选择。基于模拟结果的温度压力条件，可以绘制图
-4</p><p><img src=media/image5.png style=width:6.26667in;height:3.3in></p><p>图 4吸收光程为0.1cm，出口压力为3bar下不同温度条件的线强与波数图</p><p>可以由此看出选择的吸收峰是否温度敏感性够好，确保后续实验的测温准确性。</p><p><img src=media/image6.png style=width:6.48681in;height:3.16944in alt=Figure_2></p><p>图 5所选择波段水与二氧化碳吸收率对比图</p><p>图 5
+4</p>
+<p><img src="media/image5.png"
+style="width:6.26667in;height:3.3in" /></p>
+<p>图 4吸收光程为0.1cm，出口压力为3bar下不同温度条件的线强与波数图</p>
+<p>可以由此看出选择的吸收峰是否温度敏感性够好，确保后续实验的测温准确性。</p>
+<p><img src="media/image6.png"
+style="width:6.48681in;height:3.16944in" alt="Figure_2" /></p>
+<p>图 5所选择波段水与二氧化碳吸收率对比图</p>
+<p>图 5
 通过对比目标波段与水分子特征吸收峰的空间分布，清晰呈现了关键信息：在
 2.7μm
 左右的窄波数范围内，水分子的吸收峰不仅数量极少，且仅在个别波数点出现较强的吸收信号，且无明显的强吸收峰叠加。从图
 4图
 5中可直观判断，既通过水吸收峰的少而弱排除了干扰因素，又通过二氧化碳吸收线的强温度响应保障了测量精度，完全适配本课题对流场温度进行高分辨率、高精度测量的实验目标，因此最终确定该波段为实验波长。确定好目标波段后，可以对目标波段内做更准确的光谱仿真，结果如图
-6所示</p><p><img src=media/image7.png style=width:6.54722in;height:3.35208in alt=Figure_2></p><p>图 6 所选波段内光谱仿真</p><p>可以看到该波段内目标气体二氧化碳吸收明显，且与水分子几乎无吸收峰叠加，干扰极小。得到仿真的光谱后，结合abel算法，开始仿真真实实验结果。Abel
+6所示</p>
+<p><img src="media/image7.png"
+style="width:6.54722in;height:3.35208in" alt="Figure_2" /></p>
+<p>图 6 所选波段内光谱仿真</p>
+<p>可以看到该波段内目标气体二氧化碳吸收明显，且与水分子几乎无吸收峰叠加，干扰极小。得到仿真的光谱后，结合abel算法，开始仿真真实实验结果。Abel
 算法是轴对称流场光学测量中，将线积分信号转换为空间分辨参数的核心反演方法，常被用于火焰、超声速射流等轴对称场景的诊断（比如本课题的小孔射流中红外激光光谱测量）。它的核心逻辑是：像射流这类轴对称流场，光学测量的激光穿过流场，并不能得到径向每个位置的局部参数而是该穿过路线上的全部吸收参数。而
 Abel 算法利用流场轴对称的特性，通过求解Abel
 积分方程的逆运算，把线积分信号拆解成流场径向（垂直于射流中心线）的空间分布
-—— 相当于把整条路径的总吸收，分解成径向每个点的局部吸收贡献。</p><p><img src=media/image8.png style=width:6.08056in;height:3.05903in></p><p>图 7abel变换的示意图</p><p>了解abel算法后，我们可以进行实验仿真，可以将射流按径向分解成10个点，这10点在一定波段内的吸收可以如下图所示</p><p><img src=media/image9.png style=width:6.74375in;height:3.54306in></p><p>图 8 原始光谱</p><p>得到的原始光谱后，可以将其进行abel正演投影，为了确保与真实实验印证，加入百分之3的随机噪声，结果如下图所示：</p><p><img src=media/image10.png style=width:5.46319in;height:3.30694in></p><p>图 9 abel投影变换后的变换光谱带噪声</p><p>该正演结果应该就是真实实验中测试到的去背景后的实验结果，对这个结果使用abel三点法反演可以得到较好的结果如下图：</p><p><img src=media/image11.png style=width:6.26667in;height:3.3in></p><p>图 10 反演的光谱结果</p><p>得到该结果后即可使用反演的光谱数据对这几个点求解热力学参数并再与仿真结果对比，所得温度分布误差均与初始的仿真结果相比小于10%，结果可以见下图：</p><p><img src=media/image12.png style=width:7.50556in;height:3.84306in alt=Figure_101></p><p>图 11 距喷嘴出口面10mm处温度分布示意图</p><p>上述过程验证了实验的可行性，同时还使用纹影技术对射流流场进行了拍摄，达到流场可视化，结果图下：</p><p><img src=media/image13.png style=width:3.17361in;height:3.95972in></p><p>图 12出口压力4bar下开孔1mm喷嘴的流场结构</p><p>上述作为本课题的前期研究基础，后续在此条件上继续推进工作。</p></td></tr></tbody></table><h2 id=五工作计划>五、工作计划</h2><p>工作量估计</p><p>（时数）</p><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p><strong>第一阶段：理论准备与方案细化</strong><br>• 深度文献调研，完善研究框架<br>• 完成实验方案与仿真模型的详细设计</p><p><strong>第二阶段：实验系统搭建与仿真预研</strong><br>• 完成射流系统、光谱测量系统及纹影系统的搭建与联调<br>• 进行CFD仿真，确定实验工况与谱线</p><p><strong>第三阶段：实验测量与数据采集</strong><br>• 开展多工况下中红外激光光谱扫描与纹影拍摄<br>• 完成重复性实验，采集原始数据集</p><p><strong>第四阶段：数据处理、反演与模型构建</strong><br>• 完成Abel反演，重构温度、压力、密度场<br>• 分析CO₂相变区域，构建热力学关联模型</p><p><strong>第五阶段：论文撰写与成果凝练</strong><br>• 完成学位论文撰写、修改与润色<br>• 整理研究成果，准备答辩</p><p>约 200 小时</p><p>约 600 小时</p><p>约800 小时</p><p>约600小时</p><p>约 300 小时</p><p>2024.10 – 2025.03</p><p>2025.03 – 2025.08</p><p>2025.09 – 2026.03</p><p>2026.04 – 2026.08</p><p>2026.09 – 2026.12</p><ol><li>完成文献综述报告<br>2. 提交详细的实验与仿真技术方案书</li></ol><p>可稳定运行的实验平台<br>2. 仿真预研报告，包含工况建议与光谱数据库筛选结果</p><p>完整的原始光谱与图像数据集<br>2. 初步的流场结构观测报告</p><p>流场参数分布图谱<br>2. 相变分析报告与初步的数学模型</p><ol><li>提交完整的硕士学位论文<br>2. 发表学术论文1-2篇（或投稿）<br>3. 答辩PPT及相关材料</li></ol><p>山东科技大学硕士研究生学位论文开题报告评分表</p><table style=width:100%><col style=width:14%><col style=width:5%><col style=width:12%><col style=width:45%><col style=width:21%><tbody><tr><td style=text-align:center>评审项目</td><td style=text-align:center>分值</td><td colspan=2 style=text-align:center>评 分 标 准</td><td style=text-align:center>得分（百分制）</td></tr><tr><td rowspan=3 style=text-align:center>一、选题依据</td><td rowspan=3 style=text-align:center>30分</td><td style=text-align:center>21~30分</td><td style=text-align:center>选题有较强的理论意义、实用价值，深刻的学术研究内涵。</td><td rowspan=3 style=text-align:center></td></tr><tr><td style=text-align:center>11~20分</td><td style=text-align:center>选题有一定的理论意义、实用价值，有一定的学术研究内涵。</td></tr><tr><td style=text-align:center>0~10分</td><td style=text-align:center>选题缺乏理论意义和实用价值。</td></tr><tr><td rowspan=3 style=text-align:center>二、理论基础和专门知识</td><td rowspan=3 style=text-align:center>20分</td><td style=text-align:center>15~20分</td><td style=text-align:center>较好的掌握坚实宽广的理论基础和系统专业知识</td><td rowspan=3 style=text-align:center></td></tr><tr><td style=text-align:center>6~15分</td><td style=text-align:center>基本的掌握坚实宽广的理论基础和系统专业知识</td></tr><tr><td style=text-align:center>5分以下</td><td style=text-align:center>未能掌握坚实宽广的理论基础和系统知识</td></tr><tr><td rowspan=3 style=text-align:center>三、选题难度及先进性</td><td rowspan=3 style=text-align:center>30分</td><td style=text-align:center>21~30分</td><td style=text-align:center>研究课题属本学科发展方向并居前沿位置，具有自己独特的思考、研究课题具有较强的先进性</td><td rowspan=3 style=text-align:center></td></tr><tr><td style=text-align:center>11~20分</td><td style=text-align:center>研究课题属本学科的发展方向，并具有先进性。</td></tr><tr><td style=text-align:center>0~10分</td><td style=text-align:center>研究课题与本学科的发展方向先进性不明显，难度欠佳。</td></tr><tr><td rowspan=3 style=text-align:center>四、文字表达</td><td rowspan=3 style=text-align:center>10分</td><td style=text-align:center>8~10分</td><td style=text-align:center>条理清晰，分析严谨，文笔流畅</td><td rowspan=3 style=text-align:center></td></tr><tr><td style=text-align:center>4~7分</td><td style=text-align:center>条理较好，层次分明，文笔较流畅</td></tr><tr><td style=text-align:center>3分以下</td><td style=text-align:center>写作能力较差</td></tr><tr><td rowspan=3 style=text-align:center>五、口头报告</td><td rowspan=3 style=text-align:center>10分</td><td style=text-align:center>8~10分</td><td style=text-align:center>论文严密、逻辑性强、表达清楚。</td><td rowspan=3 style=text-align:center></td></tr><tr><td style=text-align:center>3~7分</td><td style=text-align:center>基本概念清晰、层次分明。表达较清楚。</td></tr><tr><td style=text-align:center>3分以下</td><td style=text-align:center>表达较差</td></tr><tr><td colspan=4 style=text-align:center>总分</td><td style=text-align:center></td></tr></tbody></table><p>开题评审小组组成：</p><p>年 月 日</p><p class=report-download>开题报告正文（原报告 PDF：<a href=proposal.pdf>proposal.pdf</a>｜Word 源：<a href=硕士学位论文开题报告及论文工作计划.docx>硕士学位论文开题报告及论文工作计划.docx</a>）</p></div></article></main><footer class="bg-black bottom-0 w-100 pa3" role=contentinfo><div class="flex justify-between"><a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href=https://liuxunchen.github.io/xliu-group/zh/>&copy; 刘训臣燃烧诊断实验室主页 2026</a><div><div class=ananke-socials></div></div></div></footer></body></html>
+—— 相当于把整条路径的总吸收，分解成径向每个点的局部吸收贡献。</p>
+<p><img src="media/image8.png"
+style="width:6.08056in;height:3.05903in" /></p>
+<p>图 7abel变换的示意图</p>
+<p>了解abel算法后，我们可以进行实验仿真，可以将射流按径向分解成10个点，这10点在一定波段内的吸收可以如下图所示</p>
+<p><img src="media/image9.png"
+style="width:6.74375in;height:3.54306in" /></p>
+<p>图 8 原始光谱</p>
+<p>得到的原始光谱后，可以将其进行abel正演投影，为了确保与真实实验印证，加入百分之3的随机噪声，结果如下图所示：</p>
+<p><img src="media/image10.png"
+style="width:5.46319in;height:3.30694in" /></p>
+<p>图 9 abel投影变换后的变换光谱带噪声</p>
+<p>该正演结果应该就是真实实验中测试到的去背景后的实验结果，对这个结果使用abel三点法反演可以得到较好的结果如下图：</p>
+<p><img src="media/image11.png"
+style="width:6.26667in;height:3.3in" /></p>
+<p>图 10 反演的光谱结果</p>
+<p>得到该结果后即可使用反演的光谱数据对这几个点求解热力学参数并再与仿真结果对比，所得温度分布误差均与初始的仿真结果相比小于10%，结果可以见下图：</p>
+<p><img src="media/image12.png"
+style="width:7.50556in;height:3.84306in" alt="Figure_101" /></p>
+<p>图 11 距喷嘴出口面10mm处温度分布示意图</p>
+<p>上述过程验证了实验的可行性，同时还使用纹影技术对射流流场进行了拍摄，达到流场可视化，结果图下：</p>
+<p><img src="media/image13.png"
+style="width:3.17361in;height:3.95972in" /></p>
+<p>图 12出口压力4bar下开孔1mm喷嘴的流场结构</p>
+<p>上述作为本课题的前期研究基础，后续在此条件上继续推进工作。</p></td>
+</tr>
+</tbody>
+</table>
+<h2 id="五工作计划">五、工作计划</h2>
+<p>工作量估计</p>
+<p>（时数）</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p><strong>第一阶段：理论准备与方案细化</strong><br /> • 深度文献调研，完善研究框架<br /> • 完成实验方案与仿真模型的详细设计</p>
+<p><strong>第二阶段：实验系统搭建与仿真预研</strong><br /> • 完成射流系统、光谱测量系统及纹影系统的搭建与联调<br /> • 进行CFD仿真，确定实验工况与谱线</p>
+<p><strong>第三阶段：实验测量与数据采集</strong><br /> • 开展多工况下中红外激光光谱扫描与纹影拍摄<br /> • 完成重复性实验，采集原始数据集</p>
+<p><strong>第四阶段：数据处理、反演与模型构建</strong><br /> • 完成Abel反演，重构温度、压力、密度场<br /> • 分析CO₂相变区域，构建热力学关联模型</p>
+<p><strong>第五阶段：论文撰写与成果凝练</strong><br /> • 完成学位论文撰写、修改与润色<br /> • 整理研究成果，准备答辩</p>
+<p>约 200 小时</p>
+<p>约 600 小时</p>
+<p>约800 小时</p>
+<p>约600小时</p>
+<p>约 300 小时</p>
+<p>2024.10 – 2025.03</p>
+<p>2025.03 – 2025.08</p>
+<p>2025.09 – 2026.03</p>
+<p>2026.04 – 2026.08</p>
+<p>2026.09 – 2026.12</p>
+<ol>
+<li>完成文献综述报告<br /> 2. 提交详细的实验与仿真技术方案书</li>
+</ol>
+<p>可稳定运行的实验平台<br /> 2. 仿真预研报告，包含工况建议与光谱数据库筛选结果</p>
+<p>完整的原始光谱与图像数据集<br /> 2. 初步的流场结构观测报告</p>
+<p>流场参数分布图谱<br /> 2. 相变分析报告与初步的数学模型</p>
+<ol>
+<li>提交完整的硕士学位论文<br /> 2. 发表学术论文1-2篇（或投稿）<br /> 3. 答辩PPT及相关材料</li>
+</ol>
+<p>山东科技大学硕士研究生学位论文开题报告评分表</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 5%" />
+<col style="width: 12%" />
+<col style="width: 45%" />
+<col style="width: 21%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: center;">评审项目</td>
+<td style="text-align: center;">分值</td>
+<td colspan="2" style="text-align: center;">评 分 标 准</td>
+<td style="text-align: center;">得分（百分制）</td>
+</tr>
+<tr>
+<td rowspan="3" style="text-align: center;">一、选题依据</td>
+<td rowspan="3" style="text-align: center;">30分</td>
+<td style="text-align: center;">21~30分</td>
+<td
+style="text-align: center;">选题有较强的理论意义、实用价值，深刻的学术研究内涵。</td>
+<td rowspan="3" style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">11~20分</td>
+<td
+style="text-align: center;">选题有一定的理论意义、实用价值，有一定的学术研究内涵。</td>
+</tr>
+<tr>
+<td style="text-align: center;">0~10分</td>
+<td style="text-align: center;">选题缺乏理论意义和实用价值。</td>
+</tr>
+<tr>
+<td rowspan="3" style="text-align: center;">二、理论基础和专门知识</td>
+<td rowspan="3" style="text-align: center;">20分</td>
+<td style="text-align: center;">15~20分</td>
+<td
+style="text-align: center;">较好的掌握坚实宽广的理论基础和系统专业知识</td>
+<td rowspan="3" style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">6~15分</td>
+<td
+style="text-align: center;">基本的掌握坚实宽广的理论基础和系统专业知识</td>
+</tr>
+<tr>
+<td style="text-align: center;">5分以下</td>
+<td
+style="text-align: center;">未能掌握坚实宽广的理论基础和系统知识</td>
+</tr>
+<tr>
+<td rowspan="3" style="text-align: center;">三、选题难度及先进性</td>
+<td rowspan="3" style="text-align: center;">30分</td>
+<td style="text-align: center;">21~30分</td>
+<td
+style="text-align: center;">研究课题属本学科发展方向并居前沿位置，具有自己独特的思考、研究课题具有较强的先进性</td>
+<td rowspan="3" style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">11~20分</td>
+<td
+style="text-align: center;">研究课题属本学科的发展方向，并具有先进性。</td>
+</tr>
+<tr>
+<td style="text-align: center;">0~10分</td>
+<td
+style="text-align: center;">研究课题与本学科的发展方向先进性不明显，难度欠佳。</td>
+</tr>
+<tr>
+<td rowspan="3" style="text-align: center;">四、文字表达</td>
+<td rowspan="3" style="text-align: center;">10分</td>
+<td style="text-align: center;">8~10分</td>
+<td style="text-align: center;">条理清晰，分析严谨，文笔流畅</td>
+<td rowspan="3" style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">4~7分</td>
+<td style="text-align: center;">条理较好，层次分明，文笔较流畅</td>
+</tr>
+<tr>
+<td style="text-align: center;">3分以下</td>
+<td style="text-align: center;">写作能力较差</td>
+</tr>
+<tr>
+<td rowspan="3" style="text-align: center;">五、口头报告</td>
+<td rowspan="3" style="text-align: center;">10分</td>
+<td style="text-align: center;">8~10分</td>
+<td style="text-align: center;">论文严密、逻辑性强、表达清楚。</td>
+<td rowspan="3" style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">3~7分</td>
+<td
+style="text-align: center;">基本概念清晰、层次分明。表达较清楚。</td>
+</tr>
+<tr>
+<td style="text-align: center;">3分以下</td>
+<td style="text-align: center;">表达较差</td>
+</tr>
+<tr>
+<td colspan="4" style="text-align: center;">总分</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>开题评审小组组成：</p>
+<p>年 月 日</p>
+<p class="report-download">开题报告正文（原报告 PDF：<a href="proposal.pdf">proposal.pdf</a>｜Word 源：<a href="硕士学位论文开题报告及论文工作计划.docx">硕士学位论文开题报告及论文工作计划.docx</a>）</p>
+  </div>
+</article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
