@@ -1,7 +1,647 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Post on 刘训臣燃烧诊断实验室主页</title><link>https://liuxunchen.github.io/xliu-group/zh/post/</link><description>Recent content in Post on 刘训臣燃烧诊断实验室主页</description><generator>Hugo</generator><language>zh</language><lastBuildDate>Sat, 14 Nov 2026 08:30:00 +0800</lastBuildDate><atom:link href="https://liuxunchen.github.io/xliu-group/zh/post/index.xml" rel="self" type="application/rss+xml"/><item><title>从实验室到现场：激光光谱与成像方法怎么落到真实系统里</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-32-next-step-diagnostics/</link><pubDate>Sat, 14 Nov 2026 08:30:00 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-32-next-step-diagnostics/</guid><description>给高温流动与反应过程「拍片子」：燃烧室、风洞、反应器、等离子体的内部，探针伸不进去，只能靠激光做非接触测量。这篇先讲清楚这个应用背景——抽血化验与医学影像的类比——再讲实验室里成熟的光谱与成像方法怎么推到真实系统上，以及为什么真正缺的不是新方法，而是「可信」二字。</description></item><item><title>王晨中期答辩材料</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangchen-defense/</link><pubDate>Fri, 06 Nov 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangchen-defense/</guid><description>&lt;h2 id="答辩材料"&gt;答辩材料&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/wangchen-defense/defense.pptx"&gt;答辩 PPT&lt;/a&gt;（7.6 MB，已压缩）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;（报告正文 Markdown 版待补：由 LaTeX 源经 pandoc 转正文后补入本页；当前先发布答辩 PPT）&lt;/p&gt;</description></item><item><title>替代 ARNOLD 148/10/100 PS-WK：我们做的氢氧火头，为什么不发黑、寿命更长</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-31-arnold-p61-replacement/</link><pubDate>Thu, 05 Nov 2026 20:00:00 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-31-arnold-p61-replacement/</guid><description>石英加工线上，火头是关键耗材。进口 ARNOLD 148/10/100 PS-WK 火头的痛点是端面发黑、寿命短。我们把火头端面的关键材料换成了新型耐高温抗氧化材料，配自主孔阵设计，做了两种型号的氢氧火头——端面不发黑、寿命长，相同流量下还能定制不同火焰长度，已在一家石英加工企业替代进口产品。文末附使用说明与常见问题。</description></item><item><title>狭缝火焰炉：把 2600 K 的平面火焰压进一条 1 mm 的缝</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-30-slit-flame-furnace/</link><pubDate>Thu, 05 Nov 2026 19:30:00 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-30-slit-flame-furnace/</guid><description>甲烷 15 slm + 氧气 30 slm 预混，从一条 1 mm×15 mm 的狭缝喷出，出口速度 50 m/s，设计火焰温度 2600 K——这是一台面向石英玻璃加工的狭缝火焰炉。这篇记录它的设计参数、点火后的火焰形态，以及用这把“火焰刀”把石英玻璃棒拉成细丝的初步试验。</description></item><item><title>高寅斌开题报告</title><link>https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin-proposal/</link><pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin-proposal/</guid><description/></item><item><title>高寅斌中期报告</title><link>https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin-midterm/</link><pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin-midterm/</guid><description/></item><item><title>惠昊开题报告</title><link>https://liuxunchen.github.io/xliu-group/zh/post/huihao-proposal/</link><pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/huihao-proposal/</guid><description/></item><item><title>惠昊中期报告</title><link>https://liuxunchen.github.io/xliu-group/zh/post/huihao-midterm/</link><pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/huihao-midterm/</guid><description/></item><item><title>王晨开题报告</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangchen-proposal/</link><pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangchen-proposal/</guid><description/></item><item><title>王晨中期报告</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangchen-midterm/</link><pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangchen-midterm/</guid><description/></item><item><title>王硕开题报告</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo-proposal/</link><pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo-proposal/</guid><description>&lt;p&gt;开题报告正文（文字版，由提交学院的打印版 PDF 提取；图与版式见 &lt;a href="https://liuxunchen.github.io/xliu-group/zh/post/wangshuo-proposal/proposal.pdf"&gt;proposal.pdf&lt;/a&gt;）。&lt;/p&gt;</description></item><item><title>王硕中期报告</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo-midterm/</link><pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo-midterm/</guid><description/></item><item><title>中红外层析成像系统光机电集成</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhangjiayi-13-mid-ir-tomography-integration/</link><pubDate>Mon, 02 Nov 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhangjiayi-13-mid-ir-tomography-integration/</guid><description>215 多路 TDLAS 层析成像装置的光机电集成实践：系统架构 → 光 → 电 → 机 → 集成踩坑（张家艺主笔，赵鑫浩参与）。</description></item><item><title>张家艺开题报告</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhangjiayi-proposal/</link><pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhangjiayi-proposal/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;技术路线图由 TikZ 绘制，网页正文无法直接呈现——请查看 PDF 对应章节。&lt;/p&gt;
-&lt;/blockquote&gt;</description></item><item><title>张洪民开题报告</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-proposal/</link><pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-proposal/</guid><description/></item><item><title>赵殿虎开题报告</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhaodianhu-proposal/</link><pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhaodianhu-proposal/</guid><description/></item><item><title>双喷嘴横流射流的两篇预印本：一个稀释定律、一条交换标度，与下一步的变密度实验</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-29-twin-jet-scaling-law/</link><pubDate>Tue, 27 Oct 2026 06:30:00 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-29-twin-jet-scaling-law/</guid><description>我们最近发布了两篇预印本：用 40 kHz 时间分辨 PIV 发现，横流中的串联双射流前射流变低、后射流变高；排除回流区与低压吸引两个常见解释后，把结论落在动量混合稀释上，并给出了两个 scaling law。这一发现与经典结论（前射流近似单射流）矛盾，为下一步的变密度实验提出了明确的问题。</description></item><item><title>TDLAS 简介</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-28-tdlas-intro/</link><pubDate>Mon, 12 Oct 2026 13:30:00 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-28-tdlas-intro/</guid><description>可调谐半导体激光吸收光谱（TDLAS）：让一支窄线宽激光扫过气体吸收谱线，就能非接触、免标定地定量测出温度、组分浓度、速度与压力。这一页只讲清两件事——我们测什么、用什么设备；完整的设备清单与指标见文末 PDF。</description></item><item><title>赵鑫浩开题报告</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao-proposal/</link><pubDate>Mon, 12 Oct 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao-proposal/</guid><description/></item><item><title>用 OpenFOAM 把 HP/SP 算一遍：从 0D 反应器到喷管 CFD</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-27-openfoam-hp-sp/</link><pubDate>Sat, 03 Oct 2026 00:30:00 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-27-openfoam-hp-sp/</guid><description>上一篇用 JANAF 表 + Cantera 把液氢/液氧喷管的 HP/SP 算清楚了；这一篇换一条完全不同的路——用 OpenFOAM 的 chemFoam 0D 反应器算燃烧室、用 rhoCentralFoam 算喷管，看工程 CFD 能不能对上教学手算。结果是：燃烧室温度差 0.04 %，喷管喉道差 0.1 %、出口速度差 0.2 %。附带把喷管型面的来路（特征线法）讲清楚。</description></item><item><title>数据集：串联双喷嘴横向射流的 40 kHz 时间分辨 PIV 速度场（velocity fields）</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-paper112-5-dataset/</link><pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-paper112-5-dataset/</guid><description>一套串联双喷嘴横向射流的时间分辨 PIV 数据集：9 个工况（间距 L=2d–4d × 速度比 r≈3–7）、68 个双喷嘴 case 与 11 个单射流基线，含瞬时/时均速度场、轨迹参数与统计量；本页说明数据内容与下载位置。</description></item><item><title>从氢氧焰到液氢液氧火箭喷管：HP/SP 到底在算什么</title><link>https://liuxunchen.github.io/xliu-group/zh/post/janaf-cea-nozzle-hp-sp/</link><pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/janaf-cea-nozzle-hp-sp/</guid><description>一个液氢/液氧火箭喷管的完整例题：从燃烧室（HP）到喉道与出口（SP），用 JANAF 表手算 + Cantera 交叉验证，把温度、压力、速度与组成沿等熵线一路算下来。</description></item><item><title>跨机器同步 dsh 会话归档：dsh-archive-replica 插件的设计与踩坑</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-26-dsh-archive-replica/</link><pubDate>Sat, 12 Sep 2026 22:05:42 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-26-dsh-archive-replica/</guid><description>用几百行 TypeScript 给 dsh（DeepSeek Harness）写一个插件，把&amp;quot;哪些会话已归档&amp;quot;这个本机状态变成可以随任意网盘跨机器同步的文档；含设计取舍、安装方法与一路踩过的坑</description></item><item><title>PIV/PLIF Liutex 分析工具 – 理论、实现与双喷嘴射流应用</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-22-piv-plif-loader/</link><pubDate>Tue, 08 Sep 2026 17:00:00 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-22-piv-plif-loader/</guid><description>Liutex 理论完整推导、Python 实现、PyQt6 GUI 工具，以及在双喷嘴横向射流 PIV 数据上的应用示例</description></item><item><title>在 Fedora 上为 Fcitx5 配置语音输入</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-12-fcitx5-vinput/</link><pubDate>Mon, 03 Aug 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-12-fcitx5-vinput/</guid><description>fcitx5-vinput 安装配置全记录：从 COPR 安装到阿里云百炼 ASR，实现 Linux 桌面原生语音输入</description></item><item><title>Burst dye 驱动压力-流速关系建模与验证</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-6-burst-dye-pressure-simulation/</link><pubDate>Thu, 30 Jul 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-6-burst-dye-pressure-simulation/</guid><description>染料泵系统驱动压力与瞬时流速关系的阻尼振动模型：等截面水柱模型、有阻尼仿真结果与实验对照思路。</description></item><item><title>柱塞泵拆装与管路改造</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-7-piston-pump-overhaul/</link><pubDate>Thu, 30 Jul 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-7-piston-pump-overhaul/</guid><description>柱塞泵吊装拆解、蓄能器送修与气路接头改造的记录：内部锈蚀检查、密封件更换与管路连接注意事项。</description></item><item><title>HITRAN 仿真图形界面</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-16-hitran-gui/</link><pubDate>Mon, 29 Jun 2026 09:13:01 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-16-hitran-gui/</guid><description>HITRAN 数据库仿真 GUI</description></item><item><title>PIV</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-21-piv-review/</link><pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-21-piv-review/</guid><description>PIV 方法</description></item><item><title>TDLAS 的仿真和局限</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-24-tdlas-overview/</link><pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-24-tdlas-overview/</guid><description>TDLAS 简单总结</description></item><item><title>反应流体光谱仿真程序 flame spectrum</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-13-flame-spectrum/</link><pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-13-flame-spectrum/</guid><description>Cantera 反应流体仿真联动HITRAN光谱仿真程序GUI</description></item><item><title>轴向分级燃烧器的一维仿真</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-4-cantera-staged-burner-1d/</link><pubDate>Tue, 23 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-4-cantera-staged-burner-1d/</guid><description>用 Cantera 做轴向分级燃烧器一维仿真的入门记录：环境安装、官方算例与火焰结构结果。</description></item><item><title>山东科技大学学位论文 LaTeX 模板 SDUST_Thesis</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-23-sdust-thesis-latex/</link><pubDate>Sat, 20 Jun 2026 18:01:22 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-23-sdust-thesis-latex/</guid><description>山东科技大学学位论文 LaTeX 模板，符合学校撰写规范，支持硕士/博士/学士，使用 XeLaTeX 编译。</description></item><item><title>系统电路深度排查：继电器反复烧毁的根因</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-5-circuit-diagnosis/</link><pubDate>Sat, 20 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-5-circuit-diagnosis/</guid><description>染料泵系统航插烧毁、继电器反复烧线圈的排查过程：从保险丝、按钮线路、浪涌抑制到五口航插火零线接错。</description></item><item><title>气泡雾化喷嘴实验</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao3_nozzle_expt/</link><pubDate>Wed, 17 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao3_nozzle_expt/</guid><description>气泡雾化喷嘴通气与不通气的对比实验</description></item><item><title>胶州调研汇报PPT</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-3-jiaozhou-workshop/</link><pubDate>Fri, 05 Jun 2026 18:12:42 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-3-jiaozhou-workshop/</guid><description>reveal.js 版本slides</description></item><item><title>Openpiv分析</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao2_droplet/</link><pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao2_droplet/</guid><description>煤油喷雾燃烧PIV图像中液滴提取方法</description></item><item><title>火焰探测器原理及使用</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/</link><pubDate>Thu, 07 May 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo7/</guid><description>紫外火焰探测器的原理、选型与使用</description></item><item><title>柱塞泵实验：0.7 MPa 与 1.5 MPa 工况测试</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-3-plunger-pump-test/</link><pubDate>Sat, 02 May 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin-3-plunger-pump-test/</guid><description>柱塞泵系统组装后的初步运行测试：系统组成、操作步骤与 0.7/1.5 MPa 两工况的压力-流速记录。</description></item><item><title>光谱模拟</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin2_tdlas/</link><pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin2_tdlas/</guid><description>TDLAS光谱模拟界面的再次更新与功能改进</description></item><item><title>声激励喷嘴的结构与参数设计</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangchen4/</link><pubDate>Sun, 08 Mar 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangchen4/</guid><description>声激励喷嘴的结构参数设计与声流扰动对火焰的影响</description></item><item><title>2026年3月课题组文献讨论</title><link>https://liuxunchen.github.io/xliu-group/zh/post/2026w10/</link><pubDate>Fri, 06 Mar 2026 11:41:42 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/2026w10/</guid><description>2026年3月课题组文献讨论</description></item><item><title>Centera 计算 Hencken 燃烧器燃烧参数</title><link>https://liuxunchen.github.io/xliu-group/zh/post/huihao-7-centera-hencken/</link><pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/huihao-7-centera-hencken/</guid><description>用 Centera 对 Hencken 燃烧器做 burner flame 模型仿真：不同质量通量的焓通量/热流密度/温度，以及截面尺寸、面内一致性、焓值不确定度等参数与 NPL 参考的对照。</description></item><item><title>PID实现流量控制</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo6/</link><pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo6/</guid><description>利用PID控制器与电控开度阀实现流量稳定控制</description></item><item><title>QTF滤波</title><link>https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin5_qtf/</link><pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin5_qtf/</guid><description>利用石英音叉高Q值共振特性实现光谱信号滤波的方法</description></item><item><title>TDLAS 测定超声速射流实验推进结果</title><link>https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin-6-supersonic-jet-tdlas/</link><pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin-6-supersonic-jet-tdlas/</guid><description>双光路耦合 TDLAS 光路搭建与超声速射流初步测量：调制结果、异常排查（窗口片干涉）与当前进展。</description></item><item><title>Hencken炉的最新进展</title><link>https://liuxunchen.github.io/xliu-group/zh/post/huihao6/</link><pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/huihao6/</guid><description>Hencken炉平面燃烧器的最新进展及其在激光诊断标定中的应用</description></item><item><title>I2-cell</title><link>https://liuxunchen.github.io/xliu-group/zh/post/huihao5_i2_cell/</link><pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/huihao5_i2_cell/</guid><description>碘吸收池的制作过程与经验总结</description></item><item><title>干涉器制作</title><link>https://liuxunchen.github.io/xliu-group/zh/post/huihao4_etalon/</link><pubDate>Mon, 15 Dec 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/huihao4_etalon/</guid><description>制作简易法布里-珀罗干涉器的过程与方法</description></item><item><title> PIV 流场分析软件介绍</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangchen3/</link><pubDate>Thu, 11 Dec 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangchen3/</guid><description>PIV流场分析软件的功能模块与应用介绍</description></item><item><title>光谱模拟</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin1_tdlas/</link><pubDate>Thu, 11 Dec 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhanghongmin1_tdlas/</guid><description>基于实验室TDLAS界面的光谱模拟功能更新</description></item><item><title>TDLAS 实验方法简介（一）：光电探测系统的组成</title><link>https://liuxunchen.github.io/xliu-group/zh/post/huihao-3-tdlas-system-parts/</link><pubDate>Tue, 25 Nov 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/huihao-3-tdlas-system-parts/</guid><description>TDLAS 光电探测系统七部分组成（激光器/驱动器/探测器/TIA/ADC/DSP/控制器）及选型与使用注意；本系列后续为光谱线选择与数据处理。</description></item><item><title>liutex在二维流场的应用</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo5/</link><pubDate>Tue, 11 Nov 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo5/</guid><description>Liutex涡定义与第三代涡识别方法在二维流场的应用</description></item><item><title>HITRAN 数据库用法</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-15-hitran-database/</link><pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-15-hitran-database/</guid><description>HITRAN 数据库 line by line 计算代码</description></item><item><title>吸收光谱简介</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-4-tdlas-absorption-intro/</link><pubDate>Fri, 03 Oct 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-4-tdlas-absorption-intro/</guid><description>吸收光谱中定量关系与 HITRAN 数据库参数的简介</description></item><item><title>用Witoszynski曲线设计收缩段</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo4/</link><pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo4/</guid><description>利用Witoszynski曲线设计收缩段以优化流动</description></item><item><title>火焰温度及辐射特性检测方法总结</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhangjiayi1_coal/</link><pubDate>Mon, 25 Aug 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhangjiayi1_coal/</guid><description>基于光谱分析和图像处理的火焰温度及辐射特性检测方法总结</description></item><item><title> 解决流量计跳数问题总结和感悟</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo3/</link><pubDate>Thu, 21 Aug 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo3/</guid><description>质量流量计跳数问题的排查与解决经验总结</description></item><item><title>Blow-out limits of nonpremixed turbulent jet flames in a cross flow at atmospheric and sub-atmospheric pressures</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo2/</link><pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo2/</guid><description>非预混湍流射流火焰在横向来流中的吹熄极限研究</description></item><item><title>利用 JANAF 表估算氢氧火焰温度</title><link>https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin-7-janaf-h2-flame/</link><pubDate>Fri, 15 Aug 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin-7-janaf-h2-flame/</guid><description>从焓守恒与化学平衡出发，用 JANAF 表自洽求解氢氧火焰绝热温度，并逐步引入 OH/H 分解平衡做手算校核。</description></item><item><title>激光车</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-17-laser-car/</link><pubDate>Mon, 30 Jun 2025 16:14:01 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-17-laser-car/</guid><description>纳秒固体Nd:YAG激光器的基本原理与特点</description></item><item><title>Diagnostic</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-10-diagnostic-review/</link><pubDate>Mon, 30 Jun 2025 01:26:06 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-10-diagnostic-review/</guid><description>激光燃烧诊断技术的基本原理与方法概述</description></item><item><title>低空经济会议</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-11-uav-experiment/</link><pubDate>Sun, 29 Jun 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-11-uav-experiment/</guid><description>低空经济研讨会与低空经济现代产业学院揭牌仪式</description></item><item><title>横向射流轨迹的拟合</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-7-crossflow-tdlas/</link><pubDate>Mon, 23 Jun 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-7-crossflow-tdlas/</guid><description>横向射流轨迹的拟合与流动结构分析</description></item><item><title>利用HDM3065 Hantek 6位半万用表对5V电源输出电压结果的测试</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangchen1/</link><pubDate>Sun, 22 Jun 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangchen1/</guid><description>利用HDM3065六位半万用表测试5V电源输出电压稳定性</description></item><item><title>腔体流量测定实验失败复盘</title><link>https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin2/</link><pubDate>Sun, 22 Jun 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin2/</guid><description>腔体流量测定实验失败的原因分析与焊缝漏气的发现</description></item><item><title>使用镜片搭建光路发出片光拍摄粒子</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangchen2/</link><pubDate>Sun, 22 Jun 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangchen2/</guid><description>利用镜片搭建片光光路拍摄流动粒子的方法</description></item><item><title>航空燃烧室技术界的一些错误提法</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-6-literature-review/</link><pubDate>Tue, 17 Jun 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-6-literature-review/</guid><description>航空燃烧室技术界一些常见错误提法的辨析与纠正</description></item><item><title>在hugo网页中实现latex显示</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-19-latex-hugo/</link><pubDate>Mon, 16 Jun 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-19-latex-hugo/</guid><description>在Hugo网页中利用LaTeX显示数学公式的方法</description></item><item><title>使用 LabVIEW 实现AFG-C9000系列气体质量流量计瞬时流量的读取和储存</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo1/</link><pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangshuo1/</guid><description>使用LabVIEW实现气体质量流量计瞬时流量的读取与储存</description></item><item><title>连云港实验第一次</title><link>https://liuxunchen.github.io/xliu-group/zh/post/huihao2/</link><pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/huihao2/</guid><description>连云港燃烧器实验的第一次测试经历</description></item><item><title>使用 LabVIEW 实现对CC-M3H040-NN14伺服电机的控制</title><link>https://liuxunchen.github.io/xliu-group/zh/post/huihao1/</link><pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/huihao1/</guid><description>使用LabVIEW实现对CC-M3H040-NN14伺服电机的控制</description></item><item><title>利用OpenCV初步实现张正友标定法对棋盘格进行标定并校正图片</title><link>https://liuxunchen.github.io/xliu-group/zh/post/wangchen5/</link><pubDate>Thu, 08 May 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/wangchen5/</guid><description>利用OpenCV实现张正友标定法对棋盘格进行相机标定与图像校正</description></item><item><title>Laval Nozzle experiment</title><link>https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin1/</link><pubDate>Tue, 22 Apr 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/gaoyinbin1/</guid><description>Laval喷管纹影实验的过程与经验总结</description></item><item><title>甲醛的光谱和PLIF测温</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-5-ch2o-spectroscopy/</link><pubDate>Sun, 23 Mar 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-5-ch2o-spectroscopy/</guid><description>甲醛光谱与双色PLIF测温方法的原理介绍</description></item><item><title>激光燃烧诊断是应用研究</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-20-diagnostic-method/</link><pubDate>Sat, 22 Mar 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-20-diagnostic-method/</guid><description>激光燃烧诊断作为应用研究与光谱学方法的历史回顾</description></item><item><title>热工基础</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-18-thermo-course/</link><pubDate>Mon, 10 Mar 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-18-thermo-course/</guid><description>热工基础课程前四章热力学内容的教学总结</description></item><item><title>lvpyio</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-9-davis-piv/</link><pubDate>Thu, 20 Feb 2025 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-9-davis-piv/</guid><description>LaVision Python包lvpyio的使用体验与问题总结</description></item><item><title>TDLAS的空间分辨率问题</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-25-tdlas-biomass/</link><pubDate>Fri, 08 Nov 2024 21:22:03 +0800</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-25-tdlas-biomass/</guid><description>TDLAS技术在生物质燃烧诊断中的空间分辨率问题分析</description></item><item><title>介绍好书：John Daily 统计热力学</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-8-daily-book/</link><pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-8-daily-book/</guid><description>John Daily统计热力学教材的介绍与推荐</description></item><item><title>新网站上线了</title><link>https://liuxunchen.github.io/xliu-group/zh/post/xliu-14-hello-world/</link><pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/xliu-14-hello-world/</guid><description>课题组新网站上线与功能说明</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Post on 刘训臣燃烧诊断实验室主页</title>
+		<link>http://localhost:1313/xliu-group/zh/post/</link>
+		<description>Recent content in Post on 刘训臣燃烧诊断实验室主页</description>
+		<generator>Hugo</generator>
+		<language>zh</language>
+		
+		
+		
+		
+			<lastBuildDate>Sat, 14 Nov 2026 09:00:00 +0800</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/xliu-group/zh/post/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>PIV 的空间分辨率：用一套 40 kHz 双喷嘴数据算一算解析到哪个尺度</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-33-piv-spatial-resolution/</link>
+				<pubDate>Sat, 14 Nov 2026 09:00:00 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-33-piv-spatial-resolution/</guid>
+				<description>PIV 能分辨多大的涡？互相关法由判读窗口决定，光流/AI 号称网格 1 px——但 AI 也是从光流法来的，光流方程自带邻域、正则与金字塔三重空间滤波，分辨率不由输出网格决定。这篇用我们已公开的 40 kHz 双喷嘴横流射流数据集把这件事算清楚：窗口 1.38 mm 下，涡串（5.3 mm）解析良好、剪切层厚度贴着窗口、Taylor 微尺度被压低、混合长度低于网格不可信，Kolmogorov 尺度还差三十多倍。时间分辨率与空间一一对应（ω~u/ℓ），空间不确定度按位移→速度→标定→梯度→尺度的链逐级传播——我们的工作想法是：做高空间分辨率的 PIV，高频可以，但频率再高空间分辨率必须同步提高。</description>
+			</item>
+			<item>
+				<title>从实验室到现场：激光光谱与成像方法怎么落到真实系统里</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-32-next-step-diagnostics/</link>
+				<pubDate>Sat, 14 Nov 2026 08:30:00 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-32-next-step-diagnostics/</guid>
+				<description>给高温流动与反应过程「拍片子」：燃烧室、风洞、反应器、等离子体的内部，探针伸不进去，只能靠激光做非接触测量。这篇先讲清楚这个应用背景——抽血化验与医学影像的类比——再讲实验室里成熟的光谱与成像方法怎么推到真实系统上，以及为什么真正缺的不是新方法，而是「可信」二字。</description>
+			</item>
+			<item>
+				<title>文献周报 w46：批判性阅读选辑</title>
+				<link>http://localhost:1313/xliu-group/zh/post/2026w46-literature/</link>
+				<pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/2026w46-literature/</guid>
+				<description>&lt;ul&gt;&#xA;&lt;li&gt;本周共 2 篇 critique，作者 2 人：冉佳兴、赵鑫浩&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;另有 1 篇退回重写&lt;/strong&gt;（格式不合规，未列入本辑；重交合格后并入下期周报）&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;冉佳兴narrowband-versus-broadband-excitation-for-cho-plif-imaging-in-flames-using-a-frequency-tripled-ndyag-lasergabet2014&#34;&gt;冉佳兴：Narrowband versus broadband excitation for CH₂O PLIF imaging in flames using a frequency-tripled Nd:YAG laser（Gabet2014）&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;文献&lt;/strong&gt;：Gabet K. N., Sutton J. A. Narrowband versus broadband excitation for CH₂O PLIF imaging in flames using a frequency-tripled Nd:YAG laser. Experiments in Fluids, 55: 1774，2014. DOI: &lt;a href=&#34;https://doi.org/10.1007/s00348-014-1774-9&#34;&gt;10.1007/s00348-014-1774-9&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;一句话内容&lt;/strong&gt;：用注入种子 Nd:YAG 三倍频 355 nm 对比窄带/宽带激发火焰 CH₂O PLIF，窄带调峰信号提升约 2 倍，可降低非预混火焰中 PAH 等物种的干扰。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;分析&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;改进设想&lt;/strong&gt;（如果是我做，我能如何做得更好）：同步测温量化淬灭与配分函数的温度影响，完善室温标定的定量修正；补充高压、多燃料工况，拓展结论普适性。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;可借鉴之处&lt;/strong&gt;（哪些能用到我的实验）：窄带调至 28182.5 cm⁻¹ 提信噪比的方案可直接用于 355 nm 甲醛 PLIF 系统；2 倍信号增益与干扰抑制结论可指导激光器选型与参数优化。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;批判与疑问&lt;/strong&gt;：仅靠光谱相似性判定信号以 CH₂O 为主，缺少荧光光谱分辨验证；非预混外侧峰归为 PAH 缺乏直接佐证；室温标定定量可行性仅为推测，未完成系统校验。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;赵鑫浩experimental-study-on-spray-flow-field-interactions-in-the-overlap-region-of-adjacent-pressure-swirl-nozzlesyan2026&#34;&gt;赵鑫浩：Experimental study on spray flow field interactions in the overlap region of adjacent pressure swirl nozzles（YAN2026）&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;文献&lt;/strong&gt;：Jin-Dong Yan, Rui Zhou, Xu-Yang Qiao, Hua Chen, Wen-Long Cheng（通讯）. Experimental study on spray flow field interactions in the overlap region of adjacent pressure swirl nozzles. International Journal of Heat and Mass Transfer, 271: 129468，2026. DOI: &lt;a href=&#34;https://doi.org/10.1016/j.ijheatmasstransfer.2026.129468&#34;&gt;10.1016/j.ijheatmasstransfer.2026.129468&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;一句话内容&lt;/strong&gt;：用 PDPA 对比单喷嘴与紧贴布置的双压力旋流喷嘴，证明重叠区内液滴间碰撞是雾化细化的主导途径（重叠区 ID32 最大降低 19.5%）。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;分析&lt;/strong&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>文献周报（本周 w46）：批判性阅读选辑</title>
+				<link>http://localhost:1313/xliu-group/zh/post/literature-weekly/</link>
+				<pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/literature-weekly/</guid>
+				<description>文献周报固定页：本周 critique 全文（每周三组会前刷新；导师认可后才发布）</description>
+			</item>
+			<item>
+				<title>热电偶温度信号的 Allan 方差分析：16~32 s 的准周期慢波动</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangchen-18-allan-variance/</link>
+				<pubDate>Fri, 06 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangchen-18-allan-variance/</guid>
+				<description>&lt;h2 id=&#34;问题温度信号到底稳不稳&#34;&gt;问题：温度信号到底稳不稳？&lt;/h2&gt;&#xA;&lt;p&gt;313 同温工况实验里，用热电偶采集一级来流温度，想回答两件事：温度信号是否收敛、最优平均时间取多少。光看时间序列容易&amp;quot;凭感觉&amp;quot;，这里用 &lt;strong&gt;Allan 方差（重叠法）&lt;/strong&gt; 定量判断——σ(τ) 随积分时间 τ 的变化曲线，白噪声时 σ 随 τ 下降、漂移时 σ 上升，最低点对应收敛时间。&lt;/p&gt;&#xA;&lt;h2 id=&#34;先澄清一个口径热电偶是-1-hz不是-20-hz&#34;&gt;先澄清一个口径：热电偶是 1 Hz，不是 20 Hz&lt;/h2&gt;&#xA;&lt;p&gt;写分析前先把采样率口径搞清。此前有一处把温度读数记成了 &lt;strong&gt;20 Hz（1 秒 20 个数）&lt;/strong&gt;——那是&lt;strong&gt;火焰探测器&lt;/strong&gt;的采样率（高频火焰信号，吹熄判据用），不是热电偶。热电偶/DAQ 实际采样率 &lt;strong&gt;1~2 Hz&lt;/strong&gt;（本次 10-28 数据约 1 Hz），未降采样、未抽点。两个传感器不是一回事，混用会让 Allan 的&amp;quot;点噪声&amp;quot;解释完全失真。&lt;/p&gt;&#xA;&lt;h2 id=&#34;数据与方法&#34;&gt;数据与方法&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;数据：10-28 同温工况热电偶 &lt;code&gt;2026.10.28.xlsx&lt;/code&gt; 通道 1，2679 点、约 61 分钟。&lt;/li&gt;&#xA;&lt;li&gt;口径：按&amp;quot;一个工况测 2 分钟&amp;quot;，取整段最稳的 2 分钟窗口（t=755~898 s，均值 1036.9 ℃，段内标准差 1.99 ℃）。&lt;/li&gt;&#xA;&lt;li&gt;方法：重叠 Allan 方差，σ(τ) 随积分时间 τ。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;结果&#34;&gt;结果&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th style=&#34;text-align: right&#34;&gt;τ&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th style=&#34;text-align: right&#34;&gt;σ(τ)&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: right&#34;&gt;1 s&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: right&#34;&gt;0.79 ℃&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: right&#34;&gt;8 s&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: right&#34;&gt;1.71 ℃（峰值）&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: right&#34;&gt;32 s&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: right&#34;&gt;0.62 ℃&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;曲线&lt;strong&gt;先升后降&lt;/strong&gt;：从 τ=1 s 的 0.79 ℃ 升到 τ=8 s 的 1.71 ℃ 峰值，再回落到 τ=32 s 的 0.62 ℃。这说明温度里有一个&lt;strong&gt;约 16~32 s 的准周期慢波动（幅度约 ±1.7 ℃）&lt;/strong&gt;，不是纯白噪声。整段 61 分钟另含暖机瞬态（前 3 分钟升到 &lt;del&gt;1092 ℃）与长时间缓漂（995&lt;/del&gt;1099 ℃ 游走），两者不属于&amp;quot;单一工况 2 分钟&amp;quot;的统计范围。&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>王晨中期答辩材料</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangchen-defense/</link>
+				<pubDate>Fri, 06 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangchen-defense/</guid>
+				<description>&lt;h2 id=&#34;答辩材料&#34;&gt;答辩材料&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://localhost:1313/xliu-group/zh/post/wangchen-defense/defense.pptx&#34;&gt;答辩 PPT&lt;/a&gt;（7.6 MB，已压缩）&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;（报告正文 Markdown 版待补：由 LaTeX 源经 pandoc 转正文后补入本页；当前先发布答辩 PPT）&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>文献周报 w45：批判性阅读选辑</title>
+				<link>http://localhost:1313/xliu-group/zh/post/2026w45-literature/</link>
+				<pubDate>Fri, 06 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/2026w45-literature/</guid>
+				<description>&lt;p&gt;本周收到 4 篇 critique，作者：高寅斌、赵殿虎、张洪民、张家艺。统一格式：&lt;strong&gt;文献 + 一句话内容&lt;/strong&gt;，分析分三部分（改进设想 / 可借鉴之处 / 批判与疑问）。&lt;/p&gt;&#xA;&lt;h3 id=&#34;高寅斌高-q-音叉--多通池的热弹光谱测-cohe2019&#34;&gt;高寅斌：高 Q 音叉 + 多通池的热弹光谱测 CO（He2019）&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;文献&lt;/strong&gt;：He Y., Ma Y., Tong Y., Yu X., Tittel F. K. Ultra-high sensitive light-induced thermoelastic spectroscopy sensor with a high Q-factor quartz tuning fork and a multipass cell. Optics Letters, 2019, 44(8): 1904–1907. DOI: &lt;a href=&#34;https://doi.org/10.1364/OL.44.001904&#34;&gt;10.1364/OL.44.001904&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;一句话内容&lt;/strong&gt;：把高 Q 值石英音叉当作「光→热→振动」的热弹检出器，配 10.1 m 多通池与 2f 波长调制检测 CO。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;分析&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;改进设想&lt;/strong&gt;（如果是我做，我能如何做得更好）：加一个参考音叉——只接收同一束激光、不经过待测气体，用来扣除激光功率漂移与音叉自身吸光发热。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;可借鉴之处&lt;/strong&gt;（哪些能用到我的实验）：借鉴其 NEA 口径（cm⁻¹·Hz⁻¹ᐟ²）——用 211 实测数据算得 NEA ≈ 2.4×10⁻⁷（1σ、B=1 Hz），与其 LITES 的 2.0×10⁻⁷ 同量级、优于其 TDLAS 的 9.3×10⁻⁷；其「LOD 随积分时间变化」（最优积分 800 s、MDL 17 ppb）补进 211-1 检测限节讨论。落 &lt;code&gt;I1-7&lt;/code&gt;。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;批判与疑问&lt;/strong&gt;：把音叉从 QEPAS 的「声学换能器」转成「热弹检出器」，同一套光路、同一积分时间下与 TDLAS/QEPAS 定量对比，可比性扎实；光斑位置先用 COMSOL 算热弹位移再落位，也不是凭经验摆。不足是系统性依赖低气压（信号随降压单调上升，需真空泵与压力控制），且高 Q 即窄带宽（Q=50177 时约 0.6 Hz），动态过程适应性未讨论。另外，降压时 Q 值、吸收线宽、音叉热时间常数同时在变，论文只凭「2f 信号与 Q 值趋势相似」就断言信号主要正比于 Q，证据不足——需要补哪些对照，才能把 Q 的贡献与其他因素分开？&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;赵殿虎横向反应射流对谐波速度扰动的受迫响应choi2024&#34;&gt;赵殿虎：横向反应射流对谐波速度扰动的受迫响应（Choi2024）&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;文献&lt;/strong&gt;：Choi 等. Forced response of transverse reacting jet in vitiated crossflow to harmonic velocity disturbances. Combustion and Flame, 2024. DOI: &lt;a href=&#34;https://doi.org/10.1016/j.combustflame.2024.113670&#34;&gt;10.1016/j.combustflame.2024.113670&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;一句话内容&lt;/strong&gt;：分级施加声激励分别测出两级火焰的传递函数，第二级横喷火响应约快 1.5 倍、低频增益可超 1。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;分析&lt;/strong&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>替代 ARNOLD 148/10/100 PS-WK：我们做的氢氧火头，为什么不发黑、寿命更长</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-31-arnold-p61-replacement/</link>
+				<pubDate>Thu, 05 Nov 2026 20:00:00 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-31-arnold-p61-replacement/</guid>
+				<description>石英加工线上，火头是关键耗材。进口 ARNOLD 148/10/100 PS-WK 火头的痛点是端面发黑、寿命短。我们把火头端面的关键材料换成了新型耐高温抗氧化材料，配自主孔阵设计，做了两种型号的氢氧火头——端面不发黑、寿命长，相同流量下还能定制不同火焰长度，已在一家石英加工企业替代进口产品。文末附使用说明与常见问题。</description>
+			</item>
+			<item>
+				<title>狭缝火焰炉：把 2600 K 的平面火焰压进一条 1 mm 的缝</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-30-slit-flame-furnace/</link>
+				<pubDate>Thu, 05 Nov 2026 19:30:00 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-30-slit-flame-furnace/</guid>
+				<description>甲烷 15 slm + 氧气 30 slm 预混，从一条 1 mm×15 mm 的狭缝喷出，出口速度 50 m/s，设计火焰温度 2600 K——这是一台面向石英玻璃加工的狭缝火焰炉。这篇记录它的设计参数、点火后的火焰形态，以及用这把“火焰刀”把石英玻璃棒拉成细丝的初步试验。</description>
+			</item>
+			<item>
+				<title>15 ppm 到底算好还是算差：把检测限换算成 NEA 之后</title>
+				<link>http://localhost:1313/xliu-group/zh/post/gaoyinbin-21-nea-detection-limit/</link>
+				<pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/gaoyinbin-21-nea-detection-limit/</guid>
+				<description>&lt;h2 id=&#34;起因一个被我讲不清的概念&#34;&gt;起因：一个被我讲不清的概念&lt;/h2&gt;&#xA;&lt;p&gt;上周组会我讲 He2019 那篇高 Q 音叉 LITES 的文献，导师问我：这篇报的 MDL 是 470 ppb，它的 Table 1 里还有个 NEA 列写着 2.0×10⁻⁷，什么意思？&lt;/p&gt;&#xA;&lt;p&gt;我当场没答上来，承认&amp;quot;是让 AI 算的&amp;quot;。导师的回话我记下了：&lt;strong&gt;你要知道怎么算、要能担责&lt;/strong&gt;。&lt;/p&gt;&#xA;&lt;p&gt;这几天把这个概念从头理了一遍，顺手拿自己 211 项目的数据算了一遍，结论比我预想的有意思：&lt;strong&gt;用万用表直读这种极简架构，NEA 和人家锁相放大器 + 10 米多程池的系统只差 1.2 倍。&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;这篇把中间过程写清楚，也算给自己留个底。&lt;/p&gt;&#xA;&lt;h2 id=&#34;为什么要-neappm-是个不能横向比的单位&#34;&gt;为什么要 NEA：ppm 是个不能横向比的单位&lt;/h2&gt;&#xA;&lt;p&gt;先说清楚 ppm 这个单位为什么不能拿来比。&lt;/p&gt;&#xA;&lt;p&gt;同一个系统，报 15 ppm，另一个报 470 ppb，看起来差 30 倍。但这 30 倍里混了一堆不该算进去的东西：&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;混进来的因素&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;为什么让它不可比&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;吸收线不同&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;CO₂ 在 2.7 μm 的线强、CO 在 2.33 μm 的线强差很多，同样的吸收系数换算出的 ppm 完全不同&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;平均时间不同&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;我采 100 次读数，一次读多久？对方锁相放大器带宽 1.118 Hz——平均越久噪声越小，不说明时间就等于没说&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;光程不同&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;我 30 m，对方 10.1 m，同样的吸收深度除以不同光程，得到的 α 差 3 倍&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;strong&gt;激光功率不同&lt;/strong&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;功率大信噪比就好，这跟&amp;quot;方法好不好&amp;quot;无关&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;所以要横向比，得把这些都剥掉，只留下&lt;strong&gt;方法本身的本事&lt;/strong&gt;。这就是 NEA。&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>飞秒激光与纳秒激光对比</title>
+				<link>http://localhost:1313/xliu-group/zh/post/zhanghongmin-9-fs-ns-laser-comparison/</link>
+				<pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/zhanghongmin-9-fs-ns-laser-comparison/</guid>
+				<description>&lt;p&gt;在高超声速风洞里测流场速度，最棘手的是&amp;quot;往流场里放什么&amp;quot;。皮托管会扰动流场，示踪粒子又跟不上高马赫数的剧烈加速。分子标记测速（Molecular Tagging Velocimetry, MTV）的思路很巧：用一束激光在流场里&amp;quot;写&amp;quot;一条发光的线，看这条线被气流带着位移了多少，位移除以时间延迟就是速度——标记就是空气自己，不需要任何外来种子。&lt;/p&gt;&#xA;&lt;p&gt;而&amp;quot;怎么写这条线&amp;quot;，飞秒激光和纳秒激光给出了两条物理上完全不同的路径。本文以 FLEET 和 NiiFTI 为例，把这段机理对比讲清楚。&lt;/p&gt;&#xA;&lt;h2 id=&#34;一六个数量级的分水岭&#34;&gt;一、六个数量级的分水岭&lt;/h2&gt;&#xA;&lt;p&gt;飞秒（10⁻¹⁵ s）与纳秒（10⁻⁹ s）脉宽相差六个数量级。同样的单脉冲能量下，峰值功率也相差六个数量级——这决定了激光与气体分子作用的方式根本不同：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;纳秒激光&lt;/strong&gt;：脉宽远大于分子电离的时间尺度，电子有时间与激光、与分子反复相互作用；&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;飞秒激光&lt;/strong&gt;：脉宽比分子内电子运动和分子间碰撞的时间尺度都短得多，脉冲结束时碰撞级联还来不及发生。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;二两条完全不同的点亮路径&#34;&gt;二、两条完全不同的&amp;quot;点亮&amp;quot;路径&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;纳秒路径：逆轫致辐射 → 碰撞电离 → 级联击穿（热过程）。&lt;/strong&gt;&#xA;纳秒激光聚焦后，先产生少量&amp;quot;种子&amp;quot;自由电子。这些电子在激光场中振荡，通过&lt;strong&gt;逆轫致辐射（inverse bremsstrahlung）&lt;strong&gt;不断从激光场吸收能量而加速；高能电子再与气体分子碰撞，撞出更多电子，形成&lt;/strong&gt;雪崩式碰撞电离&lt;/strong&gt;，最终导致局域气体击穿、产生激光等离子体。这是一个&amp;quot;热&amp;quot;过程：能量先交给电子，再通过碰撞传给分子，属于分子间相互作用。击穿同时还会产生激波与等离子体泡。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;飞秒路径：分子内多光子/隧道电离（冷过程）。&lt;/strong&gt;&#xA;飞秒激光焦点处峰值强度可达 10¹³–10¹⁴ W/cm²，足以在单个脉冲内直接通过&lt;strong&gt;多光子电离/隧道电离&lt;/strong&gt;把 N₂ 分子电离、解离——电子还没机会跟别的分子碰撞形成级联，脉冲就已经结束了。这是一个&amp;quot;冷&amp;quot;的、**分子内（intramolecular）**的过程，不发生纳秒那样的碰撞电离链。&lt;/p&gt;&#xA;&lt;p&gt;一句话概括：**纳秒是&amp;quot;电子先热起来、再传染给分子&amp;quot;，飞秒是&amp;quot;直接对分子下手&amp;quot;。**两者机理不同，不能混为一谈。&lt;/p&gt;&#xA;&lt;h2 id=&#34;三fleet飞秒激光电子激发标记&#34;&gt;三、FLEET：飞秒激光电子激发标记&lt;/h2&gt;&#xA;&lt;p&gt;FLEET（Femtosecond Laser Electronic Excitation Tagging）是高超流场测速的主流路线之一。飞秒激光在流场中&lt;strong&gt;成丝（filamentation）&lt;/strong&gt;，把 N₂ 解离成 N 原子、电离出 N₂⁺；随后的复合过程布居到 N₂ 激发态，发出长寿命荧光（第一正带系，寿命在空气中可达几十到上百微秒）。这条发光的&amp;quot;线&amp;quot;随流场运动，通过延时成像测位移即可得到速度。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;优点&lt;/strong&gt;：无需示踪粒子、单束激光、空间分辨率高，特别适合高超声速、稀薄气体等场景。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;痛点&lt;/strong&gt;：一是&lt;strong&gt;依赖昂贵的飞秒激光&lt;/strong&gt;；二是荧光信号&lt;strong&gt;极易被氧气淬灭&lt;/strong&gt;，实际可用寿命和信噪比受环境影响大。&lt;/p&gt;&#xA;&lt;h2 id=&#34;四纳秒激光普通情况与-niifti-特殊情况&#34;&gt;四、纳秒激光：普通情况与 NiiFTI 特殊情况&lt;/h2&gt;&#xA;&lt;p&gt;纳秒激光在气体流场里的作用，要分&amp;quot;普通情况&amp;quot;和&amp;quot;特殊情况&amp;quot;两个层次看。&lt;/p&gt;&#xA;&lt;h3 id=&#34;普通情况激光气体击穿等离子体与激波标记&#34;&gt;普通情况：激光气体击穿、等离子体与激波标记&lt;/h3&gt;&#xA;&lt;p&gt;这是纳秒激光最直接的作用方式：把纳秒激光聚焦到流场中，经逆轫致辐射 → 碰撞电离 → 级联击穿，在焦点处打出一个&lt;strong&gt;激光等离子体&lt;/strong&gt;。它带来两类可观测的流动标记：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;等离子体发光&lt;/strong&gt;：击穿瞬间的等离子体本身发光（连续谱 + 离子/原子线谱），但寿命较短（纳秒到微秒量级），适合做瞬态标记或点源；&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;激波与等离子体泡&lt;/strong&gt;：击穿瞬间的能量沉积产生强激波和一个被加热的等离子体泡（热核），它们会&lt;strong&gt;跟随高马赫数流场发展&lt;/strong&gt;，时间尺度比等离子体发光长得多（激波传播、热泡演化可到百微秒~毫秒级），可用于&lt;strong&gt;流动显示、流场测量，甚至流动控制&lt;/strong&gt;（如在进气道/燃烧室里用等离子体做主动控制）。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;普通情况的代价也很明显：击穿效率与激波/热结构的演化&lt;strong&gt;强烈依赖气体的温度、密度、压力&lt;/strong&gt;等热力学参数，而这些参数在高马赫数流场里与马赫数的关系复杂——要系统标定激光波长、能量、聚焦电场强度与流场状态的对应关系，才能把&amp;quot;击穿标记&amp;quot;变成可靠的定量测量手段。&lt;/p&gt;&#xA;&lt;h3 id=&#34;特殊情况niiftino-电离诱导流动标记与成像&#34;&gt;特殊情况：NiiFTI（NO 电离诱导流动标记与成像）&lt;/h3&gt;&#xA;&lt;p&gt;NiiFTI（Nitric-oxide ionization induced Flow Tagging and Imaging，Leonov et al., &lt;em&gt;Opt. Lett.&lt;/em&gt; 49(3): 426, 2024）是纳秒路线里一个巧妙的变体。它不直接靠击穿 N₂ 的等离子体发光做标记（那寿命太短），而是用&lt;strong&gt;单台纳秒激光电离痕量 NO&lt;/strong&gt;——NO 电离势（约 9.26 eV）远低于 N₂（约 15.58 eV），更容易电离——电离过程&amp;quot;接力&amp;quot;激发 N₂，产生&lt;strong&gt;长寿命分子荧光&lt;/strong&gt;作流动标记（空气中 1/e 寿命约 50 µs）。等于是用纳秒激光的&amp;quot;热&amp;quot;机理，换来了飞秒 FLEET 那样的长寿命分子荧光标记。&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>高寅斌开题报告</title>
+				<link>http://localhost:1313/xliu-group/zh/post/gaoyinbin-proposal/</link>
+				<pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/gaoyinbin-proposal/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>高寅斌中期报告</title>
+				<link>http://localhost:1313/xliu-group/zh/post/gaoyinbin-midterm/</link>
+				<pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/gaoyinbin-midterm/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>惠昊开题报告</title>
+				<link>http://localhost:1313/xliu-group/zh/post/huihao-proposal/</link>
+				<pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/huihao-proposal/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>惠昊中期报告</title>
+				<link>http://localhost:1313/xliu-group/zh/post/huihao-midterm/</link>
+				<pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/huihao-midterm/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>王晨开题报告</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangchen-proposal/</link>
+				<pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangchen-proposal/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>王晨中期报告</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangchen-midterm/</link>
+				<pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangchen-midterm/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>王硕开题报告</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangshuo-proposal/</link>
+				<pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangshuo-proposal/</guid>
+				<description>&lt;p&gt;开题报告正文（文字版，由提交学院的打印版 PDF 提取；图与版式见 &lt;a href=&#34;http://localhost:1313/xliu-group/zh/post/wangshuo-proposal/proposal.pdf&#34;&gt;proposal.pdf&lt;/a&gt;）。&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>王硕中期报告</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangshuo-midterm/</link>
+				<pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangshuo-midterm/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>怎么把喷雾图里的液滴和 PIV 示踪粒子分开：四个特征一起看</title>
+				<link>http://localhost:1313/xliu-group/zh/post/zhaoxinhao-12-spray-droplet-tracer-classification/</link>
+				<pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/zhaoxinhao-12-spray-droplet-tracer-classification/</guid>
+				<description>&lt;h2 id=&#34;起因液滴和示踪粒子长得太像了&#34;&gt;起因：液滴和示踪粒子，长得太像了&lt;/h2&gt;&#xA;&lt;p&gt;PIV 是测喷雾速度场的标准手段——往流场里撒示踪粒子，粒子跟着流体走、被照亮、拍下来，再算速度场。但在稠密喷雾里会撞上一个老问题：&lt;strong&gt;燃料液滴和示踪粒子在同一张图里，尺寸、亮度都接近，肉眼常常分不清&lt;/strong&gt;。&lt;/p&gt;&#xA;&lt;p&gt;分不清的代价很实在。把液滴错当成示踪粒子，算出来的速度其实是液滴（离散相）的速度，不是气流（连续相）的；反过来把真示踪粒子删了，速度场的空间分辨率就掉了。所以这个&amp;quot;分不清&amp;quot;直接污染 PIV 结果。&lt;/p&gt;&#xA;&lt;h2 id=&#34;为什么单个特征不够&#34;&gt;为什么单个特征不够&lt;/h2&gt;&#xA;&lt;p&gt;最直觉的想法是按尺寸分（液滴大、颗粒小），或者按亮度分。但稠密近喷嘴区，液滴会重叠、离焦、形成亮环，颗粒又小又均匀——&lt;strong&gt;单个阈值要么误删、要么漏检&lt;/strong&gt;。已有方法（中值滤波去背景 + 形态学开运算，以及 Khalitov &amp;amp; Longmire 的尺寸 + 亮度联合阈值）都对参数敏感，选参没有一套清晰的标准。&lt;/p&gt;&#xA;&lt;h2 id=&#34;思路四个特征一起看&#34;&gt;思路：四个特征一起看&lt;/h2&gt;&#xA;&lt;p&gt;既然单个特征不稳，那就让四个互补特征互相印证：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;尺寸&lt;/strong&gt;：液滴 50–200 μm，示踪颗粒 10–50 μm；&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;灰度&lt;/strong&gt;：液滴反光、灰度方差大；颗粒均匀、方差小；&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;边缘&lt;/strong&gt;：颗粒边缘清晰规则；液滴边缘模糊或出现亮环；&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;运动&lt;/strong&gt;：颗粒跟随流体、速度与气流一致；液滴速度可能偏离。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;核心逻辑不是靠某一个特征一锤定音，而是四个特征打分融合，整体判断&amp;quot;这团亮斑到底是液滴还是颗粒&amp;quot;。&lt;/p&gt;&#xA;&lt;h2 id=&#34;两条对比基线&#34;&gt;两条对比基线&lt;/h2&gt;&#xA;&lt;p&gt;方法好不好，得和已有的比：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;中值滤波法&lt;/strong&gt;：开运算去掉小颗粒、保留液滴，再掩码提取颗粒——适合尺寸差异明显的场景，关键参数是 kernel_size、thresh_factor；&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Khalitov &amp;amp; Longmire 法&lt;/strong&gt;：尺寸 + 亮度联合阈值。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;目标：整体分类准确率 ≥ 90%，并给出一套参数优化指南，把图像条件翻译成推荐参数范围。&lt;/p&gt;&#xA;&lt;h2 id=&#34;现状与下一步&#34;&gt;现状与下一步&lt;/h2&gt;&#xA;&lt;p&gt;方法方案已经定下来，tex 骨架也起了（题目 + Introduction + 数据章节）。目前卡在&lt;strong&gt;数据&lt;/strong&gt;：这套方法是冲着稠密喷雾去的，喷雾数据还没采到——之前手里的 PIV 数据是喷嘴的，按口径归到 271 光流法那边去了。下一步等喷雾实验数据到位，先把两个基线算法跑起来、标注验证集、出混淆矩阵。&lt;/p&gt;&#xA;&lt;p&gt;一句话总结：液滴和示踪粒子分不清，本质是&amp;quot;单个特征信息不够&amp;quot;；解法是让尺寸、灰度、边缘、运动四个特征一起说话。&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>中红外层析成像系统光机电集成</title>
+				<link>http://localhost:1313/xliu-group/zh/post/zhangjiayi-13-mid-ir-tomography-integration/</link>
+				<pubDate>Mon, 02 Nov 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/zhangjiayi-13-mid-ir-tomography-integration/</guid>
+				<description>215 多路 TDLAS 层析成像装置的光机电集成实践：系统架构 → 光 → 电 → 机 → 集成踩坑（张家艺主笔，赵鑫浩参与）。</description>
+			</item>
+			<item>
+				<title>张家艺开题报告</title>
+				<link>http://localhost:1313/xliu-group/zh/post/zhangjiayi-proposal/</link>
+				<pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/zhangjiayi-proposal/</guid>
+				<description>&lt;blockquote&gt;&#xA;&lt;p&gt;技术路线图由 TikZ 绘制，网页正文无法直接呈现——请查看 PDF 对应章节。&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+			</item>
+			<item>
+				<title>张洪民开题报告</title>
+				<link>http://localhost:1313/xliu-group/zh/post/zhanghongmin-proposal/</link>
+				<pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/zhanghongmin-proposal/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>赵殿虎开题报告</title>
+				<link>http://localhost:1313/xliu-group/zh/post/zhaodianhu-proposal/</link>
+				<pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/zhaodianhu-proposal/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>双喷嘴横流射流的两篇预印本：一个稀释定律、一条交换标度，与下一步的变密度实验</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-29-twin-jet-scaling-law/</link>
+				<pubDate>Tue, 27 Oct 2026 06:30:00 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-29-twin-jet-scaling-law/</guid>
+				<description>我们最近发布了两篇预印本：用 40 kHz 时间分辨 PIV 发现，横流中的串联双射流前射流变低、后射流变高；排除回流区与低压吸引两个常见解释后，把结论落在动量混合稀释上，并给出了两个 scaling law。这一发现与经典结论（前射流近似单射流）矛盾，为下一步的变密度实验提出了明确的问题。</description>
+			</item>
+			<item>
+				<title>TDLAS 简介</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-28-tdlas-intro/</link>
+				<pubDate>Mon, 12 Oct 2026 13:30:00 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-28-tdlas-intro/</guid>
+				<description>可调谐半导体激光吸收光谱（TDLAS）：让一支窄线宽激光扫过气体吸收谱线，就能非接触、免标定地定量测出温度、组分浓度、速度与压力。这一页只讲清两件事——我们测什么、用什么设备；完整的设备清单与指标见文末 PDF。</description>
+			</item>
+			<item>
+				<title>赵鑫浩开题报告</title>
+				<link>http://localhost:1313/xliu-group/zh/post/zhaoxinhao-proposal/</link>
+				<pubDate>Mon, 12 Oct 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/zhaoxinhao-proposal/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>用 OpenFOAM 把 HP/SP 算一遍：从 0D 反应器到喷管 CFD</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-27-openfoam-hp-sp/</link>
+				<pubDate>Sat, 03 Oct 2026 00:30:00 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-27-openfoam-hp-sp/</guid>
+				<description>上一篇用 JANAF 表 + Cantera 把液氢/液氧喷管的 HP/SP 算清楚了；这一篇换一条完全不同的路——用 OpenFOAM 的 chemFoam 0D 反应器算燃烧室、用 rhoCentralFoam 算喷管，看工程 CFD 能不能对上教学手算。结果是：燃烧室温度差 0.04 %，喷管喉道差 0.1 %、出口速度差 0.2 %。附带把喷管型面的来路（特征线法）讲清楚。</description>
+			</item>
+			<item>
+				<title>数据集：串联双喷嘴横向射流的 40 kHz 时间分辨 PIV 速度场（velocity fields）</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-paper112-5-dataset/</link>
+				<pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-paper112-5-dataset/</guid>
+				<description>一套串联双喷嘴横向射流的时间分辨 PIV 数据集：9 个工况（间距 L=2d–4d × 速度比 r≈3–7）、68 个双喷嘴 case 与 11 个单射流基线，含瞬时/时均速度场、轨迹参数与统计量；本页说明数据内容与下载位置。</description>
+			</item>
+			<item>
+				<title>从氢氧焰到液氢液氧火箭喷管：HP/SP 到底在算什么</title>
+				<link>http://localhost:1313/xliu-group/zh/post/janaf-cea-nozzle-hp-sp/</link>
+				<pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/janaf-cea-nozzle-hp-sp/</guid>
+				<description>一个液氢/液氧火箭喷管的完整例题：从燃烧室（HP）到喉道与出口（SP），用 JANAF 表手算 + Cantera 交叉验证，把温度、压力、速度与组成沿等熵线一路算下来。</description>
+			</item>
+			<item>
+				<title>跨机器同步 dsh 会话归档：dsh-archive-replica 插件的设计与踩坑</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-26-dsh-archive-replica/</link>
+				<pubDate>Sat, 12 Sep 2026 22:05:42 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-26-dsh-archive-replica/</guid>
+				<description>用几百行 TypeScript 给 dsh（DeepSeek Harness）写一个插件，把&amp;quot;哪些会话已归档&amp;quot;这个本机状态变成可以随任意网盘跨机器同步的文档；含设计取舍、安装方法与一路踩过的坑</description>
+			</item>
+			<item>
+				<title>PIV/PLIF Liutex 分析工具 – 理论、实现与双喷嘴射流应用</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-22-piv-plif-loader/</link>
+				<pubDate>Tue, 08 Sep 2026 17:00:00 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-22-piv-plif-loader/</guid>
+				<description>Liutex 理论完整推导、Python 实现、PyQt6 GUI 工具，以及在双喷嘴横向射流 PIV 数据上的应用示例</description>
+			</item>
+			<item>
+				<title>在 Fedora 上为 Fcitx5 配置语音输入</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-12-fcitx5-vinput/</link>
+				<pubDate>Mon, 03 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-12-fcitx5-vinput/</guid>
+				<description>fcitx5-vinput 安装配置全记录：从 COPR 安装到阿里云百炼 ASR，实现 Linux 桌面原生语音输入</description>
+			</item>
+			<item>
+				<title>Burst dye 驱动压力-流速关系建模与验证</title>
+				<link>http://localhost:1313/xliu-group/zh/post/zhanghongmin-6-burst-dye-pressure-simulation/</link>
+				<pubDate>Thu, 30 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/zhanghongmin-6-burst-dye-pressure-simulation/</guid>
+				<description>染料泵系统驱动压力与瞬时流速关系的阻尼振动模型：等截面水柱模型、有阻尼仿真结果与实验对照思路。</description>
+			</item>
+			<item>
+				<title>高压非预混平面火焰燃烧器设计</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-1-hp-flat-flame-burner/</link>
+				<pubDate>Thu, 30 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-1-hp-flat-flame-burner/</guid>
+				<description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;&#xA;&lt;p&gt;（待撰写）&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>柱塞泵拆装与管路改造</title>
+				<link>http://localhost:1313/xliu-group/zh/post/zhanghongmin-7-piston-pump-overhaul/</link>
+				<pubDate>Thu, 30 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/zhanghongmin-7-piston-pump-overhaul/</guid>
+				<description>柱塞泵吊装拆解、蓄能器送修与气路接头改造的记录：内部锈蚀检查、密封件更换与管路连接注意事项。</description>
+			</item>
+			<item>
+				<title>HITRAN 仿真图形界面</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-16-hitran-gui/</link>
+				<pubDate>Mon, 29 Jun 2026 09:13:01 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-16-hitran-gui/</guid>
+				<description>HITRAN 数据库仿真 GUI</description>
+			</item>
+			<item>
+				<title>PIV</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-21-piv-review/</link>
+				<pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-21-piv-review/</guid>
+				<description>PIV 方法</description>
+			</item>
+			<item>
+				<title>TDLAS 的仿真和局限</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-24-tdlas-overview/</link>
+				<pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-24-tdlas-overview/</guid>
+				<description>TDLAS 简单总结</description>
+			</item>
+			<item>
+				<title>反应流体光谱仿真程序 flame spectrum</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-13-flame-spectrum/</link>
+				<pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-13-flame-spectrum/</guid>
+				<description>Cantera 反应流体仿真联动HITRAN光谱仿真程序GUI</description>
+			</item>
+			<item>
+				<title>轴向分级燃烧器的一维仿真</title>
+				<link>http://localhost:1313/xliu-group/zh/post/zhanghongmin-4-cantera-staged-burner-1d/</link>
+				<pubDate>Tue, 23 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/zhanghongmin-4-cantera-staged-burner-1d/</guid>
+				<description>用 Cantera 做轴向分级燃烧器一维仿真的入门记录：环境安装、官方算例与火焰结构结果。</description>
+			</item>
+			<item>
+				<title>山东科技大学学位论文 LaTeX 模板 SDUST_Thesis</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-23-sdust-thesis-latex/</link>
+				<pubDate>Sat, 20 Jun 2026 18:01:22 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-23-sdust-thesis-latex/</guid>
+				<description>山东科技大学学位论文 LaTeX 模板，符合学校撰写规范，支持硕士/博士/学士，使用 XeLaTeX 编译。</description>
+			</item>
+			<item>
+				<title>系统电路深度排查：继电器反复烧毁的根因</title>
+				<link>http://localhost:1313/xliu-group/zh/post/zhanghongmin-5-circuit-diagnosis/</link>
+				<pubDate>Sat, 20 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/zhanghongmin-5-circuit-diagnosis/</guid>
+				<description>染料泵系统航插烧毁、继电器反复烧线圈的排查过程：从保险丝、按钮线路、浪涌抑制到五口航插火零线接错。</description>
+			</item>
+			<item>
+				<title>气泡雾化喷嘴实验</title>
+				<link>http://localhost:1313/xliu-group/zh/post/zhaoxinhao3_nozzle_expt/</link>
+				<pubDate>Wed, 17 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/zhaoxinhao3_nozzle_expt/</guid>
+				<description>气泡雾化喷嘴通气与不通气的对比实验</description>
+			</item>
+			<item>
+				<title>胶州调研汇报PPT</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-3-jiaozhou-workshop/</link>
+				<pubDate>Fri, 05 Jun 2026 18:12:42 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-3-jiaozhou-workshop/</guid>
+				<description>reveal.js 版本slides</description>
+			</item>
+			<item>
+				<title>Openpiv分析</title>
+				<link>http://localhost:1313/xliu-group/zh/post/zhaoxinhao2_droplet/</link>
+				<pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/zhaoxinhao2_droplet/</guid>
+				<description>煤油喷雾燃烧PIV图像中液滴提取方法</description>
+			</item>
+			<item>
+				<title>火焰探测器原理及使用</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangshuo7/</link>
+				<pubDate>Thu, 07 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangshuo7/</guid>
+				<description>紫外火焰探测器的原理、选型与使用</description>
+			</item>
+			<item>
+				<title>柱塞泵实验：0.7 MPa 与 1.5 MPa 工况测试</title>
+				<link>http://localhost:1313/xliu-group/zh/post/zhanghongmin-3-plunger-pump-test/</link>
+				<pubDate>Sat, 02 May 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/zhanghongmin-3-plunger-pump-test/</guid>
+				<description>柱塞泵系统组装后的初步运行测试：系统组成、操作步骤与 0.7/1.5 MPa 两工况的压力-流速记录。</description>
+			</item>
+			<item>
+				<title>光谱模拟</title>
+				<link>http://localhost:1313/xliu-group/zh/post/zhanghongmin2_tdlas/</link>
+				<pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/zhanghongmin2_tdlas/</guid>
+				<description>TDLAS光谱模拟界面的再次更新与功能改进</description>
+			</item>
+			<item>
+				<title>声激励喷嘴的结构与参数设计</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangchen4/</link>
+				<pubDate>Sun, 08 Mar 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangchen4/</guid>
+				<description>声激励喷嘴的结构参数设计与声流扰动对火焰的影响</description>
+			</item>
+			<item>
+				<title>2026年3月课题组文献讨论</title>
+				<link>http://localhost:1313/xliu-group/zh/post/2026w10/</link>
+				<pubDate>Fri, 06 Mar 2026 11:41:42 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/2026w10/</guid>
+				<description>2026年3月课题组文献讨论</description>
+			</item>
+			<item>
+				<title>Centera 计算 Hencken 燃烧器燃烧参数</title>
+				<link>http://localhost:1313/xliu-group/zh/post/huihao-7-centera-hencken/</link>
+				<pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/huihao-7-centera-hencken/</guid>
+				<description>用 Centera 对 Hencken 燃烧器做 burner flame 模型仿真：不同质量通量的焓通量/热流密度/温度，以及截面尺寸、面内一致性、焓值不确定度等参数与 NPL 参考的对照。</description>
+			</item>
+			<item>
+				<title>PID实现流量控制</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangshuo6/</link>
+				<pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangshuo6/</guid>
+				<description>利用PID控制器与电控开度阀实现流量稳定控制</description>
+			</item>
+			<item>
+				<title>QTF滤波</title>
+				<link>http://localhost:1313/xliu-group/zh/post/gaoyinbin5_qtf/</link>
+				<pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/gaoyinbin5_qtf/</guid>
+				<description>利用石英音叉高Q值共振特性实现光谱信号滤波的方法</description>
+			</item>
+			<item>
+				<title>TDLAS 测定超声速射流实验推进结果</title>
+				<link>http://localhost:1313/xliu-group/zh/post/gaoyinbin-6-supersonic-jet-tdlas/</link>
+				<pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/gaoyinbin-6-supersonic-jet-tdlas/</guid>
+				<description>双光路耦合 TDLAS 光路搭建与超声速射流初步测量：调制结果、异常排查（窗口片干涉）与当前进展。</description>
+			</item>
+			<item>
+				<title>Hencken炉的最新进展</title>
+				<link>http://localhost:1313/xliu-group/zh/post/huihao6/</link>
+				<pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/huihao6/</guid>
+				<description>Hencken炉平面燃烧器的最新进展及其在激光诊断标定中的应用</description>
+			</item>
+			<item>
+				<title>I2-cell</title>
+				<link>http://localhost:1313/xliu-group/zh/post/huihao5_i2_cell/</link>
+				<pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/huihao5_i2_cell/</guid>
+				<description>碘吸收池的制作过程与经验总结</description>
+			</item>
+			<item>
+				<title>干涉器制作</title>
+				<link>http://localhost:1313/xliu-group/zh/post/huihao4_etalon/</link>
+				<pubDate>Mon, 15 Dec 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/huihao4_etalon/</guid>
+				<description>制作简易法布里-珀罗干涉器的过程与方法</description>
+			</item>
+			<item>
+				<title> PIV 流场分析软件介绍</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangchen3/</link>
+				<pubDate>Thu, 11 Dec 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangchen3/</guid>
+				<description>PIV流场分析软件的功能模块与应用介绍</description>
+			</item>
+			<item>
+				<title>光谱模拟</title>
+				<link>http://localhost:1313/xliu-group/zh/post/zhanghongmin1_tdlas/</link>
+				<pubDate>Thu, 11 Dec 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/zhanghongmin1_tdlas/</guid>
+				<description>基于实验室TDLAS界面的光谱模拟功能更新</description>
+			</item>
+			<item>
+				<title>TDLAS 实验方法简介（一）：光电探测系统的组成</title>
+				<link>http://localhost:1313/xliu-group/zh/post/huihao-3-tdlas-system-parts/</link>
+				<pubDate>Tue, 25 Nov 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/huihao-3-tdlas-system-parts/</guid>
+				<description>TDLAS 光电探测系统七部分组成（激光器/驱动器/探测器/TIA/ADC/DSP/控制器）及选型与使用注意；本系列后续为光谱线选择与数据处理。</description>
+			</item>
+			<item>
+				<title>liutex在二维流场的应用</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangshuo5/</link>
+				<pubDate>Tue, 11 Nov 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangshuo5/</guid>
+				<description>Liutex涡定义与第三代涡识别方法在二维流场的应用</description>
+			</item>
+			<item>
+				<title>HITRAN 数据库用法</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-15-hitran-database/</link>
+				<pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-15-hitran-database/</guid>
+				<description>HITRAN 数据库 line by line 计算代码</description>
+			</item>
+			<item>
+				<title>吸收光谱简介</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-4-tdlas-absorption-intro/</link>
+				<pubDate>Fri, 03 Oct 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-4-tdlas-absorption-intro/</guid>
+				<description>吸收光谱中定量关系与 HITRAN 数据库参数的简介</description>
+			</item>
+			<item>
+				<title>用Witoszynski曲线设计收缩段</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangshuo4/</link>
+				<pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangshuo4/</guid>
+				<description>利用Witoszynski曲线设计收缩段以优化流动</description>
+			</item>
+			<item>
+				<title>火焰温度及辐射特性检测方法总结</title>
+				<link>http://localhost:1313/xliu-group/zh/post/zhangjiayi1_coal/</link>
+				<pubDate>Mon, 25 Aug 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/zhangjiayi1_coal/</guid>
+				<description>基于光谱分析和图像处理的火焰温度及辐射特性检测方法总结</description>
+			</item>
+			<item>
+				<title> 解决流量计跳数问题总结和感悟</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangshuo3/</link>
+				<pubDate>Thu, 21 Aug 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangshuo3/</guid>
+				<description>质量流量计跳数问题的排查与解决经验总结</description>
+			</item>
+			<item>
+				<title>Blow-out limits of nonpremixed turbulent jet flames in a cross flow at atmospheric and sub-atmospheric pressures</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangshuo2/</link>
+				<pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangshuo2/</guid>
+				<description>非预混湍流射流火焰在横向来流中的吹熄极限研究</description>
+			</item>
+			<item>
+				<title>利用 JANAF 表估算氢氧火焰温度</title>
+				<link>http://localhost:1313/xliu-group/zh/post/gaoyinbin-7-janaf-h2-flame/</link>
+				<pubDate>Fri, 15 Aug 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/gaoyinbin-7-janaf-h2-flame/</guid>
+				<description>从焓守恒与化学平衡出发，用 JANAF 表自洽求解氢氧火焰绝热温度，并逐步引入 OH/H 分解平衡做手算校核。</description>
+			</item>
+			<item>
+				<title>激光车</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-17-laser-car/</link>
+				<pubDate>Mon, 30 Jun 2025 16:14:01 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-17-laser-car/</guid>
+				<description>纳秒固体Nd:YAG激光器的基本原理与特点</description>
+			</item>
+			<item>
+				<title>Diagnostic</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-10-diagnostic-review/</link>
+				<pubDate>Mon, 30 Jun 2025 01:26:06 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-10-diagnostic-review/</guid>
+				<description>激光燃烧诊断技术的基本原理与方法概述</description>
+			</item>
+			<item>
+				<title>低空经济会议</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-11-uav-experiment/</link>
+				<pubDate>Sun, 29 Jun 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-11-uav-experiment/</guid>
+				<description>低空经济研讨会与低空经济现代产业学院揭牌仪式</description>
+			</item>
+			<item>
+				<title>横向射流轨迹的拟合</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-7-crossflow-tdlas/</link>
+				<pubDate>Mon, 23 Jun 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-7-crossflow-tdlas/</guid>
+				<description>横向射流轨迹的拟合与流动结构分析</description>
+			</item>
+			<item>
+				<title>利用HDM3065 Hantek 6位半万用表对5V电源输出电压结果的测试</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangchen1/</link>
+				<pubDate>Sun, 22 Jun 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangchen1/</guid>
+				<description>利用HDM3065六位半万用表测试5V电源输出电压稳定性</description>
+			</item>
+			<item>
+				<title>腔体流量测定实验失败复盘</title>
+				<link>http://localhost:1313/xliu-group/zh/post/gaoyinbin2/</link>
+				<pubDate>Sun, 22 Jun 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/gaoyinbin2/</guid>
+				<description>腔体流量测定实验失败的原因分析与焊缝漏气的发现</description>
+			</item>
+			<item>
+				<title>使用镜片搭建光路发出片光拍摄粒子</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangchen2/</link>
+				<pubDate>Sun, 22 Jun 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangchen2/</guid>
+				<description>利用镜片搭建片光光路拍摄流动粒子的方法</description>
+			</item>
+			<item>
+				<title>航空燃烧室技术界的一些错误提法</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-6-literature-review/</link>
+				<pubDate>Tue, 17 Jun 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-6-literature-review/</guid>
+				<description>航空燃烧室技术界一些常见错误提法的辨析与纠正</description>
+			</item>
+			<item>
+				<title>在hugo网页中实现latex显示</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-19-latex-hugo/</link>
+				<pubDate>Mon, 16 Jun 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-19-latex-hugo/</guid>
+				<description>在Hugo网页中利用LaTeX显示数学公式的方法</description>
+			</item>
+			<item>
+				<title>使用 LabVIEW 实现AFG-C9000系列气体质量流量计瞬时流量的读取和储存</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangshuo1/</link>
+				<pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangshuo1/</guid>
+				<description>使用LabVIEW实现气体质量流量计瞬时流量的读取与储存</description>
+			</item>
+			<item>
+				<title>连云港实验第一次</title>
+				<link>http://localhost:1313/xliu-group/zh/post/huihao2/</link>
+				<pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/huihao2/</guid>
+				<description>连云港燃烧器实验的第一次测试经历</description>
+			</item>
+			<item>
+				<title>使用 LabVIEW 实现对CC-M3H040-NN14伺服电机的控制</title>
+				<link>http://localhost:1313/xliu-group/zh/post/huihao1/</link>
+				<pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/huihao1/</guid>
+				<description>使用LabVIEW实现对CC-M3H040-NN14伺服电机的控制</description>
+			</item>
+			<item>
+				<title>利用OpenCV初步实现张正友标定法对棋盘格进行标定并校正图片</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangchen5/</link>
+				<pubDate>Thu, 08 May 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangchen5/</guid>
+				<description>利用OpenCV实现张正友标定法对棋盘格进行相机标定与图像校正</description>
+			</item>
+			<item>
+				<title>Laval Nozzle experiment</title>
+				<link>http://localhost:1313/xliu-group/zh/post/gaoyinbin1/</link>
+				<pubDate>Tue, 22 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/gaoyinbin1/</guid>
+				<description>Laval喷管纹影实验的过程与经验总结</description>
+			</item>
+			<item>
+				<title>甲醛的光谱和PLIF测温</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-5-ch2o-spectroscopy/</link>
+				<pubDate>Sun, 23 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-5-ch2o-spectroscopy/</guid>
+				<description>甲醛光谱与双色PLIF测温方法的原理介绍</description>
+			</item>
+			<item>
+				<title>激光燃烧诊断是应用研究</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-20-diagnostic-method/</link>
+				<pubDate>Sat, 22 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-20-diagnostic-method/</guid>
+				<description>激光燃烧诊断作为应用研究与光谱学方法的历史回顾</description>
+			</item>
+			<item>
+				<title>热工基础</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-18-thermo-course/</link>
+				<pubDate>Mon, 10 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-18-thermo-course/</guid>
+				<description>热工基础课程前四章热力学内容的教学总结</description>
+			</item>
+			<item>
+				<title>lvpyio</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-9-davis-piv/</link>
+				<pubDate>Thu, 20 Feb 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-9-davis-piv/</guid>
+				<description>LaVision Python包lvpyio的使用体验与问题总结</description>
+			</item>
+			<item>
+				<title>TDLAS的空间分辨率问题</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-25-tdlas-biomass/</link>
+				<pubDate>Fri, 08 Nov 2024 21:22:03 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-25-tdlas-biomass/</guid>
+				<description>TDLAS技术在生物质燃烧诊断中的空间分辨率问题分析</description>
+			</item>
+			<item>
+				<title>介绍好书：John Daily 统计热力学</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-8-daily-book/</link>
+				<pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-8-daily-book/</guid>
+				<description>John Daily统计热力学教材的介绍与推荐</description>
+			</item>
+			<item>
+				<title>新网站上线了</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-14-hello-world/</link>
+				<pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-14-hello-world/</guid>
+				<description>课题组新网站上线与功能说明</description>
+			</item>
+	</channel>
+</rss>

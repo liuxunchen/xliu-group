@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>PIV 的空间分辨率：用一套 40 kHz 双喷嘴数据算一算解析到哪个尺度 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="PIV 能分辨多大的涡？互相关法由判读窗口决定，光流/AI 号称网格 1 px——但 AI 也是从光流法来的，光流方程自带邻域、正则与金字塔三重空间滤波，分辨率不由输出网格决定。这篇用我们已公开的 40 kHz 双喷嘴横流射流数据集把这件事算清楚：窗口 1.38 mm 下，涡串（5.3 mm）解析良好、剪切层厚度贴着窗口、Taylor 微尺度被压低、混合长度低于网格不可信，Kolmogorov 尺度还差三十多倍。时间分辨率与空间一一对应（ω~u/ℓ），空间不确定度按位移→速度→标定→梯度→尺度的链逐级传播——我们的工作想法是：做高空间分辨率的 PIV，高频可以，但频率再高空间分辨率必须同步提高。">
+    <meta name="generator" content="Hugo 0.162.1">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="刘训臣">
+    
+
+    <link rel="stylesheet" href="/xliu-group/ananke/css/main.css"><link rel="stylesheet" href="/xliu-group/css/tables.css">
+    <script>
+  (function () {
+    "use strict";
+
+    
+    
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
+
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/xliu-33-piv-spatial-resolution/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/xliu-33-piv-spatial-resolution/">
+	<meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+	<meta property="og:title" content="PIV 的空间分辨率：用一套 40 kHz 双喷嘴数据算一算解析到哪个尺度">
+	<meta property="og:description" content="PIV 能分辨多大的涡？互相关法由判读窗口决定，光流/AI 号称网格 1 px——但 AI 也是从光流法来的，光流方程自带邻域、正则与金字塔三重空间滤波，分辨率不由输出网格决定。这篇用我们已公开的 40 kHz 双喷嘴横流射流数据集把这件事算清楚：窗口 1.38 mm 下，涡串（5.3 mm）解析良好、剪切层厚度贴着窗口、Taylor 微尺度被压低、混合长度低于网格不可信，Kolmogorov 尺度还差三十多倍。时间分辨率与空间一一对应（ω~u/ℓ），空间不确定度按位移→速度→标定→梯度→尺度的链逐级传播——我们的工作想法是：做高空间分辨率的 PIV，高频可以，但频率再高空间分辨率必须同步提高。">
+	<meta property="og:locale" content="zh">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2026-11-14T09:00:00+08:00">
+		<meta property="article:modified_time" content="2026-11-14T09:00:00+08:00">
+		<meta property="article:tag" content="PIV">
+		<meta property="article:tag" content="流动">
+
+	<meta itemprop="name" content="PIV 的空间分辨率：用一套 40 kHz 双喷嘴数据算一算解析到哪个尺度">
+	<meta itemprop="description" content="PIV 能分辨多大的涡？互相关法由判读窗口决定，光流/AI 号称网格 1 px——但 AI 也是从光流法来的，光流方程自带邻域、正则与金字塔三重空间滤波，分辨率不由输出网格决定。这篇用我们已公开的 40 kHz 双喷嘴横流射流数据集把这件事算清楚：窗口 1.38 mm 下，涡串（5.3 mm）解析良好、剪切层厚度贴着窗口、Taylor 微尺度被压低、混合长度低于网格不可信，Kolmogorov 尺度还差三十多倍。时间分辨率与空间一一对应（ω~u/ℓ），空间不确定度按位移→速度→标定→梯度→尺度的链逐级传播——我们的工作想法是：做高空间分辨率的 PIV，高频可以，但频率再高空间分辨率必须同步提高。">
+	<meta itemprop="datePublished" content="2026-11-14T09:00:00+08:00">
+	<meta itemprop="dateModified" content="2026-11-14T09:00:00+08:00">
+	<meta itemprop="wordCount" content="639">
+	<meta itemprop="keywords" content="PIV,流动">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="PIV 的空间分辨率：用一套 40 kHz 双喷嘴数据算一算解析到哪个尺度">
+	<meta name="twitter:description" content="PIV 能分辨多大的涡？互相关法由判读窗口决定，光流/AI 号称网格 1 px——但 AI 也是从光流法来的，光流方程自带邻域、正则与金字塔三重空间滤波，分辨率不由输出网格决定。这篇用我们已公开的 40 kHz 双喷嘴横流射流数据集把这件事算清楚：窗口 1.38 mm 下，涡串（5.3 mm）解析良好、剪切层厚度贴着窗口、Taylor 微尺度被压低、混合长度低于网格不可信，Kolmogorov 尺度还差三十多倍。时间分辨率与空间一一对应（ω~u/ℓ），空间不确定度按位移→速度→标定→梯度→尺度的链逐级传播——我们的工作想法是：做高空间分辨率的 PIV，高频可以，但频率再高空间分辨率必须同步提高。">
+
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+
+    
+   
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        <img src="/xliu-group/images/logo2.jpg" class="w100 mw5-ns" alt="刘训臣燃烧诊断实验室主页" />
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/teaching/" title="Teaching 页">
+              Teaching
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/paper/" title="Paper 页">
+              Paper
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/news/" title="News 页">
+              News
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">PIV 的空间分辨率：用一套 40 kHz 双喷嘴数据算一算解析到哪个尺度</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-xliu-33-piv-spatial-resolution flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">
+    <a class="link dim" href="http://localhost:1313/xliu-group/zh/post/">Post</a>
+  </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">PIV 的空间分辨率：用一套 40 kHz 双喷嘴数据算一算解析到哪个尺度</h1>
+      
+      <p class="tracked"><strong>刘训臣</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-11-14T09:00:00+08:00">十一月 14, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>PIV 能分辨多大的涡？这个问题问法很简单，答案却常常被指标表带偏：互相关法的分辨率由判读窗口决定，光流法与 AI 则号称&quot;速度矢量网格 1 px&quot;——好像换一套算法，空间分辨率就凭空提高了几十倍。但这不对。<strong>AI 也是从光流法来的</strong>，光流方程本身就带着空间滤波；分辨率的判据不在输出网格上，而在湍流理论里。</p>
+<p>我们刚公开了一套 40 kHz 时间分辨 PIV 数据集（串联双喷嘴横流射流，9 个工况、68 个双喷嘴 case + 11 个单射流基线，见<a href="/xliu-group/zh/post/xliu-paper112-5-dataset/">数据集页</a>，配套两篇预印本 <a href="https://arxiv.org/abs/2409.19927">Part I</a> 与 <a href="https://arxiv.org/abs/2610.31417">Part II</a>）。这篇就用它的实测结构尺度，把&quot;空间分辨率&quot;与&quot;解析到哪个尺度&quot;的关系算一遍。</p>
+<h2 id="一互相关-piv分辨率就是窗口">一、互相关 PIV：分辨率就是窗口</h2>
+<p>互相关 PIV 的物理很简单：取一块 $24\times24$ 像素的判读窗口，在第一帧里找，到第二帧的什么位置去，两帧图像的互相关峰落在哪里，哪里就是这块图案的位移。窗口内的所有粒子图案一起投票，投出来的位移是<strong>整个窗口的加权平均</strong>。</p>
+<p>所以判读窗口是一个<strong>空间低通滤波器</strong>：比窗口小的结构，位移在窗口内正负抵消，测不出来；比窗口大的结构才留得下来。互相关 PIV 空间分辨率的第一句话就是：<strong>分辨率 = 窗口尺寸</strong>。</p>
+<p>容易混淆的是<strong>重叠</strong>。75% 重叠把相邻窗口的间距从 24 px 缩到 6 px，网格密了四倍——但重叠提高的是<strong>采样密度</strong>，不是分辨率：滤波长度没有变，多出来的网格只是把同一个窗口解插得更密。<strong>网格是采样，窗口是分辨率</strong>，这是两回事。</p>
+<p>这套实验的真实数字：最终遍窗口 $24\times24$ px，标定 0.0575 mm/px → <strong>窗口物理尺寸 1.38 mm</strong>；75% 重叠 → <strong>网格间距 0.345 mm</strong>。出口后第一个可分辨站位在 ~0.5 mm 处。</p>
+<p>还有一个设计约束值得注意。窗口相关的经典规则是粒子位移不超过窗口的<strong>四分之一</strong>：$\Delta x \le 24/4 = 6$ px = 0.345 mm。帧间隔 $\Delta t = 25$ μs（40 kHz）→ 最大可测速度 $0.345/25 \times 10^{3} \approx 13.8$ m/s（0.345 mm / 25 μs，毫米/微秒换算成米/秒自带 $10^{3}$）——而射流出口中心线速度 $u_j \approx 14$ m/s。<strong>测量系统恰好卡在自己的极限上</strong>，这是按 1/4 规则配出来的。</p>
+<h2 id="二光流与-ai网格-1-px-不等于分辨率-1-px">二、光流与 AI：网格 1 px 不等于分辨率 1 px</h2>
+<p>那光流法和 AI 是不是就突破了窗口？先看清楚血缘：<strong>AI-PIV 就是光流法</strong>。我们的 <a href="/xliu-group/zh/post/wangchen3/">PIV 分析软件</a>里跑的 PIV-LiteFlowNet-en 是深度光流网络（LiteFlowNet 家族），Farneback 是稠密光流——两者解的是同一个光流亮度守恒方程</p>
+$$
+\frac{\partial I}{\partial t} + \mathbf{u}\cdot\nabla I = 0,
+$$<p>再加上各自的平滑/正则项。这个方程自带三重空间滤波，谁绕不过去：</p>
+<p><strong>第一重，亮度守恒只在有纹理的地方成立。</strong> 粒子图像不是连续亮度场，是离散粒子团。粒子之间的暗区、粒子内部的高亮核心，梯度为零，方程给不出位移信息——那里&quot;每像素一个速度&quot;是插出来的，不是测出来的。图像能承载的独立位移信息，上界就是粒子图案的数量。</p>
+<p><strong>第二重，孔径问题。</strong> 只看一个小邻域，一个圆形粒子图案的移动只能测出<strong>垂直于图案边界</strong>的分量，切向分量测不出来（经典孔径问题）。要凑齐两个分量，必须聚合更大的邻域——聚合邻域，就是空间滤波。Farneback 的多项式邻域、深度网络的卷积感受野，本质上与互相关窗口是同一类东西：一个隐藏的、没人写在指标表里的<strong>等效窗口</strong>。</p>
+<p><strong>第三重，正则与金字塔。</strong> 光流问题是欠定的，必须加平滑正则才能解；正则权重直接决定空间分辨率下限。多尺度金字塔更直接：粗层先估大位移，细层只处理残差——<strong>细尺度从粗尺度那里继承了平滑</strong>。1 px 网格上的精细结构，很大一部分是粗层解的插值与正则的产物。</p>
+<p>所以三类算法在空间分辨率这件事上是五十步与百步的关系：互相关有<strong>显式窗口</strong>，光流/AI 有<strong>隐式邻域</strong>；数值上差几倍，量级上不差。1 px 是<strong>输出网格</strong>，不是<strong>分辨率</strong>。要问的问题是等效滤波长度是多少、图案里还剩多少信息。</p>
+<h2 id="三用我们的数据算空间解析尺度与空间分辨率">三、用我们的数据算：空间解析尺度与空间分辨率</h2>
+<p>有了&quot;分辨率 = 等效滤波长度&quot;这个口径，接下来把尺子换成湍流理论。湍流有多尺度结构：大涡（射流直径 $d$、涡串间距 $\lambda$）、剪切层厚度 $\delta$、Taylor 微尺度 $\lambda_T$、Kolmogorov 耗散尺度 $\eta$。PIV 的价值不在于&quot;网格多密&quot;，而在于<strong>它够到了湍流级串的哪一级</strong>。</p>
+<p>这套测量的分辨率是：窗口 <strong>1.38 mm</strong>（滤波长度）、网格 <strong>0.345 mm</strong>（采样）、梯度分辨率 <strong>$2\Delta x \approx 0.7$ mm</strong>（吃差分的量的下限）。被测结构的尺度如下：</p>
+<p><strong>涡串间距</strong> $\lambda$：剪切层脱落频率 $f_0\approx1.5$–$1.6$ kHz（$St\approx0.45$），波包相干长度实测 $5.3\pm2.5$ mm，约一个涡间距——<strong>3.8 倍窗口</strong>。这一级解析良好：Part II 的涡串追踪、DMD/SPOD 模态分析都建立在这一级上，频率、波长、对流速度三者互相独立的测量能够互检（$U_c=\lambda f_0$ 是验证过的而不是假设的）。</p>
+<p><strong>剪切层厚度</strong> $\delta$：量级 1–2 mm，与窗口（1.38 mm）<strong>同量级、贴窗口</strong>。这一级处于&quot;边缘解析&quot;状态：平均剪切层剖面能测，但剖面内部的细节不可信。</p>
+<p><strong>Taylor 微尺度</strong>：取实测的湍流速度尺度 $u&rsquo;\approx1.4$ m/s（Part II 的交换速度尺度 $u^{*}=1.37\pm0.27$ m/s）、特征尺度 $\ell\approx1.5$ mm，$Re_\ell = u&rsquo;\ell/\nu \approx 140$，$\lambda_T \approx \ell\sqrt{15/Re_\ell} \approx 0.5$ mm。<strong>比窗口还小、与网格同量级</strong>——这个尺度的结构在窗口滤波下已被明显压低，测出来的是衰减后的残影。</p>
+<p><strong>Prandtl 混合长度</strong> $l_{\mathrm{mix}}$：单射流 $0.39\pm0.09$ mm，另一套更薄剪切层的实验里中位只有 0.11 mm。它是由 $\langle u&rsquo;v&rsquo;\rangle$ 与平均剪切的梯度算出来的——<strong>低于梯度分辨率 $2\Delta x\approx0.7$ mm</strong>。这个量在这套数据里只能算&quot;勉强存活&quot;，不能当硬证据。</p>
+<p><strong>Kolmogorov 耗散尺度</strong>：$\varepsilon \approx u&rsquo;^{3}/\ell \approx 1.8\times10^{3}$ m²/s³，$\eta = (\nu^{3}/\varepsilon)^{1/4} \approx 40$ μm——<strong>窗口比 $\eta$ 大三十多倍</strong>。这个尺度在 PIV 数据里根本不存在。</p>
+<p>把上面列成一张表：</p>
+<table>
+	<thead>
+			<tr>
+					<th>尺度</th>
+					<th>实测/估算值</th>
+					<th style="text-align: center">相对窗口（1.38 mm）</th>
+					<th>结论</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>涡串间距 $\lambda$</td>
+					<td>5.3 ± 2.5 mm</td>
+					<td style="text-align: center">≈ 3.8×</td>
+					<td>解析良好，Part II 的涡串分析建立在这一级</td>
+			</tr>
+			<tr>
+					<td>剪切层厚度 $\delta$</td>
+					<td>~1–2 mm（量级）</td>
+					<td style="text-align: center">0.7–1.4×</td>
+					<td>贴窗口，边缘解析</td>
+			</tr>
+			<tr>
+					<td>Taylor 微尺度 $\lambda_T$</td>
+					<td>≈ 0.5 mm</td>
+					<td style="text-align: center">0.36×</td>
+					<td>窗口之内，被滤波压低</td>
+			</tr>
+			<tr>
+					<td>混合长度 $l_{\mathrm{mix}}$</td>
+					<td>0.11–0.39 mm</td>
+					<td style="text-align: center">0.08–0.28×</td>
+					<td>低于网格与梯度分辨率，不可信</td>
+			</tr>
+			<tr>
+					<td>Kolmogorov 尺度 $\eta$</td>
+					<td>≈ 40 μm</td>
+					<td style="text-align: center">0.03×</td>
+					<td>够不到，数据中不存在</td>
+			</tr>
+	</tbody>
+</table>
+<p>这张表就是&quot;空间解析尺度与空间分辨率的关系&quot;的完整答案。写 Part II 时想把能量链闭合——大涡的能量从哪一级往下走、在哪一级耗散——但只能停在&quot;涡串把能量<strong>输运到未分辨尺度</strong>&quot;（the trains shed their energy to unresolved scales through nonlinear interactions）为止。不是物理上没有，是<strong>测量上没有</strong>：$\lambda_T$ 以下全都落在窗口之内，$\eta$ 还差两个数量级。同样，当时有把机制往小尺度（混合长度一级）讲的想法，但空间分辨率不够——是不行的。</p>
+<p>归纳成经验判据：目标结构的尺度要在窗口（或等效滤波长度）的 <strong>2–3 倍以上</strong>，才谈得上解析；梯度、涡量、混合长度这类<strong>吃差分的量</strong>要求更严，下限是 $2\Delta x$。</p>
+<h2 id="四时间分辨率是另一半">四、时间分辨率是另一半</h2>
+<p>空间上解析的是涡，时间上解析的是涡的演化。这套数据的时间轴是这样配的：</p>
+<ul>
+<li>采样率 $f_s=40$ kHz → <strong>Nyquist 20 kHz</strong>；剪切层脱落 $f_0\approx1.6$ kHz，每周期约 <strong>25 帧</strong>，频率分辨的余量有一个数量级以上；</li>
+<li>记录长度 400 帧 = <strong>10 ms</strong> → 频率下限 $1/T\approx0.1$ kHz；</li>
+<li>论文里引用的可分辨带是 <strong>0.40–3.00 kHz</strong>；它的下边界同样卡在记录长度上——Part II 的 Limitations 里写：低于 0.1 kHz 的全局模态&quot;在本记录的频带之外&quot;。</li>
+</ul>
+<p>&ldquo;时间分辨率够不够&quot;是三个数一起算的：<strong>Nyquist 上限、记录长度下限、目标频率的位置</strong>，缺一个都谈不上时间分辨。</p>
+<p>时间与空间的对应关系值得展开讲。湍流结构的空间尺度 $\ell$ 与它的时间尺度 $\tau$ 是绑定的：结构以特征速度 $u$ 对流，$\tau \sim \ell/u$，即 $\omega \sim u/\ell$——<strong>尺度越小，频率越高</strong>。这一条直接决定高频成像的采样率该怎么配：</p>
+<ul>
+<li><strong>大涡基本是不动的。</strong> 双喷嘴的间隙回流、射流弯曲这些大尺度结构，时间尺度是几毫秒到几十毫秒量级；在 10 ms 的记录窗里，它们只能贡献最低频的摆动——我们的 PIV 脉动谱低频端（百 Hz 量级）就是这种大尺度摆动。对这些结构，把采样率提得再高也换不来新信息：<strong>高频帧里大涡几乎不动，高频采样对大涡是冗余的</strong>。</li>
+<li><strong>要看到更小的涡，就必须有更高的采样频率。</strong> 涡串这一级（$f_0\approx1.6$ kHz）靠 40 kHz 采样拿到每周期 25 帧；再往下，$\lambda_T\approx0.5$ mm 对应的时间尺度 $\tau_T \sim \lambda_T/u&rsquo; \approx 0.36$ ms（约 2.8 kHz），而 $\eta \approx 40$ μm 对应的 Kolmogorov 时间尺度 $\tau_\eta = (\nu/\varepsilon)^{1/2} \approx 90$ μs（约 11 kHz）——目标尺度每降一级，频率就抬一档，采样率必须跟着涨（Nyquist 约束）。</li>
+</ul>
+<p>有意思的是，这套数据的<strong>时间轴比空间轴富余得多</strong>：40 kHz 的 Nyquist 上限（20 kHz）已经贴到 $\eta$ 的时间尺度（约 11 kHz）边上——差一个系数 2 的边；而空间上窗口比 $\eta$ 大三十多倍。<strong>时间上几乎够得着、空间上远远够不着</strong>。这也是高频 PIV 的瓶颈总在空间分辨率的原因：提升采样频率相对容易（高速相机、串脉冲激光都是现成的），缩小等效窗口才是难事。</p>
+<p>这个&quot;时间富余、空间不足&quot;的不对称，直接引出我们的工作想法：<strong>做空间高分辨率的测量，或者说，让时间分辨率与空间分辨率匹配</strong>。高频能力我们手里就有——串脉冲激光加高速相机，从 40 kHz 往 MHz 走都不缺设备，瓶颈不在采样率。既然每上一档频率，就必须有一档更小的窗口、更准的位移来配套（下一节的账会算清楚），主攻方向就应该放在空间上：窗口做小、放大率做高、粒子密度配足，把光流/AI 的等效滤波长度显式化；高频作为配套，按目标涡尺度的 $\omega \sim u/\ell$ 去配。<strong>频率再高，空间必须同步跟上，否则只是更快地记录噪声。</strong></p>
+<p>所以高频燃烧诊断成像的采样率，本质上是按&quot;你想解析的最小结构的频率&quot;来定的：先选目标涡尺度，把它按 $\omega \sim u/\ell$ 换算成频率，再把 Nyquist 配到它之上；比它更大的结构在记录里几乎不动，只能贡献低频摆动——这就是时间分辨率与空间分辨率一一对应的那层关系。</p>
+<h2 id="五空间不确定度如何分析">五、空间不确定度如何分析</h2>
+<p>空间分辨率说&quot;能不能看见&rdquo;，空间不确定度说&quot;看见的位置和尺度有多准&quot;。它是一条可以逐级写代数式的传播链，我们逐级算一遍（数字仍用这套数据）：</p>
+<p><strong>第一级，位移不确定度。</strong> 互相关位移测量的亚像素精度经典值是 <strong>~0.1 px</strong>（亚像素峰值拟合）；注意一个坑：示踪粒子图像直径小于 ~1.5 px 时出现<strong>峰值锁定</strong>，位移被吸到整像素上，亚像素精度失效——这是系统偏差，不是随机误差。这套数据的标定是 0.0575 mm/px，所以位移不确定度 $\sigma_{\Delta x} \approx 0.1\times0.0575 \approx 6$ μm。</p>
+<p><strong>第二级，速度不确定度：采样率越高，放大越多。</strong> $\sigma_u = \sigma_{\Delta x}/\Delta t$。40 kHz（$\Delta t=25$ μs）→ $\sigma_u \approx 0.23$ m/s，约为湍流速度尺度 $u&rsquo;\approx1.4$ m/s 的 16%；如果把采样率提到 1 MHz（$\Delta t=1$ μs），同一个 $\sigma_{\Delta x}$ 给出 $\sigma_u \approx 6$ m/s——<strong>比 $u&rsquo;$ 还大四倍</strong>。这就是&quot;频率再高，空间分辨率必须同步提高&quot;的定量版：$\Delta t$ 每缩一半，位移不确定度对速度的贡献翻一倍；想维持同样的速度精度，要么把 $\sigma_{\Delta x}$ 同比例缩小（更准的亚像素拟合、粒子更密的小窗口），要么提高放大率（更小的 mm/px）——两条路都属于&quot;空间分辨率&quot;的范畴。</p>
+<p><strong>第三级，标定：先分共模与差模。</strong> 放大率误差给全场速度乘同一个系数，是共模误差。Part II 里均匀流标定的残差就被处理成 common-mode error——它移动绝对速度与速度比 $r$，但在&quot;前-后射流&quot;&ldquo;双-单射流&quot;这类对比中大部分抵消。所以做标定不确定度分析时先问一句：这个误差是<strong>共模</strong>（只影响绝对值与全局缩放）还是<strong>差模</strong>（进入场内部对比）？两者的处置完全不同。</p>
+<p><strong>第四级，梯度量把不确定度再放大。</strong> 涡量、剪切率、混合长度都是差分/导数：中心差分把速度噪声放大为 $\sigma_{\partial u/\partial y} = \sigma_u/(\sqrt{2},\Delta x)$。代入这套数据：$0.23/(\sqrt{2}\times0.345\ \mathrm{mm}) \approx 500$ s⁻¹（量级）——与 Part II 图里 Liutex 振幅场的色标（0–450 s⁻¹）<strong>同量级</strong>。也就是说，在网格分辨率上做梯度量，噪声底与信号一个量级，必须靠时均或滤波压低，而时均与滤波又把空间分辨率吃掉。<strong>分辨率与不确定度在这里完成互换</strong>——这笔账必须算清楚，否则&quot;更密的网格&quot;只是在更精细地画噪声。</p>
+<p><strong>第五级，落到尺度不确定度。</strong> 结构尺度的测量值（涡间距 $\lambda$、相干长度、剪切层厚度 $\delta$）的不确定度有两个来源：上面这条测量噪声链的传播，以及<strong>结构本身的非稳态</strong>——Part II 的涡串是&quot;对流 + 相位抖动&rdquo;（convected and phase-jittered），$\lambda=5.3\pm2.5$ mm 的散布里，很大一部分是物理抖动而不是测量误差。把这两者分开，才知道 2.5 mm 里哪部分是测量限制、哪部分是流动本质——前者决定我们该升级什么硬件，后者才是论文要讲的故事。</p>
+<p>归纳成一句话：<strong>空间不确定度 = 位移（亚像素精度与峰值锁定）→ 速度（÷Δt，随采样率放大）→ 标定（共模/差模分开）→ 梯度量（÷Δx 再放大）→ 尺度测量（噪声链 + 结构非稳态分开）</strong>。五级，每一级都有明确的代数式，没有一级可以跳过。</p>
+<h2 id="六结论三个问题与这套数据的数字账本">六、结论：三个问题与这套数据的数字账本</h2>
+<p>无论拿到的是互相关、光流还是 AI 的结果，判定它的空间分辨率只问三个问题：</p>
+<ol>
+<li><strong>等效滤波长度是多少？</strong> 互相关是窗口；光流/AI 是邻域/感受野/金字塔粗层的尺度——这个数可能没写在指标表里，但它一定存在。</li>
+<li><strong>输出网格是否远小于滤波长度？</strong> 若是，多出来的网格是插值与正则的产物，不携带新信息——过采样不等于高分辨率。</li>
+<li><strong>目标湍流尺度在哪一层？</strong> 把涡间距、剪切层厚度、$\lambda_T$、$\eta$ 依次排出来，看要研究的量落在滤波长度的几倍上；吃差分的量再从严一档。</li>
+</ol>
+<p>时间轴补一条：<strong>目标尺度按 $\omega \sim u/\ell$ 换算成频率后，$f_s$ 对它的 Nyquist 余量，加上记录长度给的低频下限</strong>——时间与空间一一对应。</p>
+<p>用这套口径回看这套数据，一句话：<strong>可信区间在涡串尺度（≥3–4 倍窗口），$\lambda_T$ 以下属于未分辨尺度</strong>——先问滤波长度，再对湍流尺度，最后补上时间轴，这就是 PIV 空间分辨率问题的完整答案。</p>
+<p>最后，以这套 40 kHz 数据为例，把空间分辨率与空间不确定度的数字收在一张表里：</p>
+<table>
+	<thead>
+			<tr>
+					<th>项目</th>
+					<th>实测数字</th>
+					<th>含义</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>空间分辨率（滤波长度）</td>
+					<td>窗口 1.38 mm（24×24 px × 0.0575 mm/px）</td>
+					<td>分辨率基准，比它小的结构被滤波</td>
+			</tr>
+			<tr>
+					<td>网格间距（采样）</td>
+					<td>0.345 mm（75% 重叠）</td>
+					<td>只是采样密度，过采样不增分辨率</td>
+			</tr>
+			<tr>
+					<td>梯度分辨率</td>
+					<td>$2\Delta x \approx 0.7$ mm</td>
+					<td>涡量、混合长度等吃差分量的下限</td>
+			</tr>
+			<tr>
+					<td>位移不确定度</td>
+					<td>$\sigma_{\Delta x} \approx 6$ μm（≈0.1 px）</td>
+					<td>亚像素精度；粒径 &lt;1.5 px 出现峰值锁定</td>
+			</tr>
+			<tr>
+					<td>速度不确定度</td>
+					<td>40 kHz：$\sigma_u \approx 0.23$ m/s（≈16% $u&rsquo;$）；1 MHz：≈6 m/s</td>
+					<td>按 $1/\Delta t$ 放大——频率再高，空间必须配套</td>
+			</tr>
+			<tr>
+					<td>梯度量噪声</td>
+					<td>$\sigma_{\partial u/\partial y} \approx 500$ s⁻¹（与 Liutex 色标 0–450 s⁻¹ 同量级）</td>
+					<td>分辨率与不确定度在此互换</td>
+			</tr>
+			<tr>
+					<td>可信解析尺度</td>
+					<td>涡串 $\lambda = 5.3\pm2.5$ mm（≈3.8× 窗口）</td>
+					<td>两篇预印本的全部结论都站在这一级</td>
+			</tr>
+			<tr>
+					<td>未分辨尺度</td>
+					<td>$\lambda_T \approx 0.5$ mm、$l_{\mathrm{mix}}$ 0.11–0.39 mm、$\eta \approx 40$ μm</td>
+					<td>相应机制讨论必须停笔</td>
+			</tr>
+	</tbody>
+</table>
+<p>这一组数字就是这套数据的完整账本：<strong>分辨率划出边界，不确定度标出每一级的误差</strong>——两者合起来，才知道&quot;测得有多准&quot;。</p>
+<h2 id="进一步阅读">进一步阅读</h2>
+<ul>
+<li><a href="/xliu-group/zh/post/xliu-paper112-5-dataset/">数据集：串联双喷嘴横向射流的 40 kHz 时间分辨 PIV 速度场</a></li>
+<li><a href="/xliu-group/zh/post/xliu-29-twin-jet-scaling-law/">双喷嘴横流射流的两篇预印本</a></li>
+<li><a href="/xliu-group/zh/post/xliu-21-piv-review/">PIV</a></li>
+<li><a href="/xliu-group/zh/post/xliu-22-piv-plif-loader/">PIV/PLIF Liutex 分析工具</a></li>
+<li><a href="/xliu-group/zh/post/wangchen3/">PIV 流场分析软件介绍（王晨）</a></li>
+</ul>
+<ul class="pa0">
+  
+</ul><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/piv/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">PIV</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/%E6%B5%81%E5%8A%A8/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">流动</a>
+   </li>
+  
+</ul>
+
+      
+    </div><aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">相关內容</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-29-twin-jet-scaling-law/">双喷嘴横流射流的两篇预印本：一个稀释定律、一条交换标度，与下一步的变密度实验</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-paper112-5-dataset/">数据集：串联双喷嘴横向射流的 40 kHz 时间分辨 PIV 速度场（velocity fields）</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-22-piv-plif-loader/">PIV/PLIF Liutex 分析工具 – 理论、实现与双喷嘴射流应用</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangchen4/">声激励喷嘴的结构与参数设计</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangshuo5/">liutex在二维流场的应用</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-32-next-step-diagnostics/">从实验室到现场：激光光谱与成像方法怎么落到真实系统里</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/zhaoxinhao-12-spray-droplet-tracer-classification/">怎么把喷雾图里的液滴和 PIV 示踪粒子分开：四个特征一起看</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/zhanghongmin-9-fs-ns-laser-comparison/">飞秒激光与纳秒激光对比</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-21-piv-review/">PIV</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/zhaoxinhao2_droplet/">Openpiv分析</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/gaoyinbin-6-supersonic-jet-tdlas/">TDLAS 测定超声速射流实验推进结果</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangchen3/"> PIV 流场分析软件介绍</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-17-laser-car/">激光车</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-7-crossflow-tdlas/">横向射流轨迹的拟合</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangchen2/">使用镜片搭建光路发出片光拍摄粒子</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

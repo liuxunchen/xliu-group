@@ -1,14 +1,521 @@
-<!doctype html><html lang=zh><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>数据集：串联双喷嘴横向射流的 40 kHz 时间分辨 PIV 速度场（velocity fields） | 刘训臣燃烧诊断实验室主页</title><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=description content="一套串联双喷嘴横向射流的时间分辨 PIV 数据集：9 个工况（间距 L=2d–4d × 速度比 r≈3–7）、68 个双喷嘴 case 与 11 个单射流基线，含瞬时/时均速度场、轨迹参数与统计量；本页说明数据内容与下载位置。"><meta name=generator content="Hugo 0.162.1"><meta name=robots content="index, follow"><meta name=author content="刘训臣"><link rel=stylesheet href=/xliu-group/ananke/css/main.02a37ad6c4e155c542d276915a0e3f83f5c7c5fec443350f6e60753f1679b7a7.css integrity="sha256-AqN61sThVcVC0naRWg4/g/XHxf7EQzUPbmB1PxZ5t6c=" crossorigin=anonymous><link rel=stylesheet href=/xliu-group/css/tables.css><script>(function(){"use strict";function t(){for(var t=document.querySelectorAll(".code-block .code-copy[hidden]"),e=0;e<t.length;e++)t[e].hidden=!1}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",t):t();function e(e){var t=e.querySelector(".code-copy-label"),n=t?t.textContent:null;e.classList.add("is-copied"),t&&(t.textContent="Copied"),window.setTimeout(function(){e.classList.remove("is-copied"),t&&n!==null&&(t.textContent=n)},2e3)}function n(e){var n,t=document.createElement("textarea");t.value=e,t.setAttribute("readonly",""),t.style.position="absolute",t.style.left="-9999px",document.body.appendChild(t),t.select(),n=!1;try{n=document.execCommand("copy")}catch{n=!1}return document.body.removeChild(t),n}function s(t){var s,o,a,i=t.closest(".code-block");if(!i)return;if(s=i.querySelector("pre"),!s)return;a=s.querySelector("code")||s,o=a.innerText,navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(o).then(function(){e(t)},function(){n(o)&&e(t)}):n(o)&&e(t)}document.addEventListener("click",function(e){var t=e.target.closest(".code-copy");t&&s(t)})})()</script><link rel=canonical href=https://liuxunchen.github.io/xliu-group/zh/post/xliu-paper112-5-dataset/><meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/xliu-paper112-5-dataset/"><meta property="og:site_name" content="刘训臣燃烧诊断实验室主页"><meta property="og:title" content="数据集：串联双喷嘴横向射流的 40 kHz 时间分辨 PIV 速度场（velocity fields）"><meta property="og:description" content="一套串联双喷嘴横向射流的时间分辨 PIV 数据集：9 个工况（间距 L=2d–4d × 速度比 r≈3–7）、68 个双喷嘴 case 与 11 个单射流基线，含瞬时/时均速度场、轨迹参数与统计量；本页说明数据内容与下载位置。"><meta property="og:locale" content="zh"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2026-10-01T00:00:00+00:00"><meta property="article:modified_time" content="2026-10-01T00:00:00+00:00"><meta property="article:tag" content="PIV"><meta property="article:tag" content="流动"><meta itemprop=name content="数据集：串联双喷嘴横向射流的 40 kHz 时间分辨 PIV 速度场（velocity fields）"><meta itemprop=description content="一套串联双喷嘴横向射流的时间分辨 PIV 数据集：9 个工况（间距 L=2d–4d × 速度比 r≈3–7）、68 个双喷嘴 case 与 11 个单射流基线，含瞬时/时均速度场、轨迹参数与统计量；本页说明数据内容与下载位置。"><meta itemprop=datePublished content="2026-10-01T00:00:00+00:00"><meta itemprop=dateModified content="2026-10-01T00:00:00+00:00"><meta itemprop=wordCount content="356"><meta itemprop=keywords content="PIV,流动"><meta name=twitter:card content="summary"><meta name=twitter:title content="数据集：串联双喷嘴横向射流的 40 kHz 时间分辨 PIV 速度场（velocity fields）"><meta name=twitter:description content="一套串联双喷嘴横向射流的时间分辨 PIV 数据集：9 个工况（间距 L=2d–4d × 速度比 r≈3–7）、68 个双喷嘴 case 与 11 个单射流基线，含瞬时/时均速度场、轨迹参数与统计量；本页说明数据内容与下载位置。"><script>if(typeof MathJax=="undefined"){window.MathJax={tex:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]]}};const e=document.createElement("script");e.src="https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js",e.async=!0,e.crossOrigin="anonymous",document.head.appendChild(e),console.log("MathJax initialized")}</script></head><body class="ma0 avenir bg-near-white production"><header class="cover bg-center" style=background-image:url(https://liuxunchen.github.io/xliu-group/images/sdust.jpg)><div class=bg-black-60><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l center items-center justify-between"><a href=/xliu-group/zh/ class="f3 fw2 hover-white white-90 dib no-underline"><img src=/xliu-group/images/logo2.jpg class="w100 mw5-ns" alt=刘训臣燃烧诊断实验室主页></a><div class="flex-l items-center"><ul class="pl0 mr3"><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/research/ title="Research 页">Research</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/teaching/ title="Teaching 页">Teaching</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/paper/ title="Paper 页">Paper</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/news/ title="News 页">News</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/people/ title="People 页">People</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/post/ title="Post 页">Post</a></li></ul><div class=ananke-socials></div></div></div></nav><div class="tc-l pv6 ph3 ph4-ns"><div class="f2 f1-l fw2 white-90 mb0 lh-title">数据集：串联双喷嘴横向射流的 40 kHz 时间分辨 PIV 速度场（velocity fields）</div></div></div></header><main class=pb7 role=main><article class="page-xliu-paper112-5-dataset flex-l mw8 center ph3 flex-wrap justify-between"><header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu"><a class="link dim" href=https://liuxunchen.github.io/xliu-group/zh/post/>Post</a></aside><div id=sharing class="mt3 ananke-socials"></div><h1 class="f1 athelas mt3 mb1">数据集：串联双喷嘴横向射流的 40 kHz 时间分辨 PIV 速度场（velocity fields）</h1><p class=tracked><strong>刘训臣</strong></p><time class="f6 mv4 dib tracked" datetime=2026-10-01T00:00:00Z>十月 1, 2026</time></header><div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><blockquote><p>本页是该数据集的介绍与下载入口。配套两篇预印本：Part I 轨迹与速度衰减的稀释定律（arXiv:2409.19927）与 Part II 封闭回流区的动量交换机理（arXiv:2610.31417）；数据已发布 Science Data Bank（DOI 10.57760/sciencedb.014ij）。</p></blockquote><h2 id=一数据集是什么>一、数据集是什么</h2><p>一套<strong>串联双喷嘴横向射流（tandem twin jets in crossflow）的时间分辨 PIV 数据集</strong>，用于研究前、后两股射流在横流中的相互干扰——前射流为何提前弯曲、后射流如何被遮蔽抬升。</p><table><thead><tr><th>项</th><th>内容</th></tr></thead><tbody><tr><td>测量方式</td><td>40 kHz burst 模式时间分辨 PIV，每个记录 400 帧（可分辨湍流脉动，直接测雷诺应力）</td></tr><tr><td>装置</td><td>喷嘴直径 $d=4$ mm，两个喷嘴沿横流方向串联，间距可调</td></tr><tr><td>工况</td><td>9 个：间距 $L=2d,,3d,,4d$ × 速度比 $r\approx3,,5,,7$（实测 $r\approx2.8,,4.6,,6.5$，$Re_d\approx2.9\times10^3$）</td></tr><tr><td>样本量</td><td><strong>68 个双喷嘴 case</strong> + <strong>11 个单射流基线记录</strong>（71 个原始记录中，case 15 因 DaVis 导出缺失、case 10/11 因出口状态偏离规范而排除）</td></tr><tr><td>PIV 处理</td><td>24×24 pixels、75% overlap、two passes；矢量间距 0.35 mm；矢量场 x = −15.0…29.5 mm、y = −4.2…33.7 mm</td></tr><tr><td>坐标</td><td>每 case 的轨迹已提取，并拉直到弧长–法向自然坐标 $(s,,n)$</td></tr></tbody></table><h2 id=二数据内容>二、数据内容</h2><p>按"处理链条"分四层，前两层轻、后两层重（体量为发布包的实测值）：</p><table><thead><tr><th>层</th><th>内容</th><th>体量</th></tr></thead><tbody><tr><td>① 处理代码与衍生结果</td><td>轨迹提取与分段幂律拟合、自然坐标变换、雷诺应力/混合长度/Poisson 压力/动量收支等分析脚本；轨迹参数与统计量（逐 case、逐站点 CSV）；自然坐标条件平均场缓存（npz：$\langle u&rsquo;v&rsquo;\rangle$、$k$、$l_{mix}$ 等场量）</td><td>约 16 MB</td></tr><tr><td>② 时间平均速度场</td><td>70 个双喷嘴 case 的 DaVis 平均场（130×111 网格，单件 0.1 MB）</td><td>约 7 MB</td></tr><tr><td>③ 瞬时速度场</td><td>论文口径 81 个记录 × 400 帧（双喷嘴 70 + 单射流 11）——复现 DMD/SPOD、雷诺应力、压力重构必需</td><td><strong>3.1 GB</strong>（已由 DaVis 文本转为压缩 npz：双喷嘴 2.7 GB + 单射流 0.44 GB，单件 40 MB）</td></tr><tr><td>④ 原始 PIV 图像</td><td>105 组 × 441 张 tif，仅在需要核验 PIV 处理本身时使用</td><td>53 GB（约 4.6 万张，单张约 1 MB）</td></tr></tbody></table><blockquote><p>全部实验数据（含不发布的 DaVis <code>im7</code> 过程文件 277 GB）在实验归档中约 363 GB；面向论文复现的发布内容为上表 ①–③。</p></blockquote><blockquote><p>说明：论文中所有图表都由 ①② 复现；只有非定常分析（DMD/SPOD、涡追踪）与 40 kHz 雷诺应力统计需要 ③。</p></blockquote><h2 id=三数据下载数据放在哪里>三、数据下载（数据放在哪里）</h2><table><thead><tr><th>内容</th><th>存放位置</th><th>链接</th></tr></thead><tbody><tr><td>① 处理代码 + 衍生结果（约 16 MB）</td><td><strong>Science Data Bank（ScienceDB）</strong> 发布包 <code>code/</code> 与 <code>derived/</code></td><td><a href=https://doi.org/10.57760/sciencedb.014ij>https://doi.org/10.57760/sciencedb.014ij</a></td></tr><tr><td>② 时间平均速度场（约 7 MB）</td><td><strong>Science Data Bank（ScienceDB）</strong> 发布包 <code>time-average/</code></td><td><a href=https://doi.org/10.57760/sciencedb.014ij>https://doi.org/10.57760/sciencedb.014ij</a></td></tr><tr><td>③ 瞬时速度场（3.1 GB，压缩 npz，单件 40 MB）</td><td><strong>Science Data Bank（ScienceDB）</strong> 发布包 <code>instantaneous/</code></td><td><a href=https://doi.org/10.57760/sciencedb.014ij>https://doi.org/10.57760/sciencedb.014ij</a></td></tr><tr><td>④ 原始 PIV 图像（53 GB，约 4.6 万张）</td><td>不公开托管，按需提供</td><td>联系作者：liuxunchen@sdust.edu.cn</td></tr></tbody></table><p>存放方式：3.1 GB 的瞬时场远超 GitHub「仓库建议不超过 1 GB」与 Git LFS 免费额度，且 ScienceDB 审核要求发布包自包含，故 <strong>①②③ 全部放入学科数据仓库 ScienceDB</strong>，以 DOI 形式长期归档（论文的 Data Availability 声明指向它；平台数据许可 <strong>CC BY 4.0</strong>、代码 <strong>MIT</strong>）。数据已由 DaVis 文本（每记录 400 个 <code>B*.txt</code>）统一转为压缩二进制 npz，附数据字典 <code>README.md</code> 与记录清单 <code>index.csv</code>。</p><h2 id=四配套论文>四、配套论文</h2><table><thead><tr><th>项</th><th>内容</th></tr></thead><tbody><tr><td>Part I</td><td><em>Tandem jets in crossflow: a one-parameter dilution law for the trajectory and the velocity decay</em> — arXiv:<a href=https://arxiv.org/abs/2409.19927>2409.19927</a></td></tr><tr><td>Part II</td><td><em>Tandem jets in crossflow: the enclosed-recirculation momentum exchange and the unsteady shear-layer dynamics</em> — arXiv:<a href=https://arxiv.org/abs/2610.31417>2610.31417</a></td></tr><tr><td>作者</td><td>刘训臣（山东科技大学 机械电子工程学院）</td></tr><tr><td>投稿目标</td><td>Physics of Fluids（两篇，Part I / Part II 共享同一数据集）</td></tr></tbody></table><h2 id=五引用>五、引用</h2><p>数据集：</p><div class=code-block><button class=code-copy type=button hidden aria-label="Copy code to clipboard">
-<span class=code-copy-label aria-hidden=true>Copy</span></button><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bibtex data-lang=bibtex><span style=display:flex><span><span style=color:#a6e22e>@misc</span>{liu2026twinjetdataset,
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>title</span>     = <span style=color:#e6db74>{Time-resolved PIV dataset of tandem twin jets in crossflow}</span>,
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>author</span>    = <span style=color:#e6db74>{Liu, Xunchen}</span>,
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>year</span>      = <span style=color:#e6db74>{2026}</span>,
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>publisher</span> = <span style=color:#e6db74>{Science Data Bank}</span>,
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>doi</span>       = <span style=color:#e6db74>{10.57760/sciencedb.014ij}</span>
-</span></span><span style=display:flex><span>}</span></span></code></pre></div></div><p>论文：</p><div class=code-block><button class=code-copy type=button hidden aria-label="Copy code to clipboard">
-<span class=code-copy-label aria-hidden=true>Copy</span></button><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bibtex data-lang=bibtex><span style=display:flex><span><span style=color:#a6e22e>@article</span>{liu2026front,
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>title</span>  = <span style=color:#e6db74>{Tandem jets in crossflow: the enclosed-recirculation momentum exchange and the unsteady shear-layer dynamics}</span>,
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>author</span> = <span style=color:#e6db74>{Liu, Xunchen}</span>,
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>year</span>   = <span style=color:#e6db74>{2026}</span>,
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>eprint</span> = <span style=color:#e6db74>{arXiv:2610.31417}</span>
-</span></span><span style=display:flex><span>}</span></span></code></pre></div></div><ul class=pa0></ul><ul class=pa0><li class="list di"><a href=/xliu-group/zh/tags/piv/ class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">PIV</a></li><li class="list di"><a href=/xliu-group/zh/tags/%E6%B5%81%E5%8A%A8/ class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">流动</a></li></ul></div><aside class="w-30-l mt6-l"><div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links"><p class="f5 b mb3">相关內容</p><ul class="pa0 list"><li class=mb2><a href=/xliu-group/zh/post/xliu-22-piv-plif-loader/>PIV/PLIF Liutex 分析工具 – 理论、实现与双喷嘴射流应用</a></li><li class=mb2><a href=/xliu-group/zh/post/wangchen4/>声激励喷嘴的结构与参数设计</a></li><li class=mb2><a href=/xliu-group/zh/post/wangshuo5/>liutex在二维流场的应用</a></li><li class=mb2><a href=/xliu-group/zh/post/xliu-21-piv-review/>PIV</a></li><li class=mb2><a href=/xliu-group/zh/post/zhaoxinhao2_droplet/>Openpiv分析</a></li><li class=mb2><a href=/xliu-group/zh/post/gaoyinbin-6-supersonic-jet-tdlas/>TDLAS 测定超声速射流实验推进结果</a></li><li class=mb2><a href=/xliu-group/zh/post/wangchen3/>PIV 流场分析软件介绍</a></li><li class=mb2><a href=/xliu-group/zh/post/xliu-17-laser-car/>激光车</a></li><li class=mb2><a href=/xliu-group/zh/post/xliu-7-crossflow-tdlas/>横向射流轨迹的拟合</a></li><li class=mb2><a href=/xliu-group/zh/post/wangchen2/>使用镜片搭建光路发出片光拍摄粒子</a></li><li class=mb2><a href=/xliu-group/zh/post/wangchen1/>利用HDM3065 Hantek 6位半万用表对5V电源输出电压结果的测试</a></li><li class=mb2><a href=/xliu-group/zh/post/gaoyinbin2/>腔体流量测定实验失败复盘</a></li><li class=mb2><a href=/xliu-group/zh/post/wangchen5/>利用OpenCV初步实现张正友标定法对棋盘格进行标定并校正图片</a></li><li class=mb2><a href=/xliu-group/zh/post/xliu-9-davis-piv/>lvpyio</a></li></ul></div></aside></article></main><footer class="bg-black bottom-0 w-100 pa3" role=contentinfo><div class="flex justify-between"><a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href=https://liuxunchen.github.io/xliu-group/zh/>&copy; 刘训臣燃烧诊断实验室主页 2026</a><div><div class=ananke-socials></div></div></div></footer></body></html>
+<!DOCTYPE html>
+<html lang="zh">
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>数据集：串联双喷嘴横向射流的 40 kHz 时间分辨 PIV 速度场（velocity fields） | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="一套串联双喷嘴横向射流的时间分辨 PIV 数据集：9 个工况（间距 L=2d–4d × 速度比 r≈3–7）、68 个双喷嘴 case 与 11 个单射流基线，含瞬时/时均速度场、轨迹参数与统计量；本页说明数据内容与下载位置。">
+    <meta name="generator" content="Hugo 0.162.1">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="刘训臣">
+    
+
+    <link rel="stylesheet" href="/xliu-group/ananke/css/main.css"><link rel="stylesheet" href="/xliu-group/css/tables.css">
+    <script>
+  (function () {
+    "use strict";
+
+    
+    
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
+
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/xliu-paper112-5-dataset/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/xliu-paper112-5-dataset/">
+	<meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+	<meta property="og:title" content="数据集：串联双喷嘴横向射流的 40 kHz 时间分辨 PIV 速度场（velocity fields）">
+	<meta property="og:description" content="一套串联双喷嘴横向射流的时间分辨 PIV 数据集：9 个工况（间距 L=2d–4d × 速度比 r≈3–7）、68 个双喷嘴 case 与 11 个单射流基线，含瞬时/时均速度场、轨迹参数与统计量；本页说明数据内容与下载位置。">
+	<meta property="og:locale" content="zh">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2026-10-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-10-01T00:00:00+00:00">
+		<meta property="article:tag" content="PIV">
+		<meta property="article:tag" content="流动">
+
+	<meta itemprop="name" content="数据集：串联双喷嘴横向射流的 40 kHz 时间分辨 PIV 速度场（velocity fields）">
+	<meta itemprop="description" content="一套串联双喷嘴横向射流的时间分辨 PIV 数据集：9 个工况（间距 L=2d–4d × 速度比 r≈3–7）、68 个双喷嘴 case 与 11 个单射流基线，含瞬时/时均速度场、轨迹参数与统计量；本页说明数据内容与下载位置。">
+	<meta itemprop="datePublished" content="2026-10-01T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-10-01T00:00:00+00:00">
+	<meta itemprop="wordCount" content="356">
+	<meta itemprop="keywords" content="PIV,流动">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="数据集：串联双喷嘴横向射流的 40 kHz 时间分辨 PIV 速度场（velocity fields）">
+	<meta name="twitter:description" content="一套串联双喷嘴横向射流的时间分辨 PIV 数据集：9 个工况（间距 L=2d–4d × 速度比 r≈3–7）、68 个双喷嘴 case 与 11 个单射流基线，含瞬时/时均速度场、轨迹参数与统计量；本页说明数据内容与下载位置。">
+
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+
+    
+   
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        <img src="/xliu-group/images/logo2.jpg" class="w100 mw5-ns" alt="刘训臣燃烧诊断实验室主页" />
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/teaching/" title="Teaching 页">
+              Teaching
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/paper/" title="Paper 页">
+              Paper
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/news/" title="News 页">
+              News
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">数据集：串联双喷嘴横向射流的 40 kHz 时间分辨 PIV 速度场（velocity fields）</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-xliu-paper112-5-dataset flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">
+    <a class="link dim" href="http://localhost:1313/xliu-group/zh/post/">Post</a>
+  </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">数据集：串联双喷嘴横向射流的 40 kHz 时间分辨 PIV 速度场（velocity fields）</h1>
+      
+      <p class="tracked"><strong>刘训臣</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-10-01T00:00:00Z">十月 1, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><blockquote>
+<p>本页是该数据集的介绍与下载入口。配套两篇预印本：Part I 轨迹与速度衰减的稀释定律（arXiv:2409.19927）与 Part II 封闭回流区的动量交换机理（arXiv:2610.31417）；数据已发布 Science Data Bank（DOI 10.57760/sciencedb.014ij）。</p>
+</blockquote>
+<h2 id="一数据集是什么">一、数据集是什么</h2>
+<p>一套<strong>串联双喷嘴横向射流（tandem twin jets in crossflow）的时间分辨 PIV 数据集</strong>，用于研究前、后两股射流在横流中的相互干扰——前射流为何提前弯曲、后射流如何被遮蔽抬升。</p>
+<table>
+	<thead>
+			<tr>
+					<th>项</th>
+					<th>内容</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>测量方式</td>
+					<td>40 kHz burst 模式时间分辨 PIV，每个记录 400 帧（可分辨湍流脉动，直接测雷诺应力）</td>
+			</tr>
+			<tr>
+					<td>装置</td>
+					<td>喷嘴直径 $d=4$ mm，两个喷嘴沿横流方向串联，间距可调</td>
+			</tr>
+			<tr>
+					<td>工况</td>
+					<td>9 个：间距 $L=2d,,3d,,4d$ × 速度比 $r\approx3,,5,,7$（实测 $r\approx2.8,,4.6,,6.5$，$Re_d\approx2.9\times10^3$）</td>
+			</tr>
+			<tr>
+					<td>样本量</td>
+					<td><strong>68 个双喷嘴 case</strong> + <strong>11 个单射流基线记录</strong>（71 个原始记录中，case 15 因 DaVis 导出缺失、case 10/11 因出口状态偏离规范而排除）</td>
+			</tr>
+			<tr>
+					<td>PIV 处理</td>
+					<td>24×24 pixels、75% overlap、two passes；矢量间距 0.35 mm；矢量场 x = −15.0…29.5 mm、y = −4.2…33.7 mm</td>
+			</tr>
+			<tr>
+					<td>坐标</td>
+					<td>每 case 的轨迹已提取，并拉直到弧长–法向自然坐标 $(s,,n)$</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="二数据内容">二、数据内容</h2>
+<p>按&quot;处理链条&quot;分四层，前两层轻、后两层重（体量为发布包的实测值）：</p>
+<table>
+	<thead>
+			<tr>
+					<th>层</th>
+					<th>内容</th>
+					<th>体量</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>① 处理代码与衍生结果</td>
+					<td>轨迹提取与分段幂律拟合、自然坐标变换、雷诺应力/混合长度/Poisson 压力/动量收支等分析脚本；轨迹参数与统计量（逐 case、逐站点 CSV）；自然坐标条件平均场缓存（npz：$\langle u&rsquo;v&rsquo;\rangle$、$k$、$l_{mix}$ 等场量）</td>
+					<td>约 16 MB</td>
+			</tr>
+			<tr>
+					<td>② 时间平均速度场</td>
+					<td>70 个双喷嘴 case 的 DaVis 平均场（130×111 网格，单件 0.1 MB）</td>
+					<td>约 7 MB</td>
+			</tr>
+			<tr>
+					<td>③ 瞬时速度场</td>
+					<td>论文口径 81 个记录 × 400 帧（双喷嘴 70 + 单射流 11）——复现 DMD/SPOD、雷诺应力、压力重构必需</td>
+					<td><strong>3.1 GB</strong>（已由 DaVis 文本转为压缩 npz：双喷嘴 2.7 GB + 单射流 0.44 GB，单件 40 MB）</td>
+			</tr>
+			<tr>
+					<td>④ 原始 PIV 图像</td>
+					<td>105 组 × 441 张 tif，仅在需要核验 PIV 处理本身时使用</td>
+					<td>53 GB（约 4.6 万张，单张约 1 MB）</td>
+			</tr>
+	</tbody>
+</table>
+<blockquote>
+<p>全部实验数据（含不发布的 DaVis <code>im7</code> 过程文件 277 GB）在实验归档中约 363 GB；面向论文复现的发布内容为上表 ①–③。</p>
+</blockquote>
+<blockquote>
+<p>说明：论文中所有图表都由 ①② 复现；只有非定常分析（DMD/SPOD、涡追踪）与 40 kHz 雷诺应力统计需要 ③。</p>
+</blockquote>
+<h2 id="三数据下载数据放在哪里">三、数据下载（数据放在哪里）</h2>
+<table>
+	<thead>
+			<tr>
+					<th>内容</th>
+					<th>存放位置</th>
+					<th>链接</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>① 处理代码 + 衍生结果（约 16 MB）</td>
+					<td><strong>Science Data Bank（ScienceDB）</strong> 发布包 <code>code/</code> 与 <code>derived/</code></td>
+					<td><a href="https://doi.org/10.57760/sciencedb.014ij">https://doi.org/10.57760/sciencedb.014ij</a></td>
+			</tr>
+			<tr>
+					<td>② 时间平均速度场（约 7 MB）</td>
+					<td><strong>Science Data Bank（ScienceDB）</strong> 发布包 <code>time-average/</code></td>
+					<td><a href="https://doi.org/10.57760/sciencedb.014ij">https://doi.org/10.57760/sciencedb.014ij</a></td>
+			</tr>
+			<tr>
+					<td>③ 瞬时速度场（3.1 GB，压缩 npz，单件 40 MB）</td>
+					<td><strong>Science Data Bank（ScienceDB）</strong> 发布包 <code>instantaneous/</code></td>
+					<td><a href="https://doi.org/10.57760/sciencedb.014ij">https://doi.org/10.57760/sciencedb.014ij</a></td>
+			</tr>
+			<tr>
+					<td>④ 原始 PIV 图像（53 GB，约 4.6 万张）</td>
+					<td>不公开托管，按需提供</td>
+					<td>联系作者：liuxunchen@sdust.edu.cn</td>
+			</tr>
+	</tbody>
+</table>
+<p>存放方式：3.1 GB 的瞬时场远超 GitHub「仓库建议不超过 1 GB」与 Git LFS 免费额度，且 ScienceDB 审核要求发布包自包含，故 <strong>①②③ 全部放入学科数据仓库 ScienceDB</strong>，以 DOI 形式长期归档（论文的 Data Availability 声明指向它；平台数据许可 <strong>CC BY 4.0</strong>、代码 <strong>MIT</strong>）。数据已由 DaVis 文本（每记录 400 个 <code>B*.txt</code>）统一转为压缩二进制 npz，附数据字典 <code>README.md</code> 与记录清单 <code>index.csv</code>。</p>
+<h2 id="四配套论文">四、配套论文</h2>
+<table>
+	<thead>
+			<tr>
+					<th>项</th>
+					<th>内容</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Part I</td>
+					<td><em>Tandem jets in crossflow: a one-parameter dilution law for the trajectory and the velocity decay</em> — arXiv:<a href="https://arxiv.org/abs/2409.19927">2409.19927</a></td>
+			</tr>
+			<tr>
+					<td>Part II</td>
+					<td><em>Tandem jets in crossflow: the enclosed-recirculation momentum exchange and the unsteady shear-layer dynamics</em> — arXiv:<a href="https://arxiv.org/abs/2610.31417">2610.31417</a></td>
+			</tr>
+			<tr>
+					<td>作者</td>
+					<td>刘训臣（山东科技大学 机械电子工程学院）</td>
+			</tr>
+			<tr>
+					<td>投稿目标</td>
+					<td>Physics of Fluids（两篇，Part I / Part II 共享同一数据集）</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="五引用">五、引用</h2>
+<p>数据集：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bibtex" data-lang="bibtex"><span style="display:flex;"><span><span style="color:#a6e22e">@misc</span>{liu2026twinjetdataset,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">title</span>     = <span style="color:#e6db74">{Time-resolved PIV dataset of tandem twin jets in crossflow}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">author</span>    = <span style="color:#e6db74">{Liu, Xunchen}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">year</span>      = <span style="color:#e6db74">{2026}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">publisher</span> = <span style="color:#e6db74">{Science Data Bank}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">doi</span>       = <span style="color:#e6db74">{10.57760/sciencedb.014ij}</span>
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+  </div><p>论文：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bibtex" data-lang="bibtex"><span style="display:flex;"><span><span style="color:#a6e22e">@article</span>{liu2026front,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">title</span>  = <span style="color:#e6db74">{Tandem jets in crossflow: the enclosed-recirculation momentum exchange and the unsteady shear-layer dynamics}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">author</span> = <span style="color:#e6db74">{Liu, Xunchen}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">year</span>   = <span style="color:#e6db74">{2026}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">eprint</span> = <span style="color:#e6db74">{arXiv:2610.31417}</span>
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+  </div><ul class="pa0">
+  
+</ul><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/piv/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">PIV</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/%E6%B5%81%E5%8A%A8/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">流动</a>
+   </li>
+  
+</ul>
+
+      
+    </div><aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">相关內容</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-22-piv-plif-loader/">PIV/PLIF Liutex 分析工具 – 理论、实现与双喷嘴射流应用</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangchen4/">声激励喷嘴的结构与参数设计</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangshuo5/">liutex在二维流场的应用</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-21-piv-review/">PIV</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/zhaoxinhao2_droplet/">Openpiv分析</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/gaoyinbin-6-supersonic-jet-tdlas/">TDLAS 测定超声速射流实验推进结果</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangchen3/"> PIV 流场分析软件介绍</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-17-laser-car/">激光车</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-7-crossflow-tdlas/">横向射流轨迹的拟合</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangchen2/">使用镜片搭建光路发出片光拍摄粒子</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangchen1/">利用HDM3065 Hantek 6位半万用表对5V电源输出电压结果的测试</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/gaoyinbin2/">腔体流量测定实验失败复盘</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangchen5/">利用OpenCV初步实现张正友标定法对棋盘格进行标定并校正图片</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-9-davis-piv/">lvpyio</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -1,1 +1,407 @@
-<!doctype html><html lang=zh><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>从实验室到现场：激光光谱与成像方法怎么落到真实系统里 | 刘训臣燃烧诊断实验室主页</title><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=description content="给高温流动与反应过程「拍片子」：燃烧室、风洞、反应器、等离子体的内部，探针伸不进去，只能靠激光做非接触测量。这篇先讲清楚这个应用背景——抽血化验与医学影像的类比——再讲实验室里成熟的光谱与成像方法怎么推到真实系统上，以及为什么真正缺的不是新方法，而是「可信」二字。"><meta name=generator content="Hugo 0.162.1"><meta name=robots content="index, follow"><meta name=author content="刘训臣"><link rel=stylesheet href=/xliu-group/ananke/css/main.02a37ad6c4e155c542d276915a0e3f83f5c7c5fec443350f6e60753f1679b7a7.css integrity="sha256-AqN61sThVcVC0naRWg4/g/XHxf7EQzUPbmB1PxZ5t6c=" crossorigin=anonymous><link rel=stylesheet href=/xliu-group/css/tables.css><script>(function(){"use strict";function t(){for(var t=document.querySelectorAll(".code-block .code-copy[hidden]"),e=0;e<t.length;e++)t[e].hidden=!1}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",t):t();function e(e){var t=e.querySelector(".code-copy-label"),n=t?t.textContent:null;e.classList.add("is-copied"),t&&(t.textContent="Copied"),window.setTimeout(function(){e.classList.remove("is-copied"),t&&n!==null&&(t.textContent=n)},2e3)}function n(e){var n,t=document.createElement("textarea");t.value=e,t.setAttribute("readonly",""),t.style.position="absolute",t.style.left="-9999px",document.body.appendChild(t),t.select(),n=!1;try{n=document.execCommand("copy")}catch{n=!1}return document.body.removeChild(t),n}function s(t){var s,o,a,i=t.closest(".code-block");if(!i)return;if(s=i.querySelector("pre"),!s)return;a=s.querySelector("code")||s,o=a.innerText,navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(o).then(function(){e(t)},function(){n(o)&&e(t)}):n(o)&&e(t)}document.addEventListener("click",function(e){var t=e.target.closest(".code-copy");t&&s(t)})})()</script><link rel=canonical href=https://liuxunchen.github.io/xliu-group/zh/post/xliu-32-next-step-diagnostics/><meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/xliu-32-next-step-diagnostics/"><meta property="og:site_name" content="刘训臣燃烧诊断实验室主页"><meta property="og:title" content="从实验室到现场：激光光谱与成像方法怎么落到真实系统里"><meta property="og:description" content="给高温流动与反应过程「拍片子」：燃烧室、风洞、反应器、等离子体的内部，探针伸不进去，只能靠激光做非接触测量。这篇先讲清楚这个应用背景——抽血化验与医学影像的类比——再讲实验室里成熟的光谱与成像方法怎么推到真实系统上，以及为什么真正缺的不是新方法，而是「可信」二字。"><meta property="og:locale" content="zh"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2026-11-14T08:30:00+08:00"><meta property="article:modified_time" content="2026-11-14T08:30:00+08:00"><meta property="article:tag" content="激光诊断"><meta property="article:tag" content="TDLAS"><meta property="article:tag" content="PLIF"><meta property="article:tag" content="PIV"><meta itemprop=name content="从实验室到现场：激光光谱与成像方法怎么落到真实系统里"><meta itemprop=description content="给高温流动与反应过程「拍片子」：燃烧室、风洞、反应器、等离子体的内部，探针伸不进去，只能靠激光做非接触测量。这篇先讲清楚这个应用背景——抽血化验与医学影像的类比——再讲实验室里成熟的光谱与成像方法怎么推到真实系统上，以及为什么真正缺的不是新方法，而是「可信」二字。"><meta itemprop=datePublished content="2026-11-14T08:30:00+08:00"><meta itemprop=dateModified content="2026-11-14T08:30:00+08:00"><meta itemprop=wordCount content="64"><meta itemprop=keywords content="激光诊断,TDLAS,PLIF,PIV"><meta name=twitter:card content="summary"><meta name=twitter:title content="从实验室到现场：激光光谱与成像方法怎么落到真实系统里"><meta name=twitter:description content="给高温流动与反应过程「拍片子」：燃烧室、风洞、反应器、等离子体的内部，探针伸不进去，只能靠激光做非接触测量。这篇先讲清楚这个应用背景——抽血化验与医学影像的类比——再讲实验室里成熟的光谱与成像方法怎么推到真实系统上，以及为什么真正缺的不是新方法，而是「可信」二字。"><script>if(typeof MathJax=="undefined"){window.MathJax={tex:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]]}};const e=document.createElement("script");e.src="https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js",e.async=!0,e.crossOrigin="anonymous",document.head.appendChild(e),console.log("MathJax initialized")}</script></head><body class="ma0 avenir bg-near-white production"><header class="cover bg-center" style=background-image:url(https://liuxunchen.github.io/xliu-group/images/sdust.jpg)><div class=bg-black-60><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l center items-center justify-between"><a href=/xliu-group/zh/ class="f3 fw2 hover-white white-90 dib no-underline"><img src=/xliu-group/images/logo2.jpg class="w100 mw5-ns" alt=刘训臣燃烧诊断实验室主页></a><div class="flex-l items-center"><ul class="pl0 mr3"><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/research/ title="Research 页">Research</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/teaching/ title="Teaching 页">Teaching</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/paper/ title="Paper 页">Paper</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/news/ title="News 页">News</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/people/ title="People 页">People</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/post/ title="Post 页">Post</a></li></ul><div class=ananke-socials></div></div></div></nav><div class="tc-l pv6 ph3 ph4-ns"><div class="f2 f1-l fw2 white-90 mb0 lh-title">从实验室到现场：激光光谱与成像方法怎么落到真实系统里</div></div></div></header><main class=pb7 role=main><article class="page-xliu-32-next-step-diagnostics flex-l mw8 center ph3 flex-wrap justify-between"><header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu"><a class="link dim" href=https://liuxunchen.github.io/xliu-group/zh/post/>Post</a></aside><div id=sharing class="mt3 ananke-socials"></div><h1 class="f1 athelas mt3 mb1">从实验室到现场：激光光谱与成像方法怎么落到真实系统里</h1><p class=tracked><strong>刘训臣</strong></p><time class="f6 mv4 dib tracked" datetime=2026-11-14T08:30:00+08:00>十一月 14, 2026</time></header><div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>一台发动机的燃烧室、一段风洞里的流动、一个工业反应器、一团等离子体——这些复杂流体与热流体系统的内部是什么状态：温度多高、组分怎么分布、速度场如何，直接决定系统的性能、效率与安全。但它们有一个共同点：内部没法拆开看，探针也伸不进去——高温、高压、高速、强腐蚀，任何接触式探头要么烧毁、要么扰动流场。</p><p>这很像医院看病。抽血化验是<strong>在线诊断</strong>：把样品取出来实时化验，指标精确，但能告诉你的只是几个数字；而拍片子（CT、X 光）是<strong>医学影像学</strong>——不打开身体，直接看内部结构。燃烧与流动的诊断也有同样的分工：探针采样、热电偶测温相当于「抽血化验」，是接触测量；而我们要做的对应「拍片子」——让激光穿过被测对象，从吸收、散射、荧光的信号里读出温度、组分与速度，<strong>完全不接触、不干扰</strong>。</p><p>这些内部没法接触测量，所以主要靠激光的方法。这就是激光诊断的应用背景：<strong>给复杂流体与热流体系统做「影像学检查」——不做手术，看见内部</strong>。</p><p>这套「影像学」在实验室里已经相当成熟：TDLAS 测温度、组分与压力，PLIF 看自由基，PIV 测速度，层析把线积分变成二维/三维场。在 Hencken 平面火焰、射流火焰、旋流火焰这些标准对象上，它们都能给出漂亮的结果。我们组做的也正是这些：多路 TDLAS 层析、反射式 TDLAS、高频 PLIF/PIV 同步。但越往下做越觉得，<strong>方法本身不是瓶颈</strong>——真正的考验在把方法用到真实系统上的那一步。</p><h2 id=一真实系统不给实验室的条件>一、真实系统不给实验室的条件</h2><p>真实系统给出的条件往往很苛刻：发动机燃烧室的温度可以超过 <strong>3500 K</strong>、压力从真空跨到 <strong>300 bar</strong> 以上；风洞、反应器、等离子体装置虽然温度没有这么极端，但同样面临强振动、粉尘与窗口污染。共同点是：光学访问只剩几个小窗口。</p><p>实验室里习以为常的前提，在这里几乎都不成立：光路可以慢慢对准、窗口可以保持干净、背景可以屏蔽、信号弱了就多累加几次。真实设备上，光路会随振动漂、窗口会被污染、背景辐射会淹没弱信号，而测量时间往往以秒计。</p><p>所以「结合真实」不是把实验室系统搬到现场，而是<strong>从现场条件反过来定义测量方法</strong>。</p><h2 id=二把方法往真实条件上推>二、把方法往真实条件上推</h2><p>我们的路径是把三件事往真实场景里推：</p><ul><li><strong>多路 TDLAS 层析</strong>：32 路平行光路加旋转扫描，面向发动机喷管的温度/浓度场重建。窗口有限、投影角度有限、噪声大——这时决定成败的是反演算法，而不是再多买几台激光器。</li><li><strong>反射式 TDLAS</strong>：把发射与接收压到同一侧，适配单侧光学访问；再与高速摄影同步，同时拿到视线积分量与火焰结构。这是从「需要精密对准的实验装置」走向「可以装在机匣上的测量模块」的一步。</li><li><strong>高频同步测量</strong>：40 kHz 的 TDLAS/PLIF/PIV 三诊断同时测量剪切层动力学，20 kHz 的单相机双色 PLIF 测温。真实流动是瞬态、振荡的，没有时间分辨就谈不上理解。</li></ul><p>这三条路有一个共同点：都在<strong>减少对实验室条件的依赖</strong>——减少光路数量、减少对准要求、提高时间分辨。</p><h2 id=三真正缺的是可信>三、真正缺的是「可信」</h2><p>方法推到现场之后，新的问题出现了：<strong>测得快、测得全，不等于测得可信</strong>。</p><p>高频同步测量产生海量数据，但它的价值取决于多系统之间的时空配准精度；层析重建给出漂亮的场图，但它的价值取决于有限投影角度下反演的鲁棒性。配准误差、系统偏差、层析的病态性，会共同构成一个很少被系统量化的不确定度包络。当测量对象从稳定的旋流火焰走向强瞬态工况时，这个包络可能直接决定结论可靠不可靠。</p><p>换句话说，现场图像画得再精细，如果没有可验证的置信区间，也只是「看起来可信」。</p><h2 id=四最苛刻的场景是最好的试金石>四、最苛刻的场景是最好的试金石</h2><p>课题组还有一块业务：井下气体检测与工业现场检测。空间极度受限、环境恶劣、无人值守、长期稳定性要求极高。</p><p>这不是「低端应用」，而是<strong>约束条件下的验证场</strong>：低信噪比、强干扰、无人值守，会逼着研究者去解决那些在实验室里可以被「精心对准」掩盖的问题——基线漂移、光学污染、温度—应力耦合误差。</p><p>把在这些场景里锤炼出来的抗干扰算法与自校准策略，反向注入发动机在线诊断的模块，形成「严苛场景验证 → 核心诊断模块加固」的闭环，比在实验室里再优化一个百分点更有价值。</p><h2 id=五结语>五、结语</h2><p>激光诊断从实验室走向现场，不是一次搬家，而是一次<strong>重新定义</strong>：从「能不能测」转向「在真实条件下是否可信、是否可用」。</p><p>光谱与成像方法的价值，最终要在真实的燃烧室、风洞与反应器里兑现。我们要补的，正是这中间的一段路——把多路层析、反射式测量、高频同步这些已经在实验室里跑通的东西，做成在振动、高温、长时运行下仍然靠得住的测量模块，并且让每一个读数都带着可以交代的不确定度。</p><h2 id=进一步阅读>进一步阅读</h2><ul><li><a href=/xliu-group/zh/post/xliu-24-tdlas-overview/>TDLAS 的仿真和局限</a></li><li><a href=/xliu-group/zh/post/xliu-25-tdlas-biomass/>TDLAS 的空间分辨率问题</a></li><li><a href=/xliu-group/zh/post/xliu-7-crossflow-tdlas/>横向射流轨迹的拟合</a></li><li><a href=/xliu-group/zh/post/xliu-22-piv-plif-loader/>PIV/PLIF Liutex 分析工具</a></li></ul><ul class=pa0></ul><ul class=pa0><li class="list di"><a href=/xliu-group/zh/tags/%E6%BF%80%E5%85%89%E8%AF%8A%E6%96%AD/ class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">激光诊断</a></li><li class="list di"><a href=/xliu-group/zh/tags/tdlas/ class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">TDLAS</a></li><li class="list di"><a href=/xliu-group/zh/tags/plif/ class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">PLIF</a></li><li class="list di"><a href=/xliu-group/zh/tags/piv/ class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">PIV</a></li></ul></div><aside class="w-30-l mt6-l"><div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links"><p class="f5 b mb3">相关內容</p><ul class="pa0 list"><li class=mb2><a href=/xliu-group/zh/post/xliu-22-piv-plif-loader/>PIV/PLIF Liutex 分析工具 – 理论、实现与双喷嘴射流应用</a></li><li class=mb2><a href=/xliu-group/zh/post/xliu-17-laser-car/>激光车</a></li><li class=mb2><a href=/xliu-group/zh/post/zhangjiayi-13-mid-ir-tomography-integration/>中红外层析成像系统光机电集成</a></li><li class=mb2><a href=/xliu-group/zh/post/xliu-29-twin-jet-scaling-law/>双喷嘴横流射流的两篇预印本：一个稀释定律、一条交换标度，与下一步的变密度实验</a></li><li class=mb2><a href=/xliu-group/zh/post/xliu-28-tdlas-intro/>TDLAS 简介</a></li><li class=mb2><a href=/xliu-group/zh/post/xliu-paper112-5-dataset/>数据集：串联双喷嘴横向射流的 40 kHz 时间分辨 PIV 速度场（velocity fields）</a></li><li class=mb2><a href=/xliu-group/zh/post/xliu-21-piv-review/>PIV</a></li><li class=mb2><a href=/xliu-group/zh/post/xliu-24-tdlas-overview/>TDLAS 的仿真和局限</a></li><li class=mb2><a href=/xliu-group/zh/post/xliu-3-jiaozhou-workshop/>胶州调研汇报PPT</a></li><li class=mb2><a href=/xliu-group/zh/post/zhaoxinhao2_droplet/>Openpiv分析</a></li><li class=mb2><a href=/xliu-group/zh/post/wangchen4/>声激励喷嘴的结构与参数设计</a></li><li class=mb2><a href=/xliu-group/zh/post/2026w10/>2026年3月课题组文献讨论</a></li><li class=mb2><a href=/xliu-group/zh/post/gaoyinbin5_qtf/>QTF滤波</a></li><li class=mb2><a href=/xliu-group/zh/post/gaoyinbin-6-supersonic-jet-tdlas/>TDLAS 测定超声速射流实验推进结果</a></li><li class=mb2><a href=/xliu-group/zh/post/huihao6/>Hencken炉的最新进展</a></li></ul></div></aside></article></main><footer class="bg-black bottom-0 w-100 pa3" role=contentinfo><div class="flex justify-between"><a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href=https://liuxunchen.github.io/xliu-group/zh/>&copy; 刘训臣燃烧诊断实验室主页 2026</a><div><div class=ananke-socials></div></div></div></footer></body></html>
+<!DOCTYPE html>
+<html lang="zh">
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>从实验室到现场：激光光谱与成像方法怎么落到真实系统里 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="给高温流动与反应过程「拍片子」：燃烧室、风洞、反应器、等离子体的内部，探针伸不进去，只能靠激光做非接触测量。这篇先讲清楚这个应用背景——抽血化验与医学影像的类比——再讲实验室里成熟的光谱与成像方法怎么推到真实系统上，以及为什么真正缺的不是新方法，而是「可信」二字。">
+    <meta name="generator" content="Hugo 0.162.1">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="刘训臣">
+    
+
+    <link rel="stylesheet" href="/xliu-group/ananke/css/main.css"><link rel="stylesheet" href="/xliu-group/css/tables.css">
+    <script>
+  (function () {
+    "use strict";
+
+    
+    
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
+
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/xliu-32-next-step-diagnostics/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/xliu-32-next-step-diagnostics/">
+	<meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+	<meta property="og:title" content="从实验室到现场：激光光谱与成像方法怎么落到真实系统里">
+	<meta property="og:description" content="给高温流动与反应过程「拍片子」：燃烧室、风洞、反应器、等离子体的内部，探针伸不进去，只能靠激光做非接触测量。这篇先讲清楚这个应用背景——抽血化验与医学影像的类比——再讲实验室里成熟的光谱与成像方法怎么推到真实系统上，以及为什么真正缺的不是新方法，而是「可信」二字。">
+	<meta property="og:locale" content="zh">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2026-11-14T08:30:00+08:00">
+		<meta property="article:modified_time" content="2026-11-14T08:30:00+08:00">
+		<meta property="article:tag" content="激光诊断">
+		<meta property="article:tag" content="TDLAS">
+		<meta property="article:tag" content="PLIF">
+		<meta property="article:tag" content="PIV">
+
+	<meta itemprop="name" content="从实验室到现场：激光光谱与成像方法怎么落到真实系统里">
+	<meta itemprop="description" content="给高温流动与反应过程「拍片子」：燃烧室、风洞、反应器、等离子体的内部，探针伸不进去，只能靠激光做非接触测量。这篇先讲清楚这个应用背景——抽血化验与医学影像的类比——再讲实验室里成熟的光谱与成像方法怎么推到真实系统上，以及为什么真正缺的不是新方法，而是「可信」二字。">
+	<meta itemprop="datePublished" content="2026-11-14T08:30:00+08:00">
+	<meta itemprop="dateModified" content="2026-11-14T08:30:00+08:00">
+	<meta itemprop="wordCount" content="64">
+	<meta itemprop="keywords" content="激光诊断,TDLAS,PLIF,PIV">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="从实验室到现场：激光光谱与成像方法怎么落到真实系统里">
+	<meta name="twitter:description" content="给高温流动与反应过程「拍片子」：燃烧室、风洞、反应器、等离子体的内部，探针伸不进去，只能靠激光做非接触测量。这篇先讲清楚这个应用背景——抽血化验与医学影像的类比——再讲实验室里成熟的光谱与成像方法怎么推到真实系统上，以及为什么真正缺的不是新方法，而是「可信」二字。">
+
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+
+    
+   
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        <img src="/xliu-group/images/logo2.jpg" class="w100 mw5-ns" alt="刘训臣燃烧诊断实验室主页" />
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/teaching/" title="Teaching 页">
+              Teaching
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/paper/" title="Paper 页">
+              Paper
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/news/" title="News 页">
+              News
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">从实验室到现场：激光光谱与成像方法怎么落到真实系统里</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-xliu-32-next-step-diagnostics flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">
+    <a class="link dim" href="http://localhost:1313/xliu-group/zh/post/">Post</a>
+  </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">从实验室到现场：激光光谱与成像方法怎么落到真实系统里</h1>
+      
+      <p class="tracked"><strong>刘训臣</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-11-14T08:30:00+08:00">十一月 14, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><p>一台发动机的燃烧室、一段风洞里的流动、一个工业反应器、一团等离子体——这些复杂流体与热流体系统的内部是什么状态：温度多高、组分怎么分布、速度场如何，直接决定系统的性能、效率与安全。但它们有一个共同点：内部没法拆开看，探针也伸不进去——高温、高压、高速、强腐蚀，任何接触式探头要么烧毁、要么扰动流场。</p>
+<p>这很像医院看病。抽血化验是<strong>在线诊断</strong>：把样品取出来实时化验，指标精确，但能告诉你的只是几个数字；而拍片子（CT、X 光）是<strong>医学影像学</strong>——不打开身体，直接看内部结构。燃烧与流动的诊断也有同样的分工：探针采样、热电偶测温相当于「抽血化验」，是接触测量；而我们要做的对应「拍片子」——让激光穿过被测对象，从吸收、散射、荧光的信号里读出温度、组分与速度，<strong>完全不接触、不干扰</strong>。</p>
+<p>这些内部没法接触测量，所以主要靠激光的方法。这就是激光诊断的应用背景：<strong>给复杂流体与热流体系统做「影像学检查」——不做手术，看见内部</strong>。</p>
+<p>这套「影像学」在实验室里已经相当成熟：TDLAS 测温度、组分与压力，PLIF 看自由基，PIV 测速度，层析把线积分变成二维/三维场。在 Hencken 平面火焰、射流火焰、旋流火焰这些标准对象上，它们都能给出漂亮的结果。我们组做的也正是这些：多路 TDLAS 层析、反射式 TDLAS、高频 PLIF/PIV 同步。但越往下做越觉得，<strong>方法本身不是瓶颈</strong>——真正的考验在把方法用到真实系统上的那一步。</p>
+<h2 id="一真实系统不给实验室的条件">一、真实系统不给实验室的条件</h2>
+<p>真实系统给出的条件往往很苛刻：发动机燃烧室的温度可以超过 <strong>3500 K</strong>、压力从真空跨到 <strong>300 bar</strong> 以上；风洞、反应器、等离子体装置虽然温度没有这么极端，但同样面临强振动、粉尘与窗口污染。共同点是：光学访问只剩几个小窗口。</p>
+<p>实验室里习以为常的前提，在这里几乎都不成立：光路可以慢慢对准、窗口可以保持干净、背景可以屏蔽、信号弱了就多累加几次。真实设备上，光路会随振动漂、窗口会被污染、背景辐射会淹没弱信号，而测量时间往往以秒计。</p>
+<p>所以「结合真实」不是把实验室系统搬到现场，而是<strong>从现场条件反过来定义测量方法</strong>。</p>
+<h2 id="二把方法往真实条件上推">二、把方法往真实条件上推</h2>
+<p>我们的路径是把三件事往真实场景里推：</p>
+<ul>
+<li><strong>多路 TDLAS 层析</strong>：32 路平行光路加旋转扫描，面向发动机喷管的温度/浓度场重建。窗口有限、投影角度有限、噪声大——这时决定成败的是反演算法，而不是再多买几台激光器。</li>
+<li><strong>反射式 TDLAS</strong>：把发射与接收压到同一侧，适配单侧光学访问；再与高速摄影同步，同时拿到视线积分量与火焰结构。这是从「需要精密对准的实验装置」走向「可以装在机匣上的测量模块」的一步。</li>
+<li><strong>高频同步测量</strong>：40 kHz 的 TDLAS/PLIF/PIV 三诊断同时测量剪切层动力学，20 kHz 的单相机双色 PLIF 测温。真实流动是瞬态、振荡的，没有时间分辨就谈不上理解。</li>
+</ul>
+<p>这三条路有一个共同点：都在<strong>减少对实验室条件的依赖</strong>——减少光路数量、减少对准要求、提高时间分辨。</p>
+<h2 id="三真正缺的是可信">三、真正缺的是「可信」</h2>
+<p>方法推到现场之后，新的问题出现了：<strong>测得快、测得全，不等于测得可信</strong>。</p>
+<p>高频同步测量产生海量数据，但它的价值取决于多系统之间的时空配准精度；层析重建给出漂亮的场图，但它的价值取决于有限投影角度下反演的鲁棒性。配准误差、系统偏差、层析的病态性，会共同构成一个很少被系统量化的不确定度包络。当测量对象从稳定的旋流火焰走向强瞬态工况时，这个包络可能直接决定结论可靠不可靠。</p>
+<p>换句话说，现场图像画得再精细，如果没有可验证的置信区间，也只是「看起来可信」。</p>
+<h2 id="四最苛刻的场景是最好的试金石">四、最苛刻的场景是最好的试金石</h2>
+<p>课题组还有一块业务：井下气体检测与工业现场检测。空间极度受限、环境恶劣、无人值守、长期稳定性要求极高。</p>
+<p>这不是「低端应用」，而是<strong>约束条件下的验证场</strong>：低信噪比、强干扰、无人值守，会逼着研究者去解决那些在实验室里可以被「精心对准」掩盖的问题——基线漂移、光学污染、温度—应力耦合误差。</p>
+<p>把在这些场景里锤炼出来的抗干扰算法与自校准策略，反向注入发动机在线诊断的模块，形成「严苛场景验证 → 核心诊断模块加固」的闭环，比在实验室里再优化一个百分点更有价值。</p>
+<h2 id="五结语">五、结语</h2>
+<p>激光诊断从实验室走向现场，不是一次搬家，而是一次<strong>重新定义</strong>：从「能不能测」转向「在真实条件下是否可信、是否可用」。</p>
+<p>光谱与成像方法的价值，最终要在真实的燃烧室、风洞与反应器里兑现。我们要补的，正是这中间的一段路——把多路层析、反射式测量、高频同步这些已经在实验室里跑通的东西，做成在振动、高温、长时运行下仍然靠得住的测量模块，并且让每一个读数都带着可以交代的不确定度。</p>
+<h2 id="进一步阅读">进一步阅读</h2>
+<ul>
+<li><a href="/xliu-group/zh/post/xliu-24-tdlas-overview/">TDLAS 的仿真和局限</a></li>
+<li><a href="/xliu-group/zh/post/xliu-25-tdlas-biomass/">TDLAS 的空间分辨率问题</a></li>
+<li><a href="/xliu-group/zh/post/xliu-7-crossflow-tdlas/">横向射流轨迹的拟合</a></li>
+<li><a href="/xliu-group/zh/post/xliu-22-piv-plif-loader/">PIV/PLIF Liutex 分析工具</a></li>
+</ul>
+<ul class="pa0">
+  
+</ul><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/%E6%BF%80%E5%85%89%E8%AF%8A%E6%96%AD/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">激光诊断</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/tdlas/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">TDLAS</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/plif/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">PLIF</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/piv/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">PIV</a>
+   </li>
+  
+</ul>
+
+      
+    </div><aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">相关內容</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-22-piv-plif-loader/">PIV/PLIF Liutex 分析工具 – 理论、实现与双喷嘴射流应用</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-17-laser-car/">激光车</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/gaoyinbin-21-nea-detection-limit/">15 ppm 到底算好还是算差：把检测限换算成 NEA 之后</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/zhaoxinhao-12-spray-droplet-tracer-classification/">怎么把喷雾图里的液滴和 PIV 示踪粒子分开：四个特征一起看</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/zhanghongmin-9-fs-ns-laser-comparison/">飞秒激光与纳秒激光对比</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/zhangjiayi-13-mid-ir-tomography-integration/">中红外层析成像系统光机电集成</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-29-twin-jet-scaling-law/">双喷嘴横流射流的两篇预印本：一个稀释定律、一条交换标度，与下一步的变密度实验</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-28-tdlas-intro/">TDLAS 简介</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-paper112-5-dataset/">数据集：串联双喷嘴横向射流的 40 kHz 时间分辨 PIV 速度场（velocity fields）</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-21-piv-review/">PIV</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-24-tdlas-overview/">TDLAS 的仿真和局限</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/xliu-3-jiaozhou-workshop/">胶州调研汇报PPT</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/zhaoxinhao2_droplet/">Openpiv分析</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangchen4/">声激励喷嘴的结构与参数设计</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/2026w10/">2026年3月课题组文献讨论</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
