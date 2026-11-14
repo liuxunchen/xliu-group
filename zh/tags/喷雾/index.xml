@@ -1,1 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>喷雾 on 刘训臣燃烧诊断实验室主页</title><link>https://liuxunchen.github.io/xliu-group/zh/tags/%E5%96%B7%E9%9B%BE/</link><description>Recent content in 喷雾 on 刘训臣燃烧诊断实验室主页</description><generator>Hugo</generator><language>zh</language><lastBuildDate>Wed, 17 Jun 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://liuxunchen.github.io/xliu-group/zh/tags/%E5%96%B7%E9%9B%BE/index.xml" rel="self" type="application/rss+xml"/><item><title>气泡雾化喷嘴实验</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao3_nozzle_expt/</link><pubDate>Wed, 17 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao3_nozzle_expt/</guid><description>气泡雾化喷嘴通气与不通气的对比实验</description></item><item><title>Openpiv分析</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao2_droplet/</link><pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao2_droplet/</guid><description>煤油喷雾燃烧PIV图像中液滴提取方法</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>喷雾 on 刘训臣燃烧诊断实验室主页</title><link>https://liuxunchen.github.io/xliu-group/zh/tags/%E5%96%B7%E9%9B%BE/</link><description>Recent content in 喷雾 on 刘训臣燃烧诊断实验室主页</description><generator>Hugo</generator><language>zh</language><lastBuildDate>Mon, 09 Nov 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://liuxunchen.github.io/xliu-group/zh/tags/%E5%96%B7%E9%9B%BE/index.xml" rel="self" type="application/rss+xml"/><item><title>怎么把喷雾图里的液滴和 PIV 示踪粒子分开：四个特征一起看</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao-12-spray-droplet-tracer-classification/</link><pubDate>Mon, 09 Nov 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao-12-spray-droplet-tracer-classification/</guid><description>&lt;h2 id="起因液滴和示踪粒子长得太像了"&gt;起因：液滴和示踪粒子，长得太像了&lt;/h2&gt;
+&lt;p&gt;PIV 是测喷雾速度场的标准手段——往流场里撒示踪粒子，粒子跟着流体走、被照亮、拍下来，再算速度场。但在稠密喷雾里会撞上一个老问题：&lt;strong&gt;燃料液滴和示踪粒子在同一张图里，尺寸、亮度都接近，肉眼常常分不清&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;分不清的代价很实在。把液滴错当成示踪粒子，算出来的速度其实是液滴（离散相）的速度，不是气流（连续相）的；反过来把真示踪粒子删了，速度场的空间分辨率就掉了。所以这个&amp;quot;分不清&amp;quot;直接污染 PIV 结果。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao-12-spray-droplet-tracer-classification/blog-351-%E5%96%B7%E9%9B%BE%E5%8F%A0%E5%8A%A0%E8%AF%86%E5%88%AB-108.png" alt="叠加识别结果（红=颗粒，蓝=液滴）"&gt;&lt;/p&gt;
+&lt;h2 id="为什么单个特征不够"&gt;为什么单个特征不够&lt;/h2&gt;
+&lt;p&gt;最直觉的想法是按尺寸分（液滴大、颗粒小），或者按亮度分。但稠密近喷嘴区，液滴会重叠、离焦、形成亮环，颗粒又小又均匀——&lt;strong&gt;单个阈值要么误删、要么漏检&lt;/strong&gt;。已有方法（中值滤波去背景 + 形态学开运算，以及 Khalitov &amp;amp; Longmire 的尺寸 + 亮度联合阈值）都对参数敏感，选参没有一套清晰的标准。&lt;/p&gt;
+&lt;h2 id="思路四个特征一起看"&gt;思路：四个特征一起看&lt;/h2&gt;
+&lt;p&gt;既然单个特征不稳，那就让四个互补特征互相印证：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;尺寸&lt;/strong&gt;：液滴 50–200 μm，示踪颗粒 10–50 μm；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;灰度&lt;/strong&gt;：液滴反光、灰度方差大；颗粒均匀、方差小；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;边缘&lt;/strong&gt;：颗粒边缘清晰规则；液滴边缘模糊或出现亮环；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;运动&lt;/strong&gt;：颗粒跟随流体、速度与气流一致；液滴速度可能偏离。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao-12-spray-droplet-tracer-classification/blog-351-%E5%9B%9B%E7%89%B9%E5%BE%81%E5%88%A4%E6%8D%AE%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="四个区分特征（液滴=蓝，颗粒=红）"&gt;&lt;/p&gt;
+&lt;p&gt;核心逻辑不是靠某一个特征一锤定音，而是四个特征打分融合，整体判断&amp;quot;这团亮斑到底是液滴还是颗粒&amp;quot;。&lt;/p&gt;
+&lt;h2 id="两条对比基线"&gt;两条对比基线&lt;/h2&gt;
+&lt;p&gt;方法好不好，得和已有的比：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;中值滤波法&lt;/strong&gt;：开运算去掉小颗粒、保留液滴，再掩码提取颗粒——适合尺寸差异明显的场景，关键参数是 kernel_size、thresh_factor；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Khalitov &amp;amp; Longmire 法&lt;/strong&gt;：尺寸 + 亮度联合阈值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao-12-spray-droplet-tracer-classification/blog-351-%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E6%B3%95%E6%B5%81%E7%A8%8B.png" alt="中值滤波法流程"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao-12-spray-droplet-tracer-classification/blog-351-KL%E6%B3%95%E6%B5%81%E7%A8%8B.png" alt="Khalitov &amp;amp; Longmire 法流程"&gt;&lt;/p&gt;
+&lt;p&gt;目标：整体分类准确率 ≥ 90%，并给出一套参数优化指南，把图像条件翻译成推荐参数范围。&lt;/p&gt;
+&lt;h2 id="三个典型例子"&gt;三个典型例子&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;例 1 · 清晰可分&lt;/strong&gt;：尺寸差异明显的区域，大液滴（&amp;gt;100 μm）和小颗粒（&amp;lt;30 μm）一眼分开，中值滤波开运算一下就切干净——这是方法的&amp;quot;容易&amp;quot;基准，说明尺寸可分时它够用。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao-12-spray-droplet-tracer-classification/blog-351-%E5%96%B7%E9%9B%BE%E5%8F%A0%E5%8A%A0%E8%AF%86%E5%88%AB-103.png" alt="清晰可分例（红=颗粒，蓝=液滴）"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;例 2 · 易混&lt;/strong&gt;：两个液滴重叠成一个亮斑、或离焦液滴形成一个亮环，单看尺寸/灰度就会把它误判成一颗大颗粒或漏检——这正是&amp;quot;单个特征不够&amp;quot;的实锤。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao-12-spray-droplet-tracer-classification/blog-351-%E5%96%B7%E9%9B%BE%E5%8F%A0%E5%8A%A0%E8%AF%86%E5%88%AB-89.png" alt="易混例：重叠与亮环（红=颗粒，蓝=液滴）"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;例 3 · 四特征纠正&lt;/strong&gt;：初版只按尺寸 + 灰度分，把&lt;strong&gt;慢的大目标错标成颗粒、快的小目标错标成液滴&lt;/strong&gt;（速度标反了）。后来加上&lt;strong&gt;时间域去背景&lt;/strong&gt;（FFT 高通 + 中值差分 + 标准差掩码）和&lt;strong&gt;运动特征&lt;/strong&gt;，才纠正过来：大目标惯性大、&lt;strong&gt;速度慢，是液滴&lt;/strong&gt;；小目标跟随流体、&lt;strong&gt;速度快，是颗粒&lt;/strong&gt;。&lt;/p&gt;</description></item><item><title>气泡雾化喷嘴实验</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao3_nozzle_expt/</link><pubDate>Wed, 17 Jun 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao3_nozzle_expt/</guid><description>气泡雾化喷嘴通气与不通气的对比实验</description></item><item><title>Openpiv分析</title><link>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao2_droplet/</link><pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate><guid>https://liuxunchen.github.io/xliu-group/zh/post/zhaoxinhao2_droplet/</guid><description>煤油喷雾燃烧PIV图像中液滴提取方法</description></item></channel></rss>
