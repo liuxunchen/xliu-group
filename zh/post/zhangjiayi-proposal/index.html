@@ -1,657 +1,134 @@
-<!DOCTYPE html>
-<html lang="zh">
-  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>张家艺开题报告 | 刘训臣燃烧诊断实验室主页</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="面向燃煤锅炉与煤炭原位开采的 1.5 μm 单端 TDLAS 测温方法研究（开题报告正文）">
-    <meta name="generator" content="Hugo 0.162.1">
-    
-    
-    
-      <meta name="robots" content="noindex, nofollow">
-    
-    <meta name="author" content="张家艺">
-    
-
-    <link rel="stylesheet" href="/xliu-group/ananke/css/main.css"><link rel="stylesheet" href="/xliu-group/css/tables.css">
-    <script>
-  (function () {
-    "use strict";
-
-    
-    
-    function revealButtons() {
-      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
-      for (var i = 0; i < buttons.length; i++) {
-        buttons[i].hidden = false;
-      }
-    }
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", revealButtons);
-    } else {
-      revealButtons();
-    }
-
-    function flash(button) {
-      var label = button.querySelector(".code-copy-label");
-      var previous = label ? label.textContent : null;
-      button.classList.add("is-copied");
-      if (label) label.textContent = "Copied";
-      window.setTimeout(function () {
-        button.classList.remove("is-copied");
-        if (label && previous !== null) label.textContent = previous;
-      }, 2000);
-    }
-
-    function legacyCopy(text) {
-      var area = document.createElement("textarea");
-      area.value = text;
-      area.setAttribute("readonly", "");
-      area.style.position = "absolute";
-      area.style.left = "-9999px";
-      document.body.appendChild(area);
-      area.select();
-      var ok = false;
-      try {
-        ok = document.execCommand("copy");
-      } catch (e) {
-        ok = false;
-      }
-      document.body.removeChild(area);
-      return ok;
-    }
-
-    function copyFrom(button) {
-      var container = button.closest(".code-block");
-      if (!container) return;
-      var pre = container.querySelector("pre");
-      if (!pre) return;
-      var source = pre.querySelector("code") || pre;
-      var text = source.innerText;
-
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(
-          function () { flash(button); },
-          function () { if (legacyCopy(text)) flash(button); }
-        );
-      } else if (legacyCopy(text)) {
-        flash(button);
-      }
-    }
-
-    document.addEventListener("click", function (event) {
-      var button = event.target.closest(".code-copy");
-      if (button) copyFrom(button);
-    });
-  })();
-</script>
-
-    
-      
-
-    
-
-    
-
-    
-      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/zhangjiayi-proposal/">
-    
-
-    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/zhangjiayi-proposal/">
-	<meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
-	<meta property="og:title" content="张家艺开题报告">
-	<meta property="og:description" content="面向燃煤锅炉与煤炭原位开采的 1.5 μm 单端 TDLAS 测温方法研究（开题报告正文）">
-	<meta property="og:locale" content="zh">
-	<meta property="og:type" content="article">
-		<meta property="article:section" content="post">
-		<meta property="article:published_time" content="2026-10-30T00:00:00+00:00">
-		<meta property="article:modified_time" content="2026-10-30T00:00:00+00:00">
-		<meta property="article:tag" content="Thesis">
-
-	<meta itemprop="name" content="张家艺开题报告">
-	<meta itemprop="description" content="面向燃煤锅炉与煤炭原位开采的 1.5 μm 单端 TDLAS 测温方法研究（开题报告正文）">
-	<meta itemprop="datePublished" content="2026-10-30T00:00:00+00:00">
-	<meta itemprop="dateModified" content="2026-10-30T00:00:00+00:00">
-	<meta itemprop="wordCount" content="1085">
-	<meta itemprop="keywords" content="Thesis">
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="张家艺开题报告">
-	<meta name="twitter:description" content="面向燃煤锅炉与煤炭原位开采的 1.5 μm 单端 TDLAS 测温方法研究（开题报告正文）">
-
-	
-	
-	    
-        
-<script>
-
-if (typeof MathJax === "undefined") {
-    window.MathJax = {
-        tex: {
-            inlineMath: [['$', '$']],
-            displayMath: [['$$', '$$']]
-        }
-    };
-    
-    
-    const script = document.createElement('script');
-    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
-
-script.async = true;
-    script.crossOrigin = 'anonymous';
-    document.head.appendChild(script);
-    
-    console.log("MathJax initialized");
-}
-</script>
-
-    
-	
-  </head><body class="ma0 avenir bg-near-white development">
-
-    
-
-    
-
-<header>
-  <div class="pb3-m pb6-l bg-black">
-    <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l center items-center justify-between">
-    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
-      
-        <img src="/xliu-group/images/logo2.jpg" class="w100 mw5-ns" alt="刘训臣燃烧诊断实验室主页" />
-      
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-        <ul class="pl0 mr3">
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
-              Research
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/teaching/" title="Teaching 页">
-              Teaching
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/paper/" title="Paper 页">
-              Paper
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/news/" title="News 页">
-              News
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
-              People
-            </a>
-          </li>
-          
-          <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
-              Post
-            </a>
-          </li>
-          
-        </ul>
-      
-      <div class="ananke-socials"></div>
-
-    </div>
-  </div>
-</nav>
-
-  </div>
-</header>
-
-    <main class="pb7" role="main">
-      
-<article class="report-page center ph3 mw8-l">
-  <header class="mt4 mb4">
-    <h1 class="f2 athelas mt3 mb2">张家艺开题报告</h1>
-    <p class="report-meta f6 tracked gray mb4">2026-10-30</p>
-  </header>
-  <div class="report-body nested-copy-line-height lh-copy serif f4 nested-links mid-gray">
-    <blockquote>
-<p>技术路线图由 TikZ 绘制，网页正文无法直接呈现——请查看 PDF 对应章节。</p>
-</blockquote>
-<h2 id="立论依据">立论依据</h2>
-<h3 id="课题来源选题依据和立论背景">课题来源、选题依据和立论背景</h3>
-<p>**课题来源。**本课题依托课题组深部煤炭原位流态化开采（711）项目与燃煤锅炉（343）应用方向，面向两者共同的在线测温需求，开展
-1.5 $\mu$m 单端 TDLAS（可调谐半导体激光吸收光谱）测温方法研究。</p>
-<p>**温度是燃烧过程最核心的状态参数。**燃煤锅炉的燃烧效率、污染物生成与运行安全，煤炭地下气化的反应路径与转化率，都由温度场直接决定——在线、准确、非接触的温度测量是这两类重大需求的共性瓶颈。</p>
-<p>**两大应用场景提出同一类测量难题。**一是煤粉锅炉：炉膛高温（1500–1750 K）、高粉尘、强振动，传统测点难以长期服役；二是深部煤炭原位流态化开采（谢和平院士提出的&quot;11+X&quot;技术体系）：地下
+<!doctype html><html lang=zh><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>张家艺开题报告 | 刘训臣燃烧诊断实验室主页</title><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=description content="面向燃煤锅炉与煤炭原位开采的 1.5 μm 单端 TDLAS 测温方法研究（开题报告正文）"><meta name=generator content="Hugo 0.162.1"><meta name=robots content="index, follow"><meta name=author content="张家艺"><link rel=stylesheet href=/xliu-group/ananke/css/main.02a37ad6c4e155c542d276915a0e3f83f5c7c5fec443350f6e60753f1679b7a7.css integrity="sha256-AqN61sThVcVC0naRWg4/g/XHxf7EQzUPbmB1PxZ5t6c=" crossorigin=anonymous><link rel=stylesheet href=/xliu-group/css/tables.css><script>(function(){"use strict";function t(){for(var t=document.querySelectorAll(".code-block .code-copy[hidden]"),e=0;e<t.length;e++)t[e].hidden=!1}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",t):t();function e(e){var t=e.querySelector(".code-copy-label"),n=t?t.textContent:null;e.classList.add("is-copied"),t&&(t.textContent="Copied"),window.setTimeout(function(){e.classList.remove("is-copied"),t&&n!==null&&(t.textContent=n)},2e3)}function n(e){var n,t=document.createElement("textarea");t.value=e,t.setAttribute("readonly",""),t.style.position="absolute",t.style.left="-9999px",document.body.appendChild(t),t.select(),n=!1;try{n=document.execCommand("copy")}catch{n=!1}return document.body.removeChild(t),n}function s(t){var s,o,a,i=t.closest(".code-block");if(!i)return;if(s=i.querySelector("pre"),!s)return;a=s.querySelector("code")||s,o=a.innerText,navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(o).then(function(){e(t)},function(){n(o)&&e(t)}):n(o)&&e(t)}document.addEventListener("click",function(e){var t=e.target.closest(".code-copy");t&&s(t)})})()</script><link rel=canonical href=https://liuxunchen.github.io/xliu-group/zh/post/zhangjiayi-proposal/><meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/zhangjiayi-proposal/"><meta property="og:site_name" content="刘训臣燃烧诊断实验室主页"><meta property="og:title" content="张家艺开题报告"><meta property="og:description" content="面向燃煤锅炉与煤炭原位开采的 1.5 μm 单端 TDLAS 测温方法研究（开题报告正文）"><meta property="og:locale" content="zh"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2026-10-30T00:00:00+00:00"><meta property="article:modified_time" content="2026-10-30T00:00:00+00:00"><meta property="article:tag" content="Thesis"><meta itemprop=name content="张家艺开题报告"><meta itemprop=description content="面向燃煤锅炉与煤炭原位开采的 1.5 μm 单端 TDLAS 测温方法研究（开题报告正文）"><meta itemprop=datePublished content="2026-10-30T00:00:00+00:00"><meta itemprop=dateModified content="2026-10-30T00:00:00+00:00"><meta itemprop=wordCount content="1085"><meta itemprop=keywords content="Thesis"><meta name=twitter:card content="summary"><meta name=twitter:title content="张家艺开题报告"><meta name=twitter:description content="面向燃煤锅炉与煤炭原位开采的 1.5 μm 单端 TDLAS 测温方法研究（开题报告正文）"><script>if(typeof MathJax=="undefined"){window.MathJax={tex:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]]}};const e=document.createElement("script");e.src="https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js",e.async=!0,e.crossOrigin="anonymous",document.head.appendChild(e),console.log("MathJax initialized")}</script></head><body class="ma0 avenir bg-near-white production"><header><div class="pb3-m pb6-l bg-black"><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l center items-center justify-between"><a href=/xliu-group/zh/ class="f3 fw2 hover-white white-90 dib no-underline"><img src=/xliu-group/images/logo2.jpg class="w100 mw5-ns" alt=刘训臣燃烧诊断实验室主页></a><div class="flex-l items-center"><ul class="pl0 mr3"><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/research/ title="Research 页">Research</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/teaching/ title="Teaching 页">Teaching</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/paper/ title="Paper 页">Paper</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/news/ title="News 页">News</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/people/ title="People 页">People</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/post/ title="Post 页">Post</a></li></ul><div class=ananke-socials></div></div></div></nav></div></header><main class=pb7 role=main><article class="report-page center ph3 mw8-l"><header class="mt4 mb4"><h1 class="f2 athelas mt3 mb2">张家艺开题报告</h1><p class="report-meta f6 tracked gray mb4">2026-10-30</p></header><div class="report-body nested-copy-line-height lh-copy serif f4 nested-links mid-gray"><blockquote><p>技术路线图由 TikZ 绘制，网页正文无法直接呈现——请查看 PDF 对应章节。</p></blockquote><h2 id=立论依据>立论依据</h2><h3 id=课题来源选题依据和立论背景>课题来源、选题依据和立论背景</h3><p>**课题来源。**本课题依托课题组深部煤炭原位流态化开采（711）项目与燃煤锅炉（343）应用方向，面向两者共同的在线测温需求，开展
+1.5 $\mu$m 单端 TDLAS（可调谐半导体激光吸收光谱）测温方法研究。</p><p>**温度是燃烧过程最核心的状态参数。**燃煤锅炉的燃烧效率、污染物生成与运行安全，煤炭地下气化的反应路径与转化率，都由温度场直接决定——在线、准确、非接触的温度测量是这两类重大需求的共性瓶颈。</p><p>**两大应用场景提出同一类测量难题。**一是煤粉锅炉：炉膛高温（1500–1750 K）、高粉尘、强振动，传统测点难以长期服役；二是深部煤炭原位流态化开采（谢和平院士提出的"11+X"技术体系）：地下
 10–25 MPa 高温高压、高水蒸气/CO$_2$
-活性气氛中，煤热解气化的动力学研究急需原位激光诊断手段。</p>
-<p>**传统测温手段在两类场景下均受限。**热电偶属接触式测量：热惯性大、易烧蚀、需逐点安装，且在高粉尘气流中寿命短；辐射测温与火焰成像依赖发射率假设，反演不确定度大；透射式
+活性气氛中，煤热解气化的动力学研究急需原位激光诊断手段。</p><p>**传统测温手段在两类场景下均受限。**热电偶属接触式测量：热惯性大、易烧蚀、需逐点安装，且在高粉尘气流中寿命短；辐射测温与火焰成像依赖发射率假设，反演不确定度大；透射式
 TDLAS
-虽成熟，但需要在被测对象两侧各开一个光学窗口——锅炉炉墙与井下高压反应器往往只允许单侧开孔安装，双侧透射方案在现场难以落地。</p>
-<p>**单端（single-ended）TDLAS
-是解决&quot;只能装一侧&quot;问题的直接途径。**发射与接收共用同一侧光路，光束打到测量区尾端的反射面后折回接收，只需单侧窗口。其代价是回波信号弱、发射光背景强，对光路设计与接收链路提出更高要求——这正是本课题的方法学出发点。</p>
-<p>**1.5 $\mu$m 通信波段为单端 TDLAS 的工程化提供了器件红利。**H$_2$O
+虽成熟，但需要在被测对象两侧各开一个光学窗口——锅炉炉墙与井下高压反应器往往只允许单侧开孔安装，双侧透射方案在现场难以落地。</p><p>**单端（single-ended）TDLAS
+是解决"只能装一侧"问题的直接途径。**发射与接收共用同一侧光路，光束打到测量区尾端的反射面后折回接收，只需单侧窗口。其代价是回波信号弱、发射光背景强，对光路设计与接收链路提出更高要求——这正是本课题的方法学出发点。</p><p>**1.5 $\mu$m 通信波段为单端 TDLAS 的工程化提供了器件红利。**H$_2$O
 在 1.4–1.5 $\mu$m 有可用的吸收带；该波段处于光纤通信窗口，MEMS 可调谐
 VCSEL、EDFA 光纤放大器、InGaAs APD
-等器件成熟且成本低、全光纤化鲁棒性好——相比中红外（QCL/带间级联）方案，具备显著的工程化与现场部署优势。</p>
-<h3 id="课题研究目的理论意义和实际应用价值">课题研究目的、理论意义和实际应用价值</h3>
-<p>**研究目的。**研制一套 1.5 $\mu$m 单端 TDLAS
+等器件成熟且成本低、全光纤化鲁棒性好——相比中红外（QCL/带间级联）方案，具备显著的工程化与现场部署优势。</p><h3 id=课题研究目的理论意义和实际应用价值>课题研究目的、理论意义和实际应用价值</h3><p>**研究目的。**研制一套 1.5 $\mu$m 单端 TDLAS
 测温系统并完成三级应用验证：系统实现 100 kHz
 波长扫描、亚毫秒级温度反演；在 crossflow
-燃烧平台完成尾端反射与横向火焰双模式实验室验证；在燃煤锅炉现场完成工程化测量；探索与煤炭原位流态化开采高温高压反应器的耦合应用。</p>
-<p>**理论意义。**发展一套基于电信级器件的 1.5 $\mu$m 单端 TDLAS
-测温方法，实现高频扫描（100 kHz）与亚毫秒级温度反演，形成&quot;单侧安装、全光纤、低成本、高鲁棒&quot;的高温气体测温新手段，并研究高温高压展宽条件下的双线选择与反演精度问题，为单端架构在工程现场的定量测温提供方法学依据。</p>
-<p>**实际应用价值。**打通&quot;实验室缩比验证 $\rightarrow$ 燃煤锅炉现场测量
+燃烧平台完成尾端反射与横向火焰双模式实验室验证；在燃煤锅炉现场完成工程化测量；探索与煤炭原位流态化开采高温高压反应器的耦合应用。</p><p>**理论意义。**发展一套基于电信级器件的 1.5 $\mu$m 单端 TDLAS
+测温方法，实现高频扫描（100 kHz）与亚毫秒级温度反演，形成"单侧安装、全光纤、低成本、高鲁棒"的高温气体测温新手段，并研究高温高压展宽条件下的双线选择与反演精度问题，为单端架构在工程现场的定量测温提供方法学依据。</p><p>**实际应用价值。**打通"实验室缩比验证 $\rightarrow$ 燃煤锅炉现场测量
 $\rightarrow$
-煤炭原位开采高温高压应用&quot;三级应用场景，为锅炉燃烧优化与深部煤炭原位气化的动力学研究提供在线温度数据。本课题属课题组&quot;2xx
-诊断技术 $\rightarrow$ 3xx 平台应用&quot;研究体系中的方法线（219 单端
-TDLAS），成果直接支撑锅炉（343）与原位开采（711）两条应用线，并可移植至多路层析（215）等相关系统。</p>
-<h2 id="文献综述">文献综述</h2>
-<h3 id="国内外研究现状发展动态">国内外研究现状、发展动态</h3>
-<p>**TDLAS 气体测温技术概述。**TDLAS 以 Beer–Lambert
+煤炭原位开采高温高压应用"三级应用场景，为锅炉燃烧优化与深部煤炭原位气化的动力学研究提供在线温度数据。本课题属课题组"2xx
+诊断技术 $\rightarrow$ 3xx 平台应用"研究体系中的方法线（219 单端
+TDLAS），成果直接支撑锅炉（343）与原位开采（711）两条应用线，并可移植至多路层析（215）等相关系统。</p><h2 id=文献综述>文献综述</h2><h3 id=国内外研究现状发展动态>国内外研究现状、发展动态</h3><p>**TDLAS 气体测温技术概述。**TDLAS 以 Beer–Lambert
 定律为基础，是非接触、物种选择、快响应的燃烧诊断主流手段。双线比值法选取两条低态能量差较大的吸收线，由吸收比值直接反演温度，无需标定组分浓度（Goldenstein
 等 2017 年综述）。经过数十年发展，TDLAS
-已从实验室走向工业现场，但在煤粉锅炉等大型设备上仍以透射式布置为主。</p>
-<p>**单端 TDLAS
-研究进展。**单端架构的核心思想是&quot;发射–接收同侧、反射面折返&quot;，近十年在国际上快速发展：</p>
-<ul>
-<li>
-<p>Melin
-等（2017）系统研究了单端回射（retroreflection）传感器的反射面选择与高温环境适应性，为反射面材质与结构提供了设计依据；</p>
-</li>
-<li>
-<p>Zhou、Mathews、Goldenstein（2018）提出紧凑型光纤耦合单端传感器，将单端光路全光纤化，显著提升了工程鲁棒性；</p>
-</li>
-<li>
-<p>Peng 等（2016）研制中红外单端传感器，实现 H$_2$O/CO$_2$/CO
+已从实验室走向工业现场，但在煤粉锅炉等大型设备上仍以透射式布置为主。</p><p>**单端 TDLAS
+研究进展。**单端架构的核心思想是"发射–接收同侧、反射面折返"，近十年在国际上快速发展：</p><ul><li><p>Melin
+等（2017）系统研究了单端回射（retroreflection）传感器的反射面选择与高温环境适应性，为反射面材质与结构提供了设计依据；</p></li><li><p>Zhou、Mathews、Goldenstein（2018）提出紧凑型光纤耦合单端传感器，将单端光路全光纤化，显著提升了工程鲁棒性；</p></li><li><p>Peng 等（2016）研制中红外单端传感器，实现 H$_2$O/CO$_2$/CO
 与温度的同时测量；（2019a）将单端传感器用于激波管，实现测温与组分测量的单次通过；（2019b）面向旋转爆震发动机环腔，实现了高温高压下
-H$_2$O 浓度与温度的时间分辨测量——表明单端方案已通过极端环境考核；</p>
-</li>
-<li>
-<p>Hansemann 等（2024）发展了空间分辨的单端 TDLAS
-系统，把单点测量推进到沿程分布测量；</p>
-</li>
-<li>
-<p>Luo 等（2024）在分层旋流燃烧器下游完成单端 TDLAS
-温度测量，展示了真实燃烧装置上的应用能力。</p>
-</li>
-</ul>
-<table>
-	<thead>
-			<tr>
-					<th style="text-align: left">文献</th>
-					<th style="text-align: left">波段</th>
-					<th style="text-align: left">应用场景</th>
-					<th style="text-align: left">反射/回波方案</th>
-					<th style="text-align: left">主要指标</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td style="text-align: left">Melin 2017</td>
-					<td style="text-align: left">近红外</td>
-					<td style="text-align: left">高温环境原理验证</td>
-					<td style="text-align: left">回射面</td>
-					<td style="text-align: left">反射面选型依据</td>
-			</tr>
-			<tr>
-					<td style="text-align: left">Zhou 2018</td>
-					<td style="text-align: left">1.4/1.5 $\mu$m</td>
-					<td style="text-align: left">紧凑型传感器</td>
-					<td style="text-align: left">光纤耦合单端</td>
-					<td style="text-align: left">小型化、全光纤</td>
-			</tr>
-			<tr>
-					<td style="text-align: left">Peng 2016/2019</td>
-					<td style="text-align: left">中红外</td>
-					<td style="text-align: left">多组分/激波管/RDE</td>
-					<td style="text-align: left">单端回波</td>
-					<td style="text-align: left">H$_2$O/CO$_2$/CO/T 同测</td>
-			</tr>
-			<tr>
-					<td style="text-align: left">Hansemann 2024</td>
-					<td style="text-align: left">近红外</td>
-					<td style="text-align: left">空间分辨测量</td>
-					<td style="text-align: left">单端多角度</td>
-					<td style="text-align: left">沿程分布</td>
-			</tr>
-			<tr>
-					<td style="text-align: left">Luo 2024</td>
-					<td style="text-align: left">近红外</td>
-					<td style="text-align: left">旋流燃烧器</td>
-					<td style="text-align: left">单端</td>
-					<td style="text-align: left">真实火焰测温</td>
-			</tr>
-			<tr>
-					<td style="text-align: left">本文</td>
-					<td style="text-align: left">1.5 $\mu$m</td>
-					<td style="text-align: left">锅炉现场 + 原位开采高压</td>
-					<td style="text-align: left">裸光纤端面/环形器替代</td>
-					<td style="text-align: left">100 kHz 扫描、亚毫秒反演</td>
-			</tr>
-	</tbody>
-</table>
-<p>单端 TDLAS 代表性文献对比</p>
-<p>**小结：**现有单端工作集中在中红外波段或实验室原理验证，面向燃煤锅炉现场与煤炭原位开采高压环境的
-1.5 $\mu$m 电信级单端系统尚属空白——这是本课题的切入点之一。</p>
-<p>**1.5 $\mu$m 波段与 VCSEL 光源进展。**MEMS 可调谐 VCSEL
+H$_2$O 浓度与温度的时间分辨测量——表明单端方案已通过极端环境考核；</p></li><li><p>Hansemann 等（2024）发展了空间分辨的单端 TDLAS
+系统，把单点测量推进到沿程分布测量；</p></li><li><p>Luo 等（2024）在分层旋流燃烧器下游完成单端 TDLAS
+温度测量，展示了真实燃烧装置上的应用能力。</p></li></ul><table><thead><tr><th style=text-align:left>文献</th><th style=text-align:left>波段</th><th style=text-align:left>应用场景</th><th style=text-align:left>反射/回波方案</th><th style=text-align:left>主要指标</th></tr></thead><tbody><tr><td style=text-align:left>Melin 2017</td><td style=text-align:left>近红外</td><td style=text-align:left>高温环境原理验证</td><td style=text-align:left>回射面</td><td style=text-align:left>反射面选型依据</td></tr><tr><td style=text-align:left>Zhou 2018</td><td style=text-align:left>1.4/1.5 $\mu$m</td><td style=text-align:left>紧凑型传感器</td><td style=text-align:left>光纤耦合单端</td><td style=text-align:left>小型化、全光纤</td></tr><tr><td style=text-align:left>Peng 2016/2019</td><td style=text-align:left>中红外</td><td style=text-align:left>多组分/激波管/RDE</td><td style=text-align:left>单端回波</td><td style=text-align:left>H$_2$O/CO$_2$/CO/T 同测</td></tr><tr><td style=text-align:left>Hansemann 2024</td><td style=text-align:left>近红外</td><td style=text-align:left>空间分辨测量</td><td style=text-align:left>单端多角度</td><td style=text-align:left>沿程分布</td></tr><tr><td style=text-align:left>Luo 2024</td><td style=text-align:left>近红外</td><td style=text-align:left>旋流燃烧器</td><td style=text-align:left>单端</td><td style=text-align:left>真实火焰测温</td></tr><tr><td style=text-align:left>本文</td><td style=text-align:left>1.5 $\mu$m</td><td style=text-align:left>锅炉现场 + 原位开采高压</td><td style=text-align:left>裸光纤端面/环形器替代</td><td style=text-align:left>100 kHz 扫描、亚毫秒反演</td></tr></tbody></table><p>单端 TDLAS 代表性文献对比</p><p>**小结：**现有单端工作集中在中红外波段或实验室原理验证，面向燃煤锅炉现场与煤炭原位开采高压环境的
+1.5 $\mu$m 电信级单端系统尚属空白——这是本课题的切入点之一。</p><p>**1.5 $\mu$m 波段与 VCSEL 光源进展。**MEMS 可调谐 VCSEL
 兼具宽调谐与高扫描频率。商用 1550 nm MEMS-VCSEL 驱动调制带宽达
 200 kHz、单次完整波长扫描约 10 $\mu$s（100 kHz），远快于传统 DFB
 波长扫描；配合 EDFA 可补偿链路损耗，配合通信级 InGaAs APD
 可实现高灵敏度接收。电信产业链使 1.5 $\mu$m
-系统成本与可靠性显著优于中红外方案，但其在高温燃烧测温中的系统级应用研究仍较少。</p>
-<p>**燃煤锅炉与煤气化场景的激光诊断应用现状。**燃煤电厂侧已有透射式 TDLAS
+系统成本与可靠性显著优于中红外方案，但其在高温燃烧测温中的系统级应用研究仍较少。</p><p>**燃煤锅炉与煤气化场景的激光诊断应用现状。**燃煤电厂侧已有透射式 TDLAS
 的成功先例：Chao、Jeffries、Hanson（2013）用 2.3 $\mu$m
 传感器实现燃煤电厂 CO 的实时在线监测；Li 等（2020）开发了脱硝过程
 NH$_3$/H$_2$O/温度同时测量的便携 robust
 传感器；大型煤粉炉温度场方面，Zhou
 等（2005）实现炉膛三维温度场可视化，Wang 等（2020）将 CT-TDLAS
 用于燃煤炉二维测温，Li
-等（2024）用火焰图像处理获得大型煤粉炉温度与吸收系数二维分布。</p>
-<p>煤气化侧：Ouyang 等（1998）研制了加压下落管炉用于煤反应性研究；Sun
+等（2024）用火焰图像处理获得大型煤粉炉温度与吸收系数二维分布。</p><p>煤气化侧：Ouyang 等（1998）研制了加压下落管炉用于煤反应性研究；Sun
 等（2013）在犹他大学高压携带流气化炉上发展 TDLAS
 传感器，实现高温高压含尘气流中气体温度与浓度的测量；Sun
 等（2014）进一步将波长扫描 WMS 应用于工程级高压煤气化炉的 H$_2$O
-在线测量。</p>
-<p>**小结：**现场应用以透射式/层析式/成像式为主，均需双侧窗口或大型系统；单端方案在锅炉与煤气化现场的应用报道极少——本课题的应用创新空间所在。</p>
-<p>**现状总结。**综合以上进展，存在三个明确缺口：其一，1.5 $\mu$m
+在线测量。</p><p>**小结：**现场应用以透射式/层析式/成像式为主，均需双侧窗口或大型系统；单端方案在锅炉与煤气化现场的应用报道极少——本课题的应用创新空间所在。</p><p>**现状总结。**综合以上进展，存在三个明确缺口：其一，1.5 $\mu$m
 电信级器件单端 TDLAS
-的系统级工程化；其二，真实火焰、高粉尘现场环境下的单端回波验证；其三，单端测温与煤炭原位开采高温高压反应器（蓝宝石棒状窗口）的耦合应用。本课题针对这三个缺口展开。</p>
-<h3 id="所阅文献的查阅范围及手段">所阅文献的查阅范围及手段</h3>
-<p>通过 Web of Science / Scopus / 课题组 Zotero 文献库（编号 tag
+的系统级工程化；其二，真实火焰、高粉尘现场环境下的单端回波验证；其三，单端测温与煤炭原位开采高温高压反应器（蓝宝石棒状窗口）的耦合应用。本课题针对这三个缺口展开。</p><h3 id=所阅文献的查阅范围及手段>所阅文献的查阅范围及手段</h3><p>通过 Web of Science / Scopus / 课题组 Zotero 文献库（编号 tag
 21x/34x/71x 段位）检索 TDLAS 测温、单端/反射式激光吸收、MEMS-VCSEL 与
 1.5 $\mu$m
-波段诊断、燃煤锅炉与煤气化激光在线监测等主题文献，重点精读单端架构原理、反射面与光路设计、高温高压展宽处理三类文献，形成以上综述。主要参考文献列于文末。</p>
-<h2 id="研究内容技术路线创新点">研究内容、技术路线、创新点</h2>
-<h3 id="主要研究内容及拟解决的关键技术">主要研究内容及拟解决的关键技术</h3>
-<p>**研究内容一：1.5 $\mu$m 波段光谱仿真与吸收线优选。**基于 HITRAN/HAPI
+波段诊断、燃煤锅炉与煤气化激光在线监测等主题文献，重点精读单端架构原理、反射面与光路设计、高温高压展宽处理三类文献，形成以上综述。主要参考文献列于文末。</p><h2 id=研究内容技术路线创新点>研究内容、技术路线、创新点</h2><h3 id=主要研究内容及拟解决的关键技术>主要研究内容及拟解决的关键技术</h3><p>**研究内容一：1.5 $\mu$m 波段光谱仿真与吸收线优选。**基于 HITRAN/HAPI
 数据库，对
 6410–6493 cm$^{-1}$（1.540–1.560 $\mu$m）波段在锅炉主燃区工况（1500 $^\circ$C、常压微负压、16 m
 光程）下的 H$_2$O 多线吸收光谱进行 Voigt 线型仿真与仪器展宽处理；面向
 1550–1750 K
-温区开展双线组合优化（低态能量差、吸收强度、邻峰干扰三准则），完成信噪比与温度灵敏度预估，输出选线数据库。</p>
-<p>**研究内容二：单端 TDLAS 硬件系统研制。**包括：VCSEL+EDFA
+温区开展双线组合优化（低态能量差、吸收强度、邻峰干扰三准则），完成信噪比与温度灵敏度预估，输出选线数据库。</p><p>**研究内容二：单端 TDLAS 硬件系统研制。**包括：VCSEL+EDFA
 光源链路（100 kHz
-扫描、调谐线性化）；单端收发光路——环形器方案与&quot;裸光纤端面反射替代&quot;方案的对比实施，收发隔离与背景抑制；接收链路——InGaAs
+扫描、调谐线性化）；单端收发光路——环形器方案与"裸光纤端面反射替代"方案的对比实施，收发隔离与背景抑制；接收链路——InGaAs
 APD（25–175 V 偏置）+ 高带宽 TIA（OPA855，闭环带宽约 500 MHz）+
 1500/1600 nm 带通滤波（抑制 980 nm
-泵浦光与炉膛背景辐射）；数据采集与波长标定。</p>
-<p>**研究内容三：crossflow
+泵浦光与炉膛背景辐射）；数据采集与波长标定。</p><p>**研究内容三：crossflow
 平台实验室验证。**在横向射流燃烧平台开展双模式验证：尾端反射模式（燃烧器尾端/侧壁安装反射镜或漫反射板，收集沿烟气路径回波，验证长光程烟气测温）与横向火焰模式（光束穿越第一级火焰反应区，采集高温
-H$_2$O 吸收）；完成温度反演与热电偶对比、信噪比与不确定度分析。</p>
-<p>**研究内容四：燃煤锅炉现场应用研究。**依托校外集装箱试验场地与电站合作（343
-线）：探头吹扫防污与防尘设计、减振安装、工控机一体化集成与现场数据采集流程，开展炉膛/烟道实测温，评估现场工况下系统长期稳定性。</p>
-<p>**研究内容五：煤炭原位开采高温高压应用探索。**依托 711
+H$_2$O 吸收）；完成温度反演与热电偶对比、信噪比与不确定度分析。</p><p>**研究内容四：燃煤锅炉现场应用研究。**依托校外集装箱试验场地与电站合作（343
+线）：探头吹扫防污与防尘设计、减振安装、工控机一体化集成与现场数据采集流程，开展炉膛/烟道实测温，评估现场工况下系统长期稳定性。</p><p>**研究内容五：煤炭原位开采高温高压应用探索。**依托 711
 高压固定床/流动管反应器（内筒
-$\phi$<!-- -->220$\times$<!-- -->15、允许工作压力 17.3 MPa、10
+$\phi$220$\times$15、允许工作压力 17.3 MPa、10
 段独立控温至
-1000 $^\circ$C）：设计蓝宝石棒状光学窗口（$\phi$<!-- -->8$\times$<!-- -->50 mm、锥面密封+主动水冷法兰）与单端探头接口，研究高水蒸气/CO$_2$
-气氛、10–25 MPa 压力展宽条件下的谱线模型修正与温度反演方法。</p>
-<p><strong>拟解决的关键科学与技术问题：</strong></p>
-<ol>
-<li>
-<p>**单端构型下的收发隔离与弱回波提取：**发射端强背景与光纤端面杂散反射比有效回波高若干量级，需通过光路设计（环形器/收发分离/分束方案比选）、滤波与调制解调手段提取微弱回波。</p>
-</li>
-<li>
-<p>**高温高压展宽下的双线选择与反演精度：**锅炉高温与原位开采高压（谱线压力展宽显著）工况下，双线组合与谱线参数（碰撞展宽系数及其温度依赖）直接决定反演不确定度，需仿真–实验联合修正。</p>
-</li>
-<li>
-<p>**现场工况的工程适应性：**粉尘沉积与窗口污染、机械振动、安装空间受限、电磁干扰等现场因素下的长期稳定测量方案（吹扫、减振、屏蔽、标定流程）。</p>
-</li>
-</ol>
-<h3 id="拟采取的研究方法技术路线实施方案及可行性分析">拟采取的研究方法、技术路线、实施方案及可行性分析</h3>
-<p>**研究方法——双线比值法测温。**选取 H$_2$O 两条吸收线，由 Beer–Lambert
-定律测得积分吸收 $A_1$、$A_2$，其比值 $R$ 仅依赖温度：</p>
-<div class="code-block">
-    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
-      <span class="code-copy-label" aria-hidden="true">Copy</span>
-    </button>
-    <pre tabindex="0"><code class="language-math" data-lang="math">T = \frac{\Delta E}{k\left[\ln R + \ln\frac{S_1(T_0)}{S_2(T_0)}\right]}</code></pre>
-  </div><p>其中 $\Delta E$ 为两条吸收线低态能量差，$S_i(T_0)$ 为参考温度
-$T_0$ 下的线强，$k$ 为玻尔兹曼常数。</p>
-<p>**光谱仿真方法：**Python + HAPI（HITRAN API），Voigt 线型吸收系数计算
+1000 $^\circ$C）：设计蓝宝石棒状光学窗口（$\phi$8$\times$50 mm、锥面密封+主动水冷法兰）与单端探头接口，研究高水蒸气/CO$_2$
+气氛、10–25 MPa 压力展宽条件下的谱线模型修正与温度反演方法。</p><p><strong>拟解决的关键科学与技术问题：</strong></p><ol><li><p>**单端构型下的收发隔离与弱回波提取：**发射端强背景与光纤端面杂散反射比有效回波高若干量级，需通过光路设计（环形器/收发分离/分束方案比选）、滤波与调制解调手段提取微弱回波。</p></li><li><p>**高温高压展宽下的双线选择与反演精度：**锅炉高温与原位开采高压（谱线压力展宽显著）工况下，双线组合与谱线参数（碰撞展宽系数及其温度依赖）直接决定反演不确定度，需仿真–实验联合修正。</p></li><li><p>**现场工况的工程适应性：**粉尘沉积与窗口污染、机械振动、安装空间受限、电磁干扰等现场因素下的长期稳定测量方案（吹扫、减振、屏蔽、标定流程）。</p></li></ol><h3 id=拟采取的研究方法技术路线实施方案及可行性分析>拟采取的研究方法、技术路线、实施方案及可行性分析</h3><p>**研究方法——双线比值法测温。**选取 H$_2$O 两条吸收线，由 Beer–Lambert
+定律测得积分吸收 $A_1$、$A_2$，其比值 $R$ 仅依赖温度：</p><div class=code-block><button class=code-copy type=button hidden aria-label="Copy code to clipboard">
+<span class=code-copy-label aria-hidden=true>Copy</span></button><pre tabindex=0><code class=language-math data-lang=math>T = \frac{\Delta E}{k\left[\ln R + \ln\frac{S_1(T_0)}{S_2(T_0)}\right]}</code></pre></div><p>其中 $\Delta E$ 为两条吸收线低态能量差，$S_i(T_0)$ 为参考温度
+$T_0$ 下的线强，$k$ 为玻尔兹曼常数。</p><p>**光谱仿真方法：**Python + HAPI（HITRAN API），Voigt 线型吸收系数计算
 $\rightarrow$ 透射/吸收/辐射光谱 $\rightarrow$
 高斯卷积模拟仪器展宽（FWHM 0.5 cm$^{-1}$），波数步长
 0.005 cm$^{-1}$；工况按应用对象设置（锅炉：1773 K、0.999 atm、16 m
-光程；原位开采：变压力 1–25 MPa 参数化扫描）。</p>
-<p>**实验方法：**直接吸收为主、预留波长调制（WMS）升级；100 kHz
-扫描时序由函数发生器统一触发采集；标定采用热电偶对比与标准火焰/黑体源。</p>
-<p><strong>技术路线：</strong></p>
-<div class="center">
-</div>
-<p><strong>可行性分析：</strong></p>
-<ul>
-<li>
-<p>**器件可行——核心器件全部到位并完成出光验证：**MEMS-VCSEL（$&gt;$<!-- -->1 mW、100 kHz
+光程；原位开采：变压力 1–25 MPa 参数化扫描）。</p><p>**实验方法：**直接吸收为主、预留波长调制（WMS）升级；100 kHz
+扫描时序由函数发生器统一触发采集；标定采用热电偶对比与标准火焰/黑体源。</p><p><strong>技术路线：</strong></p><div class=center></div><p><strong>可行性分析：</strong></p><ul><li><p>**器件可行——核心器件全部到位并完成出光验证：**MEMS-VCSEL（$>$1 mW、100 kHz
 扫描已验证）、EDFA（操作流程已标准化）、1500/1600 nm
 滤波片（到货验收合格）、APD 与光接收模块（已到货）、OPA855 高带宽 TIA
 模块（已下单）；带宽需求已完成定量论证（100 kHz 扫描需约 440 MHz
 $\rightarrow$ OPA855 闭环约 500 MHz 覆盖，低速模式 150 MHz 模块亦有
-3 倍余量），带宽瓶颈已正式关闭。</p>
-</li>
-<li>
-<p>**仿真可行——选线依据已具备：**1.5 $\mu$m
+3 倍余量），带宽瓶颈已正式关闭。</p></li><li><p>**仿真可行——选线依据已具备：**1.5 $\mu$m
 波段锅炉工况仿真（1773 K、0.999 atm、16 m
-光程）已完成并归档，吸收峰识别与邻峰间距统计已开展。</p>
-</li>
-<li>
-<p>**平台可行：**实验室 crossflow
+光程）已完成并归档，吸收峰识别与邻峰间距统计已开展。</p></li><li><p>**平台可行：**实验室 crossflow
 燃烧平台可用；校外集装箱试验场地已建立（激光系统已进场）；711
 反应器加热段设计已按 GB/T 20801 GC1 级定稿（水压试验
 22.5 MPa），蓝宝石棒状窗口方案已定，法兰已加工到货，10
-段独立温控方案落地中。</p>
-</li>
-<li>
-<p>**团队可行：**课题组在 TDLAS 方向有系统积累（215 多路层析成像、216
+段独立温控方案落地中。</p></li><li><p>**团队可行：**课题组在 TDLAS 方向有系统积累（215 多路层析成像、216
 反射式 TDLAS、217 中红外痕量组分、212
 双线测温），可为本课题提供光路设计、光谱反演与硬件调试支撑；711
-项目与中煤集团合作（校外导师刘舆帅教授），应用场景有保障。</p>
-</li>
-<li>
-<p>**个人基础可行：**本人承担 215 项目第二负责人（多路 TDLAS
+项目与中煤集团合作（校外导师刘舆帅教授），应用场景有保障。</p></li><li><p>**个人基础可行：**本人承担 215 项目第二负责人（多路 TDLAS
 层析，负责窗口框架统筹出图）、711
 项目负责人（反应器装置设计定稿）、704
-煤粉红外遥测负责人，已完成本课题全部前期硬件与仿真工作（见第四节）。</p>
-</li>
-<li>
-<p>**风险与对策：**APD 首次调试疑似偏压不当损坏 $\rightarrow$ OPA855
-模块到货后按&quot;暗电流先行&quot;流程复测，必要时补购；现场上位机连接问题
-$\rightarrow$ 按导师既定路径以&quot;已验证整机&quot;替换排查；高压窗口密封风险
+煤粉红外遥测负责人，已完成本课题全部前期硬件与仿真工作（见第四节）。</p></li><li><p>**风险与对策：**APD 首次调试疑似偏压不当损坏 $\rightarrow$ OPA855
+模块到货后按"暗电流先行"流程复测，必要时补购；现场上位机连接问题
+$\rightarrow$ 按导师既定路径以"已验证整机"替换排查；高压窗口密封风险
 $\rightarrow$ 沿用 711
-已定稿的锥面密封+紫铜垫圈+主动水冷方案并预留盲板。</p>
-</li>
-</ul>
-<h3 id="论文的创新点">论文的创新点</h3>
-<p>**创新点一（系统层面）：**提出基于电信级器件的 1.5 $\mu$m 全光纤单端
+已定稿的锥面密封+紫铜垫圈+主动水冷方案并预留盲板。</p></li></ul><h3 id=论文的创新点>论文的创新点</h3><p>**创新点一（系统层面）：**提出基于电信级器件的 1.5 $\mu$m 全光纤单端
 TDLAS 测温系统——VCSEL+EDFA+APD 通信波段器件链 +
-单端回波光路，实现&quot;单侧安装、低成本、高鲁棒&quot;，区别于现有中红外单端方案，面向锅炉炉墙与井下受限空间的工程部署。</p>
-<p>**创新点二（测量性能层面）：**MEMS-VCSEL 100 kHz 快速扫描与约 500 MHz
-高带宽接收链路结合，实现亚毫秒级温度反演，具备分辨燃烧不稳定特征的时间分辨率；完成从经验估算到仿真精算的接收带宽定量设计方法。</p>
-<p>**创新点三（应用场景层面）：**首次将单端 TDLAS
+单端回波光路，实现"单侧安装、低成本、高鲁棒"，区别于现有中红外单端方案，面向锅炉炉墙与井下受限空间的工程部署。</p><p>**创新点二（测量性能层面）：**MEMS-VCSEL 100 kHz 快速扫描与约 500 MHz
+高带宽接收链路结合，实现亚毫秒级温度反演，具备分辨燃烧不稳定特征的时间分辨率；完成从经验估算到仿真精算的接收带宽定量设计方法。</p><p>**创新点三（应用场景层面）：**首次将单端 TDLAS
 与深部煤炭原位流态化开采高温高压反应器耦合——蓝宝石棒状窗口（锥面密封+主动水冷）单侧接口设计，支撑
 10–25 MPa
-活性气氛下煤热解气化的原位温度诊断；同步打通燃煤锅炉现场应用链路。</p>
-<h2 id="研究基础">研究基础</h2>
-<h3 id="所需实验手段研究条件和实验条件">所需实验手段、研究条件和实验条件</h3>
-<p>**所需实验手段：**1.5 $\mu$m 单端 TDLAS
+活性气氛下煤热解气化的原位温度诊断；同步打通燃煤锅炉现场应用链路。</p><h2 id=研究基础>研究基础</h2><h3 id=所需实验手段研究条件和实验条件>所需实验手段、研究条件和实验条件</h3><p>**所需实验手段：**1.5 $\mu$m 单端 TDLAS
 测温系统（VCSEL+EDFA+环形器/端面反射+APD 接收链路）、HITRAN/HAPI
-光谱仿真、crossflow 燃烧平台、热电偶标定、红外相机辅助对准。</p>
-<p>**研究条件：**课题组 223
+光谱仿真、crossflow 燃烧平台、热电偶标定、红外相机辅助对准。</p><p>**研究条件：**课题组 223
 实验室（光学平台、燃烧平台、函数发生器与示波器等测量仪器）、校外集装箱试验场地（343
 线）、711 高压反应器（内筒
-$\phi$<!-- -->220$\times$<!-- -->15、允许工作压力 17.3 MPa、10
-段独立控温）。</p>
-<p>**所需经费（含经费来源、开支预算）：**经费来源为课题组项目经费（711/343）。主要开支预算如下（单位为元，价格为采购/询价参考值，以实际采购为准）：</p>
-<table>
-	<thead>
-			<tr>
-					<th style="text-align: left">设备/项目</th>
-					<th style="text-align: left">数量</th>
-					<th style="text-align: left">预算（元）</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td style="text-align: left">1550 nm MEMS-VCSEL 激光器</td>
-					<td style="text-align: left">1</td>
-					<td style="text-align: left">已采购</td>
-			</tr>
-			<tr>
-					<td style="text-align: left">EDFA 光纤放大器</td>
-					<td style="text-align: left">1</td>
-					<td style="text-align: left">已采购</td>
-			</tr>
-			<tr>
-					<td style="text-align: left">InGaAs APD 与光电接收模块</td>
-					<td style="text-align: left">1 套</td>
-					<td style="text-align: left">已采购</td>
-			</tr>
-			<tr>
-					<td style="text-align: left">1500/1600 nm 带通滤波片</td>
-					<td style="text-align: left">各 1</td>
-					<td style="text-align: left">已采购</td>
-			</tr>
-			<tr>
-					<td style="text-align: left">OPA855 高带宽 TIA 模块</td>
-					<td style="text-align: left">1</td>
-					<td style="text-align: left">已下单</td>
-			</tr>
-			<tr>
-					<td style="text-align: left">环形器与光纤跳线等光路件</td>
-					<td style="text-align: left">若干</td>
-					<td style="text-align: left">待采购</td>
-			</tr>
-			<tr>
-					<td style="text-align: left">工控机与数据采集</td>
-					<td style="text-align: left">1</td>
-					<td style="text-align: left">已有</td>
-			</tr>
-			<tr>
-					<td style="text-align: left">加工与安装件</td>
-					<td style="text-align: left">若干</td>
-					<td style="text-align: left">约 5000</td>
-			</tr>
-			<tr>
-					<td style="text-align: left">实验耗材（气瓶等）</td>
-					<td style="text-align: left">若干</td>
-					<td style="text-align: left">约 10000</td>
-			</tr>
-	</tbody>
-</table>
-<p>主要设备与经费预算（估算）</p>
-<h3 id="前期工作基础">前期工作基础</h3>
-<p>**系统硬件已基本齐备（对应研究内容二）：**完成 VCSEL
-激光器上架、首次上电调试与出光验证（$&gt;$<!-- -->1 mW，扫描特性经供应商确认）；EDFA
+$\phi$220$\times$15、允许工作压力 17.3 MPa、10
+段独立控温）。</p><p>**所需经费（含经费来源、开支预算）：**经费来源为课题组项目经费（711/343）。主要开支预算如下（单位为元，价格为采购/询价参考值，以实际采购为准）：</p><table><thead><tr><th style=text-align:left>设备/项目</th><th style=text-align:left>数量</th><th style=text-align:left>预算（元）</th></tr></thead><tbody><tr><td style=text-align:left>1550 nm MEMS-VCSEL 激光器</td><td style=text-align:left>1</td><td style=text-align:left>已采购</td></tr><tr><td style=text-align:left>EDFA 光纤放大器</td><td style=text-align:left>1</td><td style=text-align:left>已采购</td></tr><tr><td style=text-align:left>InGaAs APD 与光电接收模块</td><td style=text-align:left>1 套</td><td style=text-align:left>已采购</td></tr><tr><td style=text-align:left>1500/1600 nm 带通滤波片</td><td style=text-align:left>各 1</td><td style=text-align:left>已采购</td></tr><tr><td style=text-align:left>OPA855 高带宽 TIA 模块</td><td style=text-align:left>1</td><td style=text-align:left>已下单</td></tr><tr><td style=text-align:left>环形器与光纤跳线等光路件</td><td style=text-align:left>若干</td><td style=text-align:left>待采购</td></tr><tr><td style=text-align:left>工控机与数据采集</td><td style=text-align:left>1</td><td style=text-align:left>已有</td></tr><tr><td style=text-align:left>加工与安装件</td><td style=text-align:left>若干</td><td style=text-align:left>约 5000</td></tr><tr><td style=text-align:left>实验耗材（气瓶等）</td><td style=text-align:left>若干</td><td style=text-align:left>约 10000</td></tr></tbody></table><p>主要设备与经费预算（估算）</p><h3 id=前期工作基础>前期工作基础</h3><p>**系统硬件已基本齐备（对应研究内容二）：**完成 VCSEL
+激光器上架、首次上电调试与出光验证（$>$1 mW，扫描特性经供应商确认）；EDFA
 安装与标准操作流程（SOP）固化；滤波片选型采购验收（1500 nm HP + 1600 nm
-LP 组合，可阻挡 980 nm 泵浦光与 $&gt;$<!-- -->1600 nm 背景辐射）；APD
+LP 组合，可阻挡 980 nm 泵浦光与 $>$1600 nm 背景辐射）；APD
 探测系统选型（带宽需求经三步定量估算）；2026-09
-完成机柜整合与激光器金属盒静电屏蔽封装（图 <a href="#fig:cabinet" data-reference-type="ref"
-data-reference="fig:cabinet">1</a>）。</p>
-<p><img src="/xliu-group/zh/post/zhangjiayi-proposal/figures/20260918-%E6%9C%BA%E6%9F%9C%E5%9B%BA%E5%AE%9A%E4%B8%8E%E6%BF%80%E5%85%89%E5%99%A8%E9%87%91%E5%B1%9E%E7%9B%92%E5%B0%81%E8%A3%85.jpg" alt="机柜固定与激光器金属盒封装（2026-09-18）"></p>
-<p>**光谱仿真已完成首轮（对应研究内容一）：**HAPI
+完成机柜整合与激光器金属盒静电屏蔽封装（图 <a href=#fig:cabinet data-reference-type=ref data-reference=fig:cabinet>1</a>）。</p><p><img src=/xliu-group/zh/post/zhangjiayi-proposal/figures/20260918-%E6%9C%BA%E6%9F%9C%E5%9B%BA%E5%AE%9A%E4%B8%8E%E6%BF%80%E5%85%89%E5%99%A8%E9%87%91%E5%B1%9E%E7%9B%92%E5%B0%81%E8%A3%85.jpg alt=机柜固定与激光器金属盒封装（2026-09-18）></p><p>**光谱仿真已完成首轮（对应研究内容一）：**HAPI
 仿真输出吸收系数、透射、吸收、辐射四合一光谱数据（6
-个数据文件+图，图 <a href="#fig:spectra" data-reference-type="ref"
-data-reference="fig:spectra">2</a>），仿真参数与锅炉主燃区工况匹配；吸收峰识别与邻峰间距统计支撑了接收带宽精算。</p>
-<p><img src="/xliu-group/zh/post/zhangjiayi-proposal/figures/spectra_full.png" alt="1.5 μm 波段四合一光谱仿真图"></p>
-<p>**关键技术决策已定：**扫描频率统一 100 kHz；APD 偏置修正为 25–175 V；TIA
+个数据文件+图，图 <a href=#fig:spectra data-reference-type=ref data-reference=fig:spectra>2</a>），仿真参数与锅炉主燃区工况匹配；吸收峰识别与邻峰间距统计支撑了接收带宽精算。</p><p><img src=/xliu-group/zh/post/zhangjiayi-proposal/figures/spectra_full.png alt="1.5 μm 波段四合一光谱仿真图"></p><p>**关键技术决策已定：**扫描频率统一 100 kHz；APD 偏置修正为 25–175 V；TIA
 升级路线选定 OPA855（GBW
-8 GHz）；环形器暂缓、以裸光纤端面反射替代先行打通链路；锅炉工况仿真基准（1773 K/0.999 atm/16 m）。</p>
-<p>**应用侧基础（对应研究内容四、五）：**343
+8 GHz）；环形器暂缓、以裸光纤端面反射替代先行打通链路；锅炉工况仿真基准（1773 K/0.999 atm/16 m）。</p><p>**应用侧基础（对应研究内容四、五）：**343
 线锅炉适配与现场测量方案开展中（E
 子课题），激光系统已进驻校外集装箱场地；711
 线完成反应器总体设计定稿（内筒
-$\phi$<!-- -->220$\times$<!-- -->15/外筒
-$\phi$<!-- -->250$\times$<!-- -->5、允许工作压力
+$\phi$220$\times$15/外筒
+$\phi$250$\times$5、允许工作压力
 17.3 MPa、散热与冷却水核算）、密封方案（法兰–定位环–紫铜垫圈）、蓝宝石棒状光学窗口设计、单相
 30
-套星形接法温控方案；三份专利交底书已定稿（超音速引射器煤粉进样/可更换中心管固定床/小型连续气化系统）。</p>
-<p>**遇到的问题与解决思路：**首次 APD
-调试因偏置电压操作不当疑似损坏器件——已转化为标准操作卡（黑胶带遮挡测暗电流$\rightarrow$逐步引入光信号）并撰写实践博客；集装箱场地上位机连接异常——取回已验证上位机替换排查（进行中）；课题组激光器运输损坏事件——本课题设备转运一律执行减振包装规定。</p>
-<h2 id="工作计划">工作计划</h2>
-<p>按三年制培养（2025.09–2028.06）编排：</p>
-<table>
-	<thead>
-			<tr>
-					<th style="text-align: left">阶段</th>
-					<th style="text-align: left">时间</th>
-					<th style="text-align: left">研究内容</th>
-					<th style="text-align: left">阶段成果</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td style="text-align: left">一</td>
-					<td style="text-align: left">2025.09–2026.06</td>
-					<td style="text-align: left">课程学习与文献调研；器件选型采购；光谱仿真；光源链路搭建与出光验证（已基本完成）</td>
-					<td style="text-align: left">选线仿真数据库；系统核心器件齐备</td>
-			</tr>
-			<tr>
-					<td style="text-align: left">二</td>
-					<td style="text-align: left">2026.07–2026.12</td>
-					<td style="text-align: left">接收链路升级（OPA855）与回波信号采集；单端光路方案定型；crossflow 平台双模式验证；开题报告（2026.10）</td>
-					<td style="text-align: left">系统样机；实验室验证数据；开题通过</td>
-			</tr>
-			<tr>
-					<td style="text-align: left">三</td>
-					<td style="text-align: left">2027.01–2027.06</td>
-					<td style="text-align: left">锅炉集装箱场地与电站现场测量；小论文一（光源链路+实验室验证）撰写投稿</td>
-					<td style="text-align: left">现场实测数据；小论文投稿</td>
-			</tr>
-			<tr>
-					<td style="text-align: left">四</td>
-					<td style="text-align: left">2027.07–2027.12</td>
-					<td style="text-align: left">711 高压反应器窗口耦合与高压气氛实验；中期考核；专利提交；小论文二（现场/高压应用）</td>
-					<td style="text-align: left">中期报告；专利受理；第二篇小论文</td>
-			</tr>
-			<tr>
-					<td style="text-align: left">五</td>
-					<td style="text-align: left">2028.01–2028.03</td>
-					<td style="text-align: left">学位论文撰写与修改</td>
-					<td style="text-align: left">学位论文初稿</td>
-			</tr>
-			<tr>
-					<td style="text-align: left">六</td>
-					<td style="text-align: left">2028.04–2028.06</td>
-					<td style="text-align: left">论文送审、修改、答辩</td>
-					<td style="text-align: left">学位论文定稿；通过答辩</td>
-			</tr>
-	</tbody>
-</table>
-<p>论文工作计划（进度安排）</p>
-<p><strong>预期成果：</strong></p>
-<ol>
-<li>
-<p>系统成果：1.5 $\mu$m 单端 TDLAS 测温系统样机一套（100 kHz
-扫描、亚毫秒温度反演、单侧安装）；</p>
-</li>
-<li>
-<p>学术论文：硕士学位论文 1 篇；期刊小论文 2–3
-篇（小论文一&quot;光源链路开发与实验室验证&quot;目标 Applied Optics /
+套星形接法温控方案；三份专利交底书已定稿（超音速引射器煤粉进样/可更换中心管固定床/小型连续气化系统）。</p><p>**遇到的问题与解决思路：**首次 APD
+调试因偏置电压操作不当疑似损坏器件——已转化为标准操作卡（黑胶带遮挡测暗电流$\rightarrow$逐步引入光信号）并撰写实践博客；集装箱场地上位机连接异常——取回已验证上位机替换排查（进行中）；课题组激光器运输损坏事件——本课题设备转运一律执行减振包装规定。</p><h2 id=工作计划>工作计划</h2><p>按三年制培养（2025.09–2028.06）编排：</p><table><thead><tr><th style=text-align:left>阶段</th><th style=text-align:left>时间</th><th style=text-align:left>研究内容</th><th style=text-align:left>阶段成果</th></tr></thead><tbody><tr><td style=text-align:left>一</td><td style=text-align:left>2025.09–2026.06</td><td style=text-align:left>课程学习与文献调研；器件选型采购；光谱仿真；光源链路搭建与出光验证（已基本完成）</td><td style=text-align:left>选线仿真数据库；系统核心器件齐备</td></tr><tr><td style=text-align:left>二</td><td style=text-align:left>2026.07–2026.12</td><td style=text-align:left>接收链路升级（OPA855）与回波信号采集；单端光路方案定型；crossflow 平台双模式验证；开题报告（2026.10）</td><td style=text-align:left>系统样机；实验室验证数据；开题通过</td></tr><tr><td style=text-align:left>三</td><td style=text-align:left>2027.01–2027.06</td><td style=text-align:left>锅炉集装箱场地与电站现场测量；小论文一（光源链路+实验室验证）撰写投稿</td><td style=text-align:left>现场实测数据；小论文投稿</td></tr><tr><td style=text-align:left>四</td><td style=text-align:left>2027.07–2027.12</td><td style=text-align:left>711 高压反应器窗口耦合与高压气氛实验；中期考核；专利提交；小论文二（现场/高压应用）</td><td style=text-align:left>中期报告；专利受理；第二篇小论文</td></tr><tr><td style=text-align:left>五</td><td style=text-align:left>2028.01–2028.03</td><td style=text-align:left>学位论文撰写与修改</td><td style=text-align:left>学位论文初稿</td></tr><tr><td style=text-align:left>六</td><td style=text-align:left>2028.04–2028.06</td><td style=text-align:left>论文送审、修改、答辩</td><td style=text-align:left>学位论文定稿；通过答辩</td></tr></tbody></table><p>论文工作计划（进度安排）</p><p><strong>预期成果：</strong></p><ol><li><p>系统成果：1.5 $\mu$m 单端 TDLAS 测温系统样机一套（100 kHz
+扫描、亚毫秒温度反演、单侧安装）；</p></li><li><p>学术论文：硕士学位论文 1 篇；期刊小论文 2–3
+篇（小论文一"光源链路开发与实验室验证"目标 Applied Optics /
 Measurement Science and Technology / Optics
-Express，构想稿已成文；应用篇视现场与高压实验进展）；</p>
-</li>
-<li>
-<p>知识产权：发明专利 1–3 项（711 三份交底书已定稿，出图后即报）；</p>
-</li>
-<li>
-<p>数据资产：1.5 $\mu$m 波段 H$_2$O
-高温（含高压展宽）吸收线选择与反演数据库一套。</p>
-</li>
-</ol>
-<h2 id="主要参考文献">主要参考文献</h2>
-<div class="thebibliography">
-<p>18 Goldenstein C S, Spearrin R M, Jeffries J B, et al. Infrared
+Express，构想稿已成文；应用篇视现场与高压实验进展）；</p></li><li><p>知识产权：发明专利 1–3 项（711 三份交底书已定稿，出图后即报）；</p></li><li><p>数据资产：1.5 $\mu$m 波段 H$_2$O
+高温（含高压展宽）吸收线选择与反演数据库一套。</p></li></ol><h2 id=主要参考文献>主要参考文献</h2><div class=thebibliography><p>18 Goldenstein C S, Spearrin R M, Jeffries J B, et al. Infrared
 laser-absorption spectroscopy for in-situ combustion diagnostics: status
 and outlook[J]. Measurement Science and Technology, 2017, 28(5):
 052001. Melin S T, Wang Z, Neal N J, et al. Single-ended retroreflection
@@ -702,22 +179,4 @@ gasifier[J]. Applied Physics B, 2014, 117(1): 411-421. 谢和平, 高峰,
 鞠杨, 等. 深地煤炭资源流态化开采理论与技术构想[J]. 煤炭学报, 2017,
 42(3): 547-562. 谢和平, 鞠杨, 高峰, 等.
 煤炭深部原位流态化开采的理论与技术体系[J]. 煤炭学报, 2018, 43(5):
-1210-1219.</p>
-</div>
-<p class="report-download">开题报告正文（原报告 PDF 14 页：<a href="proposal.pdf">proposal.pdf</a>｜LaTeX 源：<a href="开题报告-main.tex">开题报告-main.tex</a>）</p>
-  </div>
-</article>
-
-    </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
-    &copy;  刘训臣燃烧诊断实验室主页 2026 
-  </a>
-    <div><div class="ananke-socials"></div>
-</div>
-  </div>
-</footer>
-
-  </body>
-</html>
+1210-1219.</p></div><p class=report-download>开题报告正文（原报告 PDF 14 页：<a href=proposal.pdf>proposal.pdf</a>｜LaTeX 源：<a href=开题报告-main.tex>开题报告-main.tex</a>）</p></div></article></main><footer class="bg-black bottom-0 w-100 pa3" role=contentinfo><div class="flex justify-between"><a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href=https://liuxunchen.github.io/xliu-group/zh/>&copy; 刘训臣燃烧诊断实验室主页 2026</a><div><div class=ananke-socials></div></div></div></footer></body></html>
