@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>教程 on 刘训臣燃烧诊断实验室主页</title>
+		<link>http://localhost:1313/xliu-group/zh/tags/%E6%95%99%E7%A8%8B/</link>
+		<description>Recent content in 教程 on 刘训臣燃烧诊断实验室主页</description>
+		<generator>Hugo</generator>
+		<language>zh</language>
+		
+		
+		
+		
+			<lastBuildDate>Sat, 03 Oct 2026 00:30:00 +0800</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/xliu-group/zh/tags/%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>用 OpenFOAM 把 HP/SP 算一遍：从 0D 反应器到喷管 CFD</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-27-openfoam-hp-sp/</link>
+				<pubDate>Sat, 03 Oct 2026 00:30:00 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-27-openfoam-hp-sp/</guid>
+				<description>上一篇用 JANAF 表 + Cantera 把液氢/液氧喷管的 HP/SP 算清楚了；这一篇换一条完全不同的路——用 OpenFOAM 的 chemFoam 0D 反应器算燃烧室、用 rhoCentralFoam 算喷管，看工程 CFD 能不能对上教学手算。结果是：燃烧室温度差 0.04 %，喷管喉道差 0.1 %、出口速度差 0.2 %。附带把喷管型面的来路（特征线法）讲清楚。</description>
+			</item>
+			<item>
+				<title>从氢氧焰到液氢液氧火箭喷管：HP/SP 到底在算什么</title>
+				<link>http://localhost:1313/xliu-group/zh/post/janaf-cea-nozzle-hp-sp/</link>
+				<pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/janaf-cea-nozzle-hp-sp/</guid>
+				<description>一个液氢/液氧火箭喷管的完整例题：从燃烧室（HP）到喉道与出口（SP），用 JANAF 表手算 + Cantera 交叉验证，把温度、压力、速度与组成沿等熵线一路算下来。</description>
+			</item>
+			<item>
+				<title>跨机器同步 dsh 会话归档：dsh-archive-replica 插件的设计与踩坑</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-26-dsh-archive-replica/</link>
+				<pubDate>Sat, 12 Sep 2026 22:05:42 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-26-dsh-archive-replica/</guid>
+				<description>用几百行 TypeScript 给 dsh（DeepSeek Harness）写一个插件，把&amp;quot;哪些会话已归档&amp;quot;这个本机状态变成可以随任意网盘跨机器同步的文档；含设计取舍、安装方法与一路踩过的坑</description>
+			</item>
+			<item>
+				<title>在 Fedora 上为 Fcitx5 配置语音输入</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-12-fcitx5-vinput/</link>
+				<pubDate>Mon, 03 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-12-fcitx5-vinput/</guid>
+				<description>fcitx5-vinput 安装配置全记录：从 COPR 安装到阿里云百炼 ASR，实现 Linux 桌面原生语音输入</description>
+			</item>
+			<item>
+				<title>TDLAS 的仿真和局限</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-24-tdlas-overview/</link>
+				<pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-24-tdlas-overview/</guid>
+				<description>TDLAS 简单总结</description>
+			</item>
+			<item>
+				<title>山东科技大学学位论文 LaTeX 模板 SDUST_Thesis</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-23-sdust-thesis-latex/</link>
+				<pubDate>Sat, 20 Jun 2026 18:01:22 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-23-sdust-thesis-latex/</guid>
+				<description>山东科技大学学位论文 LaTeX 模板，符合学校撰写规范，支持硕士/博士/学士，使用 XeLaTeX 编译。</description>
+			</item>
+			<item>
+				<title>TDLAS 实验方法简介（一）：光电探测系统的组成</title>
+				<link>http://localhost:1313/xliu-group/zh/post/huihao-3-tdlas-system-parts/</link>
+				<pubDate>Tue, 25 Nov 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/huihao-3-tdlas-system-parts/</guid>
+				<description>TDLAS 光电探测系统七部分组成（激光器/驱动器/探测器/TIA/ADC/DSP/控制器）及选型与使用注意；本系列后续为光谱线选择与数据处理。</description>
+			</item>
+			<item>
+				<title>HITRAN 数据库用法</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-15-hitran-database/</link>
+				<pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-15-hitran-database/</guid>
+				<description>HITRAN 数据库 line by line 计算代码</description>
+			</item>
+			<item>
+				<title>吸收光谱简介</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-4-tdlas-absorption-intro/</link>
+				<pubDate>Fri, 03 Oct 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-4-tdlas-absorption-intro/</guid>
+				<description>吸收光谱中定量关系与 HITRAN 数据库参数的简介</description>
+			</item>
+			<item>
+				<title> 解决流量计跳数问题总结和感悟</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangshuo3/</link>
+				<pubDate>Thu, 21 Aug 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangshuo3/</guid>
+				<description>质量流量计跳数问题的排查与解决经验总结</description>
+			</item>
+			<item>
+				<title>Blow-out limits of nonpremixed turbulent jet flames in a cross flow at atmospheric and sub-atmospheric pressures</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangshuo2/</link>
+				<pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangshuo2/</guid>
+				<description>非预混湍流射流火焰在横向来流中的吹熄极限研究</description>
+			</item>
+			<item>
+				<title>在hugo网页中实现latex显示</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-19-latex-hugo/</link>
+				<pubDate>Mon, 16 Jun 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-19-latex-hugo/</guid>
+				<description>在Hugo网页中利用LaTeX显示数学公式的方法</description>
+			</item>
+			<item>
+				<title>使用 LabVIEW 实现AFG-C9000系列气体质量流量计瞬时流量的读取和储存</title>
+				<link>http://localhost:1313/xliu-group/zh/post/wangshuo1/</link>
+				<pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/wangshuo1/</guid>
+				<description>使用LabVIEW实现气体质量流量计瞬时流量的读取与储存</description>
+			</item>
+			<item>
+				<title>使用 LabVIEW 实现对CC-M3H040-NN14伺服电机的控制</title>
+				<link>http://localhost:1313/xliu-group/zh/post/huihao1/</link>
+				<pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/huihao1/</guid>
+				<description>使用LabVIEW实现对CC-M3H040-NN14伺服电机的控制</description>
+			</item>
+			<item>
+				<title>热工基础</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-18-thermo-course/</link>
+				<pubDate>Mon, 10 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-18-thermo-course/</guid>
+				<description>热工基础课程前四章热力学内容的教学总结</description>
+			</item>
+			<item>
+				<title>lvpyio</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-9-davis-piv/</link>
+				<pubDate>Thu, 20 Feb 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-9-davis-piv/</guid>
+				<description>LaVision Python包lvpyio的使用体验与问题总结</description>
+			</item>
+			<item>
+				<title>介绍好书：John Daily 统计热力学</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-8-daily-book/</link>
+				<pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-8-daily-book/</guid>
+				<description>John Daily统计热力学教材的介绍与推荐</description>
+			</item>
+			<item>
+				<title>新网站上线了</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-14-hello-world/</link>
+				<pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-14-hello-world/</guid>
+				<description>课题组新网站上线与功能说明</description>
+			</item>
+	</channel>
+</rss>

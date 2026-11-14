@@ -1,112 +1,1497 @@
-<!doctype html><html lang=zh><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>惠昊中期报告 | 刘训臣燃烧诊断实验室主页</title><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=description content="TDLAS 测温与滤波瑞利散射方法及应用（中期报告正文）"><meta name=generator content="Hugo 0.162.1"><meta name=robots content="index, follow"><meta name=author content="惠昊"><link rel=stylesheet href=/xliu-group/ananke/css/main.02a37ad6c4e155c542d276915a0e3f83f5c7c5fec443350f6e60753f1679b7a7.css integrity="sha256-AqN61sThVcVC0naRWg4/g/XHxf7EQzUPbmB1PxZ5t6c=" crossorigin=anonymous><link rel=stylesheet href=/xliu-group/css/tables.css><script>(function(){"use strict";function t(){for(var t=document.querySelectorAll(".code-block .code-copy[hidden]"),e=0;e<t.length;e++)t[e].hidden=!1}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",t):t();function e(e){var t=e.querySelector(".code-copy-label"),n=t?t.textContent:null;e.classList.add("is-copied"),t&&(t.textContent="Copied"),window.setTimeout(function(){e.classList.remove("is-copied"),t&&n!==null&&(t.textContent=n)},2e3)}function n(e){var n,t=document.createElement("textarea");t.value=e,t.setAttribute("readonly",""),t.style.position="absolute",t.style.left="-9999px",document.body.appendChild(t),t.select(),n=!1;try{n=document.execCommand("copy")}catch{n=!1}return document.body.removeChild(t),n}function s(t){var s,o,a,i=t.closest(".code-block");if(!i)return;if(s=i.querySelector("pre"),!s)return;a=s.querySelector("code")||s,o=a.innerText,navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(o).then(function(){e(t)},function(){n(o)&&e(t)}):n(o)&&e(t)}document.addEventListener("click",function(e){var t=e.target.closest(".code-copy");t&&s(t)})})()</script><link rel=canonical href=https://liuxunchen.github.io/xliu-group/zh/post/huihao-midterm/><meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/huihao-midterm/"><meta property="og:site_name" content="刘训臣燃烧诊断实验室主页"><meta property="og:title" content="惠昊中期报告"><meta property="og:description" content="TDLAS 测温与滤波瑞利散射方法及应用（中期报告正文）"><meta property="og:locale" content="zh"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2026-11-05T00:00:00+00:00"><meta property="article:modified_time" content="2026-11-05T00:00:00+00:00"><meta property="article:tag" content="Thesis"><meta itemprop=name content="惠昊中期报告"><meta itemprop=description content="TDLAS 测温与滤波瑞利散射方法及应用（中期报告正文）"><meta itemprop=datePublished content="2026-11-05T00:00:00+00:00"><meta itemprop=dateModified content="2026-11-05T00:00:00+00:00"><meta itemprop=wordCount content="2785"><meta itemprop=keywords content="Thesis"><meta name=twitter:card content="summary"><meta name=twitter:title content="惠昊中期报告"><meta name=twitter:description content="TDLAS 测温与滤波瑞利散射方法及应用（中期报告正文）"><script>if(typeof MathJax=="undefined"){window.MathJax={tex:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]]}};const e=document.createElement("script");e.src="https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js",e.async=!0,e.crossOrigin="anonymous",document.head.appendChild(e),console.log("MathJax initialized")}</script></head><body class="ma0 avenir bg-near-white production"><header><div class="pb3-m pb6-l bg-black"><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l center items-center justify-between"><a href=/xliu-group/zh/ class="f3 fw2 hover-white white-90 dib no-underline"><img src=/xliu-group/images/logo2.jpg class="w100 mw5-ns" alt=刘训臣燃烧诊断实验室主页></a><div class="flex-l items-center"><ul class="pl0 mr3"><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/research/ title="Research 页">Research</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/teaching/ title="Teaching 页">Teaching</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/paper/ title="Paper 页">Paper</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/news/ title="News 页">News</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/people/ title="People 页">People</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/post/ title="Post 页">Post</a></li></ul><div class=ananke-socials></div></div></div></nav></div></header><main class=pb7 role=main><article class="report-page center ph3 mw8-l"><header class="mt4 mb4"><h1 class="f2 athelas mt3 mb2">惠昊中期报告</h1><p class="report-meta f6 tracked gray mb4">2026-11-05</p></header><div class="report-body nested-copy-line-height lh-copy serif f4 nested-links mid-gray"><h2 id=绪论>绪论</h2><h3 id=课题来源选题依据和立论背景>课题来源、选题依据和立论背景</h3><p>火焰温度的准确测量与标定是实现燃烧过程精细化控制的关键前提，在燃气轮机燃烧、钢铁冶炼、石英制造等关键工业场景中，火焰温度的精准调控直接关系到能源消耗、污染物排放与产品质量。工业生产对火焰标定提出了现场适用性、宽温度覆盖范围、高稳定性与可溯源性等核心要求，但传统火焰温度测量方法普遍存在局限性：接触式测量（如热电偶）易受燃烧环境腐蚀、辐射散热影响，无法复现工业燃烧的动态环境；非接触式光学测量（如激光诊断）虽避免了接触干扰，却缺乏统一的现场标定标准，导致测量结果难以溯源。这些问题严重制约了不同测量系统间结果的可比性与可靠性。</p><p>国际计量领域的技术革新为火焰标定突破提供了重要支撑。国际温标（ITS-90）的推广明确了温度测量的溯源性要求，欧洲计量创新与研究计划（EMPIR）资助的EMPRESS、EMPRESS 2等重点项目，将标准火焰标定技术推向实用化<sup>[1]</sup>。</p><figure><img src=figures/image1.png alt="欧洲EMPRESS 2项目示意图"><figcaption>欧洲EMPRESS 2项目示意图</figcaption></figure><p>标准火焰作为可溯源、高稳定性的标定源，是连接基础计量标准与实际应用的关键纽带。标准火焰用于标定的核心价值在于：为燃烧领域的温度测量提供可追溯的标定基准，解决传统测温技术没有标准可以依照的痛点；标准火焰作为一个桥梁可以将传统的热电偶测温与激光测量技术相连接，用标准火焰去标定激光测量的准确性；通过模拟真实燃烧环境的温度场与物种分布，为各类光学诊断技术提供精准的性能验证与误差校准，是优化测量精度的核心工具；通过提升温度测量精度，间接实现工业过程的精准控制，最终带来能耗降低、废物减少的经济效益与环境效益。</p><p>非预混平面绝热火焰炉的技术优势使其成为火焰标定的理想载体：其一，燃烧稳定性强，通过优化流体力学设计与氮气共流技术，可有效抑制外界气流干扰，确保温度场空间均匀性与长期重复性；其二，温度可溯源，借助激光瑞利散射等技术对炉内火焰温度进行精确表征，能够实现2050K-2250K温度范围的ITS-90溯源，测量不确定度可控制在0.5%以内。以非预混平面绝热火焰炉作为火焰标定源，可构建多温度点的均匀温度场，为火焰标定提供了标准化的参考环境<sup>[1]</sup>。</p><p>尽管火焰标定技术已取得显著进展，但仍存在待突破的理论与技术问题。其中高温极端环境下的温度覆盖范围有待拓展，现有以非预混平面绝热火焰炉作为标定源的温度上限大约为2300K，当进一步升高温度时就会导致温度场的不均匀性增大，且内部结构容易出现烧蚀的问题；现有的火焰光谱仿真大都是用国际温标的数据，而国际温标中的数据基本都是通过电加热炉加热到预定温度后用热电偶进行测量，因此在光谱展宽等方面与真实火焰会有一定的差异，实验数据与之前数据库的仿真存在着一定的差异<sup>[2]</sup>。因此，开展基于非预混平面绝热火焰炉的火焰标定研究，建立覆盖更广温度范围、适应复杂环境、具备溯源性的火焰标定体系，能为我国高端制造业的燃烧过程精准控制提供核心技术支撑，对降低能源消耗、减少污染物排放、提升产品质量具有重要的理论价值<sup>[3]</sup>。</p><figure><figure><p><img src=figures/image2.png alt=image></p></figure><figure><p><img src=figures/image3.png alt=image></p></figure><figcaption>高温烧蚀照片与实验数据与仿真拟合的差异<sup>[2]</sup></figcaption></figure><p>在全球双碳目标推进与能源结构转型的大背景下，火焰标定的工业应用价值愈发凸显，尤其在燃气轮机高效运行场景中，其作为连接计量标准与工业应用的核心环节，能够建立可溯源、高稳定性的燃烧状态基准。基于标准火焰标定的光学诊断技术，可实现燃烧室温度场的精准监测，破解燃气轮机燃烧控制精度不足的难题，进而延长涡轮叶片寿命、提升燃气轮机热效率；同时，燃气轮机常用的贫燃预混燃烧技术需精准控制当量比以降低NO$_x$排放，而当量比偏差易引发燃烧不稳定，标准火焰恰好可用于验证燃气轮机低NO$_x$燃烧器性能，通过对比红外成像与标准火焰温度数据，降低当量比控制误差，提升NO$_x$排放达标率<sup>[4]</sup>。</p><p>除燃气轮机领域外，火焰标定还能显著提升氢能燃烧的稳定性与安全性。氢能燃烧具有燃烧速度快、温度高、点火能量低、易发生回火等特性，实际应用中常采用与天然气掺混的方式使用，但掺混过程中燃料组分波动会直接导致火焰当量比偏移，引发燃烧不稳定问题<sup>[5]</sup>。火焰标定技术可精准模拟不同氢能掺混比例的燃烧场景，通过标定温度与物种浓度，为氢能燃烧系统提供统一标准。</p><h3 id=课题研究目的理论意义和实际应用价值>课题研究目的、理论意义和实际应用价值</h3><h4 id=课题研究目的>课题研究目的</h4><p>针对当前非预混平面绝热火焰炉作为标定源仍然缺少对其火焰结构的详细测量和不能覆盖高温极端环境的问题：</p><p>第一，重新设计非预混平面绝热火焰炉结构，添加水冷机构，更改喷嘴的排布，解决其不能在高温极端环境下稳定长久工作的问题，使非预混平面绝热火焰炉燃烧氢氧火焰温度更接近绝热温度，拓展高温标定范围。</p><p>第二，研究微扩散火焰结构，建立更精确的火焰温度场浓度场，对以非预混平面绝热火焰炉作为标定源的火焰标定提供更为详细的参考，同时为后续标定提供一个可溯源的标准化标定条件，也为后续工业场景标定应用夯实基础。</p><h4 id=理论意义>理论意义</h4><p>使非预混平面绝热火焰炉作为标定源可以用于标定高温环境，在燃烧氢氧火焰时温度可以达到3000K，解决当下以非预混平面绝热火焰炉作为标定源所进行标定的研究没有覆盖高温环境的问题，和缺少对火焰结构的详细测量的问题，完善燃烧温度测量的溯源体系，为后续标定提供一个可溯源的标准化标定条件，为燃烧过程的精准控制提供技术支撑，推动燃烧计量领域的理论发展与技术革新。</p><h4 id=实际应用价值>实际应用价值</h4><p>提高氢能燃烧的稳定性与安全性，通过标定明确氢气燃烧的临界条件、贫燃熄火极限等关键参数，为氢能燃烧设备的结构设计提供数据支撑，降低安全风险。在燃气轮机领域，可以精准控制污染物排放，通过标准火焰验证测温技术，确保燃气轮机燃烧温度控制在1800K以下的NO$_x$抑制区间，减少热损失，提高燃烧室热效率，延长叶片使用寿命。</p><h3 id=论文结构安排>论文结构安排</h3><p>本文共分六章。第一章为引言，阐述研究背景与目标。第二章为文献综述，系统梳理平面火焰炉、TDLAS测量与火焰标定技术的国内外研究现状。第三章详述试验台与硬件系统，包括新型炉体设计、TDLAS光学链路与探测系统。第四章介绍研究方法与数据处理算法。第五章呈现实验结果与讨论。第六章为结论与展望。</p><h2 id=研究背景>研究背景</h2><h3 id=研究背景-1>研究背景</h3><p>燃烧器类型与结构设计演进，平面燃烧器早期用于火焰高度、速度等基础参数测量及光学技术校准，凭借简单几何结构便于直接/间接测量火焰特性。之后采用多孔陶瓷结构（如15mm直径圆形多孔表面、0.2mm通道），搭配液体热稳定系统，实现火焰稳定控制；通过坐标变换等数值方法优化，适配详细反应机理模拟。多孔板或者多喷嘴阵列燃烧器通过多喷嘴或孔道设计强化燃料与氧化剂混合，降低回火风险，适配氢富集燃料。其中狭缝式多孔板：狭缝宽度0.32-1.0mm，固定长度6mm，通过调整孔径控制火焰形态，发现狭缝宽度减小会促进壁面点火替代流体动力回火。微尺度多喷嘴阵列：24个喷嘴，四喷嘴为一单元形成内回流区，壁面附近形成外回流区，通过高速射流诱导烟气再循环实现稳定燃烧，喷嘴出口速度可达40-100m/s。喷射稳定燃烧器采用同轴射流或热同流设计，如乙醇压力旋流喷雾燃烧器，通过二次燃烧器生成热稀释同流，适配温和燃烧工况，优化雾化机制，在热稀释环境中实现液体射流快速破碎，减少高温峰值（$&lt;$2000K），降低NO$_x$排放<sup>[6]</sup>。</p><figure><figure><p><img src=figures/image4.png alt=image></p></figure><figure><p><img src=figures/image5.png alt=image></p></figure><figcaption>初始平面火焰燃烧器与中心燃烧器</figcaption></figure><p>燃烧稳定性与机制优化方面，对于回流区调控：通过内/外回流区耦合多喷嘴阵列、射流诱导烟气再循环，形成高温点火核心，拓宽稳定燃烧范围。对于不稳定性抑制：针对平面燃烧器的扩散热振荡，通过数值模拟优化反应机理，明确临界振荡条件与脉动周期；多喷嘴设计通过火焰相互作用抑制自激振荡<sup>[4]</sup>。对于回火防护：氢富集燃料场景中，采用无旋高速喷嘴、多孔板狭缝结构，避免火焰逆流传播，同时通过壁面温度控制降低自动点火风险。燃烧模式的创新扩散热振荡控制：首次在常压下观测到甲烷空气火焰的扩散热脉动，通过高速成像、光谱分析明确振荡周期与自由基脉动的关联性。温和燃烧适配：通过热稀释同流实现无焰燃烧，喷雾燃烧中弱化内火焰面，降低温度梯度与污染物生成<sup>[7]</sup>。</p><p>低排放与燃料适应性发展方面，低NO$_x$技术通过缩短烟气停留时间、降低火焰峰值温度，实现NO$_x$排放$&lt;$20ppm；利用热损失调控进一步降低高温区贡献。在氢富集燃料适配方面，针对氢高火焰速度、低淬熄距离特性，优化多喷嘴间距、狭缝结构，抑制回火<sup>[8]</sup>；微尺度阵列燃烧器通过高速射流设计，适配氢含量0-100%的混合燃料。同时有些平面火焰燃烧器拓展至煤粉颗粒燃烧，通过OH-PLIF诊断捕捉挥发分燃烧与焦炭氧化阶段，适配63-200$\mu$m粒径范围<sup>[9]</sup>。</p><h3 id=国内外研究现状>国内外研究现状</h3><h4 id=燃烧器的发展>燃烧器的发展</h4><h5 id=平面火焰燃烧器中心燃烧器的发展>平面火焰燃烧器、中心燃烧器的发展</h5><p>燃烧器类型与结构设计演进，平面燃烧器早期用于火焰高度、速度等基础参数测量及光学技术校准，凭借简单几何结构便于直接/间接测量火焰特性。之后采用多孔陶瓷结构（如15mm直径圆形多孔表面、0.2mm通道），搭配液体热稳定系统，实现火焰稳定控制；通过坐标变换等数值方法优化，适配详细反应机理模拟。多孔板或者多喷嘴阵列燃烧器通过多喷嘴或孔道设计强化燃料与氧化剂混合，降低回火风险，适配氢富集燃料。其中狭缝式多孔板：狭缝宽度0.32-1.0mm，固定长度6mm，通过调整孔径控制火焰形态，发现狭缝宽度减小会促进壁面点火替代流体动力回火。微尺度多喷嘴阵列：24个喷嘴，四喷嘴为一单元形成内回流区，壁面附近形成外回流区，通过高速射流诱导烟气再循环实现稳定燃烧，喷嘴出口速度可达40-100m/s。喷射稳定燃烧器采用同轴射流或热同流设计，如乙醇压力旋流喷雾燃烧器，通过二次燃烧器生成热稀释同流，适配温和燃烧工况，优化雾化机制，在热稀释环境中实现液体射流快速破碎，减少高温峰值（$&lt;$2000K），降低NO$_x$排放<sup>[6]</sup>。</p><p>燃烧稳定性与机制优化方面，对于回流区调控：通过内/外回流区耦合多喷嘴阵列、射流诱导烟气再循环，形成高温点火核心，拓宽稳定燃烧范围。对于不稳定性抑制：针对平面燃烧器的扩散热振荡，通过数值模拟优化反应机理，明确临界振荡条件与脉动周期；多喷嘴设计通过火焰相互作用抑制自激振荡<sup>[4]</sup>。对于回火防护：氢富集燃料场景中，采用无旋高速喷嘴、多孔板狭缝结构，避免火焰逆流传播，同时通过壁面温度控制降低自动点火风险。燃烧模式的创新扩散热振荡控制：首次在常压下观测到甲烷空气火焰的扩散热脉动，通过高速成像、光谱分析明确振荡周期与自由基脉动的关联性。温和燃烧适配：通过热稀释同流实现无焰燃烧，喷雾燃烧中弱化内火焰面，降低温度梯度与污染物生成<sup>[7]</sup>。</p><p>低排放与燃料适应性发展方面，低NO$_x$技术通过缩短烟气停留时间、降低火焰峰值温度，实现NO$_x$排放$&lt;$20ppm；利用热损失调控进一步降低高温区贡献。在氢富集燃料适配方面，针对氢高火焰速度、低淬熄距离特性，优化多喷嘴间距、狭缝结构，抑制回火<sup>[8]</sup>；微尺度阵列燃烧器通过高速射流设计，适配氢含量0-100%的混合燃料。同时有些平面火焰燃烧器拓展至煤粉颗粒燃烧，通过OH-PLIF诊断捕捉挥发分燃烧与焦炭氧化阶段，适配63-200$\mu$m粒径范围<sup>[9]</sup>。</p><h5 id=燃气轮机的发展>燃气轮机的发展</h5><p>在结构设计优化方面，非预混平面绝热火焰炉围绕强化掺混均匀性、提升工况适应性、优化测量便利性持续演进。早期简单喷嘴布局适用于低氢含量燃料基础测试，NASA的GRC（N1）型微混燃烧器通过交叉射流实现快速掺混，为多喷嘴阵列设计奠定基础<sup>[10]</sup>。针对富氢燃料回火问题，GE公司的多管混合（MTmixer）喷嘴密集布置毫米级微混合管，利用高流速抑制回火，单筒全尺寸实验NO$_x$排放低于10ppm<sup>[11]</sup>。国内方面，华北电力大学设计3$\times$3阵列微混燃烧器，采用燃料轴向进气、空气径向双排布孔结构，在60%H$_2$+40%CH$_4$工况下稳定燃烧<sup>[12]</sup>；中国科学院工程热物理所提出中心1个加外圈6个的7喷嘴阵列，氢含量60%时NO$_x$排放不高于10ppm，丰富了设计体系<sup>[13]</sup>。早期非预混平面绝热火焰炉仅适用于常温常压、低负荷工况，随着燃气轮机向F级、H级升级，GE、三菱日立等厂商通过改进加热与压力控制模块，实现600-800K、1-2MPa严苛工况模拟。GE在先进燃氢透平项目中，利用非预混平面绝热火焰炉完成氢含量90%以上燃料超100小时实验。国内研究适配减排需求，华北电力大学装置通过精准控流，实现喷嘴出口流速20-30m/s、热功率22.5-77.7kW宽范围调节；中国科学院工程热物理所优化壁面冷却结构，达成1920K绝热火焰温度下长时间稳定实验，为污染物排放研究提供支撑<sup>[14,15]</sup>.</p><figure><img src=figures/image6.png alt="微预混燃气轮机火焰流场<sup>[10]</sup>"><figcaption>微预混燃气轮机火焰流场<sup>[10]</sup></figcaption></figure><p>测量技术集成创新贯穿非预混平面绝热火焰炉发展的全程，从常规参数测量迈向精细化表征。火焰与污染物测量中，PLIF技术与烟气分析仪结合实现同步测量，OH-PLIF技术表征火焰反应区，动态压力传感器捕捉压力脉动，为热声振荡研究提供支撑，大幅提升实验能力<sup>[16]</sup>。</p><p>同时在富氢燃烧研究中，非预混平面绝热火焰炉作用关键。掺混均匀性研究中，华北电力大学证实空气径向射流加燃料轴向射流掺混方式均匀性指数达0.978，中国科学院工程热物理所明确预混段长度35mm为临界值；稳焰机制研究中，GE揭示局部逆压梯度稳焰机制，三菱日立验证多孔喷射结构抑回火效果，国内明确富氢微混火焰依赖剪切层拉伸效应稳焰<sup>[17,18]</sup>；低NO$_x$排放优化中，GE、中国科学院工程热物理所分别实现氢含量60%时NO$_x$排放低于25ppm、不高于10ppm，为减排提供数据支撑<sup>[19]</sup>.</p><h5 id=非预混火焰炉的测量发展>非预混火焰炉的测量发展</h5><p>由于之前发展的燃烧器不能达到足够高的火焰温度，容易不稳定和烧蚀，因此要设计新型的非预混平面绝热火焰炉。非预混火焰炉的测量方法核心围绕流场、温度、物种浓度、燃烧稳定性等四个关键参数，以非侵入式光学诊断为主。</p><p>对于流场特性的测量，瑞利散射成为火焰温度及组分浓度测量的重要手段，为燃烧过程诊断提供数据支撑。用Hencken炉平面火焰对滤波瑞利散射信号比-温度曲线进行精准标定，成功实现10 kHz高频二维测温，清晰揭示了单/双旋流火焰从V形向M形、从合并态向分层态的形态转变规律，该研究不仅验证了滤波瑞利散射技术在旋流燃烧诊断中的适配性，也为Hencken炉标定技术的应用提供了参考<sup>[20]</sup>。在替代燃料燃烧诊断领域，将甲烷火焰的拉曼/瑞利散射测量系统拓展至二甲醚火焰，通过与CO平面激光诱导荧光技术联用，实现了H$_2$、O$_2$、N$_2$、CO等多组分浓度与温度的同步获取，为替代燃料燃烧过程的多参数综合诊断提供了可行方案<sup>[21,22]</sup>。</p><p>温度测量方面，相干反斯托克斯拉曼光谱（CARS）在高精度测量火焰温度方面具有优势，尤其适用于高压力、高温度或有干扰的场景<sup>[23]</sup>。在绝热火焰温度校准、爆震通道内高温测量（1300-2300K）、煤颗粒燃烧环境温度表征等方面应用广泛。基于氮气（N$_2$）振动拉曼散射，单脉冲精度可达2%-4%；采用飞秒/皮秒混合脉冲技术，可抑制非共振背景干扰，适配高压（1-10bar）环境。双颜色OH平面激光诱导荧光在二维温度场测量中兼顾空间分辨率与温度敏感性<sup>[23,22]</sup>。通过探测OH自由基的两个温度敏感跃迁，利用荧光强度比反演温度；空间分辨率达40-50$\mu$m，精度4%-7.7%<sup>[24]</sup>。热电偶测量用于点式温度校准，配合辐射修正获取真实气体温度。</p><p>物种浓度与燃烧产物测量方面，平面激光诱导荧光可用于可视化自由基（OH、CH、HCO）或中间产物（CH$_2$O）的空间分布，识别反应区位置。在非预混火焰的反应区定位、煤颗粒燃烧的挥发分/焦炭燃烧阶段区分、爆震火焰的OH分布表征有广泛应用。气相色谱用于定量分析燃烧产物中的主要物种（CO、CO$_2$、H$_2$、未燃燃料）浓度，通过石英探针取样（针尖直径100$\mu$m），结合色谱柱分离，测量不确定度$\pm$0.2%-0.9%<sup>[25]</sup>。</p><p>燃烧稳定性与动态特性测量方面，高速摄影与化学发光成像采用高速CMOS相机，记录CH、C$_2$等化学发光信号，可识别火焰振荡周期（如7ms）、旋转螺旋结构等不稳定现象。激光散射与透射测量采用激光多普勒测速（LDV）或相位多普勒粒子分析（PDA），获取粒子速度与粒径信息，适用于稀相燃烧系统<sup>[2]</sup>.</p><div id=tab:measurement_methods><table><thead><tr><th style=text-align:left>测量方法</th><th style=text-align:left>主要成果</th></tr></thead><tbody><tr><td style=text-align:left>氪X射线荧光光谱</td><td style=text-align:left>量化多元素扩散燃烧器近表面（0.1-0.5 mm）燃料/空气快速混合过程；获得火焰温度分布<sup>[26]</sup></td></tr><tr><td style=text-align:left>混合飞秒/皮秒振动相干反斯托克斯拉曼光谱</td><td style=text-align:left>实现1300-2300 K、1-10 bar高压层流火焰温度测量<sup>[27]</sup></td></tr><tr><td style=text-align:left>双颜色OH平面激光诱导荧光</td><td style=text-align:left>实现爆震通道内二维温度场测量，精度4%-7.7%<sup>[24]</sup></td></tr><tr><td style=text-align:left>气相色谱（GC）</td><td style=text-align:left>实现臭氧激活二甲醚低温冷火焰（779-885 K）稳定与表征；测定0.4-1.4当量比下冷火焰传播速度</td></tr><tr><td style=text-align:left>高速OH平面激光诱导荧光（OH-PLIF）、相干反斯托克斯拉曼光谱（CARS）</td><td style=text-align:left>10 kHz帧率捕捉单煤颗粒燃烧OH分布，区分挥发分与焦炭燃烧阶段；量化富氧环境下煤颗粒燃烧边界层特性<sup>[9,23]</sup></td></tr></tbody></table><p>燃烧器测量方法和主要成果发展汇总</p></div><h4 id=tdlas测量与火焰标定发展现状>TDLAS测量与火焰标定发展现状</h4><h5 id=tdlas技术发展现状>TDLAS技术发展现状</h5><p>可调谐二极管激光吸收光谱（TDLAS）技术作为一种非侵入式光学测量手段，凭借高灵敏度、快速响应、物种特异性强等优势，已成为燃烧诊断、工业过程监测、环境检测等领域的核心技术支撑。随着现代工业向高精度、高效率、低排放方向转型以及极端工况下测量需求的不断增加，TDLAS技术逐步朝着单谱线测量、多参数协同、宽波段适配、智能化反演的方向演进，有效解决了传统测量方法中侵入式干扰、响应滞后、多组分耦合解算困难等关键问题<sup>[28]</sup>。</p><p>TDLAS技术应用于火焰标定测量的基本原理是比尔-朗伯（Beer-Lambert）定律，当频率为$\nu$的单色激光穿过气体介质后，若光子能量与待测气体组分的吸收峰对应频率重合，部分激光将会被气体吸收，激光光强的透过率$T_\nu$可用沿光程的吸收率积分表示：</p>$$
+<!DOCTYPE html>
+<html lang="zh">
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>惠昊中期报告 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="TDLAS 测温与滤波瑞利散射方法及应用（中期报告正文）">
+    <meta name="generator" content="Hugo 0.162.1">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="惠昊">
+    
+
+    <link rel="stylesheet" href="/xliu-group/ananke/css/main.css"><link rel="stylesheet" href="/xliu-group/css/tables.css">
+    <script>
+  (function () {
+    "use strict";
+
+    
+    
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
+
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/huihao-midterm/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/huihao-midterm/">
+	<meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+	<meta property="og:title" content="惠昊中期报告">
+	<meta property="og:description" content="TDLAS 测温与滤波瑞利散射方法及应用（中期报告正文）">
+	<meta property="og:locale" content="zh">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2026-11-05T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-05T00:00:00+00:00">
+		<meta property="article:tag" content="学位论文">
+
+	<meta itemprop="name" content="惠昊中期报告">
+	<meta itemprop="description" content="TDLAS 测温与滤波瑞利散射方法及应用（中期报告正文）">
+	<meta itemprop="datePublished" content="2026-11-05T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-05T00:00:00+00:00">
+	<meta itemprop="wordCount" content="2785">
+	<meta itemprop="keywords" content="学位论文">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="惠昊中期报告">
+	<meta name="twitter:description" content="TDLAS 测温与滤波瑞利散射方法及应用（中期报告正文）">
+
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+
+    
+
+<header>
+  <div class="pb3-m pb6-l bg-black">
+    <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        <img src="/xliu-group/images/logo2.jpg" class="w100 mw5-ns" alt="刘训臣燃烧诊断实验室主页" />
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/teaching/" title="Teaching 页">
+              Teaching
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/paper/" title="Paper 页">
+              Paper
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/news/" title="News 页">
+              News
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+  </div>
+</header>
+
+    <main class="pb7" role="main">
+      
+<article class="report-page center ph3 mw8-l">
+  <header class="mt4 mb4">
+    <h1 class="f2 athelas mt3 mb2">惠昊中期报告</h1>
+    <p class="report-meta f6 tracked gray mb4">2026-11-05</p>
+  </header>
+  <div class="report-body nested-copy-line-height lh-copy serif f4 nested-links mid-gray">
+    <h2 id="绪论">绪论</h2>
+<h3 id="课题来源选题依据和立论背景">课题来源、选题依据和立论背景</h3>
+<p>火焰温度的准确测量与标定是实现燃烧过程精细化控制的关键前提，在燃气轮机燃烧、钢铁冶炼、石英制造等关键工业场景中，火焰温度的精准调控直接关系到能源消耗、污染物排放与产品质量。工业生产对火焰标定提出了现场适用性、宽温度覆盖范围、高稳定性与可溯源性等核心要求，但传统火焰温度测量方法普遍存在局限性：接触式测量（如热电偶）易受燃烧环境腐蚀、辐射散热影响，无法复现工业燃烧的动态环境；非接触式光学测量（如激光诊断）虽避免了接触干扰，却缺乏统一的现场标定标准，导致测量结果难以溯源。这些问题严重制约了不同测量系统间结果的可比性与可靠性。</p>
+<p>国际计量领域的技术革新为火焰标定突破提供了重要支撑。国际温标（ITS-90）的推广明确了温度测量的溯源性要求，欧洲计量创新与研究计划（EMPIR）资助的EMPRESS、EMPRESS 2等重点项目，将标准火焰标定技术推向实用化<sup>[1]</sup>。</p>
+<figure><img src="figures/image1.png" alt="欧洲EMPRESS 2项目示意图" /><figcaption>欧洲EMPRESS 2项目示意图</figcaption></figure>
+<p>标准火焰作为可溯源、高稳定性的标定源，是连接基础计量标准与实际应用的关键纽带。标准火焰用于标定的核心价值在于：为燃烧领域的温度测量提供可追溯的标定基准，解决传统测温技术没有标准可以依照的痛点；标准火焰作为一个桥梁可以将传统的热电偶测温与激光测量技术相连接，用标准火焰去标定激光测量的准确性；通过模拟真实燃烧环境的温度场与物种分布，为各类光学诊断技术提供精准的性能验证与误差校准，是优化测量精度的核心工具；通过提升温度测量精度，间接实现工业过程的精准控制，最终带来能耗降低、废物减少的经济效益与环境效益。</p>
+<p>非预混平面绝热火焰炉的技术优势使其成为火焰标定的理想载体：其一，燃烧稳定性强，通过优化流体力学设计与氮气共流技术，可有效抑制外界气流干扰，确保温度场空间均匀性与长期重复性；其二，温度可溯源，借助激光瑞利散射等技术对炉内火焰温度进行精确表征，能够实现2050K-2250K温度范围的ITS-90溯源，测量不确定度可控制在0.5%以内。以非预混平面绝热火焰炉作为火焰标定源，可构建多温度点的均匀温度场，为火焰标定提供了标准化的参考环境<sup>[1]</sup>。</p>
+<p>尽管火焰标定技术已取得显著进展，但仍存在待突破的理论与技术问题。其中高温极端环境下的温度覆盖范围有待拓展，现有以非预混平面绝热火焰炉作为标定源的温度上限大约为2300K，当进一步升高温度时就会导致温度场的不均匀性增大，且内部结构容易出现烧蚀的问题；现有的火焰光谱仿真大都是用国际温标的数据，而国际温标中的数据基本都是通过电加热炉加热到预定温度后用热电偶进行测量，因此在光谱展宽等方面与真实火焰会有一定的差异，实验数据与之前数据库的仿真存在着一定的差异<sup>[2]</sup>。因此，开展基于非预混平面绝热火焰炉的火焰标定研究，建立覆盖更广温度范围、适应复杂环境、具备溯源性的火焰标定体系，能为我国高端制造业的燃烧过程精准控制提供核心技术支撑，对降低能源消耗、减少污染物排放、提升产品质量具有重要的理论价值<sup>[3]</sup>。</p>
+<figure>
+<figure>
+<p><img src="figures/image2.png" alt="image" /></p>
+</figure>
+<figure>
+<p><img src="figures/image3.png" alt="image" /></p>
+</figure>
+<figcaption>高温烧蚀照片与实验数据与仿真拟合的差异<sup>[2]</sup></figcaption>
+</figure>
+<p>在全球双碳目标推进与能源结构转型的大背景下，火焰标定的工业应用价值愈发凸显，尤其在燃气轮机高效运行场景中，其作为连接计量标准与工业应用的核心环节，能够建立可溯源、高稳定性的燃烧状态基准。基于标准火焰标定的光学诊断技术，可实现燃烧室温度场的精准监测，破解燃气轮机燃烧控制精度不足的难题，进而延长涡轮叶片寿命、提升燃气轮机热效率；同时，燃气轮机常用的贫燃预混燃烧技术需精准控制当量比以降低NO$_x$排放，而当量比偏差易引发燃烧不稳定，标准火焰恰好可用于验证燃气轮机低NO$_x$燃烧器性能，通过对比红外成像与标准火焰温度数据，降低当量比控制误差，提升NO$_x$排放达标率<sup>[4]</sup>。</p>
+<p>除燃气轮机领域外，火焰标定还能显著提升氢能燃烧的稳定性与安全性。氢能燃烧具有燃烧速度快、温度高、点火能量低、易发生回火等特性，实际应用中常采用与天然气掺混的方式使用，但掺混过程中燃料组分波动会直接导致火焰当量比偏移，引发燃烧不稳定问题<sup>[5]</sup>。火焰标定技术可精准模拟不同氢能掺混比例的燃烧场景，通过标定温度与物种浓度，为氢能燃烧系统提供统一标准。</p>
+<h3 id="课题研究目的理论意义和实际应用价值">课题研究目的、理论意义和实际应用价值</h3>
+<h4 id="课题研究目的">课题研究目的</h4>
+<p>针对当前非预混平面绝热火焰炉作为标定源仍然缺少对其火焰结构的详细测量和不能覆盖高温极端环境的问题：</p>
+<p>第一，重新设计非预混平面绝热火焰炉结构，添加水冷机构，更改喷嘴的排布，解决其不能在高温极端环境下稳定长久工作的问题，使非预混平面绝热火焰炉燃烧氢氧火焰温度更接近绝热温度，拓展高温标定范围。</p>
+<p>第二，研究微扩散火焰结构，建立更精确的火焰温度场浓度场，对以非预混平面绝热火焰炉作为标定源的火焰标定提供更为详细的参考，同时为后续标定提供一个可溯源的标准化标定条件，也为后续工业场景标定应用夯实基础。</p>
+<h4 id="理论意义">理论意义</h4>
+<p>使非预混平面绝热火焰炉作为标定源可以用于标定高温环境，在燃烧氢氧火焰时温度可以达到3000K，解决当下以非预混平面绝热火焰炉作为标定源所进行标定的研究没有覆盖高温环境的问题，和缺少对火焰结构的详细测量的问题，完善燃烧温度测量的溯源体系，为后续标定提供一个可溯源的标准化标定条件，为燃烧过程的精准控制提供技术支撑，推动燃烧计量领域的理论发展与技术革新。</p>
+<h4 id="实际应用价值">实际应用价值</h4>
+<p>提高氢能燃烧的稳定性与安全性，通过标定明确氢气燃烧的临界条件、贫燃熄火极限等关键参数，为氢能燃烧设备的结构设计提供数据支撑，降低安全风险。在燃气轮机领域，可以精准控制污染物排放，通过标准火焰验证测温技术，确保燃气轮机燃烧温度控制在1800K以下的NO$_x$抑制区间，减少热损失，提高燃烧室热效率，延长叶片使用寿命。</p>
+<h3 id="论文结构安排">论文结构安排</h3>
+<p>本文共分六章。第一章为引言，阐述研究背景与目标。第二章为文献综述，系统梳理平面火焰炉、TDLAS测量与火焰标定技术的国内外研究现状。第三章详述试验台与硬件系统，包括新型炉体设计、TDLAS光学链路与探测系统。第四章介绍研究方法与数据处理算法。第五章呈现实验结果与讨论。第六章为结论与展望。</p>
+<h2 id="研究背景">研究背景</h2>
+<h3 id="研究背景-1">研究背景</h3>
+<p>燃烧器类型与结构设计演进，平面燃烧器早期用于火焰高度、速度等基础参数测量及光学技术校准，凭借简单几何结构便于直接/间接测量火焰特性。之后采用多孔陶瓷结构（如15mm直径圆形多孔表面、0.2mm通道），搭配液体热稳定系统，实现火焰稳定控制；通过坐标变换等数值方法优化，适配详细反应机理模拟。多孔板或者多喷嘴阵列燃烧器通过多喷嘴或孔道设计强化燃料与氧化剂混合，降低回火风险，适配氢富集燃料。其中狭缝式多孔板：狭缝宽度0.32-1.0mm，固定长度6mm，通过调整孔径控制火焰形态，发现狭缝宽度减小会促进壁面点火替代流体动力回火。微尺度多喷嘴阵列：24个喷嘴，四喷嘴为一单元形成内回流区，壁面附近形成外回流区，通过高速射流诱导烟气再循环实现稳定燃烧，喷嘴出口速度可达40-100m/s。喷射稳定燃烧器采用同轴射流或热同流设计，如乙醇压力旋流喷雾燃烧器，通过二次燃烧器生成热稀释同流，适配温和燃烧工况，优化雾化机制，在热稀释环境中实现液体射流快速破碎，减少高温峰值（$&lt;$<!-- -->2000K），降低NO$_x$排放<sup>[6]</sup>。</p>
+<figure>
+<figure>
+<p><img src="figures/image4.png" alt="image" /></p>
+</figure>
+<figure>
+<p><img src="figures/image5.png" alt="image" /></p>
+</figure>
+<figcaption>初始平面火焰燃烧器与中心燃烧器</figcaption>
+</figure>
+<p>燃烧稳定性与机制优化方面，对于回流区调控：通过内/外回流区耦合多喷嘴阵列、射流诱导烟气再循环，形成高温点火核心，拓宽稳定燃烧范围。对于不稳定性抑制：针对平面燃烧器的扩散热振荡，通过数值模拟优化反应机理，明确临界振荡条件与脉动周期；多喷嘴设计通过火焰相互作用抑制自激振荡<sup>[4]</sup>。对于回火防护：氢富集燃料场景中，采用无旋高速喷嘴、多孔板狭缝结构，避免火焰逆流传播，同时通过壁面温度控制降低自动点火风险。燃烧模式的创新扩散热振荡控制：首次在常压下观测到甲烷空气火焰的扩散热脉动，通过高速成像、光谱分析明确振荡周期与自由基脉动的关联性。温和燃烧适配：通过热稀释同流实现无焰燃烧，喷雾燃烧中弱化内火焰面，降低温度梯度与污染物生成<sup>[7]</sup>。</p>
+<p>低排放与燃料适应性发展方面，低NO$_x$技术通过缩短烟气停留时间、降低火焰峰值温度，实现NO$_x$排放$&lt;$<!-- -->20ppm；利用热损失调控进一步降低高温区贡献。在氢富集燃料适配方面，针对氢高火焰速度、低淬熄距离特性，优化多喷嘴间距、狭缝结构，抑制回火<sup>[8]</sup>；微尺度阵列燃烧器通过高速射流设计，适配氢含量0-100%的混合燃料。同时有些平面火焰燃烧器拓展至煤粉颗粒燃烧，通过OH-PLIF诊断捕捉挥发分燃烧与焦炭氧化阶段，适配63-200$\mu$m粒径范围<sup>[9]</sup>。</p>
+<h3 id="国内外研究现状">国内外研究现状</h3>
+<h4 id="燃烧器的发展">燃烧器的发展</h4>
+<h5 id="平面火焰燃烧器中心燃烧器的发展">平面火焰燃烧器、中心燃烧器的发展</h5>
+<p>燃烧器类型与结构设计演进，平面燃烧器早期用于火焰高度、速度等基础参数测量及光学技术校准，凭借简单几何结构便于直接/间接测量火焰特性。之后采用多孔陶瓷结构（如15mm直径圆形多孔表面、0.2mm通道），搭配液体热稳定系统，实现火焰稳定控制；通过坐标变换等数值方法优化，适配详细反应机理模拟。多孔板或者多喷嘴阵列燃烧器通过多喷嘴或孔道设计强化燃料与氧化剂混合，降低回火风险，适配氢富集燃料。其中狭缝式多孔板：狭缝宽度0.32-1.0mm，固定长度6mm，通过调整孔径控制火焰形态，发现狭缝宽度减小会促进壁面点火替代流体动力回火。微尺度多喷嘴阵列：24个喷嘴，四喷嘴为一单元形成内回流区，壁面附近形成外回流区，通过高速射流诱导烟气再循环实现稳定燃烧，喷嘴出口速度可达40-100m/s。喷射稳定燃烧器采用同轴射流或热同流设计，如乙醇压力旋流喷雾燃烧器，通过二次燃烧器生成热稀释同流，适配温和燃烧工况，优化雾化机制，在热稀释环境中实现液体射流快速破碎，减少高温峰值（$&lt;$<!-- -->2000K），降低NO$_x$排放<sup>[6]</sup>。</p>
+<p>燃烧稳定性与机制优化方面，对于回流区调控：通过内/外回流区耦合多喷嘴阵列、射流诱导烟气再循环，形成高温点火核心，拓宽稳定燃烧范围。对于不稳定性抑制：针对平面燃烧器的扩散热振荡，通过数值模拟优化反应机理，明确临界振荡条件与脉动周期；多喷嘴设计通过火焰相互作用抑制自激振荡<sup>[4]</sup>。对于回火防护：氢富集燃料场景中，采用无旋高速喷嘴、多孔板狭缝结构，避免火焰逆流传播，同时通过壁面温度控制降低自动点火风险。燃烧模式的创新扩散热振荡控制：首次在常压下观测到甲烷空气火焰的扩散热脉动，通过高速成像、光谱分析明确振荡周期与自由基脉动的关联性。温和燃烧适配：通过热稀释同流实现无焰燃烧，喷雾燃烧中弱化内火焰面，降低温度梯度与污染物生成<sup>[7]</sup>。</p>
+<p>低排放与燃料适应性发展方面，低NO$_x$技术通过缩短烟气停留时间、降低火焰峰值温度，实现NO$_x$排放$&lt;$<!-- -->20ppm；利用热损失调控进一步降低高温区贡献。在氢富集燃料适配方面，针对氢高火焰速度、低淬熄距离特性，优化多喷嘴间距、狭缝结构，抑制回火<sup>[8]</sup>；微尺度阵列燃烧器通过高速射流设计，适配氢含量0-100%的混合燃料。同时有些平面火焰燃烧器拓展至煤粉颗粒燃烧，通过OH-PLIF诊断捕捉挥发分燃烧与焦炭氧化阶段，适配63-200$\mu$m粒径范围<sup>[9]</sup>。</p>
+<h5 id="燃气轮机的发展">燃气轮机的发展</h5>
+<p>在结构设计优化方面，非预混平面绝热火焰炉围绕强化掺混均匀性、提升工况适应性、优化测量便利性持续演进。早期简单喷嘴布局适用于低氢含量燃料基础测试，NASA的GRC（N1）型微混燃烧器通过交叉射流实现快速掺混，为多喷嘴阵列设计奠定基础<sup>[10]</sup>。针对富氢燃料回火问题，GE公司的多管混合（MTmixer）喷嘴密集布置毫米级微混合管，利用高流速抑制回火，单筒全尺寸实验NO$_x$排放低于10ppm<sup>[11]</sup>。国内方面，华北电力大学设计3$\times$<!-- -->3阵列微混燃烧器，采用燃料轴向进气、空气径向双排布孔结构，在60%H$_2$+40%CH$_4$工况下稳定燃烧<sup>[12]</sup>；中国科学院工程热物理所提出中心1个加外圈6个的7喷嘴阵列，氢含量60%时NO$_x$排放不高于10ppm，丰富了设计体系<sup>[13]</sup>。早期非预混平面绝热火焰炉仅适用于常温常压、低负荷工况，随着燃气轮机向F级、H级升级，GE、三菱日立等厂商通过改进加热与压力控制模块，实现600-800K、1-2MPa严苛工况模拟。GE在先进燃氢透平项目中，利用非预混平面绝热火焰炉完成氢含量90%以上燃料超100小时实验。国内研究适配减排需求，华北电力大学装置通过精准控流，实现喷嘴出口流速20-30m/s、热功率22.5-77.7kW宽范围调节；中国科学院工程热物理所优化壁面冷却结构，达成1920K绝热火焰温度下长时间稳定实验，为污染物排放研究提供支撑<sup>[14,15]</sup>.</p>
+<figure><img src="figures/image6.png" alt="微预混燃气轮机火焰流场<sup>[10]</sup>" /><figcaption>微预混燃气轮机火焰流场<sup>[10]</sup></figcaption></figure>
+<p>测量技术集成创新贯穿非预混平面绝热火焰炉发展的全程，从常规参数测量迈向精细化表征。火焰与污染物测量中，PLIF技术与烟气分析仪结合实现同步测量，OH-PLIF技术表征火焰反应区，动态压力传感器捕捉压力脉动，为热声振荡研究提供支撑，大幅提升实验能力<sup>[16]</sup>。</p>
+<p>同时在富氢燃烧研究中，非预混平面绝热火焰炉作用关键。掺混均匀性研究中，华北电力大学证实空气径向射流加燃料轴向射流掺混方式均匀性指数达0.978，中国科学院工程热物理所明确预混段长度35mm为临界值；稳焰机制研究中，GE揭示局部逆压梯度稳焰机制，三菱日立验证多孔喷射结构抑回火效果，国内明确富氢微混火焰依赖剪切层拉伸效应稳焰<sup>[17,18]</sup>；低NO$_x$排放优化中，GE、中国科学院工程热物理所分别实现氢含量60%时NO$_x$排放低于25ppm、不高于10ppm，为减排提供数据支撑<sup>[19]</sup>.</p>
+<h5 id="非预混火焰炉的测量发展">非预混火焰炉的测量发展</h5>
+<p>由于之前发展的燃烧器不能达到足够高的火焰温度，容易不稳定和烧蚀，因此要设计新型的非预混平面绝热火焰炉。非预混火焰炉的测量方法核心围绕流场、温度、物种浓度、燃烧稳定性等四个关键参数，以非侵入式光学诊断为主。</p>
+<p>对于流场特性的测量，瑞利散射成为火焰温度及组分浓度测量的重要手段，为燃烧过程诊断提供数据支撑。用Hencken炉平面火焰对滤波瑞利散射信号比-温度曲线进行精准标定，成功实现10 kHz高频二维测温，清晰揭示了单/双旋流火焰从V形向M形、从合并态向分层态的形态转变规律，该研究不仅验证了滤波瑞利散射技术在旋流燃烧诊断中的适配性，也为Hencken炉标定技术的应用提供了参考<sup>[20]</sup>。在替代燃料燃烧诊断领域，将甲烷火焰的拉曼/瑞利散射测量系统拓展至二甲醚火焰，通过与CO平面激光诱导荧光技术联用，实现了H$_2$、O$_2$、N$_2$、CO等多组分浓度与温度的同步获取，为替代燃料燃烧过程的多参数综合诊断提供了可行方案<sup>[21,22]</sup>。</p>
+<p>温度测量方面，相干反斯托克斯拉曼光谱（CARS）在高精度测量火焰温度方面具有优势，尤其适用于高压力、高温度或有干扰的场景<sup>[23]</sup>。在绝热火焰温度校准、爆震通道内高温测量（1300-2300K）、煤颗粒燃烧环境温度表征等方面应用广泛。基于氮气（N$_2$）振动拉曼散射，单脉冲精度可达2%-4%；采用飞秒/皮秒混合脉冲技术，可抑制非共振背景干扰，适配高压（1-10bar）环境。双颜色OH平面激光诱导荧光在二维温度场测量中兼顾空间分辨率与温度敏感性<sup>[23,22]</sup>。通过探测OH自由基的两个温度敏感跃迁，利用荧光强度比反演温度；空间分辨率达40-50$\mu$m，精度4%-7.7%<sup>[24]</sup>。热电偶测量用于点式温度校准，配合辐射修正获取真实气体温度。</p>
+<p>物种浓度与燃烧产物测量方面，平面激光诱导荧光可用于可视化自由基（OH、CH、HCO）或中间产物（CH$_2$O）的空间分布，识别反应区位置。在非预混火焰的反应区定位、煤颗粒燃烧的挥发分/焦炭燃烧阶段区分、爆震火焰的OH分布表征有广泛应用。气相色谱用于定量分析燃烧产物中的主要物种（CO、CO$_2$、H$_2$、未燃燃料）浓度，通过石英探针取样（针尖直径100$\mu$m），结合色谱柱分离，测量不确定度$\pm$<!-- -->0.2%-0.9%<sup>[25]</sup>。</p>
+<p>燃烧稳定性与动态特性测量方面，高速摄影与化学发光成像采用高速CMOS相机，记录CH、C$_2$等化学发光信号，可识别火焰振荡周期（如7ms）、旋转螺旋结构等不稳定现象。激光散射与透射测量采用激光多普勒测速（LDV）或相位多普勒粒子分析（PDA），获取粒子速度与粒径信息，适用于稀相燃烧系统<sup>[2]</sup>.</p>
+<div id="tab:measurement_methods">
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: left">测量方法</th>
+					<th style="text-align: left">主要成果</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: left">氪X射线荧光光谱</td>
+					<td style="text-align: left">量化多元素扩散燃烧器近表面（0.1-0.5 mm）燃料/空气快速混合过程；获得火焰温度分布<sup>[26]</sup></td>
+			</tr>
+			<tr>
+					<td style="text-align: left">混合飞秒/皮秒振动相干反斯托克斯拉曼光谱</td>
+					<td style="text-align: left">实现1300-2300 K、1-10 bar高压层流火焰温度测量<sup>[27]</sup></td>
+			</tr>
+			<tr>
+					<td style="text-align: left">双颜色OH平面激光诱导荧光</td>
+					<td style="text-align: left">实现爆震通道内二维温度场测量，精度4%-7.7%<sup>[24]</sup></td>
+			</tr>
+			<tr>
+					<td style="text-align: left">气相色谱（GC）</td>
+					<td style="text-align: left">实现臭氧激活二甲醚低温冷火焰（779-885 K）稳定与表征；测定0.4-1.4当量比下冷火焰传播速度</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">高速OH平面激光诱导荧光（OH-PLIF）、相干反斯托克斯拉曼光谱（CARS）</td>
+					<td style="text-align: left">10 kHz帧率捕捉单煤颗粒燃烧OH分布，区分挥发分与焦炭燃烧阶段；量化富氧环境下煤颗粒燃烧边界层特性<sup>[9,23]</sup></td>
+			</tr>
+	</tbody>
+</table>
+<p>燃烧器测量方法和主要成果发展汇总</p>
+</div>
+<h4 id="tdlas测量与火焰标定发展现状">TDLAS测量与火焰标定发展现状</h4>
+<h5 id="tdlas技术发展现状">TDLAS技术发展现状</h5>
+<p>可调谐二极管激光吸收光谱（TDLAS）技术作为一种非侵入式光学测量手段，凭借高灵敏度、快速响应、物种特异性强等优势，已成为燃烧诊断、工业过程监测、环境检测等领域的核心技术支撑。随着现代工业向高精度、高效率、低排放方向转型以及极端工况下测量需求的不断增加，TDLAS技术逐步朝着单谱线测量、多参数协同、宽波段适配、智能化反演的方向演进，有效解决了传统测量方法中侵入式干扰、响应滞后、多组分耦合解算困难等关键问题<sup>[28]</sup>。</p>
+<p>TDLAS技术应用于火焰标定测量的基本原理是比尔-朗伯（Beer-Lambert）定律，当频率为$\nu$的单色激光穿过气体介质后，若光子能量与待测气体组分的吸收峰对应频率重合，部分激光将会被气体吸收，激光光强的透过率$T_\nu$可用沿光程的吸收率积分表示：
+</p>
+$$
 T_\nu = \left(\frac{I}{I_0}\right)_\nu = \exp\left[-\int_0^L \alpha(l,\nu) \cdot dl\right]
-$$<p>式中：$I_0$和$I$分别为入射激光光强和透射激光光强；$\alpha(l,\nu)$为待测体系在吸收路径上$l$处频率为$\nu$的激光的吸光度；$L$为待测体系吸收距离。</p><p>定义吸光度$\alpha(l,\nu)$为：</p>$$
+$$<p>
+式中：$I_0$和$I$分别为入射激光光强和透射激光光强；$\alpha(l,\nu)$为待测体系在吸收路径上$l$处频率为$\nu$的激光的吸光度；$L$为待测体系吸收距离。</p>
+<p>定义吸光度$\alpha(l,\nu)$为：
+</p>
+$$
 \alpha(l,\nu) = \sum_j \chi(l) \cdot S_j[T(l)] \cdot f_j[(\nu - \nu_{0,j}), T(l)]
-$$<p>式中：$f_j$是跃迁$j$的线型函数；$S_j$是跃迁$j$的谱线强度；$\nu_{0,j}$是跃迁$j$的中心跃迁频率；$\chi(l)$是待测体系$l$处的物种浓度。</p><p>温度$T$和线强$S_j(T)$存在函数关系：</p>$$
+$$<p>
+式中：$f_j$是跃迁$j$的线型函数；$S_j$是跃迁$j$的谱线强度；$\nu_{0,j}$是跃迁$j$的中心跃迁频率；$\chi(l)$是待测体系$l$处的物种浓度。</p>
+<p>温度$T$和线强$S_j(T)$存在函数关系：
+</p>
+$$
 S_j(T) = S_j(T_0) \frac{Q_j(T_0)}{Q_j(T)} \frac{T_0}{T} \exp\left[-\frac{hc E_j''}{k}\left(\frac{1}{T} - \frac{1}{T_0}\right)\right] \times \left\{\frac{1-\exp(-hc\nu_{0,j}/kT)}{1-\exp(-hc\nu_{0,j}/kT_0)}\right\}
-$$<p>式中：$h$为普朗克常数；$k$为玻尔兹曼常数；$c$为光速；$T_0$是标准状况温度；$E_j&rsquo;&rsquo;$为吸收跃迁的低能级能量；$Q(T)$是配分函数。</p><p>早期TDLAS测量技术多依赖多谱线组合方案，例如通过选取5条低态能级分布均匀的H$_2$O近红外吸收线，采用玻尔兹曼图法可实现1000-1600K温度范围的测量，相对误差控制在1%以内，且在超燃冲压发动机扩张段的实测中展现出良好稳定性，显著提升了对光谱参数误差和环境干扰的容忍度。随着单谱线测量技术的突破，其核心优势在于简化光学系统设计、降低多谱线耦合干扰。基于模糊PID控制器的单谱线迭代测量方法，利用Voigt线型的微分方程可从单一吸收谱线中同时解耦温度、浓度和压力参数，在300-2300K范围内实现了2.5%以内的相对温度误差，在水温恒温箱实验中温度误差控制在5$^\circ$C以下，并成功应用于对冲火焰的二维温度与水汽浓度成像<sup>[24,28]</sup>。该方法通过迭代算法有效分离重叠谱线，避免了传统多谱线方案中基线提取复杂、系统集成繁琐的问题。此外，基于单一量子级联激光器的多组分测量方案也得到发展，利用单激光器覆盖CO、N$_2$O、H$_2$O的特征吸收波段，实现了大气多组分的同时测量，进一步拓展了单谱线技术的应用场景。</p><p>多参数协同测量与宽波段适配技术的发展显著提升了TDLAS技术的工况适应性。在燃烧诊断领域，光纤耦合的近红外/中红外（NIR/MIR）多波长TDLAS系统被成功开发，该系统集成4支激光器覆盖1391.7 nm、1469.3 nm（H$_2$O）、4854.6 nm（CO）和4556.2 nm（CO$_2$）波段，可实现温度、CO、CO$_2$、H$_2$O的同时测量，温度测量误差小于5%，浓度测量误差优于10%<sup>[23]</sup>。在复杂燃烧环境中，改进型直接吸收光谱（DAS）方法通过波长分复用技术分离OH自由基与H$_2$O的吸收信号，利用1502.69 nm（OH）和1349.23-1349.27 nm（H$_2$O）的谱线组合，实现了甲烷/空气预混火焰中OH自由基浓度、H$_2$O浓度及温度的同步测量，测量结果与模拟值高度吻合<sup>[29]</sup>。</p><p>智能化反演算法与tomography技术的结合推动TDLAS技术向二维/三维场分布测量方向拓展。基于堆叠长短期记忆网络（LSTM）的质量分层温度成像网络（QHT-LSTM），通过32束激光阵列的视线测量数据，可同时输出粗精度（实时监测，temporal resolution $>$27 kfps）和高精度（离线分析）温度图像，在SNR=35 dB条件下，较传统CNN模型的重建误差降低43.62%-57.80%<sup>[30]</sup>。TDLAS技术的工程化应用不断突破极端工况限制，在超燃冲压发动机领域，多波长TDLAS系统通过16路光路布置实现了扩张段横截面的温度测量，有效覆盖了点火、燃烧、熄火全流程的宽温度范围<sup>[31,32]</sup>。在工业燃烧设备中，基于CO$_2$在4.2$\mu$m波段的高温敏感吸收峰，采用TDLAS技术可测量Hencken平面火焰的温度与CO$_2$体积分数二维分布，在空气流量55 L/min、当量比0.7-0.9工况下，火焰温度接近绝热工况，为激光诊断技术提供了可靠的标定基准<sup>[2]</sup>。</p><p>TDLAS用于火焰标定是依托火焰的可控实验条件（如固定燃料类型、压力、当量比等），建立激光吸收测量值与火焰真实参数的定量关联。通过测量值与真实值的对比与修正，校准TDLAS系统的光谱解读精度，修正参数偏差、提高光谱模型适用性，最终实现对火焰的精准定量测量。其中火焰温度是核心标定参数之一，包括火焰局部温度和温度分布等，同时也要标定不同燃烧产物在火焰中的绝对浓度及空间分布，这也间接标定TDLAS系统的光谱拟合算法、吸收线参数（如低态能量、碰撞展宽系数）的准确性，验证光谱模型在火焰强温度梯度、多组分干扰下的适用性<sup>[33]</sup>。</p><p>在低压均匀火焰的温度标定方面，设计了基于扫描波长调制光谱的TDLAS传感器，控制火焰压力、燃料类型等关键工况，将TDLAS测量结果与理论燃烧模型计算值对比，建立测量值与真实值的关联框架，为TDLAS在火焰环境中的准确性验证提供了实验方案，明确了光谱拟合算法在低压均匀火焰中的有效性。在非预混层流对冲扩散火焰的物种浓度标定上，实现了乙炔（C$_2$H$_2$）浓度的TDLAS标定与原位测量，通过多位置扫描获取火焰中C$_2$H$_2$的浓度分布，结合燃烧化学动力学模型，验证TDLAS在强温度梯度环境中的测量稳定性，为多组分、强梯度火焰的TDLAS应用提供了标定参考<sup>[25,32]</sup>。在高温火焰的温度精准标定方面，基于2.9$\mu$m近红外TDLAS传感器，设计H$_2$O双色测温方案，实现了高温火焰的温度标定。选择H$_2$O具有不同低态能量的特征吸收线，利用其温度敏感性差异构建双色测温模型，抵御其他燃烧产物的吸收干扰，建立了高温火焰温度的多源验证标定方法，明确了TDLAS在高温环境下的测温精度与适用边界<sup>[34,35,36]</sup>.</p><figure><img src=figures/image7.png alt="TDLAS系统用于超燃冲压发动机测温示意图<sup>[37]</sup>"><figcaption>TDLAS系统用于超燃冲压发动机测温示意图<sup>[37]</sup></figcaption></figure><figure><img src=figures/image8.png alt="TDLAS测量平面火焰炉实验装置<sup>[36]</sup>"><figcaption>TDLAS测量平面火焰炉实验装置<sup>[36]</sup></figcaption></figure><h5 id=火焰标定技术发展现状>火焰标定技术发展现状</h5><p>火焰标定技术作为燃烧温度测量领域的核心基准支撑技术，其核心价值在于为燃烧过程温度监测提供可溯源、高精度的量值依据，是保障工业制造、能源利用、环境保护等领域温度测量准确性的关键。随着现代工业向高效、低排放、高精度方向转型，燃烧温度测量对标定技术的要求日益严苛，不仅需要满足常规工况下的精度需求，更需适配工业炉窑、燃气轮机、核退役等复杂恶劣环境的现场标定场景<sup>[38,32]</sup>。国际温标（ITS-90）作为火焰标定技术的核心溯源基准，其精准实现与传递是该领域的核心研究目标，推动火焰标定技术逐步从实验室固定装置向便携化、原位化、智能化方向演进，以解决传统技术在现场应用中量值溯源困难、测量不确定性高、工况适配性差等突出问题<sup>[37]</sup>.</p><p>早期火焰标定技术多依赖大型实验室固定装置，存在体积庞大、操作复杂、无法现场部署等局限，难以满足工业现场实时校准需求。为突破这一瓶颈，欧洲EURAMET组织通过EMPIR计划支持的EMPRESS系列项目（14IND04、17IND04）开展了系统性研究，推动火焰标定技术发展。该系列项目由英国国家物理实验室（NPL）牵头，联合丹麦技术大学（DTU）、马德里卡洛斯三世大学（UC3M）等多家科研机构、高校及企业，共同开展研发，其成果推动了当前火焰标定技术的发展。其中，由英国国家物理实验室开发的便携式标准火焰系统作为这个项目的标志性成果，改变了传统火焰标定的应用场景限制，为现场溯源提供了一定的可行方案<sup>[39,40,41]</sup>.</p><p>标准火焰装置的设计与性能优化是火焰标定技术发展的核心载体。英国国家物理实验室开发的便携式标准火焰基于微扩散燃烧器，采用丙烷/空气作为燃料，通过精准控制当量比（$\phi$=0.8-1.4），实现了2040-2260K的稳定温度输出。该装置的核心技术创新体现在多方面：采用流量不确定度小于0.5%的高精度质量流量计精准控制燃料与空气配比，结合氮气协流技术有效抑制火焰扰动，使燃烧器中心$\pm$10mm区域内温度均匀性显著提升；通过Rayleigh散射测温技术实现对ITS-90的直接溯源，综合测量不确定度仅为0.5%（k=1），长期重复性优于0.2%，性能远超传统标定装置<sup>[42]</sup>。采用模块化设计实现便携化，可在3小时内完成现场部署与校准，已在欧洲多国工业现场与实验室循环使用，成功应用于FTIR光谱仪、高光谱成像系统等燃烧测温设备的准确性验证。其温度场特性经实验验证，在燃烧高度20mm处，不同当量比下的温度波动小于$\pm$3K，为红外光谱分析测量技术提供了理想的标定环境<sup>[43,44]</sup>.</p><p>标准火焰的温度场特性与不确定性控制是火焰标定技术的核心研究内容。英国国家物理实验室通过为期10天的连续测试验证了该标准火焰的长期稳定性，结果表明，在20mm燃烧高度处，不同当量比下的火焰温度变化率均小于0.2%，且与进气温度、大气压力等环境因素无明显相关性<sup>[39]</sup>。温度场分布测试显示，有无氮气协流条件下，火焰在水平方向$\pm$10mm范围内温度均匀性良好。不确定性预算分析表明，摩尔折射率数据、流量计精度、化学平衡假设、激光稳定性等是影响标定精度的主要因素，通过优化设计与误差补偿，最终实现了0.45%-0.5%的综合不确定度<sup>[45]</sup>。此外，标准火焰的物种成分已通过GASEQ化学平衡求解器精准表征，明确了不同当量比下CO$_2$、CO、H$_2$O等主要燃烧产物的摩尔分数分布和温度变化，为基于光谱法的温度测量仪器校准提供了基础数据支撑，也为后续在进行标定时的当量比调节提供了参考<sup>[46]</sup>.</p><figure><img src=figures/image9.png alt="有无氮气协流温度的均匀性<sup>[1]</sup>"><figcaption>有无氮气协流温度的均匀性<sup>[1]</sup></figcaption></figure><figure><img src=figures/image10.png alt="不同当量比温度的变化<sup>[1]</sup>"><figcaption>不同当量比温度的变化<sup>[1]</sup></figcaption></figure><p>基于标准火焰的标定方法创新是火焰标定技术发展的重要方向。红外发射光谱标定技术凭借非侵入性优势得到广泛应用，其与标准火焰的结合形成了高效的标定体系<sup>[47,48]</sup>。DTU开发的单线光谱仪与UC3M研发的中红外（2-5.5$\mu$m）高光谱成像系统，通过测量火焰中CO$_2$、CO和H$_2$O的特征发射谱，结合HITEMP-2010光谱数据库进行模拟对比，实现了火焰温度的精准反演。实验验证表明，该方法测量结果与NPL标准火焰的Rayleigh散射测量结果一致性优于1%，在$\phi$=1.0工况下，中心区域温度测量偏差小于0.23%<sup>[49]</sup>。此外，机器学习技术的引入为火焰温度反演提供了新路径，通过1800-2500cm$^{-1}$和3000-4200cm$^{-1}$双波段光谱数据反演温度分布，预测误差小于0.5%，在垃圾焚烧炉等工业场景中已得到初步应用<sup>[50]</sup>.</p><p>当前火焰标定技术虽已取得显著进展，但仍面临诸多挑战。在极端工况适配方面，超高温（$>$2260K）、强辐射、高速瞬态等特殊条件下的标定方法尚不完善，现有标准火焰的温度范围和环境适应性仍需拓展。</p><h3 id=本文研究内容>本文研究内容</h3><p>综合以上文献分析，现有研究存在以下不足：在燃烧器结构方面，现有平面炉缺乏针对3000K超高温工况的主动热管理设计，传统插管结构存在热膨胀失配和烧蚀问题，亟待开发新型水冷一体式结构；在火焰标定方面，现有标准火焰（如NPL标准火焰）的温度上限仅为2260K，无法覆盖航空发动机和火箭发动机的标定需求。</p><p>本文定位为将工程热物理与精密光谱测量深度融合，构建一套最高工作温度可达3000K的新型标定平台。具体研究内容包括：设计带水冷一体式非预混平面绝热火焰炉结构、搭建高频TDLAS光谱测量系统、开发完整的数据处理算法、开展火焰温度标定实验验证。</p><h2 id=试验台与硬件系统>试验台与硬件系统</h2><h3 id=新型非预混平面绝热火焰炉>新型非预混平面绝热火焰炉</h3><p>在项目初期，炉体制造使用“不锈钢毛细管插管钎焊”方案。该方案的具体工艺为：在无氧铜底座上钻出盲孔阵列，然后将外径与盲孔直径匹配的不锈钢毛细管插入盲孔底部，依靠钎焊密封固定。燃料（H$_2$）与氧化剂（O$_2$）分别经由不同的毛细管独立输送，在管口出口处相遇并形成非预混扩散火焰。</p><p>然而，在实际加工与前期点火测试中，该方案暴露出三重结构性缺陷：</p><ol><li><p><strong>钎焊工艺瓶颈</strong>：为实现均匀温度场，需要尽可能缩小燃料管与氧化剂管之间的中心距（即管间距）。当管间距缩小至1.6mm以下时，相邻毛细管外壁之间的间隙就会非常小，钎焊时焊料难以均匀浸润，极易造成相邻管路之间的焊料搭接甚至堵塞，导致成品率急剧下降。</p></li><li><p><strong>无主动冷却通道</strong>：该加工方式需要在底座上先钻盲孔再插入毛细管，炉体内部空间已被气流通道完全占据，无法在不破坏气流分配均匀性的前提下额外加工水冷孔道。当燃烧甲烷/空气混合物（绝热温度$\sim$2200K）时，依靠自然对流和辐射散热尚可维持短时间（$&lt;$30分钟）运行；但当燃烧H$_2$/O$_2$（绝热温度$>$3000K）时，顶部微管出口区域的表面热流密度高达30 MW/m$^2$以上，炉体顶部温度迅速超过铜的再结晶温度（$\sim$400$^\circ$C），导致材料强度下降、微管变形甚至烧穿。</p></li></ol><p>上述问题的根本原因在于“插焊”这一工艺路线本身的局限性。因此，需要彻底摒弃插管方案，采用新的加工思路重新设计炉体结构。</p><h4 id=新结构设计>新结构设计</h4><p>基于上述问题，本文设计的新结构可以直接由整块材料基体，直接利用数控深孔钻加工出微孔阵列及水冷通道，无需任何焊接或插接工序，避免了插管焊接导致的无法进一步缩小管间距和添加水冷通道的问题。</p><p>该加工方式带来的根本性改进体现在两个方面：</p><ol><li><p><strong>排布密度的提升</strong>：由于取消了毛细管的外壁厚度和钎焊间隙的约束，孔与孔之间的最小中心距仅由钻孔工艺的最小壁厚决定。在采用电火花孔钻（孔径0.4mm，长径比$>$30:1）的条件下，最小壁厚可控制在0.4mm左右，对应管间距可缩小至1.6mm，为实现更高空间分辨率的均匀温度场创造了条件。</p></li><li><p><strong>水冷通道的集成</strong>：在微孔阵列外围及相邻气流通道之间的区域可以添加水冷通道，在不破坏气流通道的前提下，沿轴向钻设贯通水冷孔道（直径0.6mm）。水冷孔道分布于火焰面下方3–5mm处，冷却水强制对流可对炉体顶部壁面温度进行控制，从根源上解决了高温烧蚀问题。</p></li></ol><h4 id=扩孔变径方案的设计决策>扩孔变径方案的设计决策</h4><p>在采用一体式加工方案后，面临一个新的问题：水冷通道需要在炉体内部占据一定的径向空间（水冷孔直径0.6mm，且需保证与气流通道之间有0.5mm以上的安全壁厚）。若将全部燃料管和氧化剂管以统一孔径贯穿整个炉体，则在有限的空间内，管间距的最小值将受限于“微孔直径 + 水冷孔直径 + 安全壁厚”的综合约束。初步计算表明，若所有孔径为1mm，则管间距下限约为2.7mm。按照此参数比例，加工了一台试验炉进行点火测试，结果出现了火焰不均匀的问题，未能形成理想的平面火焰。这表明2.7mm的管间距过大，相邻射流之间的扩散混合距离过长，无法在火焰面处形成均匀的温度分布。</p><p>为兼顾“小管间距（提高火焰均匀性）”与“大水冷孔（保障高温工况下的热管理）”两个相互矛盾的设计目标，本文提出了<strong>扩孔变径方案</strong>：</p><ul><li><p>燃料管孔与氧化剂管孔在水冷通道下方区域（即炉体进气段至水冷层之间的区域），采用小孔径约为0.4mm，以尽可能缩小管间距，增加单位面积上的孔密度。</p></li><li><p>当微孔穿过水冷层后，在即将到达炉体顶面出口的位置，通过<strong>30$^\circ$内倒角</strong>将出口孔径平滑扩大。</p></li></ul><p>该变径设计的流体力学合理性在于：在小孔径段，气流速度较高（出口流速约120m/s），有利于抑制回火并增强射流的穿透力；在扩口段，气流速度降低、静压恢复，有利于在火焰面处形成较为平缓的速度剖面。CFD仿真表明，该变径结构使得出口截面的速度不均匀度指数$\gamma$维持在0.97以上，未因扩口引入显著的流动畸变。</p><p>水冷通道的布局如图所示。冷却水由炉体侧面进水口进入环形集水槽，经由微孔阵列外围的轴向水冷孔（孔径4mm，共12个均匀分布于最外圈孔外侧）流至炉体顶部附近，经顶部环形汇水槽汇聚后由另一侧出水口排出。该“下进上出、环形分布”的流路设计确保了水冷层对高温区域的全覆盖。</p><figure><figure><p><img src=figures/image12.png alt=image></p></figure><figure><p><img src=figures/image13.png alt=image></p></figure><figcaption>火焰炉结构侧视图与俯视图</figcaption></figure><h4 id=三种对照方案的设计与加工>三种对照方案的设计与加工</h4><p>为系统探究占孔比及绝对射流尺寸对火焰均匀性和平面度的影响，本研究设计了三种对照方案，均采用相同加工工艺制造。三种方案的核心尺寸参数如表3.1所示。</p><div id=tab:burner_designs><table><thead><tr><th style=text-align:center><strong>方案</strong></th><th style=text-align:center><strong>出口管径</strong></th><th style=text-align:center><strong>管间距</strong></th><th style=text-align:center><strong>间距/管径比</strong></th><th style=text-align:center><strong>占孔比</strong></th></tr></thead><tbody><tr><td style=text-align:center>炉1</td><td style=text-align:center>0.8 mm</td><td style=text-align:center>1.6 mm</td><td style=text-align:center>2.00</td><td style=text-align:center>19.63%</td></tr><tr><td style=text-align:center>炉2</td><td style=text-align:center>1.1 mm</td><td style=text-align:center>2.2 mm</td><td style=text-align:center>2.00</td><td style=text-align:center>19.63%</td></tr><tr><td style=text-align:center>炉3</td><td style=text-align:center>1.0 mm</td><td style=text-align:center>3.0 mm</td><td style=text-align:center>3.00</td><td style=text-align:center>8.73%</td></tr></tbody></table><p>三种炉体设计方案对比</p></div><p>三种方案的对照逻辑如下：</p><ul><li><p><strong>炉1 与 炉2（固定占孔比，考察射流绝对尺度影响）</strong>：两方案具有完全相同的间距/管径比（2.00）和占孔比（19.63%），主要区别在于出口管径的绝对尺寸（0.8 mm 对比 1.1 mm）。该对照组的目的是<strong>在保持喷口相对分布特征不变的前提下，独立考察射流雷诺数（绝对尺寸）对燃烧混合特性的影响</strong>。若两方案的温度场均匀性相近，则说明在此尺度范围内占孔比是主导因素，几何缩放不影响火焰性能；若存在显著差异，则说明绝对射流尺度引起的混合效果变化不可忽略，需以实测结果作为最终选型依据。</p></li><li><p><strong>炉1/炉2 与 炉3（固定或近似管径，考察占孔比变化的影响）</strong>：炉3的间距/管径比增大至3.00，对应的占孔比大幅下降至8.73%，约为前两者的 44%。该对照组的目的是<strong>考察占孔比对火焰面均匀性和稳定性的影响</strong>。占孔比越低，单位面积内的气流射流喷口越稀疏，可能导致相邻射流间的横向卷吸能力减弱，火焰面更容易出现局部空隙或温度梯度。通过对比 19.63% 和 8.73% 两组占孔比下的温度场扫描结果，可以判定是否存在最优化开孔率阈值。</p></li><li><p><strong>综合对照意义</strong>：通过上述两组变量控制，可以有效厘清“绝对射流尺寸”与“开孔密度（占孔比）”两个维度对火焰平面度的影响权重。三台炉子的对比实验结果将为后续标准火焰炉的定型和尺寸外推提供关键实验依据——若占孔比是决定火焰均匀性的首要因素，则应以保持高占孔比（约19.63%）为核心设计原则；若雷诺数效应显著，则需在占孔比与射流速度之间寻求平衡点。</p></li></ul><p>三种方案均采用相同的加工标准、匹配的供气面板与水冷布局，确保变量控制的严格性。加工完成后，三台炉子将依次在同一TDLAS实验台上进行相同工况（当量比$\phi=1.0$，质量通量 3 kg/m$^2$/s）的火焰温度场扫描测量，定量对比各方案的性能优劣，筛选出最优构型用于后续标定实验。</p><h4 id=前期点火验证>前期点火验证</h4><p>在三种方案的正式炉体加工完成之前，课题组先后制造了两台中试炉体，开展了两个阶段的前期点火验证，以检验不同设计方案的可行性。</p><p><strong>第一阶段：均一孔径方案（无扩孔变径）</strong></p><p>第一台中试炉体按照“均一孔径”方案加工：燃料管和氧化剂管以统一孔径（1 mm）贯穿整个炉体，未采用扩孔变径结构。受限于水冷通道的布置需求，该方案的管间距被设置为2.7 mm。点火测试采用H$_2$/O$_2$燃烧工况，氢气流量150 SLM、氧气流量75 SLM（质量通量约1.25 kg/m$^2$/s，当量比$\phi = 1.0$）。</p><p>测试结果如下：</p><ul><li><p>火焰面呈现明显的<strong>不均匀结构</strong>：炉体中心区域火焰亮度较高，边缘区域亮度偏低，未能形成理想的平面火焰形态。</p></li><li><p>局部出现<strong>火焰抬升</strong>和<strong>分离</strong>现象，部分孔位的射流未能在出口处及时着火，导致火焰面断裂。</p></li></ul><p>该阶段验证表明：当管间距增大至2.7 mm时，相邻射流之间的扩散混合距离过大，剪切层在火焰面高度处尚未充分发展，无法形成连续均匀的反应面。这一结果为扩孔变径方案的提出提供了直接的实验依据——必须在保障水冷能力的前提下尽可能缩小管间距。</p><p><strong>第二阶段：扩孔变径方案（方案1参数）</strong></p><p>第二台中试炉体按照方案1的参数加工：采用扩孔变径结构（0.4 mm/0.8 mm变径，30$^\circ$内倒角），管间距缩小至1.6 mm。水冷通道保持与第一阶段相同的布局和流量（5 L/min，进水温度25$^\circ$C）。点火工况与第一阶段完全一致（H$_2$ 150 SLM，O$_2$ 75 SLM，$\phi = 1.0$），连续运行1小时后：</p><ul><li><p>水冷系统工作正常，出水口温度较进水口温升约8$^\circ$C，未出现局部过热或冷却水沸腾现象。</p></li><li><p>火焰面呈均匀的<strong>淡蓝色平面火焰</strong>，肉眼观察无局部高温区或火焰抬升现象，火焰面平整连续，覆盖整个炉体出口区域。</p></li><li><p>运行结束后拆解检查，炉体顶部未见烧蚀痕迹或变色，微孔出口边缘完整无损，表明水冷结构有效地将炉体温度控制在材料安全阈值以下。</p></li></ul><p>上述两阶段验证形成了鲜明的对比：均一孔径大间距方案（2.7 mm）未能产生均匀的平面火焰，而扩孔变径小间距方案（1.6 mm）实现了均匀稳定的平面火焰。该对比清晰地表明：<strong>缩小的管间距是获得均匀平面火焰的关键，而扩孔变径设计是同时实现小间距与水冷集成的有效技术路径</strong>。</p><figure><figure><p><img src=figures/image18.png alt=image></p></figure><figure><p><img src=figures/image17.png alt=image></p></figure><figcaption>不同方案火焰形态对比</figcaption></figure><h3 id=数值仿真方法>数值仿真方法</h3><p>本研究采用数值仿真与实验验证相结合的方法，从热力学平衡和冷态流体动力学两个层面对不同炉体设计方案进行评估。热力学仿真用于确定不同燃料在不同质量通量下的绝热火焰温度和热流密度，为实验工况设计提供理论依据；冷态流体仿真用于评估炉体出口截面的气流混合均匀性，为加工方案筛选提供依据。</p><h4 id=热力学平衡仿真cantera>热力学平衡仿真（Cantera）</h4><p>热力学平衡仿真采用<strong>Cantera</strong>开源化学反应动力学软件包（版本2.6.0），调用其<code>IdealGasConstPressureReactor</code>定压反应器模型，分别对H$_2$/O$_2$和C$_2$H$_2$/O$_2$两种燃料组合进行化学平衡计算。</p><p>计算采用<strong>GRI-Mech 3.0</strong>化学动力学机理（包含53种组分和325个基元反应），该机理在碳氢燃料及氢气燃烧模拟中具有广泛的适用性和验证基础。对于H$_2$/O$_2$体系，GRI-Mech 3.0中的H$_2$/O$_2$子机理已针对点火延迟和火焰传播速度进行了系统校验，可较好地预测高温条件下的平衡组分和绝热火焰温度。</p><p>计算条件设置如下：</p><ul><li><p>初始温度：300 K</p></li><li><p>初始压力：1 atm（绝热等压燃烧，最终压力保持1 atm）</p></li><li><p>当量比：$\phi = 1.0$（化学恰当比）</p></li><li><p>质量通量范围：0.5–3.0 kg/m$^2$/s（根据炉体设计工况确定）</p></li><li><p>燃料/氧化剂配比：依据化学恰当比的H$_2$/O$_2$（2:1摩尔比）和C$_2$H$_2$/O$_2$（2:5摩尔比）分别设定</p></li></ul><p>计算输出参数包括：绝热火焰温度（Adiabatic Flame Temperature）、平衡组分摩尔分数（H$_2$O、CO$_2$、CO、OH、H、O等）、焓差（反应物与产物之间的总焓变化）以及表面热流密度（根据质量通量与焓差的乘积换算）。</p><h5 id=h_2o_2火焰计算结果>H$_2$/O$_2$火焰计算结果</h5><p>H$_2$/O$_2$火焰（当量比$\phi=1.0$）在不同质量通量下的热力学参数如表3.2所示。</p><div id=tab:cantera_h2><table><thead><tr><th style=text-align:center>质量通量 (kg/m$^2$/s)</th><th style=text-align:center>焓差 (J/m$^2$/s)</th><th style=text-align:center>热流密度 (MW/m$^2$)</th><th style=text-align:center>温度 (K)</th><th style=text-align:center></th></tr></thead><tbody><tr><td style=text-align:center>0.5</td><td style=text-align:center>3,771,483</td><td style=text-align:center>6.5</td><td style=text-align:center>2456</td><td style=text-align:center></td></tr><tr><td style=text-align:center>1</td><td style=text-align:center>7,542,967</td><td style=text-align:center>12.0</td><td style=text-align:center>2643</td><td style=text-align:center></td></tr><tr><td style=text-align:center>1.5</td><td style=text-align:center>11,314,450</td><td style=text-align:center>17.5</td><td style=text-align:center>2754</td><td style=text-align:center></td></tr><tr><td style=text-align:center>2</td><td style=text-align:center>15,085,934</td><td style=text-align:center>22.0</td><td style=text-align:center>2835</td><td style=text-align:center></td></tr><tr><td style=text-align:center>3</td><td style=text-align:center>22,628,901</td><td style=text-align:center>30.0</td><td style=text-align:center>2953</td><td style=text-align:center></td></tr></tbody></table><p>Cantera计算：H$_2$/O$_2$火焰热力学参数（$\phi=1.0$，1 atm）</p></div><p>由表3.2可知，H$_2$/O$_2$火焰的绝热温度随质量通量增加而升高，从0.5 kg/m$^2$/s时的2456 K上升至3.0 kg/m$^2$/s时的2953 K，但升温速率逐渐减缓（接近H$_2$/O$_2$的理论绝热温度上限$\sim$3070 K）。热流密度从6.5 MW/m$^2$增至30.0 MW/m$^2$，呈近似线性增长趋势，表明高质量通量工况下炉体顶部承受的热负荷急剧增加，对水冷系统的散热能力提出了更高要求。</p><h5 id=c_2h_2o_2火焰计算结果>C$_2$H$_2$/O$_2$火焰计算结果</h5><p>C$_2$H$_2$/O$_2$火焰（当量比$\phi=1.0$）在不同质量通量下的热力学参数如表3.3所示。</p><div id=tab:cantera_c2h2><table><thead><tr><th style=text-align:center>质量通量 (kg/m$^2$/s)</th><th style=text-align:center>焓差 (J/m$^2$/s)</th><th style=text-align:center>热流密度 (MW/m$^2$)</th><th style=text-align:center>温度 (K)</th><th style=text-align:center></th></tr></thead><tbody><tr><td style=text-align:center>0.5</td><td style=text-align:center>2,308,730</td><td style=text-align:center>5.35</td><td style=text-align:center>2591</td><td style=text-align:center></td></tr><tr><td style=text-align:center>1</td><td style=text-align:center>4,617,460</td><td style=text-align:center>9.80</td><td style=text-align:center>2768</td><td style=text-align:center></td></tr><tr><td style=text-align:center>1.5</td><td style=text-align:center>6,926,190</td><td style=text-align:center>13.70</td><td style=text-align:center>2874</td><td style=text-align:center></td></tr><tr><td style=text-align:center>2</td><td style=text-align:center>9,234,920</td><td style=text-align:center>17.14</td><td style=text-align:center>2951</td><td style=text-align:center></td></tr><tr><td style=text-align:center>3</td><td style=text-align:center>13,852,380</td><td style=text-align:center>22.93</td><td style=text-align:center>3064</td><td style=text-align:center></td></tr></tbody></table><p>Cantera计算：C$_2$H$_2$/O$_2$火焰热力学参数（$\phi=1.0$，1 atm）</p></div><p>C$_2$H$_2$/O$_2$火焰的绝热温度在相同质量通量下普遍高于H$_2$/O$_2$火焰，在3.0 kg/m$^2$/s时达到3064 K，已接近乙炔/氧气理论绝热温度上限（$\sim$3100 K）。表明C$_2$H$_2$/O$_2$体系更适用于需要更高标定温度的极端工况场景。</p><p>H$_2$/O$_2$火焰的Flame Spectrum平台燃烧仿真结果如图所示。</p><figure><figure><p><img src=figures/image19.png alt=image></p></figure><figure><p><img src=figures/image20.png alt=image></p></figure><figcaption>H<span class="math inline"><sub>2</sub></span>/O<span class="math inline"><sub>2</sub></span>火焰燃烧仿真结果</figcaption></figure><h5 id=仿真结果讨论>仿真结果讨论</h5><p>对比两组计算结果可得出以下结论：</p><p>第一，两种燃料体系的热流密度均随质量通量线性增加，其中H$_2$/O$_2$体系在高质量通量下的热流密度（30 MW/m$^2$）显著高于C$_2$H$_2$/O$_2$体系（22.93 MW/m$^2$），尽管前者的绝热温度略低。该差异源于H$_2$/O$_2$反应释放的化学热中更大的比例转化为显热而非离解能，导致更多的热量传递至炉体表面。</p><p>第二，在质量通量2–3 kg/m$^2$/s范围内，两种燃料的绝热温度均超过2800 K，远超传统NPL标准火焰（丙烷/空气体系）的2260 K上限。该结果表明，采用H$_2$/O$_2$或C$_2$H$_2$/O$_2$体系配合水冷炉体设计，具备将火焰标定温度范围拓展至3000 K的理论潜力。</p><p>第三，上述热力学计算结果为后续实验工况的选取提供了关键依据：低质量通量（0.5–1 kg/m$^2$/s）适用于验证性实验和系统调试，中等质量通量（1.5–2 kg/m$^2$/s）为常规标定工况，高质量通量（3 kg/m$^2$/s及以上）为目标高温工况。</p><h4 id=冷态流体仿真验证>冷态流体仿真验证</h4><p>前述热力学分析确定了炉体所需承受的理论热负荷和温度水平，但炉体能否在实验条件下产生均匀的平面火焰，取决于其出口截面的气流混合均匀性。为此，采用Star-CCM+开展冷态流体仿真验证。</p><p>本研究采用Siemens Industry旗下CD-adapco公司开发的<strong>Star-CCM+ 2024.10</strong>作为主要计算流体动力学（CFD）仿真平台。仿真工作覆盖几何建模、网格划分、物理模型选取、边界条件设定、求解及后处理全流程，旨在定量评估不同炉体设计方案在冷态条件下的气流混合均匀性，为最终加工方案提供依据。</p><h5 id=几何模型与计算域设定>几何模型与计算域设定</h5><p>以实验用非预混平面绝热火焰炉的实际尺寸为基准，建立三维几何模型。为定量评估前述三种设计方案（火焰炉1、火焰炉2、火焰炉3）在冷态条件下的流动均匀性差异，分别建立与各方案几何参数精确对应的三维计算模型。三种方案的核心几何参数如表3.1所示，均采用扩孔变径结构，微孔段长度$L=15$mm。</p><ul><li><p><strong>火焰炉1</strong>：管间距$s=1.6$mm，氢气管径$0.4/0.8$mm（变径），氧气管径$0.4/0.8$mm（变径），扩张段倒角$30^\circ$，水冷结构有。</p></li><li><p><strong>火焰炉2</strong>：管间距$s=2.2$mm，氢气管径$0.4/1.1$mm（变径），氧气管径$0.4/1.1$mm（变径），扩张段倒角$30^\circ$，水冷结构有。</p></li><li><p><strong>火焰炉3</strong>：管间距$s=3.0$mm，氢气管径$0.4/0.8$mm（变径），氧气管径$0.4/0.8$mm（变径），扩张段倒角$30^\circ$，水冷结构有。</p></li></ul><p>为进一步捕捉火焰面附近的流动发展，在微孔出口上方额外延伸<strong>10 mm</strong>的自由射流区域（环境大气域），该区域直径取50 mm以消除边界约束对中心射流的影响。计算域底部（微孔入口截面）设定为质量流量入口边界，顶部及侧面设定为压力出口边界，在出口上方4 mm处查看气流混合的均匀性。</p><h5 id=网格划分策略>网格划分策略</h5><p>网格生成采用Star-CCM+内置的<strong>多面体网格（Polyhedral Mesh）</strong>与<strong>棱柱层网格（Prism Layer Mesh）</strong>相结合的策略，具体参数如下：</p><ul><li><p><strong>体网格类型</strong>：多面体网格。相较于四面体网格，多面体网格在相同计算精度条件下所需的网格数量更少（约减少40%–60%），且对复杂几何的适应性更强，收敛性更好。</p></li><li><p><strong>近壁面处理</strong>：在微孔壁面及出口扩张段等固体壁面附近，生成<strong>5层棱柱层网格</strong>，厚度增长率设为1.2，以确保壁面边界层内的速度梯度被充分解析。</p></li><li><p><strong>边界层分辨率</strong>：控制第一层网格高度使得壁面$y^+ &lt; 1$，满足低雷诺数湍流模型对近壁面网格精度的要求。</p></li><li><p><strong>局部加密</strong>：在<strong>微孔出口区域（直径2 mm范围内）</strong>以及<strong>射流剪切层（沿射流方向延伸10 mm、径向向外扩展1 mm的带状区域）</strong>进行额外网格加密。加密策略采用Star-CCM+的<strong>体网格控制（Mesh Refinement Region）</strong>功能，设定目标网格尺寸为0.02 mm（约为微孔直径的2%–5%），以确保剪切层内大梯度物理量（速度、湍动能）被准确捕捉。</p></li></ul><h5 id=物理模型与湍流模型选择>物理模型与湍流模型选择</h5><p>基于仿真目标为冷态等温流动（无化学反应、无热源），激活以下物理模型：</p><ul><li><p><strong>空间维度</strong>：三维（3D）</p></li><li><p><strong>时间模式</strong>：稳态（Steady State）</p></li><li><p><strong>材料属性</strong>：气体（理想气体，密度由理想气体状态方程计算，以考虑可压缩性效应）</p></li><li><p><strong>流动模型</strong>：层流（基于微孔出口流速和特征尺寸计算得到的雷诺数$Re \approx 500$–1000，处于层流或转捩区，层流假设可合理反映低雷诺数射流的混合特性）</p></li></ul><h5 id=边界条件设置>边界条件设置</h5><p>计算域各边界条件设定如下表3.4所示：</p><div id=tab:simulation_bc><table><thead><tr><th style=text-align:left><strong>边界类型</strong></th><th style=text-align:left><strong>位置</strong></th><th style=text-align:left><strong>具体设置</strong></th></tr></thead><tbody><tr><td style=text-align:left>质量流量入口（Mass Flow Inlet）</td><td style=text-align:left>微孔底部（H$_2$孔，O$_2$孔）</td><td style=text-align:left>依据设计工况设定：质量通量4 kg/m$^2$/s，当量比$\phi=1.0$，氧气流量50 SLM，氢气流量100 SLM。</td></tr><tr><td style=text-align:left>压力出口（Pressure Outlet）</td><td style=text-align:left>计算域顶部及侧面</td><td style=text-align:left>静压设为0 Pa（表压），温度300 K。</td></tr><tr><td style=text-align:left>对称面（Symmetry Plane）</td><td style=text-align:left>周期性单元两侧</td><td style=text-align:left>法向速度为零，所有物理量法向梯度为零。</td></tr><tr><td style=text-align:left>无滑移壁面（No-Slip Wall）</td><td style=text-align:left>微孔内壁面及炉体顶部表面</td><td style=text-align:left>速度为零，绝热壁面条件（冷态仿真）。</td></tr></tbody></table><p>Star-CCM+仿真边界条件汇总</p></div><h5 id=仿真结果>仿真结果</h5><p>在设定工况下（质量通量4 kg/m$^2$/s，当量比$\phi=1.0$），三种方案的冷态仿真结果对比如表3.5所示。</p><div id=tab:simulation_comparison><table><thead><tr><th style=text-align:center><strong>方案</strong></th><th style=text-align:center><strong>出口管径 (mm)</strong></th><th style=text-align:center><strong>孔间距 (mm)</strong></th><th style=text-align:center><strong>间距/管径比</strong></th><th style=text-align:center><strong>速度均匀性指数 $\gamma$</strong></th><th style=text-align:center><strong>均匀性判断</strong></th></tr></thead><tbody><tr><td style=text-align:center>火焰炉1</td><td style=text-align:center>0.8</td><td style=text-align:center>1.6</td><td style=text-align:center>2.00</td><td style=text-align:center>0.971</td><td style=text-align:center>均匀</td></tr><tr><td style=text-align:center>火焰炉2</td><td style=text-align:center>1.1</td><td style=text-align:center>2.2</td><td style=text-align:center>2.00</td><td style=text-align:center>0.964</td><td style=text-align:center>均匀</td></tr><tr><td style=text-align:center>火焰炉3</td><td style=text-align:center>0.8</td><td style=text-align:center>3.0</td><td style=text-align:center>3.75</td><td style=text-align:center>0.833</td><td style=text-align:center>不均匀</td></tr></tbody></table><p>三种方案冷态仿真结果对比</p></div><p>仿真结果表明：</p><ol><li><p><strong>火焰炉1与火焰炉2均满足均匀性要求</strong>：两者的速度均匀性指数$\gamma$分别为0.971和0.964，均超过设计目标值0.95。火焰炉1的均匀性略优于火焰炉2（0.971 vs 0.964），表明在保持间距/管径比恒定的条件下，整体尺度放大对流动均匀性无负面影响。</p></li><li><p><strong>火焰炉3均匀性显著下降</strong>：当管间距扩大至3.0 mm而出口管径保持0.8 mm不变时，间距/管径比由2.00增大至3.75，速度均匀性指数$\gamma$降至0.833，低于0.95的设计目标。该结果表明，当间距/管径比超过约2.0–2.5的临界范围后，相邻射流之间的间距过大，剪切层在火焰面高度处无法充分发展并相互融合，导致出口截面出现明显的速度不均匀分布。</p></li><li><p><strong>间距/管径比是决定均匀性的关键无量纲参数</strong>：火焰炉1与火焰炉2虽然绝对尺寸不同（出口管径0.8 mm vs 1.1 mm，间距1.6 mm vs 2.2 mm），但二者间距/管径比均为2.00，仿真结果显示二者的流动均匀性处于同一水平（$\gamma$分别为0.971和0.964）。相比之下，火焰炉3的间距/管径比增大至3.75，均匀性即显著恶化。这一发现证实，在本文所研究的尺度范围内，影响出口截面速度均匀性的主导因素是<strong>间距与管径的比值</strong>，而非单一几何参数的绝对大小。</p></li></ol><figure><figure><p><img src=figures/image14.png alt=image></p></figure><figure><p><img src=figures/image15.png alt=image></p></figure><figure><p><img src=figures/image16.png alt=image></p></figure><figcaption>三种方案出口截面速度均匀性仿真对比</figcaption></figure><p>上述仿真结论与前期点火验证的实验结果形成了有效印证：第一台中试炉体（均一孔径，管间距2.7 mm，管径1.0 mm，间距/管径比$2.7$）火焰不均匀；第二台中试炉体（扩孔变径方案1，管间距1.6 mm，出口管径0.8 mm，间距/管径比$2.00$）火焰均匀。仿真与实验共同表明：当间距/管径比控制在约2.0左右时，可保证良好的流动均匀性与火焰平面度。</p><p>综合热力学仿真与冷态流体仿真结果，确定火焰炉1（$s=1.6$mm，$d_{exit}=0.8$mm，间距/管径比$=2.00$）作为后续标定实验的标准构型。该方案在保障火焰均匀性的同时，具有最小的管间距和最高的孔密度，可为TDLAS测量提供最优的空间分辨率；火焰炉2的仿真结果也验证了在保持间距/管径比恒定的条件下几何缩放的可行性，为未来炉体尺寸的系列化设计提供了理论依据。</p><h4 id=供气与流量控制>供气与流量控制</h4><p>本研究采用<strong>临界流小孔（限流孔）</strong>作为流量控制的核心元件。其基本原理为：当气体流经小孔截面时，若小孔上下游压比低于临界压比，气流在小孔喉部达到声速（Ma=1），此时流经小孔的质量流量仅取决于上游滞止压力与温度，与下游压力波动完全解耦。</p><p>临界压比$\Pi_{cr}$由等熵流动关系确定：</p>$$
+$$<p>
+式中：$h$为普朗克常数；$k$为玻尔兹曼常数；$c$为光速；$T_0$是标准状况温度；$E_j&rsquo;&rsquo;$为吸收跃迁的低能级能量；$Q(T)$是配分函数。</p>
+<p>早期TDLAS测量技术多依赖多谱线组合方案，例如通过选取5条低态能级分布均匀的H$_2$O近红外吸收线，采用玻尔兹曼图法可实现1000-1600K温度范围的测量，相对误差控制在1%以内，且在超燃冲压发动机扩张段的实测中展现出良好稳定性，显著提升了对光谱参数误差和环境干扰的容忍度。随着单谱线测量技术的突破，其核心优势在于简化光学系统设计、降低多谱线耦合干扰。基于模糊PID控制器的单谱线迭代测量方法，利用Voigt线型的微分方程可从单一吸收谱线中同时解耦温度、浓度和压力参数，在300-2300K范围内实现了2.5%以内的相对温度误差，在水温恒温箱实验中温度误差控制在5$^\circ$C以下，并成功应用于对冲火焰的二维温度与水汽浓度成像<sup>[24,28]</sup>。该方法通过迭代算法有效分离重叠谱线，避免了传统多谱线方案中基线提取复杂、系统集成繁琐的问题。此外，基于单一量子级联激光器的多组分测量方案也得到发展，利用单激光器覆盖CO、N$_2$O、H$_2$O的特征吸收波段，实现了大气多组分的同时测量，进一步拓展了单谱线技术的应用场景。</p>
+<p>多参数协同测量与宽波段适配技术的发展显著提升了TDLAS技术的工况适应性。在燃烧诊断领域，光纤耦合的近红外/中红外（NIR/MIR）多波长TDLAS系统被成功开发，该系统集成4支激光器覆盖1391.7 nm、1469.3 nm（H$_2$O）、4854.6 nm（CO）和4556.2 nm（CO$_2$）波段，可实现温度、CO、CO$_2$、H$_2$O的同时测量，温度测量误差小于5%，浓度测量误差优于10%<sup>[23]</sup>。在复杂燃烧环境中，改进型直接吸收光谱（DAS）方法通过波长分复用技术分离OH自由基与H$_2$O的吸收信号，利用1502.69 nm（OH）和1349.23-1349.27 nm（H$_2$O）的谱线组合，实现了甲烷/空气预混火焰中OH自由基浓度、H$_2$O浓度及温度的同步测量，测量结果与模拟值高度吻合<sup>[29]</sup>。</p>
+<p>智能化反演算法与tomography技术的结合推动TDLAS技术向二维/三维场分布测量方向拓展。基于堆叠长短期记忆网络（LSTM）的质量分层温度成像网络（QHT-LSTM），通过32束激光阵列的视线测量数据，可同时输出粗精度（实时监测，temporal resolution $&gt;$<!-- -->27 kfps）和高精度（离线分析）温度图像，在SNR=35 dB条件下，较传统CNN模型的重建误差降低43.62%-57.80%<sup>[30]</sup>。TDLAS技术的工程化应用不断突破极端工况限制，在超燃冲压发动机领域，多波长TDLAS系统通过16路光路布置实现了扩张段横截面的温度测量，有效覆盖了点火、燃烧、熄火全流程的宽温度范围<sup>[31,32]</sup>。在工业燃烧设备中，基于CO$_2$在4.2$\mu$m波段的高温敏感吸收峰，采用TDLAS技术可测量Hencken平面火焰的温度与CO$_2$体积分数二维分布，在空气流量55 L/min、当量比0.7-0.9工况下，火焰温度接近绝热工况，为激光诊断技术提供了可靠的标定基准<sup>[2]</sup>。</p>
+<p>TDLAS用于火焰标定是依托火焰的可控实验条件（如固定燃料类型、压力、当量比等），建立激光吸收测量值与火焰真实参数的定量关联。通过测量值与真实值的对比与修正，校准TDLAS系统的光谱解读精度，修正参数偏差、提高光谱模型适用性，最终实现对火焰的精准定量测量。其中火焰温度是核心标定参数之一，包括火焰局部温度和温度分布等，同时也要标定不同燃烧产物在火焰中的绝对浓度及空间分布，这也间接标定TDLAS系统的光谱拟合算法、吸收线参数（如低态能量、碰撞展宽系数）的准确性，验证光谱模型在火焰强温度梯度、多组分干扰下的适用性<sup>[33]</sup>。</p>
+<p>在低压均匀火焰的温度标定方面，设计了基于扫描波长调制光谱的TDLAS传感器，控制火焰压力、燃料类型等关键工况，将TDLAS测量结果与理论燃烧模型计算值对比，建立测量值与真实值的关联框架，为TDLAS在火焰环境中的准确性验证提供了实验方案，明确了光谱拟合算法在低压均匀火焰中的有效性。在非预混层流对冲扩散火焰的物种浓度标定上，实现了乙炔（C$_2$H$_2$）浓度的TDLAS标定与原位测量，通过多位置扫描获取火焰中C$_2$H$_2$的浓度分布，结合燃烧化学动力学模型，验证TDLAS在强温度梯度环境中的测量稳定性，为多组分、强梯度火焰的TDLAS应用提供了标定参考<sup>[25,32]</sup>。在高温火焰的温度精准标定方面，基于2.9$\mu$m近红外TDLAS传感器，设计H$_2$O双色测温方案，实现了高温火焰的温度标定。选择H$_2$O具有不同低态能量的特征吸收线，利用其温度敏感性差异构建双色测温模型，抵御其他燃烧产物的吸收干扰，建立了高温火焰温度的多源验证标定方法，明确了TDLAS在高温环境下的测温精度与适用边界<sup>[34,35,36]</sup>.</p>
+<figure><img src="figures/image7.png" alt="TDLAS系统用于超燃冲压发动机测温示意图<sup>[37]</sup>" /><figcaption>TDLAS系统用于超燃冲压发动机测温示意图<sup>[37]</sup></figcaption></figure>
+<figure><img src="figures/image8.png" alt="TDLAS测量平面火焰炉实验装置<sup>[36]</sup>" /><figcaption>TDLAS测量平面火焰炉实验装置<sup>[36]</sup></figcaption></figure>
+<h5 id="火焰标定技术发展现状">火焰标定技术发展现状</h5>
+<p>火焰标定技术作为燃烧温度测量领域的核心基准支撑技术，其核心价值在于为燃烧过程温度监测提供可溯源、高精度的量值依据，是保障工业制造、能源利用、环境保护等领域温度测量准确性的关键。随着现代工业向高效、低排放、高精度方向转型，燃烧温度测量对标定技术的要求日益严苛，不仅需要满足常规工况下的精度需求，更需适配工业炉窑、燃气轮机、核退役等复杂恶劣环境的现场标定场景<sup>[38,32]</sup>。国际温标（ITS-90）作为火焰标定技术的核心溯源基准，其精准实现与传递是该领域的核心研究目标，推动火焰标定技术逐步从实验室固定装置向便携化、原位化、智能化方向演进，以解决传统技术在现场应用中量值溯源困难、测量不确定性高、工况适配性差等突出问题<sup>[37]</sup>.</p>
+<p>早期火焰标定技术多依赖大型实验室固定装置，存在体积庞大、操作复杂、无法现场部署等局限，难以满足工业现场实时校准需求。为突破这一瓶颈，欧洲EURAMET组织通过EMPIR计划支持的EMPRESS系列项目（14IND04、17IND04）开展了系统性研究，推动火焰标定技术发展。该系列项目由英国国家物理实验室（NPL）牵头，联合丹麦技术大学（DTU）、马德里卡洛斯三世大学（UC3M）等多家科研机构、高校及企业，共同开展研发，其成果推动了当前火焰标定技术的发展。其中，由英国国家物理实验室开发的便携式标准火焰系统作为这个项目的标志性成果，改变了传统火焰标定的应用场景限制，为现场溯源提供了一定的可行方案<sup>[39,40,41]</sup>.</p>
+<p>标准火焰装置的设计与性能优化是火焰标定技术发展的核心载体。英国国家物理实验室开发的便携式标准火焰基于微扩散燃烧器，采用丙烷/空气作为燃料，通过精准控制当量比（$\phi$=0.8-1.4），实现了2040-2260K的稳定温度输出。该装置的核心技术创新体现在多方面：采用流量不确定度小于0.5%的高精度质量流量计精准控制燃料与空气配比，结合氮气协流技术有效抑制火焰扰动，使燃烧器中心$\pm$<!-- -->10mm区域内温度均匀性显著提升；通过Rayleigh散射测温技术实现对ITS-90的直接溯源，综合测量不确定度仅为0.5%（k=1），长期重复性优于0.2%，性能远超传统标定装置<sup>[42]</sup>。采用模块化设计实现便携化，可在3小时内完成现场部署与校准，已在欧洲多国工业现场与实验室循环使用，成功应用于FTIR光谱仪、高光谱成像系统等燃烧测温设备的准确性验证。其温度场特性经实验验证，在燃烧高度20mm处，不同当量比下的温度波动小于$\pm$<!-- -->3K，为红外光谱分析测量技术提供了理想的标定环境<sup>[43,44]</sup>.</p>
+<p>标准火焰的温度场特性与不确定性控制是火焰标定技术的核心研究内容。英国国家物理实验室通过为期10天的连续测试验证了该标准火焰的长期稳定性，结果表明，在20mm燃烧高度处，不同当量比下的火焰温度变化率均小于0.2%，且与进气温度、大气压力等环境因素无明显相关性<sup>[39]</sup>。温度场分布测试显示，有无氮气协流条件下，火焰在水平方向$\pm$<!-- -->10mm范围内温度均匀性良好。不确定性预算分析表明，摩尔折射率数据、流量计精度、化学平衡假设、激光稳定性等是影响标定精度的主要因素，通过优化设计与误差补偿，最终实现了0.45%-0.5%的综合不确定度<sup>[45]</sup>。此外，标准火焰的物种成分已通过GASEQ化学平衡求解器精准表征，明确了不同当量比下CO$_2$、CO、H$_2$O等主要燃烧产物的摩尔分数分布和温度变化，为基于光谱法的温度测量仪器校准提供了基础数据支撑，也为后续在进行标定时的当量比调节提供了参考<sup>[46]</sup>.</p>
+<figure><img src="figures/image9.png" alt="有无氮气协流温度的均匀性<sup>[1]</sup>" /><figcaption>有无氮气协流温度的均匀性<sup>[1]</sup></figcaption></figure>
+<figure><img src="figures/image10.png" alt="不同当量比温度的变化<sup>[1]</sup>" /><figcaption>不同当量比温度的变化<sup>[1]</sup></figcaption></figure>
+<p>基于标准火焰的标定方法创新是火焰标定技术发展的重要方向。红外发射光谱标定技术凭借非侵入性优势得到广泛应用，其与标准火焰的结合形成了高效的标定体系<sup>[47,48]</sup>。DTU开发的单线光谱仪与UC3M研发的中红外（2-5.5$\mu$m）高光谱成像系统，通过测量火焰中CO$_2$、CO和H$_2$O的特征发射谱，结合HITEMP-2010光谱数据库进行模拟对比，实现了火焰温度的精准反演。实验验证表明，该方法测量结果与NPL标准火焰的Rayleigh散射测量结果一致性优于1%，在$\phi$=1.0工况下，中心区域温度测量偏差小于0.23%<sup>[49]</sup>。此外，机器学习技术的引入为火焰温度反演提供了新路径，通过1800-2500cm$^{-1}$和3000-4200cm$^{-1}$双波段光谱数据反演温度分布，预测误差小于0.5%，在垃圾焚烧炉等工业场景中已得到初步应用<sup>[50]</sup>.</p>
+<p>当前火焰标定技术虽已取得显著进展，但仍面临诸多挑战。在极端工况适配方面，超高温（$&gt;$<!-- -->2260K）、强辐射、高速瞬态等特殊条件下的标定方法尚不完善，现有标准火焰的温度范围和环境适应性仍需拓展。</p>
+<h3 id="本文研究内容">本文研究内容</h3>
+<p>综合以上文献分析，现有研究存在以下不足：在燃烧器结构方面，现有平面炉缺乏针对3000K超高温工况的主动热管理设计，传统插管结构存在热膨胀失配和烧蚀问题，亟待开发新型水冷一体式结构；在火焰标定方面，现有标准火焰（如NPL标准火焰）的温度上限仅为2260K，无法覆盖航空发动机和火箭发动机的标定需求。</p>
+<p>本文定位为将工程热物理与精密光谱测量深度融合，构建一套最高工作温度可达3000K的新型标定平台。具体研究内容包括：设计带水冷一体式非预混平面绝热火焰炉结构、搭建高频TDLAS光谱测量系统、开发完整的数据处理算法、开展火焰温度标定实验验证。</p>
+<h2 id="试验台与硬件系统">试验台与硬件系统</h2>
+<h3 id="新型非预混平面绝热火焰炉">新型非预混平面绝热火焰炉</h3>
+<p>在项目初期，炉体制造使用“不锈钢毛细管插管钎焊”方案。该方案的具体工艺为：在无氧铜底座上钻出盲孔阵列，然后将外径与盲孔直径匹配的不锈钢毛细管插入盲孔底部，依靠钎焊密封固定。燃料（H$_2$）与氧化剂（O$_2$）分别经由不同的毛细管独立输送，在管口出口处相遇并形成非预混扩散火焰。</p>
+<p>然而，在实际加工与前期点火测试中，该方案暴露出三重结构性缺陷：</p>
+<ol>
+<li>
+<p><strong>钎焊工艺瓶颈</strong>：为实现均匀温度场，需要尽可能缩小燃料管与氧化剂管之间的中心距（即管间距）。当管间距缩小至1.6mm以下时，相邻毛细管外壁之间的间隙就会非常小，钎焊时焊料难以均匀浸润，极易造成相邻管路之间的焊料搭接甚至堵塞，导致成品率急剧下降。</p>
+</li>
+<li>
+<p><strong>无主动冷却通道</strong>：该加工方式需要在底座上先钻盲孔再插入毛细管，炉体内部空间已被气流通道完全占据，无法在不破坏气流分配均匀性的前提下额外加工水冷孔道。当燃烧甲烷/空气混合物（绝热温度$\sim$<!-- -->2200K）时，依靠自然对流和辐射散热尚可维持短时间（$&lt;$<!-- -->30分钟）运行；但当燃烧H$_2$/O$_2$（绝热温度$&gt;$<!-- -->3000K）时，顶部微管出口区域的表面热流密度高达30 MW/m$^2$以上，炉体顶部温度迅速超过铜的再结晶温度（$\sim$<!-- -->400$^\circ$C），导致材料强度下降、微管变形甚至烧穿。</p>
+</li>
+</ol>
+<p>上述问题的根本原因在于“插焊”这一工艺路线本身的局限性。因此，需要彻底摒弃插管方案，采用新的加工思路重新设计炉体结构。</p>
+<h4 id="新结构设计">新结构设计</h4>
+<p>基于上述问题，本文设计的新结构可以直接由整块材料基体，直接利用数控深孔钻加工出微孔阵列及水冷通道，无需任何焊接或插接工序，避免了插管焊接导致的无法进一步缩小管间距和添加水冷通道的问题。</p>
+<p>该加工方式带来的根本性改进体现在两个方面：</p>
+<ol>
+<li>
+<p><strong>排布密度的提升</strong>：由于取消了毛细管的外壁厚度和钎焊间隙的约束，孔与孔之间的最小中心距仅由钻孔工艺的最小壁厚决定。在采用电火花孔钻（孔径0.4mm，长径比$&gt;$<!-- -->30:1）的条件下，最小壁厚可控制在0.4mm左右，对应管间距可缩小至1.6mm，为实现更高空间分辨率的均匀温度场创造了条件。</p>
+</li>
+<li>
+<p><strong>水冷通道的集成</strong>：在微孔阵列外围及相邻气流通道之间的区域可以添加水冷通道，在不破坏气流通道的前提下，沿轴向钻设贯通水冷孔道（直径0.6mm）。水冷孔道分布于火焰面下方3–5mm处，冷却水强制对流可对炉体顶部壁面温度进行控制，从根源上解决了高温烧蚀问题。</p>
+</li>
+</ol>
+<h4 id="扩孔变径方案的设计决策">扩孔变径方案的设计决策</h4>
+<p>在采用一体式加工方案后，面临一个新的问题：水冷通道需要在炉体内部占据一定的径向空间（水冷孔直径0.6mm，且需保证与气流通道之间有0.5mm以上的安全壁厚）。若将全部燃料管和氧化剂管以统一孔径贯穿整个炉体，则在有限的空间内，管间距的最小值将受限于“微孔直径 + 水冷孔直径 + 安全壁厚”的综合约束。初步计算表明，若所有孔径为1mm，则管间距下限约为2.7mm。按照此参数比例，加工了一台试验炉进行点火测试，结果出现了火焰不均匀的问题，未能形成理想的平面火焰。这表明2.7mm的管间距过大，相邻射流之间的扩散混合距离过长，无法在火焰面处形成均匀的温度分布。</p>
+<p>为兼顾“小管间距（提高火焰均匀性）”与“大水冷孔（保障高温工况下的热管理）”两个相互矛盾的设计目标，本文提出了<strong>扩孔变径方案</strong>：</p>
+<ul>
+<li>
+<p>燃料管孔与氧化剂管孔在水冷通道下方区域（即炉体进气段至水冷层之间的区域），采用小孔径约为0.4mm，以尽可能缩小管间距，增加单位面积上的孔密度。</p>
+</li>
+<li>
+<p>当微孔穿过水冷层后，在即将到达炉体顶面出口的位置，通过<strong>30$^\circ$内倒角</strong>将出口孔径平滑扩大。</p>
+</li>
+</ul>
+<p>该变径设计的流体力学合理性在于：在小孔径段，气流速度较高（出口流速约120m/s），有利于抑制回火并增强射流的穿透力；在扩口段，气流速度降低、静压恢复，有利于在火焰面处形成较为平缓的速度剖面。CFD仿真表明，该变径结构使得出口截面的速度不均匀度指数$\gamma$维持在0.97以上，未因扩口引入显著的流动畸变。</p>
+<p>水冷通道的布局如图所示。冷却水由炉体侧面进水口进入环形集水槽，经由微孔阵列外围的轴向水冷孔（孔径4mm，共12个均匀分布于最外圈孔外侧）流至炉体顶部附近，经顶部环形汇水槽汇聚后由另一侧出水口排出。该“下进上出、环形分布”的流路设计确保了水冷层对高温区域的全覆盖。</p>
+<figure>
+<figure>
+<p><img src="figures/image12.png" alt="image" /></p>
+</figure>
+<figure>
+<p><img src="figures/image13.png" alt="image" /></p>
+</figure>
+<figcaption>火焰炉结构侧视图与俯视图</figcaption>
+</figure>
+<h4 id="三种对照方案的设计与加工">三种对照方案的设计与加工</h4>
+<p>为系统探究占孔比及绝对射流尺寸对火焰均匀性和平面度的影响，本研究设计了三种对照方案，均采用相同加工工艺制造。三种方案的核心尺寸参数如表3.1所示。</p>
+<div id="tab:burner_designs">
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: center"><strong>方案</strong></th>
+					<th style="text-align: center"><strong>出口管径</strong></th>
+					<th style="text-align: center"><strong>管间距</strong></th>
+					<th style="text-align: center"><strong>间距/管径比</strong></th>
+					<th style="text-align: center"><strong>占孔比</strong></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: center">炉1</td>
+					<td style="text-align: center">0.8 mm</td>
+					<td style="text-align: center">1.6 mm</td>
+					<td style="text-align: center">2.00</td>
+					<td style="text-align: center">19.63%</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">炉2</td>
+					<td style="text-align: center">1.1 mm</td>
+					<td style="text-align: center">2.2 mm</td>
+					<td style="text-align: center">2.00</td>
+					<td style="text-align: center">19.63%</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">炉3</td>
+					<td style="text-align: center">1.0 mm</td>
+					<td style="text-align: center">3.0 mm</td>
+					<td style="text-align: center">3.00</td>
+					<td style="text-align: center">8.73%</td>
+			</tr>
+	</tbody>
+</table>
+<p>三种炉体设计方案对比</p>
+</div>
+<p>三种方案的对照逻辑如下：</p>
+<ul>
+<li>
+<p><strong>炉1 与 炉2（固定占孔比，考察射流绝对尺度影响）</strong>：两方案具有完全相同的间距/管径比（2.00）和占孔比（19.63%），主要区别在于出口管径的绝对尺寸（0.8 mm 对比 1.1 mm）。该对照组的目的是<strong>在保持喷口相对分布特征不变的前提下，独立考察射流雷诺数（绝对尺寸）对燃烧混合特性的影响</strong>。若两方案的温度场均匀性相近，则说明在此尺度范围内占孔比是主导因素，几何缩放不影响火焰性能；若存在显著差异，则说明绝对射流尺度引起的混合效果变化不可忽略，需以实测结果作为最终选型依据。</p>
+</li>
+<li>
+<p><strong>炉1/炉2 与 炉3（固定或近似管径，考察占孔比变化的影响）</strong>：炉3的间距/管径比增大至3.00，对应的占孔比大幅下降至8.73%，约为前两者的 44%。该对照组的目的是<strong>考察占孔比对火焰面均匀性和稳定性的影响</strong>。占孔比越低，单位面积内的气流射流喷口越稀疏，可能导致相邻射流间的横向卷吸能力减弱，火焰面更容易出现局部空隙或温度梯度。通过对比 19.63% 和 8.73% 两组占孔比下的温度场扫描结果，可以判定是否存在最优化开孔率阈值。</p>
+</li>
+<li>
+<p><strong>综合对照意义</strong>：通过上述两组变量控制，可以有效厘清“绝对射流尺寸”与“开孔密度（占孔比）”两个维度对火焰平面度的影响权重。三台炉子的对比实验结果将为后续标准火焰炉的定型和尺寸外推提供关键实验依据——若占孔比是决定火焰均匀性的首要因素，则应以保持高占孔比（约19.63%）为核心设计原则；若雷诺数效应显著，则需在占孔比与射流速度之间寻求平衡点。</p>
+</li>
+</ul>
+<p>三种方案均采用相同的加工标准、匹配的供气面板与水冷布局，确保变量控制的严格性。加工完成后，三台炉子将依次在同一TDLAS实验台上进行相同工况（当量比$\phi=1.0$，质量通量 3 kg/m$^2$/s）的火焰温度场扫描测量，定量对比各方案的性能优劣，筛选出最优构型用于后续标定实验。</p>
+<h4 id="前期点火验证">前期点火验证</h4>
+<p>在三种方案的正式炉体加工完成之前，课题组先后制造了两台中试炉体，开展了两个阶段的前期点火验证，以检验不同设计方案的可行性。</p>
+<p><strong>第一阶段：均一孔径方案（无扩孔变径）</strong></p>
+<p>第一台中试炉体按照“均一孔径”方案加工：燃料管和氧化剂管以统一孔径（1 mm）贯穿整个炉体，未采用扩孔变径结构。受限于水冷通道的布置需求，该方案的管间距被设置为2.7 mm。点火测试采用H$_2$/O$_2$燃烧工况，氢气流量150 SLM、氧气流量75 SLM（质量通量约1.25 kg/m$^2$/s，当量比$\phi = 1.0$）。</p>
+<p>测试结果如下：</p>
+<ul>
+<li>
+<p>火焰面呈现明显的<strong>不均匀结构</strong>：炉体中心区域火焰亮度较高，边缘区域亮度偏低，未能形成理想的平面火焰形态。</p>
+</li>
+<li>
+<p>局部出现<strong>火焰抬升</strong>和<strong>分离</strong>现象，部分孔位的射流未能在出口处及时着火，导致火焰面断裂。</p>
+</li>
+</ul>
+<p>该阶段验证表明：当管间距增大至2.7 mm时，相邻射流之间的扩散混合距离过大，剪切层在火焰面高度处尚未充分发展，无法形成连续均匀的反应面。这一结果为扩孔变径方案的提出提供了直接的实验依据——必须在保障水冷能力的前提下尽可能缩小管间距。</p>
+<p><strong>第二阶段：扩孔变径方案（方案1参数）</strong></p>
+<p>第二台中试炉体按照方案1的参数加工：采用扩孔变径结构（0.4 mm/0.8 mm变径，30$^\circ$内倒角），管间距缩小至1.6 mm。水冷通道保持与第一阶段相同的布局和流量（5 L/min，进水温度25$^\circ$C）。点火工况与第一阶段完全一致（H$_2$ 150 SLM，O$_2$ 75 SLM，$\phi = 1.0$），连续运行1小时后：</p>
+<ul>
+<li>
+<p>水冷系统工作正常，出水口温度较进水口温升约8$^\circ$C，未出现局部过热或冷却水沸腾现象。</p>
+</li>
+<li>
+<p>火焰面呈均匀的<strong>淡蓝色平面火焰</strong>，肉眼观察无局部高温区或火焰抬升现象，火焰面平整连续，覆盖整个炉体出口区域。</p>
+</li>
+<li>
+<p>运行结束后拆解检查，炉体顶部未见烧蚀痕迹或变色，微孔出口边缘完整无损，表明水冷结构有效地将炉体温度控制在材料安全阈值以下。</p>
+</li>
+</ul>
+<p>上述两阶段验证形成了鲜明的对比：均一孔径大间距方案（2.7 mm）未能产生均匀的平面火焰，而扩孔变径小间距方案（1.6 mm）实现了均匀稳定的平面火焰。该对比清晰地表明：<strong>缩小的管间距是获得均匀平面火焰的关键，而扩孔变径设计是同时实现小间距与水冷集成的有效技术路径</strong>。</p>
+<figure>
+<figure>
+<p><img src="figures/image18.png" alt="image" /></p>
+</figure>
+<figure>
+<p><img src="figures/image17.png" alt="image" /></p>
+</figure>
+<figcaption>不同方案火焰形态对比</figcaption>
+</figure>
+<h3 id="数值仿真方法">数值仿真方法</h3>
+<p>本研究采用数值仿真与实验验证相结合的方法，从热力学平衡和冷态流体动力学两个层面对不同炉体设计方案进行评估。热力学仿真用于确定不同燃料在不同质量通量下的绝热火焰温度和热流密度，为实验工况设计提供理论依据；冷态流体仿真用于评估炉体出口截面的气流混合均匀性，为加工方案筛选提供依据。</p>
+<h4 id="热力学平衡仿真cantera">热力学平衡仿真（Cantera）</h4>
+<p>热力学平衡仿真采用<strong>Cantera</strong>开源化学反应动力学软件包（版本2.6.0），调用其<code>IdealGasConstPressureReactor</code>定压反应器模型，分别对H$_2$/O$_2$和C$_2$H$_2$/O$_2$两种燃料组合进行化学平衡计算。</p>
+<p>计算采用<strong>GRI-Mech 3.0</strong>化学动力学机理（包含53种组分和325个基元反应），该机理在碳氢燃料及氢气燃烧模拟中具有广泛的适用性和验证基础。对于H$_2$/O$_2$体系，GRI-Mech 3.0中的H$_2$/O$_2$子机理已针对点火延迟和火焰传播速度进行了系统校验，可较好地预测高温条件下的平衡组分和绝热火焰温度。</p>
+<p>计算条件设置如下：</p>
+<ul>
+<li>
+<p>初始温度：300 K</p>
+</li>
+<li>
+<p>初始压力：1 atm（绝热等压燃烧，最终压力保持1 atm）</p>
+</li>
+<li>
+<p>当量比：$\phi = 1.0$（化学恰当比）</p>
+</li>
+<li>
+<p>质量通量范围：0.5–3.0 kg/m$^2$/s（根据炉体设计工况确定）</p>
+</li>
+<li>
+<p>燃料/氧化剂配比：依据化学恰当比的H$_2$/O$_2$（2:1摩尔比）和C$_2$H$_2$/O$_2$（2:5摩尔比）分别设定</p>
+</li>
+</ul>
+<p>计算输出参数包括：绝热火焰温度（Adiabatic Flame Temperature）、平衡组分摩尔分数（H$_2$O、CO$_2$、CO、OH、H、O等）、焓差（反应物与产物之间的总焓变化）以及表面热流密度（根据质量通量与焓差的乘积换算）。</p>
+<h5 id="h_2o_2火焰计算结果">H$_2$/O$_2$火焰计算结果</h5>
+<p>H$_2$/O$_2$火焰（当量比$\phi=1.0$）在不同质量通量下的热力学参数如表3.2所示。</p>
+<div id="tab:cantera_h2">
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: center">质量通量 (kg/m$^2$/s)</th>
+					<th style="text-align: center">焓差 (J/m$^2$/s)</th>
+					<th style="text-align: center">热流密度 (MW/m$^2$)</th>
+					<th style="text-align: center">温度 (K)</th>
+					<th style="text-align: center"></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: center">0.5</td>
+					<td style="text-align: center">3,771,483</td>
+					<td style="text-align: center">6.5</td>
+					<td style="text-align: center">2456</td>
+					<td style="text-align: center"></td>
+			</tr>
+			<tr>
+					<td style="text-align: center">1</td>
+					<td style="text-align: center">7,542,967</td>
+					<td style="text-align: center">12.0</td>
+					<td style="text-align: center">2643</td>
+					<td style="text-align: center"></td>
+			</tr>
+			<tr>
+					<td style="text-align: center">1.5</td>
+					<td style="text-align: center">11,314,450</td>
+					<td style="text-align: center">17.5</td>
+					<td style="text-align: center">2754</td>
+					<td style="text-align: center"></td>
+			</tr>
+			<tr>
+					<td style="text-align: center">2</td>
+					<td style="text-align: center">15,085,934</td>
+					<td style="text-align: center">22.0</td>
+					<td style="text-align: center">2835</td>
+					<td style="text-align: center"></td>
+			</tr>
+			<tr>
+					<td style="text-align: center">3</td>
+					<td style="text-align: center">22,628,901</td>
+					<td style="text-align: center">30.0</td>
+					<td style="text-align: center">2953</td>
+					<td style="text-align: center"></td>
+			</tr>
+	</tbody>
+</table>
+<p>Cantera计算：H$_2$/O$_2$火焰热力学参数（$\phi=1.0$，1 atm）</p>
+</div>
+<p>由表3.2可知，H$_2$/O$_2$火焰的绝热温度随质量通量增加而升高，从0.5 kg/m$^2$/s时的2456 K上升至3.0 kg/m$^2$/s时的2953 K，但升温速率逐渐减缓（接近H$_2$/O$_2$的理论绝热温度上限$\sim$<!-- -->3070 K）。热流密度从6.5 MW/m$^2$增至30.0 MW/m$^2$，呈近似线性增长趋势，表明高质量通量工况下炉体顶部承受的热负荷急剧增加，对水冷系统的散热能力提出了更高要求。</p>
+<h5 id="c_2h_2o_2火焰计算结果">C$_2$H$_2$/O$_2$火焰计算结果</h5>
+<p>C$_2$H$_2$/O$_2$火焰（当量比$\phi=1.0$）在不同质量通量下的热力学参数如表3.3所示。</p>
+<div id="tab:cantera_c2h2">
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: center">质量通量 (kg/m$^2$/s)</th>
+					<th style="text-align: center">焓差 (J/m$^2$/s)</th>
+					<th style="text-align: center">热流密度 (MW/m$^2$)</th>
+					<th style="text-align: center">温度 (K)</th>
+					<th style="text-align: center"></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: center">0.5</td>
+					<td style="text-align: center">2,308,730</td>
+					<td style="text-align: center">5.35</td>
+					<td style="text-align: center">2591</td>
+					<td style="text-align: center"></td>
+			</tr>
+			<tr>
+					<td style="text-align: center">1</td>
+					<td style="text-align: center">4,617,460</td>
+					<td style="text-align: center">9.80</td>
+					<td style="text-align: center">2768</td>
+					<td style="text-align: center"></td>
+			</tr>
+			<tr>
+					<td style="text-align: center">1.5</td>
+					<td style="text-align: center">6,926,190</td>
+					<td style="text-align: center">13.70</td>
+					<td style="text-align: center">2874</td>
+					<td style="text-align: center"></td>
+			</tr>
+			<tr>
+					<td style="text-align: center">2</td>
+					<td style="text-align: center">9,234,920</td>
+					<td style="text-align: center">17.14</td>
+					<td style="text-align: center">2951</td>
+					<td style="text-align: center"></td>
+			</tr>
+			<tr>
+					<td style="text-align: center">3</td>
+					<td style="text-align: center">13,852,380</td>
+					<td style="text-align: center">22.93</td>
+					<td style="text-align: center">3064</td>
+					<td style="text-align: center"></td>
+			</tr>
+	</tbody>
+</table>
+<p>Cantera计算：C$_2$H$_2$/O$_2$火焰热力学参数（$\phi=1.0$，1 atm）</p>
+</div>
+<p>C$_2$H$_2$/O$_2$火焰的绝热温度在相同质量通量下普遍高于H$_2$/O$_2$火焰，在3.0 kg/m$^2$/s时达到3064 K，已接近乙炔/氧气理论绝热温度上限（$\sim$<!-- -->3100 K）。表明C$_2$H$_2$/O$_2$体系更适用于需要更高标定温度的极端工况场景。</p>
+<p>H$_2$/O$_2$火焰的Flame Spectrum平台燃烧仿真结果如图所示。</p>
+<figure>
+<figure>
+<p><img src="figures/image19.png" alt="image" /></p>
+</figure>
+<figure>
+<p><img src="figures/image20.png" alt="image" /></p>
+</figure>
+<figcaption>H<span class="math inline"><sub>2</sub></span>/O<span class="math inline"><sub>2</sub></span>火焰燃烧仿真结果</figcaption>
+</figure>
+<h5 id="仿真结果讨论">仿真结果讨论</h5>
+<p>对比两组计算结果可得出以下结论：</p>
+<p>第一，两种燃料体系的热流密度均随质量通量线性增加，其中H$_2$/O$_2$体系在高质量通量下的热流密度（30 MW/m$^2$）显著高于C$_2$H$_2$/O$_2$体系（22.93 MW/m$^2$），尽管前者的绝热温度略低。该差异源于H$_2$/O$_2$反应释放的化学热中更大的比例转化为显热而非离解能，导致更多的热量传递至炉体表面。</p>
+<p>第二，在质量通量2–3 kg/m$^2$/s范围内，两种燃料的绝热温度均超过2800 K，远超传统NPL标准火焰（丙烷/空气体系）的2260 K上限。该结果表明，采用H$_2$/O$_2$或C$_2$H$_2$/O$_2$体系配合水冷炉体设计，具备将火焰标定温度范围拓展至3000 K的理论潜力。</p>
+<p>第三，上述热力学计算结果为后续实验工况的选取提供了关键依据：低质量通量（0.5–1 kg/m$^2$/s）适用于验证性实验和系统调试，中等质量通量（1.5–2 kg/m$^2$/s）为常规标定工况，高质量通量（3 kg/m$^2$/s及以上）为目标高温工况。</p>
+<h4 id="冷态流体仿真验证">冷态流体仿真验证</h4>
+<p>前述热力学分析确定了炉体所需承受的理论热负荷和温度水平，但炉体能否在实验条件下产生均匀的平面火焰，取决于其出口截面的气流混合均匀性。为此，采用Star-CCM+开展冷态流体仿真验证。</p>
+<p>本研究采用Siemens Industry旗下CD-adapco公司开发的<strong>Star-CCM+ 2024.10</strong>作为主要计算流体动力学（CFD）仿真平台。仿真工作覆盖几何建模、网格划分、物理模型选取、边界条件设定、求解及后处理全流程，旨在定量评估不同炉体设计方案在冷态条件下的气流混合均匀性，为最终加工方案提供依据。</p>
+<h5 id="几何模型与计算域设定">几何模型与计算域设定</h5>
+<p>以实验用非预混平面绝热火焰炉的实际尺寸为基准，建立三维几何模型。为定量评估前述三种设计方案（火焰炉1、火焰炉2、火焰炉3）在冷态条件下的流动均匀性差异，分别建立与各方案几何参数精确对应的三维计算模型。三种方案的核心几何参数如表3.1所示，均采用扩孔变径结构，微孔段长度$L=15$mm。</p>
+<ul>
+<li>
+<p><strong>火焰炉1</strong>：管间距$s=1.6$mm，氢气管径$0.4/0.8$mm（变径），氧气管径$0.4/0.8$mm（变径），扩张段倒角$30^\circ$，水冷结构有。</p>
+</li>
+<li>
+<p><strong>火焰炉2</strong>：管间距$s=2.2$mm，氢气管径$0.4/1.1$mm（变径），氧气管径$0.4/1.1$mm（变径），扩张段倒角$30^\circ$，水冷结构有。</p>
+</li>
+<li>
+<p><strong>火焰炉3</strong>：管间距$s=3.0$mm，氢气管径$0.4/0.8$mm（变径），氧气管径$0.4/0.8$mm（变径），扩张段倒角$30^\circ$，水冷结构有。</p>
+</li>
+</ul>
+<p>为进一步捕捉火焰面附近的流动发展，在微孔出口上方额外延伸<strong>10 mm</strong>的自由射流区域（环境大气域），该区域直径取50 mm以消除边界约束对中心射流的影响。计算域底部（微孔入口截面）设定为质量流量入口边界，顶部及侧面设定为压力出口边界，在出口上方4 mm处查看气流混合的均匀性。</p>
+<h5 id="网格划分策略">网格划分策略</h5>
+<p>网格生成采用Star-CCM+内置的<strong>多面体网格（Polyhedral Mesh）</strong>与<strong>棱柱层网格（Prism Layer Mesh）</strong>相结合的策略，具体参数如下：</p>
+<ul>
+<li>
+<p><strong>体网格类型</strong>：多面体网格。相较于四面体网格，多面体网格在相同计算精度条件下所需的网格数量更少（约减少40%–60%），且对复杂几何的适应性更强，收敛性更好。</p>
+</li>
+<li>
+<p><strong>近壁面处理</strong>：在微孔壁面及出口扩张段等固体壁面附近，生成<strong>5层棱柱层网格</strong>，厚度增长率设为1.2，以确保壁面边界层内的速度梯度被充分解析。</p>
+</li>
+<li>
+<p><strong>边界层分辨率</strong>：控制第一层网格高度使得壁面$y^+ &lt; 1$，满足低雷诺数湍流模型对近壁面网格精度的要求。</p>
+</li>
+<li>
+<p><strong>局部加密</strong>：在<strong>微孔出口区域（直径2 mm范围内）</strong>以及<strong>射流剪切层（沿射流方向延伸10 mm、径向向外扩展1 mm的带状区域）</strong>进行额外网格加密。加密策略采用Star-CCM+的<strong>体网格控制（Mesh Refinement Region）</strong>功能，设定目标网格尺寸为0.02 mm（约为微孔直径的2%–5%），以确保剪切层内大梯度物理量（速度、湍动能）被准确捕捉。</p>
+</li>
+</ul>
+<h5 id="物理模型与湍流模型选择">物理模型与湍流模型选择</h5>
+<p>基于仿真目标为冷态等温流动（无化学反应、无热源），激活以下物理模型：</p>
+<ul>
+<li>
+<p><strong>空间维度</strong>：三维（3D）</p>
+</li>
+<li>
+<p><strong>时间模式</strong>：稳态（Steady State）</p>
+</li>
+<li>
+<p><strong>材料属性</strong>：气体（理想气体，密度由理想气体状态方程计算，以考虑可压缩性效应）</p>
+</li>
+<li>
+<p><strong>流动模型</strong>：层流（基于微孔出口流速和特征尺寸计算得到的雷诺数$Re \approx 500$–1000，处于层流或转捩区，层流假设可合理反映低雷诺数射流的混合特性）</p>
+</li>
+</ul>
+<h5 id="边界条件设置">边界条件设置</h5>
+<p>计算域各边界条件设定如下表3.4所示：</p>
+<div id="tab:simulation_bc">
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: left"><strong>边界类型</strong></th>
+					<th style="text-align: left"><strong>位置</strong></th>
+					<th style="text-align: left"><strong>具体设置</strong></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: left">质量流量入口（Mass Flow Inlet）</td>
+					<td style="text-align: left">微孔底部（H$_2$孔，O$_2$孔）</td>
+					<td style="text-align: left">依据设计工况设定：质量通量4 kg/m$^2$/s，当量比$\phi=1.0$，氧气流量50 SLM，氢气流量100 SLM。</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">压力出口（Pressure Outlet）</td>
+					<td style="text-align: left">计算域顶部及侧面</td>
+					<td style="text-align: left">静压设为0 Pa（表压），温度300 K。</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">对称面（Symmetry Plane）</td>
+					<td style="text-align: left">周期性单元两侧</td>
+					<td style="text-align: left">法向速度为零，所有物理量法向梯度为零。</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">无滑移壁面（No-Slip Wall）</td>
+					<td style="text-align: left">微孔内壁面及炉体顶部表面</td>
+					<td style="text-align: left">速度为零，绝热壁面条件（冷态仿真）。</td>
+			</tr>
+	</tbody>
+</table>
+<p>Star-CCM+仿真边界条件汇总</p>
+</div>
+<h5 id="仿真结果">仿真结果</h5>
+<p>在设定工况下（质量通量4 kg/m$^2$/s，当量比$\phi=1.0$），三种方案的冷态仿真结果对比如表3.5所示。</p>
+<div id="tab:simulation_comparison">
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: center"><strong>方案</strong></th>
+					<th style="text-align: center"><strong>出口管径 (mm)</strong></th>
+					<th style="text-align: center"><strong>孔间距 (mm)</strong></th>
+					<th style="text-align: center"><strong>间距/管径比</strong></th>
+					<th style="text-align: center"><strong>速度均匀性指数 $\gamma$</strong></th>
+					<th style="text-align: center"><strong>均匀性判断</strong></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: center">火焰炉1</td>
+					<td style="text-align: center">0.8</td>
+					<td style="text-align: center">1.6</td>
+					<td style="text-align: center">2.00</td>
+					<td style="text-align: center">0.971</td>
+					<td style="text-align: center">均匀</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">火焰炉2</td>
+					<td style="text-align: center">1.1</td>
+					<td style="text-align: center">2.2</td>
+					<td style="text-align: center">2.00</td>
+					<td style="text-align: center">0.964</td>
+					<td style="text-align: center">均匀</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">火焰炉3</td>
+					<td style="text-align: center">0.8</td>
+					<td style="text-align: center">3.0</td>
+					<td style="text-align: center">3.75</td>
+					<td style="text-align: center">0.833</td>
+					<td style="text-align: center">不均匀</td>
+			</tr>
+	</tbody>
+</table>
+<p>三种方案冷态仿真结果对比</p>
+</div>
+<p>仿真结果表明：</p>
+<ol>
+<li>
+<p><strong>火焰炉1与火焰炉2均满足均匀性要求</strong>：两者的速度均匀性指数$\gamma$分别为0.971和0.964，均超过设计目标值0.95。火焰炉1的均匀性略优于火焰炉2（0.971 vs 0.964），表明在保持间距/管径比恒定的条件下，整体尺度放大对流动均匀性无负面影响。</p>
+</li>
+<li>
+<p><strong>火焰炉3均匀性显著下降</strong>：当管间距扩大至3.0 mm而出口管径保持0.8 mm不变时，间距/管径比由2.00增大至3.75，速度均匀性指数$\gamma$降至0.833，低于0.95的设计目标。该结果表明，当间距/管径比超过约2.0–2.5的临界范围后，相邻射流之间的间距过大，剪切层在火焰面高度处无法充分发展并相互融合，导致出口截面出现明显的速度不均匀分布。</p>
+</li>
+<li>
+<p><strong>间距/管径比是决定均匀性的关键无量纲参数</strong>：火焰炉1与火焰炉2虽然绝对尺寸不同（出口管径0.8 mm vs 1.1 mm，间距1.6 mm vs 2.2 mm），但二者间距/管径比均为2.00，仿真结果显示二者的流动均匀性处于同一水平（$\gamma$分别为0.971和0.964）。相比之下，火焰炉3的间距/管径比增大至3.75，均匀性即显著恶化。这一发现证实，在本文所研究的尺度范围内，影响出口截面速度均匀性的主导因素是<strong>间距与管径的比值</strong>，而非单一几何参数的绝对大小。</p>
+</li>
+</ol>
+<figure>
+<figure>
+<p><img src="figures/image14.png" alt="image" /></p>
+</figure>
+<figure>
+<p><img src="figures/image15.png" alt="image" /></p>
+</figure>
+<figure>
+<p><img src="figures/image16.png" alt="image" /></p>
+</figure>
+<figcaption>三种方案出口截面速度均匀性仿真对比</figcaption>
+</figure>
+<p>上述仿真结论与前期点火验证的实验结果形成了有效印证：第一台中试炉体（均一孔径，管间距2.7 mm，管径1.0 mm，间距/管径比$2.7$）火焰不均匀；第二台中试炉体（扩孔变径方案1，管间距1.6 mm，出口管径0.8 mm，间距/管径比$2.00$）火焰均匀。仿真与实验共同表明：当间距/管径比控制在约2.0左右时，可保证良好的流动均匀性与火焰平面度。</p>
+<p>综合热力学仿真与冷态流体仿真结果，确定火焰炉1（$s=1.6$mm，$d_{exit}=0.8$mm，间距/管径比$=2.00$）作为后续标定实验的标准构型。该方案在保障火焰均匀性的同时，具有最小的管间距和最高的孔密度，可为TDLAS测量提供最优的空间分辨率；火焰炉2的仿真结果也验证了在保持间距/管径比恒定的条件下几何缩放的可行性，为未来炉体尺寸的系列化设计提供了理论依据。</p>
+<h4 id="供气与流量控制">供气与流量控制</h4>
+<p>本研究采用<strong>临界流小孔（限流孔）</strong>作为流量控制的核心元件。其基本原理为：当气体流经小孔截面时，若小孔上下游压比低于临界压比，气流在小孔喉部达到声速（Ma=1），此时流经小孔的质量流量仅取决于上游滞止压力与温度，与下游压力波动完全解耦。</p>
+<p>临界压比$\Pi_{cr}$由等熵流动关系确定：
+</p>
+$$
 \Pi_{cr} = \frac{p_{down}}{p_{up}} = \left( \frac{2}{\gamma + 1} \right)^{\frac{\gamma}{\gamma - 1}}
-$$<p>其中$\gamma$为气体的比热比。对于双原子气体（H$_2$、O$_2$、N$<em>2$），$\gamma \approx 1.4$，计算得$\Pi</em>{cr} \approx 0.528$；对于多原子气体（CH$<em>4$），$\gamma \approx 1.32$，$\Pi</em>{cr} \approx 0.542$。只要小孔上下游压比小于上述临界值，即可保证限流孔工作在声速状态。</p><p>在临界状态下，通过小孔的质量流量$\dot{m}$由以下公式给出：</p>$$
+$$<p>
+其中$\gamma$为气体的比热比。对于双原子气体（H$_2$、O$_2$、N$<em>2$），$\gamma \approx 1.4$，计算得$\Pi</em>{cr} \approx 0.528$；对于多原子气体（CH$<em>4$），$\gamma \approx 1.32$，$\Pi</em>{cr} \approx 0.542$。只要小孔上下游压比小于上述临界值，即可保证限流孔工作在声速状态。</p>
+<p>在临界状态下，通过小孔的质量流量$\dot{m}$由以下公式给出：
+</p>
+$$
 \dot{m} = C_d \cdot A \cdot \frac{p_{up}}{\sqrt{T_{up}}} \cdot \sqrt{\frac{\gamma}{R} \left( \frac{2}{\gamma + 1} \right)^{\frac{\gamma + 1}{\gamma - 1}}}
-$$<p>其中：$C_d$为流量系数（对于锐边薄壁小孔，$C_d \approx 0.72$）；$A = \pi d^2 / 4$为小孔截面积；$p_{up}$和$T_{up}$分别为小孔上游的滞止压力和温度；$R$为气体常数。</p><p>根据公式<a href=#eq:choked_flow data-reference-type=eqref data-reference=eq:choked_flow>[eq:choked_flow]</a>，在给定目标流量$\dot{m}$和上游滞止压力$p_{up}$的条件下，所需小孔直径$d$可反算得到：</p>$$
+$$<p>
+其中：$C_d$为流量系数（对于锐边薄壁小孔，$C_d \approx 0.72$）；$A = \pi d^2 / 4$为小孔截面积；$p_{up}$和$T_{up}$分别为小孔上游的滞止压力和温度；$R$为气体常数。</p>
+<p>根据公式<a href="#eq:choked_flow" data-reference-type="eqref" data-reference="eq:choked_flow">[eq:choked_flow]</a>，在给定目标流量$\dot{m}$和上游滞止压力$p_{up}$的条件下，所需小孔直径$d$可反算得到：
+</p>
+$$
 d = \sqrt{\frac{4\dot{m}}{C_d \pi p_{up}} \cdot \sqrt{\frac{R T_{up}}{\gamma}} \cdot \left( \frac{\gamma + 1}{2} \right)^{\frac{\gamma + 1}{2(\gamma - 1)}}}
-$$<p>在当量比$\phi=1$、质量通量4 kg/m$^2$/s、上游压力0.3 MPa、室温$T_{up}=300$ K条件下，按上述公式计算可得H$_2$通道限流孔径约2.04 mm，O$_2$通道限流孔径约2.88 mm。不同质量通量下的流量及对应限流孔径如表3.6所示。</p><p>小孔限流方案相较于直接使用MFC具有以下优势：第一，将流量控制从“MFC直接调节流量”转变为“MFC调节上游压力+固定小孔限流”，MFC始终工作在中高量程区间，避免了小流量工况下的精度下降；第二，火焰燃烧时炉体压力波动不影响通过小孔的流量，提升了燃烧稳定性；第三，小孔为纯机械元件，长期重复性优于电子流量计，且便于更换以快速切换工况。</p><div id=tab:flow_orifice><table><thead><tr><th style=text-align:center></th><th style=text-align:center></th><th style=text-align:center></th><th style=text-align:center></th><th style=text-align:center></th><th style=text-align:center></th></tr></thead><tbody><tr><td style=text-align:center>质量通量</td><td style=text-align:center>质量流量</td><td style=text-align:center>H$_2$流量</td><td style=text-align:center>O$_2$流量</td><td style=text-align:center>H$_2$孔径</td><td style=text-align:center>O$_2$孔径</td></tr><tr><td style=text-align:center>(kg/m$^2$/s)</td><td style=text-align:center>(kg/s)</td><td style=text-align:center>(SLM)</td><td style=text-align:center>(SLM)</td><td style=text-align:center>\(mm\)</td><td style=text-align:center>\(mm\)</td></tr><tr><td style=text-align:center>0.5</td><td style=text-align:center>$8.0\times10^{-4}$</td><td style=text-align:center>60</td><td style=text-align:center>30</td><td style=text-align:center>0.72</td><td style=text-align:center>1.02</td></tr><tr><td style=text-align:center>1</td><td style=text-align:center>$1.6\times10^{-3}$</td><td style=text-align:center>120</td><td style=text-align:center>60</td><td style=text-align:center>1.02</td><td style=text-align:center>1.44</td></tr><tr><td style=text-align:center>1.5</td><td style=text-align:center>$2.4\times10^{-3}$</td><td style=text-align:center>180</td><td style=text-align:center>90</td><td style=text-align:center>1.25</td><td style=text-align:center>1.77</td></tr><tr><td style=text-align:center>2</td><td style=text-align:center>$3.2\times10^{-3}$</td><td style=text-align:center>240</td><td style=text-align:center>120</td><td style=text-align:center>1.44</td><td style=text-align:center>2.04</td></tr><tr><td style=text-align:center>3</td><td style=text-align:center>$4.8\times10^{-3}$</td><td style=text-align:center>360</td><td style=text-align:center>180</td><td style=text-align:center>1.77</td><td style=text-align:center>2.50</td></tr><tr><td style=text-align:center>4</td><td style=text-align:center>$6.4\times10^{-3}$</td><td style=text-align:center>480</td><td style=text-align:center>240</td><td style=text-align:center>2.04</td><td style=text-align:center>2.88</td></tr></tbody></table><p>不同质量通量下的流量与限流孔径（H$_2$/O$_2$，$\phi=1$，上游压力0.3 MPa）</p></div><p>供气面板所有管路均采用1/2英寸EP级不锈钢管，接头为SMC双卡套密封形式，关键节点配置防回火逆止阀，确保氢气/氧气供气的本质安全性。</p><h3 id=伺服运动平台>伺服运动平台</h3><p>二维高精度扫描运动平台是TDLAS二维温度场测量的关键执行机构，负责将火焰炉相对于激光束进行精确的二维步进位移，实现逐点空间分辨测量。</p><h4 id=硬件选型与系统架构>硬件选型与系统架构</h4><p>运动机构选用THK KR-20型高精度线性模组，采用滚珠丝杠传动配合直线导轨导向，重复定位精度$\pm 0.01$ mm，行程250 mm $\times$ 250 mm，最大负载能力20 kg，足以承载火焰炉及配套的冷却水管路和气路。双轴采用正交堆叠布局，Y轴模组（垂直方向，对应火焰高度）固定于光学平台，X轴模组（水平方向，对应火焰径向）安装于Y轴滑块之上，火焰炉固定在X轴滑块上，实现炉体相对于固定激光束的二维移动。</p><p>驱动与控制采用<strong>CC-D3P040A2-A型伺服驱动器</strong>配套<strong>CC-M3H040-NN14型伺服电机</strong>。驱动器采用RS-485串行通讯接口与上位机连接，支持Modbus RTU协议，可通过LabVIEW编写控制程序实现位置、速度、加速度的全参数可编程控制。控制架构如图所示。</p><figure><figure><p><img src=figures/image41.png alt=image></p></figure><figure><p><img src=figures/image32.png alt=image></p></figure><figcaption>LabVIEW伺服平台前面板与控制程序界面</figcaption></figure><h4 id=通讯协议与控制参数配置>通讯协议与控制参数配置</h4><p>在通过LabVIEW实现对伺服电机的控制前，需完成以下关键配置：</p><p><strong>1. 控制器地址设置</strong> 当使用多个控制器（例如需要同时控制X轴和Y轴两台电机）时，必须为每个控制器分配唯一的通讯地址。控制器上的地址拨码开关设定地址位后，LabVIEW上位机发送的控制指令中需包含对应的地址字节，驱动程序根据地址字节区分指令的接收对象。地址位发生变化时，指令帧最后的CRC校验码需重新计算。</p><p><strong>2. 使能控制与通讯模式切换</strong> 伺服驱动器通常支持I/O控制和RS-485通讯控制两种模式。在单独使用LabVIEW进行控制而不开启上位机调试软件时，除了发送使能开指令（Enable）外，还需额外写入控制模式切换指令，将驱动器的控制源从I/O端子切换至RS-485通讯端口。否则驱动器虽已使能，但对LabVIEW发送的位移指令无响应。</p><p><strong>3. 电子齿轮比设置</strong> 电机的实际移动量与驱动器接收到的脉冲数之间的关系由电子齿轮比决定。以本系统使用的电机为例，默认齿轮比下，发送1000个脉冲仅对应0.1圈旋转。若需要在单次指令下旋转完整一圈，则需发送10000个脉冲或重新设置齿轮比参数。通过修改齿轮比分母（由默认的2500改为1250），可使1000个脉冲对应的旋转圈数从1/10圈提升至1/5圈。电子齿轮比的合理设置直接影响扫描步长的精度和系统响应速度，需根据实际扫描步长（0.5 mm）和丝杠导程折算后确定最优比值。</p><p><strong>4. 转速与加减速设置</strong> 设置目标运动速度（单位：r/min）和加速度/减速度参数，使电机在启动和停止时平滑过渡，避免因急停引入的机械振动影响光路对准。合理设置加减速时间还有利于缩短扫描周期、提高实验效率。</p><h4 id=labview控制程序设计>LabVIEW控制程序设计</h4><p>本项目的伺服控制程序基于LabVIEW开发，核心功能模块包括：</p><ol><li><p><strong>VISA串口通讯模块</strong>：通过RS-485总线与驱动器通讯，配置波特率（默认19200 bps）、数据位（8位）、停止位（1位）、校验位（无），实现指令下发与状态读取。</p></li><li><p><strong>位置指令生成模块</strong>：根据预设的扫描矩阵（X方向$-15$至$+15$ mm，Y方向1至5 mm），自动生成有序的绝对位置指令序列，并实时转换为电机所需的脉冲数或对应通讯指令。</p></li><li><p><strong>位置状态读取与闭环确认模块</strong>：在每次移动指令执行完成后，读取驱动器的当前位置反馈值（从反馈帧的第4位开始截取4位数据，强制转换为10进制整数），与目标位置进行比对，确认到位后方可向数据采集系统发送“采集触发”信号。该流程保证了光谱数据与空间位置的一一对应，避免因定位误差引入的温度场重建畸变。</p></li><li><p><strong>多电机轮询控制</strong>：当需要同时控制X轴和Y轴两台电机时，将两台驱动器的RS-485通讯线（A/B口）并联接入同一COM口，通过不同的地址位区分控制对象。LabVIEW程序采用轮询方式——在一个循环中交替发送X轴和Y轴的问询指令，驱动器根据地址位选择性响应，实现单串口总线上的多轴分时控制。轮询周期由while循环中的迭代计数与2取余判断奇偶来确定当前时刻访问的轴号，循环内两个分支分别对应X轴和Y轴的指令下发与状态读取。</p></li></ol><h4 id=扫描策略与数据采集联动>扫描策略与数据采集联动</h4><p>扫描策略采用<strong>逐行光栅扫描模式</strong>：Y方向（高度）从火焰面底部1 mm开始，步长0.5 mm，逐层升高至5 mm，共9层；X方向（水平）在每个Y高度层上从$-15$ mm至$+15$ mm，步长0.5 mm，共61个点。整个二维场总计$61 \times 9 = 549$个测量点，每个测量点包含100次波长扫描的累加平均。</p><p>具体联动流程如下：</p><ol><li><p>上位机LabVIEW程序通过RS-485指令将伺服平台移动至目标位置（$X_i$, $Y_j$）；</p></li><li><p>到位后程序自动触发NI USB-6361数据采集卡开始采集——同步记录测量光路、标准具干涉光路及背景光路的电压信号，采样率50 MS/s，单次采集时长覆盖完整的波长扫描周期；</p></li><li><p>同一位置完成300次扫描平均后，LabVIEW程序控制平台移动至下一位置（$X_{i+1}$, $Y_j$），重复上述步骤；</p></li><li><p>完成一整行（X方向全行程）后，Y方向步进0.5 mm至下一高度层，X方向反向继续扫描（蛇形路径以减少空行程时间）。</p></li></ol><p>整场测量共需采集$549 \times 100 = 54{,}900$条光谱，总耗时约1.5小时（含平台移动和通讯稳定时间）。采集过程中，所有原始数据（包含测量光路、标准具光路、背景光路的三路信号）与对应空间坐标（$X_i$, $Y_j$）一起存储为结构化数据文件，供后续数据处理流水线调用。</p><h2 id=研究方法与数据处理算法>研究方法与数据处理算法</h2><h3 id=tdlas测量原理>TDLAS测量原理</h3><p>可调谐二极管激光吸收光谱（Tunable Diode Laser Absorption Spectroscopy，简称TDLAS）技术是一种基于分子光谱吸收的非侵入式光学测量方法，其基本原理可追溯至比尔-朗伯（Beer-Lambert）定律。</p><h4 id=比尔-朗伯定律>比尔-朗伯定律</h4><p>当频率为$\nu$的单色激光穿过长度为$L$的均匀气体介质时，若激光光子能量与待测气体分子的某一吸收跃迁能级差相匹配，部分激光将被气体分子吸收。设入射激光光强为$I_0$，透射激光光强为$I$，则两者之间的关系由比尔-朗伯定律描述：</p>$$
+$$<p>在当量比$\phi=1$、质量通量4 kg/m$^2$/s、上游压力0.3 MPa、室温$T_{up}=300$ K条件下，按上述公式计算可得H$_2$通道限流孔径约2.04 mm，O$_2$通道限流孔径约2.88 mm。不同质量通量下的流量及对应限流孔径如表3.6所示。</p>
+<p>小孔限流方案相较于直接使用MFC具有以下优势：第一，将流量控制从“MFC直接调节流量”转变为“MFC调节上游压力+固定小孔限流”，MFC始终工作在中高量程区间，避免了小流量工况下的精度下降；第二，火焰燃烧时炉体压力波动不影响通过小孔的流量，提升了燃烧稳定性；第三，小孔为纯机械元件，长期重复性优于电子流量计，且便于更换以快速切换工况。</p>
+<div id="tab:flow_orifice">
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: center"></th>
+					<th style="text-align: center"></th>
+					<th style="text-align: center"></th>
+					<th style="text-align: center"></th>
+					<th style="text-align: center"></th>
+					<th style="text-align: center"></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: center">质量通量</td>
+					<td style="text-align: center">质量流量</td>
+					<td style="text-align: center">H$_2$流量</td>
+					<td style="text-align: center">O$_2$流量</td>
+					<td style="text-align: center">H$_2$孔径</td>
+					<td style="text-align: center">O$_2$孔径</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">(kg/m$^2$/s)</td>
+					<td style="text-align: center">(kg/s)</td>
+					<td style="text-align: center">(SLM)</td>
+					<td style="text-align: center">(SLM)</td>
+					<td style="text-align: center">\(mm\)</td>
+					<td style="text-align: center">\(mm\)</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">0.5</td>
+					<td style="text-align: center">$8.0\times10^{-4}$</td>
+					<td style="text-align: center">60</td>
+					<td style="text-align: center">30</td>
+					<td style="text-align: center">0.72</td>
+					<td style="text-align: center">1.02</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">1</td>
+					<td style="text-align: center">$1.6\times10^{-3}$</td>
+					<td style="text-align: center">120</td>
+					<td style="text-align: center">60</td>
+					<td style="text-align: center">1.02</td>
+					<td style="text-align: center">1.44</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">1.5</td>
+					<td style="text-align: center">$2.4\times10^{-3}$</td>
+					<td style="text-align: center">180</td>
+					<td style="text-align: center">90</td>
+					<td style="text-align: center">1.25</td>
+					<td style="text-align: center">1.77</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">2</td>
+					<td style="text-align: center">$3.2\times10^{-3}$</td>
+					<td style="text-align: center">240</td>
+					<td style="text-align: center">120</td>
+					<td style="text-align: center">1.44</td>
+					<td style="text-align: center">2.04</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">3</td>
+					<td style="text-align: center">$4.8\times10^{-3}$</td>
+					<td style="text-align: center">360</td>
+					<td style="text-align: center">180</td>
+					<td style="text-align: center">1.77</td>
+					<td style="text-align: center">2.50</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">4</td>
+					<td style="text-align: center">$6.4\times10^{-3}$</td>
+					<td style="text-align: center">480</td>
+					<td style="text-align: center">240</td>
+					<td style="text-align: center">2.04</td>
+					<td style="text-align: center">2.88</td>
+			</tr>
+	</tbody>
+</table>
+<p>不同质量通量下的流量与限流孔径（H$_2$/O$_2$，$\phi=1$，上游压力0.3 MPa）</p>
+</div>
+<p>供气面板所有管路均采用1/2英寸EP级不锈钢管，接头为SMC双卡套密封形式，关键节点配置防回火逆止阀，确保氢气/氧气供气的本质安全性。</p>
+<h3 id="伺服运动平台">伺服运动平台</h3>
+<p>二维高精度扫描运动平台是TDLAS二维温度场测量的关键执行机构，负责将火焰炉相对于激光束进行精确的二维步进位移，实现逐点空间分辨测量。</p>
+<h4 id="硬件选型与系统架构">硬件选型与系统架构</h4>
+<p>运动机构选用THK KR-20型高精度线性模组，采用滚珠丝杠传动配合直线导轨导向，重复定位精度$\pm 0.01$ mm，行程250 mm $\times$ 250 mm，最大负载能力20 kg，足以承载火焰炉及配套的冷却水管路和气路。双轴采用正交堆叠布局，Y轴模组（垂直方向，对应火焰高度）固定于光学平台，X轴模组（水平方向，对应火焰径向）安装于Y轴滑块之上，火焰炉固定在X轴滑块上，实现炉体相对于固定激光束的二维移动。</p>
+<p>驱动与控制采用<strong>CC-D3P040A2-A型伺服驱动器</strong>配套<strong>CC-M3H040-NN14型伺服电机</strong>。驱动器采用RS-485串行通讯接口与上位机连接，支持Modbus RTU协议，可通过LabVIEW编写控制程序实现位置、速度、加速度的全参数可编程控制。控制架构如图所示。</p>
+<figure>
+<figure>
+<p><img src="figures/image41.png" alt="image" /></p>
+</figure>
+<figure>
+<p><img src="figures/image32.png" alt="image" /></p>
+</figure>
+<figcaption>LabVIEW伺服平台前面板与控制程序界面</figcaption>
+</figure>
+<h4 id="通讯协议与控制参数配置">通讯协议与控制参数配置</h4>
+<p>在通过LabVIEW实现对伺服电机的控制前，需完成以下关键配置：</p>
+<p><strong>1. 控制器地址设置</strong> 当使用多个控制器（例如需要同时控制X轴和Y轴两台电机）时，必须为每个控制器分配唯一的通讯地址。控制器上的地址拨码开关设定地址位后，LabVIEW上位机发送的控制指令中需包含对应的地址字节，驱动程序根据地址字节区分指令的接收对象。地址位发生变化时，指令帧最后的CRC校验码需重新计算。</p>
+<p><strong>2. 使能控制与通讯模式切换</strong> 伺服驱动器通常支持I/O控制和RS-485通讯控制两种模式。在单独使用LabVIEW进行控制而不开启上位机调试软件时，除了发送使能开指令（Enable）外，还需额外写入控制模式切换指令，将驱动器的控制源从I/O端子切换至RS-485通讯端口。否则驱动器虽已使能，但对LabVIEW发送的位移指令无响应。</p>
+<p><strong>3. 电子齿轮比设置</strong> 电机的实际移动量与驱动器接收到的脉冲数之间的关系由电子齿轮比决定。以本系统使用的电机为例，默认齿轮比下，发送1000个脉冲仅对应0.1圈旋转。若需要在单次指令下旋转完整一圈，则需发送10000个脉冲或重新设置齿轮比参数。通过修改齿轮比分母（由默认的2500改为1250），可使1000个脉冲对应的旋转圈数从1/10圈提升至1/5圈。电子齿轮比的合理设置直接影响扫描步长的精度和系统响应速度，需根据实际扫描步长（0.5 mm）和丝杠导程折算后确定最优比值。</p>
+<p><strong>4. 转速与加减速设置</strong> 设置目标运动速度（单位：r/min）和加速度/减速度参数，使电机在启动和停止时平滑过渡，避免因急停引入的机械振动影响光路对准。合理设置加减速时间还有利于缩短扫描周期、提高实验效率。</p>
+<h4 id="labview控制程序设计">LabVIEW控制程序设计</h4>
+<p>本项目的伺服控制程序基于LabVIEW开发，核心功能模块包括：</p>
+<ol>
+<li>
+<p><strong>VISA串口通讯模块</strong>：通过RS-485总线与驱动器通讯，配置波特率（默认19200 bps）、数据位（8位）、停止位（1位）、校验位（无），实现指令下发与状态读取。</p>
+</li>
+<li>
+<p><strong>位置指令生成模块</strong>：根据预设的扫描矩阵（X方向$-15$至$+15$ mm，Y方向1至5 mm），自动生成有序的绝对位置指令序列，并实时转换为电机所需的脉冲数或对应通讯指令。</p>
+</li>
+<li>
+<p><strong>位置状态读取与闭环确认模块</strong>：在每次移动指令执行完成后，读取驱动器的当前位置反馈值（从反馈帧的第4位开始截取4位数据，强制转换为10进制整数），与目标位置进行比对，确认到位后方可向数据采集系统发送“采集触发”信号。该流程保证了光谱数据与空间位置的一一对应，避免因定位误差引入的温度场重建畸变。</p>
+</li>
+<li>
+<p><strong>多电机轮询控制</strong>：当需要同时控制X轴和Y轴两台电机时，将两台驱动器的RS-485通讯线（A/B口）并联接入同一COM口，通过不同的地址位区分控制对象。LabVIEW程序采用轮询方式——在一个循环中交替发送X轴和Y轴的问询指令，驱动器根据地址位选择性响应，实现单串口总线上的多轴分时控制。轮询周期由while循环中的迭代计数与2取余判断奇偶来确定当前时刻访问的轴号，循环内两个分支分别对应X轴和Y轴的指令下发与状态读取。</p>
+</li>
+</ol>
+<h4 id="扫描策略与数据采集联动">扫描策略与数据采集联动</h4>
+<p>扫描策略采用<strong>逐行光栅扫描模式</strong>：Y方向（高度）从火焰面底部1 mm开始，步长0.5 mm，逐层升高至5 mm，共9层；X方向（水平）在每个Y高度层上从$-15$ mm至$+15$ mm，步长0.5 mm，共61个点。整个二维场总计$61 \times 9 = 549$个测量点，每个测量点包含100次波长扫描的累加平均。</p>
+<p>具体联动流程如下：</p>
+<ol>
+<li>
+<p>上位机LabVIEW程序通过RS-485指令将伺服平台移动至目标位置（$X_i$, $Y_j$）；</p>
+</li>
+<li>
+<p>到位后程序自动触发NI USB-6361数据采集卡开始采集——同步记录测量光路、标准具干涉光路及背景光路的电压信号，采样率50 MS/s，单次采集时长覆盖完整的波长扫描周期；</p>
+</li>
+<li>
+<p>同一位置完成300次扫描平均后，LabVIEW程序控制平台移动至下一位置（$X_{i+1}$, $Y_j$），重复上述步骤；</p>
+</li>
+<li>
+<p>完成一整行（X方向全行程）后，Y方向步进0.5 mm至下一高度层，X方向反向继续扫描（蛇形路径以减少空行程时间）。</p>
+</li>
+</ol>
+<p>整场测量共需采集$549 \times 100 = 54{,}900$条光谱，总耗时约1.5小时（含平台移动和通讯稳定时间）。采集过程中，所有原始数据（包含测量光路、标准具光路、背景光路的三路信号）与对应空间坐标（$X_i$, $Y_j$）一起存储为结构化数据文件，供后续数据处理流水线调用。</p>
+<h2 id="研究方法与数据处理算法">研究方法与数据处理算法</h2>
+<h3 id="tdlas测量原理">TDLAS测量原理</h3>
+<p>可调谐二极管激光吸收光谱（Tunable Diode Laser Absorption Spectroscopy，简称TDLAS）技术是一种基于分子光谱吸收的非侵入式光学测量方法，其基本原理可追溯至比尔-朗伯（Beer-Lambert）定律。</p>
+<h4 id="比尔-朗伯定律">比尔-朗伯定律</h4>
+<p>当频率为$\nu$的单色激光穿过长度为$L$的均匀气体介质时，若激光光子能量与待测气体分子的某一吸收跃迁能级差相匹配，部分激光将被气体分子吸收。设入射激光光强为$I_0$，透射激光光强为$I$，则两者之间的关系由比尔-朗伯定律描述：
+</p>
+$$
 \left(\frac{I}{I_0}\right)_\nu = \exp\left[-\int_0^L \alpha(l,\nu) \cdot dl\right] = \exp[-k_\nu L]
-$$<p>其中$\alpha(l,\nu)$为待测体系在吸收路径上$l$处、频率为$\nu$的吸光度系数，$k_\nu$为吸收系数。在实际测量中，常定义吸光度$\text{Abs}_\nu$为：</p>$$
+$$<p>
+其中$\alpha(l,\nu)$为待测体系在吸收路径上$l$处、频率为$\nu$的吸光度系数，$k_\nu$为吸收系数。在实际测量中，常定义吸光度$\text{Abs}_\nu$为：
+</p>
+$$
 \text{Abs}_\nu = -\ln\left(\frac{I}{I_0}\right)_\nu = \int_0^L \alpha(l,\nu) \cdot dl
-$$<p>对于均匀介质，吸光度可简化为：</p>$$
+$$<p>对于均匀介质，吸光度可简化为：
+</p>
+$$
 \text{Abs}_\nu = P \cdot X \cdot S(T) \cdot L \cdot \phi(\nu - \nu_0)
-$$<p>其中：$P$为气体总压（atm）；$X$为待测组分的摩尔分数；$S(T)$为跃迁线强（cm$^{-2}$/atm），是温度$T$的强函数；$L$为吸收光程（cm）；$\phi(\nu - \nu_0)$为归一化线型函数（cm），满足$\int_{-\infty}^{+\infty} \phi(\nu - \nu_0) \dd\nu = 1$。</p><p>对式<a href=#eq:absorbance_uniform data-reference-type=eqref data-reference=eq:absorbance_uniform>[eq:absorbance_uniform]</a>在整个波数范围内积分，可得谱线的积分吸光度$A$：</p>$$
+$$<p>
+其中：$P$为气体总压（atm）；$X$为待测组分的摩尔分数；$S(T)$为跃迁线强（cm$^{-2}$/atm），是温度$T$的强函数；$L$为吸收光程（cm）；$\phi(\nu - \nu_0)$为归一化线型函数（cm），满足$\int_{-\infty}^{+\infty} \phi(\nu - \nu_0) \dd\nu = 1$。</p>
+<p>对式<a href="#eq:absorbance_uniform" data-reference-type="eqref" data-reference="eq:absorbance_uniform">[eq:absorbance_uniform]</a>在整个波数范围内积分，可得谱线的积分吸光度$A$：
+</p>
+$$
 A = \int_{-\infty}^{+\infty} \text{Abs}_\nu \cdot \dd\nu = P \cdot X \cdot S(T) \cdot L
-$$<h4 id=谱线强度与温度的关系>谱线强度与温度的关系</h4><p>分子吸收光谱的谱线强度$S(T)$是温度的函数，其与温度$T$的关系可由以下公式描述：</p>$$
+$$<h4 id="谱线强度与温度的关系">谱线强度与温度的关系</h4>
+<p>分子吸收光谱的谱线强度$S(T)$是温度的函数，其与温度$T$的关系可由以下公式描述：
+</p>
+$$
 S(T) = S(T_0) \frac{Q(T_0)}{Q(T)} \frac{T_0}{T} \exp\left[-\frac{hc E''}{k}\left(\frac{1}{T} - \frac{1}{T_0}\right)\right] \times \left[\frac{1-\exp(-hc\nu_0/kT)}{1-\exp(-hc\nu_0/kT_0)}\right]
-$$<p>其中：$h$为普朗克常数（$6.626 \times 10^{-34}<del>\text{J}\cdot\text{s}$）；$c$为真空中光速（$2.998 \times 10^{10}</del>\text{cm/s}$）；$k$为玻尔兹曼常数（$1.381 \times 10^{-23}~\text{J/K}$）；$T_0$为标准参考温度（通常取296 K）；$E&rsquo;&rsquo;$为吸收跃迁的低态能级能量（cm$^{-1}$）；$\nu_0$为跃迁中心频率（cm$^{-1}$）；$Q(T)$为分子的配分函数，表示分子在各能级上的统计分布。</p><p>对于大多数红外波段的分子跃迁，$hc\nu_0 \gg kT$，因此式<a href=#eq:line_strength data-reference-type=eqref data-reference=eq:line_strength>[eq:line_strength]</a>中的方括号项通常近似为1。谱线强度随温度的升高呈指数增长或衰减，具体取决于$E&rsquo;&rsquo;$的大小——高$E&rsquo;&rsquo;$的谱线（高温峰）随温度升高强度增大，低$E&rsquo;&rsquo;$的谱线（低温峰）随温度升高强度减小。</p><h4 id=线型函数>线型函数</h4><p>式<a href=#eq:absorbance_uniform data-reference-type=eqref data-reference=eq:absorbance_uniform>[eq:absorbance_uniform]</a>中的线型函数$\phi(\nu - \nu_0)$描述了谱线在频率域的形状，其归一化条件为$\int_{-\infty}^{+\infty} \phi(\nu - \nu_0) \dd\nu = 1$。在燃烧诊断中，主要的线型展宽机制包括：</p><p><strong>高斯展宽（多普勒展宽）</strong>：由气体分子的热运动引起，其线型函数为高斯函数：</p>$$
+$$<p>
+其中：$h$为普朗克常数（$6.626 \times 10^{-34}<del>\text{J}\cdot\text{s}$）；$c$为真空中光速（$2.998 \times 10^{10}</del>\text{cm/s}$）；$k$为玻尔兹曼常数（$1.381 \times 10^{-23}~\text{J/K}$）；$T_0$为标准参考温度（通常取296 K）；$E&rsquo;&rsquo;$为吸收跃迁的低态能级能量（cm$^{-1}$）；$\nu_0$为跃迁中心频率（cm$^{-1}$）；$Q(T)$为分子的配分函数，表示分子在各能级上的统计分布。</p>
+<p>对于大多数红外波段的分子跃迁，$hc\nu_0 \gg kT$，因此式<a href="#eq:line_strength" data-reference-type="eqref" data-reference="eq:line_strength">[eq:line_strength]</a>中的方括号项通常近似为1。谱线强度随温度的升高呈指数增长或衰减，具体取决于$E&rsquo;&rsquo;$的大小——高$E&rsquo;&rsquo;$的谱线（高温峰）随温度升高强度增大，低$E&rsquo;&rsquo;$的谱线（低温峰）随温度升高强度减小。</p>
+<h4 id="线型函数">线型函数</h4>
+<p>式<a href="#eq:absorbance_uniform" data-reference-type="eqref" data-reference="eq:absorbance_uniform">[eq:absorbance_uniform]</a>中的线型函数$\phi(\nu - \nu_0)$描述了谱线在频率域的形状，其归一化条件为$\int_{-\infty}^{+\infty} \phi(\nu - \nu_0) \dd\nu = 1$。在燃烧诊断中，主要的线型展宽机制包括：</p>
+<p><strong>高斯展宽（多普勒展宽）</strong>：由气体分子的热运动引起，其线型函数为高斯函数：
+</p>
+$$
 \phi_G(\nu) = \frac{2}{\Delta \nu_G} \sqrt{\frac{\ln 2}{\pi}} \exp\left[-4\ln 2 \left(\frac{\nu - \nu_0}{\Delta \nu_G}\right)^2\right]
-$$<p>其中多普勒半高全宽$\Delta \nu_G$为：</p>$$
+$$<p>
+其中多普勒半高全宽$\Delta \nu_G$为：
+</p>
+$$
 \Delta \nu_G = \nu_0 \sqrt{\frac{8kT \ln 2}{mc^2}} = 7.1623 \times 10^{-7} \nu_0 \sqrt{\frac{T}{M}}
-$$<p>其中$m$为分子质量，$M$为分子量。</p><p><strong>洛伦兹展宽（碰撞展宽）</strong>：由分子间的碰撞引起，其线型函数为洛伦兹函数：</p>$$
+$$<p>
+其中$m$为分子质量，$M$为分子量。</p>
+<p><strong>洛伦兹展宽（碰撞展宽）</strong>：由分子间的碰撞引起，其线型函数为洛伦兹函数：
+</p>
+$$
 \phi_L(\nu) = \frac{1}{\pi} \frac{\Delta \nu_L/2}{(\nu - \nu_0)^2 + (\Delta \nu_L/2)^2}
-$$<p>其中碰撞展宽半高全宽$\Delta \nu_L$与压力$P$的关系为：</p>$$
+$$<p>
+其中碰撞展宽半高全宽$\Delta \nu_L$与压力$P$的关系为：
+</p>
+$$
 \Delta \nu_L = P \sum_i X_i \cdot 2\gamma_{i}(T_0) \left(\frac{T_0}{T}\right)^{n_i}
-$$<p>其中$\gamma_i$为第$i$种碰撞配偶体的碰撞展宽系数，$n_i$为其温度指数。</p><p>在常压高温火焰中（如1 atm，2000 K），多普勒展宽与碰撞展宽量级相当，因此必须采用<strong>Voigt线型</strong>——即高斯函数与洛伦兹函数的卷积：</p>$$
+$$<p>
+其中$\gamma_i$为第$i$种碰撞配偶体的碰撞展宽系数，$n_i$为其温度指数。</p>
+<p>在常压高温火焰中（如1 atm，2000 K），多普勒展宽与碰撞展宽量级相当，因此必须采用<strong>Voigt线型</strong>——即高斯函数与洛伦兹函数的卷积：
+</p>
+$$
 \phi_V(\nu) = \int_{-\infty}^{+\infty} \phi_G(\nu') \phi_L(\nu - \nu') \dd\nu'
-$$<p>Voigt线型没有解析表达式，通常采用数值方法进行快速计算。</p><h4 id=双线玻尔兹曼测温法>双线玻尔兹曼测温法</h4><p>由式<a href=#eq:integrated_absorbance data-reference-type=eqref data-reference=eq:integrated_absorbance>[eq:integrated_absorbance]</a>可知，对于同一种分子在同一压力、同一条光程路径上的两条吸收谱线（分别记为谱线1和谱线2），其积分吸光度之比为：</p>$$
+$$<p>
+Voigt线型没有解析表达式，通常采用数值方法进行快速计算。</p>
+<h4 id="双线玻尔兹曼测温法">双线玻尔兹曼测温法</h4>
+<p>由式<a href="#eq:integrated_absorbance" data-reference-type="eqref" data-reference="eq:integrated_absorbance">[eq:integrated_absorbance]</a>可知，对于同一种分子在同一压力、同一条光程路径上的两条吸收谱线（分别记为谱线1和谱线2），其积分吸光度之比为：
+</p>
+$$
 \frac{A_1}{A_2} = \frac{S_1(T)}{S_2(T)}
-$$<p>这表明，两条谱线的积分吸光度之比仅取决于温度$T$，而与气体浓度、压力、光程无关。将式<a href=#eq:line_strength data-reference-type=eqref data-reference=eq:line_strength>[eq:line_strength]</a>代入上式，可得：</p>$$
+$$<p>
+这表明，两条谱线的积分吸光度之比仅取决于温度$T$，而与气体浓度、压力、光程无关。将式<a href="#eq:line_strength" data-reference-type="eqref" data-reference="eq:line_strength">[eq:line_strength]</a>代入上式，可得：
+</p>
+$$
 \frac{A_1}{A_2} = \frac{S_1(T_0)}{S_2(T_0)} \cdot \exp\left[-\frac{hc}{k} \frac{(E''_1 - E''_2)}{T} + \frac{hc}{k} \frac{(E''_1 - E''_2)}{T_0}\right]
-$$<p>对式<a href=#eq:boltzmann_ratio data-reference-type=eqref data-reference=eq:boltzmann_ratio>[eq:boltzmann_ratio]</a>取自然对数并整理，可得温度的显式表达式：</p>$$
+$$<p>
+对式<a href="#eq:boltzmann_ratio" data-reference-type="eqref" data-reference="eq:boltzmann_ratio">[eq:boltzmann_ratio]</a>取自然对数并整理，可得温度的显式表达式：
+</p>
+$$
 T = \frac{\frac{hc}{k} (E''_2 - E''_1)}{\ln\left(\frac{A_1}{A_2}\right) - \ln\left(\frac{S_1(T_0)}{S_2(T_0)}\right) + \frac{hc}{k} \frac{E''_1 - E''_2}{T_0}}
-$$<p>这就是<strong>双线玻尔兹曼测温法</strong>的基本原理。</p><h3 id=tdlas光学测量硬件>TDLAS光学测量硬件</h3><h4 id=激光源与控制器>激光源与控制器</h4><p>激光器选用NTT NLK1B5GAAA型蝶形封装DFB激光器，中心波长1398 nm，输出功率$>$10 mW。激光器安装于定制亚克力透明保护盒内，并固定在光学平台上，移动或接线操作前，必须确认固定螺丝已拧紧，光纤连接器无应力拉扯；驱动模集成TEC温度控制回路与低噪声电流驱动回路。</p><p><strong>TEC温度控制原理</strong>：激光二极管的激射波长对温度高度敏感，典型温度调谐系数约为$0.1~\text{nm/K}$（对应约$0.5~\text{cm}^{-1}\text{/K}$）。温度每变化$0.1^\circ$C，波长漂移约0.01 nm，足以使吸收峰偏离目标位置半个线宽。因此，精确的温度稳定是波长锁定的前提。</p><p>TEC控温系统的工作原理：TEC模块基于佩尔捷效应（Peltier Effect），通过改变流过PN结的电流方向实现制冷或加热。LDC-3900内部集成PID反馈控制回路，以热敏电阻的阻值（与温度呈负相关）为反馈信号，与设定温度对应的目标阻值进行比较，误差信号经PID运算后驱动TEC模块工作。该系统的温度稳定度优于$\pm 0.005^\circ$C，对应波长漂移小于$\pm 0.0005$ nm，远小于吸收谱线的半高宽（$\sim$0.02 nm），满足精密吸收光谱测量对波长稳定性的要求。</p><figure><img src=figures/image39.png alt=DFB激光器实物图><figcaption>DFB激光器实物图</figcaption></figure><h4 id=波长选线与光谱仿真>波长选线与光谱仿真</h4><p>激光器的工作波长需精确匹配目标吸收谱线，因此首先需要通过光谱仿真确定最优谱线对。本研究利用实验室自主开发的<strong>Flame Spectrum仿真平台</strong>（基于HITRAN API接口开发）开展光谱仿真工作。</p><h5 id=仿真设置>仿真设置</h5><p>Flame Spectrum平台底层调用HITRAN 2020分子光谱数据库，基于逐线积分（Line-by-Line）方法计算给定温度、压力、光程和组分条件下的理论吸收光谱。仿真参数设置如下：</p><ul><li><p>波段范围：7150–7160 cm$^{-1}$（覆盖目标水吸收线对及其邻近干扰线）</p></li><li><p>温度序列：1500 K、2000 K、2500 K、3000 K（覆盖本研究的全部目标温度范围）</p></li><li><p>压力：1 atm（常压平面炉实验条件）</p></li><li><p>吸收光程：4 cm（对应火焰直径约40 mm）</p></li><li><p>组分：H$_2$O摩尔分数设为5%（典型甲烷/空气平面炉燃烧产物中H$_2$O浓度水平），N$_2$为平衡气</p></li><li><p>仪器展宽：设为0.02 cm$^{-1}$（高斯线型，模拟DFB激光器线宽和标准具响应）</p></li><li><p>波长步长：$5 \times 10^{-5}$ cm$^{-1}$（确保每个谱线有足够的采样点用于拟合）</p></li></ul><p>仿真输出为各温度条件下H$_2$O吸收光谱的吸光度随波数变化的理论曲线。</p><h5 id=仿真结果与谱线选择>仿真结果与谱线选择</h5><p>图 4.2展示了四个不同温度条件下7153–7155 cm$^{-1}$波段的理论吸收光谱（H$_2$O分子，1 atm，4 cm光程）。</p><figure><img src=figures/image21.png alt=多个温度下H2O吸收光谱仿真><figcaption>多个温度下H2O吸收光谱仿真</figcaption></figure><h4 id=谱线选择策略>谱线选择策略</h4><p>为了获得高精度的温度测量，谱线对的选择需遵循以下原则：</p><ol><li><p><strong>低态能级差尽可能大</strong>：$\Delta E&rsquo;&rsquo;$越大，温度灵敏度$\dd R/\dd T$越高，其中$R = A_1/A_2$为面积比。</p></li><li><p><strong>两条谱线波长相近</strong>：便于单次激光扫描同时覆盖两条谱线，避免激光功率漂移和环境变化引入的系统误差。</p></li><li><p><strong>谱线强度适中</strong>：在目标温度范围内两条谱线均具有较强的吸收信号，且不受其他邻近谱线干扰。</p></li><li><p><strong>光谱参数精确已知</strong>：$S(T_0)$和$E&rsquo;&rsquo;$在HITRAN/HITEMP数据库中准确可靠。</p></li></ol><p>基于仿真结果，最终选定的目标谱线对为：</p><ul><li><p><strong>高温峰</strong>：7153.75 cm$^{-1}$，低态能级$E&rsquo;&rsquo;=2552.9$ cm$^{-1}$</p></li><li><p><strong>低温峰</strong>：7154.35 cm$^{-1}$，低态能级$E&rsquo;&rsquo;=1789.0$ cm$^{-1}$</p></li></ul><p>二者低态能级差$\Delta E&rsquo;&rsquo; \approx 763.9$ cm$^{-1}$，在1000–3000 K范围内具有优异的温度灵敏度。</p><p>仿真结果揭示了以下关键特征：</p><ol><li><p><strong>谱线强度随温度的变化</strong>：低温峰（7154.35 cm$^{-1}$）在1500 K时强度显著高于高温峰（7153.75 cm$^{-1}$），二者面积比$R$较大；随着温度升高至3000 K，高温峰强度快速增长，低温峰强度相对下降，面积比$R$逐渐趋近于1。该变化趋势验证了所选谱线对在1000–3000 K范围内的温度敏感性。</p></li><li><p><strong>干扰峰识别</strong>：在7153.8 cm$^{-1}$处（高温峰高波数侧约0.05 cm$^{-1}$位置）存在一个极弱的相邻干扰峰。该峰在各温度条件下均有出现，其强度随温度升高而略有增加，但始终低于主峰强度的2%–3%。该干扰峰源于H$_2$O分子的邻近跃迁线，在常压条件下因碰撞展宽与主峰发生部分重叠。</p></li><li><p><strong>谱线重叠程度</strong>：在3000 K高温条件下，由于多普勒展宽和碰撞展宽均增大，两条目标谱线的半高宽分别增至约0.08 cm$^{-1}$和0.09 cm$^{-1}$，二者中心间距约0.60 cm$^{-1}$，约为半高宽的7倍，相互重叠程度较低，可独立拟合。但邻近干扰峰（7153.8 cm$^{-1}$）距离高温峰仅0.05 cm$^{-1}$，在拟合过程中不可忽略——若采用标准双峰模型而不考虑该弱峰，会导致高温峰积分面积被高估约3%–5%，进而使温度反演结果偏低约2%–3%（在2500 K工况下）。因此，在实际数据处理中需采用三峰模型或适当缩小拟合窗口边界。</p></li></ol><h4 id=波长锁定流程>波长锁定流程</h4><p>基于上述仿真确定的谱线对，激光器的激射波长需精确锁定至目标位置。波长由温度和电流共同决定，温度调谐系数约为$0.5~\text{cm}^{-1}/^\circ\text{C}$（粗调），电流调谐系数约为$0.02~\text{cm}^{-1}/\text{mA}$（精调）。波长锁定的具体流程如下：</p><ol><li><p><strong>温度粗扫</strong>：将激光器电流固定在一个中间值（$I=50$ mA），温度从$10^\circ$C至$30^\circ$C以$0.5^\circ$C步长步进扫描，将观测到的吸收峰位置与仿真光谱进行比对，初步定位目标波长对应的温度区间。</p></li><li><p><strong>电流精调与锁定</strong>：在粗扫确定的温度附近（15–$16^\circ$C范围内），以$0.05^\circ$C为步长微调温度，同时以0.1 mA为步长微调电流，观察目标水吸收线的位置和强度变化，直至观测到的吸收峰位置与HITRAN仿真结果的偏差小于0.005 cm$^{-1}$。</p></li><li><p><strong>锁定验证</strong>：在锁定温度/电流条件下连续采集30分钟吸收光谱，每隔1分钟记录一次吸收峰的峰值位置和面积，计算波长漂移的标准差。若标准差小于0.001 cm$^{-1}$（对应温度波动$&lt;$0.01$^\circ$C），则确认波长锁定有效。</p></li></ol><p>经过上述流程的反复调谐与验证，最终锁定工作点为<strong>$T=15.6^\circ$C，$I=50.9$ mA</strong>。在该工作点下，激光器输出中心波长稳定在<strong>1397.824 nm</strong>（真空波数对应7154.35 cm$^{-1}$），扫描电流范围（40–60 mA，对应波长扫描范围约$\pm$0.3 nm）可完整覆盖7153.5至7155.0 cm$^{-1}$区间，同时捕获高温峰（7153.75 cm$^{-1}$）和低温峰（7154.35 cm$^{-1}$）。</p><h3 id=光路搭建>光路搭建</h3><p>激光输出经FC/APC光纤跳线出射，首先经过<strong>1×3光纤分束器</strong>将光线分为三路，分别服务于不同的功能需求：</p><ol><li><p><strong>测量光路（主光路，占比约80%）</strong>：作为测量光束穿过待测火焰区域，携带吸收光谱信息后被光电探测器接收。该路光是整个TDLAS系统的核心信号通道。</p></li><li><p><strong>背景光路（参考光路1，占比约10%）</strong>：不经待测区域直接进入探测器，用于实时监测激光器出射光强的波动，作为吸收光谱计算的背景参考，以消除激光器自身功率漂移对测量精度的影响。</p></li><li><p><strong>标准具光路（参考光路2，占比约10%）</strong>：经过自行研制的光纤干涉器件（详见下文“标准具制作”小节），产生等波数间隔的干涉条纹，用于后续的光谱波数标定。</p></li></ol><p>在完成分光后，测量光路首先经过两个镀金反射镜（保护银膜，反射率$>$<a href=mailto:98%25@1.4>98%@1.4</a>$\mu$m）。采用双反射镜组合可实现X-Y二维平移调节，确保光束在穿过待测火焰区域时始终保持水平，且光路与光学平台边缘平行，便于后续光路元件的装调。</p><p>光束经反射镜调整指向后，进入<strong>光束扩展与缩束系统</strong>。光纤出射的激光束腰直径约为5 mm，发散角较大，直接用于火焰测量时空间分辨率不足。本研究采用伽利略型望远镜结构实现光束压缩：组合透镜依次为凹透镜（$f=-25$ mm）和两组凸透镜（$f=75$ mm，$f=150$ mm）。凹透镜首先将光束进一步发散，随后由第一凸透镜初步汇聚，第二凸透镜完成最终聚焦。该设计可在不引入额外球差的前提下将光斑压缩至目标尺寸。经红外CCD相机（FLIR Boson 640，响应波段0.9–2.5$\mu$m）监测确认，焦点处光斑直径约<strong>0.8 mm</strong>，足以解析厚度约2–3 mm的火焰内部温度梯度。光束经过待测火焰区域后，由另一端的光电探测器接收，完成测量光路的信号采集。</p><h4 id=标准具制作>标准具制作</h4><p>传统的法布里-珀罗标准具（Fabry-Pérot Etalon）由两块平行高反镜组成，利用多光束干涉原理产生等光学频率间隔的透射峰，是TDLAS系统中实现波数标定的核心器件。然而，传统标准具在使用过程中需要将激光束严格垂直入射至标准具镜面，光路调节复杂且对机械振动敏感，每次实验前均需耗费大量时间进行角度校准。</p><p>为简化实验操作、提高系统集成度，本研究自行研制了一种基于光纤的<strong>光纤干涉器件</strong>，用于替代传统F-P标准具。其原理如图 4.3所示：利用1×2光纤分束器将入射激光分为两路，两路光纤长度不同，存在固定的光程差$\Delta L$。两路光经合束器重新汇合后，由于两束光的光程差固定，在输出端会形成稳定的干涉，其干涉条纹的频率间隔由光程差$\Delta L$唯一确定：</p>$$
+$$<p>
+这就是<strong>双线玻尔兹曼测温法</strong>的基本原理。</p>
+<h3 id="tdlas光学测量硬件">TDLAS光学测量硬件</h3>
+<h4 id="激光源与控制器">激光源与控制器</h4>
+<p>激光器选用NTT NLK1B5GAAA型蝶形封装DFB激光器，中心波长1398 nm，输出功率$&gt;$<!-- -->10 mW。激光器安装于定制亚克力透明保护盒内，并固定在光学平台上，移动或接线操作前，必须确认固定螺丝已拧紧，光纤连接器无应力拉扯；驱动模集成TEC温度控制回路与低噪声电流驱动回路。</p>
+<p><strong>TEC温度控制原理</strong>：激光二极管的激射波长对温度高度敏感，典型温度调谐系数约为$0.1~\text{nm/K}$（对应约$0.5~\text{cm}^{-1}\text{/K}$）。温度每变化$0.1^\circ$C，波长漂移约0.01 nm，足以使吸收峰偏离目标位置半个线宽。因此，精确的温度稳定是波长锁定的前提。</p>
+<p>TEC控温系统的工作原理：TEC模块基于佩尔捷效应（Peltier Effect），通过改变流过PN结的电流方向实现制冷或加热。LDC-3900内部集成PID反馈控制回路，以热敏电阻的阻值（与温度呈负相关）为反馈信号，与设定温度对应的目标阻值进行比较，误差信号经PID运算后驱动TEC模块工作。该系统的温度稳定度优于$\pm 0.005^\circ$C，对应波长漂移小于$\pm 0.0005$ nm，远小于吸收谱线的半高宽（$\sim$<!-- -->0.02 nm），满足精密吸收光谱测量对波长稳定性的要求。</p>
+<figure><img src="figures/image39.png" alt="DFB激光器实物图" /><figcaption>DFB激光器实物图</figcaption></figure>
+<h4 id="波长选线与光谱仿真">波长选线与光谱仿真</h4>
+<p>激光器的工作波长需精确匹配目标吸收谱线，因此首先需要通过光谱仿真确定最优谱线对。本研究利用实验室自主开发的<strong>Flame Spectrum仿真平台</strong>（基于HITRAN API接口开发）开展光谱仿真工作。</p>
+<h5 id="仿真设置">仿真设置</h5>
+<p>Flame Spectrum平台底层调用HITRAN 2020分子光谱数据库，基于逐线积分（Line-by-Line）方法计算给定温度、压力、光程和组分条件下的理论吸收光谱。仿真参数设置如下：</p>
+<ul>
+<li>
+<p>波段范围：7150–7160 cm$^{-1}$（覆盖目标水吸收线对及其邻近干扰线）</p>
+</li>
+<li>
+<p>温度序列：1500 K、2000 K、2500 K、3000 K（覆盖本研究的全部目标温度范围）</p>
+</li>
+<li>
+<p>压力：1 atm（常压平面炉实验条件）</p>
+</li>
+<li>
+<p>吸收光程：4 cm（对应火焰直径约40 mm）</p>
+</li>
+<li>
+<p>组分：H$_2$O摩尔分数设为5%（典型甲烷/空气平面炉燃烧产物中H$_2$O浓度水平），N$_2$为平衡气</p>
+</li>
+<li>
+<p>仪器展宽：设为0.02 cm$^{-1}$（高斯线型，模拟DFB激光器线宽和标准具响应）</p>
+</li>
+<li>
+<p>波长步长：$5 \times 10^{-5}$ cm$^{-1}$（确保每个谱线有足够的采样点用于拟合）</p>
+</li>
+</ul>
+<p>仿真输出为各温度条件下H$_2$O吸收光谱的吸光度随波数变化的理论曲线。</p>
+<h5 id="仿真结果与谱线选择">仿真结果与谱线选择</h5>
+<p>图 4.2展示了四个不同温度条件下7153–7155 cm$^{-1}$波段的理论吸收光谱（H$_2$O分子，1 atm，4 cm光程）。</p>
+<figure><img src="figures/image21.png" alt="多个温度下H2O吸收光谱仿真" /><figcaption>多个温度下H2O吸收光谱仿真</figcaption></figure>
+<h4 id="谱线选择策略">谱线选择策略</h4>
+<p>为了获得高精度的温度测量，谱线对的选择需遵循以下原则：</p>
+<ol>
+<li>
+<p><strong>低态能级差尽可能大</strong>：$\Delta E&rsquo;&rsquo;$越大，温度灵敏度$\dd R/\dd T$越高，其中$R = A_1/A_2$为面积比。</p>
+</li>
+<li>
+<p><strong>两条谱线波长相近</strong>：便于单次激光扫描同时覆盖两条谱线，避免激光功率漂移和环境变化引入的系统误差。</p>
+</li>
+<li>
+<p><strong>谱线强度适中</strong>：在目标温度范围内两条谱线均具有较强的吸收信号，且不受其他邻近谱线干扰。</p>
+</li>
+<li>
+<p><strong>光谱参数精确已知</strong>：$S(T_0)$和$E&rsquo;&rsquo;$在HITRAN/HITEMP数据库中准确可靠。</p>
+</li>
+</ol>
+<p>基于仿真结果，最终选定的目标谱线对为：</p>
+<ul>
+<li>
+<p><strong>高温峰</strong>：7153.75 cm$^{-1}$，低态能级$E&rsquo;&rsquo;=2552.9$ cm$^{-1}$</p>
+</li>
+<li>
+<p><strong>低温峰</strong>：7154.35 cm$^{-1}$，低态能级$E&rsquo;&rsquo;=1789.0$ cm$^{-1}$</p>
+</li>
+</ul>
+<p>二者低态能级差$\Delta E&rsquo;&rsquo; \approx 763.9$ cm$^{-1}$，在1000–3000 K范围内具有优异的温度灵敏度。</p>
+<p>仿真结果揭示了以下关键特征：</p>
+<ol>
+<li>
+<p><strong>谱线强度随温度的变化</strong>：低温峰（7154.35 cm$^{-1}$）在1500 K时强度显著高于高温峰（7153.75 cm$^{-1}$），二者面积比$R$较大；随着温度升高至3000 K，高温峰强度快速增长，低温峰强度相对下降，面积比$R$逐渐趋近于1。该变化趋势验证了所选谱线对在1000–3000 K范围内的温度敏感性。</p>
+</li>
+<li>
+<p><strong>干扰峰识别</strong>：在7153.8 cm$^{-1}$处（高温峰高波数侧约0.05 cm$^{-1}$位置）存在一个极弱的相邻干扰峰。该峰在各温度条件下均有出现，其强度随温度升高而略有增加，但始终低于主峰强度的2%–3%。该干扰峰源于H$_2$O分子的邻近跃迁线，在常压条件下因碰撞展宽与主峰发生部分重叠。</p>
+</li>
+<li>
+<p><strong>谱线重叠程度</strong>：在3000 K高温条件下，由于多普勒展宽和碰撞展宽均增大，两条目标谱线的半高宽分别增至约0.08 cm$^{-1}$和0.09 cm$^{-1}$，二者中心间距约0.60 cm$^{-1}$，约为半高宽的7倍，相互重叠程度较低，可独立拟合。但邻近干扰峰（7153.8 cm$^{-1}$）距离高温峰仅0.05 cm$^{-1}$，在拟合过程中不可忽略——若采用标准双峰模型而不考虑该弱峰，会导致高温峰积分面积被高估约3%–5%，进而使温度反演结果偏低约2%–3%（在2500 K工况下）。因此，在实际数据处理中需采用三峰模型或适当缩小拟合窗口边界。</p>
+</li>
+</ol>
+<h4 id="波长锁定流程">波长锁定流程</h4>
+<p>基于上述仿真确定的谱线对，激光器的激射波长需精确锁定至目标位置。波长由温度和电流共同决定，温度调谐系数约为$0.5~\text{cm}^{-1}/^\circ\text{C}$（粗调），电流调谐系数约为$0.02~\text{cm}^{-1}/\text{mA}$（精调）。波长锁定的具体流程如下：</p>
+<ol>
+<li>
+<p><strong>温度粗扫</strong>：将激光器电流固定在一个中间值（$I=50$ mA），温度从$10^\circ$C至$30^\circ$C以$0.5^\circ$C步长步进扫描，将观测到的吸收峰位置与仿真光谱进行比对，初步定位目标波长对应的温度区间。</p>
+</li>
+<li>
+<p><strong>电流精调与锁定</strong>：在粗扫确定的温度附近（15–$16^\circ$C范围内），以$0.05^\circ$C为步长微调温度，同时以0.1 mA为步长微调电流，观察目标水吸收线的位置和强度变化，直至观测到的吸收峰位置与HITRAN仿真结果的偏差小于0.005 cm$^{-1}$。</p>
+</li>
+<li>
+<p><strong>锁定验证</strong>：在锁定温度/电流条件下连续采集30分钟吸收光谱，每隔1分钟记录一次吸收峰的峰值位置和面积，计算波长漂移的标准差。若标准差小于0.001 cm$^{-1}$（对应温度波动$&lt;$<!-- -->0.01$^\circ$C），则确认波长锁定有效。</p>
+</li>
+</ol>
+<p>经过上述流程的反复调谐与验证，最终锁定工作点为<strong>$T=15.6^\circ$C，$I=50.9$ mA</strong>。在该工作点下，激光器输出中心波长稳定在<strong>1397.824 nm</strong>（真空波数对应7154.35 cm$^{-1}$），扫描电流范围（40–60 mA，对应波长扫描范围约$\pm$<!-- -->0.3 nm）可完整覆盖7153.5至7155.0 cm$^{-1}$区间，同时捕获高温峰（7153.75 cm$^{-1}$）和低温峰（7154.35 cm$^{-1}$）。</p>
+<h3 id="光路搭建">光路搭建</h3>
+<p>激光输出经FC/APC光纤跳线出射，首先经过<strong>1×3光纤分束器</strong>将光线分为三路，分别服务于不同的功能需求：</p>
+<ol>
+<li>
+<p><strong>测量光路（主光路，占比约80%）</strong>：作为测量光束穿过待测火焰区域，携带吸收光谱信息后被光电探测器接收。该路光是整个TDLAS系统的核心信号通道。</p>
+</li>
+<li>
+<p><strong>背景光路（参考光路1，占比约10%）</strong>：不经待测区域直接进入探测器，用于实时监测激光器出射光强的波动，作为吸收光谱计算的背景参考，以消除激光器自身功率漂移对测量精度的影响。</p>
+</li>
+<li>
+<p><strong>标准具光路（参考光路2，占比约10%）</strong>：经过自行研制的光纤干涉器件（详见下文“标准具制作”小节），产生等波数间隔的干涉条纹，用于后续的光谱波数标定。</p>
+</li>
+</ol>
+<p>在完成分光后，测量光路首先经过两个镀金反射镜（保护银膜，反射率$&gt;$<!-- --><a href="mailto:98%25@1.4">98%@1.4</a>$\mu$m）。采用双反射镜组合可实现X-Y二维平移调节，确保光束在穿过待测火焰区域时始终保持水平，且光路与光学平台边缘平行，便于后续光路元件的装调。</p>
+<p>光束经反射镜调整指向后，进入<strong>光束扩展与缩束系统</strong>。光纤出射的激光束腰直径约为5 mm，发散角较大，直接用于火焰测量时空间分辨率不足。本研究采用伽利略型望远镜结构实现光束压缩：组合透镜依次为凹透镜（$f=-25$ mm）和两组凸透镜（$f=75$ mm，$f=150$ mm）。凹透镜首先将光束进一步发散，随后由第一凸透镜初步汇聚，第二凸透镜完成最终聚焦。该设计可在不引入额外球差的前提下将光斑压缩至目标尺寸。经红外CCD相机（FLIR Boson 640，响应波段0.9–2.5$\mu$m）监测确认，焦点处光斑直径约<strong>0.8 mm</strong>，足以解析厚度约2–3 mm的火焰内部温度梯度。光束经过待测火焰区域后，由另一端的光电探测器接收，完成测量光路的信号采集。</p>
+<h4 id="标准具制作">标准具制作</h4>
+<p>传统的法布里-珀罗标准具（Fabry-Pérot Etalon）由两块平行高反镜组成，利用多光束干涉原理产生等光学频率间隔的透射峰，是TDLAS系统中实现波数标定的核心器件。然而，传统标准具在使用过程中需要将激光束严格垂直入射至标准具镜面，光路调节复杂且对机械振动敏感，每次实验前均需耗费大量时间进行角度校准。</p>
+<p>为简化实验操作、提高系统集成度，本研究自行研制了一种基于光纤的<strong>光纤干涉器件</strong>，用于替代传统F-P标准具。其原理如图 4.3所示：利用1×2光纤分束器将入射激光分为两路，两路光纤长度不同，存在固定的光程差$\Delta L$。两路光经合束器重新汇合后，由于两束光的光程差固定，在输出端会形成稳定的干涉，其干涉条纹的频率间隔由光程差$\Delta L$唯一确定：
+</p>
+$$
 \Delta \nu = \frac{c}{\Delta L}
-$$<p>其中$c$为光速，$\Delta L$为两路光纤的光程差。设计光程差$\Delta L \approx 20$ cm时，对应的频率间隔$\Delta \nu \approx 1.5$ GHz（约0.05 cm$^{-1}$），可满足TDLAS波长扫描的标定需求。</p><p>与传统F-P标准具相比，该光纤干涉方案具有以下优势：第一，全光纤结构无空间光路，无需光学调节，即插即用；第二，光纤器件对振动不敏感，长期稳定性优异；第三，体积小巧，可集成于实验光路中不额外占用空间。</p><p>然而，简单的分光合束方案存在一个关键问题：普通光纤分束器不具备方向选择性，在将光一分为二再合二为一的过程中，两路光纤内部会产生反向传输的反射光，导致输出端同时存在正向干涉信号和反向传输的杂散光，使干涉信号被淹没。为解决这一问题，本设计在每一路光纤支路上均串入<strong>光纤环形器（Fiber Circulator）</strong>。环形器的端口特性保证了光信号沿确定方向单向传输——光从端口1进入，由端口2输出；从端口2返回的光由端口3输出，不会反向进入端口1。通过环形器的引入，彻底消除了反向传输光对正向干涉信号的干扰，使干涉器具有了明确的输入端和输出端。</p><p>此外，由于光纤干涉的稳定性高度依赖两路光程差的恒定，即使温度变化导致光纤热胀冷缩引入微米级长度变化，也会导致干涉条纹的漂移。因此，在器件调试完成、确认干涉信号稳定后，使用光学胶将所有光纤连接器及尾纤段固定在铝制基板上，确保光程差不受外界振动和温度波动的影响。</p><figure><img src=figures/image33.png alt=光纤干涉器件原理示意图><figcaption>光纤干涉器件原理示意图</figcaption></figure><p>图 4.6为自制标准具的测试结果。</p><figure><figure><p><img src=figures/image34.png alt=image></p></figure><figure><p><img src=figures/image35.png alt=image></p></figure><figcaption>标准具测试结果</figcaption></figure><h4 id=信号探测与跨阻放大器>信号探测与跨阻放大器</h4><p>信号探测与放大链路是TDLAS系统中决定信噪比和测量精度的关键环节。本项目的探测系统分为两个阶段：前期采用商业探测器完成单通道验证实验，后期根据多通道并行测量的需求自行研制探测器模块。</p><p>初始阶段，光电探测器采用Thorlabs PDA20CS2型InGaAs放大接收器，响应波段覆盖700–2200 nm，内置可切换增益（50/150 dB$\Omega$），无需外置放大器即可直接输出放大后的电压信号。该探测器在本项目初期的单通道验证实验中表现良好，足以满足10 kHz扫描频率下的吸收光谱采集需求。</p><p>然而，随着后续实验向高空间分辨率方向推进，计划采用1分16光纤束实现16通道并行光谱采集，每个通道需要独立的光电探测器和跨阻放大器（TIA）。继续使用Thorlabs商业探测器将面临两个问题：一是16通道的设备成本过高（单通道售价$\sim$$1000）；二是各通道之间的一致性难以保证（不同探测器之间存在增益差异）。</p><p>因此，在验证单通道方案可行后，项目转向自行研制探测器模块。光电探测器件选用2$\mu$m InGaAs PIN光电二极管（感光面直径0.5 mm，响应度$>$0.9 A/W @ 1.4$\mu$m），由用户自行封装在FC光纤接口底座内。跨阻放大器（TIA）负责将光电二极管输出的微弱光电流（$\mu$A级）转换为电压信号供数据采集卡读取。</p><p>跨阻放大器选型论证如下：考虑到所有TIA均采用双电源供电方案（$\pm$5V），提供可调的反馈偏压，以适应光电二极管对反向偏压的需求（适当的反向偏压可降低结电容、提高响应速度）。具体选型对比见表 4.1。</p><div id=tab:tia_selection><table><thead><tr><th style=text-align:center><strong>型号</strong></th><th style=text-align:center><strong>增益带宽积/带宽</strong></th><th style=text-align:center><strong>输入电压噪声</strong></th><th style=text-align:center><strong>偏置电流</strong></th><th style=text-align:center><strong>决策</strong></th></tr></thead><tbody><tr><td style=text-align:center>AD825模块</td><td style=text-align:center>$\sim$35 kHz</td><td style=text-align:center>低</td><td style=text-align:center>低</td><td style=text-align:center>否决（带宽不足）</td></tr><tr><td style=text-align:center>TLC2201双电源V2.0</td><td style=text-align:center>$\sim$1 MHz</td><td style=text-align:center>未公开</td><td style=text-align:center>未公开</td><td style=text-align:center><strong>采用</strong></td></tr><tr><td style=text-align:center>OPA657模块</td><td style=text-align:center>350 MHz（GBP）</td><td style=text-align:center>4.8 nV/$\sqrt{\text{Hz}}$</td><td style=text-align:center>2 pA</td><td style=text-align:center>备选</td></tr></tbody></table><p>跨阻放大器（TIA）选型对比</p></div><p>TLC2201双电源V2.0版（增益带宽积$\sim$1 MHz）被采用作为主选方案，经实测在10 kHz扫描速率下吸收峰半高宽（FWHM）相比100 Hz低频基准展宽小于3%，满足当前实验需求；OPA657模块（350 MHz GBP）作为高带宽备选方案。</p><p>为实现16通道并行采集，基于前期的单通道验证经验，设计并制作了标准化探测器模块。单通道模块的基板采用5 mm厚亚克力板，在板上加工三种孔位：</p><ol><li><p><strong>光电探测器安装孔</strong>：孔径5 mm（略大于探测器外壳直径4.7 mm，但小于其法兰直径5.4 mm），确保探测器可从正面嵌入并卡紧。探测器用光学胶固定于孔中，保证其感光面与亚克力板表面平齐。</p></li><li><p><strong>FC光纤接头底座固定孔</strong>：采用M2螺丝固定FC底座，孔间距严格按FC标准（两孔中心距60 mm）加工，确保光纤接头与探测器感光面精确对中。</p></li><li><p><strong>TIA模块固定孔</strong>：根据TLC2201模块的实际尺寸（40 mm $\times$ 50 mm）和固定螺孔位置（29 mm $\times$ 37 mm间距）在基板对应位置加工通孔，用M3尼龙螺柱将TIA模块架空固定在亚克力板上方，避免电路板与基板直接接触造成短路。</p></li></ol><p>该设计的核心优势在于：探测器、光纤接头和TIA三者的相对位置由亚克力基板的加工精度（$\pm$0.1 mm）一次性保证，后续多通道制作时仅需复制同一张图纸即可保证所有通道的一致性。单通道模块的实物如图 4.9所示。</p><figure><figure><p><img src=figures/image38.png alt=image></p></figure><figure><p><img src=figures/image36.png alt=image></p></figure><figcaption>探测器实物图与自制探测器测试图</figcaption></figure><p>模块组装完成后，需通过实际光路测试验证其性能指标：光纤耦合效率（通过调节FC接头角度使探测器输出信号最大化）、暗噪声水平（遮光条件下TIA输出电压的均方根值）以及10 kHz扫描下的信号信噪比。单通道验证通过后，将复制该设计制作16通道阵列，配合1×16光纤束实现多通道并行光谱采集。</p><p>数据采集卡采用NI USB-6361（16位分辨率，2 MS/s采样率），同步采集测量光路信号（16通道）、标准具干涉信号（1通道）以及伺服电机编码器位置信号（X/Y轴），实现光谱数据与空间位置的一一对应。</p><h3 id=tdlas数据处理>TDLAS数据处理</h3><p>基于上述TDLAS测量原理，本节详细介绍从原始采集信号到最终温度场输出的完整数据处理流程。</p><h4 id=原始信号预处理模块>原始信号预处理模块</h4><p>预处理模块包含两个核心功能。</p><p>第一，多周期平均——以激光器的扫描同步触发信号（TTL）为基准，截取单个扫描周期的原始数据，对300个连续周期的数据进行整体平均，消除随机白噪声（信噪比可提升10倍）。</p><p>第二，背景基线扣除——采用非吸收区域多项式拟合方法，选取扫描波数范围的两端（7153.3–7153.5 cm$^{-1}$和7154.8–7155.0 cm$^{-1}$），这些波段无H$_2$O强吸收，利用三阶多项式拟合基线，再对整个扫描范围内的原始信号进行归一化，从根本上避免了“负峰”错误。此步骤的物理依据是：式<a href=#eq:beer_lambert data-reference-type=eqref data-reference=eq:beer_lambert>[eq:beer_lambert]</a>中基线$I_0$应为无吸收时的激光光强，准确扣除基线是获得精确积分吸光度$A$的前提。</p><figure><img src=figures/image40.png alt=背景基线扣除前后对比><figcaption>背景基线扣除前后对比</figcaption></figure><h4 id=fsr波数转换模块>FSR波数转换模块</h4><h5 id=非线性问题的来源>非线性问题的来源</h5><p>在TDLAS测量中，激光器通常采用电流调谐方式实现波长扫描——通过施加正弦波或三角波驱动电流，使激光器输出波长在目标吸收线附近往复扫描。然而，由于激光器在工作过程中温度会发生非线性变化（热电制冷器的响应延迟、环境温度波动等因素），导致激光波长随时间的变化率并非恒定，而是呈非线性漂移。因此，原始采集卡记录的信号在时间域上是等间隔采样的，但在波数域上却是非均匀分布的。若直接使用等间隔假设进行数据处理，将导致吸收峰位置偏移、线型畸变，进而使温度反演产生显著误差。</p><p>为了将信号校正为线性波数分布，需要借助一个提供等光学频率间隔基准的参考信号——这通常由法布里-珀罗标准具（Fabry-Pérot Etalon）的等间距干涉条纹实现。通过将吸收光谱的时域采样点映射到标准具的等波数间隔干涉峰上，可以实现从“非均匀波数轴”到“均匀波数轴”的精确转换。</p><h5 id=fsr刻度值计算>FSR刻度值计算</h5><p>在采集到标准具干涉信号后，首先需要通过峰值检测确定各干涉峰的精确位置。具体处理流程如下：</p><ol><li><p><strong>峰检测</strong>：利用Scipy的<code>find_peaks</code>函数，设置最小高度阈值和最小间距，初步识别标准具透射峰的位置$p_0, p_1, \ldots, p_{N-1}$。</p></li><li><p><strong>峰值位置精修</strong>：由于实验采集的信号存在噪声，初步检测的峰位置可能存在微小偏差。为消除这一误差，对每个检测到的干涉峰附近的局部信号进行二次多项式拟合，以拟合曲线的顶点位置作为峰的精确位置。这一处理可将峰位置定位精度提升至亚像素级别。</p><figure><img src=figures/image25.png alt=标准具干涉信号峰值检测与二次拟合精修><figcaption>标准具干涉信号峰值检测与二次拟合精修</figcaption></figure></li><li><p><strong>FSR刻度生成</strong>：赋予每个干涉峰一个线性刻度值$s_i = i$（$i = 0, 1, 2, \ldots, N-1$）。由于相邻干涉峰之间的波数间隔相等，这一线性刻度在波数域上对应于等间距的“频率尺”。</p></li><li><p><strong>插值映射</strong>：对于原始信号中的每一个采样点（全局索引），根据其与相邻峰的位置关系，采用分段线性插值方法计算其对应的FSR刻度值：</p>$$
+$$<p>
+其中$c$为光速，$\Delta L$为两路光纤的光程差。设计光程差$\Delta L \approx 20$ cm时，对应的频率间隔$\Delta \nu \approx 1.5$ GHz（约0.05 cm$^{-1}$），可满足TDLAS波长扫描的标定需求。</p>
+<p>与传统F-P标准具相比，该光纤干涉方案具有以下优势：第一，全光纤结构无空间光路，无需光学调节，即插即用；第二，光纤器件对振动不敏感，长期稳定性优异；第三，体积小巧，可集成于实验光路中不额外占用空间。</p>
+<p>然而，简单的分光合束方案存在一个关键问题：普通光纤分束器不具备方向选择性，在将光一分为二再合二为一的过程中，两路光纤内部会产生反向传输的反射光，导致输出端同时存在正向干涉信号和反向传输的杂散光，使干涉信号被淹没。为解决这一问题，本设计在每一路光纤支路上均串入<strong>光纤环形器（Fiber Circulator）</strong>。环形器的端口特性保证了光信号沿确定方向单向传输——光从端口1进入，由端口2输出；从端口2返回的光由端口3输出，不会反向进入端口1。通过环形器的引入，彻底消除了反向传输光对正向干涉信号的干扰，使干涉器具有了明确的输入端和输出端。</p>
+<p>此外，由于光纤干涉的稳定性高度依赖两路光程差的恒定，即使温度变化导致光纤热胀冷缩引入微米级长度变化，也会导致干涉条纹的漂移。因此，在器件调试完成、确认干涉信号稳定后，使用光学胶将所有光纤连接器及尾纤段固定在铝制基板上，确保光程差不受外界振动和温度波动的影响。</p>
+<figure><img src="figures/image33.png" alt="光纤干涉器件原理示意图" /><figcaption>光纤干涉器件原理示意图</figcaption></figure>
+<p>图 4.6为自制标准具的测试结果。</p>
+<figure>
+<figure>
+<p><img src="figures/image34.png" alt="image" /></p>
+</figure>
+<figure>
+<p><img src="figures/image35.png" alt="image" /></p>
+</figure>
+<figcaption>标准具测试结果</figcaption>
+</figure>
+<h4 id="信号探测与跨阻放大器">信号探测与跨阻放大器</h4>
+<p>信号探测与放大链路是TDLAS系统中决定信噪比和测量精度的关键环节。本项目的探测系统分为两个阶段：前期采用商业探测器完成单通道验证实验，后期根据多通道并行测量的需求自行研制探测器模块。</p>
+<p>初始阶段，光电探测器采用Thorlabs PDA20CS2型InGaAs放大接收器，响应波段覆盖700–2200 nm，内置可切换增益（50/150 dB$\Omega$），无需外置放大器即可直接输出放大后的电压信号。该探测器在本项目初期的单通道验证实验中表现良好，足以满足10 kHz扫描频率下的吸收光谱采集需求。</p>
+<p>然而，随着后续实验向高空间分辨率方向推进，计划采用1分16光纤束实现16通道并行光谱采集，每个通道需要独立的光电探测器和跨阻放大器（TIA）。继续使用Thorlabs商业探测器将面临两个问题：一是16通道的设备成本过高（单通道售价$\sim$$1000）；二是各通道之间的一致性难以保证（不同探测器之间存在增益差异）。</p>
+<p>因此，在验证单通道方案可行后，项目转向自行研制探测器模块。光电探测器件选用2$\mu$m InGaAs PIN光电二极管（感光面直径0.5 mm，响应度$&gt;$<!-- -->0.9 A/W @ 1.4$\mu$m），由用户自行封装在FC光纤接口底座内。跨阻放大器（TIA）负责将光电二极管输出的微弱光电流（$\mu$A级）转换为电压信号供数据采集卡读取。</p>
+<p>跨阻放大器选型论证如下：考虑到所有TIA均采用双电源供电方案（$\pm$<!-- -->5V），提供可调的反馈偏压，以适应光电二极管对反向偏压的需求（适当的反向偏压可降低结电容、提高响应速度）。具体选型对比见表 4.1。</p>
+<div id="tab:tia_selection">
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: center"><strong>型号</strong></th>
+					<th style="text-align: center"><strong>增益带宽积/带宽</strong></th>
+					<th style="text-align: center"><strong>输入电压噪声</strong></th>
+					<th style="text-align: center"><strong>偏置电流</strong></th>
+					<th style="text-align: center"><strong>决策</strong></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: center">AD825模块</td>
+					<td style="text-align: center">$\sim$<!-- -->35 kHz</td>
+					<td style="text-align: center">低</td>
+					<td style="text-align: center">低</td>
+					<td style="text-align: center">否决（带宽不足）</td>
+			</tr>
+			<tr>
+					<td style="text-align: center">TLC2201双电源V2.0</td>
+					<td style="text-align: center">$\sim$<!-- -->1 MHz</td>
+					<td style="text-align: center">未公开</td>
+					<td style="text-align: center">未公开</td>
+					<td style="text-align: center"><strong>采用</strong></td>
+			</tr>
+			<tr>
+					<td style="text-align: center">OPA657模块</td>
+					<td style="text-align: center">350 MHz（GBP）</td>
+					<td style="text-align: center">4.8 nV/$\sqrt{\text{Hz}}$</td>
+					<td style="text-align: center">2 pA</td>
+					<td style="text-align: center">备选</td>
+			</tr>
+	</tbody>
+</table>
+<p>跨阻放大器（TIA）选型对比</p>
+</div>
+<p>TLC2201双电源V2.0版（增益带宽积$\sim$<!-- -->1 MHz）被采用作为主选方案，经实测在10 kHz扫描速率下吸收峰半高宽（FWHM）相比100 Hz低频基准展宽小于3%，满足当前实验需求；OPA657模块（350 MHz GBP）作为高带宽备选方案。</p>
+<p>为实现16通道并行采集，基于前期的单通道验证经验，设计并制作了标准化探测器模块。单通道模块的基板采用5 mm厚亚克力板，在板上加工三种孔位：</p>
+<ol>
+<li>
+<p><strong>光电探测器安装孔</strong>：孔径5 mm（略大于探测器外壳直径4.7 mm，但小于其法兰直径5.4 mm），确保探测器可从正面嵌入并卡紧。探测器用光学胶固定于孔中，保证其感光面与亚克力板表面平齐。</p>
+</li>
+<li>
+<p><strong>FC光纤接头底座固定孔</strong>：采用M2螺丝固定FC底座，孔间距严格按FC标准（两孔中心距60 mm）加工，确保光纤接头与探测器感光面精确对中。</p>
+</li>
+<li>
+<p><strong>TIA模块固定孔</strong>：根据TLC2201模块的实际尺寸（40 mm $\times$ 50 mm）和固定螺孔位置（29 mm $\times$ 37 mm间距）在基板对应位置加工通孔，用M3尼龙螺柱将TIA模块架空固定在亚克力板上方，避免电路板与基板直接接触造成短路。</p>
+</li>
+</ol>
+<p>该设计的核心优势在于：探测器、光纤接头和TIA三者的相对位置由亚克力基板的加工精度（$\pm$<!-- -->0.1 mm）一次性保证，后续多通道制作时仅需复制同一张图纸即可保证所有通道的一致性。单通道模块的实物如图 4.9所示。</p>
+<figure>
+<figure>
+<p><img src="figures/image38.png" alt="image" /></p>
+</figure>
+<figure>
+<p><img src="figures/image36.png" alt="image" /></p>
+</figure>
+<figcaption>探测器实物图与自制探测器测试图</figcaption>
+</figure>
+<p>模块组装完成后，需通过实际光路测试验证其性能指标：光纤耦合效率（通过调节FC接头角度使探测器输出信号最大化）、暗噪声水平（遮光条件下TIA输出电压的均方根值）以及10 kHz扫描下的信号信噪比。单通道验证通过后，将复制该设计制作16通道阵列，配合1×16光纤束实现多通道并行光谱采集。</p>
+<p>数据采集卡采用NI USB-6361（16位分辨率，2 MS/s采样率），同步采集测量光路信号（16通道）、标准具干涉信号（1通道）以及伺服电机编码器位置信号（X/Y轴），实现光谱数据与空间位置的一一对应。</p>
+<h3 id="tdlas数据处理">TDLAS数据处理</h3>
+<p>基于上述TDLAS测量原理，本节详细介绍从原始采集信号到最终温度场输出的完整数据处理流程。</p>
+<h4 id="原始信号预处理模块">原始信号预处理模块</h4>
+<p>预处理模块包含两个核心功能。</p>
+<p>第一，多周期平均——以激光器的扫描同步触发信号（TTL）为基准，截取单个扫描周期的原始数据，对300个连续周期的数据进行整体平均，消除随机白噪声（信噪比可提升10倍）。</p>
+<p>第二，背景基线扣除——采用非吸收区域多项式拟合方法，选取扫描波数范围的两端（7153.3–7153.5 cm$^{-1}$和7154.8–7155.0 cm$^{-1}$），这些波段无H$_2$O强吸收，利用三阶多项式拟合基线，再对整个扫描范围内的原始信号进行归一化，从根本上避免了“负峰”错误。此步骤的物理依据是：式<a href="#eq:beer_lambert" data-reference-type="eqref" data-reference="eq:beer_lambert">[eq:beer_lambert]</a>中基线$I_0$应为无吸收时的激光光强，准确扣除基线是获得精确积分吸光度$A$的前提。</p>
+<figure><img src="figures/image40.png" alt="背景基线扣除前后对比" /><figcaption>背景基线扣除前后对比</figcaption></figure>
+<h4 id="fsr波数转换模块">FSR波数转换模块</h4>
+<h5 id="非线性问题的来源">非线性问题的来源</h5>
+<p>在TDLAS测量中，激光器通常采用电流调谐方式实现波长扫描——通过施加正弦波或三角波驱动电流，使激光器输出波长在目标吸收线附近往复扫描。然而，由于激光器在工作过程中温度会发生非线性变化（热电制冷器的响应延迟、环境温度波动等因素），导致激光波长随时间的变化率并非恒定，而是呈非线性漂移。因此，原始采集卡记录的信号在时间域上是等间隔采样的，但在波数域上却是非均匀分布的。若直接使用等间隔假设进行数据处理，将导致吸收峰位置偏移、线型畸变，进而使温度反演产生显著误差。</p>
+<p>为了将信号校正为线性波数分布，需要借助一个提供等光学频率间隔基准的参考信号——这通常由法布里-珀罗标准具（Fabry-Pérot Etalon）的等间距干涉条纹实现。通过将吸收光谱的时域采样点映射到标准具的等波数间隔干涉峰上，可以实现从“非均匀波数轴”到“均匀波数轴”的精确转换。</p>
+<h5 id="fsr刻度值计算">FSR刻度值计算</h5>
+<p>在采集到标准具干涉信号后，首先需要通过峰值检测确定各干涉峰的精确位置。具体处理流程如下：</p>
+<ol>
+<li>
+<p><strong>峰检测</strong>：利用Scipy的<code>find_peaks</code>函数，设置最小高度阈值和最小间距，初步识别标准具透射峰的位置$p_0, p_1, \ldots, p_{N-1}$。</p>
+</li>
+<li>
+<p><strong>峰值位置精修</strong>：由于实验采集的信号存在噪声，初步检测的峰位置可能存在微小偏差。为消除这一误差，对每个检测到的干涉峰附近的局部信号进行二次多项式拟合，以拟合曲线的顶点位置作为峰的精确位置。这一处理可将峰位置定位精度提升至亚像素级别。</p>
+<figure><img src="figures/image25.png" alt="标准具干涉信号峰值检测与二次拟合精修" /><figcaption>标准具干涉信号峰值检测与二次拟合精修</figcaption></figure>
+</li>
+<li>
+<p><strong>FSR刻度生成</strong>：赋予每个干涉峰一个线性刻度值$s_i = i$（$i = 0, 1, 2, \ldots, N-1$）。由于相邻干涉峰之间的波数间隔相等，这一线性刻度在波数域上对应于等间距的“频率尺”。</p>
+</li>
+<li>
+<p><strong>插值映射</strong>：对于原始信号中的每一个采样点（全局索引），根据其与相邻峰的位置关系，采用分段线性插值方法计算其对应的FSR刻度值：
+</p>
+$$
 s(x) = s_i + \frac{x - p_i}{p_{i+1} - p_i} \cdot (s_{i+1} - s_i)
-$$<p>对于首尾边界区域，采用一阶线性外推，斜率取前三个峰（或后三个峰）的均值。</p></li></ol><p>图 4.12展示了每个采样点索引与对应的FSR刻度值之间的映射关系，可见该映射为单调递增函数，有效反映了激光器波长扫描的非线性特征。</p><figure><img src=figures/image26.png alt=采样点索引与FSR刻度值的映射关系><figcaption>采样点索引与FSR刻度值的映射关系</figcaption></figure><h5 id=吸收峰定位与波数转换>吸收峰定位与波数转换</h5><p>在完成FSR刻度生成后，需对吸收光谱进行相同索引体系下的处理：</p><ol><li><p><strong>背景扣除</strong>：采用非吸收区域多项式拟合方法扣除基线，获得归一化的吸收光谱。</p></li><li><p><strong>吸收峰检测</strong>：在归一化吸收光谱中，利用<code>find_peaks</code>函数检测两个目标吸收峰的位置，同样采用局部二次拟合对峰位置进行亚像素精修，获取吸收峰对应的全局索引值。</p></li><li><p><strong>索引匹配</strong>：由于标准具信号与吸收光谱信号由同一数据采集卡同步采集，两者的采样点索引一一对应。因此，吸收峰在原始信号中的全局索引可直接用于查询该位置对应的FSR刻度值。</p></li><li><p><strong>波数赋值</strong>：根据HITRAN数据库，为两个吸收峰赋予真实波数值（$\nu_1$和$\nu_2$）。在已知两个吸收峰的波数和对应FSR刻度的条件下，建立波数与FSR刻度之间的线性关系：</p>$$
+$$<p>
+对于首尾边界区域，采用一阶线性外推，斜率取前三个峰（或后三个峰）的均值。</p>
+</li>
+</ol>
+<p>图 4.12展示了每个采样点索引与对应的FSR刻度值之间的映射关系，可见该映射为单调递增函数，有效反映了激光器波长扫描的非线性特征。</p>
+<figure><img src="figures/image26.png" alt="采样点索引与FSR刻度值的映射关系" /><figcaption>采样点索引与FSR刻度值的映射关系</figcaption></figure>
+<h5 id="吸收峰定位与波数转换">吸收峰定位与波数转换</h5>
+<p>在完成FSR刻度生成后，需对吸收光谱进行相同索引体系下的处理：</p>
+<ol>
+<li>
+<p><strong>背景扣除</strong>：采用非吸收区域多项式拟合方法扣除基线，获得归一化的吸收光谱。</p>
+</li>
+<li>
+<p><strong>吸收峰检测</strong>：在归一化吸收光谱中，利用<code>find_peaks</code>函数检测两个目标吸收峰的位置，同样采用局部二次拟合对峰位置进行亚像素精修，获取吸收峰对应的全局索引值。</p>
+</li>
+<li>
+<p><strong>索引匹配</strong>：由于标准具信号与吸收光谱信号由同一数据采集卡同步采集，两者的采样点索引一一对应。因此，吸收峰在原始信号中的全局索引可直接用于查询该位置对应的FSR刻度值。</p>
+</li>
+<li>
+<p><strong>波数赋值</strong>：根据HITRAN数据库，为两个吸收峰赋予真实波数值（$\nu_1$和$\nu_2$）。在已知两个吸收峰的波数和对应FSR刻度的条件下，建立波数与FSR刻度之间的线性关系：
+</p>
+$$
 \nu(s) = \nu_1 + k \cdot (s - s_1)
-$$<p>其中斜率$k = (\nu_2 - \nu_1) / (s_2 - s_1)$，表示单位FSR刻度对应的波数变化量。</p></li><li><p><strong>全谱波数转换</strong>：利用上述线性关系，将原始信号中每一个采样点的FSR刻度值$s_i$转换为对应的波数$\nu_i$，即完成从“时域/索引域”到“波数域”的精确映射。</p></li></ol><p>图 4.13展示了波数转换完成后的吸收光谱，横坐标已从原始的采样点索引转换为精确的波数（cm$^{-1}$）。转换后的光谱在波数域上呈现出均匀分布，两条目标吸收峰的位置与HITRAN数据库的理论值高度吻合，验证了FSR波数转换方法的准确性和可靠性。</p><figure><img src=figures/image27.png alt=波数转换后的吸收光谱><figcaption>波数转换后的吸收光谱</figcaption></figure><h5 id=核心代码实现>核心代码实现</h5><p>以下代码实现了FSR刻度计算与波数转换的核心函数。</p><div class=code-block><button class=code-copy type=button hidden aria-label="Copy code to clipboard">
-<span class=code-copy-label aria-hidden=true>Copy</span></button><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> numpy <span style=color:#66d9ef>as</span> np
-</span></span><span style=display:flex><span>    <span style=color:#f92672>from</span> scipy.interpolate <span style=color:#f92672>import</span> interp1d
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#75715e># 1. 峰检测（极值法）</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>minmax</span>(y, delta):
-</span></span><span style=display:flex><span>    peaks <span style=color:#f92672>=</span> []
-</span></span><span style=display:flex><span>    mn, mx <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>inf, <span style=color:#f92672>-</span>np<span style=color:#f92672>.</span>inf
-</span></span><span style=display:flex><span>    mxpos <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>nan
-</span></span><span style=display:flex><span>    lookformax <span style=color:#f92672>=</span> <span style=color:#66d9ef>True</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> i, val <span style=color:#f92672>in</span> enumerate(y):
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> val <span style=color:#f92672>&gt;</span> mx:
-</span></span><span style=display:flex><span>    mx <span style=color:#f92672>=</span> val
-</span></span><span style=display:flex><span>    mxpos <span style=color:#f92672>=</span> i
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> lookformax <span style=color:#f92672>and</span> val <span style=color:#f92672>&lt;</span> mx <span style=color:#f92672>-</span> delta:
-</span></span><span style=display:flex><span>    peaks<span style=color:#f92672>.</span>append(mxpos)
-</span></span><span style=display:flex><span>    mn <span style=color:#f92672>=</span> val
-</span></span><span style=display:flex><span>    lookformax <span style=color:#f92672>=</span> <span style=color:#66d9ef>False</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>elif</span> <span style=color:#f92672>not</span> lookformax <span style=color:#f92672>and</span> val <span style=color:#f92672>&gt;</span> mn <span style=color:#f92672>+</span> delta:
-</span></span><span style=display:flex><span>    mx <span style=color:#f92672>=</span> val
-</span></span><span style=display:flex><span>    mxpos <span style=color:#f92672>=</span> i
-</span></span><span style=display:flex><span>    lookformax <span style=color:#f92672>=</span> <span style=color:#66d9ef>True</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> np<span style=color:#f92672>.</span>array(peaks)
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#75715e># 2. 二次拟合精修峰位置</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>refine_peak_position</span>(y, rough_peaks, window<span style=color:#f92672>=</span><span style=color:#ae81ff>5</span>):
-</span></span><span style=display:flex><span>    refined <span style=color:#f92672>=</span> []
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> p <span style=color:#f92672>in</span> rough_peaks:
-</span></span><span style=display:flex><span>    s, e <span style=color:#f92672>=</span> max(<span style=color:#ae81ff>0</span>, p<span style=color:#f92672>-</span>window), min(len(y)<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, p<span style=color:#f92672>+</span>window)
-</span></span><span style=display:flex><span>    x, y_fit <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>arange(s, e<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>, dtype<span style=color:#f92672>=</span>float), y[s:e<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>]
-</span></span><span style=display:flex><span>    a, b, _ <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>polyfit(x, y_fit, <span style=color:#ae81ff>2</span>)
-</span></span><span style=display:flex><span>    refined<span style=color:#f92672>.</span>append(<span style=color:#f92672>-</span>b <span style=color:#f92672>/</span> (<span style=color:#ae81ff>2</span><span style=color:#f92672>*</span>a))
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> np<span style=color:#f92672>.</span>array(refined)
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#75715e># 3. 计算FSR刻度</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>compute_fsr_scale</span>(y, delta<span style=color:#f92672>=</span><span style=color:#ae81ff>0.005</span>):
-</span></span><span style=display:flex><span>    rough <span style=color:#f92672>=</span> minmax(y, delta)
-</span></span><span style=display:flex><span>    refined <span style=color:#f92672>=</span> refine_peak_position(y, rough)
-</span></span><span style=display:flex><span>    fsr_order <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>arange(len(refined), dtype<span style=color:#f92672>=</span>float)
-</span></span><span style=display:flex><span>    interp <span style=color:#f92672>=</span> interp1d(refined, fsr_order, kind<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;linear&#39;</span>, fill_value<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;extrapolate&#39;</span>)
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> interp(np<span style=color:#f92672>.</span>arange(len(y))), refined
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#75715e># 4. 波数转换（线性标定）</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>convert_wavenumber</span>(fsr_scale, peak1_idx, peak2_idx, nu1, nu2):
-</span></span><span style=display:flex><span>    s1, s2 <span style=color:#f92672>=</span> fsr_scale[peak1_idx], fsr_scale[peak2_idx]
-</span></span><span style=display:flex><span>    k <span style=color:#f92672>=</span> (nu2 <span style=color:#f92672>-</span> nu1) <span style=color:#f92672>/</span> (s2 <span style=color:#f92672>-</span> s1)
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> nu1 <span style=color:#f92672>+</span> k <span style=color:#f92672>*</span> (fsr_scale <span style=color:#f92672>-</span> s1)</span></span></code></pre></div></div><p>上述函数实现了FSR波数转换的核心功能，已在实验数据上验证，转换后吸收峰位置与HITRAN参考值偏差小于0.005 cm$^{-1}$。</p><h4 id=voigt双峰拟合模块>Voigt双峰拟合模块</h4><p>波数转换完成后，需要从实测吸光度光谱中提取目标谱线的积分吸光度$A_1$和$A_2$。由于Voigt线型没有解析表达式，本研究采用非线性最小二乘拟合方法同时拟合两条目标谱线。</p><p>模型构建使用LMFIT库的<code>Model</code>类，构建复合模型：</p>$$
+$$<p>
+其中斜率$k = (\nu_2 - \nu_1) / (s_2 - s_1)$，表示单位FSR刻度对应的波数变化量。</p>
+</li>
+<li>
+<p><strong>全谱波数转换</strong>：利用上述线性关系，将原始信号中每一个采样点的FSR刻度值$s_i$转换为对应的波数$\nu_i$，即完成从“时域/索引域”到“波数域”的精确映射。</p>
+</li>
+</ol>
+<p>图 4.13展示了波数转换完成后的吸收光谱，横坐标已从原始的采样点索引转换为精确的波数（cm$^{-1}$）。转换后的光谱在波数域上呈现出均匀分布，两条目标吸收峰的位置与HITRAN数据库的理论值高度吻合，验证了FSR波数转换方法的准确性和可靠性。</p>
+<figure><img src="figures/image27.png" alt="波数转换后的吸收光谱" /><figcaption>波数转换后的吸收光谱</figcaption></figure>
+<h5 id="核心代码实现">核心代码实现</h5>
+<p>以下代码实现了FSR刻度计算与波数转换的核心函数。</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">from</span> scipy.interpolate <span style="color:#f92672">import</span> interp1d
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 1. 峰检测（极值法）</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">minmax</span>(y, delta):
+</span></span><span style="display:flex;"><span>    peaks <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    mn, mx <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>inf, <span style="color:#f92672">-</span>np<span style="color:#f92672">.</span>inf
+</span></span><span style="display:flex;"><span>    mxpos <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>nan
+</span></span><span style="display:flex;"><span>    lookformax <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i, val <span style="color:#f92672">in</span> enumerate(y):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> val <span style="color:#f92672">&gt;</span> mx:
+</span></span><span style="display:flex;"><span>    mx <span style="color:#f92672">=</span> val
+</span></span><span style="display:flex;"><span>    mxpos <span style="color:#f92672">=</span> i
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> lookformax <span style="color:#f92672">and</span> val <span style="color:#f92672">&lt;</span> mx <span style="color:#f92672">-</span> delta:
+</span></span><span style="display:flex;"><span>    peaks<span style="color:#f92672">.</span>append(mxpos)
+</span></span><span style="display:flex;"><span>    mn <span style="color:#f92672">=</span> val
+</span></span><span style="display:flex;"><span>    lookformax <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> <span style="color:#f92672">not</span> lookformax <span style="color:#f92672">and</span> val <span style="color:#f92672">&gt;</span> mn <span style="color:#f92672">+</span> delta:
+</span></span><span style="display:flex;"><span>    mx <span style="color:#f92672">=</span> val
+</span></span><span style="display:flex;"><span>    mxpos <span style="color:#f92672">=</span> i
+</span></span><span style="display:flex;"><span>    lookformax <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>array(peaks)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 2. 二次拟合精修峰位置</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">refine_peak_position</span>(y, rough_peaks, window<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>):
+</span></span><span style="display:flex;"><span>    refined <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> rough_peaks:
+</span></span><span style="display:flex;"><span>    s, e <span style="color:#f92672">=</span> max(<span style="color:#ae81ff">0</span>, p<span style="color:#f92672">-</span>window), min(len(y)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, p<span style="color:#f92672">+</span>window)
+</span></span><span style="display:flex;"><span>    x, y_fit <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(s, e<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, dtype<span style="color:#f92672">=</span>float), y[s:e<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>    a, b, _ <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>polyfit(x, y_fit, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    refined<span style="color:#f92672">.</span>append(<span style="color:#f92672">-</span>b <span style="color:#f92672">/</span> (<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>a))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>array(refined)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 3. 计算FSR刻度</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">compute_fsr_scale</span>(y, delta<span style="color:#f92672">=</span><span style="color:#ae81ff">0.005</span>):
+</span></span><span style="display:flex;"><span>    rough <span style="color:#f92672">=</span> minmax(y, delta)
+</span></span><span style="display:flex;"><span>    refined <span style="color:#f92672">=</span> refine_peak_position(y, rough)
+</span></span><span style="display:flex;"><span>    fsr_order <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(len(refined), dtype<span style="color:#f92672">=</span>float)
+</span></span><span style="display:flex;"><span>    interp <span style="color:#f92672">=</span> interp1d(refined, fsr_order, kind<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;linear&#39;</span>, fill_value<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;extrapolate&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> interp(np<span style="color:#f92672">.</span>arange(len(y))), refined
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 4. 波数转换（线性标定）</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">convert_wavenumber</span>(fsr_scale, peak1_idx, peak2_idx, nu1, nu2):
+</span></span><span style="display:flex;"><span>    s1, s2 <span style="color:#f92672">=</span> fsr_scale[peak1_idx], fsr_scale[peak2_idx]
+</span></span><span style="display:flex;"><span>    k <span style="color:#f92672">=</span> (nu2 <span style="color:#f92672">-</span> nu1) <span style="color:#f92672">/</span> (s2 <span style="color:#f92672">-</span> s1)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> nu1 <span style="color:#f92672">+</span> k <span style="color:#f92672">*</span> (fsr_scale <span style="color:#f92672">-</span> s1)</span></span></code></pre></div>
+  </div><p>上述函数实现了FSR波数转换的核心功能，已在实验数据上验证，转换后吸收峰位置与HITRAN参考值偏差小于0.005 cm$^{-1}$。</p>
+<h4 id="voigt双峰拟合模块">Voigt双峰拟合模块</h4>
+<p>波数转换完成后，需要从实测吸光度光谱中提取目标谱线的积分吸光度$A_1$和$A_2$。由于Voigt线型没有解析表达式，本研究采用非线性最小二乘拟合方法同时拟合两条目标谱线。</p>
+<p>模型构建使用LMFIT库的<code>Model</code>类，构建复合模型：
+</p>
+$$
 y(x) = a_0 x^2 + a_1 x + a_2 + A_1 V(x; \mu_1, \sigma_G, \gamma_L) + A_2 V(x; \mu_2, \sigma_G, \gamma_L)
-$$<p>其中前两项为二次多项式基线，用于补偿光学元件残余反射等引入的缓慢基线变化；$V(x; \mu, \sigma_G, \gamma_L)$为Voigt线型函数，$\mu$为中心波数，$\sigma_G$为高斯展宽参数（与温度相关），$\gamma_L$为洛伦兹展宽参数（与压力相关）。两条谱线的多普勒展宽$\sigma_G$相同（同一温度场），碰撞展宽$\gamma_L$可分别设置但通常设为耦合（同一压力环境）。</p><p>初始值智能估计方面，$\mu_1, \mu_2$初始值由HITRAN数据库提供（7153.75，7154.35 cm$^{-1}$），$\sigma_G$初始值由预估温度（2000 K）根据式<a href=#eq:doppler_width data-reference-type=eqref data-reference=eq:doppler_width>[eq:doppler_width]</a>计算，$\gamma_L$初始值由空气展宽系数乘以1 atm估算。权重策略对吸收峰区域（$\pm 3\sigma_G$范围）赋予权重10，基线区域赋予权重1，以优先保证谱线形状的拟合精度。</p><p>图 4.14展示了典型Voigt拟合结果。</p><figure><img src=figures/image28.png alt=Voigt拟合结果><figcaption>Voigt拟合结果</figcaption></figure><h4 id=温度反演与场重建模块>温度反演与场重建模块</h4><p>获得两条目标谱线的积分吸光度$A_1$和$A_2$后，根据玻尔兹曼公式进行温度求解。</p>$$
+$$<p>
+其中前两项为二次多项式基线，用于补偿光学元件残余反射等引入的缓慢基线变化；$V(x; \mu, \sigma_G, \gamma_L)$为Voigt线型函数，$\mu$为中心波数，$\sigma_G$为高斯展宽参数（与温度相关），$\gamma_L$为洛伦兹展宽参数（与压力相关）。两条谱线的多普勒展宽$\sigma_G$相同（同一温度场），碰撞展宽$\gamma_L$可分别设置但通常设为耦合（同一压力环境）。</p>
+<p>初始值智能估计方面，$\mu_1, \mu_2$初始值由HITRAN数据库提供（7153.75，7154.35 cm$^{-1}$），$\sigma_G$初始值由预估温度（2000 K）根据式<a href="#eq:doppler_width" data-reference-type="eqref" data-reference="eq:doppler_width">[eq:doppler_width]</a>计算，$\gamma_L$初始值由空气展宽系数乘以1 atm估算。权重策略对吸收峰区域（$\pm 3\sigma_G$范围）赋予权重10，基线区域赋予权重1，以优先保证谱线形状的拟合精度。</p>
+<p>图 4.14展示了典型Voigt拟合结果。</p>
+<figure><img src="figures/image28.png" alt="Voigt拟合结果" /><figcaption>Voigt拟合结果</figcaption></figure>
+<h4 id="温度反演与场重建模块">温度反演与场重建模块</h4>
+<p>获得两条目标谱线的积分吸光度$A_1$和$A_2$后，根据玻尔兹曼公式进行温度求解。
+</p>
+$$
 \frac{A_1}{A_2} = \frac{S_1(T_0)}{S_2(T_0)} \cdot \frac{Q(T_0)}{Q(T)} \cdot \exp\left[-\frac{hc}{k}\frac{(E''_1 - E''_2)}{T}\right]
-$$<p>在实际求解中，采用牛顿-拉夫逊法快速迭代求解$T$。</p><p>核心温度反演代码如列表 <a href=#lst:boltzmann data-reference-type=ref data-reference=lst:boltzmann>[lst:boltzmann]</a>所示。</p><div class=code-block><button class=code-copy type=button hidden aria-label="Copy code to clipboard">
-<span class=code-copy-label aria-hidden=true>Copy</span></button><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> numpy <span style=color:#66d9ef>as</span> np
-</span></span><span style=display:flex><span>    <span style=color:#f92672>from</span> scipy.optimize <span style=color:#f92672>import</span> fsolve
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>boltzmann_temperature</span>(A1, A2, E1, E2, S1_0, S2_0, T0<span style=color:#f92672>=</span><span style=color:#ae81ff>296</span>):
-</span></span><span style=display:flex><span>    h <span style=color:#f92672>=</span> <span style=color:#ae81ff>6.626e-34</span>    <span style=color:#75715e># 普朗克常数 [J*s]</span>
-</span></span><span style=display:flex><span>    c <span style=color:#f92672>=</span> <span style=color:#ae81ff>2.998e10</span>     <span style=color:#75715e># 光速 [cm/s]</span>
-</span></span><span style=display:flex><span>    k <span style=color:#f92672>=</span> <span style=color:#ae81ff>1.381e-23</span>    <span style=color:#75715e># 玻尔兹曼常数 [J/K]</span>
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>equation</span>(T):
-</span></span><span style=display:flex><span>    ratio_meas <span style=color:#f92672>=</span> A1 <span style=color:#f92672>/</span> A2
-</span></span><span style=display:flex><span>    ratio_pred <span style=color:#f92672>=</span> (S1_0 <span style=color:#f92672>/</span> S2_0) <span style=color:#f92672>*</span> np<span style=color:#f92672>.</span>exp(
-</span></span><span style=display:flex><span>    <span style=color:#f92672>-</span>(h<span style=color:#f92672>*</span>c<span style=color:#f92672>/</span>k) <span style=color:#f92672>*</span> (E1 <span style=color:#f92672>-</span> E2) <span style=color:#f92672>*</span> (<span style=color:#ae81ff>1</span><span style=color:#f92672>/</span>T <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span><span style=color:#f92672>/</span>T0)
-</span></span><span style=display:flex><span>    )
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> ratio_meas <span style=color:#f92672>-</span> ratio_pred
-</span></span><span style=display:flex><span>    
-</span></span><span style=display:flex><span>    T_solution <span style=color:#f92672>=</span> fsolve(equation, <span style=color:#ae81ff>1500</span>)[<span style=color:#ae81ff>0</span>]
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> T_solution</span></span></code></pre></div></div><p>温度反演算法的验证采用2600 K和2400 K仿真光谱添加3%噪声后作为输入，反演温度分别为2626 K和2404 K，偏差约为1%，验证了代码的准确性（图 4.17）。</p><figure><figure><p><img src=figures/image29.png alt=image></p></figure><figure><p><img src=figures/image30.png alt=image></p></figure><figcaption>温度反演代码验证结果</figcaption></figure><p>场重建方面，将伺服电机坐标（$X,Y$）与计算出的$T$值绑定，生成平滑的二维等温云图。</p><h2 id=实验结果与讨论>实验结果与讨论</h2><h3 id=平面炉初步温度测量>平面炉初步温度测量</h3><p>在完成试验台搭建和激光器波长锁定后，首先采用甲烷/空气平面火焰进行初步的TDLAS测量，以验证系统在真实火焰条件下的工作性能并确定最佳测量工况。</p><h4 id=实验准备与工况参数>实验准备与工况参数</h4><p>实验前完成以下准备工作：完成实验方案设计、工况参数确定和安全预案制定。采用甲烷空气火焰（8 SLM CH$_4$ / 50 SLM air，当量比$\phi=1.0$），激光器参数设置为50.9 mA、$16^\circ$C、200 Hz、0.8 Vpp，该组参数基于第三章光谱仿真确定的波长位置进行微调后获得。</p><h4 id=吸收峰验证>吸收峰验证</h4><p>图 5.1 展示了甲烷/空气平面炉火焰的典型吸收光谱。</p><figure><p><img src=figures/image37.png style=width:70% alt=image></p></figure><p>测试结果成功观测到位于7153.75 cm$^{-1}$和7154.35 cm$^{-1}$的两个水吸收峰，与第三章Flame Spectrum仿真结果吻合良好。该结果验证了以下三点：第一，激光器波长锁定准确，在200 Hz扫描频率下可稳定覆盖目标双线；第二，光谱信噪比满足后续Voigt拟合对原始数据质量的要求；第三，甲烷/空气平面炉能够产生稳定的火焰环境，适合作为TDLAS测量的火源。上述吸收峰的明确识别为后续高频扫描实验确定了激光器工作参数。</p><h3 id=平面炉高频扫描实验>平面炉高频扫描实验</h3><p>在初步验证吸收峰位置后，需进一步提升扫描频率以适应实际火焰测量需求。</p><h4 id=高频扫描的必要性>高频扫描的必要性</h4><p>火焰的内部温度、组分浓度和压力在时间和空间上都存在剧烈的脉动。若扫描频率低，单次扫描耗时长，在这期间火焰状态早已改变，得到的吸收光谱实际上是一段时间内不同火焰状态的模糊平均，由此反演出的温度和浓度就会严重失真，尤其会让温度测量值偏低、浓度分布展宽。</p><p>TDLAS通过拟合吸收谱线的线型来反演温度和浓度等参数，这要求单次扫描内测量条件基本稳定。在低频扫描时，激光波长缓慢扫过吸收线，而这期间火焰的温度/压力变化会导致谱线中心频率漂移和展宽抖动，最终测得的谱线是这些动态过程的叠加，线型发生畸变，反演误差增大。</p><p>因此，需要将扫描频率提升至kHz级别。本实验将扫描频率提升至<strong>10 kHz</strong>，测量火焰上方1–5 mm高度，成功采集了高频条件下的吸收光谱。</p><h4 id=实验设置与结果>实验设置与结果</h4><p>高频扫描实验采用与初步实验相同的火焰工况（8 SLM CH$_4$ / 50 SLM air，$\phi=1.0$），激光器参数调整至：50.9 mA、16.1$^\circ$C、10 kHz、0.4 Vpp。伺服平台控制炉体在X方向$-15$至$+15$ mm、Y方向1至5 mm范围内步进扫描。</p><p>实验成功采集了10 kHz扫描频率下的吸收光谱，验证了TDLAS系统在高频模式下的稳定工作能力。初步观测结果显示，高频扫描有效避免了因火焰脉动导致的谱线畸变问题，为后续精确温度反演奠定了数据基础。</p><h3 id=带伴流平面炉扫描实验>带伴流平面炉扫描实验</h3><p>尽管平面炉本身具有较好的火焰稳定性，但开放环境下火焰边界仍容易受环境气流和热浮力扰动的影响。</p><h4 id=伴流的作用机制>伴流的作用机制</h4><p>在开放火焰中，火焰边界容易受气流、热浮力扰动影响而产生抖动或边缘卷吸。同轴伴流可以产生一个低速、平稳的气流保护层，有效抑制外界紊乱对火焰本体的干扰，并减少边缘的空气卷吸。</p><p>此外，开放火焰的边缘会卷吸空气中的氧气，这会导致在火焰边界形成一个当量比无法控制、温度和组分梯度大的反应层。用惰性气体伴流（通常为N$_2$），可阻断氧气扩散进入火焰高温区，消除火焰边缘的异常，使火焰产物的组分浓度和温度严格由实验设定燃料燃烧决定，而非受边界二次反应干扰。这对于高精度的火焰标定至关重要。</p><h4 id=实验结果>实验结果</h4><p>采用带N$_2$伴流（伴流流量20 SLM）的平面炉进行甲烷/空气火焰扫描实验，在与高频扫描实验相同工况下（8 SLM CH$_4$ / 50 SLM air，$\phi=1.0$，10 kHz扫描频率）采集吸收光谱。初步结果表明，伴流的加入显著改善了火焰边缘的温度均匀性，边缘区域的温度梯度较无伴流工况有所减小。</p><h2 id=总结与展望>总结与展望</h2><h3 id=全文总结>全文总结</h3><h4 id=主要结论>主要结论</h4><p>截至中期报告节点，已完成的主要工作包括：</p><p>第一，火焰炉结构设计——完成了三种不同参数的炉子设计方案和相应的热力学计算、冷态仿真、火焰光谱仿真，验证了设计方案在3000 K高温工况下的可行性。</p><p>第二，TDLAS测量系统搭建——建立了完整的1.4$\mu$m波段TDLAS实验系统，包括激光器（标定至1397.824 nm）、光路、探测（TLC2201 TIA）、采集（10 kHz）等硬件模块。</p><p>第三，数据处理算法开发——开发了FSR刻度$\to$波数转换$\to$Voigt拟合$\to$温度反演的完整数据处理链路，通过了合成光谱验证（误差$&lt;$2%）。</p><p>第四，初步实验验证——完成了平面炉TDLAS扫描实验，成功分辨出双吸收峰并重建了二维温度场。</p><h4 id=创新点>创新点</h4><p>针对非预混平面绝热火焰炉炉普遍存在的高温极端工况下寿命短、燃烧不均匀不稳定等问题，优化当前火焰炉的内部结构，通过添加水冷结构和改变喷嘴阵列结构、数量和间距等关键参数实现更均匀的燃烧场分布、更优的排放性能和更高的燃烧温度。 采用更高分辨率的TDLAS和PLIF实验方法，对火焰进行标定，能够更详细的建立以非预混平面绝热火焰炉炉作为标定源的火焰的温度场浓度场，对微扩散火焰结构进行更深入的研究，为后续标定提供一个可溯源的标准化标定条件。</p><h3 id=展望>展望</h3><p>下一步工作计划包括：进行平面炉氢氧火焰完整扫描实验并走通全流程温度反演；完成多工况系统实验、制备多通道探测器阵列、完成1分16光路实验和PLIF实验。</p><h2 id=参考文献>参考文献</h2><p class=report-ref>[1] FATEEV A, SUTTON G, RODRÍGUEZ CONEJO M A, 等. Validation of Emission Spectroscopy Gas Temperature Measurements Using a Standard Flame Traceable to the International Temperature Scale of 1990 (ITS-90)[J]. International Journal of Thermophysics, 2019, 40(99): 1-16.</p><p class=report-ref>[2] LIU X C, ZHANG G Y, HUANG Y, 等. Two-dimensional temperature and carbon dioxide concentration profiles in atmospheric laminar diffusion flames measured by mid-infrared direct absorption spectroscopy at 4.2 μm[J]. Applied Physics B: Lasers and Optics, 2018, 124(3): 61.</p><p class=report-ref>[3] QINGHUI M, COLIN B, L. A. K., 等. Experimental measurement of the rapid mixing of fuel and air in a multi-element diffusion burner[J]. Combustion and Flame, 2023, 251: 112686.</p><p class=report-ref>[4] LIU Z G, XIONG Y, ZHANG Z D, 等. Investigation of a novel combustion stabilization mechanism and combustion characteristics of a multi-nozzle array model combustor[J]. Fuel, 2022, 327: 125138.</p><p class=report-ref>[5] 莫妲, 林宇震, 韩啸, 等. 氢气微混燃烧技术研究现状和未来展望[J]. 航空学报, 2024, 45(7): 028994.</p><p class=report-ref>[6] XU Y, LI S, GAO Q, 等. Characterization on Ignition and Volatile Combustion of Dispersed Coal Particle Streams: In Situ Diagnostics and Transient Modeling[J]. Energy \& Fuels, 2018, 32(9): 9850-9858.</p><p class=report-ref>[7] PERS H, ANIELLO A, SCHULLER T. Transition from hydrodynamic flashback to wall-ignition in hydrogen-enriched laminar premixed burners[J]. Combustion and Flame, 2024, 266: 113514.</p><p class=report-ref>[8] KÖSER J, BECKER L G, GOSSMANN A K, 等. Investigation of ignition and volatile combustion of single coal particles within oxygen-enriched atmospheres using high-speed OH-PLIF[J]. Proceedings of the Combustion Institute, 2017, 36: 2103-2111.</p><p class=report-ref>[9] KÖSER J, LI T, VOROBIEV N, 等. Multi-parameter diagnostics for high-resolution in-situ measurements of single coal particle combustion[J]. Proceedings of the Combustion Institute, 2019, 37: 2893-2900.</p><p class=report-ref>[10] CABRA R. Turbulent Jet Flames Into a Vitiated Coflow[R]. NASA, 2004.</p><p class=report-ref>[11] LI T, LI B, FARMAND P, 等. Motion and swelling of single coal particles during volatile combustion in a laminar flow reactor[J]. Proceedings of the Combustion Institute, 2023, 39: 3333-3341.</p><p class=report-ref>[12] 陈昊. 富氢燃料微混燃烧组织方法研究[D]. 华北电力大学, 2023.</p><p class=report-ref>[13] 刘勋伟. 含氢燃料多微混射流火焰的燃烧特性与稳焰机制研究[D]. 中国科学院大学, 2021.</p><p class=report-ref>[14] CORREIA RODRIGUES H, TUMMERS M J, VAN VEEN E H, 等. Spray flame structure in conventional and hot-diluted combustion regime[J]. Combustion and Flame, 2015, 162: 759-773.</p><p class=report-ref>[15] VENKATARAMAN K, LEWIS S E, THOMAS A R, 等. F-class DLN technology advancements: DLN2.6+[C]//ASME Turbo Expo. 2011.</p><p class=report-ref>[16] YORK W D, ZIMINSKY W S, YILMAZ E, 等. Development and testing of a low NOx hydrogen combustion system for heavy duty gas turbines[J]. Gas Turbines Power, 2013, 135(2): 022001.</p><p class=report-ref>[17] ASAI T, DODO S, KARISHUKU M, 等. Multiple-injection dry low-NOx combustor for hydrogen-rich syngas fuel: testing and evaluation of pilot combustor[J]. Mitsubishi Heavy Industries Technical Review, 2014, 51(5): 1-6.</p><p class=report-ref>[18] ZHANG Y, ZHANG H, TIAN L, 等. Temperature and emissions characteristics of a micro-mixing injection hydrogen-rich syngas flame diluted with N₂[J]. International Journal of Hydrogen Energy, 2015, 40(35): 11690-11698.</p><p class=report-ref>[19] LIU X, SHAO W, LIU Y, 等. Cold flow characteristics of a novel high-hydrogen micromix model burner based on multiple confluent turbulent round jets[J]. International Journal of Hydrogen Energy, 2021, 46(39): 20740-20758.</p><p class=report-ref>[20] TAO B, LEI Q C, YE J F, 等. Measurements and analysis of diode laser modulation wavelength at high accuracy and response rate[J]. Applied Physics B: Lasers and Optics, 2020, 126(4): 88.</p><p class=report-ref>[21] LI X, ZHANG Y, WANG Z, 等. Investigation of 10 kHz Filtered Rayleigh Scattering and CH₂O Planar Laser-Induced Fluorescence Measurement in Two-Stage Swirl Combustor[J]. Chinese Journal of Chemical Physics, 2024, 37(2): 1-8.</p><p class=report-ref>[22] BARLOW R S, CARTER C D, KARPETIS A N, 等. Raman/Rayleigh scattering and CO-PLIF measurements in laminar and turbulent jet flames of dimethyl ether[J]. Combustion and Flame, 2009, 156(3): 567-578.</p><p class=report-ref>[23] SHI L, ENDRES T, JEFFRIES J B, 等. A Compact Fiber-Coupled NIR/MIR Laser Absorption Instrument for the Simultaneous Measurement of Gas-Phase Temperature and CO, CO₂, and H₂O Concentration[J]. Sensors, 2022, 22(3): 1286.</p><p class=report-ref>[24] HSU P S, JIANG N, FELVER J J, 等. 10 kHz two-color OH PLIF thermometry using a single burst-mode OPO[J]. Optics Letters, 2021, 46(10): 2308-2311.</p><p class=report-ref>[25] WAGNER S, KLEIN M, KATHROTIA T, 等. Absolute, spatially resolved, in situ CO profiles in atmospheric laminar counter-flow diffusion flames using 2.3 μm TDLAS[J]. Applied Physics B: Lasers and Optics, 2012, 109(3): 533-540.</p><p class=report-ref>[26] ALQASEMI M, RICE B, GLENZER S H, 等. Temperature Measurements in Heavily-Sooting Ethylene/Air Flames Using Synchrotron X-ray Fluorescence of Krypton[J]. Combustion and Flame, 2023, 247: 112494.</p><p class=report-ref>[27] BRAUN E L, SLIPCHENKO M N, 等. Spatially multiplexed femtosecond/picosecond coherent anti-Stokes Raman scattering for multipoint array measurements[J]. Optics Letters, 2022, 47(20): 5280-5283.</p><p class=report-ref>[28] LIU X N, MA Y F. Tunable Diode Laser Absorption Spectroscopy Based Temperature Measurement with a Single Diode Laser Near 1.4 μm[J]. Sensors, 2022, 22(16): 6095.</p><p class=report-ref>[29] WEN J, CAO Z, GAO X, 等. Concentration Imaging of Multiple Gases from H₂O Absorption Spectrum Coupled with CFD Model[C]//IEEE International Conference on Imaging Systems and Techniques. 2022: 1-5.</p><p class=report-ref>[30] SI J, FU G, CHENG Y, 等. A Quality-Hierarchical Temperature Imaging Network for TDLAS Tomography[J]. IEEE Transactions on Instrumentation and Measurement, 2022, 71: 4500710.</p><p class=report-ref>[31] AGARWAL S, SEIFERT L, ZHU D, 等. Investigations on Pressure Broadening Coefficients of NO Lines in the 1-0 Band for N₂, CO₂, Ar, H₂, O₂ and He[J]. Applied Sciences, 2023, 13(3): 1370.</p><p class=report-ref>[32] WAGNER S, KLEIN M, KATHROTIA T, 等. In situ TDLAS measurement of absolute acetylene concentration profiles in a non-premixed laminar counter-flow flame[J]. Applied Physics B: Lasers and Optics, 2012, 107(3): 585-589.</p><p class=report-ref>[33] ZHOU X, JEFFRIES J B, HANSON R K. Development of a fast temperature sensor for combustion gases using a single tunable diode laser[J]. Applied Physics B: Lasers and Optics, 2005, 81: 711-722.</p><p class=report-ref>[34] LI S, FAROOQ A, HANSON R K. H₂O temperature sensor for low-pressure flames using tunable diode laser absorption near 2.9 μm[J]. Measurement Science and Technology, 2011, 22(12): 125301.</p><p class=report-ref>[35] ZHANG G Y, WANG G Q, HUANG Y, 等. Reconstruction and simulation of temperature and CO₂ concentration in an axisymmetric flame based on TDLAS[J]. Optik, 2018, 170: 166-177.</p><p class=report-ref>[36] 王绍杰, 顾明明, 齐飞, 等. 基于吸收光谱方法的平面非预混平面绝热火焰炉火焰多参数测量[J]. 燃烧科学与技术, 2023, 29(1): 44-52.</p><p class=report-ref>[37] 黄安, 赵延辉, 杨顺华, 等. 基于玻尔兹曼图法的超燃冲压发动机温度测量方法研究[J]. 中国激光, 2023, 50(19): 1911004.</p><p class=report-ref>[38] SMITH C H, GOLDENSTEIN C S, HANSON R K. A scanned-wavelength-modulation absorption-spectroscopy sensor for temperature and H₂O in low-pressure flames[J]. Measurement Science and Technology, 2014, 25(11): 115501.</p><p class=report-ref>[39] MORLEY G. EMPIR project hastens the adoption of phosphor thermometry technique[EB/OL]. .</p><p class=report-ref>[40] JONES F. EMPIR project showcased in industrial thermometry workshop[EB/OL]. .</p><p class=report-ref>[41] University of Strathclyde. EMPRESS 2 project[EB/OL]. .</p><p class=report-ref>[42] SUTTON G. The NPL STD Flame: Operating Instructions[R]. National Physical Laboratory, 2016.</p><p class=report-ref>[43] National Physical Laboratory. Optical combustion thermometers: From 2040 K to 2260 K[EB/OL]. .</p><p class=report-ref>[44] JONES F. EMPRESS project workshop engages with end-users[EB/OL]. .</p><p class=report-ref>[45] EURAMET. Enhancing process efficiency through improved temperature measurement[EB/OL]. .</p><p class=report-ref>[46] FLANAGAN-SMITH P. New self-calibrating thermometry for high-temperature manufacturing[EB/OL]. .</p><p class=report-ref>[47] JONES F. Work from two EMPIR temperature projects wins best paper award[EB/OL]. .</p><p class=report-ref>[48] EURAMET. Publishable Summary for 14IND04 EMPRESS[R]. EURAMET, 2018.</p><p class=report-ref>[49] EURAMET. Final Publishable Report for 17IND04 EMPRESS 2[R]. EURAMET, 2021.</p><p class=report-ref>[50] ZHOU X, LIU X, JEFFRIES J B, 等. Development of a sensor for temperature and water concentration in combustion gases using a single tunable diode laser[J]. Measurement Science and Technology, 2003, 14(8): 1459-1468.</p><p class=report-download>中期报告正文（原报告 PDF：<a href=midterm.pdf>midterm.pdf</a>｜LaTeX 源：<a href=document.tex>document.tex</a>）</p></div></article></main><footer class="bg-black bottom-0 w-100 pa3" role=contentinfo><div class="flex justify-between"><a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href=https://liuxunchen.github.io/xliu-group/zh/>&copy; 刘训臣燃烧诊断实验室主页 2026</a><div><div class=ananke-socials></div></div></div></footer></body></html>
+$$<p>
+在实际求解中，采用牛顿-拉夫逊法快速迭代求解$T$。</p>
+<p>核心温度反演代码如列表 <a href="#lst:boltzmann" data-reference-type="ref" data-reference="lst:boltzmann">[lst:boltzmann]</a>所示。</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">from</span> scipy.optimize <span style="color:#f92672">import</span> fsolve
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">boltzmann_temperature</span>(A1, A2, E1, E2, S1_0, S2_0, T0<span style="color:#f92672">=</span><span style="color:#ae81ff">296</span>):
+</span></span><span style="display:flex;"><span>    h <span style="color:#f92672">=</span> <span style="color:#ae81ff">6.626e-34</span>    <span style="color:#75715e"># 普朗克常数 [J*s]</span>
+</span></span><span style="display:flex;"><span>    c <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.998e10</span>     <span style="color:#75715e"># 光速 [cm/s]</span>
+</span></span><span style="display:flex;"><span>    k <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.381e-23</span>    <span style="color:#75715e"># 玻尔兹曼常数 [J/K]</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">equation</span>(T):
+</span></span><span style="display:flex;"><span>    ratio_meas <span style="color:#f92672">=</span> A1 <span style="color:#f92672">/</span> A2
+</span></span><span style="display:flex;"><span>    ratio_pred <span style="color:#f92672">=</span> (S1_0 <span style="color:#f92672">/</span> S2_0) <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>exp(
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span>(h<span style="color:#f92672">*</span>c<span style="color:#f92672">/</span>k) <span style="color:#f92672">*</span> (E1 <span style="color:#f92672">-</span> E2) <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>T <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>T0)
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ratio_meas <span style="color:#f92672">-</span> ratio_pred
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    T_solution <span style="color:#f92672">=</span> fsolve(equation, <span style="color:#ae81ff">1500</span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> T_solution</span></span></code></pre></div>
+  </div><p>温度反演算法的验证采用2600 K和2400 K仿真光谱添加3%噪声后作为输入，反演温度分别为2626 K和2404 K，偏差约为1%，验证了代码的准确性（图 4.17）。</p>
+<figure>
+<figure>
+<p><img src="figures/image29.png" alt="image" /></p>
+</figure>
+<figure>
+<p><img src="figures/image30.png" alt="image" /></p>
+</figure>
+<figcaption>温度反演代码验证结果</figcaption>
+</figure>
+<p>场重建方面，将伺服电机坐标（$X,Y$）与计算出的$T$值绑定，生成平滑的二维等温云图。</p>
+<h2 id="实验结果与讨论">实验结果与讨论</h2>
+<h3 id="平面炉初步温度测量">平面炉初步温度测量</h3>
+<p>在完成试验台搭建和激光器波长锁定后，首先采用甲烷/空气平面火焰进行初步的TDLAS测量，以验证系统在真实火焰条件下的工作性能并确定最佳测量工况。</p>
+<h4 id="实验准备与工况参数">实验准备与工况参数</h4>
+<p>实验前完成以下准备工作：完成实验方案设计、工况参数确定和安全预案制定。采用甲烷空气火焰（8 SLM CH$_4$ / 50 SLM air，当量比$\phi=1.0$），激光器参数设置为50.9 mA、$16^\circ$C、200 Hz、0.8 Vpp，该组参数基于第三章光谱仿真确定的波长位置进行微调后获得。</p>
+<h4 id="吸收峰验证">吸收峰验证</h4>
+<p>图 5.1 展示了甲烷/空气平面炉火焰的典型吸收光谱。</p>
+<figure>
+<p><img src="figures/image37.png" style="width:70.0%" alt="image" /></p>
+</figure>
+<p>测试结果成功观测到位于7153.75 cm$^{-1}$和7154.35 cm$^{-1}$的两个水吸收峰，与第三章Flame Spectrum仿真结果吻合良好。该结果验证了以下三点：第一，激光器波长锁定准确，在200 Hz扫描频率下可稳定覆盖目标双线；第二，光谱信噪比满足后续Voigt拟合对原始数据质量的要求；第三，甲烷/空气平面炉能够产生稳定的火焰环境，适合作为TDLAS测量的火源。上述吸收峰的明确识别为后续高频扫描实验确定了激光器工作参数。</p>
+<h3 id="平面炉高频扫描实验">平面炉高频扫描实验</h3>
+<p>在初步验证吸收峰位置后，需进一步提升扫描频率以适应实际火焰测量需求。</p>
+<h4 id="高频扫描的必要性">高频扫描的必要性</h4>
+<p>火焰的内部温度、组分浓度和压力在时间和空间上都存在剧烈的脉动。若扫描频率低，单次扫描耗时长，在这期间火焰状态早已改变，得到的吸收光谱实际上是一段时间内不同火焰状态的模糊平均，由此反演出的温度和浓度就会严重失真，尤其会让温度测量值偏低、浓度分布展宽。</p>
+<p>TDLAS通过拟合吸收谱线的线型来反演温度和浓度等参数，这要求单次扫描内测量条件基本稳定。在低频扫描时，激光波长缓慢扫过吸收线，而这期间火焰的温度/压力变化会导致谱线中心频率漂移和展宽抖动，最终测得的谱线是这些动态过程的叠加，线型发生畸变，反演误差增大。</p>
+<p>因此，需要将扫描频率提升至kHz级别。本实验将扫描频率提升至<strong>10 kHz</strong>，测量火焰上方1–5 mm高度，成功采集了高频条件下的吸收光谱。</p>
+<h4 id="实验设置与结果">实验设置与结果</h4>
+<p>高频扫描实验采用与初步实验相同的火焰工况（8 SLM CH$_4$ / 50 SLM air，$\phi=1.0$），激光器参数调整至：50.9 mA、16.1$^\circ$C、10 kHz、0.4 Vpp。伺服平台控制炉体在X方向$-15$至$+15$ mm、Y方向1至5 mm范围内步进扫描。</p>
+<p>实验成功采集了10 kHz扫描频率下的吸收光谱，验证了TDLAS系统在高频模式下的稳定工作能力。初步观测结果显示，高频扫描有效避免了因火焰脉动导致的谱线畸变问题，为后续精确温度反演奠定了数据基础。</p>
+<h3 id="带伴流平面炉扫描实验">带伴流平面炉扫描实验</h3>
+<p>尽管平面炉本身具有较好的火焰稳定性，但开放环境下火焰边界仍容易受环境气流和热浮力扰动的影响。</p>
+<h4 id="伴流的作用机制">伴流的作用机制</h4>
+<p>在开放火焰中，火焰边界容易受气流、热浮力扰动影响而产生抖动或边缘卷吸。同轴伴流可以产生一个低速、平稳的气流保护层，有效抑制外界紊乱对火焰本体的干扰，并减少边缘的空气卷吸。</p>
+<p>此外，开放火焰的边缘会卷吸空气中的氧气，这会导致在火焰边界形成一个当量比无法控制、温度和组分梯度大的反应层。用惰性气体伴流（通常为N$_2$），可阻断氧气扩散进入火焰高温区，消除火焰边缘的异常，使火焰产物的组分浓度和温度严格由实验设定燃料燃烧决定，而非受边界二次反应干扰。这对于高精度的火焰标定至关重要。</p>
+<h4 id="实验结果">实验结果</h4>
+<p>采用带N$_2$伴流（伴流流量20 SLM）的平面炉进行甲烷/空气火焰扫描实验，在与高频扫描实验相同工况下（8 SLM CH$_4$ / 50 SLM air，$\phi=1.0$，10 kHz扫描频率）采集吸收光谱。初步结果表明，伴流的加入显著改善了火焰边缘的温度均匀性，边缘区域的温度梯度较无伴流工况有所减小。</p>
+<h2 id="总结与展望">总结与展望</h2>
+<h3 id="全文总结">全文总结</h3>
+<h4 id="主要结论">主要结论</h4>
+<p>截至中期报告节点，已完成的主要工作包括：</p>
+<p>第一，火焰炉结构设计——完成了三种不同参数的炉子设计方案和相应的热力学计算、冷态仿真、火焰光谱仿真，验证了设计方案在3000 K高温工况下的可行性。</p>
+<p>第二，TDLAS测量系统搭建——建立了完整的1.4$\mu$m波段TDLAS实验系统，包括激光器（标定至1397.824 nm）、光路、探测（TLC2201 TIA）、采集（10 kHz）等硬件模块。</p>
+<p>第三，数据处理算法开发——开发了FSR刻度$\to$波数转换$\to$Voigt拟合$\to$温度反演的完整数据处理链路，通过了合成光谱验证（误差$&lt;$<!-- -->2%）。</p>
+<p>第四，初步实验验证——完成了平面炉TDLAS扫描实验，成功分辨出双吸收峰并重建了二维温度场。</p>
+<h4 id="创新点">创新点</h4>
+<p>针对非预混平面绝热火焰炉炉普遍存在的高温极端工况下寿命短、燃烧不均匀不稳定等问题，优化当前火焰炉的内部结构，通过添加水冷结构和改变喷嘴阵列结构、数量和间距等关键参数实现更均匀的燃烧场分布、更优的排放性能和更高的燃烧温度。 采用更高分辨率的TDLAS和PLIF实验方法，对火焰进行标定，能够更详细的建立以非预混平面绝热火焰炉炉作为标定源的火焰的温度场浓度场，对微扩散火焰结构进行更深入的研究，为后续标定提供一个可溯源的标准化标定条件。</p>
+<h3 id="展望">展望</h3>
+<p>下一步工作计划包括：进行平面炉氢氧火焰完整扫描实验并走通全流程温度反演；完成多工况系统实验、制备多通道探测器阵列、完成1分16光路实验和PLIF实验。</p>
+<h2 id="参考文献">参考文献</h2>
+<p class="report-ref">[1] FATEEV A, SUTTON G, RODRÍGUEZ CONEJO M A, 等. Validation of Emission Spectroscopy Gas Temperature Measurements Using a Standard Flame Traceable to the International Temperature Scale of 1990 (ITS-90)[J]. International Journal of Thermophysics, 2019, 40(99): 1-16.</p>
+<p class="report-ref">[2] LIU X C, ZHANG G Y, HUANG Y, 等. Two-dimensional temperature and carbon dioxide concentration profiles in atmospheric laminar diffusion flames measured by mid-infrared direct absorption spectroscopy at 4.2 μm[J]. Applied Physics B: Lasers and Optics, 2018, 124(3): 61.</p>
+<p class="report-ref">[3] QINGHUI M, COLIN B, L. A. K., 等. Experimental measurement of the rapid mixing of fuel and air in a multi-element diffusion burner[J]. Combustion and Flame, 2023, 251: 112686.</p>
+<p class="report-ref">[4] LIU Z G, XIONG Y, ZHANG Z D, 等. Investigation of a novel combustion stabilization mechanism and combustion characteristics of a multi-nozzle array model combustor[J]. Fuel, 2022, 327: 125138.</p>
+<p class="report-ref">[5] 莫妲, 林宇震, 韩啸, 等. 氢气微混燃烧技术研究现状和未来展望[J]. 航空学报, 2024, 45(7): 028994.</p>
+<p class="report-ref">[6] XU Y, LI S, GAO Q, 等. Characterization on Ignition and Volatile Combustion of Dispersed Coal Particle Streams: In Situ Diagnostics and Transient Modeling[J]. Energy \& Fuels, 2018, 32(9): 9850-9858.</p>
+<p class="report-ref">[7] PERS H, ANIELLO A, SCHULLER T. Transition from hydrodynamic flashback to wall-ignition in hydrogen-enriched laminar premixed burners[J]. Combustion and Flame, 2024, 266: 113514.</p>
+<p class="report-ref">[8] KÖSER J, BECKER L G, GOSSMANN A K, 等. Investigation of ignition and volatile combustion of single coal particles within oxygen-enriched atmospheres using high-speed OH-PLIF[J]. Proceedings of the Combustion Institute, 2017, 36: 2103-2111.</p>
+<p class="report-ref">[9] KÖSER J, LI T, VOROBIEV N, 等. Multi-parameter diagnostics for high-resolution in-situ measurements of single coal particle combustion[J]. Proceedings of the Combustion Institute, 2019, 37: 2893-2900.</p>
+<p class="report-ref">[10] CABRA R. Turbulent Jet Flames Into a Vitiated Coflow[R]. NASA, 2004.</p>
+<p class="report-ref">[11] LI T, LI B, FARMAND P, 等. Motion and swelling of single coal particles during volatile combustion in a laminar flow reactor[J]. Proceedings of the Combustion Institute, 2023, 39: 3333-3341.</p>
+<p class="report-ref">[12] 陈昊. 富氢燃料微混燃烧组织方法研究[D]. 华北电力大学, 2023.</p>
+<p class="report-ref">[13] 刘勋伟. 含氢燃料多微混射流火焰的燃烧特性与稳焰机制研究[D]. 中国科学院大学, 2021.</p>
+<p class="report-ref">[14] CORREIA RODRIGUES H, TUMMERS M J, VAN VEEN E H, 等. Spray flame structure in conventional and hot-diluted combustion regime[J]. Combustion and Flame, 2015, 162: 759-773.</p>
+<p class="report-ref">[15] VENKATARAMAN K, LEWIS S E, THOMAS A R, 等. F-class DLN technology advancements: DLN2.6+[C]//ASME Turbo Expo. 2011.</p>
+<p class="report-ref">[16] YORK W D, ZIMINSKY W S, YILMAZ E, 等. Development and testing of a low NOx hydrogen combustion system for heavy duty gas turbines[J]. Gas Turbines Power, 2013, 135(2): 022001.</p>
+<p class="report-ref">[17] ASAI T, DODO S, KARISHUKU M, 等. Multiple-injection dry low-NOx combustor for hydrogen-rich syngas fuel: testing and evaluation of pilot combustor[J]. Mitsubishi Heavy Industries Technical Review, 2014, 51(5): 1-6.</p>
+<p class="report-ref">[18] ZHANG Y, ZHANG H, TIAN L, 等. Temperature and emissions characteristics of a micro-mixing injection hydrogen-rich syngas flame diluted with N₂[J]. International Journal of Hydrogen Energy, 2015, 40(35): 11690-11698.</p>
+<p class="report-ref">[19] LIU X, SHAO W, LIU Y, 等. Cold flow characteristics of a novel high-hydrogen micromix model burner based on multiple confluent turbulent round jets[J]. International Journal of Hydrogen Energy, 2021, 46(39): 20740-20758.</p>
+<p class="report-ref">[20] TAO B, LEI Q C, YE J F, 等. Measurements and analysis of diode laser modulation wavelength at high accuracy and response rate[J]. Applied Physics B: Lasers and Optics, 2020, 126(4): 88.</p>
+<p class="report-ref">[21] LI X, ZHANG Y, WANG Z, 等. Investigation of 10 kHz Filtered Rayleigh Scattering and CH₂O Planar Laser-Induced Fluorescence Measurement in Two-Stage Swirl Combustor[J]. Chinese Journal of Chemical Physics, 2024, 37(2): 1-8.</p>
+<p class="report-ref">[22] BARLOW R S, CARTER C D, KARPETIS A N, 等. Raman/Rayleigh scattering and CO-PLIF measurements in laminar and turbulent jet flames of dimethyl ether[J]. Combustion and Flame, 2009, 156(3): 567-578.</p>
+<p class="report-ref">[23] SHI L, ENDRES T, JEFFRIES J B, 等. A Compact Fiber-Coupled NIR/MIR Laser Absorption Instrument for the Simultaneous Measurement of Gas-Phase Temperature and CO, CO₂, and H₂O Concentration[J]. Sensors, 2022, 22(3): 1286.</p>
+<p class="report-ref">[24] HSU P S, JIANG N, FELVER J J, 等. 10 kHz two-color OH PLIF thermometry using a single burst-mode OPO[J]. Optics Letters, 2021, 46(10): 2308-2311.</p>
+<p class="report-ref">[25] WAGNER S, KLEIN M, KATHROTIA T, 等. Absolute, spatially resolved, in situ CO profiles in atmospheric laminar counter-flow diffusion flames using 2.3 μm TDLAS[J]. Applied Physics B: Lasers and Optics, 2012, 109(3): 533-540.</p>
+<p class="report-ref">[26] ALQASEMI M, RICE B, GLENZER S H, 等. Temperature Measurements in Heavily-Sooting Ethylene/Air Flames Using Synchrotron X-ray Fluorescence of Krypton[J]. Combustion and Flame, 2023, 247: 112494.</p>
+<p class="report-ref">[27] BRAUN E L, SLIPCHENKO M N, 等. Spatially multiplexed femtosecond/picosecond coherent anti-Stokes Raman scattering for multipoint array measurements[J]. Optics Letters, 2022, 47(20): 5280-5283.</p>
+<p class="report-ref">[28] LIU X N, MA Y F. Tunable Diode Laser Absorption Spectroscopy Based Temperature Measurement with a Single Diode Laser Near 1.4 μm[J]. Sensors, 2022, 22(16): 6095.</p>
+<p class="report-ref">[29] WEN J, CAO Z, GAO X, 等. Concentration Imaging of Multiple Gases from H₂O Absorption Spectrum Coupled with CFD Model[C]//IEEE International Conference on Imaging Systems and Techniques. 2022: 1-5.</p>
+<p class="report-ref">[30] SI J, FU G, CHENG Y, 等. A Quality-Hierarchical Temperature Imaging Network for TDLAS Tomography[J]. IEEE Transactions on Instrumentation and Measurement, 2022, 71: 4500710.</p>
+<p class="report-ref">[31] AGARWAL S, SEIFERT L, ZHU D, 等. Investigations on Pressure Broadening Coefficients of NO Lines in the 1-0 Band for N₂, CO₂, Ar, H₂, O₂ and He[J]. Applied Sciences, 2023, 13(3): 1370.</p>
+<p class="report-ref">[32] WAGNER S, KLEIN M, KATHROTIA T, 等. In situ TDLAS measurement of absolute acetylene concentration profiles in a non-premixed laminar counter-flow flame[J]. Applied Physics B: Lasers and Optics, 2012, 107(3): 585-589.</p>
+<p class="report-ref">[33] ZHOU X, JEFFRIES J B, HANSON R K. Development of a fast temperature sensor for combustion gases using a single tunable diode laser[J]. Applied Physics B: Lasers and Optics, 2005, 81: 711-722.</p>
+<p class="report-ref">[34] LI S, FAROOQ A, HANSON R K. H₂O temperature sensor for low-pressure flames using tunable diode laser absorption near 2.9 μm[J]. Measurement Science and Technology, 2011, 22(12): 125301.</p>
+<p class="report-ref">[35] ZHANG G Y, WANG G Q, HUANG Y, 等. Reconstruction and simulation of temperature and CO₂ concentration in an axisymmetric flame based on TDLAS[J]. Optik, 2018, 170: 166-177.</p>
+<p class="report-ref">[36] 王绍杰, 顾明明, 齐飞, 等. 基于吸收光谱方法的平面非预混平面绝热火焰炉火焰多参数测量[J]. 燃烧科学与技术, 2023, 29(1): 44-52.</p>
+<p class="report-ref">[37] 黄安, 赵延辉, 杨顺华, 等. 基于玻尔兹曼图法的超燃冲压发动机温度测量方法研究[J]. 中国激光, 2023, 50(19): 1911004.</p>
+<p class="report-ref">[38] SMITH C H, GOLDENSTEIN C S, HANSON R K. A scanned-wavelength-modulation absorption-spectroscopy sensor for temperature and H₂O in low-pressure flames[J]. Measurement Science and Technology, 2014, 25(11): 115501.</p>
+<p class="report-ref">[39] MORLEY G. EMPIR project hastens the adoption of phosphor thermometry technique[EB/OL]. .</p>
+<p class="report-ref">[40] JONES F. EMPIR project showcased in industrial thermometry workshop[EB/OL]. .</p>
+<p class="report-ref">[41] University of Strathclyde. EMPRESS 2 project[EB/OL]. .</p>
+<p class="report-ref">[42] SUTTON G. The NPL STD Flame: Operating Instructions[R]. National Physical Laboratory, 2016.</p>
+<p class="report-ref">[43] National Physical Laboratory. Optical combustion thermometers: From 2040 K to 2260 K[EB/OL]. .</p>
+<p class="report-ref">[44] JONES F. EMPRESS project workshop engages with end-users[EB/OL]. .</p>
+<p class="report-ref">[45] EURAMET. Enhancing process efficiency through improved temperature measurement[EB/OL]. .</p>
+<p class="report-ref">[46] FLANAGAN-SMITH P. New self-calibrating thermometry for high-temperature manufacturing[EB/OL]. .</p>
+<p class="report-ref">[47] JONES F. Work from two EMPIR temperature projects wins best paper award[EB/OL]. .</p>
+<p class="report-ref">[48] EURAMET. Publishable Summary for 14IND04 EMPRESS[R]. EURAMET, 2018.</p>
+<p class="report-ref">[49] EURAMET. Final Publishable Report for 17IND04 EMPRESS 2[R]. EURAMET, 2021.</p>
+<p class="report-ref">[50] ZHOU X, LIU X, JEFFRIES J B, 等. Development of a sensor for temperature and water concentration in combustion gases using a single tunable diode laser[J]. Measurement Science and Technology, 2003, 14(8): 1459-1468.</p>
+<p class="report-download">中期报告正文（原报告 PDF：<a href="midterm.pdf">midterm.pdf</a>｜LaTeX 源：<a href="document.tex">document.tex</a>）</p>
+  </div>
+</article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

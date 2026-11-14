@@ -1,25 +1,775 @@
-<!doctype html><html lang=zh><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>Post | 刘训臣燃烧诊断实验室主页</title><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=description content="山东科技大学 机械电子工程学院 激光诊断实验室"><meta name=generator content="Hugo 0.162.1"><meta name=robots content="index, follow"><meta name=author content="刘训臣"><link rel=stylesheet href=/xliu-group/ananke/css/main.02a37ad6c4e155c542d276915a0e3f83f5c7c5fec443350f6e60753f1679b7a7.css integrity="sha256-AqN61sThVcVC0naRWg4/g/XHxf7EQzUPbmB1PxZ5t6c=" crossorigin=anonymous><link rel=stylesheet href=/xliu-group/css/tables.css><script>(function(){"use strict";function t(){for(var t=document.querySelectorAll(".code-block .code-copy[hidden]"),e=0;e<t.length;e++)t[e].hidden=!1}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",t):t();function e(e){var t=e.querySelector(".code-copy-label"),n=t?t.textContent:null;e.classList.add("is-copied"),t&&(t.textContent="Copied"),window.setTimeout(function(){e.classList.remove("is-copied"),t&&n!==null&&(t.textContent=n)},2e3)}function n(e){var n,t=document.createElement("textarea");t.value=e,t.setAttribute("readonly",""),t.style.position="absolute",t.style.left="-9999px",document.body.appendChild(t),t.select(),n=!1;try{n=document.execCommand("copy")}catch{n=!1}return document.body.removeChild(t),n}function s(t){var s,o,a,i=t.closest(".code-block");if(!i)return;if(s=i.querySelector("pre"),!s)return;a=s.querySelector("code")||s,o=a.innerText,navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(o).then(function(){e(t)},function(){n(o)&&e(t)}):n(o)&&e(t)}document.addEventListener("click",function(e){var t=e.target.closest(".code-copy");t&&s(t)})})()</script><link href=/xliu-group/zh/post/index.xml rel=alternate type=application/rss+xml title=刘训臣燃烧诊断实验室主页><link href=/xliu-group/zh/post/index.xml rel=feed type=application/rss+xml title=刘训臣燃烧诊断实验室主页><link rel=canonical href=https://liuxunchen.github.io/xliu-group/zh/post/><meta property="og:url" content="https://liuxunchen.github.io/xliu-group/zh/post/"><meta property="og:site_name" content="刘训臣燃烧诊断实验室主页"><meta property="og:title" content="Post"><meta property="og:description" content="我们的科研内容主要关注以下几方面内容：
-Technique 非接触光学测量技术： TDLAS PLIF PIV spectroscopy simulation optics vortex Object 热流体研究对象： crossflow burner nozzle spray coal UAV Utility 工具 ： Python LabVIEW LaTeX Hugo instrument flow-control experiment literature tutorial workshop review"><meta property="og:locale" content="zh"><meta property="og:type" content="website"><meta itemprop=name content="Post"><meta itemprop=description content="我们的科研内容主要关注以下几方面内容：
-Technique 非接触光学测量技术： TDLAS PLIF PIV spectroscopy simulation optics vortex Object 热流体研究对象： crossflow burner nozzle spray coal UAV Utility 工具 ： Python LabVIEW LaTeX Hugo instrument flow-control experiment literature tutorial workshop review"><meta itemprop=datePublished content="2026-11-06T00:00:00+00:00"><meta itemprop=dateModified content="2026-11-06T00:00:00+00:00"><meta itemprop=wordCount content="32"><meta name=twitter:card content="summary"><meta name=twitter:title content="Post"><meta name=twitter:description content="我们的科研内容主要关注以下几方面内容：
-Technique 非接触光学测量技术： TDLAS PLIF PIV spectroscopy simulation optics vortex Object 热流体研究对象： crossflow burner nozzle spray coal UAV Utility 工具 ： Python LabVIEW LaTeX Hugo instrument flow-control experiment literature tutorial workshop review"><script>if(typeof MathJax=="undefined"){window.MathJax={tex:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]]}};const e=document.createElement("script");e.src="https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js",e.async=!0,e.crossOrigin="anonymous",document.head.appendChild(e),console.log("MathJax initialized")}</script></head><body class="ma0 avenir bg-near-white production"><header class="cover bg-top" style=background-image:url(https://liuxunchen.github.io/xliu-group/images/sdust.jpg)><div class=bg-black-60><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l center items-center justify-between"><a href=/xliu-group/zh/ class="f3 fw2 hover-white white-90 dib no-underline"><img src=/xliu-group/images/logo2.jpg class="w100 mw5-ns" alt=刘训臣燃烧诊断实验室主页></a><div class="flex-l items-center"><ul class="pl0 mr3"><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/research/ title="Research 页">Research</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/teaching/ title="Teaching 页">Teaching</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/paper/ title="Paper 页">Paper</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/news/ title="News 页">News</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/people/ title="People 页">People</a></li><li class="list f5 f4-ns fw4 dib pr3"><a class="hover-white white-90 no-underline" href=/xliu-group/zh/post/ title="Post 页">Post</a></li></ul><div class=ananke-socials></div></div></div></nav><div class="tc-l pv4 pv6-l ph3 ph4-ns"><h1 class="f2 f-subheadline-l fw2 white-90 mb0 lh-title">Post</h1></div></div></header><main class=pb7 role=main><article class="pa3 pa4-ns nested-copy-line-height"><section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links blue"><p>我们的科研内容主要关注以下几方面内容：</p><p><strong>Technique</strong> 非接触光学测量技术： <a href=/xliu-group/zh/tags/tdlas/ class="link dim blue">TDLAS</a>
-<a href=/xliu-group/zh/tags/plif/ class="link dim blue">PLIF</a>
-<a href=/xliu-group/zh/tags/piv/ class="link dim blue">PIV</a>
-<a href=/xliu-group/zh/tags/spectroscopy/ class="link dim blue">spectroscopy</a>
-<a href=/xliu-group/zh/tags/simulation/ class="link dim blue">simulation</a>
-<a href=/xliu-group/zh/tags/optics/ class="link dim blue">optics</a>
-<a href=/xliu-group/zh/tags/vortex/ class="link dim blue">vortex</a></p><p><strong>Object</strong> 热流体研究对象： <a href=/xliu-group/zh/tags/crossflow/ class="link dim blue">crossflow</a>
-<a href=/xliu-group/zh/tags/burner/ class="link dim blue">burner</a>
-<a href=/xliu-group/zh/tags/nozzle/ class="link dim blue">nozzle</a>
-<a href=/xliu-group/zh/tags/spray/ class="link dim blue">spray</a>
-<a href=/xliu-group/zh/tags/coal/ class="link dim blue">coal</a>
-<a href=/xliu-group/zh/tags/uav/ class="link dim blue">UAV</a></p><p><strong>Utility</strong> 工具 ： <a href=/xliu-group/zh/tags/python/ class="link dim blue">Python</a>
-<a href=/xliu-group/zh/tags/labview/ class="link dim blue">LabVIEW</a>
-<a href=/xliu-group/zh/tags/latex/ class="link dim blue">LaTeX</a>
-<a href=/xliu-group/zh/tags/hugo/ class="link dim blue">Hugo</a>
-<a href=/xliu-group/zh/tags/instrument/ class="link dim blue">instrument</a>
-<a href=/xliu-group/zh/tags/flow-control/ class="link dim blue">flow-control</a>
-<a href=/xliu-group/zh/tags/experiment/ class="link dim blue">experiment</a>
-<a href=/xliu-group/zh/tags/literature/ class="link dim blue">literature</a>
-<a href=/xliu-group/zh/tags/tutorial/ class="link dim blue">tutorial</a>
-<a href=/xliu-group/zh/tags/workshop/ class="link dim blue">workshop</a>
-<a href=/xliu-group/zh/tags/review/ class="link dim blue">review</a></p></section><section class="flex-ns mt5 flex-wrap justify-around"><div class="w-100 w-30-l mb4 relative bg-white"><article class="bb b--black-10"><div class="db pv4 ph3 ph0-l dark-gray no-underline"><div class="flex-column flex-row-ns flex"><div class="pr3-ns mb4 mb0-ns w-100 w-40-ns"><a href=/xliu-group/zh/post/wangchen-defense/ class="db grow"><img src=https://liuxunchen.github.io/xliu-group/images/sdust.jpg class=img alt="image from 王晨中期答辩材料"></a></div><div class="blah w-100 w-60-ns pl3-ns"><time class="f6 db" datetime=2026-11-06T00:00:00Z>十一月 6, 2026</time><h1 class="f3 fw1 athelas mt0 lh-title"><a href=/xliu-group/zh/post/wangchen-defense/ class="color-inherit dim link">王晨中期答辩材料</a></h1><div class="f6 f5-l lh-copy nested-copy-line-height nested-links"><h2 id=答辩材料>答辩材料</h2><ul><li><a href=/xliu-group/zh/post/wangchen-defense/defense.pptx>答辩 PPT</a>（7.6 MB，已压缩）</li></ul><p>（报告正文 Markdown 版待补：由 LaTeX 源经 pandoc 转正文后补入本页；当前先发布答辩 PPT）</p></div><p class="f6 lh-copy mv0">By 王晨</p><a href=/xliu-group/zh/post/wangchen-defense/ class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a></div></div></div></article></div><div class="w-100 w-30-l mb4 relative bg-white"><article class="bb b--black-10"><div class="db pv4 ph3 ph0-l dark-gray no-underline"><div class="flex-column flex-row-ns flex"><div class="pr3-ns mb4 mb0-ns w-100 w-40-ns"><a href=/xliu-group/zh/post/xliu-31-arnold-p61-replacement/ class="db grow"><img src=/xliu-group/zh/post/xliu-31-arnold-p61-replacement/02-two-models.jpg class=img alt="image from 替代 ARNOLD 148/10/100 PS-WK：我们做的氢氧火头，为什么不发黑、寿命更长"></a></div><div class="blah w-100 w-60-ns pl3-ns"><time class="f6 db" datetime=2026-11-05T20:00:00+08:00>十一月 5, 2026</time><h1 class="f3 fw1 athelas mt0 lh-title"><a href=/xliu-group/zh/post/xliu-31-arnold-p61-replacement/ class="color-inherit dim link">替代 ARNOLD 148/10/100 PS-WK：我们做的氢氧火头，为什么不发黑、寿命更长</a></h1><div class="f6 f5-l lh-copy nested-copy-line-height nested-links">石英加工线上，火头是关键耗材。进口 ARNOLD 148/10/100 PS-WK 火头的痛点是端面发黑、寿命短。我们把火头端面的关键材料换成了新型耐高温抗氧化材料，配自主孔阵设计，做了两种型号的氢氧火头——端面不发黑、寿命长，相同流量下还能定制不同火焰长度，已在一家石英加工企业替代进口产品。文末附使用说明与常见问题。</div><p class="f6 lh-copy mv0">By 刘训臣</p><a href=/xliu-group/zh/post/xliu-31-arnold-p61-replacement/ class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a></div></div></div></article></div><div class="w-100 w-30-l mb4 relative bg-white"><article class="bb b--black-10"><div class="db pv4 ph3 ph0-l dark-gray no-underline"><div class="flex-column flex-row-ns flex"><div class="pr3-ns mb4 mb0-ns w-100 w-40-ns"><a href=/xliu-group/zh/post/xliu-30-slit-flame-furnace/ class="db grow"><img src=/xliu-group/zh/post/xliu-30-slit-flame-furnace/02-flame-front.jpg class=img alt="image from 狭缝火焰炉：把 2600 K 的平面火焰压进一条 1 mm 的缝"></a></div><div class="blah w-100 w-60-ns pl3-ns"><time class="f6 db" datetime=2026-11-05T19:30:00+08:00>十一月 5, 2026</time><h1 class="f3 fw1 athelas mt0 lh-title"><a href=/xliu-group/zh/post/xliu-30-slit-flame-furnace/ class="color-inherit dim link">狭缝火焰炉：把 2600 K 的平面火焰压进一条 1 mm 的缝</a></h1><div class="f6 f5-l lh-copy nested-copy-line-height nested-links">甲烷 15 slm + 氧气 30 slm 预混，从一条 1 mm×15 mm 的狭缝喷出，出口速度 50 m/s，设计火焰温度 2600 K——这是一台面向石英玻璃加工的狭缝火焰炉。这篇记录它的设计参数、点火后的火焰形态，以及用这把“火焰刀”把石英玻璃棒拉成细丝的初步试验。</div><p class="f6 lh-copy mv0">By 刘训臣, 惠昊</p><a href=/xliu-group/zh/post/xliu-30-slit-flame-furnace/ class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a></div></div></div></article></div><div class="w-100 w-30-l mb4 relative bg-white"><article class="bb b--black-10"><div class="db pv4 ph3 ph0-l dark-gray no-underline"><div class="flex-column flex-row-ns flex"><div class="pr3-ns mb4 mb0-ns w-100 w-40-ns"><a href=/xliu-group/zh/post/gaoyinbin-proposal/ class="db grow"><img src=https://liuxunchen.github.io/xliu-group/images/sdust.jpg class=img alt="image from 高寅斌开题报告"></a></div><div class="blah w-100 w-60-ns pl3-ns"><time class="f6 db" datetime=2026-11-05T00:00:00Z>十一月 5, 2026</time><h1 class="f3 fw1 athelas mt0 lh-title"><a href=/xliu-group/zh/post/gaoyinbin-proposal/ class="color-inherit dim link">高寅斌开题报告</a></h1><div class="f6 f5-l lh-copy nested-copy-line-height nested-links"></div><p class="f6 lh-copy mv0">By 高寅斌</p><a href=/xliu-group/zh/post/gaoyinbin-proposal/ class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a></div></div></div></article></div><div class="w-100 w-30-l mb4 relative bg-white"><article class="bb b--black-10"><div class="db pv4 ph3 ph0-l dark-gray no-underline"><div class="flex-column flex-row-ns flex"><div class="pr3-ns mb4 mb0-ns w-100 w-40-ns"><a href=/xliu-group/zh/post/gaoyinbin-midterm/ class="db grow"><img src=https://liuxunchen.github.io/xliu-group/images/sdust.jpg class=img alt="image from 高寅斌中期报告"></a></div><div class="blah w-100 w-60-ns pl3-ns"><time class="f6 db" datetime=2026-11-05T00:00:00Z>十一月 5, 2026</time><h1 class="f3 fw1 athelas mt0 lh-title"><a href=/xliu-group/zh/post/gaoyinbin-midterm/ class="color-inherit dim link">高寅斌中期报告</a></h1><div class="f6 f5-l lh-copy nested-copy-line-height nested-links"></div><p class="f6 lh-copy mv0">By 高寅斌</p><a href=/xliu-group/zh/post/gaoyinbin-midterm/ class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a></div></div></div></article></div><div class="w-100 w-30-l mb4 relative bg-white"><article class="bb b--black-10"><div class="db pv4 ph3 ph0-l dark-gray no-underline"><div class="flex-column flex-row-ns flex"><div class="pr3-ns mb4 mb0-ns w-100 w-40-ns"><a href=/xliu-group/zh/post/huihao-proposal/ class="db grow"><img src=https://liuxunchen.github.io/xliu-group/images/sdust.jpg class=img alt="image from 惠昊开题报告"></a></div><div class="blah w-100 w-60-ns pl3-ns"><time class="f6 db" datetime=2026-11-05T00:00:00Z>十一月 5, 2026</time><h1 class="f3 fw1 athelas mt0 lh-title"><a href=/xliu-group/zh/post/huihao-proposal/ class="color-inherit dim link">惠昊开题报告</a></h1><div class="f6 f5-l lh-copy nested-copy-line-height nested-links"></div><p class="f6 lh-copy mv0">By 惠昊</p><a href=/xliu-group/zh/post/huihao-proposal/ class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a></div></div></div></article></div><div class="w-100 w-30-l mb4 relative bg-white"><article class="bb b--black-10"><div class="db pv4 ph3 ph0-l dark-gray no-underline"><div class="flex-column flex-row-ns flex"><div class="pr3-ns mb4 mb0-ns w-100 w-40-ns"><a href=/xliu-group/zh/post/huihao-midterm/ class="db grow"><img src=https://liuxunchen.github.io/xliu-group/images/sdust.jpg class=img alt="image from 惠昊中期报告"></a></div><div class="blah w-100 w-60-ns pl3-ns"><time class="f6 db" datetime=2026-11-05T00:00:00Z>十一月 5, 2026</time><h1 class="f3 fw1 athelas mt0 lh-title"><a href=/xliu-group/zh/post/huihao-midterm/ class="color-inherit dim link">惠昊中期报告</a></h1><div class="f6 f5-l lh-copy nested-copy-line-height nested-links"></div><p class="f6 lh-copy mv0">By 惠昊</p><a href=/xliu-group/zh/post/huihao-midterm/ class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a></div></div></div></article></div><div class="w-100 w-30-l mb4 relative bg-white"><article class="bb b--black-10"><div class="db pv4 ph3 ph0-l dark-gray no-underline"><div class="flex-column flex-row-ns flex"><div class="pr3-ns mb4 mb0-ns w-100 w-40-ns"><a href=/xliu-group/zh/post/wangchen-proposal/ class="db grow"><img src=https://liuxunchen.github.io/xliu-group/images/sdust.jpg class=img alt="image from 王晨开题报告"></a></div><div class="blah w-100 w-60-ns pl3-ns"><time class="f6 db" datetime=2026-11-05T00:00:00Z>十一月 5, 2026</time><h1 class="f3 fw1 athelas mt0 lh-title"><a href=/xliu-group/zh/post/wangchen-proposal/ class="color-inherit dim link">王晨开题报告</a></h1><div class="f6 f5-l lh-copy nested-copy-line-height nested-links"></div><p class="f6 lh-copy mv0">By 王晨</p><a href=/xliu-group/zh/post/wangchen-proposal/ class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a></div></div></div></article></div><div class="w-100 w-30-l mb4 relative bg-white"><article class="bb b--black-10"><div class="db pv4 ph3 ph0-l dark-gray no-underline"><div class="flex-column flex-row-ns flex"><div class="pr3-ns mb4 mb0-ns w-100 w-40-ns"><a href=/xliu-group/zh/post/wangchen-midterm/ class="db grow"><img src=https://liuxunchen.github.io/xliu-group/images/sdust.jpg class=img alt="image from 王晨中期报告"></a></div><div class="blah w-100 w-60-ns pl3-ns"><time class="f6 db" datetime=2026-11-05T00:00:00Z>十一月 5, 2026</time><h1 class="f3 fw1 athelas mt0 lh-title"><a href=/xliu-group/zh/post/wangchen-midterm/ class="color-inherit dim link">王晨中期报告</a></h1><div class="f6 f5-l lh-copy nested-copy-line-height nested-links"></div><p class="f6 lh-copy mv0">By 王晨</p><a href=/xliu-group/zh/post/wangchen-midterm/ class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a></div></div></div></article></div><div class="w-100 w-30-l mb4 relative bg-white"><article class="bb b--black-10"><div class="db pv4 ph3 ph0-l dark-gray no-underline"><div class="flex-column flex-row-ns flex"><div class="pr3-ns mb4 mb0-ns w-100 w-40-ns"><a href=/xliu-group/zh/post/wangshuo-proposal/ class="db grow"><img src=https://liuxunchen.github.io/xliu-group/images/sdust.jpg class=img alt="image from 王硕开题报告"></a></div><div class="blah w-100 w-60-ns pl3-ns"><time class="f6 db" datetime=2026-11-05T00:00:00Z>十一月 5, 2026</time><h1 class="f3 fw1 athelas mt0 lh-title"><a href=/xliu-group/zh/post/wangshuo-proposal/ class="color-inherit dim link">王硕开题报告</a></h1><div class="f6 f5-l lh-copy nested-copy-line-height nested-links"><p>开题报告正文（文字版，由提交学院的打印版 PDF 提取；图与版式见 <a href=/xliu-group/zh/post/wangshuo-proposal/proposal.pdf>proposal.pdf</a>）。</p></div><p class="f6 lh-copy mv0">By 王硕</p><a href=/xliu-group/zh/post/wangshuo-proposal/ class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a></div></div></div></article></div></section><ul class="pagination pagination-default"><li class="page-item disabled"><a aria-disabled=true aria-label=First class=page-link role=button tabindex=-1><span aria-hidden=true>&#171;&#171;</span></a></li><li class="page-item disabled"><a aria-disabled=true aria-label=Previous class=page-link role=button tabindex=-1><span aria-hidden=true>&#171;</span></a></li><li class="page-item active"><a aria-current=page aria-label="Page 1" class=page-link role=button>1</a></li><li class=page-item><a href=/xliu-group/zh/post/page/2/ aria-label="Page 2" class=page-link role=button>2</a></li><li class=page-item><a href=/xliu-group/zh/post/page/3/ aria-label="Page 3" class=page-link role=button>3</a></li><li class=page-item><a href=/xliu-group/zh/post/page/4/ aria-label="Page 4" class=page-link role=button>4</a></li><li class=page-item><a href=/xliu-group/zh/post/page/5/ aria-label="Page 5" class=page-link role=button>5</a></li><li class=page-item><a href=/xliu-group/zh/post/page/2/ aria-label=Next class=page-link role=button><span aria-hidden=true>&#187;</span></a></li><li class=page-item><a href=/xliu-group/zh/post/page/8/ aria-label=Last class=page-link role=button><span aria-hidden=true>&#187;&#187;</span></a></li></ul></article></main><footer class="bg-black bottom-0 w-100 pa3" role=contentinfo><div class="flex justify-between"><a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href=https://liuxunchen.github.io/xliu-group/zh/>&copy; 刘训臣燃烧诊断实验室主页 2026</a><div><div class=ananke-socials></div></div></div></footer></body></html>
+<!DOCTYPE html>
+<html lang="zh">
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Post | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="山东科技大学 机械电子工程学院 激光诊断实验室">
+    <meta name="generator" content="Hugo 0.162.1">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="刘训臣">
+    
+
+    <link rel="stylesheet" href="/xliu-group/ananke/css/main.css"><link rel="stylesheet" href="/xliu-group/css/tables.css">
+    <script>
+  (function () {
+    "use strict";
+
+    
+    
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
+
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
+
+    
+      
+
+    
+
+    
+    
+      <link href="/xliu-group/zh/post/index.xml" rel="alternate" type="application/rss+xml" title="刘训臣燃烧诊断实验室主页" />
+      <link href="/xliu-group/zh/post/index.xml" rel="feed" type="application/rss+xml" title="刘训臣燃烧诊断实验室主页" />
+      
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/">
+	<meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+	<meta property="og:title" content="Post">
+	<meta property="og:description" content="我们的科研内容主要关注以下几方面内容：
+Technique 非接触光学测量技术： TDLAS PLIF PIV spectroscopy simulation optics vortex Object 热流体研究对象： crossflow burner nozzle spray coal UAV Utility 工具 ： Python LabVIEW LaTeX Hugo instrument flow-control experiment literature tutorial workshop review">
+	<meta property="og:locale" content="zh">
+	<meta property="og:type" content="website">
+
+	<meta itemprop="name" content="Post">
+	<meta itemprop="description" content="我们的科研内容主要关注以下几方面内容：
+Technique 非接触光学测量技术： TDLAS PLIF PIV spectroscopy simulation optics vortex Object 热流体研究对象： crossflow burner nozzle spray coal UAV Utility 工具 ： Python LabVIEW LaTeX Hugo instrument flow-control experiment literature tutorial workshop review">
+	<meta itemprop="datePublished" content="2026-11-14T09:00:00+08:00">
+	<meta itemprop="dateModified" content="2026-11-14T09:00:00+08:00">
+	<meta itemprop="wordCount" content="32">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Post">
+	<meta name="twitter:description" content="我们的科研内容主要关注以下几方面内容：
+Technique 非接触光学测量技术： TDLAS PLIF PIV spectroscopy simulation optics vortex Object 热流体研究对象： crossflow burner nozzle spray coal UAV Utility 工具 ： Python LabVIEW LaTeX Hugo instrument flow-control experiment literature tutorial workshop review">
+
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+
+    
+
+  
+  
+  
+  <header class="cover bg-top" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
+    
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        <img src="/xliu-group/images/logo2.jpg" class="w100 mw5-ns" alt="刘训臣燃烧诊断实验室主页" />
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/teaching/" title="Teaching 页">
+              Teaching
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/paper/" title="Paper 页">
+              Paper
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/news/" title="News 页">
+              News
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv4 pv6-l ph3 ph4-ns">
+        <h1 class="f2 f-subheadline-l fw2 white-90 mb0 lh-title">
+          Post
+        </h1>
+        
+      </div>
+    </div>
+  </header>
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+    
+  
+
+  <article class="pa3 pa4-ns nested-copy-line-height">
+    <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links blue"><p>我们的科研内容主要关注以下几方面内容：</p>
+<p><strong>Technique</strong> 非接触光学测量技术： <a href="/xliu-group/zh/tags/tdlas/" class="link dim blue">TDLAS</a>
+ <a href="/xliu-group/zh/tags/plif/" class="link dim blue">PLIF</a>
+ <a href="/xliu-group/zh/tags/piv/" class="link dim blue">PIV</a>
+ <a href="/xliu-group/zh/tags/spectroscopy/" class="link dim blue">spectroscopy</a>
+ <a href="/xliu-group/zh/tags/simulation/" class="link dim blue">simulation</a>
+ <a href="/xliu-group/zh/tags/optics/" class="link dim blue">optics</a>
+ <a href="/xliu-group/zh/tags/vortex/" class="link dim blue">vortex</a>
+</p>
+<p><strong>Object</strong> 热流体研究对象： <a href="/xliu-group/zh/tags/crossflow/" class="link dim blue">crossflow</a>
+ <a href="/xliu-group/zh/tags/burner/" class="link dim blue">burner</a>
+ <a href="/xliu-group/zh/tags/nozzle/" class="link dim blue">nozzle</a>
+ <a href="/xliu-group/zh/tags/spray/" class="link dim blue">spray</a>
+ <a href="/xliu-group/zh/tags/coal/" class="link dim blue">coal</a>
+ <a href="/xliu-group/zh/tags/uav/" class="link dim blue">UAV</a>
+</p>
+<p><strong>Utility</strong> 工具 ： <a href="/xliu-group/zh/tags/python/" class="link dim blue">Python</a>
+ <a href="/xliu-group/zh/tags/labview/" class="link dim blue">LabVIEW</a>
+ <a href="/xliu-group/zh/tags/latex/" class="link dim blue">LaTeX</a>
+ <a href="/xliu-group/zh/tags/hugo/" class="link dim blue">Hugo</a>
+ <a href="/xliu-group/zh/tags/instrument/" class="link dim blue">instrument</a>
+ <a href="/xliu-group/zh/tags/flow-control/" class="link dim blue">flow-control</a>
+ <a href="/xliu-group/zh/tags/experiment/" class="link dim blue">experiment</a>
+ <a href="/xliu-group/zh/tags/literature/" class="link dim blue">literature</a>
+ <a href="/xliu-group/zh/tags/tutorial/" class="link dim blue">tutorial</a>
+ <a href="/xliu-group/zh/tags/workshop/" class="link dim blue">workshop</a>
+ <a href="/xliu-group/zh/tags/review/" class="link dim blue">review</a>
+</p>
+</section>
+    <section class="flex-ns mt5 flex-wrap justify-around">
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          
+
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+          
+        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+          <a href="/xliu-group/zh/post/xliu-33-piv-spatial-resolution/" class="db grow">
+            <img src="http://localhost:1313/xliu-group/images/sdust.jpg" class="img" alt="image from PIV 的空间分辨率：用 311 数据算一算解析到哪个尺度">
+          </a>
+        </div>
+      
+      <div class="blah w-100 w-60-ns pl3-ns">
+        
+          <time class="f6 db" datetime="2026-11-14T09:00:00+08:00">十一月 14, 2026</time>
+        
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/xliu-group/zh/post/xliu-33-piv-spatial-resolution/" class="color-inherit dim link">
+            PIV 的空间分辨率：用 311 数据算一算解析到哪个尺度
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          PIV 能分辨多大的涡？互相关法由判读窗口决定，光流/AI 号称网格 1 px——但 AI 也是从光流法来的，光流方程自带邻域、正则与金字塔三重空间滤波，分辨率不由输出网格决定。这篇用我们已公开的 40 kHz 双喷嘴横流射流数据集（311）把这件事算清楚：窗口 1.38 mm 下，涡串（5.3 mm）解析良好、剪切层厚度贴着窗口、Taylor 微尺度被压低、混合长度低于网格不可信，Kolmogorov 尺度还差三十多倍。空间分辨率要对照湍流尺度表来读，时间分辨率是另一半。
+        </div>
+        
+          <p class="f6 lh-copy mv0">By 刘训臣</p><a href="/xliu-group/zh/post/xliu-33-piv-spatial-resolution/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          
+
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+          
+        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+          <a href="/xliu-group/zh/post/xliu-32-next-step-diagnostics/" class="db grow">
+            <img src="http://localhost:1313/xliu-group/images/sdust.jpg" class="img" alt="image from 从实验室到现场：激光光谱与成像方法怎么落到真实系统里">
+          </a>
+        </div>
+      
+      <div class="blah w-100 w-60-ns pl3-ns">
+        
+          <time class="f6 db" datetime="2026-11-14T08:30:00+08:00">十一月 14, 2026</time>
+        
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/xliu-group/zh/post/xliu-32-next-step-diagnostics/" class="color-inherit dim link">
+            从实验室到现场：激光光谱与成像方法怎么落到真实系统里
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          给高温流动与反应过程「拍片子」：燃烧室、风洞、反应器、等离子体的内部，探针伸不进去，只能靠激光做非接触测量。这篇先讲清楚这个应用背景——抽血化验与医学影像的类比——再讲实验室里成熟的光谱与成像方法怎么推到真实系统上，以及为什么真正缺的不是新方法，而是「可信」二字。
+        </div>
+        
+          <p class="f6 lh-copy mv0">By 刘训臣</p><a href="/xliu-group/zh/post/xliu-32-next-step-diagnostics/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          
+
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+          
+        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+          <a href="/xliu-group/zh/post/2026w46-literature/" class="db grow">
+            <img src="http://localhost:1313/xliu-group/images/sdust.jpg" class="img" alt="image from 文献周报 w46：批判性阅读选辑">
+          </a>
+        </div>
+      
+      <div class="blah w-100 w-60-ns pl3-ns">
+        
+          <time class="f6 db" datetime="2026-11-11T00:00:00Z">十一月 11, 2026</time>
+        
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/xliu-group/zh/post/2026w46-literature/" class="color-inherit dim link">
+            文献周报 w46：批判性阅读选辑
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <ul>
+<li>本周共 2 篇 critique，作者 2 人：冉佳兴、赵鑫浩</li>
+<li><strong>另有 1 篇退回重写</strong>（格式不合规，未列入本辑；重交合格后并入下期周报）</li>
+</ul>
+<h3 id="冉佳兴narrowband-versus-broadband-excitation-for-cho-plif-imaging-in-flames-using-a-frequency-tripled-ndyag-lasergabet2014">冉佳兴：Narrowband versus broadband excitation for CH₂O PLIF imaging in flames using a frequency-tripled Nd:YAG laser（Gabet2014）</h3>
+<ul>
+<li><strong>文献</strong>：Gabet K. N., Sutton J. A. Narrowband versus broadband excitation for CH₂O PLIF imaging in flames using a frequency-tripled Nd:YAG laser. Experiments in Fluids, 55: 1774，2014. DOI: <a href="https://doi.org/10.1007/s00348-014-1774-9">10.1007/s00348-014-1774-9</a></li>
+<li><strong>一句话内容</strong>：用注入种子 Nd:YAG 三倍频 355 nm 对比窄带/宽带激发火焰 CH₂O PLIF，窄带调峰信号提升约 2 倍，可降低非预混火焰中 PAH 等物种的干扰。</li>
+</ul>
+<p><strong>分析</strong></p>
+<ol>
+<li><strong>改进设想</strong>（如果是我做，我能如何做得更好）：同步测温量化淬灭与配分函数的温度影响，完善室温标定的定量修正；补充高压、多燃料工况，拓展结论普适性。</li>
+<li><strong>可借鉴之处</strong>（哪些能用到我的实验）：窄带调至 28182.5 cm⁻¹ 提信噪比的方案可直接用于 355 nm 甲醛 PLIF 系统；2 倍信号增益与干扰抑制结论可指导激光器选型与参数优化。</li>
+<li><strong>批判与疑问</strong>：仅靠光谱相似性判定信号以 CH₂O 为主，缺少荧光光谱分辨验证；非预混外侧峰归为 PAH 缺乏直接佐证；室温标定定量可行性仅为推测，未完成系统校验。</li>
+</ol>
+<h3 id="赵鑫浩experimental-study-on-spray-flow-field-interactions-in-the-overlap-region-of-adjacent-pressure-swirl-nozzlesyan2026">赵鑫浩：Experimental study on spray flow field interactions in the overlap region of adjacent pressure swirl nozzles（YAN2026）</h3>
+<ul>
+<li><strong>文献</strong>：Jin-Dong Yan, Rui Zhou, Xu-Yang Qiao, Hua Chen, Wen-Long Cheng（通讯）. Experimental study on spray flow field interactions in the overlap region of adjacent pressure swirl nozzles. International Journal of Heat and Mass Transfer, 271: 129468，2026. DOI: <a href="https://doi.org/10.1016/j.ijheatmasstransfer.2026.129468">10.1016/j.ijheatmasstransfer.2026.129468</a></li>
+<li><strong>一句话内容</strong>：用 PDPA 对比单喷嘴与紧贴布置的双压力旋流喷嘴，证明重叠区内液滴间碰撞是雾化细化的主导途径（重叠区 ID32 最大降低 19.5%）。</li>
+</ul>
+<p><strong>分析</strong></p>
+        </div>
+        
+          <p class="f6 lh-copy mv0">By 刘训臣</p><a href="/xliu-group/zh/post/2026w46-literature/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          
+
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+          
+        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+          <a href="/xliu-group/zh/post/literature-weekly/" class="db grow">
+            <img src="http://localhost:1313/xliu-group/images/sdust.jpg" class="img" alt="image from 文献周报（本周 w46）：批判性阅读选辑">
+          </a>
+        </div>
+      
+      <div class="blah w-100 w-60-ns pl3-ns">
+        
+          <time class="f6 db" datetime="2026-11-11T00:00:00Z">十一月 11, 2026</time>
+        
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/xliu-group/zh/post/literature-weekly/" class="color-inherit dim link">
+            文献周报（本周 w46）：批判性阅读选辑
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          文献周报固定页：本周 critique 全文（每周三组会前刷新；导师认可后才发布）
+        </div>
+        
+          <p class="f6 lh-copy mv0">By 刘训臣</p><a href="/xliu-group/zh/post/literature-weekly/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          
+
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+          
+        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+          <a href="/xliu-group/zh/post/wangchen-18-allan-variance/" class="db grow">
+            <img src="http://localhost:1313/xliu-group/images/sdust.jpg" class="img" alt="image from 热电偶温度信号的 Allan 方差分析：16~32 s 的准周期慢波动">
+          </a>
+        </div>
+      
+      <div class="blah w-100 w-60-ns pl3-ns">
+        
+          <time class="f6 db" datetime="2026-11-06T00:00:00Z">十一月 6, 2026</time>
+        
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/xliu-group/zh/post/wangchen-18-allan-variance/" class="color-inherit dim link">
+            热电偶温度信号的 Allan 方差分析：16~32 s 的准周期慢波动
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <h2 id="问题温度信号到底稳不稳">问题：温度信号到底稳不稳？</h2>
+<p>313 同温工况实验里，用热电偶采集一级来流温度，想回答两件事：温度信号是否收敛、最优平均时间取多少。光看时间序列容易&quot;凭感觉&quot;，这里用 <strong>Allan 方差（重叠法）</strong> 定量判断——σ(τ) 随积分时间 τ 的变化曲线，白噪声时 σ 随 τ 下降、漂移时 σ 上升，最低点对应收敛时间。</p>
+<h2 id="先澄清一个口径热电偶是-1-hz不是-20-hz">先澄清一个口径：热电偶是 1 Hz，不是 20 Hz</h2>
+<p>写分析前先把采样率口径搞清。此前有一处把温度读数记成了 <strong>20 Hz（1 秒 20 个数）</strong>——那是<strong>火焰探测器</strong>的采样率（高频火焰信号，吹熄判据用），不是热电偶。热电偶/DAQ 实际采样率 <strong>1~2 Hz</strong>（本次 10-28 数据约 1 Hz），未降采样、未抽点。两个传感器不是一回事，混用会让 Allan 的&quot;点噪声&quot;解释完全失真。</p>
+<h2 id="数据与方法">数据与方法</h2>
+<ul>
+<li>数据：10-28 同温工况热电偶 <code>2026.10.28.xlsx</code> 通道 1，2679 点、约 61 分钟。</li>
+<li>口径：按&quot;一个工况测 2 分钟&quot;，取整段最稳的 2 分钟窗口（t=755~898 s，均值 1036.9 ℃，段内标准差 1.99 ℃）。</li>
+<li>方法：重叠 Allan 方差，σ(τ) 随积分时间 τ。</li>
+</ul>
+<h2 id="结果">结果</h2>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: right">τ</th>
+					<th style="text-align: right">σ(τ)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: right">1 s</td>
+					<td style="text-align: right">0.79 ℃</td>
+			</tr>
+			<tr>
+					<td style="text-align: right">8 s</td>
+					<td style="text-align: right">1.71 ℃（峰值）</td>
+			</tr>
+			<tr>
+					<td style="text-align: right">32 s</td>
+					<td style="text-align: right">0.62 ℃</td>
+			</tr>
+	</tbody>
+</table>
+<p>曲线<strong>先升后降</strong>：从 τ=1 s 的 0.79 ℃ 升到 τ=8 s 的 1.71 ℃ 峰值，再回落到 τ=32 s 的 0.62 ℃。这说明温度里有一个<strong>约 16~32 s 的准周期慢波动（幅度约 ±1.7 ℃）</strong>，不是纯白噪声。整段 61 分钟另含暖机瞬态（前 3 分钟升到 <del>1092 ℃）与长时间缓漂（995</del>1099 ℃ 游走），两者不属于&quot;单一工况 2 分钟&quot;的统计范围。</p>
+        </div>
+        
+          <p class="f6 lh-copy mv0">By 王晨</p><a href="/xliu-group/zh/post/wangchen-18-allan-variance/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          
+
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+          
+        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+          <a href="/xliu-group/zh/post/wangchen-defense/" class="db grow">
+            <img src="http://localhost:1313/xliu-group/images/sdust.jpg" class="img" alt="image from 王晨中期答辩材料">
+          </a>
+        </div>
+      
+      <div class="blah w-100 w-60-ns pl3-ns">
+        
+          <time class="f6 db" datetime="2026-11-06T00:00:00Z">十一月 6, 2026</time>
+        
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/xliu-group/zh/post/wangchen-defense/" class="color-inherit dim link">
+            王晨中期答辩材料
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <h2 id="答辩材料">答辩材料</h2>
+<ul>
+<li><a href="/xliu-group/zh/post/wangchen-defense/defense.pptx">答辩 PPT</a>（7.6 MB，已压缩）</li>
+</ul>
+<p>（报告正文 Markdown 版待补：由 LaTeX 源经 pandoc 转正文后补入本页；当前先发布答辩 PPT）</p>
+        </div>
+        
+          <p class="f6 lh-copy mv0">By 王晨</p><a href="/xliu-group/zh/post/wangchen-defense/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          
+
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+          
+        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+          <a href="/xliu-group/zh/post/2026w45-literature/" class="db grow">
+            <img src="http://localhost:1313/xliu-group/images/sdust.jpg" class="img" alt="image from 文献周报 w45：批判性阅读选辑">
+          </a>
+        </div>
+      
+      <div class="blah w-100 w-60-ns pl3-ns">
+        
+          <time class="f6 db" datetime="2026-11-06T00:00:00Z">十一月 6, 2026</time>
+        
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/xliu-group/zh/post/2026w45-literature/" class="color-inherit dim link">
+            文献周报 w45：批判性阅读选辑
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <p>本周收到 4 篇 critique，作者：高寅斌、赵殿虎、张洪民、张家艺。统一格式：<strong>文献 + 一句话内容</strong>，分析分三部分（改进设想 / 可借鉴之处 / 批判与疑问）。</p>
+<h3 id="高寅斌高-q-音叉--多通池的热弹光谱测-cohe2019">高寅斌：高 Q 音叉 + 多通池的热弹光谱测 CO（He2019）</h3>
+<ul>
+<li><strong>文献</strong>：He Y., Ma Y., Tong Y., Yu X., Tittel F. K. Ultra-high sensitive light-induced thermoelastic spectroscopy sensor with a high Q-factor quartz tuning fork and a multipass cell. Optics Letters, 2019, 44(8): 1904–1907. DOI: <a href="https://doi.org/10.1364/OL.44.001904">10.1364/OL.44.001904</a></li>
+<li><strong>一句话内容</strong>：把高 Q 值石英音叉当作「光→热→振动」的热弹检出器，配 10.1 m 多通池与 2f 波长调制检测 CO。</li>
+</ul>
+<p><strong>分析</strong></p>
+<ol>
+<li><strong>改进设想</strong>（如果是我做，我能如何做得更好）：加一个参考音叉——只接收同一束激光、不经过待测气体，用来扣除激光功率漂移与音叉自身吸光发热。</li>
+<li><strong>可借鉴之处</strong>（哪些能用到我的实验）：借鉴其 NEA 口径（cm⁻¹·Hz⁻¹ᐟ²）——用 211 实测数据算得 NEA ≈ 2.4×10⁻⁷（1σ、B=1 Hz），与其 LITES 的 2.0×10⁻⁷ 同量级、优于其 TDLAS 的 9.3×10⁻⁷；其「LOD 随积分时间变化」（最优积分 800 s、MDL 17 ppb）补进 211-1 检测限节讨论。落 <code>I1-7</code>。</li>
+<li><strong>批判与疑问</strong>：把音叉从 QEPAS 的「声学换能器」转成「热弹检出器」，同一套光路、同一积分时间下与 TDLAS/QEPAS 定量对比，可比性扎实；光斑位置先用 COMSOL 算热弹位移再落位，也不是凭经验摆。不足是系统性依赖低气压（信号随降压单调上升，需真空泵与压力控制），且高 Q 即窄带宽（Q=50177 时约 0.6 Hz），动态过程适应性未讨论。另外，降压时 Q 值、吸收线宽、音叉热时间常数同时在变，论文只凭「2f 信号与 Q 值趋势相似」就断言信号主要正比于 Q，证据不足——需要补哪些对照，才能把 Q 的贡献与其他因素分开？</li>
+</ol>
+<h3 id="赵殿虎横向反应射流对谐波速度扰动的受迫响应choi2024">赵殿虎：横向反应射流对谐波速度扰动的受迫响应（Choi2024）</h3>
+<ul>
+<li><strong>文献</strong>：Choi 等. Forced response of transverse reacting jet in vitiated crossflow to harmonic velocity disturbances. Combustion and Flame, 2024. DOI: <a href="https://doi.org/10.1016/j.combustflame.2024.113670">10.1016/j.combustflame.2024.113670</a></li>
+<li><strong>一句话内容</strong>：分级施加声激励分别测出两级火焰的传递函数，第二级横喷火响应约快 1.5 倍、低频增益可超 1。</li>
+</ul>
+<p><strong>分析</strong></p>
+        </div>
+        
+          <p class="f6 lh-copy mv0">By 刘训臣</p><a href="/xliu-group/zh/post/2026w45-literature/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          
+
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+          
+        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+          <a href="/xliu-group/zh/post/xliu-31-arnold-p61-replacement/" class="db grow">
+            <img src="/xliu-group/zh/post/xliu-31-arnold-p61-replacement/02-two-models.jpg" class="img" alt="image from 替代 ARNOLD 148/10/100 PS-WK：我们做的氢氧火头，为什么不发黑、寿命更长">
+          </a>
+        </div>
+      
+      <div class="blah w-100 w-60-ns pl3-ns">
+        
+          <time class="f6 db" datetime="2026-11-05T20:00:00+08:00">十一月 5, 2026</time>
+        
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/xliu-group/zh/post/xliu-31-arnold-p61-replacement/" class="color-inherit dim link">
+            替代 ARNOLD 148/10/100 PS-WK：我们做的氢氧火头，为什么不发黑、寿命更长
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          石英加工线上，火头是关键耗材。进口 ARNOLD 148/10/100 PS-WK 火头的痛点是端面发黑、寿命短。我们把火头端面的关键材料换成了新型耐高温抗氧化材料，配自主孔阵设计，做了两种型号的氢氧火头——端面不发黑、寿命长，相同流量下还能定制不同火焰长度，已在一家石英加工企业替代进口产品。文末附使用说明与常见问题。
+        </div>
+        
+          <p class="f6 lh-copy mv0">By 刘训臣</p><a href="/xliu-group/zh/post/xliu-31-arnold-p61-replacement/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          
+
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+          
+        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+          <a href="/xliu-group/zh/post/xliu-30-slit-flame-furnace/" class="db grow">
+            <img src="/xliu-group/zh/post/xliu-30-slit-flame-furnace/02-flame-front.jpg" class="img" alt="image from 狭缝火焰炉：把 2600 K 的平面火焰压进一条 1 mm 的缝">
+          </a>
+        </div>
+      
+      <div class="blah w-100 w-60-ns pl3-ns">
+        
+          <time class="f6 db" datetime="2026-11-05T19:30:00+08:00">十一月 5, 2026</time>
+        
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/xliu-group/zh/post/xliu-30-slit-flame-furnace/" class="color-inherit dim link">
+            狭缝火焰炉：把 2600 K 的平面火焰压进一条 1 mm 的缝
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          甲烷 15 slm + 氧气 30 slm 预混，从一条 1 mm×15 mm 的狭缝喷出，出口速度 50 m/s，设计火焰温度 2600 K——这是一台面向石英玻璃加工的狭缝火焰炉。这篇记录它的设计参数、点火后的火焰形态，以及用这把“火焰刀”把石英玻璃棒拉成细丝的初步试验。
+        </div>
+        
+          <p class="f6 lh-copy mv0">By 刘训臣, 惠昊</p><a href="/xliu-group/zh/post/xliu-30-slit-flame-furnace/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          
+
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+          
+        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+          <a href="/xliu-group/zh/post/gaoyinbin-21-nea-detection-limit/" class="db grow">
+            <img src="http://localhost:1313/xliu-group/images/sdust.jpg" class="img" alt="image from 15 ppm 到底算好还是算差：把检测限换算成 NEA 之后">
+          </a>
+        </div>
+      
+      <div class="blah w-100 w-60-ns pl3-ns">
+        
+          <time class="f6 db" datetime="2026-11-05T00:00:00Z">十一月 5, 2026</time>
+        
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/xliu-group/zh/post/gaoyinbin-21-nea-detection-limit/" class="color-inherit dim link">
+            15 ppm 到底算好还是算差：把检测限换算成 NEA 之后
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <h2 id="起因一个被我讲不清的概念">起因：一个被我讲不清的概念</h2>
+<p>上周组会我讲 He2019 那篇高 Q 音叉 LITES 的文献，导师问我：这篇报的 MDL 是 470 ppb，它的 Table 1 里还有个 NEA 列写着 2.0×10⁻⁷，什么意思？</p>
+<p>我当场没答上来，承认&quot;是让 AI 算的&quot;。导师的回话我记下了：<strong>你要知道怎么算、要能担责</strong>。</p>
+<p>这几天把这个概念从头理了一遍，顺手拿自己 211 项目的数据算了一遍，结论比我预想的有意思：<strong>用万用表直读这种极简架构，NEA 和人家锁相放大器 + 10 米多程池的系统只差 1.2 倍。</strong></p>
+<p>这篇把中间过程写清楚，也算给自己留个底。</p>
+<h2 id="为什么要-neappm-是个不能横向比的单位">为什么要 NEA：ppm 是个不能横向比的单位</h2>
+<p>先说清楚 ppm 这个单位为什么不能拿来比。</p>
+<p>同一个系统，报 15 ppm，另一个报 470 ppb，看起来差 30 倍。但这 30 倍里混了一堆不该算进去的东西：</p>
+<table>
+	<thead>
+			<tr>
+					<th>混进来的因素</th>
+					<th>为什么让它不可比</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>吸收线不同</strong></td>
+					<td>CO₂ 在 2.7 μm 的线强、CO 在 2.33 μm 的线强差很多，同样的吸收系数换算出的 ppm 完全不同</td>
+			</tr>
+			<tr>
+					<td><strong>平均时间不同</strong></td>
+					<td>我采 100 次读数，一次读多久？对方锁相放大器带宽 1.118 Hz——平均越久噪声越小，不说明时间就等于没说</td>
+			</tr>
+			<tr>
+					<td><strong>光程不同</strong></td>
+					<td>我 30 m，对方 10.1 m，同样的吸收深度除以不同光程，得到的 α 差 3 倍</td>
+			</tr>
+			<tr>
+					<td><strong>激光功率不同</strong></td>
+					<td>功率大信噪比就好，这跟&quot;方法好不好&quot;无关</td>
+			</tr>
+	</tbody>
+</table>
+<p>所以要横向比，得把这些都剥掉，只留下<strong>方法本身的本事</strong>。这就是 NEA。</p>
+        </div>
+        
+          <p class="f6 lh-copy mv0">By 高寅斌</p><a href="/xliu-group/zh/post/gaoyinbin-21-nea-detection-limit/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">继续阅读</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+        </div>
+      
+    </section>
+    
+		<ul class="pagination pagination-default">
+			<li class="page-item disabled">
+				<a aria-disabled="true" aria-label="First" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;&laquo;</span></a>
+			</li>
+		<li class="page-item disabled">
+			<a aria-disabled="true" aria-label="Previous" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;</span></a>
+		</li>
+			<li class="page-item active">
+				<a aria-current="page" aria-label="Page 1" class="page-link" role="button">1</a>
+			</li>
+			<li class="page-item">
+				<a href="/xliu-group/zh/post/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
+			</li>
+			<li class="page-item">
+				<a href="/xliu-group/zh/post/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
+			</li>
+			<li class="page-item">
+				<a href="/xliu-group/zh/post/page/4/" aria-label="Page 4" class="page-link" role="button">4</a>
+			</li>
+			<li class="page-item">
+				<a href="/xliu-group/zh/post/page/5/" aria-label="Page 5" class="page-link" role="button">5</a>
+			</li>
+		<li class="page-item">
+			<a href="/xliu-group/zh/post/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+		</li>
+			<li class="page-item">
+				<a href="/xliu-group/zh/post/page/9/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+			</li>
+		</ul></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

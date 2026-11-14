@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>热电偶温度信号的 Allan 方差分析：16~32 s 的准周期慢波动 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="问题：温度信号到底稳不稳？
+313 同温工况实验里，用热电偶采集一级来流温度，想回答两件事：温度信号是否收敛、最优平均时间取多少。光看时间序列容易&quot;凭感觉&quot;，这里用 Allan 方差（重叠法） 定量判断——σ(τ) 随积分时间 τ 的变化曲线，白噪声时 σ 随 τ 下降、漂移时 σ 上升，最低点对应收敛时间。
+先澄清一个口径：热电偶是 1 Hz，不是 20 Hz
+写分析前先把采样率口径搞清。此前有一处把温度读数记成了 20 Hz（1 秒 20 个数）——那是火焰探测器的采样率（高频火焰信号，吹熄判据用），不是热电偶。热电偶/DAQ 实际采样率 1~2 Hz（本次 10-28 数据约 1 Hz），未降采样、未抽点。两个传感器不是一回事，混用会让 Allan 的&quot;点噪声&quot;解释完全失真。
+数据与方法
+
+数据：10-28 同温工况热电偶 2026.10.28.xlsx 通道 1，2679 点、约 61 分钟。
+口径：按&quot;一个工况测 2 分钟&quot;，取整段最稳的 2 分钟窗口（t=755~898 s，均值 1036.9 ℃，段内标准差 1.99 ℃）。
+方法：重叠 Allan 方差，σ(τ) 随积分时间 τ。
+
+结果
+
+	
+			
+					τ
+					σ(τ)
+			
+	
+	
+			
+					1 s
+					0.79 ℃
+			
+			
+					8 s
+					1.71 ℃（峰值）
+			
+			
+					32 s
+					0.62 ℃
+			
+	
+
+曲线先升后降：从 τ=1 s 的 0.79 ℃ 升到 τ=8 s 的 1.71 ℃ 峰值，再回落到 τ=32 s 的 0.62 ℃。这说明温度里有一个约 16~32 s 的准周期慢波动（幅度约 ±1.7 ℃），不是纯白噪声。整段 61 分钟另含暖机瞬态（前 3 分钟升到 1092 ℃）与长时间缓漂（9951099 ℃ 游走），两者不属于&quot;单一工况 2 分钟&quot;的统计范围。">
+    <meta name="generator" content="Hugo 0.162.1">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="王晨">
+    
+
+    <link rel="stylesheet" href="/xliu-group/ananke/css/main.css"><link rel="stylesheet" href="/xliu-group/css/tables.css">
+    <script>
+  (function () {
+    "use strict";
+
+    
+    
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
+
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/wangchen-18-allan-variance/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/wangchen-18-allan-variance/">
+	<meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+	<meta property="og:title" content="热电偶温度信号的 Allan 方差分析：16~32 s 的准周期慢波动">
+	<meta property="og:description" content="问题：温度信号到底稳不稳？ 313 同温工况实验里，用热电偶采集一级来流温度，想回答两件事：温度信号是否收敛、最优平均时间取多少。光看时间序列容易&#34;凭感觉&#34;，这里用 Allan 方差（重叠法） 定量判断——σ(τ) 随积分时间 τ 的变化曲线，白噪声时 σ 随 τ 下降、漂移时 σ 上升，最低点对应收敛时间。
+先澄清一个口径：热电偶是 1 Hz，不是 20 Hz 写分析前先把采样率口径搞清。此前有一处把温度读数记成了 20 Hz（1 秒 20 个数）——那是火焰探测器的采样率（高频火焰信号，吹熄判据用），不是热电偶。热电偶/DAQ 实际采样率 1~2 Hz（本次 10-28 数据约 1 Hz），未降采样、未抽点。两个传感器不是一回事，混用会让 Allan 的&#34;点噪声&#34;解释完全失真。
+数据与方法 数据：10-28 同温工况热电偶 2026.10.28.xlsx 通道 1，2679 点、约 61 分钟。 口径：按&#34;一个工况测 2 分钟&#34;，取整段最稳的 2 分钟窗口（t=755~898 s，均值 1036.9 ℃，段内标准差 1.99 ℃）。 方法：重叠 Allan 方差，σ(τ) 随积分时间 τ。 结果 τ σ(τ) 1 s 0.79 ℃ 8 s 1.71 ℃（峰值） 32 s 0.62 ℃ 曲线先升后降：从 τ=1 s 的 0.79 ℃ 升到 τ=8 s 的 1.71 ℃ 峰值，再回落到 τ=32 s 的 0.62 ℃。这说明温度里有一个约 16~32 s 的准周期慢波动（幅度约 ±1.7 ℃），不是纯白噪声。整段 61 分钟另含暖机瞬态（前 3 分钟升到 1092 ℃）与长时间缓漂（9951099 ℃ 游走），两者不属于&#34;单一工况 2 分钟&#34;的统计范围。">
+	<meta property="og:locale" content="zh">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2026-11-06T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-06T00:00:00+00:00">
+		<meta property="article:tag" content="测量与信号">
+
+	<meta itemprop="name" content="热电偶温度信号的 Allan 方差分析：16~32 s 的准周期慢波动">
+	<meta itemprop="description" content="问题：温度信号到底稳不稳？ 313 同温工况实验里，用热电偶采集一级来流温度，想回答两件事：温度信号是否收敛、最优平均时间取多少。光看时间序列容易&#34;凭感觉&#34;，这里用 Allan 方差（重叠法） 定量判断——σ(τ) 随积分时间 τ 的变化曲线，白噪声时 σ 随 τ 下降、漂移时 σ 上升，最低点对应收敛时间。
+先澄清一个口径：热电偶是 1 Hz，不是 20 Hz 写分析前先把采样率口径搞清。此前有一处把温度读数记成了 20 Hz（1 秒 20 个数）——那是火焰探测器的采样率（高频火焰信号，吹熄判据用），不是热电偶。热电偶/DAQ 实际采样率 1~2 Hz（本次 10-28 数据约 1 Hz），未降采样、未抽点。两个传感器不是一回事，混用会让 Allan 的&#34;点噪声&#34;解释完全失真。
+数据与方法 数据：10-28 同温工况热电偶 2026.10.28.xlsx 通道 1，2679 点、约 61 分钟。 口径：按&#34;一个工况测 2 分钟&#34;，取整段最稳的 2 分钟窗口（t=755~898 s，均值 1036.9 ℃，段内标准差 1.99 ℃）。 方法：重叠 Allan 方差，σ(τ) 随积分时间 τ。 结果 τ σ(τ) 1 s 0.79 ℃ 8 s 1.71 ℃（峰值） 32 s 0.62 ℃ 曲线先升后降：从 τ=1 s 的 0.79 ℃ 升到 τ=8 s 的 1.71 ℃ 峰值，再回落到 τ=32 s 的 0.62 ℃。这说明温度里有一个约 16~32 s 的准周期慢波动（幅度约 ±1.7 ℃），不是纯白噪声。整段 61 分钟另含暖机瞬态（前 3 分钟升到 1092 ℃）与长时间缓漂（9951099 ℃ 游走），两者不属于&#34;单一工况 2 分钟&#34;的统计范围。">
+	<meta itemprop="datePublished" content="2026-11-06T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-06T00:00:00+00:00">
+	<meta itemprop="wordCount" content="131">
+	<meta itemprop="keywords" content="测量与信号">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="热电偶温度信号的 Allan 方差分析：16~32 s 的准周期慢波动">
+	<meta name="twitter:description" content="问题：温度信号到底稳不稳？ 313 同温工况实验里，用热电偶采集一级来流温度，想回答两件事：温度信号是否收敛、最优平均时间取多少。光看时间序列容易&#34;凭感觉&#34;，这里用 Allan 方差（重叠法） 定量判断——σ(τ) 随积分时间 τ 的变化曲线，白噪声时 σ 随 τ 下降、漂移时 σ 上升，最低点对应收敛时间。
+先澄清一个口径：热电偶是 1 Hz，不是 20 Hz 写分析前先把采样率口径搞清。此前有一处把温度读数记成了 20 Hz（1 秒 20 个数）——那是火焰探测器的采样率（高频火焰信号，吹熄判据用），不是热电偶。热电偶/DAQ 实际采样率 1~2 Hz（本次 10-28 数据约 1 Hz），未降采样、未抽点。两个传感器不是一回事，混用会让 Allan 的&#34;点噪声&#34;解释完全失真。
+数据与方法 数据：10-28 同温工况热电偶 2026.10.28.xlsx 通道 1，2679 点、约 61 分钟。 口径：按&#34;一个工况测 2 分钟&#34;，取整段最稳的 2 分钟窗口（t=755~898 s，均值 1036.9 ℃，段内标准差 1.99 ℃）。 方法：重叠 Allan 方差，σ(τ) 随积分时间 τ。 结果 τ σ(τ) 1 s 0.79 ℃ 8 s 1.71 ℃（峰值） 32 s 0.62 ℃ 曲线先升后降：从 τ=1 s 的 0.79 ℃ 升到 τ=8 s 的 1.71 ℃ 峰值，再回落到 τ=32 s 的 0.62 ℃。这说明温度里有一个约 16~32 s 的准周期慢波动（幅度约 ±1.7 ℃），不是纯白噪声。整段 61 分钟另含暖机瞬态（前 3 分钟升到 1092 ℃）与长时间缓漂（9951099 ℃ 游走），两者不属于&#34;单一工况 2 分钟&#34;的统计范围。">
+
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+    
+    <style>
+      .dsh-draft-banner{background:#fff3cd;border-bottom:3px solid #f0ad4e;color:#7a5c1e;
+        padding:10px 16px;text-align:center;font-size:15px;font-weight:600;line-height:1.6}
+      .dsh-draft-banner b{color:#c2410c;font-size:16px}
+    </style>
+    <div class="dsh-draft-banner" role="note">
+      <b>草稿预览 · 尚未正式上线</b>　——　本页是 draft（草稿），只在内网预览可见，公网看不到；
+      请继续修改完善，经导师确认后才会正式发布。
+    </div>
+    
+
+    
+   
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        <img src="/xliu-group/images/logo2.jpg" class="w100 mw5-ns" alt="刘训臣燃烧诊断实验室主页" />
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/teaching/" title="Teaching 页">
+              Teaching
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/paper/" title="Paper 页">
+              Paper
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/news/" title="News 页">
+              News
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">热电偶温度信号的 Allan 方差分析：16~32 s 的准周期慢波动</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-wangchen-18-allan-variance flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">
+    <a class="link dim" href="http://localhost:1313/xliu-group/zh/post/">Post</a>
+  </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">热电偶温度信号的 Allan 方差分析：16~32 s 的准周期慢波动</h1>
+      
+      <p class="tracked"><strong>王晨</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-11-06T00:00:00Z">十一月 6, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-two-thirds-l"><h2 id="问题温度信号到底稳不稳">问题：温度信号到底稳不稳？</h2>
+<p>313 同温工况实验里，用热电偶采集一级来流温度，想回答两件事：温度信号是否收敛、最优平均时间取多少。光看时间序列容易&quot;凭感觉&quot;，这里用 <strong>Allan 方差（重叠法）</strong> 定量判断——σ(τ) 随积分时间 τ 的变化曲线，白噪声时 σ 随 τ 下降、漂移时 σ 上升，最低点对应收敛时间。</p>
+<h2 id="先澄清一个口径热电偶是-1-hz不是-20-hz">先澄清一个口径：热电偶是 1 Hz，不是 20 Hz</h2>
+<p>写分析前先把采样率口径搞清。此前有一处把温度读数记成了 <strong>20 Hz（1 秒 20 个数）</strong>——那是<strong>火焰探测器</strong>的采样率（高频火焰信号，吹熄判据用），不是热电偶。热电偶/DAQ 实际采样率 <strong>1~2 Hz</strong>（本次 10-28 数据约 1 Hz），未降采样、未抽点。两个传感器不是一回事，混用会让 Allan 的&quot;点噪声&quot;解释完全失真。</p>
+<h2 id="数据与方法">数据与方法</h2>
+<ul>
+<li>数据：10-28 同温工况热电偶 <code>2026.10.28.xlsx</code> 通道 1，2679 点、约 61 分钟。</li>
+<li>口径：按&quot;一个工况测 2 分钟&quot;，取整段最稳的 2 分钟窗口（t=755~898 s，均值 1036.9 ℃，段内标准差 1.99 ℃）。</li>
+<li>方法：重叠 Allan 方差，σ(τ) 随积分时间 τ。</li>
+</ul>
+<h2 id="结果">结果</h2>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: right">τ</th>
+					<th style="text-align: right">σ(τ)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: right">1 s</td>
+					<td style="text-align: right">0.79 ℃</td>
+			</tr>
+			<tr>
+					<td style="text-align: right">8 s</td>
+					<td style="text-align: right">1.71 ℃（峰值）</td>
+			</tr>
+			<tr>
+					<td style="text-align: right">32 s</td>
+					<td style="text-align: right">0.62 ℃</td>
+			</tr>
+	</tbody>
+</table>
+<p>曲线<strong>先升后降</strong>：从 τ=1 s 的 0.79 ℃ 升到 τ=8 s 的 1.71 ℃ 峰值，再回落到 τ=32 s 的 0.62 ℃。这说明温度里有一个<strong>约 16~32 s 的准周期慢波动（幅度约 ±1.7 ℃）</strong>，不是纯白噪声。整段 61 分钟另含暖机瞬态（前 3 分钟升到 <del>1092 ℃）与长时间缓漂（995</del>1099 ℃ 游走），两者不属于&quot;单一工况 2 分钟&quot;的统计范围。</p>
+<h2 id="结论与启示">结论与启示</h2>
+<ol>
+<li>温度不收敛的主因是**&ldquo;约 16~32 s 慢波动 + 长时间缓漂&rdquo;**，不是白噪声；平均到半周期（~8 s）时波动反而最大，单纯加长平均并不能消除。</li>
+<li>采样率口径要分清传感器：热电偶响应慢、1 Hz 已足够；20 Hz 是火焰探测器，勿混。</li>
+<li>后续可主动设置热电偶采样率（如 2/20 Hz）重采一次，交叉验证 16~32 s 波动是否为真实物理信号、并分辨 0.79 ℃ 点噪声来自 DAQ 量化还是热电偶真实抖动。</li>
+</ol>
+<ul class="pa0">
+  
+</ul><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/xliu-group/zh/tags/%E6%B5%8B%E9%87%8F%E4%B8%8E%E4%BF%A1%E5%8F%B7/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">测量与信号</a>
+   </li>
+  
+</ul>
+
+      
+    </div><aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">相关內容</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/gaoyinbin-21-nea-detection-limit/">15 ppm 到底算好还是算差：把检测限换算成 NEA 之后</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/zhangjiayi-13-mid-ir-tomography-integration/">中红外层析成像系统光机电集成</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/zhanghongmin-7-piston-pump-overhaul/">柱塞泵拆装与管路改造</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/zhanghongmin-5-circuit-diagnosis/">系统电路深度排查：继电器反复烧毁的根因</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangshuo7/">火焰探测器原理及使用</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/zhanghongmin-3-plunger-pump-test/">柱塞泵实验：0.7 MPa 与 1.5 MPa 工况测试</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangshuo6/">PID实现流量控制</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/gaoyinbin5_qtf/">QTF滤波</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/huihao5_i2_cell/">I2-cell</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/huihao4_etalon/">干涉器制作</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/huihao-3-tdlas-system-parts/">TDLAS 实验方法简介（一）：光电探测系统的组成</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangshuo3/"> 解决流量计跳数问题总结和感悟</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangshuo2/">Blow-out limits of nonpremixed turbulent jet flames in a cross flow at atmospheric and sub-atmospheric pressures</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/wangshuo1/">使用 LabVIEW 实现AFG-C9000系列气体质量流量计瞬时流量的读取和储存</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/xliu-group/zh/post/huihao1/">使用 LabVIEW 实现对CC-M3H040-NN14伺服电机的控制</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head><script src="/xliu-group/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=xliu-group/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>文献周报 w45：批判性阅读选辑 | 刘训臣燃烧诊断实验室主页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="本周收到 4 篇 critique，作者：高寅斌、赵殿虎、张洪民、张家艺。统一格式：文献 &#43; 一句话内容，分析分三部分（改进设想 / 可借鉴之处 / 批判与疑问）。
+高寅斌：高 Q 音叉 &#43; 多通池的热弹光谱测 CO（He2019）
+
+文献：He Y., Ma Y., Tong Y., Yu X., Tittel F. K. Ultra-high sensitive light-induced thermoelastic spectroscopy sensor with a high Q-factor quartz tuning fork and a multipass cell. Optics Letters, 2019, 44(8): 1904–1907. DOI: 10.1364/OL.44.001904
+一句话内容：把高 Q 值石英音叉当作「光→热→振动」的热弹检出器，配 10.1 m 多通池与 2f 波长调制检测 CO。
+
+分析
+
+改进设想（如果是我做，我能如何做得更好）：加一个参考音叉——只接收同一束激光、不经过待测气体，用来扣除激光功率漂移与音叉自身吸光发热。
+可借鉴之处（哪些能用到我的实验）：借鉴其 NEA 口径（cm⁻¹·Hz⁻¹ᐟ²）——用 211 实测数据算得 NEA ≈ 2.4×10⁻⁷（1σ、B=1 Hz），与其 LITES 的 2.0×10⁻⁷ 同量级、优于其 TDLAS 的 9.3×10⁻⁷；其「LOD 随积分时间变化」（最优积分 800 s、MDL 17 ppb）补进 211-1 检测限节讨论。落 I1-7。
+批判与疑问：把音叉从 QEPAS 的「声学换能器」转成「热弹检出器」，同一套光路、同一积分时间下与 TDLAS/QEPAS 定量对比，可比性扎实；光斑位置先用 COMSOL 算热弹位移再落位，也不是凭经验摆。不足是系统性依赖低气压（信号随降压单调上升，需真空泵与压力控制），且高 Q 即窄带宽（Q=50177 时约 0.6 Hz），动态过程适应性未讨论。另外，降压时 Q 值、吸收线宽、音叉热时间常数同时在变，论文只凭「2f 信号与 Q 值趋势相似」就断言信号主要正比于 Q，证据不足——需要补哪些对照，才能把 Q 的贡献与其他因素分开？
+
+赵殿虎：横向反应射流对谐波速度扰动的受迫响应（Choi2024）
+
+文献：Choi 等. Forced response of transverse reacting jet in vitiated crossflow to harmonic velocity disturbances. Combustion and Flame, 2024. DOI: 10.1016/j.combustflame.2024.113670
+一句话内容：分级施加声激励分别测出两级火焰的传递函数，第二级横喷火响应约快 1.5 倍、低频增益可超 1。
+
+分析">
+    <meta name="generator" content="Hugo 0.162.1">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    <meta name="author" content="刘训臣">
+    
+
+    <link rel="stylesheet" href="/xliu-group/ananke/css/main.css"><link rel="stylesheet" href="/xliu-group/css/tables.css">
+    <script>
+  (function () {
+    "use strict";
+
+    
+    
+    function revealButtons() {
+      var buttons = document.querySelectorAll(".code-block .code-copy[hidden]");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].hidden = false;
+      }
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealButtons);
+    } else {
+      revealButtons();
+    }
+
+    function flash(button) {
+      var label = button.querySelector(".code-copy-label");
+      var previous = label ? label.textContent : null;
+      button.classList.add("is-copied");
+      if (label) label.textContent = "Copied";
+      window.setTimeout(function () {
+        button.classList.remove("is-copied");
+        if (label && previous !== null) label.textContent = previous;
+      }, 2000);
+    }
+
+    function legacyCopy(text) {
+      var area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "absolute";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (e) {
+        ok = false;
+      }
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    function copyFrom(button) {
+      var container = button.closest(".code-block");
+      if (!container) return;
+      var pre = container.querySelector("pre");
+      if (!pre) return;
+      var source = pre.querySelector("code") || pre;
+      var text = source.innerText;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(button); },
+          function () { if (legacyCopy(text)) flash(button); }
+        );
+      } else if (legacyCopy(text)) {
+        flash(button);
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest(".code-copy");
+      if (button) copyFrom(button);
+    });
+  })();
+</script>
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/xliu-group/zh/post/2026w45-literature/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/xliu-group/zh/post/2026w45-literature/">
+	<meta property="og:site_name" content="刘训臣燃烧诊断实验室主页">
+	<meta property="og:title" content="文献周报 w45：批判性阅读选辑">
+	<meta property="og:description" content="本周收到 4 篇 critique，作者：高寅斌、赵殿虎、张洪民、张家艺。统一格式：文献 &#43; 一句话内容，分析分三部分（改进设想 / 可借鉴之处 / 批判与疑问）。
+高寅斌：高 Q 音叉 &#43; 多通池的热弹光谱测 CO（He2019） 文献：He Y., Ma Y., Tong Y., Yu X., Tittel F. K. Ultra-high sensitive light-induced thermoelastic spectroscopy sensor with a high Q-factor quartz tuning fork and a multipass cell. Optics Letters, 2019, 44(8): 1904–1907. DOI: 10.1364/OL.44.001904 一句话内容：把高 Q 值石英音叉当作「光→热→振动」的热弹检出器，配 10.1 m 多通池与 2f 波长调制检测 CO。 分析
+改进设想（如果是我做，我能如何做得更好）：加一个参考音叉——只接收同一束激光、不经过待测气体，用来扣除激光功率漂移与音叉自身吸光发热。 可借鉴之处（哪些能用到我的实验）：借鉴其 NEA 口径（cm⁻¹·Hz⁻¹ᐟ²）——用 211 实测数据算得 NEA ≈ 2.4×10⁻⁷（1σ、B=1 Hz），与其 LITES 的 2.0×10⁻⁷ 同量级、优于其 TDLAS 的 9.3×10⁻⁷；其「LOD 随积分时间变化」（最优积分 800 s、MDL 17 ppb）补进 211-1 检测限节讨论。落 I1-7。 批判与疑问：把音叉从 QEPAS 的「声学换能器」转成「热弹检出器」，同一套光路、同一积分时间下与 TDLAS/QEPAS 定量对比，可比性扎实；光斑位置先用 COMSOL 算热弹位移再落位，也不是凭经验摆。不足是系统性依赖低气压（信号随降压单调上升，需真空泵与压力控制），且高 Q 即窄带宽（Q=50177 时约 0.6 Hz），动态过程适应性未讨论。另外，降压时 Q 值、吸收线宽、音叉热时间常数同时在变，论文只凭「2f 信号与 Q 值趋势相似」就断言信号主要正比于 Q，证据不足——需要补哪些对照，才能把 Q 的贡献与其他因素分开？ 赵殿虎：横向反应射流对谐波速度扰动的受迫响应（Choi2024） 文献：Choi 等. Forced response of transverse reacting jet in vitiated crossflow to harmonic velocity disturbances. Combustion and Flame, 2024. DOI: 10.1016/j.combustflame.2024.113670 一句话内容：分级施加声激励分别测出两级火焰的传递函数，第二级横喷火响应约快 1.5 倍、低频增益可超 1。 分析">
+	<meta property="og:locale" content="zh">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2026-11-06T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-11-06T00:00:00+00:00">
+
+	<meta itemprop="name" content="文献周报 w45：批判性阅读选辑">
+	<meta itemprop="description" content="本周收到 4 篇 critique，作者：高寅斌、赵殿虎、张洪民、张家艺。统一格式：文献 &#43; 一句话内容，分析分三部分（改进设想 / 可借鉴之处 / 批判与疑问）。
+高寅斌：高 Q 音叉 &#43; 多通池的热弹光谱测 CO（He2019） 文献：He Y., Ma Y., Tong Y., Yu X., Tittel F. K. Ultra-high sensitive light-induced thermoelastic spectroscopy sensor with a high Q-factor quartz tuning fork and a multipass cell. Optics Letters, 2019, 44(8): 1904–1907. DOI: 10.1364/OL.44.001904 一句话内容：把高 Q 值石英音叉当作「光→热→振动」的热弹检出器，配 10.1 m 多通池与 2f 波长调制检测 CO。 分析
+改进设想（如果是我做，我能如何做得更好）：加一个参考音叉——只接收同一束激光、不经过待测气体，用来扣除激光功率漂移与音叉自身吸光发热。 可借鉴之处（哪些能用到我的实验）：借鉴其 NEA 口径（cm⁻¹·Hz⁻¹ᐟ²）——用 211 实测数据算得 NEA ≈ 2.4×10⁻⁷（1σ、B=1 Hz），与其 LITES 的 2.0×10⁻⁷ 同量级、优于其 TDLAS 的 9.3×10⁻⁷；其「LOD 随积分时间变化」（最优积分 800 s、MDL 17 ppb）补进 211-1 检测限节讨论。落 I1-7。 批判与疑问：把音叉从 QEPAS 的「声学换能器」转成「热弹检出器」，同一套光路、同一积分时间下与 TDLAS/QEPAS 定量对比，可比性扎实；光斑位置先用 COMSOL 算热弹位移再落位，也不是凭经验摆。不足是系统性依赖低气压（信号随降压单调上升，需真空泵与压力控制），且高 Q 即窄带宽（Q=50177 时约 0.6 Hz），动态过程适应性未讨论。另外，降压时 Q 值、吸收线宽、音叉热时间常数同时在变，论文只凭「2f 信号与 Q 值趋势相似」就断言信号主要正比于 Q，证据不足——需要补哪些对照，才能把 Q 的贡献与其他因素分开？ 赵殿虎：横向反应射流对谐波速度扰动的受迫响应（Choi2024） 文献：Choi 等. Forced response of transverse reacting jet in vitiated crossflow to harmonic velocity disturbances. Combustion and Flame, 2024. DOI: 10.1016/j.combustflame.2024.113670 一句话内容：分级施加声激励分别测出两级火焰的传递函数，第二级横喷火响应约快 1.5 倍、低频增益可超 1。 分析">
+	<meta itemprop="datePublished" content="2026-11-06T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-11-06T00:00:00+00:00">
+	<meta itemprop="wordCount" content="309">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="文献周报 w45：批判性阅读选辑">
+	<meta name="twitter:description" content="本周收到 4 篇 critique，作者：高寅斌、赵殿虎、张洪民、张家艺。统一格式：文献 &#43; 一句话内容，分析分三部分（改进设想 / 可借鉴之处 / 批判与疑问）。
+高寅斌：高 Q 音叉 &#43; 多通池的热弹光谱测 CO（He2019） 文献：He Y., Ma Y., Tong Y., Yu X., Tittel F. K. Ultra-high sensitive light-induced thermoelastic spectroscopy sensor with a high Q-factor quartz tuning fork and a multipass cell. Optics Letters, 2019, 44(8): 1904–1907. DOI: 10.1364/OL.44.001904 一句话内容：把高 Q 值石英音叉当作「光→热→振动」的热弹检出器，配 10.1 m 多通池与 2f 波长调制检测 CO。 分析
+改进设想（如果是我做，我能如何做得更好）：加一个参考音叉——只接收同一束激光、不经过待测气体，用来扣除激光功率漂移与音叉自身吸光发热。 可借鉴之处（哪些能用到我的实验）：借鉴其 NEA 口径（cm⁻¹·Hz⁻¹ᐟ²）——用 211 实测数据算得 NEA ≈ 2.4×10⁻⁷（1σ、B=1 Hz），与其 LITES 的 2.0×10⁻⁷ 同量级、优于其 TDLAS 的 9.3×10⁻⁷；其「LOD 随积分时间变化」（最优积分 800 s、MDL 17 ppb）补进 211-1 检测限节讨论。落 I1-7。 批判与疑问：把音叉从 QEPAS 的「声学换能器」转成「热弹检出器」，同一套光路、同一积分时间下与 TDLAS/QEPAS 定量对比，可比性扎实；光斑位置先用 COMSOL 算热弹位移再落位，也不是凭经验摆。不足是系统性依赖低气压（信号随降压单调上升，需真空泵与压力控制），且高 Q 即窄带宽（Q=50177 时约 0.6 Hz），动态过程适应性未讨论。另外，降压时 Q 值、吸收线宽、音叉热时间常数同时在变，论文只凭「2f 信号与 Q 值趋势相似」就断言信号主要正比于 Q，证据不足——需要补哪些对照，才能把 Q 的贡献与其他因素分开？ 赵殿虎：横向反应射流对谐波速度扰动的受迫响应（Choi2024） 文献：Choi 等. Forced response of transverse reacting jet in vitiated crossflow to harmonic velocity disturbances. Combustion and Flame, 2024. DOI: 10.1016/j.combustflame.2024.113670 一句话内容：分级施加声激励分别测出两级火焰的传递函数，第二级横喷火响应约快 1.5 倍、低频增益可超 1。 分析">
+
+	
+	
+	    
+        
+<script>
+
+if (typeof MathJax === "undefined") {
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']],
+            displayMath: [['$$', '$$']]
+        }
+    };
+    
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js';
+
+script.async = true;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+    
+    console.log("MathJax initialized");
+}
+</script>
+
+    
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+
+    
+   
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <header class="cover bg-center" style="background-image: url('http://localhost:1313/xliu-group/images/sdust.jpg');">
+    <div class="bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/xliu-group/zh/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        <img src="/xliu-group/images/logo2.jpg" class="w100 mw5-ns" alt="刘训臣燃烧诊断实验室主页" />
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/research/" title="Research 页">
+              Research
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/teaching/" title="Teaching 页">
+              Teaching
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/paper/" title="Paper 页">
+              Paper
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/news/" title="News 页">
+              News
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/people/" title="People 页">
+              People
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white white-90 no-underline" href="/xliu-group/zh/post/" title="Post 页">
+              Post
+            </a>
+          </li>
+          
+        </ul>
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <div class="f2 f1-l fw2 white-90 mb0 lh-title">文献周报 w45：批判性阅读选辑</div>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-2026w45-literature flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">
+    <a class="link dim" href="http://localhost:1313/xliu-group/zh/post/">Post</a>
+  </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">文献周报 w45：批判性阅读选辑</h1>
+      
+      <p class="tracked"><strong>刘训臣</strong>
+      </p>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-11-06T00:00:00Z">十一月 6, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links blue pr4-l w-100-l"><p>本周收到 4 篇 critique，作者：高寅斌、赵殿虎、张洪民、张家艺。统一格式：<strong>文献 + 一句话内容</strong>，分析分三部分（改进设想 / 可借鉴之处 / 批判与疑问）。</p>
+<h3 id="高寅斌高-q-音叉--多通池的热弹光谱测-cohe2019">高寅斌：高 Q 音叉 + 多通池的热弹光谱测 CO（He2019）</h3>
+<ul>
+<li><strong>文献</strong>：He Y., Ma Y., Tong Y., Yu X., Tittel F. K. Ultra-high sensitive light-induced thermoelastic spectroscopy sensor with a high Q-factor quartz tuning fork and a multipass cell. Optics Letters, 2019, 44(8): 1904–1907. DOI: <a href="https://doi.org/10.1364/OL.44.001904">10.1364/OL.44.001904</a></li>
+<li><strong>一句话内容</strong>：把高 Q 值石英音叉当作「光→热→振动」的热弹检出器，配 10.1 m 多通池与 2f 波长调制检测 CO。</li>
+</ul>
+<p><strong>分析</strong></p>
+<ol>
+<li><strong>改进设想</strong>（如果是我做，我能如何做得更好）：加一个参考音叉——只接收同一束激光、不经过待测气体，用来扣除激光功率漂移与音叉自身吸光发热。</li>
+<li><strong>可借鉴之处</strong>（哪些能用到我的实验）：借鉴其 NEA 口径（cm⁻¹·Hz⁻¹ᐟ²）——用 211 实测数据算得 NEA ≈ 2.4×10⁻⁷（1σ、B=1 Hz），与其 LITES 的 2.0×10⁻⁷ 同量级、优于其 TDLAS 的 9.3×10⁻⁷；其「LOD 随积分时间变化」（最优积分 800 s、MDL 17 ppb）补进 211-1 检测限节讨论。落 <code>I1-7</code>。</li>
+<li><strong>批判与疑问</strong>：把音叉从 QEPAS 的「声学换能器」转成「热弹检出器」，同一套光路、同一积分时间下与 TDLAS/QEPAS 定量对比，可比性扎实；光斑位置先用 COMSOL 算热弹位移再落位，也不是凭经验摆。不足是系统性依赖低气压（信号随降压单调上升，需真空泵与压力控制），且高 Q 即窄带宽（Q=50177 时约 0.6 Hz），动态过程适应性未讨论。另外，降压时 Q 值、吸收线宽、音叉热时间常数同时在变，论文只凭「2f 信号与 Q 值趋势相似」就断言信号主要正比于 Q，证据不足——需要补哪些对照，才能把 Q 的贡献与其他因素分开？</li>
+</ol>
+<h3 id="赵殿虎横向反应射流对谐波速度扰动的受迫响应choi2024">赵殿虎：横向反应射流对谐波速度扰动的受迫响应（Choi2024）</h3>
+<ul>
+<li><strong>文献</strong>：Choi 等. Forced response of transverse reacting jet in vitiated crossflow to harmonic velocity disturbances. Combustion and Flame, 2024. DOI: <a href="https://doi.org/10.1016/j.combustflame.2024.113670">10.1016/j.combustflame.2024.113670</a></li>
+<li><strong>一句话内容</strong>：分级施加声激励分别测出两级火焰的传递函数，第二级横喷火响应约快 1.5 倍、低频增益可超 1。</li>
+</ul>
+<p><strong>分析</strong></p>
+<ol>
+<li><strong>改进设想</strong>（如果是我做，我能如何做得更好）：把当量比与射流强度解耦——固定射流动量只扫当量比（或反向）；并用 216 反射 TDLAS 给第二级火焰补上温度（乃至 2 μm 当量比）这一维。</li>
+<li><strong>可借鉴之处</strong>（哪些能用到我的实验）：借 317 声激励做作者「分级激励」方案的单级子集（318 子课题 I <code>I1-2</code>）；增量在作者缺失处——用 216 反射 TDLAS（318 子课题 N <code>N1-1</code>）补温度场，他有分级激励、我们有测温，两者互补。</li>
+<li><strong>批判与疑问</strong>：分级激励能分开测两级火焰各自的 FTF，实验设计巧妙；但改当量比时射流强度也跟着变、两因素未解耦，且全篇没有温度数据，温度维空白。想到的问题是：为什么横向二级射流（横喷火）的低频响应这么强？</li>
+</ol>
+<h3 id="张洪民no-电离诱导流动标记测速leonov2024">张洪民：NO 电离诱导流动标记测速（LEONOV2024）</h3>
+<ul>
+<li><strong>文献</strong>：B. S. Leonov, A. N. Moran, S. W. North, R. B. Miles. Burst-mode velocimetry of hypersonic flow by nitric oxide ionization induced flow tagging and imaging. Optics Letters, 2024, 49(3): 426–429. DOI: <a href="https://doi.org/10.1364/OL.503786">10.1364/OL.503786</a></li>
+<li><strong>一句话内容</strong>：单台纳秒激光电离 NO、激发 N₂ 长寿命荧光（1/e 约 50 µs）作标记，在 Mach 6 流场实现 250 kHz 单发测速。</li>
+</ul>
+<p><strong>分析</strong></p>
+<ol>
+<li><strong>改进设想</strong>（如果是我做，我能如何做得更好）：双 IRO 门控方案本身不用改，但作者只验证了均匀流——我会增加复杂/非均匀流场工况，检验方法在真实流场中是否依然可靠。</li>
+<li><strong>可借鉴之处</strong>（哪些能用到我的实验）：借鉴「激光电离之后用时间门控避开其他信号荧光干扰」的思路，用于 403-burst-dye 后续 burst 激光相关步骤（F 段）；217-NOx-CO 的 NO 测量与光谱仿真（<code>C1-5</code> 波段选择避干扰）也可参考。</li>
+<li><strong>批判与疑问</strong>：低成本、可复用——单台纳秒激光加常规 NO-LIF 装置小改即可，还兼容 pulse-burst 激光；局限是只验证了均匀流，复杂流场适用性未验证，且标记线展宽主要来自激光能量沉积的气体热膨胀、文中未提及外界温度的控制方法。若环境温度上升、分子扩散加剧，对结果影响多大？</li>
+</ol>
+<h3 id="张家艺开放光路免标定-wms-测推进剂火焰温度与-cowang2026">张家艺：开放光路免标定 WMS 测推进剂火焰温度与 CO（Wang2026）</h3>
+<ul>
+<li><strong>文献</strong>：Wang Z., Chen X., Qiao W., Chao X. 等. Open-path measurement of temperature and CO concentration in AP/HTPB composite propellant flames using calibration-free wavelength modulation spectroscopy. Experimental Thermal and Fluid Science, 2026, 文章号 111660. DOI: <a href="https://doi.org/10.1016/j.expthermflusci.2025.111660">10.1016/j.expthermflusci.2025.111660</a></li>
+<li><strong>一句话内容</strong>：便携开放光路传感器，用免标定 WMS 在 AP/HTPB 火焰中同时测温度与 CO，覆盖燃烧三阶段。</li>
+</ul>
+<p><strong>分析</strong></p>
+<ol>
+<li><strong>改进设想</strong>（如果是我做，我能如何做得更好）：① 加独立验证手段（细丝热电偶或 PLIF 测温）与 WMS 结果交叉比对——作者只给了自估不确定度；② 双线选线放宽到三条以上做多线拟合，降低对单一双线的敏感性；③ 补不同压力与不同 AP 粒径配方，检验方法普适性。</li>
+<li><strong>可借鉴之处</strong>（哪些能用到我的实验）：① 704 煤粉红外遥测——把「开放光路 + 免标定 WMS」搬到皮带输送机上方的煤粉/挥发分测量，CO 双线与现有近红外 900–2150 nm 波段互补，落 <code>I1-2</code> 测量方案细化与装置（<code>T5</code>）建成后的测数实验；② 711 高温高压固定床——中红外 CO 双线测温用于床内气相诊断接口（<code>I0-4</code>），支撑专利 <code>T44</code>/<code>T45</code> 诊断接口附图。</li>
+<li><strong>批判与疑问</strong>：免标定规避现场标定气体与漂移、回反射折叠光路单端安装抗光束偏折、整机紧凑便携；但单次扫描 CO 检测限 1200 ppm 对低浓度不够，路径平均温度标准差达 561.9 K、测的是路径平均而非局部值，且只验证常压、单一配方。疑问是：回反射光斑在发动机强振动与火焰偏折下怎么保持对准、文中给了失准容差吗？LOS 平均温度 561.9 K 的标准差是湍流波动的真实反映，还是部分来自谱线选择/拟合噪声？</li>
+</ol>
+<ul class="pa0">
+  
+</ul><ul class="pa0">
+  
+</ul>
+
+      
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/xliu-group/zh/" >
+    &copy;  刘训臣燃烧诊断实验室主页 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>光谱学 on 刘训臣燃烧诊断实验室主页</title>
+		<link>http://localhost:1313/xliu-group/zh/tags/%E5%85%89%E8%B0%B1%E5%AD%A6/</link>
+		<description>Recent content in 光谱学 on 刘训臣燃烧诊断实验室主页</description>
+		<generator>Hugo</generator>
+		<language>zh</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 29 Jun 2026 09:13:01 +0800</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/xliu-group/zh/tags/%E5%85%89%E8%B0%B1%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>HITRAN 仿真图形界面</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-16-hitran-gui/</link>
+				<pubDate>Mon, 29 Jun 2026 09:13:01 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-16-hitran-gui/</guid>
+				<description>HITRAN 数据库仿真 GUI</description>
+			</item>
+			<item>
+				<title>TDLAS 的仿真和局限</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-24-tdlas-overview/</link>
+				<pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-24-tdlas-overview/</guid>
+				<description>TDLAS 简单总结</description>
+			</item>
+			<item>
+				<title>反应流体光谱仿真程序 flame spectrum</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-13-flame-spectrum/</link>
+				<pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-13-flame-spectrum/</guid>
+				<description>Cantera 反应流体仿真联动HITRAN光谱仿真程序GUI</description>
+			</item>
+			<item>
+				<title>光谱模拟</title>
+				<link>http://localhost:1313/xliu-group/zh/post/zhanghongmin2_tdlas/</link>
+				<pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/zhanghongmin2_tdlas/</guid>
+				<description>TDLAS光谱模拟界面的再次更新与功能改进</description>
+			</item>
+			<item>
+				<title>I2-cell</title>
+				<link>http://localhost:1313/xliu-group/zh/post/huihao5_i2_cell/</link>
+				<pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/huihao5_i2_cell/</guid>
+				<description>碘吸收池的制作过程与经验总结</description>
+			</item>
+			<item>
+				<title>光谱模拟</title>
+				<link>http://localhost:1313/xliu-group/zh/post/zhanghongmin1_tdlas/</link>
+				<pubDate>Thu, 11 Dec 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/zhanghongmin1_tdlas/</guid>
+				<description>基于实验室TDLAS界面的光谱模拟功能更新</description>
+			</item>
+			<item>
+				<title>HITRAN 数据库用法</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-15-hitran-database/</link>
+				<pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-15-hitran-database/</guid>
+				<description>HITRAN 数据库 line by line 计算代码</description>
+			</item>
+			<item>
+				<title>吸收光谱简介</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-4-tdlas-absorption-intro/</link>
+				<pubDate>Fri, 03 Oct 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-4-tdlas-absorption-intro/</guid>
+				<description>吸收光谱中定量关系与 HITRAN 数据库参数的简介</description>
+			</item>
+			<item>
+				<title>火焰温度及辐射特性检测方法总结</title>
+				<link>http://localhost:1313/xliu-group/zh/post/zhangjiayi1_coal/</link>
+				<pubDate>Mon, 25 Aug 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/zhangjiayi1_coal/</guid>
+				<description>基于光谱分析和图像处理的火焰温度及辐射特性检测方法总结</description>
+			</item>
+			<item>
+				<title>利用 JANAF 表估算氢氧火焰温度</title>
+				<link>http://localhost:1313/xliu-group/zh/post/gaoyinbin-7-janaf-h2-flame/</link>
+				<pubDate>Fri, 15 Aug 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/gaoyinbin-7-janaf-h2-flame/</guid>
+				<description>从焓守恒与化学平衡出发，用 JANAF 表自洽求解氢氧火焰绝热温度，并逐步引入 OH/H 分解平衡做手算校核。</description>
+			</item>
+			<item>
+				<title>Diagnostic</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-10-diagnostic-review/</link>
+				<pubDate>Mon, 30 Jun 2025 01:26:06 +0800</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-10-diagnostic-review/</guid>
+				<description>激光燃烧诊断技术的基本原理与方法概述</description>
+			</item>
+			<item>
+				<title>甲醛的光谱和PLIF测温</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-5-ch2o-spectroscopy/</link>
+				<pubDate>Sun, 23 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-5-ch2o-spectroscopy/</guid>
+				<description>甲醛光谱与双色PLIF测温方法的原理介绍</description>
+			</item>
+			<item>
+				<title>激光燃烧诊断是应用研究</title>
+				<link>http://localhost:1313/xliu-group/zh/post/xliu-20-diagnostic-method/</link>
+				<pubDate>Sat, 22 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/xliu-group/zh/post/xliu-20-diagnostic-method/</guid>
+				<description>激光燃烧诊断作为应用研究与光谱学方法的历史回顾</description>
+			</item>
+	</channel>
+</rss>
