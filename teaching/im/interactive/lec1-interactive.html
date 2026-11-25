@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第 1 讲 · 交互附件：战略与方法的几个数</title>
+<style>
+  :root { --ink:#1a1a1a; --muted:#666; --line:#e5e7eb; --accent:#9C2B1E; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:28px 18px 60px; font-family:"Noto Sans CJK SC","Source Han Sans SC",system-ui,sans-serif;
+          color:var(--ink); background:#fafafa; line-height:1.6; }
+  header { max-width:1000px; margin:0 auto 22px; border-left:6px solid var(--accent); padding-left:14px; }
+  h1 { font-size:26px; margin:0 0 6px; }
+  .sub { color:var(--muted); font-size:15px; margin:0; }
+  .card { max-width:1000px; margin:0 auto 18px; background:#fff; border:1px solid var(--line);
+           border-radius:10px; padding:18px 20px 12px; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+  .card h2 { font-size:19px; margin:0 0 6px; }
+  .desc { color:var(--muted); font-size:14px; margin:0 0 12px; }
+  .row { display:grid; grid-template-columns:190px 1fr 110px; gap:12px; align-items:center; margin:6px 0; }
+  .row label { font-size:15px; }
+  input[type=range] { width:100%; accent-color:var(--accent); }
+  .row output { font-variant-numeric:tabular-nums; font-size:15px; text-align:right; }
+  .metrics { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 6px; }
+  .metric { flex:1 1 150px; background:#f7f7f8; border-radius:8px; padding:10px 12px; }
+  .metric span { display:block; font-size:13px; color:var(--muted); }
+  .metric b { font-size:22px; font-variant-numeric:tabular-nums; }
+  .metric i { font-style:normal; font-size:12px; color:var(--muted); margin-left:4px; }
+  footer { max-width:1000px; margin:26px auto 0; color:var(--muted); font-size:13px; }
+</style></head>
+<body>
+<script>
+function normInv(p){
+  const a=[-3.969683028665376e+01,2.209460984245205e+02,-2.759285104469687e+02,1.383577518672690e+02,-3.066479806614716e+01,2.506628277459239e+00];
+  const b=[-5.447609879822406e+01,1.615858368580409e+02,-1.556989798598866e+02,6.680131188771972e+01,-1.328068155288572e+01];
+  const c=[-7.784894002430293e-03,-3.223964580411365e-01,-2.400758277161838e+00,-2.549732539343734e+00,4.374664141464968e+00,2.938163982698783e+00];
+  const d=[7.784695709041462e-03,3.224671290700398e-01,2.445134137142996e+00,3.754408661907416e+00];
+  const pl=0.02425, ph=1-pl; let q,r;
+  if(p<pl){q=Math.sqrt(-2*Math.log(p));return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  if(p>ph){q=Math.sqrt(-2*Math.log(1-p));return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  q=p-0.5; r=q*q;
+  return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);
+}
+function phi(z){
+  const t=1/(1+0.2316419*Math.abs(z));
+  const d=0.3989423*Math.exp(-z*z/2);
+  const p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));
+  return z>0?1-p:p;
+}
+function binom(n,k,p){let c=1;for(let i=0;i<k;i++){c=c*(n-i)/(i+1);}return c*Math.pow(p,k)*Math.pow(1-p,n-k);}
+</script>
+
+<header><h1>第 1 讲 · 交互附件：战略与方法的几个数</h1><p class="sub">复利与 72 法则 · 学习曲线</p></header>
+<section class="card">
+  <h2>复利与 72 法则</h2>
+  <p class="desc">资金按年复利增长；72 法则给翻倍年数的速算。</p>
+  <div class="controls"><div class="row"><label>年利率</label>
+        <input type="range" id="r" min="1" max="20" step="0.5" value="8">
+        <output id="r-v">8%</output></div><div class="row"><label>年数</label>
+        <input type="range" id="n" min="1" max="40" step="1" value="10">
+        <output id="n-v">10年</output></div><div class="row"><label>本金</label>
+        <input type="range" id="P" min="10" max="1000" step="10" value="100">
+        <output id="P-v">100万元</output></div></div>
+  <div class="metrics"><div class="metric"><span>本利和</span><b id="o-F">—</b><i>万元</i></div><div class="metric"><span>翻了几倍</span><b id="o-mult">—</b><i>倍</i></div><div class="metric"><span>72 法则翻倍年数</span><b id="o-double">—</b><i>年</i></div></div>
+  <script>
+  (function(){
+    const ids=["r", "n", "P"], keys=["r", "n", "P"], units={"r": "%", "n": "\u5e74", "P": "\u4e07\u5143"}, outs=[["F", "F", "\u672c\u5229\u548c", "\u4e07\u5143", 1], ["mult", "mult", "\u7ffb\u4e86\u51e0\u500d", "\u500d", 2], ["double", "double", "72 \u6cd5\u5219\u7ffb\u500d\u5e74\u6570", "\u5e74", 1]];
+    const calc=function(r,n,P){ const f=P*Math.pow(1+r/100,n); const yrs=72/r; return {F:f, double:yrs, mult:f/P}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section>
+<section class="card">
+  <h2>学习曲线：产量翻倍，工时按比例降</h2>
+  <p class="desc">累计产量每翻一倍，单位工时乘学习率；给的是累计平均工时。</p>
+  <div class="controls"><div class="row"><label>学习率</label>
+        <input type="range" id="rate" min="70" max="95" step="1" value="85">
+        <output id="rate-v">85%</output></div><div class="row"><label>首件工时</label>
+        <input type="range" id="t1" min="1" max="20" step="0.5" value="10">
+        <output id="t1-v">10h</output></div><div class="row"><label>累计产量</label>
+        <input type="range" id="q" min="1" max="3200" step="1" value="100">
+        <output id="q-v">100件</output></div></div>
+  <div class="metrics"><div class="metric"><span>累计平均工时</span><b id="o-avg">—</b><i>h/件</i></div><div class="metric"><span>累计总工时</span><b id="o-total">—</b><i>h</i></div><div class="metric"><span>学习指数</span><b id="o-b">—</b><i></i></div></div>
+  <script>
+  (function(){
+    const ids=["rate", "t1", "q"], keys=["rate", "t1", "q"], units={"rate": "%", "t1": "h", "q": "\u4ef6"}, outs=[["avg", "avg", "\u7d2f\u8ba1\u5e73\u5747\u5de5\u65f6", "h/\u4ef6", 2], ["total", "total", "\u7d2f\u8ba1\u603b\u5de5\u65f6", "h", 0], ["b", "b", "\u5b66\u4e60\u6307\u6570", "", 3]];
+    const calc=function(rate,t1,q){ const b=Math.log(rate/100)/Math.log(2); const avg=t1*Math.pow(q,b); const total=avg*q; return {avg:avg, total:total, b:b}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section>
+<footer>原生 JavaScript 计算，离线可用（file:// 直接打开）；与 slides 里的公式口径一致。</footer>
+</body></html>

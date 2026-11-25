@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>全部交互附件（22 个）</title>
+<style>
+  :root { --ink:#1a1a1a; --muted:#666; --line:#e5e7eb; --accent:#9C2B1E; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:24px 18px 80px; font-family:"Noto Sans CJK SC","Microsoft YaHei",system-ui,sans-serif;
+          color:var(--ink); background:#fafafa; line-height:1.6; }
+  nav { position:sticky; top:0; background:#fff; border-bottom:1px solid var(--line); padding:10px 6px; margin:-24px -18px 22px;
+         font-size:14px; z-index:9; }
+  nav a { color:var(--accent); text-decoration:none; margin:0 6px; }
+  h1 { max-width:1000px; margin:34px auto 4px; font-size:24px; border-left:6px solid var(--accent); padding-left:14px; }
+  .sub { max-width:1000px; margin:0 auto 14px; color:var(--muted); font-size:14px; }
+  .card { max-width:1000px; margin:0 auto 16px; background:#fff; border:1px solid var(--line);
+           border-radius:10px; padding:18px 20px 12px; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+  .card h2 { font-size:19px; margin:0 0 6px; }
+  .desc { color:var(--muted); font-size:14px; margin:0 0 12px; }
+  .row { display:grid; grid-template-columns:190px 1fr 110px; gap:12px; align-items:center; margin:6px 0; }
+  .row label { font-size:15px; }
+  input[type=range] { width:100%; accent-color:var(--accent); }
+  .row output { font-variant-numeric:tabular-nums; font-size:15px; text-align:right; }
+  .metrics { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 6px; }
+  .metric { flex:1 1 150px; background:#f7f7f8; border-radius:8px; padding:10px 12px; }
+  .metric span { display:block; font-size:13px; color:var(--muted); }
+  .metric b { font-size:22px; font-variant-numeric:tabular-nums; }
+  .metric i { font-style:normal; font-size:12px; color:var(--muted); margin-left:4px; }
+</style></head>
+<body>
+<nav>快速跳转：<a href="#lec1">lec1</a> · <a href="#lec2">lec2</a> · <a href="#lec3">lec3</a> · <a href="#lec4">lec4</a> · <a href="#lec5">lec5</a> · <a href="#lec6">lec6</a> · <a href="#lec7">lec7</a> · <a href="#lec8">lec8</a> · <a href="#lec9">lec9</a> · <a href="#lec10">lec10</a> · <a href="#lec5-gnn">lec5-gnn</a></nav>
+<script>
+function normInv(p){
+  const a=[-3.969683028665376e+01,2.209460984245205e+02,-2.759285104469687e+02,1.383577518672690e+02,-3.066479806614716e+01,2.506628277459239e+00];
+  const b=[-5.447609879822406e+01,1.615858368580409e+02,-1.556989798598866e+02,6.680131188771972e+01,-1.328068155288572e+01];
+  const c=[-7.784894002430293e-03,-3.223964580411365e-01,-2.400758277161838e+00,-2.549732539343734e+00,4.374664141464968e+00,2.938163982698783e+00];
+  const d=[7.784695709041462e-03,3.224671290700398e-01,2.445134137142996e+00,3.754408661907416e+00];
+  const pl=0.02425, ph=1-pl; let q,r;
+  if(p<pl){q=Math.sqrt(-2*Math.log(p));return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  if(p>ph){q=Math.sqrt(-2*Math.log(1-p));return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  q=p-0.5; r=q*q;
+  return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);
+}
+function phi(z){
+  const t=1/(1+0.2316419*Math.abs(z));
+  const d=0.3989423*Math.exp(-z*z/2);
+  const p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));
+  return z>0?1-p:p;
+}
+function binom(n,k,p){let c=1;for(let i=0;i<k;i++){c=c*(n-i)/(i+1);}return c*Math.pow(p,k)*Math.pow(1-p,n-k);}
+</script>
+
+<h1 id="lec1">第 1 讲 · 交互附件：战略与方法的几个数</h1><p class="sub">复利与 72 法则 · 学习曲线</p><section class="card">
+  <h2>复利与 72 法则</h2>
+  <p class="desc">资金按年复利增长；72 法则给翻倍年数的速算。</p>
+  <div class="controls"><div class="row"><label>年利率</label>
+        <input type="range" id="lec1_r" min="1" max="20" step="0.5" value="8">
+        <output id="lec1_r-v">8%</output></div><div class="row"><label>年数</label>
+        <input type="range" id="lec1_n" min="1" max="40" step="1" value="10">
+        <output id="lec1_n-v">10年</output></div><div class="row"><label>本金</label>
+        <input type="range" id="lec1_P" min="10" max="1000" step="10" value="100">
+        <output id="lec1_P-v">100万元</output></div></div>
+  <div class="metrics"><div class="metric"><span>本利和</span><b id="o-lec1_F">—</b><i>万元</i></div><div class="metric"><span>翻了几倍</span><b id="o-lec1_mult">—</b><i>倍</i></div><div class="metric"><span>72 法则翻倍年数</span><b id="o-lec1_double">—</b><i>年</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec1_r", "lec1_n", "lec1_P"], keys=["r", "n", "P"], units={"lec1_r": "%", "lec1_n": "\u5e74", "lec1_P": "\u4e07\u5143"}, outs=[["lec1_F", "F", "\u672c\u5229\u548c", "\u4e07\u5143", 1], ["lec1_mult", "mult", "\u7ffb\u4e86\u51e0\u500d", "\u500d", 2], ["lec1_double", "double", "72 \u6cd5\u5219\u7ffb\u500d\u5e74\u6570", "\u5e74", 1]];
+    const calc=function(r,n,P){ const f=P*Math.pow(1+r/100,n); const yrs=72/r; return {F:f, double:yrs, mult:f/P}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>学习曲线：产量翻倍，工时按比例降</h2>
+  <p class="desc">累计产量每翻一倍，单位工时乘学习率；给的是累计平均工时。</p>
+  <div class="controls"><div class="row"><label>学习率</label>
+        <input type="range" id="lec1_rate" min="70" max="95" step="1" value="85">
+        <output id="lec1_rate-v">85%</output></div><div class="row"><label>首件工时</label>
+        <input type="range" id="lec1_t1" min="1" max="20" step="0.5" value="10">
+        <output id="lec1_t1-v">10h</output></div><div class="row"><label>累计产量</label>
+        <input type="range" id="lec1_q" min="1" max="3200" step="1" value="100">
+        <output id="lec1_q-v">100件</output></div></div>
+  <div class="metrics"><div class="metric"><span>累计平均工时</span><b id="o-lec1_avg">—</b><i>h/件</i></div><div class="metric"><span>累计总工时</span><b id="o-lec1_total">—</b><i>h</i></div><div class="metric"><span>学习指数</span><b id="o-lec1_b">—</b><i></i></div></div>
+  <script>
+  (function(){
+    const ids=["lec1_rate", "lec1_t1", "lec1_q"], keys=["rate", "t1", "q"], units={"lec1_rate": "%", "lec1_t1": "h", "lec1_q": "\u4ef6"}, outs=[["lec1_avg", "avg", "\u7d2f\u8ba1\u5e73\u5747\u5de5\u65f6", "h/\u4ef6", 2], ["lec1_total", "total", "\u7d2f\u8ba1\u603b\u5de5\u65f6", "h", 0], ["lec1_b", "b", "\u5b66\u4e60\u6307\u6570", "", 3]];
+    const calc=function(rate,t1,q){ const b=Math.log(rate/100)/Math.log(2); const avg=t1*Math.pow(q,b); const total=avg*q; return {avg:avg, total:total, b:b}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec2">第 2 讲 · 交互附件：过程能力与抽样</h1><p class="sub">Cpk 与 ppm · 抽样接收概率</p><section class="card">
+  <h2>Cpk 计算器</h2>
+  <p class="desc">公差不变，拨均值偏移与标准差，看 Cp、Cpk 与不良率怎么变。</p>
+  <div class="controls"><div class="row"><label>上限 USL</label>
+        <input type="range" id="lec2_usl" min="20.0" max="21.0" step="0.01" value="20.1">
+        <output id="lec2_usl-v">20.1mm</output></div><div class="row"><label>下限 LSL</label>
+        <input type="range" id="lec2_lsl" min="19.0" max="20.0" step="0.01" value="19.9">
+        <output id="lec2_lsl-v">19.9mm</output></div><div class="row"><label>均值</label>
+        <input type="range" id="lec2_mu" min="19.5" max="20.5" step="0.01" value="20.0">
+        <output id="lec2_mu-v">20.0mm</output></div><div class="row"><label>标准差 σ</label>
+        <input type="range" id="lec2_s" min="0.01" max="0.2" step="0.005" value="0.05">
+        <output id="lec2_s-v">0.05mm</output></div></div>
+  <div class="metrics"><div class="metric"><span>Cp</span><b id="o-lec2_cp">—</b><i></i></div><div class="metric"><span>Cpk</span><b id="o-lec2_cpk">—</b><i></i></div><div class="metric"><span>最小侧 3σ 倍数</span><b id="o-lec2_z">—</b><i>σ</i></div><div class="metric"><span>双侧不良率</span><b id="o-lec2_ppm">—</b><i>ppm</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec2_usl", "lec2_lsl", "lec2_mu", "lec2_s"], keys=["usl", "lsl", "mu", "s"], units={"lec2_usl": "mm", "lec2_lsl": "mm", "lec2_mu": "mm", "lec2_s": "mm"}, outs=[["lec2_cp", "cp", "Cp", "", 2], ["lec2_cpk", "cpk", "Cpk", "", 2], ["lec2_z", "z", "\u6700\u5c0f\u4fa7 3\u03c3 \u500d\u6570", "\u03c3", 2], ["lec2_ppm", "ppm", "\u53cc\u4fa7\u4e0d\u826f\u7387", "ppm", 0]];
+    const calc=function(usl,lsl,mu,s){ const cp=(usl-lsl)/(6*s); const cpk=Math.min(usl-mu,mu-lsl)/(3*s); const z=Math.min(usl-mu,mu-lsl)/s; const ppm=2*(1-phi(z))*1e6; return {cp:cp, cpk:cpk, z:z, ppm:ppm}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>抽样方案接收概率（二项近似）</h2>
+  <p class="desc">批量足够大时，用二项分布近似超几何；n 越大、c 越小，越难接收。</p>
+  <div class="controls"><div class="row"><label>样本量 n</label>
+        <input type="range" id="lec2_n" min="5" max="200" step="1" value="50">
+        <output id="lec2_n-v">50件</output></div><div class="row"><label>接收数 c</label>
+        <input type="range" id="lec2_c" min="0" max="10" step="1" value="2">
+        <output id="lec2_c-v">2件</output></div><div class="row"><label>批不良率 p</label>
+        <input type="range" id="lec2_p" min="0.1" max="10" step="0.1" value="2.5">
+        <output id="lec2_p-v">2.5%</output></div></div>
+  <div class="metrics"><div class="metric"><span>接收概率 Pa</span><b id="o-lec2_acc">—</b><i>%</i></div><div class="metric"><span>拒收阈值 c+1</span><b id="o-lec2_LTPD">—</b><i>件</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec2_n", "lec2_c", "lec2_p"], keys=["n", "c", "p"], units={"lec2_n": "\u4ef6", "lec2_c": "\u4ef6", "lec2_p": "%"}, outs=[["lec2_acc", "acc", "\u63a5\u6536\u6982\u7387 Pa", "%", 1], ["lec2_LTPD", "LTPD", "\u62d2\u6536\u9608\u503c c+1", "\u4ef6", 0]];
+    const calc=function(n,c,p){ const pp=p/100; let acc=0; for(let k=0;k<=c;k++){acc+=binom(n,k,pp);} return {acc:acc*100, LTPD: c+1, n1:n}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec3">第 3 讲 · 交互附件：效率与库存</h1><p class="sub">线平衡率 · 经济订货批量</p><section class="card">
+  <h2>线平衡率</h2>
+  <p class="desc">给定工位时间总和与节拍，看平衡率与损失率；节拍越接近瓶颈，平衡率越高。</p>
+  <div class="controls"><div class="row"><label>各工位时间之和</label>
+        <input type="range" id="lec3_sum" min="100" max="1000" step="10" value="300">
+        <output id="lec3_sum-v">300s</output></div><div class="row"><label>工位数</label>
+        <input type="range" id="lec3_n" min="2" max="20" step="1" value="8">
+        <output id="lec3_n-v">8个</output></div><div class="row"><label>节拍 CT</label>
+        <input type="range" id="lec3_ct" min="20" max="200" step="1" value="60">
+        <output id="lec3_ct-v">60s</output></div></div>
+  <div class="metrics"><div class="metric"><span>平衡率</span><b id="o-lec3_bal">—</b><i>%</i></div><div class="metric"><span>总空闲时间</span><b id="o-lec3_idle">—</b><i>s</i></div><div class="metric"><span>损失率</span><b id="o-lec3_loss">—</b><i>%</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec3_sum", "lec3_n", "lec3_ct"], keys=["sum", "n", "ct"], units={"lec3_sum": "s", "lec3_n": "\u4e2a", "lec3_ct": "s"}, outs=[["lec3_bal", "bal", "\u5e73\u8861\u7387", "%", 1], ["lec3_idle", "idle", "\u603b\u7a7a\u95f2\u65f6\u95f4", "s", 0], ["lec3_loss", "loss", "\u635f\u5931\u7387", "%", 1]];
+    const calc=function(sum,n,ct){ const ratio=sum/(n*ct); const idle=n*ct-sum; return {bal:ratio*100, idle:idle, loss:(1-ratio)*100}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>经济订货批量 EOQ</h2>
+  <p class="desc">年需求、单次订货成本、单位持有成本决定批量；批量为 EOQ 时订货与持有成本相等。</p>
+  <div class="controls"><div class="row"><label>年需求</label>
+        <input type="range" id="lec3_D" min="100" max="100000" step="100" value="12000">
+        <output id="lec3_D-v">12000件</output></div><div class="row"><label>单次订货成本</label>
+        <input type="range" id="lec3_S" min="10" max="2000" step="10" value="200">
+        <output id="lec3_S-v">200元</output></div><div class="row"><label>单位年持有成本</label>
+        <input type="range" id="lec3_H" min="1" max="50" step="0.5" value="6">
+        <output id="lec3_H-v">6元/件·年</output></div></div>
+  <div class="metrics"><div class="metric"><span>EOQ 批量</span><b id="o-lec3_q">—</b><i>件</i></div><div class="metric"><span>年订货次数</span><b id="o-lec3_orders">—</b><i>次</i></div><div class="metric"><span>订货间隔</span><b id="o-lec3_T">—</b><i>天</i></div><div class="metric"><span>年总相关成本</span><b id="o-lec3_cost">—</b><i>元</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec3_D", "lec3_S", "lec3_H"], keys=["D", "S", "H"], units={"lec3_D": "\u4ef6", "lec3_S": "\u5143", "lec3_H": "\u5143/\u4ef6\u00b7\u5e74"}, outs=[["lec3_q", "q", "EOQ \u6279\u91cf", "\u4ef6", 0], ["lec3_orders", "orders", "\u5e74\u8ba2\u8d27\u6b21\u6570", "\u6b21", 1], ["lec3_T", "T", "\u8ba2\u8d27\u95f4\u9694", "\u5929", 1], ["lec3_cost", "cost", "\u5e74\u603b\u76f8\u5173\u6210\u672c", "\u5143", 0]];
+    const calc=function(D,S,H){ const q=Math.sqrt(2*D*S/H); const orders=D/q; const T=q/D*365; const cost=Math.sqrt(2*D*S*H); return {q:q, orders:orders, T:T, cost:cost}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec4">第 4 讲 · 交互附件：风险与事故树</h1><p class="sub">LEC 风险值 · 或门与与门概率</p><section class="card">
+  <h2>LEC 风险值</h2>
+  <p class="desc">R=L×E×C；等级界线按常见企业口径（R≥320 重大，160–320 较大，70–160 一般）。</p>
+  <div class="controls"><div class="row"><label>可能性 L</label>
+        <input type="range" id="lec4_L" min="0.1" max="10" step="0.1" value="3">
+        <output id="lec4_L-v">3</output></div><div class="row"><label>暴露频率 E</label>
+        <input type="range" id="lec4_E" min="0.5" max="10" step="0.5" value="6">
+        <output id="lec4_E-v">6</output></div><div class="row"><label>后果 C</label>
+        <input type="range" id="lec4_C" min="1" max="100" step="1" value="15">
+        <output id="lec4_C-v">15</output></div></div>
+  <div class="metrics"><div class="metric"><span>风险值 R</span><b id="o-lec4_R">—</b><i></i></div><div class="metric"><span>等级</span><b id="o-lec4_grade">—</b><i></i></div></div>
+  <script>
+  (function(){
+    const ids=["lec4_L", "lec4_E", "lec4_C"], keys=["L", "E", "C"], units={"lec4_L": "", "lec4_E": "", "lec4_C": ""}, outs=[["lec4_R", "R", "\u98ce\u9669\u503c R", "", 0], ["lec4_grade", "grade", "\u7b49\u7ea7", "", -1]];
+    const calc=function(L,E,C){ const R=L*E*C; let g=R>=320?'重大（红）':R>=160?'较大（橙）':R>=70?'一般（黄）':'可接受（蓝）'; return {R:R, grade:g}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>事故树：与门 / 或门</h2>
+  <p class="desc">或门取最大（任一发生即发生），与门取乘积（同时成立）；两种算法对比。</p>
+  <div class="controls"><div class="row"><label>事件 q1</label>
+        <input type="range" id="lec4_q1" min="0.01" max="0.3" step="0.01" value="0.1">
+        <output id="lec4_q1-v">0.1</output></div><div class="row"><label>事件 q2</label>
+        <input type="range" id="lec4_q2" min="0.01" max="0.3" step="0.01" value="0.05">
+        <output id="lec4_q2-v">0.05</output></div><div class="row"><label>事件 q3</label>
+        <input type="range" id="lec4_q3" min="0.01" max="0.3" step="0.01" value="0.02">
+        <output id="lec4_q3-v">0.02</output></div></div>
+  <div class="metrics"><div class="metric"><span>或门（并联）顶事件</span><b id="o-lec4_orp">—</b><i></i></div><div class="metric"><span>与门（串联）顶事件</span><b id="o-lec4_andp">—</b><i></i></div></div>
+  <script>
+  (function(){
+    const ids=["lec4_q1", "lec4_q2", "lec4_q3"], keys=["q1", "q2", "q3"], units={"lec4_q1": "", "lec4_q2": "", "lec4_q3": ""}, outs=[["lec4_orp", "orp", "\u6216\u95e8\uff08\u5e76\u8054\uff09\u9876\u4e8b\u4ef6", "", 4], ["lec4_andp", "andp", "\u4e0e\u95e8\uff08\u4e32\u8054\uff09\u9876\u4e8b\u4ef6", "", 6]];
+    const calc=function(q1,q2,q3){ const orp=1-(1-q1)*(1-q2)*(1-q3); const andp=q1*q2*q3; return {orp:orp, andp:andp}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec5">第 5 讲 · 交互附件：成本、量本利、投资</h1><p class="sub">两种成本法 · 量本利 · NPV/IRR</p><section class="card">
+  <h2>变动成本法 vs 完全成本法</h2>
+  <p class="desc">产量只改单位固定费用，销量才改利润；期末存货把固定费用带走。</p>
+  <div class="controls"><div class="row"><label>产量</label>
+        <input type="range" id="lec5_qp" min="4000" max="12000" step="500" value="8000">
+        <output id="lec5_qp-v">8000件</output></div><div class="row"><label>销量</label>
+        <input type="range" id="lec5_qs" min="3000" max="12000" step="500" value="6000">
+        <output id="lec5_qs-v">6000件</output></div><div class="row"><label>售价</label>
+        <input type="range" id="lec5_pr" min="150" max="300" step="5" value="200">
+        <output id="lec5_pr-v">200元</output></div><div class="row"><label>单位变动成本</label>
+        <input type="range" id="lec5_vc" min="40" max="100" step="5" value="60">
+        <output id="lec5_vc-v">60元</output></div></div>
+  <div class="metrics"><div class="metric"><span>单位固定制造费用</span><b id="o-lec5_uf">—</b><i>元/件</i></div><div class="metric"><span>完全单位成本</span><b id="o-lec5_full">—</b><i>元/件</i></div><div class="metric"><span>变动法利润</span><b id="o-lec5_pv">—</b><i>万元</i></div><div class="metric"><span>完全法利润</span><b id="o-lec5_pf">—</b><i>万元</i></div><div class="metric"><span>两法差额</span><b id="o-lec5_gap">—</b><i>万元</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec5_qp", "lec5_qs", "lec5_pr", "lec5_vc"], keys=["qp", "qs", "pr", "vc"], units={"lec5_qp": "\u4ef6", "lec5_qs": "\u4ef6", "lec5_pr": "\u5143", "lec5_vc": "\u5143"}, outs=[["lec5_uf", "uf", "\u5355\u4f4d\u56fa\u5b9a\u5236\u9020\u8d39\u7528", "\u5143/\u4ef6", 1], ["lec5_full", "full", "\u5b8c\u5168\u5355\u4f4d\u6210\u672c", "\u5143/\u4ef6", 1], ["lec5_pv", "pv", "\u53d8\u52a8\u6cd5\u5229\u6da6", "\u4e07\u5143", 1], ["lec5_pf", "pf", "\u5b8c\u5168\u6cd5\u5229\u6da6", "\u4e07\u5143", 1], ["lec5_gap", "gap", "\u4e24\u6cd5\u5dee\u989d", "\u4e07\u5143", 1]];
+    const calc=function(qp,qs,pr,vc){ const fm=800000, fs=200000; const uf=fm/qp; const full=vc+uf; const cm=qs*(pr-vc); const pv=cm-(fm+fs); const pf=qs*pr-qs*full-fs; const inv=Math.max(qp-qs,0)*uf; return {uf:uf, full:full, pv:pv/1e4, pf:pf/1e4, gap:(pf-pv)/1e4, inv:inv/1e4}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>量本利：利润、杠杆、安全边际</h2>
+  <p class="desc">固定成本 200 万元、单价 100 元、单位变动成本 60 元。</p>
+  <div class="controls"><div class="row"><label>销量</label>
+        <input type="range" id="lec5_q" min="2" max="12" step="0.1" value="7.5">
+        <output id="lec5_q-v">7.5万件</output></div></div>
+  <div class="metrics"><div class="metric"><span>保本量</span><b id="o-lec5_q0">—</b><i>万件</i></div><div class="metric"><span>利润</span><b id="o-lec5_prof">—</b><i>万元</i></div><div class="metric"><span>经营杠杆 DOL</span><b id="o-lec5_dol">—</b><i></i></div><div class="metric"><span>安全边际率</span><b id="o-lec5_ms">—</b><i>%</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec5_q"], keys=["q"], units={"lec5_q": "\u4e07\u4ef6"}, outs=[["lec5_q0", "q0", "\u4fdd\u672c\u91cf", "\u4e07\u4ef6", 1], ["lec5_prof", "prof", "\u5229\u6da6", "\u4e07\u5143", 1], ["lec5_dol", "dol", "\u7ecf\u8425\u6760\u6746 DOL", "", 2], ["lec5_ms", "ms", "\u5b89\u5168\u8fb9\u9645\u7387", "%", 1]];
+    const calc=function(q){ const F=200,p=100,v=60; const q0=F/(p-v); const prof=(p-v)*q-F; const dol=prof>0?(p-v)*q/prof:NaN; const ms=q>q0?(q-q0)/q*100:NaN; return {q0:q0, prof:prof, dol:dol, ms:ms}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>投资项目三指标</h2>
+  <p class="desc">一次性投资 1200 万元，投产后 5 年每年净收益 320 万元；在 5%–30% 之间扫描求 IRR。</p>
+  <div class="controls"><div class="row"><label>投资</label>
+        <input type="range" id="lec5_I" min="500" max="3000" step="50" value="1200">
+        <output id="lec5_I-v">1200万元</output></div><div class="row"><label>年净收益</label>
+        <input type="range" id="lec5_A" min="100" max="800" step="10" value="320">
+        <output id="lec5_A-v">320万元</output></div><div class="row"><label>基准收益率</label>
+        <input type="range" id="lec5_ic" min="5" max="30" step="0.5" value="10">
+        <output id="lec5_ic-v">10%</output></div></div>
+  <div class="metrics"><div class="metric"><span>NPV</span><b id="o-lec5_npv">—</b><i>万元</i></div><div class="metric"><span>IRR</span><b id="o-lec5_irr">—</b><i>%</i></div><div class="metric"><span>静态回收期</span><b id="o-lec5_pt">—</b><i>年</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec5_I", "lec5_A", "lec5_ic"], keys=["I", "A", "ic"], units={"lec5_I": "\u4e07\u5143", "lec5_A": "\u4e07\u5143", "lec5_ic": "%"}, outs=[["lec5_npv", "npv", "NPV", "\u4e07\u5143", 1], ["lec5_irr", "irr", "IRR", "%", 2], ["lec5_pt", "pt", "\u9759\u6001\u56de\u6536\u671f", "\u5e74", 2]];
+    const calc=function(I,A,ic){ const i=ic/100; let pv=0; for(let t=1;t<=5;t++){pv+=A/Math.pow(1+i,t);} const npv=pv-I; let lo=0.001,hi=1.0; for(let k=0;k<80;k++){const m=(lo+hi)/2; let s=0; for(let t=1;t<=5;t++){s+=A/Math.pow(1+m,t);} if(s>I) lo=m; else hi=m;} const irr=lo*100; const pt=I/A; return {npv:npv, irr:irr, pt:pt}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec6">第 6 讲 · 交互附件：OEE 与物料需求</h1><p class="sub">OEE 三率 · MRP 净需求</p><section class="card">
+  <h2>OEE：三个率连乘</h2>
+  <p class="desc">可用率×性能×合格率；任一率下降都会按比例拉低 OEE。</p>
+  <div class="controls"><div class="row"><label>可用率</label>
+        <input type="range" id="lec6_a" min="50" max="100" step="1" value="90">
+        <output id="lec6_a-v">90%</output></div><div class="row"><label>性能率</label>
+        <input type="range" id="lec6_p" min="50" max="100" step="1" value="83.3">
+        <output id="lec6_p-v">83.3%</output></div><div class="row"><label>合格率</label>
+        <input type="range" id="lec6_q" min="50" max="100" step="1" value="95">
+        <output id="lec6_q-v">95%</output></div></div>
+  <div class="metrics"><div class="metric"><span>OEE</span><b id="o-lec6_oee">—</b><i>%</i></div><div class="metric"><span>综合损失</span><b id="o-lec6_loss">—</b><i>%</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec6_a", "lec6_p", "lec6_q"], keys=["a", "p", "q"], units={"lec6_a": "%", "lec6_p": "%", "lec6_q": "%"}, outs=[["lec6_oee", "oee", "OEE", "%", 1], ["lec6_loss", "loss", "\u7efc\u5408\u635f\u5931", "%", 1]];
+    const calc=function(a,p,q){ const oee=a*p*q/1e6; return {oee:oee, loss:1-oee}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>MRP 净需求与下达</h2>
+  <p class="desc">净需求＝毛需求−可用库存−在途；再按批量向上取整。</p>
+  <div class="controls"><div class="row"><label>毛需求</label>
+        <input type="range" id="lec6_g" min="0" max="5000" step="50" value="1000">
+        <output id="lec6_g-v">1000件</output></div><div class="row"><label>可用库存</label>
+        <input type="range" id="lec6_s" min="0" max="5000" step="50" value="300">
+        <output id="lec6_s-v">300件</output></div><div class="row"><label>在途</label>
+        <input type="range" id="lec6_i" min="0" max="5000" step="50" value="200">
+        <output id="lec6_i-v">200件</output></div><div class="row"><label>批量</label>
+        <input type="range" id="lec6_lot" min="50" max="1000" step="50" value="250">
+        <output id="lec6_lot-v">250件</output></div></div>
+  <div class="metrics"><div class="metric"><span>净需求</span><b id="o-lec6_net">—</b><i>件</i></div><div class="metric"><span>计划订单数</span><b id="o-lec6_orders">—</b><i>单</i></div><div class="metric"><span>下达量</span><b id="o-lec6_plan">—</b><i>件</i></div><div class="metric"><span>剩余库存</span><b id="o-lec6_leftover">—</b><i>件</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec6_g", "lec6_s", "lec6_i", "lec6_lot"], keys=["g", "s", "i", "lot"], units={"lec6_g": "\u4ef6", "lec6_s": "\u4ef6", "lec6_i": "\u4ef6", "lec6_lot": "\u4ef6"}, outs=[["lec6_net", "net", "\u51c0\u9700\u6c42", "\u4ef6", 0], ["lec6_orders", "orders", "\u8ba1\u5212\u8ba2\u5355\u6570", "\u5355", 0], ["lec6_plan", "plan", "\u4e0b\u8fbe\u91cf", "\u4ef6", 0], ["lec6_leftover", "leftover", "\u5269\u4f59\u5e93\u5b58", "\u4ef6", 0]];
+    const calc=function(g,s,i,lot){ const net=Math.max(g-s-i,0); const orders=net>0?Math.ceil(net/lot):0; const plan=orders*lot; return {net:net, orders:orders, plan:plan, leftover:plan-net}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec7">第 7 讲 · 交互附件：库存与交付</h1><p class="sub">安全库存 · 库存周转</p><section class="card">
+  <h2>安全库存与服务水平</h2>
+  <p class="desc">SS=z×σ×√LT；服务水平越高，z 越大，安全库存涨得比服务快。</p>
+  <div class="controls"><div class="row"><label>服务水平</label>
+        <input type="range" id="lec7_sl" min="80" max="99.9" step="0.1" value="95">
+        <output id="lec7_sl-v">95%</output></div><div class="row"><label>日需求标准差</label>
+        <input type="range" id="lec7_sd" min="1" max="100" step="1" value="20">
+        <output id="lec7_sd-v">20件</output></div><div class="row"><label>提前期</label>
+        <input type="range" id="lec7_lt" min="1" max="60" step="1" value="9">
+        <output id="lec7_lt-v">9天</output></div></div>
+  <div class="metrics"><div class="metric"><span>z 值</span><b id="o-lec7_z">—</b><i></i></div><div class="metric"><span>安全库存</span><b id="o-lec7_ss">—</b><i>件</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec7_sl", "lec7_sd", "lec7_lt"], keys=["sl", "sd", "lt"], units={"lec7_sl": "%", "lec7_sd": "\u4ef6", "lec7_lt": "\u5929"}, outs=[["lec7_z", "z", "z \u503c", "", 2], ["lec7_ss", "ss", "\u5b89\u5168\u5e93\u5b58", "\u4ef6", 0]];
+    const calc=function(sl,sd,lt){ const z=normInv(sl/100); const ss=z*sd*Math.sqrt(lt); return {z:z, ss:ss, reorder:ss}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>库存周转率与周转天数</h2>
+  <p class="desc">周转次数＝年销货成本÷平均库存；天数＝365÷次数。</p>
+  <div class="controls"><div class="row"><label>年销货成本</label>
+        <input type="range" id="lec7_cogs" min="100" max="10000" step="100" value="3600">
+        <output id="lec7_cogs-v">3600万元</output></div><div class="row"><label>平均库存</label>
+        <input type="range" id="lec7_inv" min="10" max="3000" step="10" value="300">
+        <output id="lec7_inv-v">300万元</output></div></div>
+  <div class="metrics"><div class="metric"><span>周转次数</span><b id="o-lec7_t">—</b><i>次/年</i></div><div class="metric"><span>周转天数</span><b id="o-lec7_d">—</b><i>天</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec7_cogs", "lec7_inv"], keys=["cogs", "inv"], units={"lec7_cogs": "\u4e07\u5143", "lec7_inv": "\u4e07\u5143"}, outs=[["lec7_t", "t", "\u5468\u8f6c\u6b21\u6570", "\u6b21/\u5e74", 1], ["lec7_d", "d", "\u5468\u8f6c\u5929\u6570", "\u5929", 0]];
+    const calc=function(cogs,inv){ const t=cogs/inv; const d=365/t; return {t:t, d:d}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec8">第 8 讲 · 交互附件：伦理决策的权重</h1><p class="sub">利益相关方得分 · 三种伦理框架</p><section class="card">
+  <h2>利益相关方加权得分</h2>
+  <p class="desc">给四类相关方分配权重（自动归一），再看方案得分；权重一换，结论可能翻转。</p>
+  <div class="controls"><div class="row"><label>股东权重</label>
+        <input type="range" id="lec8_w1" min="0" max="10" step="1" value="3">
+        <output id="lec8_w1-v">3</output></div><div class="row"><label>员工权重</label>
+        <input type="range" id="lec8_w2" min="0" max="10" step="1" value="3">
+        <output id="lec8_w2-v">3</output></div><div class="row"><label>客户权重</label>
+        <input type="range" id="lec8_w3" min="0" max="10" step="1" value="2">
+        <output id="lec8_w3-v">2</output></div><div class="row"><label>社区权重</label>
+        <input type="range" id="lec8_w4" min="0" max="10" step="1" value="1">
+        <output id="lec8_w4-v">1</output></div><div class="row"><label>对股东影响</label>
+        <input type="range" id="lec8_s1" min="-5" max="5" step="1" value="3">
+        <output id="lec8_s1-v">3</output></div><div class="row"><label>对员工影响</label>
+        <input type="range" id="lec8_s2" min="-5" max="5" step="1" value="-1">
+        <output id="lec8_s2-v">-1</output></div><div class="row"><label>对客户影响</label>
+        <input type="range" id="lec8_s3" min="-5" max="5" step="1" value="2">
+        <output id="lec8_s3-v">2</output></div><div class="row"><label>对社区影响</label>
+        <input type="range" id="lec8_s4" min="-5" max="5" step="1" value="-2">
+        <output id="lec8_s4-v">-2</output></div></div>
+  <div class="metrics"><div class="metric"><span>加权得分</span><b id="o-lec8_score">—</b><i></i></div><div class="metric"><span>权重合计</span><b id="o-lec8_norm">—</b><i></i></div></div>
+  <script>
+  (function(){
+    const ids=["lec8_w1", "lec8_w2", "lec8_w3", "lec8_w4", "lec8_s1", "lec8_s2", "lec8_s3", "lec8_s4"], keys=["w1", "w2", "w3", "w4", "s1", "s2", "s3", "s4"], units={"lec8_w1": "", "lec8_w2": "", "lec8_w3": "", "lec8_w4": "", "lec8_s1": "", "lec8_s2": "", "lec8_s3": "", "lec8_s4": ""}, outs=[["lec8_score", "score", "\u52a0\u6743\u5f97\u5206", "", 2], ["lec8_norm", "norm", "\u6743\u91cd\u5408\u8ba1", "", 0]];
+    const calc=function(w1,w2,w3,w4,s1,s2,s3,s4){ const w=w1+w2+w3+w4; const s=w?((w1*s1+w2*s2+w3*s3+w4*s4)/w):0; return {score:s, norm:w}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>后果论 vs 义务论</h2>
+  <p class="desc">后果论看净收益，义务论看是否违反底线；两者给出不同结论时，就是伦理张力所在。</p>
+  <div class="controls"><div class="row"><label>总收益</label>
+        <input type="range" id="lec8_benefit" min="0" max="1000" step="10" value="200">
+        <output id="lec8_benefit-v">200万元</output></div><div class="row"><label>总伤害</label>
+        <input type="range" id="lec8_harm" min="0" max="1000" step="10" value="80">
+        <output id="lec8_harm-v">80万元</output></div><div class="row"><label>违反义务程度（0 无、5 严重）</label>
+        <input type="range" id="lec8_duty" min="0" max="5" step="1" value="1">
+        <output id="lec8_duty-v">1</output></div></div>
+  <div class="metrics"><div class="metric"><span>净收益</span><b id="o-lec8_net">—</b><i>万元</i></div><div class="metric"><span>结论</span><b id="o-lec8_verdict">—</b><i></i></div></div>
+  <script>
+  (function(){
+    const ids=["lec8_benefit", "lec8_harm", "lec8_duty"], keys=["benefit", "harm", "duty"], units={"lec8_benefit": "\u4e07\u5143", "lec8_harm": "\u4e07\u5143", "lec8_duty": ""}, outs=[["lec8_net", "net", "\u51c0\u6536\u76ca", "\u4e07\u5143", 0], ["lec8_verdict", "verdict", "\u7ed3\u8bba", "", -1]];
+    const calc=function(benefit,harm,duty){ const net=benefit-harm; const verdict=net>0&&duty<=2?'可做（双通过）':net>0?'后果可、义务不过（需辩护）':'不可做'; return {net:net, verdict:verdict}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec9">第 9 讲 · 交互附件：风险矩阵与 ALARP</h1><p class="sub">L×S 矩阵 · 成本收益比</p><section class="card">
+  <h2>风险矩阵 R=L×S</h2>
+  <p class="desc">可能性与严重度各 1–5 级；乘积决定管控层级。</p>
+  <div class="controls"><div class="row"><label>可能性</label>
+        <input type="range" id="lec9_L" min="1" max="5" step="1" value="3">
+        <output id="lec9_L-v">3级</output></div><div class="row"><label>严重度</label>
+        <input type="range" id="lec9_S" min="1" max="5" step="1" value="4">
+        <output id="lec9_S-v">4级</output></div></div>
+  <div class="metrics"><div class="metric"><span>风险值</span><b id="o-lec9_R">—</b><i></i></div><div class="metric"><span>处置</span><b id="o-lec9_g">—</b><i></i></div></div>
+  <script>
+  (function(){
+    const ids=["lec9_L", "lec9_S"], keys=["L", "S"], units={"lec9_L": "\u7ea7", "lec9_S": "\u7ea7"}, outs=[["lec9_R", "R", "\u98ce\u9669\u503c", "", 0], ["lec9_g", "g", "\u5904\u7f6e", "", -1]];
+    const calc=function(L,S){ const R=L*S; let g=R>=17?'不可接受（红）':R>=10?'重大（橙）':R>=5?'中等（黄）':'可接受（绿）'; return {R:R, g:g}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>ALARP：成本与风险降低比</h2>
+  <p class="desc">降低一单位风险的投入越小，越应当做；比值超过阈值要论证。</p>
+  <div class="controls"><div class="row"><label>年投入</label>
+        <input type="range" id="lec9_cost" min="1" max="1000" step="1" value="50">
+        <output id="lec9_cost-v">50万元</output></div><div class="row"><label>年降低的期望损失</label>
+        <input type="range" id="lec9_drop" min="0.1" max="500" step="0.1" value="12">
+        <output id="lec9_drop-v">12万元</output></div><div class="row"><label>当前年期望损失</label>
+        <input type="range" id="lec9_base" min="1" max="2000" step="1" value="300">
+        <output id="lec9_base-v">300万元</output></div></div>
+  <div class="metrics"><div class="metric"><span>每降 1 万元的投入</span><b id="o-lec9_ratio">—</b><i>万元</i></div><div class="metric"><span>剩余期望损失</span><b id="o-lec9_left">—</b><i>万元</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec9_cost", "lec9_drop", "lec9_base"], keys=["cost", "drop", "base"], units={"lec9_cost": "\u4e07\u5143", "lec9_drop": "\u4e07\u5143", "lec9_base": "\u4e07\u5143"}, outs=[["lec9_ratio", "ratio", "\u6bcf\u964d 1 \u4e07\u5143\u7684\u6295\u5165", "\u4e07\u5143", 1], ["lec9_left", "left", "\u5269\u4f59\u671f\u671b\u635f\u5931", "\u4e07\u5143", 1]];
+    const calc=function(cost,drop,base){ const ratio=cost/drop; const left=base-drop; return {ratio:ratio, left:left, ok:ratio<=5}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec10">第 10 讲 · 交互附件：AI 质检与算法指标</h1><p class="sub">漏检成本 · 混淆矩阵指标</p><section class="card">
+  <h2>漏检率值多少钱</h2>
+  <p class="desc">年产量×漏检率×单件外部损失；再把在线检测投入摊进来比较。</p>
+  <div class="controls"><div class="row"><label>年产量</label>
+        <input type="range" id="lec10_vol" min="1" max="500" step="1" value="100">
+        <output id="lec10_vol-v">100万件</output></div><div class="row"><label>漏检率</label>
+        <input type="range" id="lec10_miss" min="0.1" max="10" step="0.1" value="2">
+        <output id="lec10_miss-v">2%</output></div><div class="row"><label>单件外部损失</label>
+        <input type="range" id="lec10_loss" min="10" max="500" step="10" value="120">
+        <output id="lec10_loss-v">120元</output></div><div class="row"><label>年检测投入</label>
+        <input type="range" id="lec10_invest" min="0" max="500" step="5" value="80">
+        <output id="lec10_invest-v">80万元</output></div></div>
+  <div class="metrics"><div class="metric"><span>年漏检损失</span><b id="o-lec10_cost">—</b><i>万元</i></div><div class="metric"><span>扣投入后净损失</span><b id="o-lec10_net">—</b><i>万元</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec10_vol", "lec10_miss", "lec10_loss", "lec10_invest"], keys=["vol", "miss", "loss", "invest"], units={"lec10_vol": "\u4e07\u4ef6", "lec10_miss": "%", "lec10_loss": "\u5143", "lec10_invest": "\u4e07\u5143"}, outs=[["lec10_cost", "cost", "\u5e74\u6f0f\u68c0\u635f\u5931", "\u4e07\u5143", 1], ["lec10_net", "net", "\u6263\u6295\u5165\u540e\u51c0\u635f\u5931", "\u4e07\u5143", 1]];
+    const calc=function(vol,miss,loss,invest){ const cost=vol*1e4*(miss/100)*loss/1e4; return {cost:cost, net:cost-invest}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>混淆矩阵：精确率与召回率</h2>
+  <p class="desc">拨 TP/FP/FN/TN，看精确率、召回率与 F1；两者此消彼长。</p>
+  <div class="controls"><div class="row"><label>TP</label>
+        <input type="range" id="lec10_tp" min="0" max="1000" step="10" value="80">
+        <output id="lec10_tp-v">80件</output></div><div class="row"><label>FP</label>
+        <input type="range" id="lec10_fp" min="0" max="1000" step="10" value="20">
+        <output id="lec10_fp-v">20件</output></div><div class="row"><label>FN</label>
+        <input type="range" id="lec10_fn" min="0" max="1000" step="10" value="10">
+        <output id="lec10_fn-v">10件</output></div><div class="row"><label>TN</label>
+        <input type="range" id="lec10_tn" min="0" max="1000" step="10" value="890">
+        <output id="lec10_tn-v">890件</output></div></div>
+  <div class="metrics"><div class="metric"><span>精确率</span><b id="o-lec10_prec">—</b><i>%</i></div><div class="metric"><span>召回率</span><b id="o-lec10_rec">—</b><i>%</i></div><div class="metric"><span>F1</span><b id="o-lec10_f1">—</b><i>%</i></div><div class="metric"><span>准确率</span><b id="o-lec10_acc">—</b><i>%</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec10_tp", "lec10_fp", "lec10_fn", "lec10_tn"], keys=["tp", "fp", "fn", "tn"], units={"lec10_tp": "\u4ef6", "lec10_fp": "\u4ef6", "lec10_fn": "\u4ef6", "lec10_tn": "\u4ef6"}, outs=[["lec10_prec", "prec", "\u7cbe\u786e\u7387", "%", 1], ["lec10_rec", "rec", "\u53ec\u56de\u7387", "%", 1], ["lec10_f1", "f1", "F1", "%", 1], ["lec10_acc", "acc", "\u51c6\u786e\u7387", "%", 1]];
+    const calc=function(tp,fp,fn,tn){ const prec=tp/(tp+fp)||0, rec=tp/(tp+fn)||0; const f1=(prec+rec)?2*prec*rec/(prec+rec):0; const acc=(tp+tn)/(tp+fp+fn+tn); return {prec:prec*100, rec:rec*100, f1:f1*100, acc:acc*100}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec5-gnn">第 5 章专题 · 交互附件：线性规划</h1><p class="sub">影子价格 · 可行域顶点</p><section class="card">
+  <h2>两资源 LP：改 b 看最优解</h2>
+  <p class="desc">max 3x1+5x2，s.t. 2x1+4x2≤b1、3x1+2x2≤b2；枚举顶点求最优。</p>
+  <div class="controls"><div class="row"><label>机加工工时 b1</label>
+        <input type="range" id="lec5_gnn_b1" min="40" max="200" step="5" value="100">
+        <output id="lec5_gnn_b1-v">100h</output></div><div class="row"><label>装配工时 b2</label>
+        <input type="range" id="lec5_gnn_b2" min="40" max="200" step="5" value="90">
+        <output id="lec5_gnn_b2-v">90h</output></div></div>
+  <div class="metrics"><div class="metric"><span>x1（齿轮，百件）</span><b id="o-lec5_gnn_x1">—</b><i></i></div><div class="metric"><span>x2（链轮，百件）</span><b id="o-lec5_gnn_x2">—</b><i></i></div><div class="metric"><span>最大利润</span><b id="o-lec5_gnn_z">—</b><i>万元</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec5_gnn_b1", "lec5_gnn_b2"], keys=["b1", "b2"], units={"lec5_gnn_b1": "h", "lec5_gnn_b2": "h"}, outs=[["lec5_gnn_x1", "x1", "x1\uff08\u9f7f\u8f6e\uff0c\u767e\u4ef6\uff09", "", 2], ["lec5_gnn_x2", "x2", "x2\uff08\u94fe\u8f6e\uff0c\u767e\u4ef6\uff09", "", 2], ["lec5_gnn_z", "z", "\u6700\u5927\u5229\u6da6", "\u4e07\u5143", 2]];
+    const calc=function(b1,b2){ const c=[[0,0]]; const pts=[[0,0],[b2/3,0],[0,Math.min(b1/4,b2/2)]]; let x1=(4*b2-2*b1)/8, x2=(3*b1-2*b2)/8; if(x1>=0&&x2>=0) pts.push([x1,x2]); let best=[0,0,0]; for(const [a,b] of pts){const z=3*a+5*b; if(z>best[2]) best=[a,b,z];} return {x1:best[0], x2:best[1], z:best[2]}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section>
+</body></html>

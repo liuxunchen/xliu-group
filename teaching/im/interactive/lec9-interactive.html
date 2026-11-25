@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第 9 讲 · 交互附件：风险矩阵与 ALARP</title>
+<style>
+  :root { --ink:#1a1a1a; --muted:#666; --line:#e5e7eb; --accent:#9C2B1E; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:28px 18px 60px; font-family:"Noto Sans CJK SC","Source Han Sans SC",system-ui,sans-serif;
+          color:var(--ink); background:#fafafa; line-height:1.6; }
+  header { max-width:1000px; margin:0 auto 22px; border-left:6px solid var(--accent); padding-left:14px; }
+  h1 { font-size:26px; margin:0 0 6px; }
+  .sub { color:var(--muted); font-size:15px; margin:0; }
+  .card { max-width:1000px; margin:0 auto 18px; background:#fff; border:1px solid var(--line);
+           border-radius:10px; padding:18px 20px 12px; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+  .card h2 { font-size:19px; margin:0 0 6px; }
+  .desc { color:var(--muted); font-size:14px; margin:0 0 12px; }
+  .row { display:grid; grid-template-columns:190px 1fr 110px; gap:12px; align-items:center; margin:6px 0; }
+  .row label { font-size:15px; }
+  input[type=range] { width:100%; accent-color:var(--accent); }
+  .row output { font-variant-numeric:tabular-nums; font-size:15px; text-align:right; }
+  .metrics { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 6px; }
+  .metric { flex:1 1 150px; background:#f7f7f8; border-radius:8px; padding:10px 12px; }
+  .metric span { display:block; font-size:13px; color:var(--muted); }
+  .metric b { font-size:22px; font-variant-numeric:tabular-nums; }
+  .metric i { font-style:normal; font-size:12px; color:var(--muted); margin-left:4px; }
+  footer { max-width:1000px; margin:26px auto 0; color:var(--muted); font-size:13px; }
+</style></head>
+<body>
+<script>
+function normInv(p){
+  const a=[-3.969683028665376e+01,2.209460984245205e+02,-2.759285104469687e+02,1.383577518672690e+02,-3.066479806614716e+01,2.506628277459239e+00];
+  const b=[-5.447609879822406e+01,1.615858368580409e+02,-1.556989798598866e+02,6.680131188771972e+01,-1.328068155288572e+01];
+  const c=[-7.784894002430293e-03,-3.223964580411365e-01,-2.400758277161838e+00,-2.549732539343734e+00,4.374664141464968e+00,2.938163982698783e+00];
+  const d=[7.784695709041462e-03,3.224671290700398e-01,2.445134137142996e+00,3.754408661907416e+00];
+  const pl=0.02425, ph=1-pl; let q,r;
+  if(p<pl){q=Math.sqrt(-2*Math.log(p));return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  if(p>ph){q=Math.sqrt(-2*Math.log(1-p));return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  q=p-0.5; r=q*q;
+  return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);
+}
+function phi(z){
+  const t=1/(1+0.2316419*Math.abs(z));
+  const d=0.3989423*Math.exp(-z*z/2);
+  const p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));
+  return z>0?1-p:p;
+}
+function binom(n,k,p){let c=1;for(let i=0;i<k;i++){c=c*(n-i)/(i+1);}return c*Math.pow(p,k)*Math.pow(1-p,n-k);}
+</script>
+
+<header><h1>第 9 讲 · 交互附件：风险矩阵与 ALARP</h1><p class="sub">L×S 矩阵 · 成本收益比</p></header>
+<section class="card">
+  <h2>风险矩阵 R=L×S</h2>
+  <p class="desc">可能性与严重度各 1–5 级；乘积决定管控层级。</p>
+  <div class="controls"><div class="row"><label>可能性</label>
+        <input type="range" id="L" min="1" max="5" step="1" value="3">
+        <output id="L-v">3级</output></div><div class="row"><label>严重度</label>
+        <input type="range" id="S" min="1" max="5" step="1" value="4">
+        <output id="S-v">4级</output></div></div>
+  <div class="metrics"><div class="metric"><span>风险值</span><b id="o-R">—</b><i></i></div><div class="metric"><span>处置</span><b id="o-g">—</b><i></i></div></div>
+  <script>
+  (function(){
+    const ids=["L", "S"], keys=["L", "S"], units={"L": "\u7ea7", "S": "\u7ea7"}, outs=[["R", "R", "\u98ce\u9669\u503c", "", 0], ["g", "g", "\u5904\u7f6e", "", -1]];
+    const calc=function(L,S){ const R=L*S; let g=R>=17?'不可接受（红）':R>=10?'重大（橙）':R>=5?'中等（黄）':'可接受（绿）'; return {R:R, g:g}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section>
+<section class="card">
+  <h2>ALARP：成本与风险降低比</h2>
+  <p class="desc">降低一单位风险的投入越小，越应当做；比值超过阈值要论证。</p>
+  <div class="controls"><div class="row"><label>年投入</label>
+        <input type="range" id="cost" min="1" max="1000" step="1" value="50">
+        <output id="cost-v">50万元</output></div><div class="row"><label>年降低的期望损失</label>
+        <input type="range" id="drop" min="0.1" max="500" step="0.1" value="12">
+        <output id="drop-v">12万元</output></div><div class="row"><label>当前年期望损失</label>
+        <input type="range" id="base" min="1" max="2000" step="1" value="300">
+        <output id="base-v">300万元</output></div></div>
+  <div class="metrics"><div class="metric"><span>每降 1 万元的投入</span><b id="o-ratio">—</b><i>万元</i></div><div class="metric"><span>剩余期望损失</span><b id="o-left">—</b><i>万元</i></div></div>
+  <script>
+  (function(){
+    const ids=["cost", "drop", "base"], keys=["cost", "drop", "base"], units={"cost": "\u4e07\u5143", "drop": "\u4e07\u5143", "base": "\u4e07\u5143"}, outs=[["ratio", "ratio", "\u6bcf\u964d 1 \u4e07\u5143\u7684\u6295\u5165", "\u4e07\u5143", 1], ["left", "left", "\u5269\u4f59\u671f\u671b\u635f\u5931", "\u4e07\u5143", 1]];
+    const calc=function(cost,drop,base){ const ratio=cost/drop; const left=base-drop; return {ratio:ratio, left:left, ok:ratio<=5}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section>
+<footer>原生 JavaScript 计算，离线可用（file:// 直接打开）；与 slides 里的公式口径一致。</footer>
+</body></html>
