@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第 5 讲 · 交互附件：成本、量本利、投资</title>
+<style>
+  :root { --ink:#1a1a1a; --muted:#666; --line:#e5e7eb; --accent:#9C2B1E; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:28px 18px 60px; font-family:"Noto Sans CJK SC","Source Han Sans SC",system-ui,sans-serif;
+          color:var(--ink); background:#fafafa; line-height:1.6; }
+  header { max-width:1000px; margin:0 auto 22px; border-left:6px solid var(--accent); padding-left:14px; }
+  h1 { font-size:26px; margin:0 0 6px; }
+  .sub { color:var(--muted); font-size:15px; margin:0; }
+  .card { max-width:1000px; margin:0 auto 18px; background:#fff; border:1px solid var(--line);
+           border-radius:10px; padding:18px 20px 12px; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+  .card h2 { font-size:19px; margin:0 0 6px; }
+  .desc { color:var(--muted); font-size:14px; margin:0 0 12px; }
+  .row { display:grid; grid-template-columns:190px 1fr 110px; gap:12px; align-items:center; margin:6px 0; }
+  .row label { font-size:15px; }
+  input[type=range] { width:100%; accent-color:var(--accent); }
+  .row output { font-variant-numeric:tabular-nums; font-size:15px; text-align:right; }
+  .metrics { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 6px; }
+  .metric { flex:1 1 150px; background:#f7f7f8; border-radius:8px; padding:10px 12px; }
+  .metric span { display:block; font-size:13px; color:var(--muted); }
+  .metric b { font-size:22px; font-variant-numeric:tabular-nums; }
+  .metric i { font-style:normal; font-size:12px; color:var(--muted); margin-left:4px; }
+  footer { max-width:1000px; margin:26px auto 0; color:var(--muted); font-size:13px; }
+</style></head>
+<body>
+<script>
+function normInv(p){
+  const a=[-3.969683028665376e+01,2.209460984245205e+02,-2.759285104469687e+02,1.383577518672690e+02,-3.066479806614716e+01,2.506628277459239e+00];
+  const b=[-5.447609879822406e+01,1.615858368580409e+02,-1.556989798598866e+02,6.680131188771972e+01,-1.328068155288572e+01];
+  const c=[-7.784894002430293e-03,-3.223964580411365e-01,-2.400758277161838e+00,-2.549732539343734e+00,4.374664141464968e+00,2.938163982698783e+00];
+  const d=[7.784695709041462e-03,3.224671290700398e-01,2.445134137142996e+00,3.754408661907416e+00];
+  const pl=0.02425, ph=1-pl; let q,r;
+  if(p<pl){q=Math.sqrt(-2*Math.log(p));return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  if(p>ph){q=Math.sqrt(-2*Math.log(1-p));return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  q=p-0.5; r=q*q;
+  return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);
+}
+function phi(z){
+  const t=1/(1+0.2316419*Math.abs(z));
+  const d=0.3989423*Math.exp(-z*z/2);
+  const p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));
+  return z>0?1-p:p;
+}
+function binom(n,k,p){let c=1;for(let i=0;i<k;i++){c=c*(n-i)/(i+1);}return c*Math.pow(p,k)*Math.pow(1-p,n-k);}
+</script>
+
+<header><h1>第 5 讲 · 交互附件：成本、量本利、投资</h1><p class="sub">两种成本法 · 量本利 · NPV/IRR</p></header>
+<section class="card">
+  <h2>变动成本法 vs 完全成本法</h2>
+  <p class="desc">产量只改单位固定费用，销量才改利润；期末存货把固定费用带走。</p>
+  <div class="controls"><div class="row"><label>产量</label>
+        <input type="range" id="qp" min="4000" max="12000" step="500" value="8000">
+        <output id="qp-v">8000件</output></div><div class="row"><label>销量</label>
+        <input type="range" id="qs" min="3000" max="12000" step="500" value="6000">
+        <output id="qs-v">6000件</output></div><div class="row"><label>售价</label>
+        <input type="range" id="pr" min="150" max="300" step="5" value="200">
+        <output id="pr-v">200元</output></div><div class="row"><label>单位变动成本</label>
+        <input type="range" id="vc" min="40" max="100" step="5" value="60">
+        <output id="vc-v">60元</output></div></div>
+  <div class="metrics"><div class="metric"><span>单位固定制造费用</span><b id="o-uf">—</b><i>元/件</i></div><div class="metric"><span>完全单位成本</span><b id="o-full">—</b><i>元/件</i></div><div class="metric"><span>变动法利润</span><b id="o-pv">—</b><i>万元</i></div><div class="metric"><span>完全法利润</span><b id="o-pf">—</b><i>万元</i></div><div class="metric"><span>两法差额</span><b id="o-gap">—</b><i>万元</i></div></div>
+  <script>
+  (function(){
+    const ids=["qp", "qs", "pr", "vc"], keys=["qp", "qs", "pr", "vc"], units={"qp": "\u4ef6", "qs": "\u4ef6", "pr": "\u5143", "vc": "\u5143"}, outs=[["uf", "uf", "\u5355\u4f4d\u56fa\u5b9a\u5236\u9020\u8d39\u7528", "\u5143/\u4ef6", 1], ["full", "full", "\u5b8c\u5168\u5355\u4f4d\u6210\u672c", "\u5143/\u4ef6", 1], ["pv", "pv", "\u53d8\u52a8\u6cd5\u5229\u6da6", "\u4e07\u5143", 1], ["pf", "pf", "\u5b8c\u5168\u6cd5\u5229\u6da6", "\u4e07\u5143", 1], ["gap", "gap", "\u4e24\u6cd5\u5dee\u989d", "\u4e07\u5143", 1]];
+    const calc=function(qp,qs,pr,vc){ const fm=800000, fs=200000; const uf=fm/qp; const full=vc+uf; const cm=qs*(pr-vc); const pv=cm-(fm+fs); const pf=qs*pr-qs*full-fs; const inv=Math.max(qp-qs,0)*uf; return {uf:uf, full:full, pv:pv/1e4, pf:pf/1e4, gap:(pf-pv)/1e4, inv:inv/1e4}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section>
+<section class="card">
+  <h2>量本利：利润、杠杆、安全边际</h2>
+  <p class="desc">固定成本 200 万元、单价 100 元、单位变动成本 60 元。</p>
+  <div class="controls"><div class="row"><label>销量</label>
+        <input type="range" id="q" min="2" max="12" step="0.1" value="7.5">
+        <output id="q-v">7.5万件</output></div></div>
+  <div class="metrics"><div class="metric"><span>保本量</span><b id="o-q0">—</b><i>万件</i></div><div class="metric"><span>利润</span><b id="o-prof">—</b><i>万元</i></div><div class="metric"><span>经营杠杆 DOL</span><b id="o-dol">—</b><i></i></div><div class="metric"><span>安全边际率</span><b id="o-ms">—</b><i>%</i></div></div>
+  <script>
+  (function(){
+    const ids=["q"], keys=["q"], units={"q": "\u4e07\u4ef6"}, outs=[["q0", "q0", "\u4fdd\u672c\u91cf", "\u4e07\u4ef6", 1], ["prof", "prof", "\u5229\u6da6", "\u4e07\u5143", 1], ["dol", "dol", "\u7ecf\u8425\u6760\u6746 DOL", "", 2], ["ms", "ms", "\u5b89\u5168\u8fb9\u9645\u7387", "%", 1]];
+    const calc=function(q){ const F=200,p=100,v=60; const q0=F/(p-v); const prof=(p-v)*q-F; const dol=prof>0?(p-v)*q/prof:NaN; const ms=q>q0?(q-q0)/q*100:NaN; return {q0:q0, prof:prof, dol:dol, ms:ms}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section>
+<section class="card">
+  <h2>投资项目三指标</h2>
+  <p class="desc">一次性投资 1200 万元，投产后 5 年每年净收益 320 万元；在 5%–30% 之间扫描求 IRR。</p>
+  <div class="controls"><div class="row"><label>投资</label>
+        <input type="range" id="I" min="500" max="3000" step="50" value="1200">
+        <output id="I-v">1200万元</output></div><div class="row"><label>年净收益</label>
+        <input type="range" id="A" min="100" max="800" step="10" value="320">
+        <output id="A-v">320万元</output></div><div class="row"><label>基准收益率</label>
+        <input type="range" id="ic" min="5" max="30" step="0.5" value="10">
+        <output id="ic-v">10%</output></div></div>
+  <div class="metrics"><div class="metric"><span>NPV</span><b id="o-npv">—</b><i>万元</i></div><div class="metric"><span>IRR</span><b id="o-irr">—</b><i>%</i></div><div class="metric"><span>静态回收期</span><b id="o-pt">—</b><i>年</i></div></div>
+  <script>
+  (function(){
+    const ids=["I", "A", "ic"], keys=["I", "A", "ic"], units={"I": "\u4e07\u5143", "A": "\u4e07\u5143", "ic": "%"}, outs=[["npv", "npv", "NPV", "\u4e07\u5143", 1], ["irr", "irr", "IRR", "%", 2], ["pt", "pt", "\u9759\u6001\u56de\u6536\u671f", "\u5e74", 2]];
+    const calc=function(I,A,ic){ const i=ic/100; let pv=0; for(let t=1;t<=5;t++){pv+=A/Math.pow(1+i,t);} const npv=pv-I; let lo=0.001,hi=1.0; for(let k=0;k<80;k++){const m=(lo+hi)/2; let s=0; for(let t=1;t<=5;t++){s+=A/Math.pow(1+m,t);} if(s>I) lo=m; else hi=m;} const irr=lo*100; const pt=I/A; return {npv:npv, irr:irr, pt:pt}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section>
+<footer>原生 JavaScript 计算，离线可用（file:// 直接打开）；与 slides 里的公式口径一致。</footer>
+</body></html>

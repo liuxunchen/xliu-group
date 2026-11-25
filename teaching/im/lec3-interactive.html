@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第 3 讲 · 交互附件：效率与库存</title>
+<style>
+  :root { --ink:#1a1a1a; --muted:#666; --line:#e5e7eb; --accent:#9C2B1E; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:28px 18px 60px; font-family:"Noto Sans CJK SC","Source Han Sans SC",system-ui,sans-serif;
+          color:var(--ink); background:#fafafa; line-height:1.6; }
+  header { max-width:1000px; margin:0 auto 22px; border-left:6px solid var(--accent); padding-left:14px; }
+  h1 { font-size:26px; margin:0 0 6px; }
+  .sub { color:var(--muted); font-size:15px; margin:0; }
+  .card { max-width:1000px; margin:0 auto 18px; background:#fff; border:1px solid var(--line);
+           border-radius:10px; padding:18px 20px 12px; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+  .card h2 { font-size:19px; margin:0 0 6px; }
+  .desc { color:var(--muted); font-size:14px; margin:0 0 12px; }
+  .row { display:grid; grid-template-columns:190px 1fr 110px; gap:12px; align-items:center; margin:6px 0; }
+  .row label { font-size:15px; }
+  input[type=range] { width:100%; accent-color:var(--accent); }
+  .row output { font-variant-numeric:tabular-nums; font-size:15px; text-align:right; }
+  .metrics { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 6px; }
+  .metric { flex:1 1 150px; background:#f7f7f8; border-radius:8px; padding:10px 12px; }
+  .metric span { display:block; font-size:13px; color:var(--muted); }
+  .metric b { font-size:22px; font-variant-numeric:tabular-nums; }
+  .metric i { font-style:normal; font-size:12px; color:var(--muted); margin-left:4px; }
+  footer { max-width:1000px; margin:26px auto 0; color:var(--muted); font-size:13px; }
+</style></head>
+<body>
+<script>
+function normInv(p){
+  const a=[-3.969683028665376e+01,2.209460984245205e+02,-2.759285104469687e+02,1.383577518672690e+02,-3.066479806614716e+01,2.506628277459239e+00];
+  const b=[-5.447609879822406e+01,1.615858368580409e+02,-1.556989798598866e+02,6.680131188771972e+01,-1.328068155288572e+01];
+  const c=[-7.784894002430293e-03,-3.223964580411365e-01,-2.400758277161838e+00,-2.549732539343734e+00,4.374664141464968e+00,2.938163982698783e+00];
+  const d=[7.784695709041462e-03,3.224671290700398e-01,2.445134137142996e+00,3.754408661907416e+00];
+  const pl=0.02425, ph=1-pl; let q,r;
+  if(p<pl){q=Math.sqrt(-2*Math.log(p));return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  if(p>ph){q=Math.sqrt(-2*Math.log(1-p));return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  q=p-0.5; r=q*q;
+  return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);
+}
+function phi(z){
+  const t=1/(1+0.2316419*Math.abs(z));
+  const d=0.3989423*Math.exp(-z*z/2);
+  const p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));
+  return z>0?1-p:p;
+}
+function binom(n,k,p){let c=1;for(let i=0;i<k;i++){c=c*(n-i)/(i+1);}return c*Math.pow(p,k)*Math.pow(1-p,n-k);}
+</script>
+
+<header><h1>第 3 讲 · 交互附件：效率与库存</h1><p class="sub">线平衡率 · 经济订货批量</p></header>
+<section class="card">
+  <h2>线平衡率</h2>
+  <p class="desc">给定工位时间总和与节拍，看平衡率与损失率；节拍越接近瓶颈，平衡率越高。</p>
+  <div class="controls"><div class="row"><label>各工位时间之和</label>
+        <input type="range" id="sum" min="100" max="1000" step="10" value="300">
+        <output id="sum-v">300s</output></div><div class="row"><label>工位数</label>
+        <input type="range" id="n" min="2" max="20" step="1" value="8">
+        <output id="n-v">8个</output></div><div class="row"><label>节拍 CT</label>
+        <input type="range" id="ct" min="20" max="200" step="1" value="60">
+        <output id="ct-v">60s</output></div></div>
+  <div class="metrics"><div class="metric"><span>平衡率</span><b id="o-bal">—</b><i>%</i></div><div class="metric"><span>总空闲时间</span><b id="o-idle">—</b><i>s</i></div><div class="metric"><span>损失率</span><b id="o-loss">—</b><i>%</i></div></div>
+  <script>
+  (function(){
+    const ids=["sum", "n", "ct"], keys=["sum", "n", "ct"], units={"sum": "s", "n": "\u4e2a", "ct": "s"}, outs=[["bal", "bal", "\u5e73\u8861\u7387", "%", 1], ["idle", "idle", "\u603b\u7a7a\u95f2\u65f6\u95f4", "s", 0], ["loss", "loss", "\u635f\u5931\u7387", "%", 1]];
+    const calc=function(sum,n,ct){ const ratio=sum/(n*ct); const idle=n*ct-sum; return {bal:ratio*100, idle:idle, loss:(1-ratio)*100}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section>
+<section class="card">
+  <h2>经济订货批量 EOQ</h2>
+  <p class="desc">年需求、单次订货成本、单位持有成本决定批量；批量为 EOQ 时订货与持有成本相等。</p>
+  <div class="controls"><div class="row"><label>年需求</label>
+        <input type="range" id="D" min="100" max="100000" step="100" value="12000">
+        <output id="D-v">12000件</output></div><div class="row"><label>单次订货成本</label>
+        <input type="range" id="S" min="10" max="2000" step="10" value="200">
+        <output id="S-v">200元</output></div><div class="row"><label>单位年持有成本</label>
+        <input type="range" id="H" min="1" max="50" step="0.5" value="6">
+        <output id="H-v">6元/件·年</output></div></div>
+  <div class="metrics"><div class="metric"><span>EOQ 批量</span><b id="o-q">—</b><i>件</i></div><div class="metric"><span>年订货次数</span><b id="o-orders">—</b><i>次</i></div><div class="metric"><span>订货间隔</span><b id="o-T">—</b><i>天</i></div><div class="metric"><span>年总相关成本</span><b id="o-cost">—</b><i>元</i></div></div>
+  <script>
+  (function(){
+    const ids=["D", "S", "H"], keys=["D", "S", "H"], units={"D": "\u4ef6", "S": "\u5143", "H": "\u5143/\u4ef6\u00b7\u5e74"}, outs=[["q", "q", "EOQ \u6279\u91cf", "\u4ef6", 0], ["orders", "orders", "\u5e74\u8ba2\u8d27\u6b21\u6570", "\u6b21", 1], ["T", "T", "\u8ba2\u8d27\u95f4\u9694", "\u5929", 1], ["cost", "cost", "\u5e74\u603b\u76f8\u5173\u6210\u672c", "\u5143", 0]];
+    const calc=function(D,S,H){ const q=Math.sqrt(2*D*S/H); const orders=D/q; const T=q/D*365; const cost=Math.sqrt(2*D*S*H); return {q:q, orders:orders, T:T, cost:cost}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section>
+<footer>原生 JavaScript 计算，离线可用（file:// 直接打开）；与 slides 里的公式口径一致。</footer>
+</body></html>
