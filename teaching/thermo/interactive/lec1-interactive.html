@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第 1 讲 · 交互附件：统计热力学与基本概念</title>
+<style>
+  :root { --ink:#1a1a1a; --muted:#666; --line:#e5e7eb; --accent:#9C2B1E; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:28px 18px 60px; font-family:"Noto Sans CJK SC","Source Han Sans SC",system-ui,sans-serif;
+          color:var(--ink); background:#fafafa; line-height:1.6; }
+  header { max-width:1000px; margin:0 auto 22px; border-left:6px solid var(--accent); padding-left:14px; }
+  h1 { font-size:26px; margin:0 0 6px; }
+  .sub { color:var(--muted); font-size:15px; margin:0; }
+  .card { max-width:1000px; margin:0 auto 18px; background:#fff; border:1px solid var(--line);
+           border-radius:10px; padding:18px 20px 12px; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+  .card h2 { font-size:19px; margin:0 0 6px; }
+  .desc { color:var(--muted); font-size:14px; margin:0 0 12px; }
+  .row { display:grid; grid-template-columns:190px 1fr 110px; gap:12px; align-items:center; margin:6px 0; }
+  .row label { font-size:15px; }
+  input[type=range] { width:100%; accent-color:var(--accent); }
+  .row output { font-variant-numeric:tabular-nums; font-size:15px; text-align:right; }
+  .metrics { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 6px; }
+  .metric { flex:1 1 150px; background:#f7f7f8; border-radius:8px; padding:10px 12px; }
+  .metric span { display:block; font-size:13px; color:var(--muted); }
+  .metric b { font-size:22px; font-variant-numeric:tabular-nums; }
+  .metric i { font-style:normal; font-size:12px; color:var(--muted); margin-left:4px; }
+  footer { max-width:1000px; margin:26px auto 0; color:var(--muted); font-size:13px; }
+</style></head>
+<body>
+<script>
+function normInv(p){
+  const a=[-3.969683028665376e+01,2.209460984245205e+02,-2.759285104469687e+02,1.383577518672690e+02,-3.066479806614716e+01,2.506628277459239e+00];
+  const b=[-5.447609879822406e+01,1.615858368580409e+02,-1.556989798598866e+02,6.680131188771972e+01,-1.328068155288572e+01];
+  const c=[-7.784894002430293e-03,-3.223964580411365e-01,-2.400758277161838e+00,-2.549732539343734e+00,4.374664141464968e+00,2.938163982698783e+00];
+  const d=[7.784695709041462e-03,3.224671290700398e-01,2.445134137142996e+00,3.754408661907416e+00];
+  const pl=0.02425, ph=1-pl; let q,r;
+  if(p<pl){q=Math.sqrt(-2*Math.log(p));return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  if(p>ph){q=Math.sqrt(-2*Math.log(1-p));return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  q=p-0.5; r=q*q;
+  return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);
+}
+function phi(z){
+  const t=1/(1+0.2316419*Math.abs(z));
+  const d=0.3989423*Math.exp(-z*z/2);
+  const p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));
+  return z>0?1-p:p;
+}
+function binom(n,k,p){let c=1;for(let i=0;i<k;i++){c=c*(n-i)/(i+1);}return c*Math.pow(p,k)*Math.pow(1-p,n-k);}
+</script>
+
+<header><h1>第 1 讲 · 交互附件：统计热力学与基本概念</h1><p class="sub">两能级 Boltzmann 占据 · 熵与微观状态数 · 方均根速率</p></header>
+<section class="card">
+  <h2>二能级系统的 Boltzmann 占据比</h2>
+  <p class="desc">拨能级差 ΔE 与温度 T：占据比按 e^(−ΔE/k_BT) 指数变化。300 K 时 k_BT ≈ 25.9 meV——ΔE 每多 25.9 meV，占据比就再乘 1/e。</p>
+  <div class="controls"><div class="row"><label>能级差 ΔE</label>
+        <input type="range" id="dE" min="5" max="500" step="5" value="50">
+        <output id="dE-v">50meV</output></div><div class="row"><label>温度 T</label>
+        <input type="range" id="T" min="100" max="2000" step="10" value="300">
+        <output id="T-v">300K</output></div></div>
+  <div class="metrics"><div class="metric"><span>能级差与热能之比 ΔE/kT</span><b id="o-x">—</b><i></i></div><div class="metric"><span>占据比 n₂/n₁</span><b id="o-r">—</b><i></i></div><div class="metric"><span>高能级占有概率 p₂</span><b id="o-p2">—</b><i>%</i></div></div>
+  <script>
+  (function(){
+    const ids=["dE", "T"], keys=["dE", "T"], units={"dE": "meV", "T": "K"}, outs=[["x", "x", "\u80fd\u7ea7\u5dee\u4e0e\u70ed\u80fd\u4e4b\u6bd4 \u0394E/kT", "", 2], ["r", "r", "\u5360\u636e\u6bd4 n\u2082/n\u2081", "", 3], ["p2", "p2", "\u9ad8\u80fd\u7ea7\u5360\u6709\u6982\u7387 p\u2082", "%", 1]];
+    const calc=function(dE,T){ const x=dE*11.6045/T; const r=Math.exp(-x); const p2=r/(1+r)*100; return {x:x, r:r, p2:p2}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section>
+<section class="card">
+  <h2>熵与微观状态数（S = k ln Ω）</h2>
+  <p class="desc">拨微观状态数 Ω 的量级：熵与 ln Ω 成正比，Ω 每乘 10，S/k 只加 ln10 ≈ 2.303。N = 100 个粒子两态等概率时 Ω ≈ 10²⁹。</p>
+  <div class="controls"><div class="row"><label>微观状态数 lg Ω</label>
+        <input type="range" id="lgO" min="0" max="30" step="0.1" value="29">
+        <output id="lgO-v">29</output></div></div>
+  <div class="metrics"><div class="metric"><span>S / k = ln Ω</span><b id="o-lnO">—</b><i></i></div><div class="metric"><span>熵 S</span><b id="o-S">—</b><i>×10⁻²² J/K</i></div></div>
+  <script>
+  (function(){
+    const ids=["lgO"], keys=["lgO"], units={"lgO": ""}, outs=[["lnO", "lnO", "S / k = ln \u03a9", "", 2], ["S", "S", "\u71b5 S", "\u00d710\u207b\u00b2\u00b2 J/K", 2]];
+    const calc=function(lgO){ const lnO=lgO*Math.LN10; const S=lnO*1.380649e-23; return {lnO:lnO, S:S*1e22}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section>
+<section class="card">
+  <h2>方均根速率与平均平动动能</h2>
+  <p class="desc">拨温度 T 与摩尔质量 M：v_rms = √(3RT/M) 与 √T 成正比、与 √M 成反比；每个分子平均平动动能恒为 (3/2)k_BT。</p>
+  <div class="controls"><div class="row"><label>温度 T</label>
+        <input type="range" id="T_rms" min="100" max="2000" step="10" value="300">
+        <output id="T_rms-v">300K</output></div><div class="row"><label>摩尔质量 M</label>
+        <input type="range" id="M_rms" min="2" max="132" step="1" value="29">
+        <output id="M_rms-v">29g/mol</output></div></div>
+  <div class="metrics"><div class="metric"><span>方均根速率 vrms</span><b id="o-v">—</b><i>m/s</i></div><div class="metric"><span>平均平动动能（每摩尔）</span><b id="o-Ek">—</b><i>kJ/mol</i></div><div class="metric"><span>单分子平均平动动能</span><b id="o-ek">—</b><i>eV</i></div></div>
+  <script>
+  (function(){
+    const ids=["T_rms", "M_rms"], keys=["T_rms", "M_rms"], units={"T_rms": "K", "M_rms": "g/mol"}, outs=[["v", "v", "\u65b9\u5747\u6839\u901f\u7387 vrms", "m/s", 1], ["Ek", "Ek", "\u5e73\u5747\u5e73\u52a8\u52a8\u80fd\uff08\u6bcf\u6469\u5c14\uff09", "kJ/mol", 3], ["ek", "ek", "\u5355\u5206\u5b50\u5e73\u5747\u5e73\u52a8\u52a8\u80fd", "eV", 4]];
+    const calc=function(T_rms,M_rms){ const R=8.314, kB=1.380649e-23; const v=Math.sqrt(3*R*T_rms/(M_rms/1000)); const Ek=1.5*R*T_rms/1000; const ek=1.5*kB*T_rms/1.602176634e-19; return {v:v, Ek:Ek, ek:ek}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section>
+<footer>原生 JavaScript 计算，离线可用（file:// 直接打开）；与 slides 里的公式口径一致。</footer>
+</body></html>

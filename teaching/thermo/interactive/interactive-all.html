@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>全部交互附件（21 个）</title>
+<style>
+  :root { --ink:#1a1a1a; --muted:#666; --line:#e5e7eb; --accent:#9C2B1E; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:24px 18px 80px; font-family:"Noto Sans CJK SC","Microsoft YaHei",system-ui,sans-serif;
+          color:var(--ink); background:#fafafa; line-height:1.6; }
+  nav { position:sticky; top:0; background:#fff; border-bottom:1px solid var(--line); padding:10px 6px; margin:-24px -18px 22px;
+         font-size:14px; z-index:9; }
+  nav a { color:var(--accent); text-decoration:none; margin:0 6px; }
+  h1 { max-width:1000px; margin:34px auto 4px; font-size:24px; border-left:6px solid var(--accent); padding-left:14px; }
+  .sub { max-width:1000px; margin:0 auto 14px; color:var(--muted); font-size:14px; }
+  .card { max-width:1000px; margin:0 auto 16px; background:#fff; border:1px solid var(--line);
+           border-radius:10px; padding:18px 20px 12px; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+  .card h2 { font-size:19px; margin:0 0 6px; }
+  .desc { color:var(--muted); font-size:14px; margin:0 0 12px; }
+  .row { display:grid; grid-template-columns:190px 1fr 110px; gap:12px; align-items:center; margin:6px 0; }
+  .row label { font-size:15px; }
+  input[type=range] { width:100%; accent-color:var(--accent); }
+  .row output { font-variant-numeric:tabular-nums; font-size:15px; text-align:right; }
+  .metrics { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 6px; }
+  .metric { flex:1 1 150px; background:#f7f7f8; border-radius:8px; padding:10px 12px; }
+  .metric span { display:block; font-size:13px; color:var(--muted); }
+  .metric b { font-size:22px; font-variant-numeric:tabular-nums; }
+  .metric i { font-style:normal; font-size:12px; color:var(--muted); margin-left:4px; }
+</style></head>
+<body>
+<nav>快速跳转：<a href="#lec1">lec1</a> · <a href="#lec2">lec2</a> · <a href="#lec3">lec3</a> · <a href="#lec4">lec4</a> · <a href="#lec5">lec5</a> · <a href="#lec6">lec6</a> · <a href="#lec7">lec7</a></nav>
+<script>
+function normInv(p){
+  const a=[-3.969683028665376e+01,2.209460984245205e+02,-2.759285104469687e+02,1.383577518672690e+02,-3.066479806614716e+01,2.506628277459239e+00];
+  const b=[-5.447609879822406e+01,1.615858368580409e+02,-1.556989798598866e+02,6.680131188771972e+01,-1.328068155288572e+01];
+  const c=[-7.784894002430293e-03,-3.223964580411365e-01,-2.400758277161838e+00,-2.549732539343734e+00,4.374664141464968e+00,2.938163982698783e+00];
+  const d=[7.784695709041462e-03,3.224671290700398e-01,2.445134137142996e+00,3.754408661907416e+00];
+  const pl=0.02425, ph=1-pl; let q,r;
+  if(p<pl){q=Math.sqrt(-2*Math.log(p));return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  if(p>ph){q=Math.sqrt(-2*Math.log(1-p));return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  q=p-0.5; r=q*q;
+  return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);
+}
+function phi(z){
+  const t=1/(1+0.2316419*Math.abs(z));
+  const d=0.3989423*Math.exp(-z*z/2);
+  const p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));
+  return z>0?1-p:p;
+}
+function binom(n,k,p){let c=1;for(let i=0;i<k;i++){c=c*(n-i)/(i+1);}return c*Math.pow(p,k)*Math.pow(1-p,n-k);}
+</script>
+
+<h1 id="lec1">第 1 讲 · 交互附件：统计热力学与基本概念</h1><p class="sub">两能级 Boltzmann 占据 · 熵与微观状态数 · 方均根速率</p><section class="card">
+  <h2>二能级系统的 Boltzmann 占据比</h2>
+  <p class="desc">拨能级差 ΔE 与温度 T：占据比按 e^(−ΔE/k_BT) 指数变化。300 K 时 k_BT ≈ 25.9 meV——ΔE 每多 25.9 meV，占据比就再乘 1/e。</p>
+  <div class="controls"><div class="row"><label>能级差 ΔE</label>
+        <input type="range" id="lec1_dE" min="5" max="500" step="5" value="50">
+        <output id="lec1_dE-v">50meV</output></div><div class="row"><label>温度 T</label>
+        <input type="range" id="lec1_T" min="100" max="2000" step="10" value="300">
+        <output id="lec1_T-v">300K</output></div></div>
+  <div class="metrics"><div class="metric"><span>能级差与热能之比 ΔE/kT</span><b id="o-lec1_x">—</b><i></i></div><div class="metric"><span>占据比 n₂/n₁</span><b id="o-lec1_r">—</b><i></i></div><div class="metric"><span>高能级占有概率 p₂</span><b id="o-lec1_p2">—</b><i>%</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec1_dE", "lec1_T"], keys=["dE", "T"], units={"lec1_dE": "meV", "lec1_T": "K"}, outs=[["lec1_x", "x", "\u80fd\u7ea7\u5dee\u4e0e\u70ed\u80fd\u4e4b\u6bd4 \u0394E/kT", "", 2], ["lec1_r", "r", "\u5360\u636e\u6bd4 n\u2082/n\u2081", "", 3], ["lec1_p2", "p2", "\u9ad8\u80fd\u7ea7\u5360\u6709\u6982\u7387 p\u2082", "%", 1]];
+    const calc=function(dE,T){ const x=dE*11.6045/T; const r=Math.exp(-x); const p2=r/(1+r)*100; return {x:x, r:r, p2:p2}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>熵与微观状态数（S = k ln Ω）</h2>
+  <p class="desc">拨微观状态数 Ω 的量级：熵与 ln Ω 成正比，Ω 每乘 10，S/k 只加 ln10 ≈ 2.303。N = 100 个粒子两态等概率时 Ω ≈ 10²⁹。</p>
+  <div class="controls"><div class="row"><label>微观状态数 lg Ω</label>
+        <input type="range" id="lec1_lgO" min="0" max="30" step="0.1" value="29">
+        <output id="lec1_lgO-v">29</output></div></div>
+  <div class="metrics"><div class="metric"><span>S / k = ln Ω</span><b id="o-lec1_lnO">—</b><i></i></div><div class="metric"><span>熵 S</span><b id="o-lec1_S">—</b><i>×10⁻²² J/K</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec1_lgO"], keys=["lgO"], units={"lec1_lgO": ""}, outs=[["lec1_lnO", "lnO", "S / k = ln \u03a9", "", 2], ["lec1_S", "S", "\u71b5 S", "\u00d710\u207b\u00b2\u00b2 J/K", 2]];
+    const calc=function(lgO){ const lnO=lgO*Math.LN10; const S=lnO*1.380649e-23; return {lnO:lnO, S:S*1e22}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>方均根速率与平均平动动能</h2>
+  <p class="desc">拨温度 T 与摩尔质量 M：v_rms = √(3RT/M) 与 √T 成正比、与 √M 成反比；每个分子平均平动动能恒为 (3/2)k_BT。</p>
+  <div class="controls"><div class="row"><label>温度 T</label>
+        <input type="range" id="lec1_T_rms" min="100" max="2000" step="10" value="300">
+        <output id="lec1_T_rms-v">300K</output></div><div class="row"><label>摩尔质量 M</label>
+        <input type="range" id="lec1_M_rms" min="2" max="132" step="1" value="29">
+        <output id="lec1_M_rms-v">29g/mol</output></div></div>
+  <div class="metrics"><div class="metric"><span>方均根速率 vrms</span><b id="o-lec1_v">—</b><i>m/s</i></div><div class="metric"><span>平均平动动能（每摩尔）</span><b id="o-lec1_Ek">—</b><i>kJ/mol</i></div><div class="metric"><span>单分子平均平动动能</span><b id="o-lec1_ek">—</b><i>eV</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec1_T_rms", "lec1_M_rms"], keys=["T_rms", "M_rms"], units={"lec1_T_rms": "K", "lec1_M_rms": "g/mol"}, outs=[["lec1_v", "v", "\u65b9\u5747\u6839\u901f\u7387 vrms", "m/s", 1], ["lec1_Ek", "Ek", "\u5e73\u5747\u5e73\u52a8\u52a8\u80fd\uff08\u6bcf\u6469\u5c14\uff09", "kJ/mol", 3], ["lec1_ek", "ek", "\u5355\u5206\u5b50\u5e73\u5747\u5e73\u52a8\u52a8\u80fd", "eV", 4]];
+    const calc=function(T_rms,M_rms){ const R=8.314, kB=1.380649e-23; const v=Math.sqrt(3*R*T_rms/(M_rms/1000)); const Ek=1.5*R*T_rms/1000; const ek=1.5*kB*T_rms/1.602176634e-19; return {v:v, Ek:Ek, ek:ek}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec2">第 2 讲 · 交互附件：理想气体与热力过程</h1><p class="sub">等熵过程 · Carnot 效率 · 多变过程</p><section class="card">
+  <h2>等熵过程：温度比由压比定</h2>
+  <p class="desc">拨比热比 γ 与压比 p₂/p₁：T₂/T₁ = (p₂/p₁)^((γ−1)/γ)。绝热膨胀压比越小温度降得越多；γ 越大同样的压比降温越多（取 T₁ = 450 K）。</p>
+  <div class="controls"><div class="row"><label>比热比 γ</label>
+        <input type="range" id="lec2_gamma_s" min="1.1" max="1.67" step="0.01" value="1.4">
+        <output id="lec2_gamma_s-v">1.4</output></div><div class="row"><label>压比 p₂/p₁</label>
+        <input type="range" id="lec2_pr_s" min="0.05" max="1.0" step="0.001" value="0.333">
+        <output id="lec2_pr_s-v">0.333</output></div></div>
+  <div class="metrics"><div class="metric"><span>温度比 T₂/T₁</span><b id="o-lec2_tr">—</b><i></i></div><div class="metric"><span>出口温度 T₂（T₁=450 K）</span><b id="o-lec2_T2">—</b><i>K</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec2_gamma_s", "lec2_pr_s"], keys=["gamma_s", "pr_s"], units={"lec2_gamma_s": "", "lec2_pr_s": ""}, outs=[["lec2_tr", "tr", "\u6e29\u5ea6\u6bd4 T\u2082/T\u2081", "", 4], ["lec2_T2", "T2", "\u51fa\u53e3\u6e29\u5ea6 T\u2082\uff08T\u2081=450 K\uff09", "K", 1]];
+    const calc=function(gamma_s,pr_s){ const tr=Math.pow(pr_s,(gamma_s-1)/gamma_s); return {tr:tr, T2:450*tr}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>Carnot 效率与制冷系数</h2>
+  <p class="desc">拨高温热源 T_h 与低温热源 T_c：η = 1 − T_c/T_h 只由两个温度定，与工质无关；温差越小效率越低、制冷系数越大。</p>
+  <div class="controls"><div class="row"><label>高温热源 T_h</label>
+        <input type="range" id="lec2_Th" min="400" max="1500" step="10" value="600">
+        <output id="lec2_Th-v">600K</output></div><div class="row"><label>低温热源 T_c</label>
+        <input type="range" id="lec2_Tc" min="250" max="400" step="5" value="300">
+        <output id="lec2_Tc-v">300K</output></div></div>
+  <div class="metrics"><div class="metric"><span>Carnot 效率 η</span><b id="o-lec2_eta">—</b><i>%</i></div><div class="metric"><span>制冷系数 COP</span><b id="o-lec2_cop">—</b><i></i></div></div>
+  <script>
+  (function(){
+    const ids=["lec2_Th", "lec2_Tc"], keys=["Th", "Tc"], units={"lec2_Th": "K", "lec2_Tc": "K"}, outs=[["lec2_eta", "eta", "Carnot \u6548\u7387 \u03b7", "%", 2], ["lec2_cop", "cop", "\u5236\u51b7\u7cfb\u6570 COP", "", 2]];
+    const calc=function(Th,Tc){ const eta=(1-Tc/Th)*100; const cop=Tc/(Th-Tc); return {eta:eta, cop:cop}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>多变过程 pVⁿ = 常数</h2>
+  <p class="desc">拨多方指数 n、压比与初温：n 介于 1（等温）与 γ（等熵）之间时，膨胀既降温又吸热；n = γ 时退化为绝热，q = 0。</p>
+  <div class="controls"><div class="row"><label>多方指数 n</label>
+        <input type="range" id="lec2_n_p" min="1.05" max="1.8" step="0.05" value="1.3">
+        <output id="lec2_n_p-v">1.3</output></div><div class="row"><label>压比 p₂/p₁</label>
+        <input type="range" id="lec2_pr_p" min="0.1" max="1.0" step="0.001" value="0.333">
+        <output id="lec2_pr_p-v">0.333</output></div><div class="row"><label>初温 T₁</label>
+        <input type="range" id="lec2_T1p" min="300" max="800" step="5" value="450">
+        <output id="lec2_T1p-v">450K</output></div></div>
+  <div class="metrics"><div class="metric"><span>终温 T₂</span><b id="o-lec2_T2">—</b><i>K</i></div><div class="metric"><span>过程功 w</span><b id="o-lec2_w">—</b><i>kJ/kg</i></div><div class="metric"><span>过程热量 q</span><b id="o-lec2_q">—</b><i>kJ/kg</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec2_n_p", "lec2_pr_p", "lec2_T1p"], keys=["n_p", "pr_p", "T1p"], units={"lec2_n_p": "", "lec2_pr_p": "", "lec2_T1p": "K"}, outs=[["lec2_T2", "T2", "\u7ec8\u6e29 T\u2082", "K", 1], ["lec2_w", "w", "\u8fc7\u7a0b\u529f w", "kJ/kg", 2], ["lec2_q", "q", "\u8fc7\u7a0b\u70ed\u91cf q", "kJ/kg", 2]];
+    const calc=function(n_p,pr_p,T1p){ const g=1.4, cv=0.7175, Rg=0.287; const T2=T1p*Math.pow(pr_p,(n_p-1)/n_p); const w=Rg*(T1p-T2)/(n_p-1); const cn=(n_p-g)/(n_p-1)*cv; const q=cn*(T2-T1p); return {T2:T2, w:w, q:q}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec3">第 3 讲 · 交互附件：化学平衡、热机与工质</h1><p class="sub">van&#x27;t Hoff 平衡常数 · 热机循环效率 · 饱和蒸气压</p><section class="card">
+  <h2>van&#x27;t Hoff：平衡常数随温度</h2>
+  <p class="desc">以 N₂ + 3H₂ ⇌ 2NH₃ 为例（298 K 的 ln K = 13.3 为锚）：放热反应（ΔH° &lt; 0）升温 K 下降；把 ΔH° 拨成正的，趋势立刻反过来。</p>
+  <div class="controls"><div class="row"><label>反应焓 ΔH°</label>
+        <input type="range" id="lec3_dH" min="-200" max="200" step="0.1" value="-92.2">
+        <output id="lec3_dH-v">-92.2kJ/mol</output></div><div class="row"><label>温度 T</label>
+        <input type="range" id="lec3_T_vh" min="300" max="1200" step="5" value="700">
+        <output id="lec3_T_vh-v">700K</output></div></div>
+  <div class="metrics"><div class="metric"><span>ln K</span><b id="o-lec3_lnK">—</b><i></i></div><div class="metric"><span>lg K</span><b id="o-lec3_lgK">—</b><i></i></div><div class="metric"><span>ΔG° = −RT ln K</span><b id="o-lec3_dG">—</b><i>kJ/mol</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec3_dH", "lec3_T_vh"], keys=["dH", "T_vh"], units={"lec3_dH": "kJ/mol", "lec3_T_vh": "K"}, outs=[["lec3_lnK", "lnK", "ln K", "", 2], ["lec3_lgK", "lgK", "lg K", "", 2], ["lec3_dG", "dG", "\u0394G\u00b0 = \u2212RT ln K", "kJ/mol", 2]];
+    const calc=function(dH,T_vh){ const R=8.314, lnK0=13.3; const lnK=lnK0-(dH*1000/R)*(1/T_vh-1/298.15); const dG=-R*T_vh*lnK/1000; return {lnK:lnK, lgK:lnK/Math.LN10, dG:dG}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>热机循环效率对比（Otto / Diesel / Brayton）</h2>
+  <p class="desc">拨压缩比 r（Brayton 取压比 π = r）、比热比 γ 与 Diesel 的预胀比 ρ：同一压缩比下 η_Otto &gt; η_Diesel，而 Brayton 效率最低（π 以 r 代入）。</p>
+  <div class="controls"><div class="row"><label>压缩比 r（Brayton 取 π）</label>
+        <input type="range" id="lec3_r_cyc" min="4.0" max="20.0" step="0.5" value="8.0">
+        <output id="lec3_r_cyc-v">8.0</output></div><div class="row"><label>比热比 γ</label>
+        <input type="range" id="lec3_gamma_cyc" min="1.2" max="1.5" step="0.01" value="1.4">
+        <output id="lec3_gamma_cyc-v">1.4</output></div><div class="row"><label>Diesel 预胀比 ρ</label>
+        <input type="range" id="lec3_rho_cyc" min="1.0" max="3.0" step="0.05" value="2.0">
+        <output id="lec3_rho_cyc-v">2.0</output></div></div>
+  <div class="metrics"><div class="metric"><span>Otto 循环效率 η</span><b id="o-lec3_eO">—</b><i>%</i></div><div class="metric"><span>Diesel 循环效率 η</span><b id="o-lec3_eD">—</b><i>%</i></div><div class="metric"><span>Brayton 循环效率 η（π=r）</span><b id="o-lec3_eB">—</b><i>%</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec3_r_cyc", "lec3_gamma_cyc", "lec3_rho_cyc"], keys=["r_cyc", "gamma_cyc", "rho_cyc"], units={"lec3_r_cyc": "", "lec3_gamma_cyc": "", "lec3_rho_cyc": ""}, outs=[["lec3_eO", "eO", "Otto \u5faa\u73af\u6548\u7387 \u03b7", "%", 2], ["lec3_eD", "eD", "Diesel \u5faa\u73af\u6548\u7387 \u03b7", "%", 2], ["lec3_eB", "eB", "Brayton \u5faa\u73af\u6548\u7387 \u03b7\uff08\u03c0=r\uff09", "%", 2]];
+    const calc=function(r_cyc,gamma_cyc,rho_cyc){ const g=gamma_cyc, r=r_cyc, rh=rho_cyc; const eO=1-1/Math.pow(r,g-1); const eD=1-(1/Math.pow(r,g-1))*((Math.pow(rh,g)-1)/(g*(rh-1))); const eB=1-1/Math.pow(r,(g-1)/g); return {eO:eO*100, eD:eD*100, eB:eB*100}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>水蒸气饱和蒸气压与沸点（Antoine）</h2>
+  <p class="desc">拨温度看饱和蒸气压（每升高 10 °C 约翻倍）；拨压力看对应沸点——高原气压低、水在 90 °C 就沸腾。Antoine 式适用 1–100 °C。</p>
+  <div class="controls"><div class="row"><label>温度 t</label>
+        <input type="range" id="lec3_t_sat" min="1" max="100" step="0.5" value="90">
+        <output id="lec3_t_sat-v">90°C</output></div><div class="row"><label>压力 p</label>
+        <input type="range" id="lec3_p_sat_in" min="5.0" max="101.3" step="0.1" value="101.3">
+        <output id="lec3_p_sat_in-v">101.3kPa</output></div></div>
+  <div class="metrics"><div class="metric"><span>饱和蒸气压 p_sat</span><b id="o-lec3_pk">—</b><i>kPa</i></div><div class="metric"><span>对应沸点 t</span><b id="o-lec3_tb">—</b><i>°C</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec3_t_sat", "lec3_p_sat_in"], keys=["t_sat", "p_sat_in"], units={"lec3_t_sat": "\u00b0C", "lec3_p_sat_in": "kPa"}, outs=[["lec3_pk", "pk", "\u9971\u548c\u84b8\u6c14\u538b p_sat", "kPa", 2], ["lec3_tb", "tb", "\u5bf9\u5e94\u6cb8\u70b9 t", "\u00b0C", 1]];
+    const calc=function(t_sat,p_sat_in){ const A=8.07131, B=1730.63, C=233.426; const pk=Math.pow(10,A-B/(C+t_sat))*0.133322368; const tb=B/(A-Math.log10(p_sat_in/0.133322368))-C; return {pk:pk, tb:tb}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec4">第 4 讲 · 交互附件：气体流动与喷管</h1><p class="sub">声速与马赫数 · 临界压力比 · 面积比 A/A*</p><section class="card">
+  <h2>声速与马赫数</h2>
+  <p class="desc">拨温度 T、比热比 γ 与流速 u：声速 a = √(γRT) 只随温度变；Ma = u/a 过 1 就是超声速，并出现马赫锥（半角 α = arcsin(1/Ma)）。</p>
+  <div class="controls"><div class="row"><label>温度 T</label>
+        <input type="range" id="lec4_T_a" min="200" max="2000" step="10" value="300">
+        <output id="lec4_T_a-v">300K</output></div><div class="row"><label>比热比 γ</label>
+        <input type="range" id="lec4_gamma_a" min="1.2" max="1.67" step="0.01" value="1.4">
+        <output id="lec4_gamma_a-v">1.4</output></div><div class="row"><label>流速 u</label>
+        <input type="range" id="lec4_u_a" min="0" max="1000" step="5" value="600">
+        <output id="lec4_u_a-v">600m/s</output></div></div>
+  <div class="metrics"><div class="metric"><span>当地声速 a</span><b id="o-lec4_a">—</b><i>m/s</i></div><div class="metric"><span>马赫数 Ma</span><b id="o-lec4_Ma">—</b><i></i></div><div class="metric"><span>马赫锥半角 α（Ma≥1）</span><b id="o-lec4_al">—</b><i>°</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec4_T_a", "lec4_gamma_a", "lec4_u_a"], keys=["T_a", "gamma_a", "u_a"], units={"lec4_T_a": "K", "lec4_gamma_a": "", "lec4_u_a": "m/s"}, outs=[["lec4_a", "a", "\u5f53\u5730\u58f0\u901f a", "m/s", 1], ["lec4_Ma", "Ma", "\u9a6c\u8d6b\u6570 Ma", "", 3], ["lec4_al", "al", "\u9a6c\u8d6b\u9525\u534a\u89d2 \u03b1\uff08Ma\u22651\uff09", "\u00b0", 2]];
+    const calc=function(T_a,gamma_a,u_a){ const a=Math.sqrt(gamma_a*287*T_a); const Ma=u_a/a; const al=(Ma>=1)?Math.asin(1/Ma)*180/Math.PI:null; return {a:a, Ma:Ma, al:al}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>喷管临界压力比与临界参数</h2>
+  <p class="desc">拨比热比 γ 与驻点压力 p₀：p*/p₀ = (2/(γ+1))^(γ/(γ−1))，空气为 0.5283——背压低于它喷管就壅塞、流量被锁死。</p>
+  <div class="controls"><div class="row"><label>比热比 γ</label>
+        <input type="range" id="lec4_gamma_c" min="1.1" max="1.67" step="0.01" value="1.4">
+        <output id="lec4_gamma_c-v">1.4</output></div><div class="row"><label>驻点压力 p₀</label>
+        <input type="range" id="lec4_p0" min="100" max="2000" step="10" value="500">
+        <output id="lec4_p0-v">500kPa</output></div></div>
+  <div class="metrics"><div class="metric"><span>临界压力比 p＊/p₀</span><b id="o-lec4_psr">—</b><i></i></div><div class="metric"><span>临界压力 p＊</span><b id="o-lec4_pst">—</b><i>kPa</i></div><div class="metric"><span>临界温度比 T＊/T₀</span><b id="o-lec4_tsr">—</b><i></i></div></div>
+  <script>
+  (function(){
+    const ids=["lec4_gamma_c", "lec4_p0"], keys=["gamma_c", "p0"], units={"lec4_gamma_c": "", "lec4_p0": "kPa"}, outs=[["lec4_psr", "psr", "\u4e34\u754c\u538b\u529b\u6bd4 p\uff0a/p\u2080", "", 4], ["lec4_pst", "pst", "\u4e34\u754c\u538b\u529b p\uff0a", "kPa", 1], ["lec4_tsr", "tsr", "\u4e34\u754c\u6e29\u5ea6\u6bd4 T\uff0a/T\u2080", "", 4]];
+    const calc=function(gamma_c,p0){ const g=gamma_c; const psr=Math.pow(2/(g+1),g/(g-1)); return {psr:psr, pst:psr*p0, tsr:2/(g+1)}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>面积比 A/A＊ 与马赫数（两支解）</h2>
+  <p class="desc">拨马赫数 Ma 与 γ：A/A＊ 在 Ma = 1 处最小；同一面积比对应一亚一超两个 Ma 解——喷嘴收缩段与扩张段可以各取一支。</p>
+  <div class="controls"><div class="row"><label>马赫数 Ma</label>
+        <input type="range" id="lec4_Ma_a" min="0.1" max="5.0" step="0.01" value="2.0">
+        <output id="lec4_Ma_a-v">2.0</output></div><div class="row"><label>比热比 γ</label>
+        <input type="range" id="lec4_gamma_ar" min="1.1" max="1.67" step="0.01" value="1.4">
+        <output id="lec4_gamma_ar-v">1.4</output></div></div>
+  <div class="metrics"><div class="metric"><span>面积比 A/A＊</span><b id="o-lec4_A">—</b><i></i></div><div class="metric"><span>同一面积比的另一支 Ma</span><b id="o-lec4_other">—</b><i></i></div></div>
+  <script>
+  (function(){
+    const ids=["lec4_Ma_a", "lec4_gamma_ar"], keys=["Ma_a", "gamma_ar"], units={"lec4_Ma_a": "", "lec4_gamma_ar": ""}, outs=[["lec4_A", "A", "\u9762\u79ef\u6bd4 A/A\uff0a", "", 4], ["lec4_other", "other", "\u540c\u4e00\u9762\u79ef\u6bd4\u7684\u53e6\u4e00\u652f Ma", "", 4]];
+    const calc=function(Ma_a,gamma_ar){ const g=gamma_ar; const aa=(M,g0)=>Math.pow((2+(g0-1)*M*M)/(g0+1),(g0+1)/(2*(g0-1)))/M; const A=aa(Ma_a,g); let other=null; if(A>1.0001){let lo=0.001, hi=1.0; if(Ma_a<1){lo=1.0; hi=20.0;} for(let i=0;i<100;i++){const mid=(lo+hi)/2; const am=aa(mid,g); if(Ma_a>=1){ if(am>A){lo=mid;}else{hi=mid;} } else { if(am>A){hi=mid;}else{lo=mid;} }} other=(lo+hi)/2;} return {A:A, other:other}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec5">第 5 讲 · 交互附件：导热</h1><p class="sub">多层平壁与保温 · 圆筒壁热阻 · 肋片效率</p><section class="card">
+  <h2>多层平壁与保温层设计</h2>
+  <p class="desc">房屋外墙例题：三层墙体热阻 0.3408 m²·K/W 固定，再拨保温层厚度 δ、导热系数 λ 与总温差：q = ΔT/ΣR，13 mm 的保温层就能把热流从 88 压到 50 W/m²。</p>
+  <div class="controls"><div class="row"><label>内外温差 ΔT</label>
+        <input type="range" id="lec5_dT_w" min="10" max="60" step="1" value="30">
+        <output id="lec5_dT_w-v">30K</output></div><div class="row"><label>保温层厚度 δ</label>
+        <input type="range" id="lec5_d_ins" min="0" max="100" step="1" value="13">
+        <output id="lec5_d_ins-v">13mm</output></div><div class="row"><label>保温层导热系数 λ</label>
+        <input type="range" id="lec5_lam_ins" min="0.02" max="0.1" step="0.005" value="0.05">
+        <output id="lec5_lam_ins-v">0.05W/(m·K)</output></div></div>
+  <div class="metrics"><div class="metric"><span>热流密度 q</span><b id="o-lec5_q">—</b><i>W/m²</i></div><div class="metric"><span>不加保温时 q₀</span><b id="o-lec5_q0">—</b><i>W/m²</i></div><div class="metric"><span>总热阻 R</span><b id="o-lec5_Rt">—</b><i>m²·K/W</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec5_dT_w", "lec5_d_ins", "lec5_lam_ins"], keys=["dT_w", "d_ins", "lam_ins"], units={"lec5_dT_w": "K", "lec5_d_ins": "mm", "lec5_lam_ins": "W/(m\u00b7K)"}, outs=[["lec5_q", "q", "\u70ed\u6d41\u5bc6\u5ea6 q", "W/m\u00b2", 1], ["lec5_q0", "q0", "\u4e0d\u52a0\u4fdd\u6e29\u65f6 q\u2080", "W/m\u00b2", 1], ["lec5_Rt", "Rt", "\u603b\u70ed\u963b R", "m\u00b2\u00b7K/W", 3]];
+    const calc=function(dT_w,d_ins,lam_ins){ const Rw=0.3408; const Rt=Rw+d_ins*1e-3/lam_ins; return {q:dT_w/Rt, q0:dT_w/Rw, Rt:Rt}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>圆筒壁导热热阻</h2>
+  <p class="desc">拨外内半径比 r₂/r₁ 与导热系数 λ：R = ln(r₂/r₁)/(2πλL)，半径比按对数增长、λ 越小热阻越大（取 L = 1 m、ΔT = 100 K、r₁ = 20 mm）。</p>
+  <div class="controls"><div class="row"><label>外内半径比 r₂/r₁</label>
+        <input type="range" id="lec5_r_ratio" min="1.5" max="10.0" step="0.1" value="3.0">
+        <output id="lec5_r_ratio-v">3.0</output></div><div class="row"><label>导热系数 λ</label>
+        <input type="range" id="lec5_lam_c" min="0.02" max="0.2" step="0.005" value="0.05">
+        <output id="lec5_lam_c-v">0.05W/(m·K)</output></div></div>
+  <div class="metrics"><div class="metric"><span>圆筒壁热阻 R（L=1 m）</span><b id="o-lec5_R">—</b><i>K/W</i></div><div class="metric"><span>热流量 Q（ΔT=100 K）</span><b id="o-lec5_Q">—</b><i>W</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec5_r_ratio", "lec5_lam_c"], keys=["r_ratio", "lam_c"], units={"lec5_r_ratio": "", "lec5_lam_c": "W/(m\u00b7K)"}, outs=[["lec5_R", "R", "\u5706\u7b52\u58c1\u70ed\u963b R\uff08L=1 m\uff09", "K/W", 3], ["lec5_Q", "Q", "\u70ed\u6d41\u91cf Q\uff08\u0394T=100 K\uff09", "W", 1]];
+    const calc=function(r_ratio,lam_c){ const R=Math.log(r_ratio)/(2*Math.PI*lam_c*1); return {R:R, Q:100/R}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>肋片效率</h2>
+  <p class="desc">拨肋片导热系数 λ 与肋高 L：m = √(hP/λA_c)、η = tanh(mL)/(mL)。mL 越大效率越低，mL ≲ 1 时肋才划算（取 h = 50 W/(m²·K)、肋厚 2 mm、宽 100 mm）。</p>
+  <div class="controls"><div class="row"><label>肋片导热系数 λ</label>
+        <input type="range" id="lec5_lam_f" min="10" max="400" step="5" value="200">
+        <output id="lec5_lam_f-v">200W/(m·K)</output></div><div class="row"><label>肋高 L</label>
+        <input type="range" id="lec5_L_f" min="10" max="100" step="1" value="20">
+        <output id="lec5_L_f-v">20mm</output></div></div>
+  <div class="metrics"><div class="metric"><span>肋参数 m</span><b id="o-lec5_m">—</b><i>1/m</i></div><div class="metric"><span>无因次肋高 mL</span><b id="o-lec5_mL">—</b><i></i></div><div class="metric"><span>肋效率 η</span><b id="o-lec5_eta">—</b><i></i></div></div>
+  <script>
+  (function(){
+    const ids=["lec5_lam_f", "lec5_L_f"], keys=["lam_f", "L_f"], units={"lec5_lam_f": "W/(m\u00b7K)", "lec5_L_f": "mm"}, outs=[["lec5_m", "m", "\u808b\u53c2\u6570 m", "1/m", 2], ["lec5_mL", "mL", "\u65e0\u56e0\u6b21\u808b\u9ad8 mL", "", 2], ["lec5_eta", "eta", "\u808b\u6548\u7387 \u03b7", "", 3]];
+    const calc=function(lam_f,L_f){ const h=50, w=0.100, t=0.002; const P=2*(w+t), Ac=w*t; const m=Math.sqrt(h*P/(lam_f*Ac)); const mL=m*L_f*1e-3; const eta=Math.tanh(mL)/mL; return {m:m, mL:mL, eta:eta}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec6">第 6 讲 · 交互附件：对流换热</h1><p class="sub">Dittus–Boelter · 自然对流 · 总传热系数</p><section class="card">
+  <h2>管内强制对流 Dittus–Boelter</h2>
+  <p class="desc">拨 Re、Pr 与指数 n：Nu = 0.023Re⁰·⁸Prⁿ，再乘 λ/d 得 h（取 30 °C 水 λ = 0.618 W/(m·K)、d = 20 mm；加热 n = 0.4、冷却 n = 0.3）。</p>
+  <div class="controls"><div class="row"><label>Reynolds 数 Re</label>
+        <input type="range" id="lec6_Re_db" min="10000" max="120000" step="100" value="37300">
+        <output id="lec6_Re_db-v">37300</output></div><div class="row"><label>Prandtl 数 Pr</label>
+        <input type="range" id="lec6_Pr_db" min="0.7" max="120.0" step="0.01" value="5.42">
+        <output id="lec6_Pr_db-v">5.42</output></div><div class="row"><label>指数 n（加热 0.4 / 冷却 0.3）</label>
+        <input type="range" id="lec6_n_db" min="0.3" max="0.4" step="0.1" value="0.4">
+        <output id="lec6_n_db-v">0.4</output></div></div>
+  <div class="metrics"><div class="metric"><span>Nusselt 数 Nu</span><b id="o-lec6_Nu">—</b><i></i></div><div class="metric"><span>表面传热系数 h</span><b id="o-lec6_h">—</b><i>W/(m²·K)</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec6_Re_db", "lec6_Pr_db", "lec6_n_db"], keys=["Re_db", "Pr_db", "n_db"], units={"lec6_Re_db": "", "lec6_Pr_db": "", "lec6_n_db": ""}, outs=[["lec6_Nu", "Nu", "Nusselt \u6570 Nu", "", 2], ["lec6_h", "h", "\u8868\u9762\u4f20\u70ed\u7cfb\u6570 h", "W/(m\u00b2\u00b7K)", 1]];
+    const calc=function(Re_db,Pr_db,n_db){ const Nu=0.023*Math.pow(Re_db,0.8)*Math.pow(Pr_db,n_db); return {Nu:Nu, h:Nu*0.618/0.02}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>自然对流竖壁散热</h2>
+  <p class="desc">拨壁面与环境温差 ΔT 与壁高 L：Gr ∝ ΔT·L³，Ra = Gr·Pr；层流 Nu = 0.59Ra^(1/4)。自然对流的 h 只有几个 W/(m²·K)，比强制对流小三个量级（空气 40 °C 物性）。</p>
+  <div class="controls"><div class="row"><label>壁面温差 ΔT</label>
+        <input type="range" id="lec6_dT_nc" min="5" max="60" step="1" value="20">
+        <output id="lec6_dT_nc-v">20K</output></div><div class="row"><label>竖壁高度 L</label>
+        <input type="range" id="lec6_L_nc" min="0.1" max="2.0" step="0.05" value="0.5">
+        <output id="lec6_L_nc-v">0.5m</output></div></div>
+  <div class="metrics"><div class="metric"><span>Rayleigh 数 Ra</span><b id="o-lec6_Ra">—</b><i>×10⁸</i></div><div class="metric"><span>Nusselt 数 Nu</span><b id="o-lec6_Nu">—</b><i></i></div><div class="metric"><span>表面传热系数 h</span><b id="o-lec6_h">—</b><i>W/(m²·K)</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec6_dT_nc", "lec6_L_nc"], keys=["dT_nc", "L_nc"], units={"lec6_dT_nc": "K", "lec6_L_nc": "m"}, outs=[["lec6_Ra", "Ra", "Rayleigh \u6570 Ra", "\u00d710\u2078", 2], ["lec6_Nu", "Nu", "Nusselt \u6570 Nu", "", 2], ["lec6_h", "h", "\u8868\u9762\u4f20\u70ed\u7cfb\u6570 h", "W/(m\u00b2\u00b7K)", 2]];
+    const calc=function(dT_nc,L_nc){ const g=9.81, beta=1/313.15, nu=16.0e-6, lam=0.0267, Pr=0.701; const Gr=g*beta*dT_nc*Math.pow(L_nc,3)/(nu*nu); const Ra=Gr*Pr; const Nu=Ra<=1e9?0.59*Math.pow(Ra,0.25):0.1*Math.pow(Ra,1/3); return {Ra:Ra/1e8, Nu:Nu, h:Nu*lam/L_nc}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>总传热系数与热阻串联</h2>
+  <p class="desc">拨两侧表面传热系数 h₁、h₂：k = 1/(1/h₁ + δ/λ + 1/h₂)。热阻最大的环节决定 k——空气侧 h 小，往往就是它拖后腿（墙体热阻固定 0.1 m²·K/W）。</p>
+  <div class="controls"><div class="row"><label>热流体侧 h₁</label>
+        <input type="range" id="lec6_h1_k" min="10" max="5000" step="10" value="20">
+        <output id="lec6_h1_k-v">20W/(m²·K)</output></div><div class="row"><label>冷流体侧 h₂</label>
+        <input type="range" id="lec6_h2_k" min="10" max="5000" step="10" value="1000">
+        <output id="lec6_h2_k-v">1000W/(m²·K)</output></div></div>
+  <div class="metrics"><div class="metric"><span>总传热系数 k</span><b id="o-lec6_k">—</b><i>W/(m²·K)</i></div><div class="metric"><span>总热阻 1/k</span><b id="o-lec6_Rtot">—</b><i>m²·K/W</i></div><div class="metric"><span>壁面热阻占比</span><b id="o-lec6_share">—</b><i>%</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec6_h1_k", "lec6_h2_k"], keys=["h1_k", "h2_k"], units={"lec6_h1_k": "W/(m\u00b2\u00b7K)", "lec6_h2_k": "W/(m\u00b2\u00b7K)"}, outs=[["lec6_k", "k", "\u603b\u4f20\u70ed\u7cfb\u6570 k", "W/(m\u00b2\u00b7K)", 2], ["lec6_Rtot", "Rtot", "\u603b\u70ed\u963b 1/k", "m\u00b2\u00b7K/W", 4], ["lec6_share", "share", "\u58c1\u9762\u70ed\u963b\u5360\u6bd4", "%", 1]];
+    const calc=function(h1_k,h2_k){ const Rw=0.1; const Rtot=1/h1_k+Rw+1/h2_k; return {k:1/Rtot, Rtot:Rtot, share:Rw/Rtot*100}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec7">第 7 讲 · 交互附件：热辐射与换热器</h1><p class="sub">两灰体辐射 · LMTD · Wien 与 Stefan–Boltzmann</p><section class="card">
+  <h2>两灰体平行平板辐射换热</h2>
+  <p class="desc">拨发射率 ε 与两板温度 T₁、T₂：系统发射率 ε_s = (2/ε − 1)^(−1)，q = ε_s σ(T₁⁴ − T₂⁴)。ε = 0.8 时换热量只剩黑体的 2/3。</p>
+  <div class="controls"><div class="row"><label>发射率 ε</label>
+        <input type="range" id="lec7_eps_r" min="0.05" max="1.0" step="0.01" value="0.8">
+        <output id="lec7_eps_r-v">0.8</output></div><div class="row"><label>高温板 T₁</label>
+        <input type="range" id="lec7_T1_r" min="300" max="1200" step="5" value="500">
+        <output id="lec7_T1_r-v">500K</output></div><div class="row"><label>低温板 T₂</label>
+        <input type="range" id="lec7_T2_r" min="200" max="800" step="5" value="300">
+        <output id="lec7_T2_r-v">300K</output></div></div>
+  <div class="metrics"><div class="metric"><span>系统发射率 εs</span><b id="o-lec7_es">—</b><i></i></div><div class="metric"><span>净辐射热流 q</span><b id="o-lec7_q">—</b><i>W/m²</i></div><div class="metric"><span>黑体对照 q（ε=1）</span><b id="o-lec7_qbb">—</b><i>W/m²</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec7_eps_r", "lec7_T1_r", "lec7_T2_r"], keys=["eps_r", "T1_r", "T2_r"], units={"lec7_eps_r": "", "lec7_T1_r": "K", "lec7_T2_r": "K"}, outs=[["lec7_es", "es", "\u7cfb\u7edf\u53d1\u5c04\u7387 \u03b5s", "", 3], ["lec7_q", "q", "\u51c0\u8f90\u5c04\u70ed\u6d41 q", "W/m\u00b2", 0], ["lec7_qbb", "qbb", "\u9ed1\u4f53\u5bf9\u7167 q\uff08\u03b5=1\uff09", "W/m\u00b2", 0]];
+    const calc=function(eps_r,T1_r,T2_r){ const es=1/(1/eps_r+1/eps_r-1); const qbb=5.670374419e-8*(Math.pow(T1_r,4)-Math.pow(T2_r,4)); return {es:es, q:es*qbb, qbb:qbb}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>换热器对数平均温差 LMTD</h2>
+  <p class="desc">拨换热器两端温差 ΔT₁、ΔT₂：ΔT_lm = (ΔT₁−ΔT₂)/ln(ΔT₁/ΔT₂)，Q = kA·ΔT_lm。两端温差越接近，ΔT_lm 越接近算术平均；顺流 70/10 K 只有 30.8 K（取 kA = 2 kW/K）。</p>
+  <div class="controls"><div class="row"><label>一端温差 ΔT₁</label>
+        <input type="range" id="lec7_dT1_lm" min="5" max="100" step="1" value="70">
+        <output id="lec7_dT1_lm-v">70K</output></div><div class="row"><label>另一端温差 ΔT₂</label>
+        <input type="range" id="lec7_dT2_lm" min="5" max="100" step="1" value="10">
+        <output id="lec7_dT2_lm-v">10K</output></div></div>
+  <div class="metrics"><div class="metric"><span>对数平均温差 ΔTlm</span><b id="o-lec7_lm">—</b><i>K</i></div><div class="metric"><span>算术平均温差</span><b id="o-lec7_mean">—</b><i>K</i></div><div class="metric"><span>换热量 Q（kA=2 kW/K）</span><b id="o-lec7_Q">—</b><i>kW</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec7_dT1_lm", "lec7_dT2_lm"], keys=["dT1_lm", "dT2_lm"], units={"lec7_dT1_lm": "K", "lec7_dT2_lm": "K"}, outs=[["lec7_lm", "lm", "\u5bf9\u6570\u5e73\u5747\u6e29\u5dee \u0394Tlm", "K", 2], ["lec7_mean", "mean", "\u7b97\u672f\u5e73\u5747\u6e29\u5dee", "K", 2], ["lec7_Q", "Q", "\u6362\u70ed\u91cf Q\uff08kA=2 kW/K\uff09", "kW", 2]];
+    const calc=function(dT1_lm,dT2_lm){ const d1=dT1_lm, d2=dT2_lm; const lm=(Math.abs(d1-d2)<1e-9)?d1:(d1-d2)/Math.log(d1/d2); return {lm:lm, mean:(d1+d2)/2, Q:2000*lm/1000}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>Wien 位移与 Stefan–Boltzmann 定律</h2>
+  <p class="desc">拨温度看峰值波长 λ_max = 2898/T（μm·K）与黑体辐射力 E_b = σT⁴；5800 K 的太阳峰值正好在可见光 0.50 μm，300 K 的地表在 9.7 μm 红外。</p>
+  <div class="controls"><div class="row"><label>黑体温度 T</label>
+        <input type="range" id="lec7_T_bb" min="100" max="6000" step="10" value="5800">
+        <output id="lec7_T_bb-v">5800K</output></div><div class="row"><label>实际表面发射率 ε</label>
+        <input type="range" id="lec7_eps_bb" min="0.05" max="1.0" step="0.01" value="1.0">
+        <output id="lec7_eps_bb-v">1.0</output></div></div>
+  <div class="metrics"><div class="metric"><span>峰值波长 λmax</span><b id="o-lec7_lam">—</b><i>μm</i></div><div class="metric"><span>黑体辐射力 Eb</span><b id="o-lec7_Eb">—</b><i>kW/m²</i></div><div class="metric"><span>实际表面辐射力 E</span><b id="o-lec7_E">—</b><i>kW/m²</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec7_T_bb", "lec7_eps_bb"], keys=["T_bb", "eps_bb"], units={"lec7_T_bb": "K", "lec7_eps_bb": ""}, outs=[["lec7_lam", "lam", "\u5cf0\u503c\u6ce2\u957f \u03bbmax", "\u03bcm", 3], ["lec7_Eb", "Eb", "\u9ed1\u4f53\u8f90\u5c04\u529b Eb", "kW/m\u00b2", 1], ["lec7_E", "E", "\u5b9e\u9645\u8868\u9762\u8f90\u5c04\u529b E", "kW/m\u00b2", 1]];
+    const calc=function(T_bb,eps_bb){ const lam=2898/T_bb; const Eb=5.670374419e-8*Math.pow(T_bb,4)/1000; return {lam:lam, Eb:Eb, E:eps_bb*Eb}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section>
+</body></html>

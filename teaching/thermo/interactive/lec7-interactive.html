@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第 7 讲 · 交互附件：热辐射与换热器</title>
+<style>
+  :root { --ink:#1a1a1a; --muted:#666; --line:#e5e7eb; --accent:#9C2B1E; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:28px 18px 60px; font-family:"Noto Sans CJK SC","Source Han Sans SC",system-ui,sans-serif;
+          color:var(--ink); background:#fafafa; line-height:1.6; }
+  header { max-width:1000px; margin:0 auto 22px; border-left:6px solid var(--accent); padding-left:14px; }
+  h1 { font-size:26px; margin:0 0 6px; }
+  .sub { color:var(--muted); font-size:15px; margin:0; }
+  .card { max-width:1000px; margin:0 auto 18px; background:#fff; border:1px solid var(--line);
+           border-radius:10px; padding:18px 20px 12px; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+  .card h2 { font-size:19px; margin:0 0 6px; }
+  .desc { color:var(--muted); font-size:14px; margin:0 0 12px; }
+  .row { display:grid; grid-template-columns:190px 1fr 110px; gap:12px; align-items:center; margin:6px 0; }
+  .row label { font-size:15px; }
+  input[type=range] { width:100%; accent-color:var(--accent); }
+  .row output { font-variant-numeric:tabular-nums; font-size:15px; text-align:right; }
+  .metrics { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 6px; }
+  .metric { flex:1 1 150px; background:#f7f7f8; border-radius:8px; padding:10px 12px; }
+  .metric span { display:block; font-size:13px; color:var(--muted); }
+  .metric b { font-size:22px; font-variant-numeric:tabular-nums; }
+  .metric i { font-style:normal; font-size:12px; color:var(--muted); margin-left:4px; }
+  footer { max-width:1000px; margin:26px auto 0; color:var(--muted); font-size:13px; }
+</style></head>
+<body>
+<script>
+function normInv(p){
+  const a=[-3.969683028665376e+01,2.209460984245205e+02,-2.759285104469687e+02,1.383577518672690e+02,-3.066479806614716e+01,2.506628277459239e+00];
+  const b=[-5.447609879822406e+01,1.615858368580409e+02,-1.556989798598866e+02,6.680131188771972e+01,-1.328068155288572e+01];
+  const c=[-7.784894002430293e-03,-3.223964580411365e-01,-2.400758277161838e+00,-2.549732539343734e+00,4.374664141464968e+00,2.938163982698783e+00];
+  const d=[7.784695709041462e-03,3.224671290700398e-01,2.445134137142996e+00,3.754408661907416e+00];
+  const pl=0.02425, ph=1-pl; let q,r;
+  if(p<pl){q=Math.sqrt(-2*Math.log(p));return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  if(p>ph){q=Math.sqrt(-2*Math.log(1-p));return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  q=p-0.5; r=q*q;
+  return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);
+}
+function phi(z){
+  const t=1/(1+0.2316419*Math.abs(z));
+  const d=0.3989423*Math.exp(-z*z/2);
+  const p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));
+  return z>0?1-p:p;
+}
+function binom(n,k,p){let c=1;for(let i=0;i<k;i++){c=c*(n-i)/(i+1);}return c*Math.pow(p,k)*Math.pow(1-p,n-k);}
+</script>
+
+<header><h1>第 7 讲 · 交互附件：热辐射与换热器</h1><p class="sub">两灰体辐射 · LMTD · Wien 与 Stefan–Boltzmann</p></header>
+<section class="card">
+  <h2>两灰体平行平板辐射换热</h2>
+  <p class="desc">拨发射率 ε 与两板温度 T₁、T₂：系统发射率 ε_s = (2/ε − 1)^(−1)，q = ε_s σ(T₁⁴ − T₂⁴)。ε = 0.8 时换热量只剩黑体的 2/3。</p>
+  <div class="controls"><div class="row"><label>发射率 ε</label>
+        <input type="range" id="eps_r" min="0.05" max="1.0" step="0.01" value="0.8">
+        <output id="eps_r-v">0.8</output></div><div class="row"><label>高温板 T₁</label>
+        <input type="range" id="T1_r" min="300" max="1200" step="5" value="500">
+        <output id="T1_r-v">500K</output></div><div class="row"><label>低温板 T₂</label>
+        <input type="range" id="T2_r" min="200" max="800" step="5" value="300">
+        <output id="T2_r-v">300K</output></div></div>
+  <div class="metrics"><div class="metric"><span>系统发射率 εs</span><b id="o-es">—</b><i></i></div><div class="metric"><span>净辐射热流 q</span><b id="o-q">—</b><i>W/m²</i></div><div class="metric"><span>黑体对照 q（ε=1）</span><b id="o-qbb">—</b><i>W/m²</i></div></div>
+  <script>
+  (function(){
+    const ids=["eps_r", "T1_r", "T2_r"], keys=["eps_r", "T1_r", "T2_r"], units={"eps_r": "", "T1_r": "K", "T2_r": "K"}, outs=[["es", "es", "\u7cfb\u7edf\u53d1\u5c04\u7387 \u03b5s", "", 3], ["q", "q", "\u51c0\u8f90\u5c04\u70ed\u6d41 q", "W/m\u00b2", 0], ["qbb", "qbb", "\u9ed1\u4f53\u5bf9\u7167 q\uff08\u03b5=1\uff09", "W/m\u00b2", 0]];
+    const calc=function(eps_r,T1_r,T2_r){ const es=1/(1/eps_r+1/eps_r-1); const qbb=5.670374419e-8*(Math.pow(T1_r,4)-Math.pow(T2_r,4)); return {es:es, q:es*qbb, qbb:qbb}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section>
+<section class="card">
+  <h2>换热器对数平均温差 LMTD</h2>
+  <p class="desc">拨换热器两端温差 ΔT₁、ΔT₂：ΔT_lm = (ΔT₁−ΔT₂)/ln(ΔT₁/ΔT₂)，Q = kA·ΔT_lm。两端温差越接近，ΔT_lm 越接近算术平均；顺流 70/10 K 只有 30.8 K（取 kA = 2 kW/K）。</p>
+  <div class="controls"><div class="row"><label>一端温差 ΔT₁</label>
+        <input type="range" id="dT1_lm" min="5" max="100" step="1" value="70">
+        <output id="dT1_lm-v">70K</output></div><div class="row"><label>另一端温差 ΔT₂</label>
+        <input type="range" id="dT2_lm" min="5" max="100" step="1" value="10">
+        <output id="dT2_lm-v">10K</output></div></div>
+  <div class="metrics"><div class="metric"><span>对数平均温差 ΔTlm</span><b id="o-lm">—</b><i>K</i></div><div class="metric"><span>算术平均温差</span><b id="o-mean">—</b><i>K</i></div><div class="metric"><span>换热量 Q（kA=2 kW/K）</span><b id="o-Q">—</b><i>kW</i></div></div>
+  <script>
+  (function(){
+    const ids=["dT1_lm", "dT2_lm"], keys=["dT1_lm", "dT2_lm"], units={"dT1_lm": "K", "dT2_lm": "K"}, outs=[["lm", "lm", "\u5bf9\u6570\u5e73\u5747\u6e29\u5dee \u0394Tlm", "K", 2], ["mean", "mean", "\u7b97\u672f\u5e73\u5747\u6e29\u5dee", "K", 2], ["Q", "Q", "\u6362\u70ed\u91cf Q\uff08kA=2 kW/K\uff09", "kW", 2]];
+    const calc=function(dT1_lm,dT2_lm){ const d1=dT1_lm, d2=dT2_lm; const lm=(Math.abs(d1-d2)<1e-9)?d1:(d1-d2)/Math.log(d1/d2); return {lm:lm, mean:(d1+d2)/2, Q:2000*lm/1000}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section>
+<section class="card">
+  <h2>Wien 位移与 Stefan–Boltzmann 定律</h2>
+  <p class="desc">拨温度看峰值波长 λ_max = 2898/T（μm·K）与黑体辐射力 E_b = σT⁴；5800 K 的太阳峰值正好在可见光 0.50 μm，300 K 的地表在 9.7 μm 红外。</p>
+  <div class="controls"><div class="row"><label>黑体温度 T</label>
+        <input type="range" id="T_bb" min="100" max="6000" step="10" value="5800">
+        <output id="T_bb-v">5800K</output></div><div class="row"><label>实际表面发射率 ε</label>
+        <input type="range" id="eps_bb" min="0.05" max="1.0" step="0.01" value="1.0">
+        <output id="eps_bb-v">1.0</output></div></div>
+  <div class="metrics"><div class="metric"><span>峰值波长 λmax</span><b id="o-lam">—</b><i>μm</i></div><div class="metric"><span>黑体辐射力 Eb</span><b id="o-Eb">—</b><i>kW/m²</i></div><div class="metric"><span>实际表面辐射力 E</span><b id="o-E">—</b><i>kW/m²</i></div></div>
+  <script>
+  (function(){
+    const ids=["T_bb", "eps_bb"], keys=["T_bb", "eps_bb"], units={"T_bb": "K", "eps_bb": ""}, outs=[["lam", "lam", "\u5cf0\u503c\u6ce2\u957f \u03bbmax", "\u03bcm", 3], ["Eb", "Eb", "\u9ed1\u4f53\u8f90\u5c04\u529b Eb", "kW/m\u00b2", 1], ["E", "E", "\u5b9e\u9645\u8868\u9762\u8f90\u5c04\u529b E", "kW/m\u00b2", 1]];
+    const calc=function(T_bb,eps_bb){ const lam=2898/T_bb; const Eb=5.670374419e-8*Math.pow(T_bb,4)/1000; return {lam:lam, Eb:Eb, E:eps_bb*Eb}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section>
+<footer>原生 JavaScript 计算，离线可用（file:// 直接打开）；与 slides 里的公式口径一致。</footer>
+</body></html>
