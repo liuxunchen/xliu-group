@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第 3 讲 · 交互附件：化学平衡与反应速率</title>
+<style>
+  :root { --ink:#1a1a1a; --muted:#666; --line:#e5e7eb; --accent:#9C2B1E; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:28px 18px 60px; font-family:"Noto Sans CJK SC","Source Han Sans SC",system-ui,sans-serif;
+          color:var(--ink); background:#fafafa; line-height:1.6; }
+  header { max-width:1000px; margin:0 auto 22px; border-left:6px solid var(--accent); padding-left:14px; }
+  h1 { font-size:26px; margin:0 0 6px; }
+  .sub { color:var(--muted); font-size:15px; margin:0; }
+  .card { max-width:1000px; margin:0 auto 18px; background:#fff; border:1px solid var(--line);
+           border-radius:10px; padding:18px 20px 12px; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+  .card h2 { font-size:19px; margin:0 0 6px; }
+  .desc { color:var(--muted); font-size:14px; margin:0 0 12px; }
+  .row { display:grid; grid-template-columns:190px 1fr 110px; gap:12px; align-items:center; margin:6px 0; }
+  .row label { font-size:15px; }
+  input[type=range] { width:100%; accent-color:var(--accent); }
+  .row output { font-variant-numeric:tabular-nums; font-size:15px; text-align:right; }
+  .metrics { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 6px; }
+  .metric { flex:1 1 150px; background:#f7f7f8; border-radius:8px; padding:10px 12px; }
+  .metric span { display:block; font-size:13px; color:var(--muted); }
+  .metric b { font-size:22px; font-variant-numeric:tabular-nums; }
+  .metric i { font-style:normal; font-size:12px; color:var(--muted); margin-left:4px; }
+  footer { max-width:1000px; margin:26px auto 0; color:var(--muted); font-size:13px; }
+</style></head>
+<body>
+<script>
+function normInv(p){
+  const a=[-3.969683028665376e+01,2.209460984245205e+02,-2.759285104469687e+02,1.383577518672690e+02,-3.066479806614716e+01,2.506628277459239e+00];
+  const b=[-5.447609879822406e+01,1.615858368580409e+02,-1.556989798598866e+02,6.680131188771972e+01,-1.328068155288572e+01];
+  const c=[-7.784894002430293e-03,-3.223964580411365e-01,-2.400758277161838e+00,-2.549732539343734e+00,4.374664141464968e+00,2.938163982698783e+00];
+  const d=[7.784695709041462e-03,3.224671290700398e-01,2.445134137142996e+00,3.754408661907416e+00];
+  const pl=0.02425, ph=1-pl; let q,r;
+  if(p<pl){q=Math.sqrt(-2*Math.log(p));return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  if(p>ph){q=Math.sqrt(-2*Math.log(1-p));return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  q=p-0.5; r=q*q;
+  return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);
+}
+function phi(z){
+  const t=1/(1+0.2316419*Math.abs(z));
+  const d=0.3989423*Math.exp(-z*z/2);
+  const p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));
+  return z>0?1-p:p;
+}
+function binom(n,k,p){let c=1;for(let i=0;i<k;i++){c=c*(n-i)/(i+1);}return c*Math.pow(p,k)*Math.pow(1-p,n-k);}
+</script>
+
+<header><h1>第 3 讲 · 交互附件：化学平衡与反应速率</h1><p class="sub">van&#x27;t Hoff 温度效应 · Arrhenius 速率常数</p></header>
+<section class="card">
+  <h2>温度对平衡常数：van&#x27;t Hoff</h2>
+  <p class="desc">放热反应的 ΔH&lt;0，升温 lnK 下降；吸热反应反过来。</p>
+  <div class="controls"><div class="row"><label>ΔH</label>
+        <input type="range" id="dH" min="-150" max="150" step="5" value="-92.2">
+        <output id="dH-v">-92.2kJ/mol</output></div><div class="row"><label>ΔS</label>
+        <input type="range" id="dS" min="-250" max="250" step="5" value="-198.8">
+        <output id="dS-v">-198.8J/(mol·K)</output></div><div class="row"><label>温度 T</label>
+        <input type="range" id="T" min="300" max="1000" step="5" value="500">
+        <output id="T-v">500K</output></div></div>
+  <div class="metrics"><div class="metric"><span>ln K</span><b id="o-lnK">—</b><i></i></div><div class="metric"><span>平衡常数 K</span><b id="o-K">—</b><i></i></div></div>
+  <script>
+  (function(){
+    const ids=["dH", "dS", "T"], keys=["dH", "dS", "T"], units={"dH": "kJ/mol", "dS": "J/(mol\u00b7K)", "T": "K"}, outs=[["lnK", "lnK", "ln K", "", 2], ["K", "K", "\u5e73\u8861\u5e38\u6570 K", "", -1]];
+    const calc=function(dH,dS,T){ const R=8.314; const lnK=-dH*1000/(R*T)+dS/R; const K=Math.exp(lnK); return {lnK:lnK, K:K}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section>
+<section class="card">
+  <h2>温度对速率：Arrhenius</h2>
+  <p class="desc">活化能越大，升温提速越猛；k(T) 与 500 K 的 k 比就是温度加速倍数。</p>
+  <div class="controls"><div class="row"><label>活化能 Ea</label>
+        <input type="range" id="Ea" min="20" max="150" step="5" value="75">
+        <output id="Ea-v">75kJ/mol</output></div><div class="row"><label>500 K 时的 k</label>
+        <input type="range" id="k500" min="0.001" max="10" step="0.001" value="1">
+        <output id="k500-v">1s^-1</output></div><div class="row"><label>温度 T</label>
+        <input type="range" id="T2" min="300" max="1000" step="5" value="500">
+        <output id="T2-v">500K</output></div></div>
+  <div class="metrics"><div class="metric"><span>k(T)</span><b id="o-k">—</b><i>s^-1</i></div><div class="metric"><span>相对 500 K</span><b id="o-ratio">—</b><i>倍</i></div></div>
+  <script>
+  (function(){
+    const ids=["Ea", "k500", "T2"], keys=["Ea", "k500", "T2"], units={"Ea": "kJ/mol", "k500": "s^-1", "T2": "K"}, outs=[["k", "k", "k(T)", "s^-1", 3], ["ratio", "ratio", "\u76f8\u5bf9 500 K", "\u500d", 2]];
+    const calc=function(Ea,k500,T2){ const R=8.314; const ratio=Math.exp(-Ea*1000/R*(1/T2-1/500)); const k=k500*ratio; return {k:k, ratio:ratio}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section>
+<footer>原生 JavaScript 计算，离线可用（file:// 直接打开）；与 slides 里的公式口径一致。</footer>
+</body></html>

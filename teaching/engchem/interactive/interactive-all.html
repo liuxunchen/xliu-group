@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>全部交互附件（22 个）</title>
+<style>
+  :root { --ink:#1a1a1a; --muted:#666; --line:#e5e7eb; --accent:#9C2B1E; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:24px 18px 80px; font-family:"Noto Sans CJK SC","Microsoft YaHei",system-ui,sans-serif;
+          color:var(--ink); background:#fafafa; line-height:1.6; }
+  nav { position:sticky; top:0; background:#fff; border-bottom:1px solid var(--line); padding:10px 6px; margin:-24px -18px 22px;
+         font-size:14px; z-index:9; }
+  nav a { color:var(--accent); text-decoration:none; margin:0 6px; }
+  h1 { max-width:1000px; margin:34px auto 4px; font-size:24px; border-left:6px solid var(--accent); padding-left:14px; }
+  .sub { max-width:1000px; margin:0 auto 14px; color:var(--muted); font-size:14px; }
+  .card { max-width:1000px; margin:0 auto 16px; background:#fff; border:1px solid var(--line);
+           border-radius:10px; padding:18px 20px 12px; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+  .card h2 { font-size:19px; margin:0 0 6px; }
+  .desc { color:var(--muted); font-size:14px; margin:0 0 12px; }
+  .row { display:grid; grid-template-columns:190px 1fr 110px; gap:12px; align-items:center; margin:6px 0; }
+  .row label { font-size:15px; }
+  input[type=range] { width:100%; accent-color:var(--accent); }
+  .row output { font-variant-numeric:tabular-nums; font-size:15px; text-align:right; }
+  .metrics { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 6px; }
+  .metric { flex:1 1 150px; background:#f7f7f8; border-radius:8px; padding:10px 12px; }
+  .metric span { display:block; font-size:13px; color:var(--muted); }
+  .metric b { font-size:22px; font-variant-numeric:tabular-nums; }
+  .metric i { font-style:normal; font-size:12px; color:var(--muted); margin-left:4px; }
+</style></head>
+<body>
+<nav>快速跳转：<a href="#lec1">lec1</a> · <a href="#lec2">lec2</a> · <a href="#lec3">lec3</a> · <a href="#lec4">lec4</a> · <a href="#lec5">lec5</a> · <a href="#lec6">lec6</a> · <a href="#lec7">lec7</a> · <a href="#lec8">lec8</a> · <a href="#lec9">lec9</a> · <a href="#lec10">lec10</a> · <a href="#lec11">lec11</a> · <a href="#lec12">lec12</a></nav>
+<script>
+function normInv(p){
+  const a=[-3.969683028665376e+01,2.209460984245205e+02,-2.759285104469687e+02,1.383577518672690e+02,-3.066479806614716e+01,2.506628277459239e+00];
+  const b=[-5.447609879822406e+01,1.615858368580409e+02,-1.556989798598866e+02,6.680131188771972e+01,-1.328068155288572e+01];
+  const c=[-7.784894002430293e-03,-3.223964580411365e-01,-2.400758277161838e+00,-2.549732539343734e+00,4.374664141464968e+00,2.938163982698783e+00];
+  const d=[7.784695709041462e-03,3.224671290700398e-01,2.445134137142996e+00,3.754408661907416e+00];
+  const pl=0.02425, ph=1-pl; let q,r;
+  if(p<pl){q=Math.sqrt(-2*Math.log(p));return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  if(p>ph){q=Math.sqrt(-2*Math.log(1-p));return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+  q=p-0.5; r=q*q;
+  return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);
+}
+function phi(z){
+  const t=1/(1+0.2316419*Math.abs(z));
+  const d=0.3989423*Math.exp(-z*z/2);
+  const p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));
+  return z>0?1-p:p;
+}
+function binom(n,k,p){let c=1;for(let i=0;i<k;i++){c=c*(n-i)/(i+1);}return c*Math.pow(p,k)*Math.pow(1-p,n-k);}
+</script>
+
+<h1 id="lec1">第 1 讲 · 交互附件：气体与分压</h1><p class="sub">理想气体状态方程 · 分压 · 真实气体压缩因子</p><section class="card">
+  <h2>理想气体状态方程</h2>
+  <p class="desc">拨 n、T、V，压力与摩尔体积实时重算；pV 乘积不变时曲线就是等温线。</p>
+  <div class="controls"><div class="row"><label>物质的量 n</label>
+        <input type="range" id="lec1_n" min="0.1" max="5" step="0.1" value="1">
+        <output id="lec1_n-v">1mol</output></div><div class="row"><label>温度 T</label>
+        <input type="range" id="lec1_T" min="200" max="800" step="10" value="298">
+        <output id="lec1_T-v">298K</output></div><div class="row"><label>体积 V</label>
+        <input type="range" id="lec1_V" min="1" max="50" step="1" value="24.5">
+        <output id="lec1_V-v">24.5L</output></div></div>
+  <div class="metrics"><div class="metric"><span>压力 p</span><b id="o-lec1_p">—</b><i>kPa</i></div><div class="metric"><span>摩尔体积 Vm</span><b id="o-lec1_Vm">—</b><i>L/mol</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec1_n", "lec1_T", "lec1_V"], keys=["n", "T", "V"], units={"lec1_n": "mol", "lec1_T": "K", "lec1_V": "L"}, outs=[["lec1_p", "p", "\u538b\u529b p", "kPa", 2], ["lec1_Vm", "Vm", "\u6469\u5c14\u4f53\u79ef Vm", "L/mol", 2]];
+    const calc=function(n,T,V){ const R=8.314; const p=n*R*T/V; const Vm=V/n; return {p:p, Vm:Vm}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>混合气体分压（Dalton）</h2>
+  <p class="desc">总压与氧的摩尔分数决定氧分压；分压之和等于总压。</p>
+  <div class="controls"><div class="row"><label>总压</label>
+        <input type="range" id="lec1_pt" min="50" max="300" step="5" value="101.3">
+        <output id="lec1_pt-v">101.3kPa</output></div><div class="row"><label>氧摩尔分数 x(O2)</label>
+        <input type="range" id="lec1_xo" min="0.1" max="0.3" step="0.005" value="0.21">
+        <output id="lec1_xo-v">0.21</output></div></div>
+  <div class="metrics"><div class="metric"><span>氧分压 p(O2)</span><b id="o-lec1_po">—</b><i>kPa</i></div><div class="metric"><span>其余气体分压</span><b id="o-lec1_pn">—</b><i>kPa</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec1_pt", "lec1_xo"], keys=["pt", "xo"], units={"lec1_pt": "kPa", "lec1_xo": ""}, outs=[["lec1_po", "po", "\u6c27\u5206\u538b p(O2)", "kPa", 2], ["lec1_pn", "pn", "\u5176\u4f59\u6c14\u4f53\u5206\u538b", "kPa", 2]];
+    const calc=function(pt,xo){ const po=pt*xo; const pn=pt-po; return {po:po, pn:pn}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>真实气体：压缩因子 Z</h2>
+  <p class="desc">CO2 的 van der Waals 参数下，理想压力与修正压力差多少；Z 偏离 1 就是偏差。</p>
+  <div class="controls"><div class="row"><label>温度 T</label>
+        <input type="range" id="lec1_T2" min="250" max="500" step="5" value="350">
+        <output id="lec1_T2-v">350K</output></div><div class="row"><label>摩尔体积 Vm</label>
+        <input type="range" id="lec1_Vm2" min="0.2" max="5.0" step="0.05" value="1.0">
+        <output id="lec1_Vm2-v">1.0L/mol</output></div></div>
+  <div class="metrics"><div class="metric"><span>理想压力</span><b id="o-lec1_pi">—</b><i>kPa</i></div><div class="metric"><span>vdW 压力</span><b id="o-lec1_pv">—</b><i>kPa</i></div><div class="metric"><span>压缩因子 Z</span><b id="o-lec1_Z">—</b><i></i></div></div>
+  <script>
+  (function(){
+    const ids=["lec1_T2", "lec1_Vm2"], keys=["T2", "Vm2"], units={"lec1_T2": "K", "lec1_Vm2": "L/mol"}, outs=[["lec1_pi", "pi", "\u7406\u60f3\u538b\u529b", "kPa", 1], ["lec1_pv", "pv", "vdW \u538b\u529b", "kPa", 1], ["lec1_Z", "Z", "\u538b\u7f29\u56e0\u5b50 Z", "", 2]];
+    const calc=function(T2,Vm2){ const R=8.314, a=364, b=0.0427; const pi=R*T2/Vm2; const pv=R*T2/(Vm2-b)-a/(Vm2*Vm2); const Z=pv*Vm2/(R*T2); return {pi:pi, pv:pv, Z:Z}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec2">第 2 讲 · 交互附件：热化学与反应方向</h1><p class="sub">ΔG 判据与转变温度 · 生成焓算反应焓</p><section class="card">
+  <h2>ΔG 判据：焓、熵打架，温度裁决</h2>
+  <p class="desc">拨 ΔH、ΔS、T，看 ΔG 的符号与转变温度；ΔG&lt;0 才自发。</p>
+  <div class="controls"><div class="row"><label>ΔH</label>
+        <input type="range" id="lec2_dH" min="-200" max="200" step="5" value="-74.8">
+        <output id="lec2_dH-v">-74.8kJ/mol</output></div><div class="row"><label>ΔS</label>
+        <input type="range" id="lec2_dS" min="-300" max="300" step="5" value="-50">
+        <output id="lec2_dS-v">-50J/(mol·K)</output></div><div class="row"><label>温度 T</label>
+        <input type="range" id="lec2_T" min="200" max="1000" step="5" value="298">
+        <output id="lec2_T-v">298K</output></div></div>
+  <div class="metrics"><div class="metric"><span>ΔG</span><b id="o-lec2_dG">—</b><i>kJ/mol</i></div><div class="metric"><span>转变温度 T = ΔH/ΔS</span><b id="o-lec2_Trev">—</b><i>K</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec2_dH", "lec2_dS", "lec2_T"], keys=["dH", "dS", "T"], units={"lec2_dH": "kJ/mol", "lec2_dS": "J/(mol\u00b7K)", "lec2_T": "K"}, outs=[["lec2_dG", "dG", "\u0394G", "kJ/mol", 1], ["lec2_Trev", "Trev", "\u8f6c\u53d8\u6e29\u5ea6 T = \u0394H/\u0394S", "K", 0]];
+    const calc=function(dH,dS,T){ const dG=dH-T*dS/1000; let Trev=NaN; if(Math.abs(dS)>1e-9){Trev=dH*1000/dS;} return {dG:dG, Trev:Trev}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>生成焓算甲烷燃烧焓</h2>
+  <p class="desc">三个标准生成焓一改，燃烧反应焓立刻跟着变：生成物减反应物。</p>
+  <div class="controls"><div class="row"><label>ΔfH(CH4,g)</label>
+        <input type="range" id="lec2_fCH4" min="-120" max="0" step="1" value="-74.8">
+        <output id="lec2_fCH4-v">-74.8kJ/mol</output></div><div class="row"><label>ΔfH(CO2,g)</label>
+        <input type="range" id="lec2_fCO2" min="-450" max="-300" step="1" value="-393.5">
+        <output id="lec2_fCO2-v">-393.5kJ/mol</output></div><div class="row"><label>ΔfH(H2O,l)</label>
+        <input type="range" id="lec2_fH2O" min="-320" max="-200" step="1" value="-285.8">
+        <output id="lec2_fH2O-v">-285.8kJ/mol</output></div></div>
+  <div class="metrics"><div class="metric"><span>燃烧焓 ΔrH</span><b id="o-lec2_dr">—</b><i>kJ/mol</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec2_fCH4", "lec2_fCO2", "lec2_fH2O"], keys=["fCH4", "fCO2", "fH2O"], units={"lec2_fCH4": "kJ/mol", "lec2_fCO2": "kJ/mol", "lec2_fH2O": "kJ/mol"}, outs=[["lec2_dr", "dr", "\u71c3\u70e7\u7113 \u0394rH", "kJ/mol", 1]];
+    const calc=function(fCH4,fCO2,fH2O){ const dr=fCO2+2*fH2O-fCH4; return {dr:dr}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec3">第 3 讲 · 交互附件：化学平衡与反应速率</h1><p class="sub">van&#x27;t Hoff 温度效应 · Arrhenius 速率常数</p><section class="card">
+  <h2>温度对平衡常数：van&#x27;t Hoff</h2>
+  <p class="desc">放热反应的 ΔH&lt;0，升温 lnK 下降；吸热反应反过来。</p>
+  <div class="controls"><div class="row"><label>ΔH</label>
+        <input type="range" id="lec3_dH" min="-150" max="150" step="5" value="-92.2">
+        <output id="lec3_dH-v">-92.2kJ/mol</output></div><div class="row"><label>ΔS</label>
+        <input type="range" id="lec3_dS" min="-250" max="250" step="5" value="-198.8">
+        <output id="lec3_dS-v">-198.8J/(mol·K)</output></div><div class="row"><label>温度 T</label>
+        <input type="range" id="lec3_T" min="300" max="1000" step="5" value="500">
+        <output id="lec3_T-v">500K</output></div></div>
+  <div class="metrics"><div class="metric"><span>ln K</span><b id="o-lec3_lnK">—</b><i></i></div><div class="metric"><span>平衡常数 K</span><b id="o-lec3_K">—</b><i></i></div></div>
+  <script>
+  (function(){
+    const ids=["lec3_dH", "lec3_dS", "lec3_T"], keys=["dH", "dS", "T"], units={"lec3_dH": "kJ/mol", "lec3_dS": "J/(mol\u00b7K)", "lec3_T": "K"}, outs=[["lec3_lnK", "lnK", "ln K", "", 2], ["lec3_K", "K", "\u5e73\u8861\u5e38\u6570 K", "", -1]];
+    const calc=function(dH,dS,T){ const R=8.314; const lnK=-dH*1000/(R*T)+dS/R; const K=Math.exp(lnK); return {lnK:lnK, K:K}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>温度对速率：Arrhenius</h2>
+  <p class="desc">活化能越大，升温提速越猛；k(T) 与 500 K 的 k 比就是温度加速倍数。</p>
+  <div class="controls"><div class="row"><label>活化能 Ea</label>
+        <input type="range" id="lec3_Ea" min="20" max="150" step="5" value="75">
+        <output id="lec3_Ea-v">75kJ/mol</output></div><div class="row"><label>500 K 时的 k</label>
+        <input type="range" id="lec3_k500" min="0.001" max="10" step="0.001" value="1">
+        <output id="lec3_k500-v">1s^-1</output></div><div class="row"><label>温度 T</label>
+        <input type="range" id="lec3_T2" min="300" max="1000" step="5" value="500">
+        <output id="lec3_T2-v">500K</output></div></div>
+  <div class="metrics"><div class="metric"><span>k(T)</span><b id="o-lec3_k">—</b><i>s^-1</i></div><div class="metric"><span>相对 500 K</span><b id="o-lec3_ratio">—</b><i>倍</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec3_Ea", "lec3_k500", "lec3_T2"], keys=["Ea", "k500", "T2"], units={"lec3_Ea": "kJ/mol", "lec3_k500": "s^-1", "lec3_T2": "K"}, outs=[["lec3_k", "k", "k(T)", "s^-1", 3], ["lec3_ratio", "ratio", "\u76f8\u5bf9 500 K", "\u500d", 2]];
+    const calc=function(Ea,k500,T2){ const R=8.314; const ratio=Math.exp(-Ea*1000/R*(1/T2-1/500)); const k=k500*ratio; return {k:k, ratio:ratio}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec4">第 4 讲 · 交互附件：依数性与酸碱理论</h1><p class="sub">依数性三件套 · 弱酸 pH 与解离度</p><section class="card">
+  <h2>依数性：沸点升、冰点降、渗透压</h2>
+  <p class="desc">质量摩尔浓度一改，三个依数性一起变；它们同出一源（化学势下降）。</p>
+  <div class="controls"><div class="row"><label>质量摩尔浓度 b</label>
+        <input type="range" id="lec4_b" min="0.01" max="2.0" step="0.01" value="0.5">
+        <output id="lec4_b-v">0.5mol/kg</output></div><div class="row"><label>沸点升高常数 Kb</label>
+        <input type="range" id="lec4_Kb" min="0.3" max="3.0" step="0.01" value="0.512">
+        <output id="lec4_Kb-v">0.512K·kg/mol</output></div><div class="row"><label>凝固点降低常数 Kf</label>
+        <input type="range" id="lec4_Kf" min="1.0" max="5.0" step="0.01" value="1.86">
+        <output id="lec4_Kf-v">1.86K·kg/mol</output></div></div>
+  <div class="metrics"><div class="metric"><span>沸点升高 ΔTb</span><b id="o-lec4_dTb">—</b><i>K</i></div><div class="metric"><span>凝固点降低 ΔTf</span><b id="o-lec4_dTf">—</b><i>K</i></div><div class="metric"><span>渗透压（298 K）</span><b id="o-lec4_Pi">—</b><i>kPa</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec4_b", "lec4_Kb", "lec4_Kf"], keys=["b", "Kb", "Kf"], units={"lec4_b": "mol/kg", "lec4_Kb": "K\u00b7kg/mol", "lec4_Kf": "K\u00b7kg/mol"}, outs=[["lec4_dTb", "dTb", "\u6cb8\u70b9\u5347\u9ad8 \u0394Tb", "K", 3], ["lec4_dTf", "dTf", "\u51dd\u56fa\u70b9\u964d\u4f4e \u0394Tf", "K", 3], ["lec4_Pi", "Pi", "\u6e17\u900f\u538b\uff08298 K\uff09", "kPa", 0]];
+    const calc=function(b,Kb,Kf){ const dTb=Kb*b; const dTf=Kf*b; const Pi=b*8.314*298; return {dTb:dTb, dTf:dTf, Pi:Pi}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>弱酸 pH 与解离度</h2>
+  <p class="desc">pKa 与浓度决定 pH；越稀解离度越大、但 pH 仍上升。</p>
+  <div class="controls"><div class="row"><label>pKa</label>
+        <input type="range" id="lec4_pKa" min="2.0" max="8.0" step="0.1" value="4.74">
+        <output id="lec4_pKa-v">4.74</output></div><div class="row"><label>浓度 c</label>
+        <input type="range" id="lec4_c" min="0.001" max="1.0" step="0.001" value="0.1">
+        <output id="lec4_c-v">0.1mol/L</output></div></div>
+  <div class="metrics"><div class="metric"><span>pH</span><b id="o-lec4_pH">—</b><i></i></div><div class="metric"><span>解离度 α</span><b id="o-lec4_alpha">—</b><i>%</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec4_pKa", "lec4_c"], keys=["pKa", "c"], units={"lec4_pKa": "", "lec4_c": "mol/L"}, outs=[["lec4_pH", "pH", "pH", "", 2], ["lec4_alpha", "alpha", "\u89e3\u79bb\u5ea6 \u03b1", "%", 2]];
+    const calc=function(pKa,c){ const Ka=Math.pow(10,-pKa); const h=(-Ka+Math.sqrt(Ka*Ka+4*Ka*c))/2; const pH=-Math.log10(h); const alpha=h/c*100; return {pH:pH, alpha:alpha}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec5">第 5 讲 · 交互附件：解离平衡与沉淀溶解</h1><p class="sub">缓冲溶液 pH 与容量 · 溶度积与溶解度</p><section class="card">
+  <h2>缓冲溶液：HH 方程与缓冲容量</h2>
+  <p class="desc">酸与盐的比例决定 pH；总浓度决定缓冲容量（pKa±1 内最有效）。</p>
+  <div class="controls"><div class="row"><label>共轭酸 pKa</label>
+        <input type="range" id="lec5_pKa" min="3.0" max="11.0" step="0.1" value="4.74">
+        <output id="lec5_pKa-v">4.74</output></div><div class="row"><label>c(A-)/c(HA)</label>
+        <input type="range" id="lec5_ratio" min="0.1" max="10.0" step="0.05" value="1.0">
+        <output id="lec5_ratio-v">1.0</output></div><div class="row"><label>缓冲对总浓度 c</label>
+        <input type="range" id="lec5_c" min="0.01" max="1.0" step="0.01" value="0.1">
+        <output id="lec5_c-v">0.1mol/L</output></div></div>
+  <div class="metrics"><div class="metric"><span>pH</span><b id="o-lec5_pH">—</b><i></i></div><div class="metric"><span>缓冲容量 β</span><b id="o-lec5_beta">—</b><i>mol/(L·pH)</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec5_pKa", "lec5_ratio", "lec5_c"], keys=["pKa", "ratio", "c"], units={"lec5_pKa": "", "lec5_ratio": "", "lec5_c": "mol/L"}, outs=[["lec5_pH", "pH", "pH", "", 2], ["lec5_beta", "beta", "\u7f13\u51b2\u5bb9\u91cf \u03b2", "mol/(L\u00b7pH)", 3]];
+    const calc=function(pKa,ratio,c){ const pH=pKa+Math.log10(ratio); const d0=1/(1+ratio), d1=1-d0; const beta=2.303*c*d0*d1; return {pH:pH, beta:beta}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>溶度积与溶解度（AB 型）</h2>
+  <p class="desc">同离子把溶解度压下去：加入的离子浓度越大，s 越小。</p>
+  <div class="controls"><div class="row"><label>pKsp</label>
+        <input type="range" id="lec5_pKsp" min="4.0" max="16.0" step="0.1" value="9.75">
+        <output id="lec5_pKsp-v">9.75</output></div><div class="row"><label>加入的同离子浓度</label>
+        <input type="range" id="lec5_cadd" min="0.0" max="0.5" step="0.005" value="0.0">
+        <output id="lec5_cadd-v">0.0mol/L</output></div></div>
+  <div class="metrics"><div class="metric"><span>纯水中溶解度</span><b id="o-lec5_s0">—</b><i>mol/L</i></div><div class="metric"><span>同离子下溶解度</span><b id="o-lec5_s">—</b><i>mol/L</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec5_pKsp", "lec5_cadd"], keys=["pKsp", "cadd"], units={"lec5_pKsp": "", "lec5_cadd": "mol/L"}, outs=[["lec5_s0", "s0", "\u7eaf\u6c34\u4e2d\u6eb6\u89e3\u5ea6", "mol/L", -1], ["lec5_s", "s", "\u540c\u79bb\u5b50\u4e0b\u6eb6\u89e3\u5ea6", "mol/L", -1]];
+    const calc=function(pKsp,cadd){ const Ksp=Math.pow(10,-pKsp); const s0=Math.sqrt(Ksp); const s=Ksp/(cadd+s0); return {s0:s0, s:s}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec6">第 6 讲 · 交互附件：配位化合物与氧化还原</h1><p class="sub">配位平衡 · 电动势与 ΔG、K</p><section class="card">
+  <h2>配位平衡：稳定常数吃掉自由金属</h2>
+  <p class="desc">Kf 越大、配体越浓，自由金属离子占比越小（乘方关系）。</p>
+  <div class="controls"><div class="row"><label>lg Kf</label>
+        <input type="range" id="lec6_lgKf" min="5.0" max="18.0" step="0.1" value="13.3">
+        <output id="lec6_lgKf-v">13.3</output></div><div class="row"><label>自由配体浓度</label>
+        <input type="range" id="lec6_cL" min="0.01" max="1.0" step="0.01" value="0.1">
+        <output id="lec6_cL-v">0.1mol/L</output></div></div>
+  <div class="metrics"><div class="metric"><span>lg(自由金属占比)</span><b id="o-lec6_lgfree">—</b><i></i></div></div>
+  <script>
+  (function(){
+    const ids=["lec6_lgKf", "lec6_cL"], keys=["lgKf", "cL"], units={"lec6_lgKf": "", "lec6_cL": "mol/L"}, outs=[["lec6_lgfree", "lgfree", "lg(\u81ea\u7531\u91d1\u5c5e\u5360\u6bd4)", "", 1]];
+    const calc=function(lgKf,cL){ const Kf=Math.pow(10,lgKf); const frac=1/(1+Kf*cL); return {lgfree:Math.log10(frac)}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>电动势 → ΔG° → K°</h2>
+  <p class="desc">同一个 E° 用两条路读：ΔG°=-nFE°，K° 由 nFE°/RT 取指数。</p>
+  <div class="controls"><div class="row"><label>标准电动势 E°</label>
+        <input type="range" id="lec6_E" min="0.1" max="2.5" step="0.01" value="1.1">
+        <output id="lec6_E-v">1.1V</output></div><div class="row"><label>转移电子数 n</label>
+        <input type="range" id="lec6_n" min="1" max="4" step="1" value="2">
+        <output id="lec6_n-v">2</output></div></div>
+  <div class="metrics"><div class="metric"><span>ΔG°</span><b id="o-lec6_dG">—</b><i>kJ/mol</i></div><div class="metric"><span>ln K°</span><b id="o-lec6_lnK">—</b><i></i></div><div class="metric"><span>K°</span><b id="o-lec6_K">—</b><i></i></div></div>
+  <script>
+  (function(){
+    const ids=["lec6_E", "lec6_n"], keys=["E", "n"], units={"lec6_E": "V", "lec6_n": ""}, outs=[["lec6_dG", "dG", "\u0394G\u00b0", "kJ/mol", 1], ["lec6_lnK", "lnK", "ln K\u00b0", "", 1], ["lec6_K", "K", "K\u00b0", "", -1]];
+    const calc=function(E,n){ const F=96485, R=8.314, T=298.15; const dG=-n*F*E/1000; const lnK=n*F*E/(R*T); return {dG:dG, lnK:lnK, K:Math.exp(lnK)}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec7">第 7 讲 · 交互附件：电极电势与能斯特方程</h1><p class="sub">能斯特方程 · 浓差电池</p><section class="card">
+  <h2>能斯特方程：浓度每 10 倍移 59/n mV</h2>
+  <p class="desc">E°、n 与反应商 Q 决定实际电势；Q=1 时 E=E°。</p>
+  <div class="controls"><div class="row"><label>标准电势 E°</label>
+        <input type="range" id="lec7_E0" min="0.1" max="2.0" step="0.01" value="1.1">
+        <output id="lec7_E0-v">1.1V</output></div><div class="row"><label>转移电子数 n</label>
+        <input type="range" id="lec7_n" min="1" max="4" step="1" value="2">
+        <output id="lec7_n-v">2</output></div><div class="row"><label>lg Q</label>
+        <input type="range" id="lec7_pQ" min="-6.0" max="6.0" step="0.1" value="0.0">
+        <output id="lec7_pQ-v">0.0</output></div></div>
+  <div class="metrics"><div class="metric"><span>实际电势 E</span><b id="o-lec7_E">—</b><i>V</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec7_E0", "lec7_n", "lec7_pQ"], keys=["E0", "n", "pQ"], units={"lec7_E0": "V", "lec7_n": "", "lec7_pQ": ""}, outs=[["lec7_E", "E", "\u5b9e\u9645\u7535\u52bf E", "V", 3]];
+    const calc=function(E0,n,pQ){ const E=E0-0.0592/n*pQ; return {E:E}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>浓差电池：只靠浓度差发电</h2>
+  <p class="desc">两边浓度差 100 倍，E 约为 59/n mV 的两倍；浓度相等则 E=0。</p>
+  <div class="controls"><div class="row"><label>稀侧浓度</label>
+        <input type="range" id="lec7_c1" min="0.001" max="1.0" step="0.001" value="0.01">
+        <output id="lec7_c1-v">0.01mol/L</output></div><div class="row"><label>浓侧浓度</label>
+        <input type="range" id="lec7_c2" min="0.001" max="1.0" step="0.001" value="1.0">
+        <output id="lec7_c2-v">1.0mol/L</output></div><div class="row"><label>转移电子数 n</label>
+        <input type="range" id="lec7_n2" min="1" max="2" step="1" value="1">
+        <output id="lec7_n2-v">1</output></div></div>
+  <div class="metrics"><div class="metric"><span>浓差电动势 E</span><b id="o-lec7_E">—</b><i>V</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec7_c1", "lec7_c2", "lec7_n2"], keys=["c1", "c2", "n2"], units={"lec7_c1": "mol/L", "lec7_c2": "mol/L", "lec7_n2": ""}, outs=[["lec7_E", "E", "\u6d53\u5dee\u7535\u52a8\u52bf E", "V", 3]];
+    const calc=function(c1,c2,n2){ const E=0.0592/n2*Math.log10(c2/c1); return {E:E}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec8">第 8 讲 · 交互附件：电解、金属腐蚀与化学电源</h1><p class="sub">法拉第定律 · 分解电压与超电势</p><section class="card">
+  <h2>法拉第定律：电量决定析出量</h2>
+  <p class="desc">电流与时间决定电量，电量除以 nF 就是电子账；质量按摩尔质量换算。</p>
+  <div class="controls"><div class="row"><label>电流 I</label>
+        <input type="range" id="lec8_I" min="0.1" max="20.0" step="0.1" value="2.0">
+        <output id="lec8_I-v">2.0A</output></div><div class="row"><label>通电时间 t</label>
+        <input type="range" id="lec8_t" min="1" max="300" step="1" value="60">
+        <output id="lec8_t-v">60min</output></div><div class="row"><label>摩尔质量 M</label>
+        <input type="range" id="lec8_M" min="20" max="200" step="1" value="63.5">
+        <output id="lec8_M-v">63.5g/mol</output></div><div class="row"><label>转移电子数 n</label>
+        <input type="range" id="lec8_n" min="1" max="3" step="1" value="2">
+        <output id="lec8_n-v">2</output></div></div>
+  <div class="metrics"><div class="metric"><span>阴极析出质量 m</span><b id="o-lec8_m">—</b><i>g</i></div><div class="metric"><span>通过电荷量 Q</span><b id="o-lec8_Q">—</b><i>kC</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec8_I", "lec8_t", "lec8_M", "lec8_n"], keys=["I", "t", "M", "n"], units={"lec8_I": "A", "lec8_t": "min", "lec8_M": "g/mol", "lec8_n": ""}, outs=[["lec8_m", "m", "\u9634\u6781\u6790\u51fa\u8d28\u91cf m", "g", 3], ["lec8_Q", "Q", "\u901a\u8fc7\u7535\u8377\u91cf Q", "kC", 2]];
+    const calc=function(I,t,M,n){ const F=96485; const m=M*I*(t*60)/(n*F); return {m:m, Q:I*(t*60)/1000}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>分解电压与超电势</h2>
+  <p class="desc">实际分解电压 = 理论分解电压 + 阳极超电势 + 阴极超电势；超电势是白烧的电。</p>
+  <div class="controls"><div class="row"><label>理论分解电压</label>
+        <input type="range" id="lec8_E0" min="0.5" max="3.0" step="0.01" value="1.23">
+        <output id="lec8_E0-v">1.23V</output></div><div class="row"><label>阳极超电势</label>
+        <input type="range" id="lec8_etaA" min="0.0" max="1.0" step="0.01" value="0.4">
+        <output id="lec8_etaA-v">0.4V</output></div><div class="row"><label>阴极超电势</label>
+        <input type="range" id="lec8_etaC" min="0.0" max="1.0" step="0.01" value="0.1">
+        <output id="lec8_etaC-v">0.1V</output></div></div>
+  <div class="metrics"><div class="metric"><span>实际分解电压</span><b id="o-lec8_U">—</b><i>V</i></div><div class="metric"><span>超电势合计</span><b id="o-lec8_extra">—</b><i>V</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec8_E0", "lec8_etaA", "lec8_etaC"], keys=["E0", "etaA", "etaC"], units={"lec8_E0": "V", "lec8_etaA": "V", "lec8_etaC": "V"}, outs=[["lec8_U", "U", "\u5b9e\u9645\u5206\u89e3\u7535\u538b", "V", 2], ["lec8_extra", "extra", "\u8d85\u7535\u52bf\u5408\u8ba1", "V", 2]];
+    const calc=function(E0,etaA,etaC){ const U=E0+etaA+etaC; return {U:U, extra:etaA+etaC}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec9">第 9 讲 · 交互附件：原子结构与分子结构</h1><p class="sub">氢原子能级与光谱 · 键级 · 电负性差</p><section class="card">
+  <h2>氢原子光谱：能级差决定波长</h2>
+  <p class="desc">从 n1 跳到 n2 要吸收光子；n2 必须大于 n1，差值越大能量越高、波长越短。</p>
+  <div class="controls"><div class="row"><label>起始能级 n1</label>
+        <input type="range" id="lec9_n1" min="1" max="3" step="1" value="1">
+        <output id="lec9_n1-v">1</output></div><div class="row"><label>终止能级 n2</label>
+        <input type="range" id="lec9_n2" min="2" max="6" step="1" value="3">
+        <output id="lec9_n2-v">3</output></div></div>
+  <div class="metrics"><div class="metric"><span>光子波长 λ</span><b id="o-lec9_lam">—</b><i>nm</i></div><div class="metric"><span>光子能量</span><b id="o-lec9_E">—</b><i>eV</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec9_n1", "lec9_n2"], keys=["n1", "n2"], units={"lec9_n1": "", "lec9_n2": ""}, outs=[["lec9_lam", "lam", "\u5149\u5b50\u6ce2\u957f \u03bb", "nm", 1], ["lec9_E", "E", "\u5149\u5b50\u80fd\u91cf", "eV", 2]];
+    const calc=function(n1,n2){ const R=1.097e7; let lam=null, E=null; if(n2>n1){lam=1/(R*(1/(n1*n1)-1/(n2*n2)))*1e9; E=13.6*(1/(n1*n1)-1/(n2*n2));} return {lam:lam, E:E}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>分子轨道：键级与磁性</h2>
+  <p class="desc">成键电子减反键电子除以 2 就是键级；差值奇数为顺磁性（有未成对电子）。</p>
+  <div class="controls"><div class="row"><label>成键电子数</label>
+        <input type="range" id="lec9_nb" min="0" max="10" step="1" value="8">
+        <output id="lec9_nb-v">8</output></div><div class="row"><label>反键电子数</label>
+        <input type="range" id="lec9_na" min="0" max="10" step="1" value="2">
+        <output id="lec9_na-v">2</output></div></div>
+  <div class="metrics"><div class="metric"><span>键级</span><b id="o-lec9_bo">—</b><i></i></div><div class="metric"><span>未成对电子数（奇偶）</span><b id="o-lec9_unpaired">—</b><i></i></div></div>
+  <script>
+  (function(){
+    const ids=["lec9_nb", "lec9_na"], keys=["nb", "na"], units={"lec9_nb": "", "lec9_na": ""}, outs=[["lec9_bo", "bo", "\u952e\u7ea7", "", 1], ["lec9_unpaired", "unpaired", "\u672a\u6210\u5bf9\u7535\u5b50\u6570\uff08\u5947\u5076\uff09", "", 0]];
+    const calc=function(nb,na){ const bo=(nb-na)/2; const unpaired=(nb-na)%2; return {bo:bo, unpaired:unpaired}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>电负性差与键的离子性</h2>
+  <p class="desc">Pauling 式：Δχ 越大，键越偏离子；Δχ=0 是纯共价。</p>
+  <div class="controls"><div class="row"><label>元素 1 电负性</label>
+        <input type="range" id="lec9_x1" min="0.5" max="4.0" step="0.05" value="1.0">
+        <output id="lec9_x1-v">1.0</output></div><div class="row"><label>元素 2 电负性</label>
+        <input type="range" id="lec9_x2" min="0.5" max="4.0" step="0.05" value="2.5">
+        <output id="lec9_x2-v">2.5</output></div></div>
+  <div class="metrics"><div class="metric"><span>Δχ</span><b id="o-lec9_d">—</b><i></i></div><div class="metric"><span>离子性百分数</span><b id="o-lec9_ionic">—</b><i>%</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec9_x1", "lec9_x2"], keys=["x1", "x2"], units={"lec9_x1": "", "lec9_x2": ""}, outs=[["lec9_d", "d", "\u0394\u03c7", "", 2], ["lec9_ionic", "ionic", "\u79bb\u5b50\u6027\u767e\u5206\u6570", "%", 1]];
+    const calc=function(x1,x2){ const d=Math.abs(x2-x1); const ionic=(1-Math.exp(-0.25*d*d))*100; return {d:d, ionic:ionic}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec10">第 10 讲 · 交互附件：分子间力、晶体结构与材料</h1><p class="sub">晶胞密度 · 晶格常数与原子半径</p><section class="card">
+  <h2>晶胞密度：结构、原子量、晶格常数</h2>
+  <p class="desc">密度 = 晶胞内原子质量 / 晶胞体积；晶格常数小一点，密度涨不少。</p>
+  <div class="controls"><div class="row"><label>摩尔质量 M</label>
+        <input type="range" id="lec10_M" min="20" max="200" step="1" value="63.5">
+        <output id="lec10_M-v">63.5g/mol</output></div><div class="row"><label>晶格常数 a</label>
+        <input type="range" id="lec10_a" min="200" max="600" step="1" value="361">
+        <output id="lec10_a-v">361pm</output></div><div class="row"><label>晶胞原子数 Z</label>
+        <input type="range" id="lec10_Z" min="1" max="8" step="1" value="4">
+        <output id="lec10_Z-v">4</output></div></div>
+  <div class="metrics"><div class="metric"><span>理论密度 ρ</span><b id="o-lec10_rho">—</b><i>g/cm³</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec10_M", "lec10_a", "lec10_Z"], keys=["M", "a", "Z"], units={"lec10_M": "g/mol", "lec10_a": "pm", "lec10_Z": ""}, outs=[["lec10_rho", "rho", "\u7406\u8bba\u5bc6\u5ea6 \u03c1", "g/cm\u00b3", 2]];
+    const calc=function(M,a,Z){ const NA=6.022e23; const rho=Z*M/(NA*Math.pow(a*1e-12,3)); return {rho:rho}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>原子半径与晶格常数（fcc/bcc/hcp）</h2>
+  <p class="desc">同一原子半径，三种堆积的晶格常数不同：fcc a=2√2r、bcc a=4r/√3、hcp a=2r。</p>
+  <div class="controls"><div class="row"><label>原子半径 r</label>
+        <input type="range" id="lec10_r" min="100" max="200" step="1" value="128">
+        <output id="lec10_r-v">128pm</output></div></div>
+  <div class="metrics"><div class="metric"><span>fcc 晶格常数 a</span><b id="o-lec10_af">—</b><i>pm</i></div><div class="metric"><span>bcc 晶格常数 a</span><b id="o-lec10_ab">—</b><i>pm</i></div><div class="metric"><span>hcp 晶格常数 a</span><b id="o-lec10_ah">—</b><i>pm</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec10_r"], keys=["r"], units={"lec10_r": "pm"}, outs=[["lec10_af", "af", "fcc \u6676\u683c\u5e38\u6570 a", "pm", 1], ["lec10_ab", "ab", "bcc \u6676\u683c\u5e38\u6570 a", "pm", 1], ["lec10_ah", "ah", "hcp \u6676\u683c\u5e38\u6570 a", "pm", 1]];
+    const calc=function(r){ const af=2*Math.SQRT2*r, ab=4*r/Math.sqrt(3), ah=2*r; return {af:af, ab:ab, ah:ah}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec11">第 11 讲 · 交互附件：高分子材料与化学能源</h1><p class="sub">聚合度与分子量 · 电池比能量</p><section class="card">
+  <h2>聚合度与分子量</h2>
+  <p class="desc">数均分子量 = 聚合度 × 单体分子量；聚合物分子量是平均数。</p>
+  <div class="controls"><div class="row"><label>聚合度 n</label>
+        <input type="range" id="lec11_n" min="100" max="5000" step="10" value="1000">
+        <output id="lec11_n-v">1000</output></div><div class="row"><label>单体分子量 M0</label>
+        <input type="range" id="lec11_M0" min="28" max="200" step="1" value="28">
+        <output id="lec11_M0-v">28g/mol</output></div></div>
+  <div class="metrics"><div class="metric"><span>数均分子量 Mn</span><b id="o-lec11_Mn">—</b><i>kg/mol</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec11_n", "lec11_M0"], keys=["n", "M0"], units={"lec11_n": "", "lec11_M0": "g/mol"}, outs=[["lec11_Mn", "Mn", "\u6570\u5747\u5206\u5b50\u91cf Mn", "kg/mol", 1]];
+    const calc=function(n,M0){ const Mn=n*M0/1000; return {Mn:Mn}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>电池比能量：电压、容量、质量</h2>
+  <p class="desc">能量 = 电压 × 容量；比能量看单位质量能存多少电，是电动车的关键指标。</p>
+  <div class="controls"><div class="row"><label>电压 U</label>
+        <input type="range" id="lec11_U" min="1.0" max="4.0" step="0.05" value="3.7">
+        <output id="lec11_U-v">3.7V</output></div><div class="row"><label>容量 Q</label>
+        <input type="range" id="lec11_Q" min="0.5" max="5.0" step="0.05" value="2.0">
+        <output id="lec11_Q-v">2.0Ah</output></div><div class="row"><label>电池质量 m</label>
+        <input type="range" id="lec11_m" min="10" max="200" step="1" value="45">
+        <output id="lec11_m-v">45g</output></div></div>
+  <div class="metrics"><div class="metric"><span>储存能量</span><b id="o-lec11_E">—</b><i>Wh</i></div><div class="metric"><span>比能量</span><b id="o-lec11_sp">—</b><i>Wh/kg</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec11_U", "lec11_Q", "lec11_m"], keys=["U", "Q", "m"], units={"lec11_U": "V", "lec11_Q": "Ah", "lec11_m": "g"}, outs=[["lec11_E", "E", "\u50a8\u5b58\u80fd\u91cf", "Wh", 2], ["lec11_sp", "sp", "\u6bd4\u80fd\u91cf", "Wh/kg", 0]];
+    const calc=function(U,Q,m){ const E=U*Q; const sp=E/(m/1000); return {E:E, sp:sp}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><h1 id="lec12">第 12 讲 · 交互附件：化学与环境、生命</h1><p class="sub">酶催化 Michaelis–Menten · CO2 辐射强迫</p><section class="card">
+  <h2>酶催化：底物再多也有上限</h2>
+  <p class="desc">Vmax 是封顶速率，Km 是半饱和浓度；[S]=Km 时 v=Vmax/2。</p>
+  <div class="controls"><div class="row"><label>最大速率 Vmax</label>
+        <input type="range" id="lec12_Vmax" min="0.1" max="10.0" step="0.1" value="5.0">
+        <output id="lec12_Vmax-v">5.0mol/(L·s)</output></div><div class="row"><label>半饱和浓度 Km</label>
+        <input type="range" id="lec12_Km" min="0.01" max="10.0" step="0.01" value="1.0">
+        <output id="lec12_Km-v">1.0mol/L</output></div><div class="row"><label>底物浓度 [S]</label>
+        <input type="range" id="lec12_S" min="0.01" max="20.0" step="0.01" value="2.0">
+        <output id="lec12_S-v">2.0mol/L</output></div></div>
+  <div class="metrics"><div class="metric"><span>反应速率 v</span><b id="o-lec12_v">—</b><i>mol/(L·s)</i></div><div class="metric"><span>占 Vmax 比例</span><b id="o-lec12_sat">—</b><i>%</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec12_Vmax", "lec12_Km", "lec12_S"], keys=["Vmax", "Km", "S"], units={"lec12_Vmax": "mol/(L\u00b7s)", "lec12_Km": "mol/L", "lec12_S": "mol/L"}, outs=[["lec12_v", "v", "\u53cd\u5e94\u901f\u7387 v", "mol/(L\u00b7s)", 3], ["lec12_sat", "sat", "\u5360 Vmax \u6bd4\u4f8b", "%", 1]];
+    const calc=function(Vmax,Km,S){ const v=Vmax*S/(Km+S); const sat=v/Vmax*100; return {v:v, sat:sat}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section><section class="card">
+  <h2>CO2 浓度与辐射强迫</h2>
+  <p class="desc">Myhre 简化式 ΔF=5.35 ln(C/C0)：浓度按对数影响辐射平衡，越往后边际效应越小。</p>
+  <div class="controls"><div class="row"><label>CO2 浓度 C</label>
+        <input type="range" id="lec12_C" min="280" max="1000" step="5" value="420">
+        <output id="lec12_C-v">420ppm</output></div></div>
+  <div class="metrics"><div class="metric"><span>辐射强迫 ΔF</span><b id="o-lec12_F">—</b><i>W/m²</i></div></div>
+  <script>
+  (function(){
+    const ids=["lec12_C"], keys=["C"], units={"lec12_C": "ppm"}, outs=[["lec12_F", "F", "\u8f90\u5c04\u5f3a\u8feb \u0394F", "W/m\u00b2", 2]];
+    const calc=function(C){ const F=5.35*Math.log(C/280); return {F:F}; };
+    function run(){
+      const v={};
+      ids.forEach((id,i)=>{const el=document.getElementById(id); v[keys[i]]=parseFloat(el.value);
+        document.getElementById(id+"-v").textContent=el.value+(units[id]||"");});
+      const r=calc(...keys.map(k=>v[k]));
+      outs.forEach(o=>{
+        const domId=o[0], key=o[1], dig=o[4], el=document.getElementById("o-"+domId);
+        const val=r[key];
+        if(val===null||val===undefined||(typeof val==="number"&&Number.isNaN(val))) {el.textContent="—";return;}
+        el.textContent=(dig<0)? val : (typeof val==="number"? val.toFixed(dig): val);
+      });
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener("input",run));
+    run();
+  })();
+  </script>
+</section>
+</body></html>

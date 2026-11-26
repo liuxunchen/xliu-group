@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Liutex 在线计算（浏览器内 Python）</title>
+<style>
+  :root { --accent:#9C2B1E; --ink:#1a1a1a; --muted:#666; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:"Noto Sans CJK SC","Microsoft YaHei",system-ui,sans-serif; color:var(--ink); background:#fafafa; }
+  header { padding:18px 22px 10px; border-bottom:1px solid #e5e7eb; background:#fff; }
+  h1 { margin:0 0 6px; font-size:24px; border-left:6px solid var(--accent); padding-left:12px; }
+  .sub { color:var(--muted); font-size:14px; margin-left:18px; }
+  main { max-width:1180px; margin:0 auto; padding:18px 22px 60px; }
+  .panel { background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:16px 18px; margin:16px 0; }
+  .row { display:flex; gap:16px; flex-wrap:wrap; align-items:center; }
+  .ctrl { display:flex; flex-direction:column; gap:4px; min-width:180px; }
+  .ctrl label { font-size:13px; color:var(--muted); }
+  input[type=range] { width:200px; accent-color:var(--accent); }
+  button { background:var(--accent); color:#fff; border:0; border-radius:6px; padding:9px 18px; font-size:15px; cursor:pointer; }
+  button:disabled { background:#bbb; cursor:wait; }
+  canvas { border:1px solid #e5e7eb; border-radius:6px; background:#fff; display:block; }
+  .plots { display:flex; gap:18px; flex-wrap:wrap; }
+  .plots figure { margin:0; }
+  figcaption { font-size:13px; color:var(--muted); margin-bottom:6px; }
+  pre { background:#0f172a; color:#e2e8f0; padding:14px; border-radius:8px; overflow:auto; font-size:12.5px; line-height:1.5; max-height:340px; }
+  code { font-family:"JetBrains Mono",Consolas,monospace; }
+  .stat { font-size:14px; }
+  .stat b { color:var(--accent); }
+  #status { font-size:13px; color:var(--muted); }
+  details summary { cursor:pointer; color:var(--accent); font-size:14px; }
+  .legend { font-size:12px; color:var(--muted); }
+  .bar { height:10px; width:220px; border-radius:5px; background:linear-gradient(90deg,#2166ac,#f7f7f7,#b2182b); }
+  table { border-collapse:collapse; font-size:13.5px; }
+  td, th { border:1px solid #e5e7eb; padding:6px 10px; text-align:left; }
+  th { background:#f3f4f6; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Liutex 在线计算</h1>
+  <div class="sub">页面里跑的是真的 Python（Pyodide／WebAssembly），不是示意动画。数据不出本机。</div>
+</header>
+
+<main>
+  <div class="panel">
+    <div class="row">
+      <div class="ctrl">
+        <label>涡强度 Γ：<span id="gamv">1.0</span></label>
+        <input id="gam" type="range" min="0" max="3" step="0.1" value="1">
+      </div>
+      <div class="ctrl">
+        <label>剪切率 s：<span id="shearv">0.0</span></label>
+        <input id="shear" type="range" min="0" max="2" step="0.05" value="0">
+      </div>
+      <div class="ctrl">
+        <label>网格 N：<span id="nv">96</span></label>
+        <input id="n" type="range" min="48" max="160" step="8" value="96">
+      </div>
+      <button id="run" disabled>等待 Python 运行时…</button>
+      <span id="status">正在加载 Pyodide（约 12 MB，首次较慢）…</span>
+    </div>
+  </div>
+
+  <div class="panel plots">
+    <figure>
+      <figcaption>Liutex 强度 R（红＝正转、蓝＝反转，白＝0）</figcaption>
+      <canvas id="cR" width="420" height="420"></canvas>
+    </figure>
+    <figure>
+      <figcaption>涡量 ω = v<sub>x</sub> − u<sub>y</sub>（同一点上剪切也会贡献 ω）</figcaption>
+      <canvas id="cW" width="420" height="420"></canvas>
+    </figure>
+    <div>
+      <p class="stat" id="stat">—</p>
+      <p class="legend">颜色条：<span class="bar" style="display:inline-block;vertical-align:middle"></span></p>
+      <p class="legend">要点：纯剪切处 ω≠0 但 R≈0；<br>这正是 Liutex 相对涡量的价值。</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <details open>
+      <summary>页面里实际执行的 Python 代码（可改，改完点上面的按钮重跑）</summary>
+      <pre><code id="code"></code></pre>
+    </details>
+  </div>
+
+  <div class="panel">
+    <h3 style="margin-top:0">这个页面说明了什么</h3>
+    <table>
+      <tr><th>问题</th><th>答案</th></tr>
+      <tr><td>GitHub Pages 要装 Python 吗</td><td>不用。Python 以 WebAssembly 形式下载到访问者浏览器里跑</td></tr>
+      <tr><td>PyQt6 界面能搬上来吗</td><td>不能，浏览器里没有 Qt；界面要重写成 HTML，计算内核照搬</td></tr>
+      <tr><td>哪些库能用</td><td>numpy／scipy／pandas／matplotlib／opencv 都有 Pyodide 轮子；cantera、PyQt 没有</td></tr>
+      <tr><td>数据去哪了</td><td>不上传服务器，全部在页面内存里算完就丢</td></tr>
+    </table>
+  </div>
+</main>
+
+<script>
+const PY_CODE = `
+import numpy as np, json, math
+
+def liutex_2d(u, v, dx=1.0, dy=1.0):
+    uy, ux = np.gradient(u, dy, dx, axis=(0, 1))
+    vy, vx = np.gradient(v, dy, dx, axis=(0, 1))
+    omega = vx - uy
+    lam_sq = np.maximum(ux * vy - uy * vx, 0.0)
+    disc = np.maximum(omega**2 - 4.0 * lam_sq, 0.0)
+    R_abs = np.abs(omega) - np.sqrt(disc)
+    R = np.sign(omega) * R_abs
+    return R, omega, lam_sq
+
+def make_field(gamma, shear, N):
+    x = np.linspace(-1.0, 1.0, N)
+    y = np.linspace(-1.0, 1.0, N)
+    X, Y = np.meshgrid(x, y)
+    r2 = X**2 + Y**2
+    core = 0.15
+    # Lamb-Oseen 涡：u_theta = gamma/(2*pi*r) * (1-exp(-r^2/core^2))
+    r = np.sqrt(r2) + 1e-9
+    ut = gamma / (2 * np.pi * r) * (1.0 - np.exp(-r2 / core**2))
+    u = -ut * Y / r
+    v =  ut * X / r
+    u = u + shear * Y            # 均匀剪切：omega 贡献 = -shear，但没有旋转
+    return u, v
+
+def compute(gamma, shear, N):
+    u, v = make_field(gamma, shear, N)
+    h = 2.0 / (N - 1)                    # 物理网格间距（计算域 [-1,1]^2）
+    R, omega, lam = liutex_2d(u, v, dx=h, dy=h)
+    ny, nx = R.shape
+    idx_shear = int(0.12 * ny), int(0.88 * nx)   # 远离涡核的剪切区取样
+    i, j = idx_shear
+    return json.dumps({
+        "R": R.ravel().tolist(), "W": omega.ravel().tolist(),
+        "nx": nx, "ny": ny,
+        "sample": {"R": float(R[i, j]), "W": float(omega[i, j])},
+        "maxR": float(np.abs(R).max()), "maxW": float(np.abs(omega).max()),
+    })
+`;
+
+// ---------- Pyodide 加载（先官方 CDN，失败回退 fastly） ----------
+let pyodide = null;
+const CDNS = [
+  "https://fastly.jsdelivr.net/pyodide/v0.27.2/full/",
+  "https://cdn.jsdelivr.net/pyodide/v0.27.2/full/",
+];
+async function loadPyodide() {
+  for (const base of CDNS) {
+    try {
+      const s = document.createElement("script");
+      s.src = base + "pyodide.js";
+      await new Promise((res, rej) => { s.onload = res; s.onerror = rej; document.head.appendChild(s); });
+      const py = await window.loadPyodide({ indexURL: base });
+      await py.loadPackage("numpy");
+      return py;
+    } catch (e) { console.warn("CDN 失败，换下一个：", base, e); }
+  }
+  throw new Error("所有 CDN 均不可用");
+}
+
+// ---------- 绘图 ----------
+function cmapR(t) { // 蓝-白-红
+  t = Math.max(-1, Math.min(1, t));
+  if (t < 0) return [Math.round(33 + (247-33)*(1+t)), Math.round(102 + (247-102)*(1+t)), Math.round(172 + (247-172)*(1+t))];
+  return [Math.round(247 + (178-247)*t), Math.round(247 + (24-247)*t), Math.round(247 + (43-247)*t)];
+}
+function draw(canvas, arr, nx, ny, vmax) {
+  const ctx = canvas.getContext("2d");
+  const img = ctx.createImageData(nx, ny);
+  for (let i = 0; i < nx * ny; i++) {
+    const t = arr[i] / (vmax || 1);
+    const [r, g, b] = cmapR(t);
+    const k = 4 * i;
+    img.data[k] = r; img.data[k+1] = g; img.data[k+2] = b; img.data[k+3] = 255;
+  }
+  const tmp = document.createElement("canvas"); tmp.width = nx; tmp.height = ny;
+  tmp.getContext("2d").putImageData(img, 0, 0);
+  ctx.imageSmoothingEnabled = true;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(tmp, 0, 0, canvas.width, canvas.height);
+}
+
+// ---------- 主流程 ----------
+async function run() {
+  const btn = document.getElementById("run");
+  const status = document.getElementById("status");
+  btn.disabled = true; status.textContent = "计算中…";
+  const gamma = +document.getElementById("gam").value;
+  const shear = +document.getElementById("shear").value;
+  const N = +document.getElementById("n").value;
+  try {
+    pyodide.globals.set("gamma_in", gamma);
+    pyodide.globals.set("shear_in", shear);
+    pyodide.globals.set("N_in", N);
+    const t0 = performance.now();
+    const out = await pyodide.runPythonAsync("compute(gamma_in, shear_in, N_in)");
+    const d = JSON.parse(out);
+    draw(document.getElementById("cR"), d.R, d.nx, d.ny, d.maxR);
+    draw(document.getElementById("cW"), d.W, d.nx, d.ny, d.maxW);
+    document.getElementById("stat").innerHTML =
+      `剪切区取样点：<b>R = ${d.sample.R.toFixed(3)}</b>，ω = ${d.sample.W.toFixed(3)}` +
+      `<br>全场最大值：|R| = ${d.maxR.toFixed(2)}，|ω| = ${d.maxW.toFixed(2)}` +
+      `<br>本次计算耗时 ${(performance.now() - t0).toFixed(0)} ms（${N}×${N} 网格）`;
+    status.textContent = "就绪";
+  } catch (e) {
+    status.textContent = "出错：" + e.message;
+    console.error(e);
+  }
+  btn.disabled = false;
+}
+
+document.getElementById("code").textContent = PY_CODE.trim();
+for (const id of ["gam", "shear", "n"]) {
+  document.getElementById(id).addEventListener("input", () => {
+    document.getElementById(id + "v").textContent = document.getElementById(id).value;
+  });
+}
+document.getElementById("run").addEventListener("click", run);
+document.getElementById("gam").dispatchEvent(new Event("input"));
+document.getElementById("shear").dispatchEvent(new Event("input"));
+document.getElementById("n").dispatchEvent(new Event("input"));
+
+(async () => {
+  try {
+    pyodide = await loadPyodide();
+    await pyodide.runPythonAsync(PY_CODE);
+    const btn = document.getElementById("run");
+    btn.disabled = false; btn.textContent = "重新计算";
+    document.getElementById("status").textContent = "Python 就绪";
+    await run();
+  } catch (e) {
+    document.getElementById("status").textContent = "运行时加载失败：" + e.message;
+    console.error(e);
+  }
+})();
+</script>
+</body>
+</html>
